@@ -114,6 +114,61 @@ p {
     background-color: #E6C200;
 }
 
+.btn-download-main {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: var(--light-text);
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+.btn-download-main:hover {
+    background: linear-gradient(135deg, #2d2d2d 0%, #3a3a3a 100%);
+    border-color: #E6C200;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+.btn-download-main span:not(.btn-icon) {
+    font-weight: 600;
+    transform: translateY(2px);
+}
+
+.btn-support-group {
+    flex: 1;
+    display: flex;
+    gap: 15px;
+}
+
+.btn-support-half {
+    flex: 1;
+}
+
+.btn-support-half:first-child {
+    background: linear-gradient(135deg, #13C3FF 0%, #0BA5D9 100%);
+    color: var(--light-text);
+}
+
+.btn-support-half:first-child:hover {
+    background: linear-gradient(135deg, #0BA5D9 0%, #0991BF 100%);
+}
+
+.btn-support-half:last-child {
+    background: linear-gradient(135deg, #0070BA 0%, #005A99 100%);
+    color: var(--light-text);
+}
+
+.btn-support-half:last-child:hover {
+    background: linear-gradient(135deg, #005A99 0%, #004A7F 100%);
+}
+
+.btn-support-half span:not(.btn-icon) {
+    transform: translateY(2px);
+}
+
+.btn-demo span:not(.btn-icon) {
+    transform: translateY(2px);
+}
+
 .btn-outline {
     background-color: transparent;
     border: 2px solid rgba(255, 255, 255, 0.3);
@@ -124,6 +179,20 @@ p {
     border-color: var(--light-text);
     background-color: rgba(255, 255, 255, 0.1);
     color: var(--light-text);
+}
+
+.btn-demo {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: var(--light-text);
+    border: 2px solid #FF0000;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+.btn-demo:hover {
+    background: linear-gradient(135deg, #2d2d2d 0%, #3a3a3a 100%);
+    border-color: #FF0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    transform: translateY(-3px);
 }
 
 .btn-container {
@@ -154,34 +223,107 @@ p {
 }
 
 .btn-icon {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    line-height: 0;
-    vertical-align: middle;
-    margin-top: -2px;
+    line-height: 1;
 }
 
 .btn-icon svg {
-    vertical-align: middle;
+    display: block;
+}
+
+/* Badges Container - aligned to the left above title */
+.badges-container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
 }
 
 /* GitHub Stars Badge */
 .github-stars-badge {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.1);
     padding: 8px 14px;
     border-radius: var(--border-radius);
-    margin: 0 0 30px 0;
     transition: var(--transition);
     width: fit-content;
     box-sizing: border-box;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    align-self: flex-start;
     text-decoration: none;
     cursor: pointer;
     height: 36px;
+    gap: 8px;
+}
+
+/* Version Badge */
+.version-badge {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 215, 0, 0.15);
+    padding: 8px 14px;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    height: 36px;
+    gap: 8px;
+}
+
+.version-icon {
+    display: flex;
+    align-items: center;
+    color: var(--accent-color);
+    line-height: 0;
+}
+
+.version-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    line-height: 1;
+}
+
+/* Download Count Badge */
+.download-count-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px 14px;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: 36px;
+    gap: 6px;
+}
+
+.download-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-text);
+    line-height: 1;
+}
+
+.download-icon svg {
+    display: block;
+}
+
+.download-count-badge .count {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--light-text);
+    line-height: 1;
+    transform: translateY(2px);
+}
+
+.download-count-badge .label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1;
+    transform: translateY(2px);
 }
 
 /* Reset all top positions to ensure perfect alignment */
@@ -215,18 +357,15 @@ p {
 }
 
 .github-stars-badge .github-icon {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    margin-right: 8px;
+    justify-content: center;
     color: var(--accent-color);
-    line-height: 0;
-    vertical-align: middle;
-    position: relative;
-    top: 0px;
+    line-height: 1;
 }
 
 .github-stars-badge .github-icon svg {
-    vertical-align: middle;
+    display: block;
 }
 
 .github-stars-badge .text {
@@ -234,10 +373,7 @@ p {
     line-height: 1;
     font-weight: 500;
     color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    position: relative;
-    top: 0px;
+    transform: translateY(2px);
 }
 
 /* Header */
@@ -289,7 +425,7 @@ header {
 }
 
 .nav-links li {
-    margin-left: 35px;
+    margin-left: 25px;
     position: relative;
 }
 
@@ -301,6 +437,28 @@ header {
     font-size: 1.05rem;
     padding: 5px 0;
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1;
+}
+
+.nav-links a svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2;
+    display: block;
+    flex-shrink: 0;
+}
+
+.nav-links a span {
+    display: inline-block;
+    transform: translateY(2px);
+}
+
+/* Move regular nav items (Home, Features, Community, FAQ) down slightly */
+.nav-links li:not(.nav-icons-group):not(.nav-download-btn) a {
+    transform: translateY(8px);
 }
 
 .nav-links a::after {
@@ -320,6 +478,119 @@ header {
 
 .nav-links a:hover::after {
     width: 100%;
+}
+
+/* Nav icons group - closer spacing */
+.nav-links .nav-icons-group {
+    display: flex;
+    gap: 8px;
+    margin-left: 25px;
+}
+
+/* Icon-only buttons for GitHub and Discord */
+.nav-links .icon-btn {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    padding: 0;
+    transition: var(--transition);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.nav-links .icon-btn::after {
+    display: none;
+}
+
+.nav-links .icon-btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.nav-links .github-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.nav-links .discord-btn {
+    background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
+    border: 1px solid rgba(88, 101, 242, 0.3);
+}
+
+.nav-links .discord-btn:hover {
+    background: linear-gradient(135deg, #4752C4 0%, #3C45A5 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(88, 101, 242, 0.4);
+}
+
+.nav-links .kofi-btn {
+    background: linear-gradient(135deg, #13C3FF 0%, #0BA5D9 100%);
+    border: 1px solid rgba(19, 195, 255, 0.3);
+}
+
+.nav-links .kofi-btn:hover {
+    background: linear-gradient(135deg, #0BA5D9 0%, #0991BF 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(19, 195, 255, 0.4);
+}
+
+.nav-links .paypal-btn {
+    background: linear-gradient(135deg, #0070BA 0%, #005A99 100%);
+    border: 1px solid rgba(0, 112, 186, 0.3);
+}
+
+.nav-links .paypal-btn:hover {
+    background: linear-gradient(135deg, #005A99 0%, #004A7F 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 112, 186, 0.4);
+}
+
+/* Nav Download Button */
+.nav-links .nav-download-btn {
+    margin-left: 25px;
+}
+
+.nav-links .btn-nav-download {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    height: auto;
+    gap: 6px;
+    color: var(--light-text);
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+.nav-links .btn-nav-download:hover {
+    color: var(--light-text);
+    background: linear-gradient(135deg, #2d2d2d 0%, #3a3a3a 100%);
+    border-color: #E6C200;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.nav-links .btn-nav-download svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+    flex-shrink: 0;
+}
+
+.nav-links .btn-nav-download span {
+    display: inline-block;
+    transform: translateY(2px);
+}
+
+.nav-links .btn-nav-download::after {
+    display: none;
 }
 
 /* Hero Section */
@@ -354,10 +625,10 @@ header {
     pointer-events: none;
 }
 
-/* Hero heading - left aligned */
+/* Hero heading - centered and stretched horizontally */
 .hero-heading {
-    text-align: left;
-    margin-bottom: 50px;
+    text-align: center;
+    margin-bottom: 30px;
     position: relative;
     z-index: 1;
     animation: fadeInUp 1s ease;
@@ -366,7 +637,7 @@ header {
 
 .hero-heading h1 {
     font-size: 3.8rem;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     line-height: 1.1;
     background: linear-gradient(90deg, var(--light-text), var(--accent-color) 70%, var(--light-text));
     -webkit-background-clip: text;
@@ -377,8 +648,8 @@ header {
     letter-spacing: -1px;
     text-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
     width: 100%;
-    white-space: normal; /* Changed from nowrap to allow wrapping */
-    max-width: 550px; /* Match the width of the hero text */
+    white-space: normal;
+    max-width: none;
 }
 
 .hero-heading h1::before {
@@ -400,103 +671,237 @@ header {
     content: '';
     position: absolute;
     bottom: -10px;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 80px;
     height: 3px;
     background: var(--accent-color);
     opacity: 0.8;
 }
 
+/* Hero description - stretched horizontally below title */
+.hero-description {
+    text-align: center;
+    margin: 0 auto 40px;
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 1s ease 0.2s;
+    animation-fill-mode: both;
+}
+
+.hero-description p {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* Hero content - just the image */
 .hero-content {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 60px;
-    position: relative;
-    z-index: 2; /* Increased z-index to ensure content stays above image */
-    margin-top: 20px;
-}
-
-.hero-text {
-    flex: 1;
-    text-align: left;
-    max-width: 550px;
-    position: relative;
-    z-index: 3; /* Ensure text is above the image */
-}
-
-.hero-image {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 40px;
     position: relative;
-    height: auto;
-    overflow: hidden;
-    z-index: 2;
+    z-index: 1;
 }
 
-.hero-image img {
+.hero-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.hero-image {
     max-width: 100%;
     height: auto;
     border-radius: var(--border-radius);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    transform: perspective(1000px) rotateY(-5deg);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    animation: floatHorizontal 8s ease-in-out infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
-    z-index: 2;
-    width: auto;
-    max-height: 500px;
 }
 
-/* Add horizontal float animation */
-@keyframes floatHorizontal {
-    0% {
-        transform: perspective(1000px) rotateY(-5deg) translateX(0);
-    }
-    50% {
-        transform: perspective(1000px) rotateY(-5deg) translateX(-20px);
-    }
-    100% {
-        transform: perspective(1000px) rotateY(-5deg) translateX(0);
-    }
-}
-
-.hero-image::after {
-    content: '';
-    position: absolute;
-    bottom: -20px;
-    left: 10%;
-    width: 80%;
-    height: 20px;
-    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
-    filter: blur(10px);
-    z-index: -1;
-    animation: float 6s ease-in-out infinite;
-}
-
-.hero-image:hover img {
-    transform: perspective(1000px) rotateY(0deg);
+.hero-image:hover {
+    transform: scale(1.05);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
 
-.hero p {
-    font-size: 1.3rem;
-    margin-bottom: 40px;
-    animation: fadeInUp 1s ease 0.2s;
-    animation-fill-mode: both;
-    opacity: 0.9;
+/* Hero info line - horizontal text line */
+.hero-info-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
 }
 
-/* Requirements text styling */
-.requirements {
-    font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin-top: -15px;
-    margin-bottom: 30px;
-    font-weight: 400;
+.info-item {
+    white-space: nowrap;
+}
+
+.info-item strong {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.info-separator {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.9rem;
+    margin: 0 3px;
+}
+
+/* PowerShell Command Block */
+.powershell-command-wrapper {
+    margin: 20px auto;
+    max-width: 455px;
+    width: 100%;
+}
+
+.powershell-command-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.powershell-command-container:hover {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(97, 218, 251, 0.3);
+}
+
+.powershell-tooltip {
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 8px;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.powershell-command-wrapper:hover .powershell-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.powershell-command-container code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #61dafb;
+    background: transparent;
+    padding: 0;
+    user-select: all;
+}
+
+.copy-btn {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+    color: #61dafb;
+    transform: scale(1.1);
+}
+
+.copy-btn.copied {
+    color: #28a745;
+}
+
+.copy-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Responsive Design for PowerShell Command Block */
+@media (max-width: 768px) {
+    .powershell-command-wrapper {
+        max-width: 100%;
+    }
+
+    .powershell-command-container {
+        padding: 10px 12px;
+    }
+
+    .powershell-command-container code {
+        font-size: 0.85rem;
+    }
+
+    .powershell-tooltip {
+        font-size: 0.8rem;
+    }
+}
+
+/* Hero actions - centered buttons */
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.hero-actions .btn-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-row-primary .btn {
+    min-width: 220px;
+}
+
+.btn-row-support .btn {
+    min-width: 180px;
+}
+
+.btn-support {
+    background: linear-gradient(135deg, #13C3FF 0%, #0BA5D9 100%);
+    color: var(--light-text);
+}
+
+.btn-support:hover {
+    background: linear-gradient(135deg, #0BA5D9 0%, #0991BF 100%);
+}
+
+.btn-support:last-of-type {
+    background: linear-gradient(135deg, #0070BA 0%, #005A99 100%);
+}
+
+.btn-support:last-of-type:hover {
+    background: linear-gradient(135deg, #005A99 0%, #004A7F 100%);
+}
+
+.highlight-accent {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.footer-version {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 10px;
 }
 
 
@@ -543,7 +948,7 @@ header {
 }
 
 .feature-image {
-    flex: 1;
+    flex: 1.25;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -591,7 +996,7 @@ header {
 }
 
 .feature-text li {
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     color: #555;
 }
 
@@ -599,12 +1004,93 @@ header {
     margin-bottom: 0;
 }
 
-/* Testimonials */
+/* Media Testimonials - Compact "Featured In" section */
+.media-testimonials {
+    padding: 60px 0;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+}
+
+.media-testimonials .section-title {
+    margin-bottom: 30px;
+}
+
+.media-testimonials .section-title h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.media-testimonials-grid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: nowrap;
+}
+
+.media-testimonial-card {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 25px 20px;
+    text-align: center;
+    transition: var(--transition);
+    text-decoration: none;
+    color: var(--light-text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    min-height: 120px;
+}
+
+.media-testimonial-card:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 215, 0, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.media-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.media-testimonial-card:hover .media-name {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.media-quote-text {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.5;
+    transition: color 0.3s ease;
+}
+
+.media-testimonial-card:hover .media-quote-text {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* User Testimonials */
 .testimonials {
     padding: var(--section-padding);
     background-color: var(--primary-color);
     color: var(--light-text);
-    overflow: hidden; /* Prevent horizontal scrollbar */
+    overflow: hidden;
 }
 
 /* Testimonials Slider Container */
@@ -622,7 +1108,7 @@ header {
     gap: 20px;
     position: relative;
     animation: scroll 30s linear infinite;
-    width: max-content; /* Allow the track to be as wide as needed */
+    width: max-content;
 }
 
 /* Pause animation on hover */
@@ -682,54 +1168,116 @@ header {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-100%); /* Will be overridden by JS */
+        transform: translateX(-100%);
     }
 }
 
-/* Keep the original testimonial badge styles for other uses */
-.testimonial-badge {
+/* Community Section */
+.community {
+    padding: var(--section-padding);
+    background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+    color: var(--light-text);
+}
+
+.community .section-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.community .section-title h2 {
+    color: var(--light-text);
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.community-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.community-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 40px 30px;
+    text-align: center;
+    transition: var(--transition);
+    text-decoration: none;
+    color: var(--light-text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.community-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.community-card.discord-card:hover {
+    border-color: rgba(88, 101, 242, 0.5);
+    box-shadow: 0 15px 40px rgba(88, 101, 242, 0.2);
+}
+
+.community-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 10px 16px;
-    border-radius: var(--border-radius);
-    margin-bottom: 12px;
-    transition: var(--transition);
-    width: calc(33.33% - 8px);
-    box-sizing: border-box;
-}
-
-.testimonial-badge.full-width {
-    width: 100%;
-    max-width: 550px;
-    margin-top: 0;
+    justify-content: center;
     margin-bottom: 20px;
-    font-size: 1rem;
-}
-
-.testimonial-badge.full-width .stars {
-    font-size: 1rem;
-}
-
-.testimonial-badge.full-width .text {
-    font-size: 1rem;
-}
-
-.testimonial-badge:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-3px);
-}
-
-.testimonial-badge .stars {
+    transition: var(--transition);
     color: var(--accent-color);
-    margin-right: 8px;
-    font-size: 0.8rem;
 }
 
-.testimonial-badge .text {
-    font-size: 0.8rem;
-    line-height: 1.3;
-    flex: 1;
+.community-card:hover .community-icon {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.discord-card .community-icon {
+    color: #5865F2;
+}
+
+.community-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--light-text);
+}
+
+.community-card p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.community-card .stat {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    font-weight: 600;
+    padding: 8px 16px;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: var(--border-radius);
+    margin-top: auto;
+}
+
+.discord-card .stat {
+    color: #5865F2;
+    background: rgba(88, 101, 242, 0.1);
 }
 
 /* Call to Action */
@@ -972,7 +1520,7 @@ footer {
     }
 
     .hero-heading {
-        margin-bottom: 30px;
+        margin-bottom: 25px;
         text-align: center;
     }
 
@@ -981,37 +1529,48 @@ footer {
         transform: translateX(-50%);
     }
 
-    .hero-content {
-        flex-direction: column;
+    .hero-description {
+        margin-bottom: 30px;
     }
 
-    .hero-text {
-        text-align: center;
-        order: 1;
+    .hero-description p {
+        font-size: 1.1rem;
+    }
+
+    .hero-content {
+        margin-bottom: 30px;
+    }
+
+    .hero-image-container {
         max-width: 100%;
     }
 
     .hero-image {
-        order: 0;
-        margin-bottom: 40px;
-        width: 90%;
-        height: 300px; /* Reduced height for mobile */
+        max-width: 100%;
     }
 
-    .hero-image img {
-        transform: perspective(1000px) rotateY(0deg);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-    }
-
-    .github-stars-badge {
-        margin: 0 auto 20px;
-    }
-
-    .btn-row {
+    .hero-info-line {
         flex-direction: column;
+        gap: 10px;
+        font-size: 0.9rem;
     }
 
-    .btn-group {
+    .info-separator {
+        display: none;
+    }
+
+    .hero-actions .btn-row {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-row-primary .btn,
+    .btn-row-support .btn {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .badges-container {
         justify-content: center;
     }
 
@@ -1024,8 +1583,21 @@ footer {
         text-align: center;
     }
 
-    .testimonial-badge {
-        width: calc(50% - 8px);
+    .media-testimonials-grid {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .media-testimonial-card {
+        flex: 1 1 100%;
+    }
+
+    .testimonials-slider {
+        max-width: 100%;
+    }
+
+    .testimonial-card {
+        flex: 0 0 280px;
     }
 
     .feature-text {
@@ -1045,10 +1617,8 @@ footer {
         left: 50%;
         transform: translateX(-50%);
     }
-}
 
-@media (max-width: 480px) {
-    .testimonial-badge {
-        width: 100%;
+    .community-cards {
+        grid-template-columns: 1fr;
     }
 }
