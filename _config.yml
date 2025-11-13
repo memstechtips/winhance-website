@@ -1,0 +1,13 @@
+# Jekyll configuration for GitHub Pages
+# Keep the site as static HTML, only use Jekyll for redirects
+plugins:
+  - jekyll-redirect-from
+
+# Don't process these files/folders
+exclude:
+  - .claude/
+  - README.md
+
+# Keep all files as-is
+include:
+  - .nojekyll
