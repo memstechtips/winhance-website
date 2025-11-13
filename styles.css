@@ -759,7 +759,7 @@ header {
 
 /* PowerShell Command Block */
 .powershell-command-wrapper {
-    margin: 20px auto;
+    margin: 20px auto 10px auto;
     max-width: 455px;
     width: 100%;
 }
