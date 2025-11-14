@@ -233,14 +233,56 @@ p {
     display: block;
 }
 
-/* Badges Container - aligned to the left above title */
+/* Badges Container - spread across the width above title */
 .badges-container {
     display: flex;
     gap: 12px;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     margin-bottom: 35px;
     flex-wrap: wrap;
+}
+
+/* Made By Badge */
+.made-by-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px 14px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    width: fit-content;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    cursor: pointer;
+    height: 36px;
+    gap: 2px;
+}
+
+.made-by-badge .text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.made-by-badge .heart-icon {
+    display: flex;
+    align-items: center;
+    line-height: 0;
+    margin-top: -4px;
+}
+
+.made-by-badge .heart-icon svg {
+    display: block;
+}
+
+.made-by-badge:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
 }
 
 /* GitHub Stars Badge */
@@ -1457,6 +1499,26 @@ footer {
     text-align: center;
     padding-top: 30px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-made-by {
+    color: #ccc;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-made-by:hover {
+    color: var(--accent-color);
+}
+
+.footer-heart-icon {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.footer-heart-icon svg {
+    display: block;
 }
 
 /* Animations */
