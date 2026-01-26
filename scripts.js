@@ -308,11 +308,70 @@ function setupTestimonialsSlider() {
     });
 }
 
+// Media testimonials slider functionality
+function setupMediaTestimonialsSlider() {
+    const track = document.querySelector('.media-testimonials-track');
+
+    if (!track) return;
+
+    // Clone the media testimonial cards to create a seamless infinite scroll effect
+    const cards = track.querySelectorAll('.media-testimonial-card');
+
+    // Clone each card and append to the track
+    cards.forEach(card => {
+        const clone = card.cloneNode(true);
+        track.appendChild(clone);
+    });
+
+    // Calculate the total width of original cards
+    const cardWidth = 350; // Width of each card in pixels
+    const gapWidth = 20; // Gap between cards in pixels
+    const totalWidth = (cardWidth + gapWidth) * (cards.length);
+
+    // Create a CSS animation directly on the element
+    // This avoids the security error when trying to access CSS rules
+    const animationDuration = cards.length * 8; // 8 seconds per card for slower scroll
+
+    // Apply the animation directly to the track element
+    track.style.animation = `none`; // Reset animation first
+
+    // Force reflow
+    void track.offsetWidth;
+
+    // Set new animation
+    track.style.animation = `mediaScroll ${animationDuration}s linear infinite`;
+    track.style.animationFillMode = 'forwards';
+
+    // Create a style element for the keyframes
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+        @keyframes mediaScroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-${totalWidth}px);
+            }
+        }
+    `;
+    document.head.appendChild(styleElement);
+
+    // Add hover event listeners to pause/resume animation
+    track.addEventListener('mouseenter', () => {
+        track.style.animationPlayState = 'paused';
+    });
+
+    track.addEventListener('mouseleave', () => {
+        track.style.animationPlayState = 'running';
+    });
+}
+
 // Run on load and scroll
 window.addEventListener('load', () => {
     checkIfInView();
     initFaqAccordion();
     setupTestimonialsSlider();
+    setupMediaTestimonialsSlider();
 
     // Add a class to body after page is fully loaded for potential page transitions
     document.body.classList.add('page-loaded');
