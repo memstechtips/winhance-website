@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming & Performance - Winhance Docs</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../css/docs-main.css">
+    <link rel="stylesheet" href="../../css/docs-sidebar.css">
+    <link rel="stylesheet" href="../../css/docs-syntax.css">
+    <script src="../../js/theme-load.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="../../index.html" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="../../../images/winhance-rocket.png" alt="Winhance Logo"
+                        style="height: 32px; margin-right: 12px;">
+                    <h1 style="font-size: 1.5rem; margin: 0; color: var(--text-color);">Winhance <span
+                            style="font-weight: 300; opacity: 0.7;">Docs</span></h1>
+                </a>
+            </div>
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="docs-search" placeholder="Search documentation...">
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+                </button>
+                <a href="https://github.com/memstechtips/Winhance" target="_blank" class="icon-btn github-btn"
+                    title="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="docs-wip-banner">
+        <strong>Work in Progress:</strong> Documentation is a work in progress. Some pages may be incomplete.
+    </div>
+
+    <div class="docs-layout has-banner">
+                        <aside class="docs-sidebar">
+            <nav>
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Getting Started</div>
+                    <a href="../../getting-started/installation.html" class="sidebar-nav-item">Installation</a>
+                    <a href="../../getting-started/quick-start.html" class="sidebar-nav-item">Quick Start</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Features</div>
+                    <a href="../../features/software-apps.html" class="sidebar-nav-item">Software & Apps</a>
+                    <div class="sidebar-sub-nav">
+                        <a href="../../features/software-apps/windows-apps.html" class="sidebar-nav-item sub-item">Windows Apps</a>
+                        <a href="../../features/software-apps/external-apps.html" class="sidebar-nav-item sub-item">External Apps</a>
+                    </div>
+                    <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
+                    <div class="sidebar-sub-nav">
+                        <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
+                        <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
+                        <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item active">Gaming & Performance</a>
+                        <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
+                        <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
+                        <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
+                    </div>
+                    <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
+                    <div class="sidebar-sub-nav">
+                        <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
+                        <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
+                        <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
+                        <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
+                    </div>
+                    <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
+                    <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">User Guides</div>
+                    <a href="../../guides/configuration-files.html" class="sidebar-nav-item">Configuration Files</a>
+                    <a href="../../guides/wimutil.html" class="sidebar-nav-item">WIMUtil Guide</a>
+                    <a href="../../guides/autounattend.html" class="sidebar-nav-item">Autounattend Guide</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Reference</div>
+                    <a href="../../reference/cli-commands.html" class="sidebar-nav-item">CLI Commands</a>
+                    <a href="../../reference/changelog.html" class="sidebar-nav-item">Changelog</a>
+                    <a href="../../reference/troubleshooting.html" class="sidebar-nav-item">Troubleshooting</a>
+                    <a href="../../reference/contributing.html" class="sidebar-nav-item">How to Contribute</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="docs-content">
+            <section id="gaming-performance">
+                <h1>Gaming & Performance</h1>
+                <div class="video-container">
+                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=1824" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p>Maximize your system's hardware potential. This section contains optimizations designed to reduce
+                    input lag, improve frame rates, and eliminate system stutters during gaming or intensive workloads.
+                </p>
+
+                <div class="callout callout-info">
+                    <div class="callout-title">Understanding Registry Notation</div>
+                    <p>For settings with <strong>"Absence = Enabled"</strong>, the feature is ON when the registry key doesn't exist (Windows default behavior). Winhance creates the key to disable the feature.</p>
+                </div>
+
+                <!-- GENERAL SETTINGS -->
+                <h2 id="general">General Settings</h2>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Game Mode</span>
+                        <span class="setting-id">gaming-game-mode</span>
+                    </div>
+                    <p class="setting-desc">Optimize your PC for play by turning things off in the background.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\GameBar</code></td></tr>
+                            <tr><th>Value</th><td><code>AutoGameModeEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Enhance Pointer Precision</span>
+                        <span class="setting-id">gaming-performance-explorer-mouse-precision</span>
+                    </div>
+                    <p class="setting-desc">Adjust cursor speed based on movement velocity (mouse acceleration). Most competitive gamers disable this for consistent aiming in FPS games. <em>Requires restart.</em></p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Mouse</code></td></tr>
+                            <tr><th>Value</th><td><code>MouseSpeed</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Enabled</th><td>"1"</td></tr>
+                            <tr><th>Disabled</th><td>"0"</td></tr>
+                            <tr><th>Recommended</th><td>"0" (Disabled for gaming)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Startup Delay for Apps</span>
+                        <span class="setting-id">gaming-performance-autostart-delay</span>
+                    </div>
+                    <p class="setting-desc">Delay startup applications by 10 seconds after boot to improve initial system responsiveness. Windows becomes usable faster, but your startup apps take longer to load.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize</code></td></tr>
+                            <tr><th>Value</th><td><code>StartupDelayInMSec</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>10000 (10 seconds)</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Recommended</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Let Apps Run in Background</span>
+                        <span class="setting-id">gaming-background-apps</span>
+                    </div>
+                    <p class="setting-desc">Allow apps to receive notifications, update data, and perform tasks even when not actively in use.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy</code><br><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy</code></td></tr>
+                            <tr><th>Value</th><td><code>LetAppsRunInBackground</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Storage Sense</span>
+                        <span class="setting-id">gaming-storage-sense</span>
+                    </div>
+                    <p class="setting-desc">Automatically free up disk space by removing temporary files, emptying the recycle bin, and managing downloads.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\StorageSense</code><br><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\StorageSense</code></td></tr>
+                            <tr><th>Value</th><td><code>AllowStorageSenseGlobal</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Search Entire File System</span>
+                        <span class="setting-id">gaming-performance-explorer-search</span>
+                    </div>
+                    <p class="setting-desc">Search your entire file system instead of only indexed locations. This provides more complete results but is significantly slower than indexed search and increases disk activity.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences</code></td></tr>
+                            <tr><th>Value</th><td><code>WholeFileSystem</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Recommended</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Allow Desktop Wallpaper Compression</span>
+                        <span class="setting-id">gaming-performance-wallpaper-compression</span>
+                    </div>
+                    <p class="setting-desc">Allow Windows to compress wallpapers to save disk space and improve performance. Only affects images in JPEG format. <em>Requires Explorer restart.</em></p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Desktop</code></td></tr>
+                            <tr><th>Value</th><td><code>JPEGImportQuality</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (Compression)</th><td>0 or absent</td></tr>
+                            <tr><th>Disabled (Full Quality)</th><td>100</td></tr>
+                            <tr><th>Recommended</th><td>100</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Enable Menu Show Delay</span>
+                        <span class="setting-id">gaming-performance-explorer-menu-show-delay</span>
+                    </div>
+                    <p class="setting-desc">Add a brief delay before displaying menus, or show them instantly for faster navigation.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Desktop</code></td></tr>
+                            <tr><th>Value</th><td><code>MenuShowDelay</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Enabled</th><td>"400" (default)</td></tr>
+                            <tr><th>Disabled</th><td>"0"</td></tr>
+                            <tr><th>Recommended</th><td>"0"</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Alt+Tab Filter</span>
+                        <span class="setting-id">gaming-explorer-alt-tab-filter</span>
+                    </div>
+                    <p class="setting-desc">Show only traditional open windows in Alt+Tab instead of including Microsoft Edge tabs and other Windows suggestions.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>MultiTaskingAltTabFilter</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Windows only</th><td>3</td></tr>
+                            <tr><th>All windows + tabs</th><td>0</td></tr>
+                            <tr><th>Recommended</th><td>3</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- PROCESSOR GROUP -->
+                <h2 id="processor">Processor</h2>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Adjust processor for best performance of</span>
+                        <span class="setting-id">gaming-win32-priority</span>
+                    </div>
+                    <p class="setting-desc">Configure how Windows allocates CPU time between foreground applications and background services.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\System\CurrentControlSet\Control\PriorityControl</code></td></tr>
+                            <tr><th>Value</th><td><code>Win32PrioritySeparation</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Programs</th><td>38 (0x26)</td></tr>
+                            <tr><th>Background Services</th><td>24 (0x18)</td></tr>
+                            <tr><th>Recommended</th><td>38</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">System Responsiveness for Games</span>
+                        <span class="setting-id">gaming-system-responsiveness</span>
+                    </div>
+                    <p class="setting-desc">Minimize background task interference by allocating more CPU time to your active game or multimedia application.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile</code></td></tr>
+                            <tr><th>Value</th><td><code>SystemResponsiveness</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Gaming Optimized</th><td>10</td></tr>
+                            <tr><th>Balanced</th><td>20</td></tr>
+                            <tr><th>Recommended</th><td>10</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">CPU Priority for Gaming</span>
+                        <span class="setting-id">gaming-cpu-priority</span>
+                    </div>
+                    <p class="setting-desc">Give games higher CPU scheduling priority to dedicate more processor time to your game.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games</code></td></tr>
+                            <tr><th>Value</th><td><code>Priority</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>High Priority</th><td>6</td></tr>
+                            <tr><th>Normal</th><td>2</td></tr>
+                            <tr><th>Recommended</th><td>6</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">High Scheduling Category for Gaming</span>
+                        <span class="setting-id">gaming-scheduling-category</span>
+                    </div>
+                    <p class="setting-desc">Assign high-priority scheduling category to ensure games receive preferential system resource allocation.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games</code></td></tr>
+                            <tr><th>Value</th><td><code>Scheduling Category</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>High</th><td>"High"</td></tr>
+                            <tr><th>Medium</th><td>"Medium"</td></tr>
+                            <tr><th>Recommended</th><td>"High"</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- GRAPHICS GROUP -->
+                <h2 id="graphics">Graphics</h2>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">GPU Priority for Gaming</span>
+                        <span class="setting-id">gaming-gpu-priority</span>
+                    </div>
+                    <p class="setting-desc">Give games higher GPU scheduling priority to improve graphics performance and frame rates.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games</code></td></tr>
+                            <tr><th>Value</th><td><code>GPU Priority</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>High Priority</th><td>8</td></tr>
+                            <tr><th>Normal</th><td>2</td></tr>
+                            <tr><th>Recommended</th><td>8</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Hardware-Accelerated GPU Scheduling</span>
+                        <span class="setting-id">gaming-gpu-scheduling</span>
+                    </div>
+                    <p class="setting-desc">Let your GPU manage its own memory and scheduling for reduced latency and improved performance. <em>Requires restart.</em></p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\System\CurrentControlSet\Control\GraphicsDrivers</code></td></tr>
+                            <tr><th>Value</th><td><code>HwSchMode</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>2</td></tr>
+                            <tr><th>Disabled</th><td>1</td></tr>
+                            <tr><th>Recommended</th><td>2</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Optimizations for windowed games</span>
+                        <span class="setting-id">gaming-directx-flip-model</span>
+                    </div>
+                    <p class="setting-desc">Reduce latency and use advanced features in compatible games by using DirectX flip presentation model.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\DirectX\UserGpuPreferences</code></td></tr>
+                            <tr><th>Value</th><td><code>DirectXUserGlobalSettings</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Enabled</th><td>"SwapEffectUpgradeEnable=1;"</td></tr>
+                            <tr><th>Disabled</th><td>""</td></tr>
+                            <tr><th>Recommended</th><td>"SwapEffectUpgradeEnable=1;"</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Variable Refresh Rate Optimizations</span>
+                        <span class="setting-id">gaming-directx-vrr-optimizations</span>
+                    </div>
+                    <p class="setting-desc">Enable VRR (G-Sync/FreeSync) optimizations for smoother gameplay on compatible monitors. Disable only if experiencing issues with VRR displays.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\DirectX\UserGpuPreferences</code></td></tr>
+                            <tr><th>Value</th><td><code>VRROptimizeEnable</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Recommended</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Legacy NVIDIA Sharpening</span>
+                        <span class="setting-id">gaming-nvidia-sharpening</span>
+                    </div>
+                    <p class="setting-desc">Enable legacy NVIDIA image sharpening filter for enhanced visual clarity. Only works on older NVIDIA drivers; newer drivers should use NVIDIA Control Panel sharpening instead.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\Software\NVIDIA Corporation\Global\FTS</code></td></tr>
+                            <tr><th>Value</th><td><code>EnableGR535</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (Sharpening On)</th><td>0</td></tr>
+                            <tr><th>Disabled</th><td>1</td></tr>
+                            <tr><th>Recommended</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Fullscreen Optimizations</span>
+                        <span class="setting-id">gaming-fullscreen-optimizations</span>
+                    </div>
+                    <p class="setting-desc">Allow Windows to optimize games running in fullscreen mode. Disabling can fix performance issues or stuttering in some older games that don't work well with borderless fullscreen optimization.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\System\GameConfigStore</code></td></tr>
+                            <tr><th>Value</th><td><code>GameDVR_FSEBehaviorMode</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>0</td></tr>
+                            <tr><th>Disabled</th><td>2</td></tr>
+                            <tr><th>Recommended</th><td>2</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Desktop Composition Effects</span>
+                        <span class="setting-id">gaming-performance-desktop-composition</span>
+                    </div>
+                    <p class="setting-desc">Enable visual effects managed by the Desktop Window Manager. Disabling may provide minor performance gains on older hardware but will break Aero effects.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\DWM</code></td></tr>
+                            <tr><th>Value</th><td><code>CompositionPolicy</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- NETWORK GROUP -->
+                <h2 id="network">Network</h2>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Disable Network Throttling for Gaming</span>
+                        <span class="setting-id">gaming-network-throttling</span>
+                    </div>
+                    <p class="setting-desc">Disable network packet throttling to reduce latency and improve online gaming responsiveness.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile</code></td></tr>
+                            <tr><th>Value</th><td><code>NetworkThrottlingIndex</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Optimized</th><td>10 (minimal throttling)</td></tr>
+                            <tr><th>Default</th><td>5</td></tr>
+                            <tr><th>Recommended</th><td>10</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Enable Nagle's Algorithm</span>
+                        <span class="setting-id">gaming-nagle-algorithm</span>
+                    </div>
+                    <p class="setting-desc">Batch small network packets together before sending to improve efficiency. Disabling reduces latency for real-time online gaming but may slightly increase bandwidth usage.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters</code></td></tr>
+                            <tr><th>Values</th><td><code>TcpAckFrequency</code>, <code>TCPNoDelay</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Nagle Enabled</th><td>TcpAckFrequency=2, TCPNoDelay=0</td></tr>
+                            <tr><th>Nagle Disabled</th><td>TcpAckFrequency=1, TCPNoDelay=1</td></tr>
+                            <tr><th>Recommended</th><td>Disabled (for gaming)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- XBOX GROUP -->
+                <h2 id="xbox">Xbox</h2>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Xbox Game DVR</span>
+                        <span class="setting-id">gaming-xbox-game-dvr</span>
+                    </div>
+                    <p class="setting-desc">Record gameplay clips and take screenshots using the Xbox Game Bar overlay. Disabling reduces CPU/GPU usage and can improve frame rates.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\System\GameConfigStore</code><br><code>HKLM\Software\Microsoft\Windows\CurrentVersion\GameConfigStore</code></td></tr>
+                            <tr><th>Values</th><td><code>GameDVR_Enabled</code>, <code>AllowGameDVR</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Recommended</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Game Bar Controller Access</span>
+                        <span class="setting-id">gaming-game-bar-controller</span>
+                    </div>
+                    <p class="setting-desc">Allow your Xbox/compatible controller to open Game Bar by pressing the Xbox button. Disable to prevent accidental Game Bar activation during gaming.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\GameBar</code></td></tr>
+                            <tr><th>Value</th><td><code>UseNexusForGameBarEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Game Bar Tips and Hints</span>
+                        <span class="setting-id">gaming-game-bar-tips</span>
+                    </div>
+                    <p class="setting-desc">Show tips and hints about Game Bar features when opening the overlay. Disabling reduces distractions during gameplay.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\GameBar</code></td></tr>
+                            <tr><th>Value</th><td><code>ShowStartupPanel</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- SYSTEM SERVICES GROUP -->
+                <h2 id="system-services">System Services</h2>
+
+                <div class="callout callout-warning">
+                    <div class="callout-title">Service Recommendations</div>
+                    <p>It is recommended to set non-essential services to <strong>Manual</strong> rather than Disabled. This ensures they don't consume resources at startup but can still be started by Windows if a specific application needs them.</p>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Optimize Background Services</span>
+                        <span class="setting-id">gaming-performance-background-services</span>
+                    </div>
+                    <p class="setting-desc">Reduce the startup timeout for Windows services from 60 to 30 seconds. This can speed up boot time slightly.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Control</code></td></tr>
+                            <tr><th>Value</th><td><code>ServicesPipeTimeout</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Optimized</th><td>30000 (30 seconds)</td></tr>
+                            <tr><th>Default</th><td>60000 (60 seconds)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">SysMain Service (Superfetch)</span>
+                        <span class="setting-id">gaming-sysmain-service</span>
+                    </div>
+                    <p class="setting-desc">Preload frequently used applications into RAM for faster launch times. Automatic is recommended for HDDs, Manual or Disabled is preferred for SSDs. <em>Requires restart.</em></p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\SysMain</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Automatic</th><td>2</td></tr>
+                            <tr><th>Recommended</th><td>4 (for SSD)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Prefetch Feature</span>
+                        <span class="setting-id">gaming-performance-prefetch</span>
+                    </div>
+                    <p class="setting-desc">Preload frequently used applications and boot files into memory to speed up launches. Generally recommended for HDDs not SSDs. <em>Requires SysMain to be enabled.</em></p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters</code></td></tr>
+                            <tr><th>Value</th><td><code>EnablePrefetcher</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (Both)</th><td>3</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Recommended</th><td>0 (for SSD)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Windows Search Indexing Service</span>
+                        <span class="setting-id">gaming-windows-search-service</span>
+                    </div>
+                    <p class="setting-desc">Indexes files and folders for faster search results. Disabling reduces background CPU and disk activity but makes Windows Search slower. <em>Requires restart.</em></p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\WSearch</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Automatic</th><td>2</td></tr>
+                            <tr><th>Recommended</th><td>4</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Print Spooler Service</span>
+                        <span class="setting-id">gaming-print-spooler-service</span>
+                    </div>
+                    <p class="setting-desc">Manages print jobs sent to printers. If you don't use a printer, set to Manual or Disabled to free up system resources.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\Spooler</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Connected User Experiences and Telemetry Service</span>
+                        <span class="setting-id">gaming-telemetry-service</span>
+                    </div>
+                    <p class="setting-desc">Sends usage data and diagnostics to Microsoft. Setting to Manual or Disabled reduces background network and CPU usage.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\DiagTrack</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Program Compatibility Assistant Service</span>
+                        <span class="setting-id">gaming-compatibility-assistant-service</span>
+                    </div>
+                    <p class="setting-desc">Monitors programs for compatibility issues and applies fixes automatically. Can be disabled if you don't run older software.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\PcaSvc</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Automatic</th><td>2</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Windows Error Reporting Service</span>
+                        <span class="setting-id">gaming-error-reporting-service</span>
+                    </div>
+                    <p class="setting-desc">Collects and sends crash data and error reports to Microsoft. Disabling improves privacy and reduces background activity.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\WerSvc</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Automatic</th><td>2</td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Geolocation Service</span>
+                        <span class="setting-id">gaming-geolocation-service</span>
+                    </div>
+                    <p class="setting-desc">Provides location services for apps that request geographic position. Disable for privacy if location features aren't needed.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\lfsvc</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Automatic</th><td>2</td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Retail Demo Service</span>
+                        <span class="setting-id">gaming-retail-demo-service</span>
+                    </div>
+                    <p class="setting-desc">Controls the retail demo experience for store display PCs. Can be safely disabled on personal computers.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\RetailDemo</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Windows Insider Service</span>
+                        <span class="setting-id">gaming-insider-service</span>
+                    </div>
+                    <p class="setting-desc">Provides infrastructure support for the Windows Insider Program. Disable if not participating in the Insider program.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\wisvc</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Phone Service</span>
+                        <span class="setting-id">gaming-phone-service</span>
+                    </div>
+                    <p class="setting-desc">Manages the telephony state on the device. Disable if you don't use phone integration features like Your Phone app.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\PhoneSvc</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Wallet Service</span>
+                        <span class="setting-id">gaming-wallet-service</span>
+                    </div>
+                    <p class="setting-desc">Hosts objects used by clients of the wallet. Used for payment and NFC scenarios. Disable if not using Microsoft Pay.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\WalletService</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Smart Card Service</span>
+                        <span class="setting-id">gaming-smart-card-services</span>
+                    </div>
+                    <p class="setting-desc">Manages access to smart cards read by the computer. Disable if you don't use smart card authentication.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\SCardSvr</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Smart Card Device Enumeration Service</span>
+                        <span class="setting-id">gaming-smart-card-services-enum</span>
+                    </div>
+                    <p class="setting-desc">Creates software device nodes for all smart card readers accessible to a given session.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\ScDeviceEnum</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Smart Card Removal Policy Service</span>
+                        <span class="setting-id">gaming-smart-card-services-policy</span>
+                    </div>
+                    <p class="setting-desc">Allows the system to be configured to lock the desktop upon smart card removal.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\SCPolicySvc</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Downloaded Maps Manager</span>
+                        <span class="setting-id">gaming-maps-broker-service</span>
+                    </div>
+                    <p class="setting-desc">Service for application access to downloaded maps. Disable if you don't use offline maps.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\MapsBroker</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Automatic</th><td>2</td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Fax Service</span>
+                        <span class="setting-id">gaming-fax-service</span>
+                    </div>
+                    <p class="setting-desc">Enables you to send and receive faxes. Disable if you don't use fax functionality.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\Fax</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Windows Media Player Network Sharing Service</span>
+                        <span class="setting-id">gaming-wmp-network-service</span>
+                    </div>
+                    <p class="setting-desc">Shares Windows Media Player libraries to other networked players and media devices using UPnP.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\WMPNetworkSvc</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Windows Mixed Reality OpenXR Service</span>
+                        <span class="setting-id">gaming-mixed-reality-service</span>
+                    </div>
+                    <p class="setting-desc">Provides support for Windows Mixed Reality headsets and VR/AR applications. Disable if not using VR.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\MixedRealityOpenXRSvc</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Windows Mobile Hotspot Service</span>
+                        <span class="setting-id">gaming-mobile-hotspot-service</span>
+                    </div>
+                    <p class="setting-desc">Provides the ability to share a cellular data connection with another device.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\icssvc</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Microsoft Windows SMS Router Service</span>
+                        <span class="setting-id">gaming-sms-router-service</span>
+                    </div>
+                    <p class="setting-desc">Routes messages based on rules to appropriate clients. Disable if not using SMS features.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\SmsRouter</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Parental Controls Service</span>
+                        <span class="setting-id">gaming-parental-controls-service</span>
+                    </div>
+                    <p class="setting-desc">Enforces parental controls for child accounts. Disable if not using Family Safety features.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\WpcMonSvc</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Payments and NFC/SE Manager Service</span>
+                        <span class="setting-id">gaming-payments-nfc-service</span>
+                    </div>
+                    <p class="setting-desc">Manages payments and Near Field Communication (NFC) based secure element.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\SEMgrSvc</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>4 (Disabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Spot Verifier Service</span>
+                        <span class="setting-id">gaming-spot-verifier-service</span>
+                    </div>
+                    <p class="setting-desc">Verifies potential file system corruptions.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\svsvc</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Remote Access Connection Manager</span>
+                        <span class="setting-id">gaming-remote-access-manager</span>
+                    </div>
+                    <p class="setting-desc">Manages dial-up and virtual private network (VPN) connections. Keep enabled if you use VPN.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\RasMan</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Automatic</th><td>2</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Remote Access Auto Connection Manager</span>
+                        <span class="setting-id">gaming-remote-access-auto</span>
+                    </div>
+                    <p class="setting-desc">Creates a connection to a remote network whenever a program references a remote DNS or NetBIOS name.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\RasAuto</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Remote Desktop Services</span>
+                        <span class="setting-id">gaming-remote-desktop-services</span>
+                    </div>
+                    <p class="setting-desc">Allows users to connect interactively to a remote computer. Disable if you don't use Remote Desktop.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\TermService</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Automatic</th><td>2</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Remote Desktop Configuration</span>
+                        <span class="setting-id">gaming-remote-desktop-configuration</span>
+                    </div>
+                    <p class="setting-desc">Responsible for all Remote Desktop related configuration and session maintenance activities.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\SessionEnv</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Remote Desktop Services UserMode Port Redirector</span>
+                        <span class="setting-id">gaming-remote-desktop-port-redirector</span>
+                    </div>
+                    <p class="setting-desc">Allows the redirection of printers/drives/ports for RDP connections.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\UmRdpService</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Background Intelligent Transfer Service (BITS)</span>
+                        <span class="setting-id">gaming-bits-service</span>
+                    </div>
+                    <p class="setting-desc">Transfers files in the background using idle network bandwidth. Required for Windows Update. Keep enabled for updates.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\BITS</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Automatic</th><td>2</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Xbox Live Auth Manager</span>
+                        <span class="setting-id">gaming-xbox-auth-manager</span>
+                    </div>
+                    <p class="setting-desc">Provides authentication and authorization services for interacting with Xbox Live. Required for Xbox gaming features.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\XblAuthManager</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Xbox Live Game Save</span>
+                        <span class="setting-id">gaming-xbox-game-save</span>
+                    </div>
+                    <p class="setting-desc">Syncs save data for Xbox Live enabled games. Disable if you don't use Xbox cloud saves.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\XblGameSave</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Xbox Live Networking Service</span>
+                        <span class="setting-id">gaming-xbox-networking</span>
+                    </div>
+                    <p class="setting-desc">Supports the Windows.Networking.XboxLive application programming interface. Required for Xbox Live multiplayer.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\XboxNetApiSvc</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Windows Biometric Service</span>
+                        <span class="setting-id">gaming-biometric-service</span>
+                    </div>
+                    <p class="setting-desc">Enables client applications to capture, compare, manipulate, and store biometric data. Required for Windows Hello fingerprint/facial login.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\WbioSrvc</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Automatic</th><td>2</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Touch Keyboard and Handwriting Panel Service</span>
+                        <span class="setting-id">gaming-touch-keyboard-service</span>
+                    </div>
+                    <p class="setting-desc">Enables Touch Keyboard and Handwriting Panel pen and ink functionality. Disable if not using touch/pen input.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\TabletInputService</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Automatic</th><td>2</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Sensor Monitoring Service</span>
+                        <span class="setting-id">gaming-sensor-monitoring-service</span>
+                    </div>
+                    <p class="setting-desc">Monitors various sensors to expose data and adapt to system and user state. Handles ambient light, orientation sensors.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\SensrSvc</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Sensor Data Service</span>
+                        <span class="setting-id">gaming-sensor-data-service</span>
+                    </div>
+                    <p class="setting-desc">Delivers data from a variety of sensors.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\SensorDataService</code></td></tr>
+                            <tr><th>Value</th><td><code>Start</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Disabled</th><td>4</td></tr>
+                            <tr><th>Manual</th><td>3</td></tr>
+                            <tr><th>Recommended</th><td>3 (Manual)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- SCHEDULED TASKS GROUP -->
+                <h2 id="scheduled-tasks">Scheduled Tasks</h2>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Microsoft Compatibility Appraiser Task</span>
+                        <span class="setting-id">gaming-task-compatibility-appraiser</span>
+                    </div>
+                    <p class="setting-desc">Collects program compatibility telemetry for Windows upgrades. Works alongside the Connected User Experiences and Telemetry Service. Disable to reduce telemetry and background system activity.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Disabled</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Program Data Updater Task</span>
+                        <span class="setting-id">gaming-task-program-data-updater</span>
+                    </div>
+                    <p class="setting-desc">Collects program telemetry information if opted-in to the Microsoft Customer Experience Improvement Program.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\Application Experience\ProgramDataUpdater</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Disabled</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Customer Experience Improvement Program Consolidator</span>
+                        <span class="setting-id">gaming-task-ceip-consolidator</span>
+                    </div>
+                    <p class="setting-desc">If the user has consented to participate in CEIP, this task collects and uploads Software Quality Metrics data to Microsoft.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\Customer Experience Improvement Program\Consolidator</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Disabled</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">USB CEIP Task</span>
+                        <span class="setting-id">gaming-task-usb-ceip</span>
+                    </div>
+                    <p class="setting-desc">Collects Universal Serial Bus related statistics and information about your machine and sends it to Microsoft.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\Customer Experience Improvement Program\UsbCeip</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Disabled</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Disk Diagnostic Data Collector</span>
+                        <span class="setting-id">gaming-task-disk-diagnostic</span>
+                    </div>
+                    <p class="setting-desc">Collects disk data used for diagnostics.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Disabled</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Feedback DmClient Task</span>
+                        <span class="setting-id">gaming-task-feedback-dmclient</span>
+                    </div>
+                    <p class="setting-desc">Collects feedback data and sends it to Microsoft for diagnostic purposes.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\Feedback\Siuf\DmClient</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Disabled</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Feedback DmClient Scenario Download</span>
+                        <span class="setting-id">gaming-task-feedback-dmclient-download</span>
+                    </div>
+                    <p class="setting-desc">Downloads feedback scenarios from Microsoft servers.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Disabled</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Windows Error Reporting Queue Report Task</span>
+                        <span class="setting-id">gaming-task-error-reporting-queue</span>
+                    </div>
+                    <p class="setting-desc">Processes queued Windows Error Reporting reports and sends them to Microsoft.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\Windows Error Reporting\QueueReporting</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Disabled</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Software Quality Metrics Task (SQM)</span>
+                        <span class="setting-id">gaming-task-sqm</span>
+                    </div>
+                    <p class="setting-desc">Uploads Software Quality Metrics (SQM) data to Microsoft.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\PI\Sqm-Tasks</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Disabled</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">MRT Backup Task</span>
+                        <span class="setting-id">gaming-task-mare-backup</span>
+                    </div>
+                    <p class="setting-desc">Backs up Malicious Software Removal Tool scan results.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\RemovalTools\MRT_HB</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Enabled (Security)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Startup App Task</span>
+                        <span class="setting-id">gaming-task-startup-app</span>
+                    </div>
+                    <p class="setting-desc">Scans startup entries when a user logs on.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\Application Experience\StartupAppTask</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Disabled</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">PCA Patch Database Update Task</span>
+                        <span class="setting-id">gaming-task-pca-patch</span>
+                    </div>
+                    <p class="setting-desc">Updates the Program Compatibility Assistant patch database.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\Application Experience\PcaPatchDbTask</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Disabled</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Maps Update Task</span>
+                        <span class="setting-id">gaming-task-maps-update</span>
+                    </div>
+                    <p class="setting-desc">Updates downloaded offline maps.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\Maps\MapsUpdateTask</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Disabled</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">AutoChk Proxy Task</span>
+                        <span class="setting-id">gaming-task-autochk-proxy</span>
+                    </div>
+                    <p class="setting-desc">Collects and uploads autochk SQM data if opted-in to CEIP.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\Autochk\Proxy</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Disabled</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Family Safety Monitor Task</span>
+                        <span class="setting-id">gaming-task-family-safety</span>
+                    </div>
+                    <p class="setting-desc">Monitors and enforces Family Safety settings for child accounts.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\Shell\FamilySafetyMonitor</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Disabled (if not using)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Power Efficiency Diagnostics Task</span>
+                        <span class="setting-id">gaming-task-power-efficiency</span>
+                    </div>
+                    <p class="setting-desc">Analyzes the system for conditions that may cause high power consumption.</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Task Path</th><td><code>\Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem</code></td></tr>
+                            <tr><th>Enable</th><td><code>schtasks /Change /TN "..." /Enable</code></td></tr>
+                            <tr><th>Disable</th><td><code>schtasks /Change /TN "..." /Disable</code></td></tr>
+                            <tr><th>Recommended</th><td>Disabled</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- VISUAL EFFECTS GROUP -->
+                <h2 id="visual-effects">Visual Effects</h2>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Visual Effects</span>
+                        <span class="setting-id">visual-effects-mode</span>
+                    </div>
+                    <p class="setting-desc">Choose how Windows displays visual effects. <em>Requires restart.</em></p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects</code></td></tr>
+                            <tr><th>Value</th><td><code>VisualFXSetting</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Let Windows choose</th><td>0</td></tr>
+                            <tr><th>Best appearance</th><td>1</td></tr>
+                            <tr><th>Best performance</th><td>2</td></tr>
+                            <tr><th>Custom</th><td>3</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="callout callout-info">
+                    <div class="callout-title">Custom Mode Required</div>
+                    <p>The following individual visual effects settings require <strong>Visual Effects</strong> to be set to <strong>"Custom"</strong> mode (value 3) to take effect. <strong>Winhance automatically sets Custom mode</strong> when you toggle any of these individual settings, so you don't need to manually change it first.</p>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Animate controls and elements inside windows</span>
+                        <span class="setting-id">visual-effects-ui-effects</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Enable animation effects for UI controls like checkboxes, radio buttons, and other interactive elements.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Desktop</code></td></tr>
+                            <tr><th>Value</th><td><code>UserPreferencesMask</code> (bit flag)</td></tr>
+                            <tr><th>Type</th><td>Binary</td></tr>
+                            <tr><th>Enabled</th><td>Bit set</td></tr>
+                            <tr><th>Disabled</th><td>Bit cleared</td></tr>
+                            <tr><th>Recommended</th><td>Disabled (for performance)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Animate windows when minimizing and maximizing</span>
+                        <span class="setting-id">visual-effects-window-animation</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Show smooth animation when windows are minimized or maximized instead of instant transitions.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Desktop\WindowMetrics</code></td></tr>
+                            <tr><th>Value</th><td><code>MinAnimate</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Enabled</th><td>"1"</td></tr>
+                            <tr><th>Disabled</th><td>"0"</td></tr>
+                            <tr><th>Recommended</th><td>"0" (for performance)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Animations in the taskbar</span>
+                        <span class="setting-id">visual-effects-taskbar-animations</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Enable smooth animations for taskbar buttons and thumbnail previews.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>TaskbarAnimations</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Recommended</th><td>0 (for performance)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Enable Peek</span>
+                        <span class="setting-id">visual-effects-enable-peek</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Allow hovering over the taskbar preview to peek at the desktop or window.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\DWM</code></td></tr>
+                            <tr><th>Value</th><td><code>EnableAeroPeek</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Recommended</th><td>1 (useful feature)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Fade or slide menus into view</span>
+                        <span class="setting-id">visual-effects-menu-animation</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Show smooth fade or slide animation when menus appear instead of instantly popping up.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Desktop</code></td></tr>
+                            <tr><th>Value</th><td><code>UserPreferencesMask</code> (bit flag)</td></tr>
+                            <tr><th>Type</th><td>Binary</td></tr>
+                            <tr><th>Enabled</th><td>Bit set</td></tr>
+                            <tr><th>Disabled</th><td>Bit cleared</td></tr>
+                            <tr><th>Recommended</th><td>Disabled (for performance)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Fade or slide ToolTips into view</span>
+                        <span class="setting-id">visual-effects-fade-tooltip</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Show smooth fade or slide animation when tooltips appear.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Desktop</code></td></tr>
+                            <tr><th>Value</th><td><code>UserPreferencesMask</code> (bit flag)</td></tr>
+                            <tr><th>Type</th><td>Binary</td></tr>
+                            <tr><th>Enabled</th><td>Bit set</td></tr>
+                            <tr><th>Disabled</th><td>Bit cleared</td></tr>
+                            <tr><th>Recommended</th><td>Disabled (for performance)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Fade out menu items after clicking</span>
+                        <span class="setting-id">visual-effects-fade-menu-items</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Show a fade effect on menu items after they are clicked.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Desktop</code></td></tr>
+                            <tr><th>Value</th><td><code>UserPreferencesMask</code> (bit flag)</td></tr>
+                            <tr><th>Type</th><td>Binary</td></tr>
+                            <tr><th>Enabled</th><td>Bit set</td></tr>
+                            <tr><th>Disabled</th><td>Bit cleared</td></tr>
+                            <tr><th>Recommended</th><td>Disabled (for performance)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Save taskbar thumbnail previews</span>
+                        <span class="setting-id">visual-effects-taskbar-thumbnails</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Cache taskbar thumbnail previews for faster display when hovering over taskbar buttons.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>DisablePreviewWindow</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (Save)</th><td>0</td></tr>
+                            <tr><th>Disabled</th><td>1</td></tr>
+                            <tr><th>Recommended</th><td>0 (useful feature)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show shadows under mouse pointer</span>
+                        <span class="setting-id">visual-effects-mouse-shadow</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Display a shadow beneath the mouse cursor for better visibility.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Desktop</code></td></tr>
+                            <tr><th>Value</th><td><code>UserPreferencesMask</code> (bit flag)</td></tr>
+                            <tr><th>Type</th><td>Binary</td></tr>
+                            <tr><th>Enabled</th><td>Bit set</td></tr>
+                            <tr><th>Disabled</th><td>Bit cleared</td></tr>
+                            <tr><th>Recommended</th><td>Disabled (for performance)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show shadows under windows</span>
+                        <span class="setting-id">visual-effects-window-shadows</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Display drop shadows beneath windows for a 3D depth effect.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Desktop</code></td></tr>
+                            <tr><th>Value</th><td><code>UserPreferencesMask</code> (bit flag)</td></tr>
+                            <tr><th>Type</th><td>Binary</td></tr>
+                            <tr><th>Enabled</th><td>Bit set</td></tr>
+                            <tr><th>Disabled</th><td>Bit cleared</td></tr>
+                            <tr><th>Recommended</th><td>Enabled (minimal impact)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show thumbnails instead of icons</span>
+                        <span class="setting-id">visual-effects-show-thumbnails</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Display thumbnail previews of images, videos, and documents in File Explorer instead of generic icons.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>IconsOnly</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Thumbnails</th><td>0</td></tr>
+                            <tr><th>Icons Only</th><td>1</td></tr>
+                            <tr><th>Recommended</th><td>0 (useful feature)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show translucent selection rectangle</span>
+                        <span class="setting-id">visual-effects-translucent-selection</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Display a semi-transparent blue rectangle when selecting items with the mouse.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>ListviewAlphaSelect</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Recommended</th><td>1 (useful feature)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show window contents while dragging</span>
+                        <span class="setting-id">visual-effects-drag-full-windows</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Display the full window content while dragging instead of just an outline.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Desktop</code></td></tr>
+                            <tr><th>Value</th><td><code>DragFullWindows</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Enabled</th><td>"1"</td></tr>
+                            <tr><th>Disabled</th><td>"0"</td></tr>
+                            <tr><th>Recommended</th><td>"1" (useful feature)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Slide open combo boxes</span>
+                        <span class="setting-id">visual-effects-combo-box-animation</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Animate dropdown combo boxes with a sliding effect when opened.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Desktop</code></td></tr>
+                            <tr><th>Value</th><td><code>UserPreferencesMask</code> (bit flag)</td></tr>
+                            <tr><th>Type</th><td>Binary</td></tr>
+                            <tr><th>Enabled</th><td>Bit set</td></tr>
+                            <tr><th>Disabled</th><td>Bit cleared</td></tr>
+                            <tr><th>Recommended</th><td>Disabled (for performance)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Smooth edges of screen fonts</span>
+                        <span class="setting-id">visual-effects-font-smoothing</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Use ClearType or anti-aliasing to smooth font edges for better readability.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Desktop</code></td></tr>
+                            <tr><th>Value</th><td><code>FontSmoothing</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Enabled</th><td>"2"</td></tr>
+                            <tr><th>Disabled</th><td>"0"</td></tr>
+                            <tr><th>Recommended</th><td>"2" (important for readability)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Smooth-scroll list boxes</span>
+                        <span class="setting-id">visual-effects-smooth-scroll-listboxes</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Enable smooth scrolling animations in list boxes and dropdown menus.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Desktop</code></td></tr>
+                            <tr><th>Value</th><td><code>UserPreferencesMask</code> (bit flag)</td></tr>
+                            <tr><th>Type</th><td>Binary</td></tr>
+                            <tr><th>Enabled</th><td>Bit set</td></tr>
+                            <tr><th>Disabled</th><td>Bit cleared</td></tr>
+                            <tr><th>Recommended</th><td>Disabled (for performance)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Use drop shadows for icon labels on the desktop</span>
+                        <span class="setting-id">visual-effects-drop-shadows</span>
+                        <span class="setting-badge custom-mode">Custom Mode</span>
+                    </div>
+                    <p class="setting-desc">Display shadows under desktop icon text for better visibility against wallpapers.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>ListviewShadow</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Recommended</th><td>1 (useful feature)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- ACCESSIBILITY GROUP -->
+                <h2 id="accessibility">Accessibility Hotkeys</h2>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Narrator Win+Ctrl+Enter Hotkey</span>
+                        <span class="setting-id">gaming-narrator-hotkey</span>
+                    </div>
+                    <p class="setting-desc">Enable the Win+Ctrl+Enter keyboard shortcut to quickly launch Windows Narrator screen reader.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Narrator\NoRoam</code></td></tr>
+                            <tr><th>Value</th><td><code>WinEnterLaunchEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">StickyKeys Hotkey (Shift x5)</span>
+                        <span class="setting-id">accessibility-stickykeys-hotkey</span>
+                    </div>
+                    <p class="setting-desc">Enable the keyboard shortcut to activate StickyKeys by pressing the Shift key five times.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Accessibility\StickyKeys</code></td></tr>
+                            <tr><th>Value</th><td><code>Flags</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Enabled</th><td>"510"</td></tr>
+                            <tr><th>Disabled</th><td>"2"</td></tr>
+                            <tr><th>Recommended</th><td>"2"</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">FilterKeys Hotkey (Right Shift 8s)</span>
+                        <span class="setting-id">accessibility-filterkeys-hotkey</span>
+                    </div>
+                    <p class="setting-desc">Enable the keyboard shortcut to activate FilterKeys by holding the right Shift key for 8 seconds.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Accessibility\Keyboard Response</code></td></tr>
+                            <tr><th>Value</th><td><code>Flags</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Enabled</th><td>"126"</td></tr>
+                            <tr><th>Disabled</th><td>"2"</td></tr>
+                            <tr><th>Recommended</th><td>"2"</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">ToggleKeys Hotkey (Num Lock 5s)</span>
+                        <span class="setting-id">accessibility-togglekeys-hotkey</span>
+                    </div>
+                    <p class="setting-desc">Enable the keyboard shortcut to activate ToggleKeys by holding Num Lock for 5 seconds, which plays sounds when Caps/Num/Scroll Lock are pressed.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Accessibility\ToggleKeys</code></td></tr>
+                            <tr><th>Value</th><td><code>Flags</code></td></tr>
+                            <tr><th>Enabled</th><td>"62"</td></tr>
+                            <tr><th>Disabled</th><td>"34"</td></tr>
+                            <tr><th>Recommended</th><td>"34"</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">MouseKeys Hotkey (Alt+Shift+NumLock)</span>
+                        <span class="setting-id">accessibility-mousekeys-hotkey</span>
+                    </div>
+                    <p class="setting-desc">Enable the keyboard shortcut to activate MouseKeys, which allows using the numeric keypad to control the mouse pointer.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Accessibility\MouseKeys</code></td></tr>
+                            <tr><th>Value</th><td><code>Flags</code></td></tr>
+                            <tr><th>Enabled</th><td>"126"</td></tr>
+                            <tr><th>Disabled</th><td>"130"</td></tr>
+                            <tr><th>Recommended</th><td>"130"</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">High Contrast Hotkey (Alt+Shift+PrtScn)</span>
+                        <span class="setting-id">accessibility-highcontrast-hotkey</span>
+                    </div>
+                    <p class="setting-desc">Enable the keyboard shortcut to activate High Contrast mode by pressing Left Alt + Left Shift + Print Screen.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\Accessibility\HighContrast</code></td></tr>
+                            <tr><th>Value</th><td><code>Flags</code></td></tr>
+                            <tr><th>Enabled</th><td>"126"</td></tr>
+                            <tr><th>Disabled</th><td>"4194"</td></tr>
+                            <tr><th>Recommended</th><td>"4194"</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <button class="sidebar-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+
+    <script src="../../js/docs-theme.js"></script>
+    <script src="../../js/docs-navigation.js"></script>
+    <script src="../../js/docs-search.js"></script>
+    <script src="../../js/docs-config.js"></script>
+
+    <footer class="docs-footer">
+        <div class="docs-footer-container">
+            <div class="docs-footer-info">
+                &copy; 2026 Winhance. Released under the MIT License.
+            </div>
+            <div class="docs-footer-meta">
+                <div class="docs-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                    <span class="docs-version">Docs v1.0.0</span>
+                </div>
+                <div class="docs-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <span class="docs-last-updated">Last Updated: Jan 28, 2026</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

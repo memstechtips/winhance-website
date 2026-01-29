@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Explorer - Winhance Docs</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../css/docs-main.css">
+    <link rel="stylesheet" href="../../css/docs-sidebar.css">
+    <link rel="stylesheet" href="../../css/docs-syntax.css">
+    <script src="../../js/theme-load.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="../../index.html" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="../../../images/winhance-rocket.png" alt="Winhance Logo"
+                        style="height: 32px; margin-right: 12px;">
+                    <h1 style="font-size: 1.5rem; margin: 0; color: var(--text-color);">Winhance <span
+                            style="font-weight: 300; opacity: 0.7;">Docs</span></h1>
+                </a>
+            </div>
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="docs-search" placeholder="Search documentation...">
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+                </button>
+                <a href="https://github.com/memstechtips/Winhance" target="_blank" class="icon-btn github-btn"
+                    title="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="docs-wip-banner">
+        <strong>Work in Progress:</strong> Documentation is a work in progress. Some pages may be incomplete.
+    </div>
+
+    <div class="docs-layout has-banner">
+                        <aside class="docs-sidebar">
+            <nav>
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Getting Started</div>
+                    <a href="../../getting-started/installation.html" class="sidebar-nav-item">Installation</a>
+                    <a href="../../getting-started/quick-start.html" class="sidebar-nav-item">Quick Start</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Features</div>
+                    <a href="../../features/software-apps.html" class="sidebar-nav-item">Software & Apps</a>
+                    <div class="sidebar-sub-nav">
+                        <a href="../../features/software-apps/windows-apps.html" class="sidebar-nav-item sub-item">Windows Apps</a>
+                        <a href="../../features/software-apps/external-apps.html" class="sidebar-nav-item sub-item">External Apps</a>
+                    </div>
+                    <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
+                    <div class="sidebar-sub-nav">
+                        <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
+                        <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
+                        <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
+                        <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
+                        <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
+                        <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
+                    </div>
+                    <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
+                    <div class="sidebar-sub-nav">
+                        <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
+                        <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
+                        <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
+                        <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item active">Explorer</a>
+                    </div>
+                    <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
+                    <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">User Guides</div>
+                    <a href="../../guides/configuration-files.html" class="sidebar-nav-item">Configuration Files</a>
+                    <a href="../../guides/wimutil.html" class="sidebar-nav-item">WIMUtil Guide</a>
+                    <a href="../../guides/autounattend.html" class="sidebar-nav-item">Autounattend Guide</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Reference</div>
+                    <a href="../../reference/cli-commands.html" class="sidebar-nav-item">CLI Commands</a>
+                    <a href="../../reference/changelog.html" class="sidebar-nav-item">Changelog</a>
+                    <a href="../../reference/troubleshooting.html" class="sidebar-nav-item">Troubleshooting</a>
+                    <a href="../../reference/contributing.html" class="sidebar-nav-item">How to Contribute</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="docs-content">
+            <section id="explorer">
+                <h1>File Explorer Customization</h1>
+                <div class="video-container">
+                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2701" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p>Enhance the Windows File Explorer with classic features, improved visibility, and powerful context menu additions. Winhance gives you complete control over how File Explorer looks and behaves.</p>
+
+                <div class="callout callout-info">
+                    <div class="callout-title">Registry Details</div>
+                    <p>Each setting below includes expandable registry details for power users. Click "Registry Details" to see the exact registry keys and values that are modified.</p>
+                </div>
+
+                <!-- ==================== CONTEXT MENU ==================== -->
+                <h2 id="context-menu">Context Menu</h2>
+                <p>Customize the right-click context menu with classic features and useful additions.</p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Use Classic Context Menu</span>
+                        <span class="setting-id">explorer-customization-context-menu</span>
+                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
+                    </div>
+                    <p class="setting-desc">Use the Windows 10-style right-click menu with all options visible instead of the simplified Windows 11 menu.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32</code></td></tr>
+                            <tr><th>Value</th><td><code>(Default)</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Enabled</th><td>Empty string</td></tr>
+                            <tr><th>Disabled</th><td>Key deleted</td></tr>
+                            <tr><th>Default</th><td>Key absent</td></tr>
+                        </table>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">Note: Requires Explorer restart.</p>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Add 'Take Ownership' to Context Menu</span>
+                        <span class="setting-id">explorer-take-ownership</span>
+                    </div>
+                    <p class="setting-desc">Adds a right-click option to take ownership of files, folders, and drives with automatic permission elevation.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <p style="font-size: 0.85rem;">This setting creates multiple registry keys under:</p>
+                        <ul style="font-size: 0.85rem; margin: 0.5rem 0;">
+                            <li><code>HKCR\*\shell\TakeOwnership</code></li>
+                            <li><code>HKCR\Directory\shell\TakeOwnership</code></li>
+                            <li><code>HKCR\Drive\shell\runas</code></li>
+                        </ul>
+                        <p style="font-size: 0.85rem;">Requires elevation to install. Based on script by Shawn Brink (TenForums).</p>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Add 'Show/Hide Extensions' to Context Menu</span>
+                        <span class="setting-id">explorer-context-menu-toggle-extensions</span>
+                    </div>
+                    <p class="setting-desc">Adds a right-click menu option to quickly toggle file extension visibility in File Explorer (only visible on the Classic Context Menu or Show More Options Menu in Windows 11).</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCR\AllFilesystemObjects\shell\Windows.ShowFileExtensions</code></td></tr>
+                            <tr><th>Values</th><td><code>CommandStateSync</code>, <code>Description</code>, <code>ExplorerCommandHandler</code>, <code>MUIVerb</code></td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCR\Directory\Background\shell\Windows.ShowFileExtensions</code></td></tr>
+                            <tr><th>Handler</th><td><code>{4ac6c205-2853-4bf5-b47c-919a42a48a16}</code></td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show 'Open in Windows Terminal' in Context Menu</span>
+                        <span class="setting-id">explorer-context-menu-windows-terminal</span>
+                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
+                    </div>
+                    <p class="setting-desc">Displays the Windows Terminal option when right-clicking folders and backgrounds in File Explorer.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked</code></td></tr>
+                            <tr><th>Value</th><td><code>{9F156763-7844-4DC4-B2B1-901F640F5155}</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Enabled (show)</th><td>Key deleted</td></tr>
+                            <tr><th>Disabled (hide)</th><td>Empty string</td></tr>
+                            <tr><th>Default</th><td>Key absent (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Remove '- Shortcut' suffix from new shortcuts</span>
+                        <span class="setting-id">explorer-customization-shortcut-suffix</span>
+                    </div>
+                    <p class="setting-desc">Prevents Windows from appending '- Shortcut' text to newly created shortcut file names.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer</code></td></tr>
+                            <tr><th>Value</th><td><code>link</code></td></tr>
+                            <tr><th>Type</th><td>Binary</td></tr>
+                            <tr><th>Enabled (no suffix)</th><td>00 00 00 00</td></tr>
+                            <tr><th>Disabled (suffix)</th><td>Key deleted</td></tr>
+                            <tr><th>Default</th><td>Key absent</td></tr>
+                        </table>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">Note: Requires Explorer restart.</p>
+                    </details>
+                </div>
+
+                <!-- ==================== DEVICES & PERIPHERALS ==================== -->
+                <h2 id="devices-peripherals">Devices and Peripherals</h2>
+                <p>Settings for device lighting and printer management.</p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Use Dynamic Lighting on my devices</span>
+                        <span class="setting-id">devices-dynamic-lighting-ambient</span>
+                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
+                    </div>
+                    <p class="setting-desc">Allow Windows Dynamic Lighting to control ambient RGB effects on compatible devices.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Lighting</code></td></tr>
+                            <tr><th>Value</th><td><code>AmbientLightingEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Compatible apps in the foreground always control lighting</span>
+                        <span class="setting-id">devices-dynamic-lighting-foreground-app</span>
+                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
+                    </div>
+                    <p class="setting-desc">Allow compatible apps to control device lighting effects.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Lighting</code></td></tr>
+                            <tr><th>Value</th><td><code>ControlledByForegroundApp</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Disable Automatic Default Printer Management</span>
+                        <span class="setting-id">devices-default-printer-management</span>
+                    </div>
+                    <p class="setting-desc">Prevents Windows from automatically changing your default printer based on location or last used printer.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows NT\CurrentVersion\Windows</code></td></tr>
+                            <tr><th>Value</th><td><code>LegacyDefaultPrinterMode</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (manual)</th><td>1</td></tr>
+                            <tr><th>Disabled (auto)</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- ==================== GENERAL ==================== -->
+                <h2 id="general">General</h2>
+                <p>General File Explorer behavior settings.</p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Open File Explorer to</span>
+                        <span class="setting-id">explorer-customization-launch-to</span>
+                    </div>
+                    <p class="setting-desc">Choose what happens when File Explorer is opened. Options: Home, This PC.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>LaunchTo</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Home</th><td>2</td></tr>
+                            <tr><th>This PC</th><td>1</td></tr>
+                            <tr><th>Default</th><td>2</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Browse folders</span>
+                        <span class="setting-id">explorer-customization-browse-folders</span>
+                    </div>
+                    <p class="setting-desc">Choose whether each folder opens in the same window or in its own window.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState</code></td></tr>
+                            <tr><th>Value</th><td><code>Settings</code> (byte index 4)</td></tr>
+                            <tr><th>Type</th><td>Binary</td></tr>
+                            <tr><th>Same window</th><td>0x0A</td></tr>
+                            <tr><th>Own window</th><td>0x2A</td></tr>
+                            <tr><th>Default</th><td>0x2A</td></tr>
+                        </table>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">Note: Requires Explorer restart.</p>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Click items as follows</span>
+                        <span class="setting-id">explorer-customization-click-items</span>
+                    </div>
+                    <p class="setting-desc">Choose whether to open files and folders with a single click (like web links) or double-click (traditional).</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer</code></td></tr>
+                            <tr><th>Values</th><td><code>ShellState</code> (byte index 4), <code>IconUnderline</code></td></tr>
+                            <tr><th>Double-click</th><td>ShellState=0x3E, IconUnderline=3</td></tr>
+                            <tr><th>Single-click (consistent)</th><td>ShellState=0x1E, IconUnderline=3</td></tr>
+                            <tr><th>Single-click (pointing)</th><td>ShellState=0x1E, IconUnderline=2</td></tr>
+                            <tr><th>Default</th><td>Double-click</td></tr>
+                        </table>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">Note: Requires Explorer restart.</p>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show recently used files</span>
+                        <span class="setting-id">explorer-customization-show-recent-files</span>
+                    </div>
+                    <p class="setting-desc">Displays recently accessed files and recommendations in Quick Access.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer</code></td></tr>
+                            <tr><th>Values</th><td><code>ShowRecent</code>, <code>ShowRecommendations</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show frequently used folders</span>
+                        <span class="setting-id">explorer-customization-show-frequent-folders</span>
+                    </div>
+                    <p class="setting-desc">Displays your most accessed folders in Quick Access section.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer</code></td></tr>
+                            <tr><th>Value</th><td><code>ShowFrequent</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show files from Office.com</span>
+                        <span class="setting-id">explorer-customization-show-office-files</span>
+                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
+                    </div>
+                    <p class="setting-desc">Displays cloud files from your Office.com account in Quick Access.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer</code></td></tr>
+                            <tr><th>Value</th><td><code>ShowCloudFilesInQuickAccess</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- ==================== FILES AND FOLDERS ==================== -->
+                <h2 id="files-folders">Files and Folders</h2>
+                <p>Settings for file and folder display, visibility, and behavior.</p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show file extensions</span>
+                        <span class="setting-id">explorer-customization-show-file-ext</span>
+                    </div>
+                    <p class="setting-desc">Displays file type extensions (like .txt, .pdf) after file names.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>HideFileExt</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (show)</th><td>0</td></tr>
+                            <tr><th>Disabled (hide)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show hidden files, folders & drives</span>
+                        <span class="setting-id">explorer-customization-show-hidden-files</span>
+                    </div>
+                    <p class="setting-desc">Displays items with the hidden attribute set.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>Hidden</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show protected operating system files</span>
+                        <span class="setting-id">explorer-customization-hide-protected-files</span>
+                    </div>
+                    <p class="setting-desc">Displays system files marked with the SuperHidden attribute.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>ShowSuperHidden</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Always show icons, never thumbnails</span>
+                        <span class="setting-id">explorer-customization-show-thumbnails</span>
+                    </div>
+                    <p class="setting-desc">Displays generic file icons instead of image/document previews.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>IconsOnly</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Decrease space between items (compact view)</span>
+                        <span class="setting-id">explorer-customization-item-space</span>
+                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
+                    </div>
+                    <p class="setting-desc">Reduces vertical spacing between files and folders for denser view.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>UseCompactMode</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Display the full path in the title bar</span>
+                        <span class="setting-id">explorer-customization-full-path</span>
+                    </div>
+                    <p class="setting-desc">Shows complete directory path in window title instead of folder name only.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState</code></td></tr>
+                            <tr><th>Value</th><td><code>FullPath</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show drive letters</span>
+                        <span class="setting-id">explorer-customization-show-drive-letters</span>
+                    </div>
+                    <p class="setting-desc">Displays drive letters (C:, D:) before drive names in This PC.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>ShowDriveLettersFirst</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>4</td></tr>
+                            <tr><th>Disabled</th><td>2</td></tr>
+                            <tr><th>Default</th><td>4 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Hide empty drives</span>
+                        <span class="setting-id">explorer-customization-hide-empty-drives</span>
+                    </div>
+                    <p class="setting-desc">Hides drives with no media inserted like empty card readers or optical drives.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>HideDrivesWithNoMedia</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show encrypted or compressed NTFS files in color</span>
+                        <span class="setting-id">explorer-customization-compressed-color</span>
+                    </div>
+                    <p class="setting-desc">Displays encrypted files in green and compressed files in blue.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>ShowEncryptCompressedColor</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Use check boxes to select items</span>
+                        <span class="setting-id">explorer-customization-checkbox-select</span>
+                    </div>
+                    <p class="setting-desc">Adds checkboxes next to items for easier multi-selection.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>AutoCheckSelect</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Launch folder windows in a separate process</span>
+                        <span class="setting-id">explorer-customization-separate-process</span>
+                    </div>
+                    <p class="setting-desc">Runs each Explorer window in its own process to prevent crashes affecting all windows.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>SeparateProcess</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Enable Long File Paths</span>
+                        <span class="setting-id">explorer-long-file-paths</span>
+                    </div>
+                    <p class="setting-desc">Enables support for file paths with up to 32,767 characters instead of the traditional 260-character limit.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Control\FileSystem</code></td></tr>
+                            <tr><th>Value</th><td><code>LongPathsEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Always show menus</span>
+                        <span class="setting-id">explorer-customization-show-menus</span>
+                        <span class="setting-badge win10"><i class="mdi mdi-microsoft-windows"></i>Windows 10 Only</span>
+                    </div>
+                    <p class="setting-desc">Shows the Menu bar (File, Edit etc.) on all windows that support it.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>AlwaysShowMenus</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Display file icon on thumbnails</span>
+                        <span class="setting-id">explorer-customization-icon-thumbnails</span>
+                    </div>
+                    <p class="setting-desc">Shows file type icon overlay on bottom-right corner of thumbnail previews.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>ShowTypeOverlay</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Display file size information in folder tips</span>
+                        <span class="setting-id">explorer-customization-folder-tips</span>
+                    </div>
+                    <p class="setting-desc">Shows total size and file count when hovering over folders.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>FolderContentsInfoTip</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Hide folder merge conflicts</span>
+                        <span class="setting-id">explorer-customization-hide-merge-conflicts</span>
+                    </div>
+                    <p class="setting-desc">Automatically merges folders with same name without confirmation dialog.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>HideMergeConflicts</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Restore previous folder windows at logon</span>
+                        <span class="setting-id">explorer-customization-persist-browsers</span>
+                    </div>
+                    <p class="setting-desc">Reopens Explorer windows that were open when you last shut down or logged off.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>PersistBrowsers</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show pop-up description for folder and desktop items</span>
+                        <span class="setting-id">explorer-customization-popup-descriptions</span>
+                    </div>
+                    <p class="setting-desc">Displays tooltip with item details when hovering over files and folders.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>ShowInfoTip</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show preview handlers in preview pane</span>
+                        <span class="setting-id">explorer-customization-preview-handlers</span>
+                    </div>
+                    <p class="setting-desc">Enables file content preview when selecting files in Explorer.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>ShowPreviewHandlers</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show status bar</span>
+                        <span class="setting-id">explorer-customization-status-bar</span>
+                    </div>
+                    <p class="setting-desc">Displays bar at bottom showing item count and selected file sizes.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>ShowStatusBar</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show sync provider notifications</span>
+                        <span class="setting-id">explorer-customization-disable-sync-provider-notifications</span>
+                    </div>
+                    <p class="setting-desc">Displays cloud sync status notifications from OneDrive and other sync providers.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>ShowSyncProviderNotifications</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Use sharing wizard</span>
+                        <span class="setting-id">explorer-customization-sharing-wizard</span>
+                    </div>
+                    <p class="setting-desc">Shows simplified sharing dialog instead of advanced security permissions.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>SharingWizardOn</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">When typing into list view</span>
+                        <span class="setting-id">explorer-customization-typing-behavior</span>
+                    </div>
+                    <p class="setting-desc">Chooses whether typing selects matching items or searches automatically.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Select the typed item in the view, Automatically type into the Search Box</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>TypeAhead</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Select typed item</th><td>0</td></tr>
+                            <tr><th>Type into Search Box</th><td>1</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- ==================== NAVIGATION PANE ==================== -->
+                <h2 id="navigation-pane">Navigation Pane</h2>
+                <p>Control what appears in the File Explorer navigation pane (left sidebar).</p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show Home Folder</span>
+                        <span class="setting-id">explorer-customization-home-folder</span>
+                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
+                    </div>
+                    <p class="setting-desc">Display the Home folder in the navigation pane as a shortcut to your user profile folder.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}</code></td></tr>
+                            <tr><th>Enabled</th><td>Key exists</td></tr>
+                            <tr><th>Disabled</th><td>Key deleted</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show Gallery</span>
+                        <span class="setting-id">explorer-customization-gallery</span>
+                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
+                    </div>
+                    <p class="setting-desc">Display the Gallery folder in the navigation pane for quick access to all your photos and videos.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}</code></td></tr>
+                            <tr><th>Enabled</th><td>Key exists</td></tr>
+                            <tr><th>Disabled</th><td>Key deleted</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show 3D Objects</span>
+                        <span class="setting-id">explorer-customization-3d-objects</span>
+                        <span class="setting-badge win10"><i class="mdi mdi-microsoft-windows"></i>Windows 10 Only</span>
+                    </div>
+                    <p class="setting-desc">Display the 3D Objects folder alongside Documents, Pictures, and other default folders.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}</code></td></tr>
+                            <tr><th>Enabled</th><td>Key exists</td></tr>
+                            <tr><th>Disabled</th><td>Key deleted</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show libraries</span>
+                        <span class="setting-id">explorer-customization-nav-show-libraries</span>
+                    </div>
+                    <p class="setting-desc">Displays Libraries container grouping Documents, Music, Pictures, and Videos.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Classes\CLSID\{031E4825-7B94-4dc3-B131-E946B44C8DD5}</code></td></tr>
+                            <tr><th>Value</th><td><code>System.IsPinnedToNameSpaceTree</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Expand to open folder</span>
+                        <span class="setting-id">explorer-customization-nav-expand-current</span>
+                    </div>
+                    <p class="setting-desc">Automatically expands navigation tree to highlight current folder location.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>NavPaneExpandToCurrentFolder</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show all folders</span>
+                        <span class="setting-id">explorer-customization-nav-show-all-folders</span>
+                    </div>
+                    <p class="setting-desc">Shows all folders in the navigation pane.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>NavPaneShowAllFolders</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Always show availability status</span>
+                        <span class="setting-id">explorer-customization-show-availability-status</span>
+                    </div>
+                    <p class="setting-desc">Shows cloud sync status icons for OneDrive files in navigation pane.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>NavPaneShowAllCloudStates</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- ==================== FILE ASSOCIATIONS ==================== -->
+                <h2 id="file-associations">File Associations</h2>
+                <p>Configure default applications for file types.</p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Enable Windows Photo Viewer</span>
+                        <span class="setting-id">explorer-enable-photo-viewer</span>
+                    </div>
+                    <p class="setting-desc">Restore the legacy Windows Photo Viewer and set it as the default program for common image file formats (.bmp, .gif, .jpg, .jpeg, .png, .tiff, and more).</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <p style="font-size: 0.85rem;">This setting associates the following file types with PhotoViewer.FileAssoc.Tiff:</p>
+                        <ul style="font-size: 0.85rem; margin: 0.5rem 0;">
+                            <li>.bmp, .cr2, .dib, .gif, .ico, .jfif, .jpe, .jpeg, .jpg, .jxr, .png, .tif, .tiff, .wdp</li>
+                        </ul>
+                        <p style="font-size: 0.85rem;">Registry keys created under:</p>
+                        <ul style="font-size: 0.85rem; margin: 0.5rem 0;">
+                            <li><code>HKCU\SOFTWARE\Classes\.[ext]</code></li>
+                            <li><code>HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.[ext]\OpenWithProgids</code></li>
+                        </ul>
+                    </details>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <button class="sidebar-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+
+    <script src="../../js/docs-theme.js"></script>
+    <script src="../../js/docs-navigation.js"></script>
+    <script src="../../js/docs-search.js"></script>
+    <script src="../../js/docs-config.js"></script>
+
+    <footer class="docs-footer">
+        <div class="docs-footer-container">
+            <div class="docs-footer-info">
+                &copy; 2026 Winhance. Released under the MIT License.
+            </div>
+            <div class="docs-footer-meta">
+                <div class="docs-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                    <span class="docs-version">Docs v1.0.0</span>
+                </div>
+                <div class="docs-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <span class="docs-last-updated">Last Updated: Jan 28, 2026</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

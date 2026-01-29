@@ -1,0 +1,11 @@
+# robots.txt for Winhance Documentation
+# https://winhance.net/docs/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://winhance.net/docs/sitemap.xml
+
+# Crawl-delay (optional, be nice to crawlers)
+Crawl-delay: 1

@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy & Security - Winhance Docs</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../css/docs-main.css">
+    <link rel="stylesheet" href="../../css/docs-sidebar.css">
+    <link rel="stylesheet" href="../../css/docs-syntax.css">
+    <script src="../../js/theme-load.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="../../index.html" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="../../../images/winhance-rocket.png" alt="Winhance Logo"
+                        style="height: 32px; margin-right: 12px;">
+                    <h1 style="font-size: 1.5rem; margin: 0; color: var(--text-color);">Winhance <span
+                            style="font-weight: 300; opacity: 0.7;">Docs</span></h1>
+                </a>
+            </div>
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="docs-search" placeholder="Search documentation...">
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+                </button>
+                <a href="https://github.com/memstechtips/Winhance" target="_blank" class="icon-btn github-btn"
+                    title="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="docs-wip-banner">
+        <strong>Work in Progress:</strong> Documentation is a work in progress. Some pages may be incomplete.
+    </div>
+
+    <div class="docs-layout has-banner">
+                        <aside class="docs-sidebar">
+            <nav>
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Getting Started</div>
+                    <a href="../../getting-started/installation.html" class="sidebar-nav-item">Installation</a>
+                    <a href="../../getting-started/quick-start.html" class="sidebar-nav-item">Quick Start</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Features</div>
+                    <a href="../../features/software-apps.html" class="sidebar-nav-item">Software & Apps</a>
+                    <div class="sidebar-sub-nav">
+                        <a href="../../features/software-apps/windows-apps.html" class="sidebar-nav-item sub-item">Windows Apps</a>
+                        <a href="../../features/software-apps/external-apps.html" class="sidebar-nav-item sub-item">External Apps</a>
+                    </div>
+                    <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
+                    <div class="sidebar-sub-nav">
+                        <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item active">Privacy & Security</a>
+                        <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
+                        <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
+                        <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
+                        <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
+                        <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
+                    </div>
+                    <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
+                    <div class="sidebar-sub-nav">
+                        <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
+                        <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
+                        <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
+                        <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
+                    </div>
+                    <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
+                    <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">User Guides</div>
+                    <a href="../../guides/configuration-files.html" class="sidebar-nav-item">Configuration Files</a>
+                    <a href="../../guides/wimutil.html" class="sidebar-nav-item">WIMUtil Guide</a>
+                    <a href="../../guides/autounattend.html" class="sidebar-nav-item">Autounattend Guide</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Reference</div>
+                    <a href="../../reference/cli-commands.html" class="sidebar-nav-item">CLI Commands</a>
+                    <a href="../../reference/changelog.html" class="sidebar-nav-item">Changelog</a>
+                    <a href="../../reference/troubleshooting.html" class="sidebar-nav-item">Troubleshooting</a>
+                    <a href="../../reference/contributing.html" class="sidebar-nav-item">How to Contribute</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="docs-content">
+            <section id="privacy-security">
+                <h1>Privacy & Security</h1>
+                <div class="video-container">
+                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=1212" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p>Windows 10 and 11 come with numerous telemetry and data collection features enabled by default.
+                    Winhance gives you back control over your data and improves your system's security posture.</p>
+
+                <div class="callout callout-info">
+                    <div class="callout-title">Registry Details</div>
+                    <p>Each setting below includes expandable registry details for power users. Click "Registry Details" to see the exact registry keys and values that are modified.</p>
+                </div>
+
+                <!-- ==================== SECURITY ==================== -->
+                <h2 id="security">Security</h2>
+                <p>Core Windows security settings including User Account Control, remote access, and system maintenance.</p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">User Account Control Level</span>
+                        <span class="setting-id">security-uac-level</span>
+                    </div>
+                    <p class="setting-desc">Controls UAC notification level and secure desktop behavior. Options: Prompt for Credentials, Always notify, Notify when apps try to make changes, Notify when apps try to make changes (no dim), Never notify.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System</code></td></tr>
+                            <tr><th>Value</th><td><code>ConsentPromptBehaviorAdmin</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Options</th><td>0=Never notify, 1=Prompt for Credentials, 2=Always notify, 5=Notify when apps try to make changes</td></tr>
+                            <tr><th>Default</th><td>5</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System</code></td></tr>
+                            <tr><th>Value</th><td><code>PromptOnSecureDesktop</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1 (secure desktop)</td></tr>
+                            <tr><th>Disabled</th><td>0 (no dim)</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Block Workplace Join Messages</span>
+                        <span class="setting-id">security-workplace-join-messages</span>
+                    </div>
+                    <p class="setting-desc">Blocks the 'Allow my organization to manage my device' and 'No, sign in to this app only' pop-up messages.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin</code></td></tr>
+                            <tr><th>Value</th><td><code>BlockAADWorkplaceJoin</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>Key deleted</td></tr>
+                            <tr><th>Default</th><td>Key absent</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin</code></td></tr>
+                            <tr><th>Value</th><td><code>BlockAADWorkplaceJoin</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>Key deleted</td></tr>
+                            <tr><th>Default</th><td>Key absent</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Prevent BitLocker Auto Encryption</span>
+                        <span class="setting-id">security-bitlocker-auto-encryption</span>
+                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
+                    </div>
+                    <p class="setting-desc">Prevents Windows from automatically encrypting your device with BitLocker without user consent.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Control\BitLocker</code></td></tr>
+                            <tr><th>Value</th><td><code>PreventDeviceEncryption</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1 (prevent auto encryption)</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">WiFi-Sense</span>
+                        <span class="setting-id">security-wifi-sense</span>
+                    </div>
+                    <p class="setting-desc">Allow sharing WiFi passwords with contacts and automatically connecting to suggested open hotspots.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting</code></td></tr>
+                            <tr><th>Value</th><td><code>Value</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>Key absent</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots</code></td></tr>
+                            <tr><th>Value</th><td><code>Value</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>Key absent</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Automatic Maintenance</span>
+                        <span class="setting-id">security-automatic-maintenance</span>
+                    </div>
+                    <p class="setting-desc">Choose if Windows should run automatic system maintenance tasks during idle time.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance</code></td></tr>
+                            <tr><th>Value</th><td><code>MaintenanceDisabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (maintenance ON)</th><td>0</td></tr>
+                            <tr><th>Disabled (maintenance OFF)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Windows Error Reporting</span>
+                        <span class="setting-id">security-error-reporting</span>
+                    </div>
+                    <p class="setting-desc">Choose if Windows should collect and send crash reports and error information to Microsoft.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting</code></td></tr>
+                            <tr><th>Value</th><td><code>Disabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (reporting ON)</th><td>0</td></tr>
+                            <tr><th>Disabled (reporting OFF)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting</code></td></tr>
+                            <tr><th>Value</th><td><code>Disabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (reporting ON)</th><td>0</td></tr>
+                            <tr><th>Disabled (reporting OFF)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Remote Assistance</span>
+                        <span class="setting-id">security-remote-assistance</span>
+                    </div>
+                    <p class="setting-desc">Choose if other people can connect to your computer remotely to provide technical support.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Control\Remote Assistance</code></td></tr>
+                            <tr><th>Value</th><td><code>fAllowToGetHelp</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- ==================== CONTENT DELIVERY & ADVERTISING ==================== -->
+                <h2 id="content-delivery-advertising">Content Delivery & Advertising</h2>
+                <p>Control promotional content, suggested apps, and advertising throughout Windows.</p>
+
+                <div class="callout callout-info">
+                    <div class="callout-title">Master Control</div>
+                    <p>The "Ads, Suggestions and Promotional Content" setting is a master control. Set it to <strong>Deny</strong> to disable all advertising features at once, or <strong>Custom</strong> to configure individual settings below.</p>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Ads, Suggestions and Promotional Content</span>
+                        <span class="setting-id">privacy-ads-promotional-master</span>
+                    </div>
+                    <p class="setting-desc">Controls all advertising, suggestions, and promotional content throughout Windows. Options: Allow, Deny, Custom.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Winhance\Settings</code></td></tr>
+                            <tr><th>Value</th><td><code>AdsPromotionalContentMode</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Options</th><td>0=Allow, 1=Deny, 2=Custom</td></tr>
+                            <tr><th>Default</th><td>2</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Content Delivery</span>
+                        <span class="setting-id">privacy-content-delivery-allowed</span>
+                    </div>
+                    <p class="setting-desc">Allows Windows to deliver promotional content and automatically install suggested apps.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
+                            <tr><th>Value</th><td><code>ContentDeliveryAllowed</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Subscribed Content</span>
+                        <span class="setting-id">privacy-subscribed-content</span>
+                    </div>
+                    <p class="setting-desc">Enables promotional content subscriptions from Microsoft and partners throughout Windows.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
+                            <tr><th>Value</th><td><code>SubscribedContentEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Feature Management</span>
+                        <span class="setting-id">privacy-feature-management</span>
+                    </div>
+                    <p class="setting-desc">Enables Windows feature management functionality for promotional features and automatic app installations.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
+                            <tr><th>Value</th><td><code>FeatureManagementEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Soft Landing Experiences</span>
+                        <span class="setting-id">privacy-soft-landing</span>
+                    </div>
+                    <p class="setting-desc">Displays tips and notifications about Windows features as you use the operating system.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
+                            <tr><th>Value</th><td><code>SoftLandingEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">OEM Pre-installed Apps</span>
+                        <span class="setting-id">privacy-oem-preinstalled-apps</span>
+                    </div>
+                    <p class="setting-desc">Prevents OEM manufacturers from automatically installing bloatware apps.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
+                            <tr><th>Value</th><td><code>OemPreInstalledAppsEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Pre-installed Suggested Apps</span>
+                        <span class="setting-id">privacy-preinstalled-apps</span>
+                    </div>
+                    <p class="setting-desc">Prevents Microsoft from automatically installing suggested apps.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
+                            <tr><th>Value</th><td><code>PreInstalledAppsEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Pre-installed Apps History Tracking</span>
+                        <span class="setting-id">privacy-preinstalled-apps-ever</span>
+                    </div>
+                    <p class="setting-desc">Disables tracking of whether pre-installed apps were ever enabled.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
+                            <tr><th>Value</th><td><code>PreInstalledAppsEverEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Silent App Installation</span>
+                        <span class="setting-id">privacy-silent-installed-apps</span>
+                    </div>
+                    <p class="setting-desc">Prevents apps from being silently installed in the background.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
+                            <tr><th>Value</th><td><code>SilentInstalledAppsEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- ==================== LOCK SCREEN ==================== -->
+                <h2 id="lock-screen">Lock Screen</h2>
+                <p>Settings related to the Windows lock screen behavior and content.</p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Lock Screen</span>
+                        <span class="setting-id">privacy-lock-screen</span>
+                    </div>
+                    <p class="setting-desc">Allows users to lock their computer using Windows+L, Start menu, or Ctrl+Alt+Del screen.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</code></td></tr>
+                            <tr><th>Value</th><td><code>DisableLockWorkstation</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (lock allowed)</th><td>0</td></tr>
+                            <tr><th>Disabled (lock blocked)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Windows Spotlight on Lock Screen</span>
+                        <span class="setting-id">privacy-rotating-lock-screen</span>
+                    </div>
+                    <p class="setting-desc">Displays rotating Windows Spotlight images on your lock screen instead of a static background.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
+                            <tr><th>Value</th><td><code>RotatingLockScreenEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Lock Screen Fun Facts and Tips</span>
+                        <span class="setting-id">privacy-lock-screen-overlay</span>
+                    </div>
+                    <p class="setting-desc">Displays fun facts, tips, and tricks as an overlay on your lock screen.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
+                            <tr><th>Value</th><td><code>RotatingLockScreenOverlayEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Lock Screen Slideshow</span>
+                        <span class="setting-id">privacy-lock-screen-slideshow</span>
+                    </div>
+                    <p class="setting-desc">Enables slideshow option for lock screen background.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
+                            <tr><th>Value</th><td><code>SlideshowEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- ==================== GENERAL PRIVACY ==================== -->
+                <h2 id="general-privacy">General Privacy</h2>
+                <p>Core privacy settings for advertising ID, language tracking, and personalization.</p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Let apps show me personalized ads by using my advertising ID</span>
+                        <span class="setting-id">privacy-advertising-id</span>
+                    </div>
+                    <p class="setting-desc">Windows generates a unique advertising ID that apps use to track your activity and deliver personalized ads based on your behavior across different apps.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo</code></td></tr>
+                            <tr><th>Value</th><td><code>Enabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo</code></td></tr>
+                            <tr><th>Value</th><td><code>DisabledByGroupPolicy</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (ads allowed)</th><td>0</td></tr>
+                            <tr><th>Disabled (ads blocked)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo</code></td></tr>
+                            <tr><th>Value</th><td><code>DisabledByGroupPolicy</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (ads allowed)</th><td>0</td></tr>
+                            <tr><th>Disabled (ads blocked)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Let websites show me locally relevant content by accessing my language list</span>
+                        <span class="setting-id">privacy-language-list</span>
+                    </div>
+                    <p class="setting-desc">Allows websites to access your language preferences so they can automatically display content in your preferred language without requiring manual configuration on each site.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Control Panel\International\User Profile</code></td></tr>
+                            <tr><th>Value</th><td><code>HttpAcceptLanguageOptOut</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (share language)</th><td>0</td></tr>
+                            <tr><th>Disabled (don't share)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Let Windows improve Start and search results by tracking app launches</span>
+                        <span class="setting-id">privacy-app-launch-tracking</span>
+                    </div>
+                    <p class="setting-desc">Windows records which apps you use most frequently to personalize your Start menu and improve search results, making your most-used apps more accessible.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
+                            <tr><th>Value</th><td><code>Start_TrackProgs</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show me suggested content in the Settings app</span>
+                        <span class="setting-id">privacy-settings-content</span>
+                    </div>
+                    <p class="setting-desc">Microsoft displays promotional content, tips, and feature suggestions within the Windows Settings app to help you discover new features and functionality.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
+                            <tr><th>Value</th><td><code>SubscribedContent-338393Enabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
+                            <tr><th>Value</th><td><code>SubscribedContent-353694Enabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
+                            <tr><th>Value</th><td><code>SubscribedContent-353696Enabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Settings App Notifications</span>
+                        <span class="setting-id">privacy-settings-notifications</span>
+                    </div>
+                    <p class="setting-desc">Shows account notifications in the Settings app, including prompts to reauthenticate, backup your device, and manage subscriptions.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\SystemSettings\AccountNotifications</code></td></tr>
+                            <tr><th>Value</th><td><code>EnableAccountNotifications</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- ==================== SPEECH ==================== -->
+                <h2 id="speech">Speech</h2>
+                <p>Settings for speech recognition and voice-based services.</p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Online Speech Recognition</span>
+                        <span class="setting-id">privacy-speech-recognition</span>
+                    </div>
+                    <p class="setting-desc">Use your voice for apps using Microsoft's online speech recognition technology.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy</code></td></tr>
+                            <tr><th>Value</th><td><code>HasAccepted</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\InputPersonalization</code></td></tr>
+                            <tr><th>Value</th><td><code>AllowInputPersonalization</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\InputPersonalization</code></td></tr>
+                            <tr><th>Value</th><td><code>AllowInputPersonalization</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Narrator Online Services</span>
+                        <span class="setting-id">privacy-narrator-online-services</span>
+                    </div>
+                    <p class="setting-desc">Allow Narrator to use Microsoft cloud services for features like intelligent image descriptions and enhanced voice models.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Narrator\NoRoam</code></td></tr>
+                            <tr><th>Value</th><td><code>OnlineServicesEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Narrator Scripting Support</span>
+                        <span class="setting-id">privacy-narrator-scripting</span>
+                    </div>
+                    <p class="setting-desc">Allow Narrator to execute scripts for automation and custom functionality.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Narrator\NoRoam</code></td></tr>
+                            <tr><th>Value</th><td><code>ScriptingEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- ==================== INKING AND TYPING ==================== -->
+                <h2 id="inking-typing">Inking and Typing Personalization</h2>
+                <p>Settings for inking and typing personalization features.</p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Custom Inking and Typing Dictionary</span>
+                        <span class="setting-id">privacy-inking-typing-dictionary</span>
+                    </div>
+                    <p class="setting-desc">Uses your typing history and handwriting patterns to create a custom dictionary. Turning off will clear all words in your custom dictionary.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\CPSS\Store\InkingAndTypingPersonalization</code></td></tr>
+                            <tr><th>Value</th><td><code>Value</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Personalization\Settings</code></td></tr>
+                            <tr><th>Value</th><td><code>AcceptedPrivacyPolicy</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\InputPersonalization</code></td></tr>
+                            <tr><th>Value</th><td><code>RestrictImplicitTextCollection</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (not restricted)</th><td>0</td></tr>
+                            <tr><th>Disabled (restricted)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\InputPersonalization\TrainedDataStore</code></td></tr>
+                            <tr><th>Value</th><td><code>HarvestContacts</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- ==================== DIAGNOSTICS & FEEDBACK ==================== -->
+                <h2 id="diagnostics-feedback">Diagnostics & Feedback</h2>
+                <p>Settings for telemetry, diagnostic data collection, and feedback to Microsoft.</p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Send Diagnostic Data</span>
+                        <span class="setting-id">privacy-diagnostics</span>
+                    </div>
+                    <p class="setting-desc">Send diagnostic data to Microsoft to help improve Windows and keep it secure.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack</code></td></tr>
+                            <tr><th>Value</th><td><code>ShowedToastAtLevel</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (full)</th><td>3</td></tr>
+                            <tr><th>Disabled (basic)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>3</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\DataCollection</code></td></tr>
+                            <tr><th>Value</th><td><code>AllowTelemetry</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Options</th><td>0=Off, 1=Basic, 3=Full</td></tr>
+                            <tr><th>Default</th><td>3</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection</code></td></tr>
+                            <tr><th>Value</th><td><code>AllowTelemetry</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Options</th><td>1=Basic, 3=Full</td></tr>
+                            <tr><th>Default</th><td>3</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection</code></td></tr>
+                            <tr><th>Value</th><td><code>AllowTelemetry</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Options</th><td>1=Basic, 3=Full</td></tr>
+                            <tr><th>Default</th><td>3</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection</code></td></tr>
+                            <tr><th>Value</th><td><code>MaxTelemetryAllowed</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Options</th><td>1=Basic, 3=Full</td></tr>
+                            <tr><th>Default</th><td>3</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection</code></td></tr>
+                            <tr><th>Value</th><td><code>MaxTelemetryAllowed</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Options</th><td>1=Basic, 3=Full</td></tr>
+                            <tr><th>Default</th><td>3</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection</code></td></tr>
+                            <tr><th>Value</th><td><code>AllowTelemetry</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Options</th><td>0=Off, 1=Basic, 3=Full</td></tr>
+                            <tr><th>Default</th><td>3</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Improve inking and typing</span>
+                        <span class="setting-id">privacy-improve-inking-typing</span>
+                    </div>
+                    <p class="setting-desc">Send optional inking and typing diagnostic data to Microsoft. Requires "Send Diagnostic Data" to be enabled.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Input\TIPC</code></td></tr>
+                            <tr><th>Value</th><td><code>Enabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\CPSS\Store\ImproveInkingAndTyping</code></td></tr>
+                            <tr><th>Value</th><td><code>Value</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Tailored Experiences</span>
+                        <span class="setting-id">privacy-tailored-experiences</span>
+                    </div>
+                    <p class="setting-desc">Let Microsoft use your diagnostic data to show personalized tips, ads and recommendations.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Privacy</code></td></tr>
+                            <tr><th>Value</th><td><code>TailoredExperiencesWithDiagnosticDataEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\Software\Policies\Microsoft\Windows\CloudContent</code></td></tr>
+                            <tr><th>Value</th><td><code>DisableTailoredExperiencesWithDiagnosticData</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (tailored ON)</th><td>0</td></tr>
+                            <tr><th>Disabled (tailored OFF)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKLM\Software\Policies\Microsoft\Windows\CloudContent</code></td></tr>
+                            <tr><th>Value</th><td><code>DisableTailoredExperiencesWithDiagnosticData</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (tailored ON)</th><td>0</td></tr>
+                            <tr><th>Disabled (tailored OFF)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Allow Windows to ask you for feedback</span>
+                        <span class="setting-id">privacy-feedback-frequency</span>
+                    </div>
+                    <p class="setting-desc">Let Windows ask you to provide feedback on experiences in Windows.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\DataCollection</code></td></tr>
+                            <tr><th>Value</th><td><code>DoNotShowFeedbackNotifications</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (feedback ON)</th><td>Key deleted</td></tr>
+                            <tr><th>Disabled (feedback OFF)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>Key absent (Absence = Enabled)</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection</code></td></tr>
+                            <tr><th>Value</th><td><code>DoNotShowFeedbackNotifications</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (feedback ON)</th><td>Key deleted</td></tr>
+                            <tr><th>Disabled (feedback OFF)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>Key absent (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- ==================== ACTIVITY HISTORY ==================== -->
+                <h2 id="activity-history">Activity History</h2>
+                <p>Settings for Windows activity history and timeline features.</p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Activity History</span>
+                        <span class="setting-id">privacy-activity-history</span>
+                        <span class="setting-badge win10"><i class="mdi mdi-microsoft-windows"></i>Windows 10 Only</span>
+                    </div>
+                    <p class="setting-desc">Allows you to jump back into what you were doing with apps, docs, or other activities on startup.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\System</code></td></tr>
+                            <tr><th>Value</th><td><code>PublishUserActivities</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\System</code></td></tr>
+                            <tr><th>Value</th><td><code>PublishUserActivities</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Timeline Suggestions</span>
+                        <span class="setting-id">privacy-timeline-suggestions</span>
+                        <span class="setting-badge win10"><i class="mdi mdi-microsoft-windows"></i>Windows 10 Only</span>
+                    </div>
+                    <p class="setting-desc">Shows suggestions in the Windows 10 Timeline feature.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
+                            <tr><th>Value</th><td><code>SubscribedContent-353698Enabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- ==================== SEARCH PERMISSIONS ==================== -->
+                <h2 id="search-permissions">Search Permissions</h2>
+                <p>Settings for Windows Search behavior and cloud integration.</p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Search history on this device</span>
+                        <span class="setting-id">privacy-search-history</span>
+                    </div>
+                    <p class="setting-desc">Improves search results by allowing Windows Search to store your search history locally on this device. Does not clear existing history.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\SearchSettings</code></td></tr>
+                            <tr><th>Value</th><td><code>IsDeviceSearchHistoryEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show search highlights</span>
+                        <span class="setting-id">privacy-search-highlights</span>
+                    </div>
+                    <p class="setting-desc">See content suggestions in search.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\SearchSettings</code></td></tr>
+                            <tr><th>Value</th><td><code>IsDynamicSearchBoxEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Cloud Content Search for Microsoft account</span>
+                        <span class="setting-id">privacy-search-msa-cloud</span>
+                    </div>
+                    <p class="setting-desc">Allow Windows Search to show results from apps and services that you are signed in to with your Microsoft account.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\SearchSettings</code></td></tr>
+                            <tr><th>Value</th><td><code>IsMSACloudSearchEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Cloud Content Search for Work or School account</span>
+                        <span class="setting-id">privacy-search-aad-cloud</span>
+                    </div>
+                    <p class="setting-desc">Allow Windows Search to show results from apps and services that you are signed in to with your work or school account.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\SearchSettings</code></td></tr>
+                            <tr><th>Value</th><td><code>IsAADCloudSearchEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Allow Cortana</span>
+                        <span class="setting-id">privacy-allow-cortana</span>
+                    </div>
+                    <p class="setting-desc">Enables Microsoft's Cortana virtual assistant for voice commands and searches.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search</code></td></tr>
+                            <tr><th>Value</th><td><code>AllowCortana</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>Key deleted</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>Key absent (Absence = Enabled)</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\Windows Search</code></td></tr>
+                            <tr><th>Value</th><td><code>AllowCortana</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>Key deleted</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>Key absent (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- ==================== APP PERMISSIONS ==================== -->
+                <h2 id="app-permissions">App Permissions</h2>
+                <p>Control which system features apps can access.</p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Location Services</span>
+                        <span class="setting-id">privacy-location-services</span>
+                    </div>
+                    <p class="setting-desc">Allows Windows and apps to access your device location for location-based features.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location</code></td></tr>
+                            <tr><th>Value</th><td><code>Value</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Enabled</th><td>Allow</td></tr>
+                            <tr><th>Disabled</th><td>Deny</td></tr>
+                            <tr><th>Default</th><td>Allow</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors</code></td></tr>
+                            <tr><th>Value</th><td><code>DisableLocation</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (location ON)</th><td>0</td></tr>
+                            <tr><th>Disabled (location OFF)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors</code></td></tr>
+                            <tr><th>Value</th><td><code>DisableLocation</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (location ON)</th><td>0</td></tr>
+                            <tr><th>Disabled (location OFF)</th><td>1</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Camera Access</span>
+                        <span class="setting-id">privacy-camera-access</span>
+                    </div>
+                    <p class="setting-desc">Allow apps to have camera access.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam</code></td></tr>
+                            <tr><th>Value</th><td><code>Value</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Enabled</th><td>Allow</td></tr>
+                            <tr><th>Disabled</th><td>Deny</td></tr>
+                            <tr><th>Default</th><td>Allow</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Microphone Access</span>
+                        <span class="setting-id">privacy-microphone-access</span>
+                    </div>
+                    <p class="setting-desc">Allow apps to have microphone access.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone</code></td></tr>
+                            <tr><th>Value</th><td><code>Value</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Enabled</th><td>Allow</td></tr>
+                            <tr><th>Disabled</th><td>Deny</td></tr>
+                            <tr><th>Default</th><td>Allow</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Account Info Access</span>
+                        <span class="setting-id">privacy-account-info-access</span>
+                    </div>
+                    <p class="setting-desc">Allow apps to have account info access.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation</code></td></tr>
+                            <tr><th>Value</th><td><code>Value</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Enabled</th><td>Allow</td></tr>
+                            <tr><th>Disabled</th><td>Deny</td></tr>
+                            <tr><th>Default</th><td>Allow</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">App Diagnostic Access</span>
+                        <span class="setting-id">privacy-app-diagnostic-access</span>
+                    </div>
+                    <p class="setting-desc">Allow apps to have app diagnostic access.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics</code></td></tr>
+                            <tr><th>Value</th><td><code>Value</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Enabled</th><td>Allow</td></tr>
+                            <tr><th>Disabled</th><td>Deny</td></tr>
+                            <tr><th>Default</th><td>Allow</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Disable OneDrive Automatic Backups</span>
+                        <span class="setting-id">privacy-onedrive-auto-backup</span>
+                    </div>
+                    <p class="setting-desc">Prevents OneDrive from automatically backing up important folders (Documents, Pictures, Desktop, etc.).</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\OneDrive</code></td></tr>
+                            <tr><th>Value</th><td><code>KFMBlockOptIn</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (backup blocked)</th><td>1</td></tr>
+                            <tr><th>Disabled (backup allowed)</th><td>Key deleted</td></tr>
+                            <tr><th>Default</th><td>Key absent</td></tr>
+                        </table>
+                        <table class="registry-table" style="margin-top: 0.5rem;">
+                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\OneDrive</code></td></tr>
+                            <tr><th>Value</th><td><code>KFMBlockOptIn</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (backup blocked)</th><td>1</td></tr>
+                            <tr><th>Disabled (backup allowed)</th><td>Key deleted</td></tr>
+                            <tr><th>Default</th><td>Key absent</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <button class="sidebar-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+
+    <script src="../../js/docs-theme.js"></script>
+    <script src="../../js/docs-navigation.js"></script>
+    <script src="../../js/docs-search.js"></script>
+    <script src="../../js/docs-config.js"></script>
+
+    <footer class="docs-footer">
+        <div class="docs-footer-container">
+            <div class="docs-footer-info">
+                &copy; 2026 Winhance. Released under the MIT License.
+            </div>
+            <div class="docs-footer-meta">
+                <div class="docs-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                    <span class="docs-version">Docs v1.0.0</span>
+                </div>
+                <div class="docs-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <span class="docs-last-updated">Last Updated: Jan 28, 2026</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

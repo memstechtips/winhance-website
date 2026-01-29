@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Management - Winhance Docs</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../css/docs-main.css">
+    <link rel="stylesheet" href="../../css/docs-sidebar.css">
+    <link rel="stylesheet" href="../../css/docs-syntax.css">
+    <script src="../../js/theme-load.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="../../index.html" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="../../../images/winhance-rocket.png" alt="Winhance Logo"
+                        style="height: 32px; margin-right: 12px;">
+                    <h1 style="font-size: 1.5rem; margin: 0; color: var(--text-color);">Winhance <span
+                            style="font-weight: 300; opacity: 0.7;">Docs</span></h1>
+                </a>
+            </div>
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="docs-search" placeholder="Search documentation...">
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+                </button>
+                <a href="https://github.com/memstechtips/Winhance" target="_blank" class="icon-btn github-btn"
+                    title="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="docs-wip-banner">
+        <strong>Work in Progress:</strong> Documentation is a work in progress. Some pages may be incomplete.
+    </div>
+
+    <div class="docs-layout has-banner">
+                        <aside class="docs-sidebar">
+            <nav>
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Getting Started</div>
+                    <a href="../../getting-started/installation.html" class="sidebar-nav-item">Installation</a>
+                    <a href="../../getting-started/quick-start.html" class="sidebar-nav-item">Quick Start</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Features</div>
+                    <a href="../../features/software-apps.html" class="sidebar-nav-item">Software & Apps</a>
+                    <div class="sidebar-sub-nav">
+                        <a href="../../features/software-apps/windows-apps.html" class="sidebar-nav-item sub-item">Windows Apps</a>
+                        <a href="../../features/software-apps/external-apps.html" class="sidebar-nav-item sub-item">External Apps</a>
+                    </div>
+                    <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
+                    <div class="sidebar-sub-nav">
+                        <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
+                        <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
+                        <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
+                        <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
+                        <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
+                        <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
+                    </div>
+                    <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
+                    <div class="sidebar-sub-nav">
+                        <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
+                        <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
+                        <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
+                        <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
+                    </div>
+                    <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
+                    <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">User Guides</div>
+                    <a href="../../guides/configuration-files.html" class="sidebar-nav-item">Configuration Files</a>
+                    <a href="../../guides/wimutil.html" class="sidebar-nav-item">WIMUtil Guide</a>
+                    <a href="../../guides/autounattend.html" class="sidebar-nav-item">Autounattend Guide</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Reference</div>
+                    <a href="../../reference/cli-commands.html" class="sidebar-nav-item">CLI Commands</a>
+                    <a href="../../reference/changelog.html" class="sidebar-nav-item">Changelog</a>
+                    <a href="../../reference/troubleshooting.html" class="sidebar-nav-item">Troubleshooting</a>
+                    <a href="../../reference/contributing.html" class="sidebar-nav-item">How to Contribute</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="docs-content">
+            <section id="power">
+                <h1>Power Management & Plans</h1>
+                <div class="video-container">
+                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=1379" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p>Winhance provides a comprehensive power management interface, allowing you to select from
+                    system-default plans or apply specialized optimizations.</p>
+
+                <h2>Power Plan Selection</h2>
+                <p>The Power Plan ComboBox in Winhance is dynamic and intelligent:</p>
+                <ul>
+                    <li><strong>Custom Plan Detection:</strong> Winhance automatically detects any custom power plans
+                        already present on your system and adds them to the selection list.</li>
+                    <li><strong>Default Windows Plans:</strong> Standard plans such as <em>Balanced</em>, <em>High
+                            Performance</em>, and <em>Power Saver</em> are always available.</li>
+                    <li><strong>Ultimate Performance:</strong> Winhance provides a one-click option to enable and
+                        activate the hidden Windows "Ultimate Performance" plan, which is designed for high-end systems
+                        to minimize micro-latencies.</li>
+                    <li><strong>Winhance Power Plan:</strong> This is a custom preset included with Winhance. It is
+                        based on the Ultimate Performance plan but further tuned for the best possible responsiveness.
+                    </li>
+                    <li><strong>Delete Plans:</strong> You can remove unwanted power plans from your system by clicking the <strong>Trash Can</strong> icon next to the plan name in the dropdown. Note that default Windows schemes can be easily restored if deleted.</li>
+                </ul>
+
+                <div class="callout callout-info">
+                    <div class="callout-title">ℹ️ Advanced Power Settings</div>
+                    <p>Winhance unlocks hidden "Advanced Power Settings" that are normally invisible in the Windows Control Panel. This includes settings like <strong>Processor Boost Mode</strong>, <strong>Core Parking</strong>, and <strong>Energy Performance Preference</strong>.</p>
+                    <p><strong>Warning:</strong> These settings are locked by default for safety. Unlocking and modifying them (especially numeric values) can cause system instability or increased heat generation if set incorrectly. Winhance will show a warning dialog before allowing you to unlock these controls.</p>
+                </div>
+
+                <div class="callout callout-note">
+                    <div class="callout-title">💻 Laptop vs Desktop View</div>
+                    <p>Winhance intelligently detects if your device has a battery. On a <strong>Desktop</strong>, you will see a single set of controls (AC Power). On a <strong>Laptop</strong>, you will see two sets of controls: one for <strong>Plugged In (AC)</strong> and one for <strong>On Battery (DC)</strong>, allowing for granular control over power consumption.</p>
+                </div>
+
+                <div class="callout callout-warning">
+                    <div class="callout-title">⚠️ Setting Persistence</div>
+                    <p>Settings found in the <strong>Optimizations</strong> and <strong>Customizations</strong> views
+                        are <strong>not persistent</strong>. Winhance applies these changes once when you click "Apply",
+                        but it does not use background tasks to re-apply them if they are changed later by Windows or by
+                        you manually.</p>
+                    <p>This is a deliberate design choice to <strong>respect user choice</strong>. For example, if you
+                        set Dark Mode via Winhance but later decide to switch back to Light Mode using the official
+                        Windows Settings app, Winhance will not revert your change on the next reboot.</p>
+                </div>
+
+                <h3>Configuration Export & Power Plans</h3>
+                <p>When you export your Winhance configuration to a <code>.winhance</code> file:</p>
+                <ul>
+                    <li>If a custom power plan is active, the config file will attempt to re-apply that plan when
+                        imported on another system.</li>
+                    <li><strong>Note:</strong> While the plan itself will be selected, some of the <em>advanced</em>
+                        power settings (like specific sub-setting values) might not be identical if the target system
+                        has different hardware capabilities or if those settings weren't explicitly defined in the
+                        custom plan.</li>
+                </ul>
+
+                <!-- Power Plan Section -->
+                <h2>Power Plan</h2>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Power Plan</span>
+                        <span class="setting-id">power-plan-selection</span>
+                    </div>
+                    <p class="setting-desc">Select the active power plan for your system. Options include default Windows plans (Power Saver, Balanced, High Performance), Ultimate Performance, and the custom Winhance Power Plan.</p>
+                    <p class="setting-desc"><strong>Type:</strong> Selection (dynamic options)</p>
+                    <p class="setting-desc"><strong>Built-in Plans:</strong></p>
+                    <ul>
+                        <li><strong>Power saver</strong> (GUID: a1841308-3541-4fab-bc81-f71556f20b4a)</li>
+                        <li><strong>Balanced</strong> (GUID: 381b4222-f694-41f0-9685-ff5bb260df2e)</li>
+                        <li><strong>High performance</strong> (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c)</li>
+                        <li><strong>Ultimate Performance</strong> (GUID: e9a42b02-d5df-448d-aa00-03f14749eb61)</li>
+                        <li><strong>Winhance Power Plan</strong> (GUID: 57696e68-616e-6365-506f-776572000000)</li>
+                    </ul>
+                </div>
+
+                <!-- Display Section -->
+                <h3>Display</h3>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Turn off the display</span>
+                        <span class="setting-id">power-display-timeout</span>
+                    </div>
+                    <p class="setting-desc">Specifies the period of inactivity before Windows turns off the display.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Never, 1-5 minutes, 10-30 minutes, 1-5 hours</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>7516b95f-f776-4464-8c53-06167f40cc99 (SUB_VIDEO)</td></tr>
+                            <tr><th>Setting GUID</th><td>3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e (VIDEOIDLE)</td></tr>
+                            <tr><th>Recommended AC</th><td>0 (Never)</td></tr>
+                            <tr><th>Recommended DC</th><td>300 (5 minutes)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- Hard Disk Section -->
+                <h3>Hard Disk</h3>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Turn off hard disk after</span>
+                        <span class="setting-id">power-harddisk-timeout</span>
+                    </div>
+                    <p class="setting-desc">Specifies the period of inactivity before Windows turns off the hard disk.</p>
+                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0 = Never)</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>0012ee47-9041-4b5d-9b77-535fba8b1442 (SUB_DISK)</td></tr>
+                            <tr><th>Setting GUID</th><td>6738e2c4-e8a5-4a42-b16a-e040e769756e (DISKIDLE)</td></tr>
+                            <tr><th>Units</th><td>Seconds</td></tr>
+                            <tr><th>Recommended AC</th><td>0 (Never)</td></tr>
+                            <tr><th>Recommended DC</th><td>600 (10 minutes)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- Internet Explorer Section -->
+                <h3>Internet Explorer</h3>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">JavaScript Timer Frequency</span>
+                        <span class="setting-id">internet-explorer-javascript-timer</span>
+                    </div>
+                    <p class="setting-desc">Specifies the frequency of JavaScript timers.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Maximum Performance, Maximum Power Savings</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>02f815b5-a5cf-4c84-bf20-649d1f75d3d8</td></tr>
+                            <tr><th>Setting GUID</th><td>4c793e7d-a264-42e1-87d3-7a0d2f523ccd</td></tr>
+                            <tr><th>Recommended AC</th><td>0 (Maximum Performance)</td></tr>
+                            <tr><th>Recommended DC</th><td>0 (Maximum Performance)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- Desktop Background Settings Section -->
+                <h3>Desktop Background Settings</h3>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Desktop Background Slide Show</span>
+                        <span class="setting-id">desktop-slideshow</span>
+                    </div>
+                    <p class="setting-desc">Allow or prevent Windows from rotating through multiple wallpaper images.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Available, Paused</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>0d7dbae2-4294-402a-ba8e-26777e8488cd</td></tr>
+                            <tr><th>Setting GUID</th><td>309dce9b-bef4-4119-9921-a851fb12f0f4</td></tr>
+                            <tr><th>Recommended AC</th><td>1 (Available)</td></tr>
+                            <tr><th>Recommended DC</th><td>1 (Paused)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- Wireless Adapter Settings Section -->
+                <h3>Wireless Adapter Settings</h3>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Power Saving Mode</span>
+                        <span class="setting-id">wireless-power-mode</span>
+                    </div>
+                    <p class="setting-desc">Balance wireless network performance with battery life by adjusting adapter power usage.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Maximum Performance, Low Power Saving, Medium Power Saving, Maximum Power Saving</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>19cbb8fa-5279-450e-9fac-8a3d5fedd0c1</td></tr>
+                            <tr><th>Setting GUID</th><td>12bbebe6-58d6-4636-95bb-3217ef867c1a</td></tr>
+                            <tr><th>Recommended AC</th><td>0 (Maximum Performance)</td></tr>
+                            <tr><th>Recommended DC</th><td>2 (Medium Power Saving)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- Sleep Section -->
+                <h3>Sleep</h3>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Put the computer to sleep</span>
+                        <span class="setting-id">power-sleep-timeout</span>
+                    </div>
+                    <p class="setting-desc">Specifies the period of inactivity before Windows puts the computer to sleep.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Never, 1-5 minutes, 10-30 minutes, 1-5 hours</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>238c9fa8-0aad-41ed-83f4-97be242c8f20 (SUB_SLEEP)</td></tr>
+                            <tr><th>Setting GUID</th><td>29f6c1db-86da-48c5-9fdb-f2b67b1f44da (STANBYIDLE)</td></tr>
+                            <tr><th>Recommended AC</th><td>0 (Never)</td></tr>
+                            <tr><th>Recommended DC</th><td>900 (15 minutes)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Allow wake timers</span>
+                        <span class="setting-id">power-wake-timers</span>
+                    </div>
+                    <p class="setting-desc">Allow scheduled tasks and applications to wake your computer from sleep.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Disable, Enable, Important Wake Timers Only</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>238c9fa8-0aad-41ed-83f4-97be242c8f20 (SUB_SLEEP)</td></tr>
+                            <tr><th>Setting GUID</th><td>bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d (RTCWAKE)</td></tr>
+                            <tr><th>Recommended AC</th><td>0 (Disable)</td></tr>
+                            <tr><th>Recommended DC</th><td>0 (Disable)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Hibernation</span>
+                        <span class="setting-id">power-hibernation-enable</span>
+                    </div>
+                    <p class="setting-desc">Save your session to disk and power down completely, using no battery while preserving your work.</p>
+                    <p class="setting-desc"><strong>Type:</strong> Toggle (command-based)</p>
+                    <details class="registry-details">
+                        <summary>Command Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Enable Command</th><td>powercfg /hibernate on</td></tr>
+                            <tr><th>Disable Command</th><td>powercfg /hibernate off</td></tr>
+                            <tr><th>Recommended</th><td>Disabled</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Hibernate after</span>
+                        <span class="setting-id">power-hibernate-timeout</span>
+                    </div>
+                    <p class="setting-desc">Specifies the period of inactivity before Windows hibernates the computer.</p>
+                    <p class="setting-desc"><em>Note: Requires Hibernation to be enabled.</em></p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>238c9fa8-0aad-41ed-83f4-97be242c8f20 (SUB_SLEEP)</td></tr>
+                            <tr><th>Setting GUID</th><td>9d7815a6-7ee4-497e-8888-515a05f02364 (HIBERNATEIDLE)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Allow hybrid sleep</span>
+                        <span class="setting-id">power-hybrid-sleep</span>
+                    </div>
+                    <p class="setting-desc">Combines sleep and hibernate by saving your session to disk while staying in low-power mode for faster wake.</p>
+                    <p class="setting-desc"><em>Note: Requires Hibernation to be enabled.</em></p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>238c9fa8-0aad-41ed-83f4-97be242c8f20 (SUB_SLEEP)</td></tr>
+                            <tr><th>Setting GUID</th><td>94ac6d29-73ce-41a6-809f-6363ba21b47e (HYBRIDSLEEP)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Fast Startup</span>
+                        <span class="setting-id">power-fast-startup</span>
+                    </div>
+                    <p class="setting-desc">Hibernate system state during shutdown for faster boot times (does not affect restart).</p>
+                    <p class="setting-desc"><em>Note: Requires Hibernation to be enabled.</em></p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power</code></td></tr>
+                            <tr><th>Value</th><td><code>HiberbootEnabled</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show Hibernate Option</span>
+                        <span class="setting-id">start-power-hibernate-option</span>
+                    </div>
+                    <p class="setting-desc">Display the Hibernate option in the Start Menu power button menu.</p>
+                    <p class="setting-desc"><em>Note: Requires Hibernation to be enabled.</em></p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings</code></td></tr>
+                            <tr><th>Value</th><td><code>ShowHibernateOption</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- USB Settings Section -->
+                <h3>USB Settings</h3>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">USB Hub Selective Suspend Timeout</span>
+                        <span class="setting-id">usb-hub-selective-suspend-timeout</span>
+                    </div>
+                    <p class="setting-desc">Set how long USB hubs wait idle before powering down to save energy.</p>
+                    <p class="setting-desc"><strong>Type:</strong> Numeric range (milliseconds)</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>2a737441-1930-4402-8d77-b2bebba308a3</td></tr>
+                            <tr><th>Setting GUID</th><td>0853a681-27c8-4100-a2fd-82013e970683</td></tr>
+                            <tr><th>Units</th><td>Milliseconds</td></tr>
+                            <tr><th>Recommended AC</th><td>0</td></tr>
+                            <tr><th>Recommended DC</th><td>1000</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">USB selective suspend setting</span>
+                        <span class="setting-id">usb-selective-suspend</span>
+                    </div>
+                    <p class="setting-desc">Allow Windows to power down individual USB ports when devices are idle to save energy.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Disabled, Enabled</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>2a737441-1930-4402-8d77-b2bebba308a3</td></tr>
+                            <tr><th>Setting GUID</th><td>48e6b7a6-50f5-4782-a5d4-53bb8f07e226</td></tr>
+                            <tr><th>Recommended AC</th><td>0 (Disabled)</td></tr>
+                            <tr><th>Recommended DC</th><td>1 (Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">USB 3 Link Power Management</span>
+                        <span class="setting-id">usb3-link-power-management</span>
+                    </div>
+                    <p class="setting-desc">Control how aggressively USB 3.0 ports enter low-power states when devices are idle.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Off, Minimum power savings, Moderate power savings, Maximum power savings</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>2a737441-1930-4402-8d77-b2bebba308a3</td></tr>
+                            <tr><th>Setting GUID</th><td>d4e98f31-5ffe-4ce1-be31-1b38b384c009</td></tr>
+                            <tr><th>Recommended AC</th><td>0 (Off)</td></tr>
+                            <tr><th>Recommended DC</th><td>2 (Moderate power savings)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- Intel Graphics Section -->
+                <h3>Intel(R) Graphics Settings</h3>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Intel(R) Graphics Power Plan</span>
+                        <span class="setting-id">intel-graphics-power-plan</span>
+                    </div>
+                    <p class="setting-desc">Balance Intel integrated graphics performance with power consumption and battery life.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Maximum Battery Life, Balanced, Maximum Performance</p>
+                    <p class="setting-desc"><em>Note: Only visible on systems with Intel integrated graphics.</em></p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>44f3beca-a7c0-460e-9df2-bb8b99e0cba6</td></tr>
+                            <tr><th>Setting GUID</th><td>3619c3f2-afb2-4afc-b0e9-e7fef372de36</td></tr>
+                            <tr><th>Recommended AC</th><td>2 (Maximum Performance)</td></tr>
+                            <tr><th>Recommended DC</th><td>1 (Balanced)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- Power Buttons and Lid Section -->
+                <h3>Power Buttons and Lid</h3>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Power button action</span>
+                        <span class="setting-id">power-button-action</span>
+                    </div>
+                    <p class="setting-desc">Choose what happens when you press the physical power button on your computer.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Do nothing, Sleep, Hibernate, Shut down</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>4f971e89-eebd-4455-a8de-9e59040e7347 (SUB_BUTTONS)</td></tr>
+                            <tr><th>Setting GUID</th><td>7648efa3-dd9c-4e3e-b566-50f929386280</td></tr>
+                            <tr><th>Recommended AC</th><td>0 (Do nothing)</td></tr>
+                            <tr><th>Recommended DC</th><td>0 (Do nothing)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Sleep button action</span>
+                        <span class="setting-id">sleep-button-action</span>
+                    </div>
+                    <p class="setting-desc">Choose what happens when you press the dedicated sleep button on your keyboard or computer.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Do nothing, Sleep, Hibernate, Shut down</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>4f971e89-eebd-4455-a8de-9e59040e7347 (SUB_BUTTONS)</td></tr>
+                            <tr><th>Setting GUID</th><td>96996bc0-ad50-47ec-923b-6f41874dd9eb</td></tr>
+                            <tr><th>Recommended AC</th><td>0 (Do nothing)</td></tr>
+                            <tr><th>Recommended DC</th><td>0 (Do nothing)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Lid close action</span>
+                        <span class="setting-id">lid-close-action</span>
+                        <span class="setting-badge laptops">Laptops Only</span>
+                    </div>
+                    <p class="setting-desc">Choose what happens when you close your laptop lid.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Do nothing, Sleep, Hibernate, Shut down</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>4f971e89-eebd-4455-a8de-9e59040e7347 (SUB_BUTTONS)</td></tr>
+                            <tr><th>Setting GUID</th><td>5ca83367-6e45-459f-a27b-476b1d01c936 (LIDACTION)</td></tr>
+                            <tr><th>Recommended AC</th><td>1 (Sleep)</td></tr>
+                            <tr><th>Recommended DC</th><td>1 (Sleep)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- PCI Express Section -->
+                <h3>PCI Express</h3>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Link State Power Management</span>
+                        <span class="setting-id">pci-link-state-power-management</span>
+                    </div>
+                    <p class="setting-desc">Control power savings for PCIe devices like graphics cards, SSDs, and expansion cards.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Off, Moderate power savings, Maximum power savings</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>501a4d13-42af-4429-9fd1-a8218c268e20 (SUB_PCIEXPRESS)</td></tr>
+                            <tr><th>Setting GUID</th><td>ee12f906-d277-404b-b6da-e5fa1a576df5 (ASPM)</td></tr>
+                            <tr><th>Recommended AC</th><td>0 (Off)</td></tr>
+                            <tr><th>Recommended DC</th><td>2 (Maximum power savings)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- Processor Power Management Section -->
+                <h3>Processor Power Management</h3>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Minimum processor state</span>
+                        <span class="setting-id">processor-min-state</span>
+                    </div>
+                    <p class="setting-desc">Set the lowest CPU speed allowed as a percentage of maximum frequency.</p>
+                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
+                            <tr><th>Setting GUID</th><td>893dee8e-2bef-41e0-89c6-b55d0929964c (PROCTHROTTLEMIN)</td></tr>
+                            <tr><th>Units</th><td>%</td></tr>
+                            <tr><th>Recommended AC</th><td>100%</td></tr>
+                            <tr><th>Recommended DC</th><td>5%</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Maximum processor state</span>
+                        <span class="setting-id">processor-max-state</span>
+                    </div>
+                    <p class="setting-desc">Set the highest CPU speed allowed as a percentage of maximum frequency.</p>
+                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
+                            <tr><th>Setting GUID</th><td>bc5038f7-23e0-4960-96da-33abaf5935ec (PROCTHROTTLEMAX)</td></tr>
+                            <tr><th>Units</th><td>%</td></tr>
+                            <tr><th>Recommended AC</th><td>100%</td></tr>
+                            <tr><th>Recommended DC</th><td>100%</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">System cooling policy</span>
+                        <span class="setting-id">system-cooling-policy</span>
+                        <span class="setting-badge advanced">Advanced</span>
+                    </div>
+                    <p class="setting-desc">Choose whether to slow down the processor first (passive) or speed up fans first (active) when hot.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Passive, Active</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
+                            <tr><th>Setting GUID</th><td>94d3a615-a899-4ac5-ae2b-e4d8f634367f</td></tr>
+                            <tr><th>Recommended AC</th><td>1 (Active)</td></tr>
+                            <tr><th>Recommended DC</th><td>1 (Active)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Processor performance boost mode</span>
+                        <span class="setting-id">processor-performance-boost-mode</span>
+                        <span class="setting-badge advanced">Advanced</span>
+                    </div>
+                    <p class="setting-desc">Control how aggressively your CPU boosts above base frequency for demanding tasks.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Disabled, Enabled, Aggressive, Efficient Enabled, Efficient Aggressive, Aggressive At Guaranteed</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
+                            <tr><th>Setting GUID</th><td>be337238-0d82-4146-a960-4f3749d470c7 (PERFBOOSTMODE)</td></tr>
+                            <tr><th>Recommended AC</th><td>2 (Aggressive)</td></tr>
+                            <tr><th>Recommended DC</th><td>1 (Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">CPU Core Parking Minimum Cores</span>
+                        <span class="setting-id">processor-core-parking-min-cores</span>
+                        <span class="setting-badge advanced">Advanced</span>
+                    </div>
+                    <p class="setting-desc">Set the minimum percentage of CPU cores that must remain active and responsive.</p>
+                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
+                            <tr><th>Setting GUID</th><td>0cc5b647-c1df-4637-891a-dec35c318583 (CPMINCORES)</td></tr>
+                            <tr><th>Recommended AC</th><td>0%</td></tr>
+                            <tr><th>Recommended DC</th><td>0%</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">CPU Core Parking Maximum Cores</span>
+                        <span class="setting-id">processor-core-parking-max-cores</span>
+                        <span class="setting-badge advanced">Advanced</span>
+                    </div>
+                    <p class="setting-desc">Set the maximum percentage of CPU cores allowed to be active (100% for best performance).</p>
+                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
+                            <tr><th>Setting GUID</th><td>ea062031-0e34-4ff1-9b6d-eb1059334028 (CPMAXCORES)</td></tr>
+                            <tr><th>Recommended AC</th><td>100%</td></tr>
+                            <tr><th>Recommended DC</th><td>100%</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Processor Energy Performance Preference</span>
+                        <span class="setting-id">processor-energy-performance-preference</span>
+                        <span class="setting-badge advanced">Advanced</span>
+                    </div>
+                    <p class="setting-desc">Balance power efficiency and performance for modern CPUs with HWP (0 = max performance, 100 = max efficiency).</p>
+                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
+                            <tr><th>Setting GUID</th><td>36687f9e-e3a5-4dbf-b1dc-15eb381c6863 (PERFEPP)</td></tr>
+                            <tr><th>Units</th><td>%</td></tr>
+                            <tr><th>Recommended AC</th><td>0% (Max Performance)</td></tr>
+                            <tr><th>Recommended DC</th><td>50%</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Processor Performance Increase Policy</span>
+                        <span class="setting-id">processor-performance-increase-policy</span>
+                        <span class="setting-badge advanced">Advanced</span>
+                    </div>
+                    <p class="setting-desc">Control how quickly CPU ramps up speed when workload increases (for legacy non-HWP processors).</p>
+                    <p class="setting-desc"><strong>Options:</strong> Ideal, Single, Rocket</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
+                            <tr><th>Setting GUID</th><td>465e1f50-b610-473a-ab58-00d1077dc418 (PERFINCPOL)</td></tr>
+                            <tr><th>Recommended AC</th><td>2 (Rocket)</td></tr>
+                            <tr><th>Recommended DC</th><td>0 (Ideal)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Processor Performance Decrease Policy</span>
+                        <span class="setting-id">processor-performance-decrease-policy</span>
+                        <span class="setting-badge advanced">Advanced</span>
+                    </div>
+                    <p class="setting-desc">Control how quickly CPU reduces speed when workload decreases (for legacy non-HWP processors).</p>
+                    <p class="setting-desc"><strong>Options:</strong> Ideal, Single, Rocket</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
+                            <tr><th>Setting GUID</th><td>40fbefc7-2e9d-4d25-a185-0cfd8574bac6 (PERFDECPOL)</td></tr>
+                            <tr><th>Recommended AC</th><td>1 (Single)</td></tr>
+                            <tr><th>Recommended DC</th><td>2 (Rocket)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Processor Performance Increase Threshold</span>
+                        <span class="setting-id">processor-performance-increase-threshold</span>
+                        <span class="setting-badge advanced">Advanced</span>
+                    </div>
+                    <p class="setting-desc">Set CPU usage percentage that triggers speed increase (lower = more responsive, for legacy non-HWP CPUs).</p>
+                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
+                            <tr><th>Setting GUID</th><td>06cadf0e-64ed-448a-8927-ce7bf90eb35d (PERFINCTHRESHOLD)</td></tr>
+                            <tr><th>Units</th><td>%</td></tr>
+                            <tr><th>Recommended AC</th><td>10%</td></tr>
+                            <tr><th>Recommended DC</th><td>30%</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Processor Performance Decrease Threshold</span>
+                        <span class="setting-id">processor-performance-decrease-threshold</span>
+                        <span class="setting-badge advanced">Advanced</span>
+                    </div>
+                    <p class="setting-desc">Set CPU usage percentage that triggers speed reduction (lower = maintains performance longer, for legacy non-HWP CPUs).</p>
+                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
+                            <tr><th>Setting GUID</th><td>12a0ab44-fe28-4fa9-b3bd-4b64f44960a6 (PERFDECTHRESHOLD)</td></tr>
+                            <tr><th>Units</th><td>%</td></tr>
+                            <tr><th>Recommended AC</th><td>8%</td></tr>
+                            <tr><th>Recommended DC</th><td>20%</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Disable Power Throttling</span>
+                        <span class="setting-id">power-throttling</span>
+                    </div>
+                    <p class="setting-desc">Prevents Windows from throttling your CPU to save power, ensuring maximum performance for all applications.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling</code></td></tr>
+                            <tr><th>Value</th><td><code>PowerThrottlingOff</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled (Throttling disabled)</th><td>1</td></tr>
+                            <tr><th>Disabled (Throttling enabled)</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- Multimedia Settings Section -->
+                <h3>Multimedia Settings</h3>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">When Sharing Media</span>
+                        <span class="setting-id">multimedia-when-sharing-media</span>
+                    </div>
+                    <p class="setting-desc">Control whether your PC can sleep while streaming media to other devices on your network.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Allow the computer to sleep, Prevent idling to sleep, Allow the computer to enter Away Mode</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>9596fb26-9850-41fd-ac3e-f7c3c00afd4b</td></tr>
+                            <tr><th>Setting GUID</th><td>03680956-93bc-4294-bba6-4e0f09bb717f</td></tr>
+                            <tr><th>Recommended</th><td>1 (Prevent idling to sleep)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Video Playback Quality Bias</span>
+                        <span class="setting-id">multimedia-video-playback-quality-bias</span>
+                    </div>
+                    <p class="setting-desc">Prioritize smooth video playback over battery life when watching videos.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Video playback power-saving bias, Video playback performance bias</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>9596fb26-9850-41fd-ac3e-f7c3c00afd4b</td></tr>
+                            <tr><th>Setting GUID</th><td>10778347-1370-4ee0-8bbd-33bdacaade49</td></tr>
+                            <tr><th>Recommended</th><td>1 (Video playback performance bias)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">When Playing Video</span>
+                        <span class="setting-id">multimedia-when-playing-video</span>
+                    </div>
+                    <p class="setting-desc">Balance video quality and power consumption during video playback.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Optimize video quality, Balanced, Optimize power savings</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>9596fb26-9850-41fd-ac3e-f7c3c00afd4b</td></tr>
+                            <tr><th>Setting GUID</th><td>34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4</td></tr>
+                            <tr><th>Recommended</th><td>0 (Optimize video quality)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- Battery Section -->
+                <h3>Battery</h3>
+                <p><em>These settings only appear on laptops and devices with batteries.</em></p>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Critical battery notification</span>
+                        <span class="setting-id">critical-battery-notification</span>
+                        <span class="setting-badge laptops">Laptops Only</span>
+                    </div>
+                    <p class="setting-desc">Show notification when battery reaches critically low level.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Off, On</p>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Critical battery action</span>
+                        <span class="setting-id">critical-battery-action</span>
+                        <span class="setting-badge laptops">Laptops Only</span>
+                    </div>
+                    <p class="setting-desc">Choose what happens when battery reaches critically low level.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Do nothing, Sleep, Hibernate, Shut down</p>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Low battery level</span>
+                        <span class="setting-id">low-battery-level</span>
+                        <span class="setting-badge laptops">Laptops Only</span>
+                    </div>
+                    <p class="setting-desc">Set the battery percentage that triggers low battery warnings and actions.</p>
+                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Critical battery level</span>
+                        <span class="setting-id">critical-battery-level</span>
+                        <span class="setting-badge laptops">Laptops Only</span>
+                    </div>
+                    <p class="setting-desc">Set the battery percentage that triggers critical battery warnings and emergency actions.</p>
+                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Low battery notification</span>
+                        <span class="setting-id">low-battery-notification</span>
+                        <span class="setting-badge laptops">Laptops Only</span>
+                    </div>
+                    <p class="setting-desc">Show notification when battery reaches low battery level.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Off, On</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>e73a048d-bf27-4f12-9731-8b2076e8891f (SUB_BATTERY)</td></tr>
+                            <tr><th>Setting GUID</th><td>bcded951-187b-4d05-bccc-f7e51960c258 (BATFLAGSLOW)</td></tr>
+                            <tr><th>Recommended</th><td>1 (On)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Low battery action</span>
+                        <span class="setting-id">low-battery-action</span>
+                        <span class="setting-badge laptops">Laptops Only</span>
+                    </div>
+                    <p class="setting-desc">Choose what happens when battery reaches low battery level.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Do nothing, Sleep, Hibernate, Shut down</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>e73a048d-bf27-4f12-9731-8b2076e8891f (SUB_BATTERY)</td></tr>
+                            <tr><th>Setting GUID</th><td>d8742dcb-3e6a-4b3c-b3fe-374623cdcf06 (BATACTIONLOW)</td></tr>
+                            <tr><th>Recommended</th><td>0 (Do nothing)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Reserve battery level</span>
+                        <span class="setting-id">reserve-battery-level</span>
+                        <span class="setting-badge laptops">Laptops Only</span>
+                    </div>
+                    <p class="setting-desc">Set battery percentage reserved to protect battery health and prevent unexpected shutdowns.</p>
+                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
+                    <details class="registry-details">
+                        <summary>PowerCfg Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Subgroup GUID</th><td>e73a048d-bf27-4f12-9731-8b2076e8891f (SUB_BATTERY)</td></tr>
+                            <tr><th>Setting GUID</th><td>f3c5027d-cd16-4930-aa6b-90db844a8f00</td></tr>
+                            <tr><th>Units</th><td>%</td></tr>
+                            <tr><th>Recommended</th><td>7%</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- Start Menu Power Options Section -->
+                <h3>Start Menu Power Options</h3>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show Lock Option</span>
+                        <span class="setting-id">start-power-lock-option</span>
+                    </div>
+                    <p class="setting-desc">Display the Lock option in the Start Menu power button menu.</p>
+                    <p class="setting-desc"><em>Note: Requires the Lock Screen to be enabled.</em></p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings</code></td></tr>
+                            <tr><th>Value</th><td><code>ShowLockOption</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Show Sleep Option</span>
+                        <span class="setting-id">start-power-sleep-option</span>
+                    </div>
+                    <p class="setting-desc">Display the Sleep option in the Start Menu power button menu.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings</code></td></tr>
+                            <tr><th>Value</th><td><code>ShowSleepOption</code></td></tr>
+                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <!-- Graphics (AMD/ATI/Switchable) Section -->
+                <h3>Graphics Settings</h3>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">AMD Power Slider Overlay</span>
+                        <span class="setting-id">amd-power-slider-overlay</span>
+                    </div>
+                    <p class="setting-desc">Balance AMD laptop performance and battery life with quick power mode selection.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Better Battery, Better Performance, Best Performance</p>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">ATI PowerPlay Setting</span>
+                        <span class="setting-id">ati-powerplay-setting</span>
+                    </div>
+                    <p class="setting-desc">Control power management for older AMD Radeon graphics cards.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Maximum Battery Life, Balanced, Maximum Performance</p>
+                    <p class="setting-desc"><em>Note: Only visible on systems with legacy AMD/ATI graphics.</em></p>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">GPU Preference (Switchable Graphics)</span>
+                        <span class="setting-id">switchable-graphics-gpu-preference</span>
+                    </div>
+                    <p class="setting-desc">Choose between integrated GPU for battery life or dedicated GPU for performance in hybrid graphics laptops.</p>
+                    <p class="setting-desc"><strong>Options:</strong> Optimize Power Savings, Optimize Performance, Maximize Performance</p>
+                    <p class="setting-desc"><em>Note: Only visible on systems with hybrid graphics (Intel + NVIDIA/AMD).</em></p>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <button class="sidebar-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+
+    <script src="../../js/docs-theme.js"></script>
+    <script src="../../js/docs-navigation.js"></script>
+    <script src="../../js/docs-search.js"></script>
+    <script src="../../js/docs-config.js"></script>
+
+    <footer class="docs-footer">
+        <div class="docs-footer-container">
+            <div class="docs-footer-info">
+                &copy; 2026 Winhance. Released under the MIT License.
+            </div>
+            <div class="docs-footer-meta">
+                <div class="docs-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                    <span class="docs-version">Docs v1.0.0</span>
+                </div>
+                <div class="docs-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <span class="docs-last-updated">Last Updated: Jan 28, 2026</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
