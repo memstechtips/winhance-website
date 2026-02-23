@@ -49,9 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Quick Start',
             url: 'getting-started/quick-start.html',
             category: 'Getting Started',
-            sections: ['Launch', 'Navigation', 'Basic Usage', 'Apply Changes'],
-            keywords: ['start', 'begin', 'tutorial', 'guide', 'first', 'basic', 'navigation', 'interface', 'ui'],
-            content: 'Quick start guide for Winhance. Learn the basic interface navigation and how to apply your first optimizations.'
+            sections: ['Launch', 'Navigation', 'Basic Usage', 'Keyboard Shortcuts', 'Accessibility'],
+            keywords: ['start', 'begin', 'tutorial', 'guide', 'first', 'basic', 'navigation', 'interface', 'ui', 'keyboard shortcuts', 'accessibility', 'screen reader', 'narrator', 'technical details'],
+            content: 'Quick start guide for Winhance. Learn the basic interface navigation and how to apply your first optimizations. Keyboard shortcuts for fast navigation. Accessibility features including screen reader support.'
         },
         // Features - Main
         {
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'Optimizations',
             sections: ['Game Mode', 'Game Bar', 'Game DVR', 'Hardware Acceleration', 'GPU Scheduling', 'Variable Refresh Rate', 'Auto HDR', 'DirectX', 'Fullscreen Optimizations', 'Mouse Settings', 'Visual Effects', 'Animations', 'Transparency', 'Superfetch', 'Prefetch', 'HPET', 'Timer Resolution', 'Process Priority', 'CPU Affinity', 'Memory Management', 'Virtual Memory', 'Pagefile'],
             keywords: ['gaming', 'performance', 'fps', 'frames', 'frame rate', 'latency', 'input lag', 'game mode', 'game bar', 'game dvr', 'recording', 'capture', 'screenshot', 'nvidia', 'amd', 'radeon', 'geforce', 'gpu', 'graphics', 'hardware acceleration', 'gpu scheduling', 'hags', 'vrr', 'variable refresh rate', 'freesync', 'gsync', 'adaptive sync', 'hdr', 'auto hdr', 'directx', 'dx11', 'dx12', 'vulkan', 'opengl', 'fullscreen', 'optimizations', 'disable fullscreen optimizations', 'mouse', 'pointer', 'acceleration', 'enhance pointer precision', 'raw input', 'polling rate', 'dpi', 'sensitivity', 'visual effects', 'animations', 'transparency', 'blur', 'acrylic', 'mica', 'superfetch', 'sysmain', 'prefetch', 'hpet', 'timer', 'resolution', 'priority', 'affinity', 'cores', 'threads', 'memory', 'ram', 'virtual memory', 'pagefile', 'swap', 'stuttering', 'stutters', 'lag', 'smooth', 'optimization', 'tweaks', 'csgo', 'valorant', 'fortnite', 'apex', 'call of duty', 'warzone', 'pubg', 'overwatch', 'league of legends', 'dota', 'minecraft', 'roblox', 'gta', 'elden ring', 'cyberpunk'],
-            content: 'Gaming and performance optimizations. Game Mode, Game Bar, Game DVR settings. GPU scheduling, fullscreen optimizations, mouse acceleration, visual effects, animations. Memory and CPU tweaks for better FPS and lower latency.'
+            content: 'Gaming and performance optimizations. Game Mode, Game Bar, Game DVR settings. GPU scheduling, fullscreen optimizations, Auto HDR, mouse acceleration, visual effects, animations. Memory and CPU tweaks for better FPS and lower latency. Nagle\'s Algorithm network latency. Taskbar Transparency selection.'
         },
         {
             title: 'Windows Update',
@@ -166,8 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
             url: 'features/customizations/taskbar.html',
             category: 'Customizations',
             sections: ['Taskbar Position', 'Taskbar Size', 'Taskbar Icons', 'System Tray', 'Search Box', 'Task View', 'Widgets', 'Chat', 'Copilot', 'Hidden Icons', 'Taskbar Behavior', 'Auto-hide', 'Combine Buttons', 'Badges', 'News and Interests'],
-            keywords: ['taskbar', 'position', 'bottom', 'top', 'left', 'right', 'size', 'small', 'large', 'icons', 'system tray', 'notification area', 'search', 'search box', 'search icon', 'task view', 'virtual desktops', 'widgets', 'news', 'weather', 'chat', 'teams', 'copilot', 'ai', 'hidden icons', 'overflow', 'auto hide', 'autohide', 'combine', 'never combine', 'always combine', 'badges', 'unread', 'news and interests', 'cortana button', 'people', 'ink workspace', 'touch keyboard', 'show desktop'],
-            content: 'Taskbar customization. Position, size, icons. Hide search box, Task View, Widgets, Chat, Copilot. System tray settings, auto-hide, button combining.'
+            keywords: ['taskbar', 'position', 'bottom', 'top', 'left', 'right', 'size', 'small', 'large', 'icons', 'system tray', 'notification area', 'search', 'search box', 'search icon', 'task view', 'virtual desktops', 'widgets', 'news', 'weather', 'chat', 'teams', 'copilot', 'ai', 'hidden icons', 'overflow', 'auto hide', 'autohide', 'combine', 'never combine', 'always combine', 'badges', 'unread', 'news and interests', 'cortana button', 'people', 'ink workspace', 'touch keyboard', 'show desktop', 'transparent', 'transparency', 'opaque'],
+            content: 'Taskbar customization. Position, size, icons. Taskbar Transparency selection (transparent, opaque, default). Hide search box, Task View, Widgets, Chat, Copilot. System tray settings, auto-hide, button combining.'
         },
         {
             title: 'Start Menu',
@@ -190,9 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Configuration Files',
             url: 'guides/configuration-files.html',
             category: 'User Guides',
-            sections: ['Config File Format', 'Export Settings', 'Import Settings', 'Backup', 'Restore', 'JSON Format', 'Preset Files'],
-            keywords: ['config', 'configuration', 'settings', 'export', 'import', 'backup', 'restore', 'save', 'load', 'json', 'preset', 'profile', 'file', 'share', 'transfer'],
-            content: 'Configuration file management. Export and import settings. Backup and restore configurations. JSON format presets.'
+            sections: ['Config File Format', 'Export Settings', 'Import Settings', 'Backup', 'Restore', 'JSON Format', 'Preset Files', 'Config Review Mode', 'Backup Config', 'Restore Windows Defaults'],
+            keywords: ['config', 'configuration', 'settings', 'export', 'import', 'backup', 'restore', 'save', 'load', 'json', 'preset', 'profile', 'file', 'share', 'transfer', 'config review', 'backup config', 'restore defaults', 'skip review', 'pending changes'],
+            content: 'Configuration file management. Export and import settings. Backup and restore configurations. Config review mode with per-setting apply/skip. Backup config created on first launch. Restore Windows defaults from fresh install configs.'
         },
         {
             title: 'WIMUtil Guide',

@@ -444,16 +444,39 @@
                         <span class="setting-name">Variable Refresh Rate Optimizations</span>
                         <span class="setting-id">gaming-directx-vrr-optimizations</span>
                     </div>
-                    <p class="setting-desc">Enable VRR (G-Sync/FreeSync) optimizations for smoother gameplay on compatible monitors. Disable only if experiencing issues with VRR displays.</p>
+                    <p class="setting-desc">Enable VRR (G-Sync/FreeSync) optimizations for smoother gameplay. Requires a VRR-compatible monitor; this setting has no effect if your monitor does not support VRR.</p>
                     <details class="registry-details">
                         <summary>Registry Details</summary>
                         <table class="registry-table">
                             <tr><th>Path</th><td><code>HKCU\Software\Microsoft\DirectX\UserGpuPreferences</code></td></tr>
-                            <tr><th>Value</th><td><code>VRROptimizeEnable</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
+                            <tr><th>Value</th><td><code>DirectXUserGlobalSettings</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Composite Key</th><td><code>VRROptimizeEnable</code></td></tr>
                             <tr><th>Enabled</th><td>1</td></tr>
                             <tr><th>Disabled</th><td>0</td></tr>
                             <tr><th>Recommended</th><td>1</td></tr>
+                        </table>
+                    </details>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-name">Auto HDR</span>
+                        <span class="setting-id">gaming-directx-auto-hdr</span>
+                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
+                    </div>
+                    <p class="setting-desc">Automatically convert SDR content to HDR for enhanced colors and brightness. Requires an HDR-capable display with HDR enabled; this setting has no effect if your display does not support HDR.</p>
+                    <details class="registry-details">
+                        <summary>Registry Details</summary>
+                        <table class="registry-table">
+                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\DirectX\UserGpuPreferences</code></td></tr>
+                            <tr><th>Value</th><td><code>DirectXUserGlobalSettings</code></td></tr>
+                            <tr><th>Type</th><td>String</td></tr>
+                            <tr><th>Composite Key</th><td><code>AutoHDREnable</code></td></tr>
+                            <tr><th>Enabled</th><td>1</td></tr>
+                            <tr><th>Disabled</th><td>0</td></tr>
+                            <tr><th>Default</th><td>0</td></tr>
+                            <tr><th>Recommended</th><td>0</td></tr>
                         </table>
                     </details>
                 </div>
@@ -539,18 +562,19 @@
 
                 <div class="setting-card">
                     <div class="setting-header">
-                        <span class="setting-name">Enable Nagle's Algorithm</span>
+                        <span class="setting-name">Nagle's Algorithm</span>
                         <span class="setting-id">gaming-nagle-algorithm</span>
                     </div>
-                    <p class="setting-desc">Batch small network packets together before sending to improve efficiency. Disabling reduces latency for real-time online gaming but may slightly increase bandwidth usage.</p>
+                    <p class="setting-desc">Buffers small network packets before sending to reduce overhead. Turn off to lower latency in online games, or keep on for general-purpose network efficiency.</p>
+                    <p class="setting-desc"><em>Note: Applied per network interface.</em></p>
                     <details class="registry-details">
                         <summary>Registry Details</summary>
                         <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters</code></td></tr>
+                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces</code></td></tr>
                             <tr><th>Values</th><td><code>TcpAckFrequency</code>, <code>TCPNoDelay</code></td></tr>
                             <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Nagle Enabled</th><td>TcpAckFrequency=2, TCPNoDelay=0</td></tr>
-                            <tr><th>Nagle Disabled</th><td>TcpAckFrequency=1, TCPNoDelay=1</td></tr>
+                            <tr><th>Nagle Enabled (ON)</th><td>Keys deleted (Windows default)</td></tr>
+                            <tr><th>Nagle Disabled (OFF)</th><td>TcpAckFrequency=1, TCPNoDelay=1</td></tr>
                             <tr><th>Recommended</th><td>Disabled (for gaming)</td></tr>
                         </table>
                     </details>
@@ -2128,7 +2152,7 @@
     <footer class="docs-footer">
         <div class="docs-footer-container">
             <div class="docs-footer-info">
-                &copy; 2026 Winhance. Released under the MIT License.
+                &copy; 2026 Winhance.
             </div>
             <div class="docs-footer-meta">
                 <div class="docs-meta-item">

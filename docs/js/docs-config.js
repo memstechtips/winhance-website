@@ -3,9 +3,9 @@
  * Central place to define documentation settings
  */
 const DocsConfig = {
-    version: 'Docs v1.0.0',
-    lastUpdated: 'Jan 27, 2026',
-    winhanceVersion: 'v26.01.26', // Current Winhance app version from csproj
+    version: 'Docs v1.1.0',
+    lastUpdated: 'Feb 23, 2026',
+    winhanceVersion: 'v26.02.20', // Current Winhance app version from csproj
     githubReleasesUrl: 'https://github.com/memstechtips/Winhance/releases'
 };
 

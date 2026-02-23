@@ -121,7 +121,19 @@
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/1nsLKH5a5CQ" title="How to Reset Any Winhance Changes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
-                <p>If you want to undo changes made by Winhance, follow these steps. Note that Winhance creates a System Restore point on its first launch.</p>
+                <p>If you want to undo changes made by Winhance, there are two approaches:</p>
+
+                <h3>Option 1: Import the Backup Configuration</h3>
+                <p>On first launch, Winhance automatically creates a <strong>UserBackup</strong> configuration file that captures all Winhance-managed setting values as they were on your system before any changes. To revert:</p>
+                <ol>
+                    <li>Click the <strong>Import Config</strong> button (folder icon) in the top navigation bar.</li>
+                    <li>Select <strong>Import backup config</strong>.</li>
+                    <li>Review and apply the settings to restore your original values.</li>
+                </ol>
+                <p>This is the recommended approach for reverting Winhance optimization and customization settings, as it restores exactly the values your system had before Winhance made any changes.</p>
+
+                <h3>Option 2: System Restore Point</h3>
+                <p>Winhance also creates a System Restore point on its first launch, which can be used as a more comprehensive rollback:</p>
                 <ol>
                     <li><strong>Open System Restore:</strong> Search for "Create a restore point" in the Start Menu, then click the "System Restore" button.</li>
                     <li><strong>Select Restore Point:</strong> Choose the restore point named <code>Winhance initial restore point</code>.</li>
@@ -153,7 +165,7 @@
                 <ul>
                     <li><strong>Run as Administrator:</strong> Winhance requires administrative privileges to modify
                         system settings. Ensure you select "Yes" on the UAC prompt.</li>
-                    <li><strong>.NET Runtime:</strong> Ensure you have the <strong>.NET 9 Desktop Runtime</strong> installed. The Winhance Installer bundles this and will install it automatically during a standard installation.</li>
+                    <li><strong>.NET Runtime:</strong> Ensure you have the <strong>.NET 10 Desktop Runtime</strong> installed. The Winhance Installer bundles this and will install it automatically during a standard installation.</li>
                     <li><strong>Check Logs:</strong> View the startup log at:
                         <br><code>%ProgramData%\Winhance\Logs\WinhanceStartupLog.txt</code>
                     </li>
@@ -223,7 +235,7 @@
     <footer class="docs-footer">
         <div class="docs-footer-container">
             <div class="docs-footer-info">
-                &copy; 2026 Winhance. Released under the MIT License.
+                &copy; 2026 Winhance.
             </div>
             <div class="docs-footer-meta">
                 <div class="docs-meta-item">

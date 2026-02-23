@@ -155,14 +155,33 @@
                 <p>To apply a previously saved configuration:</p>
                 <ol>
                     <li>Click the <strong>Import Config</strong> button (folder icon) in the top navigation bar, or use the <strong>Import</strong> button in Settings.</li>
-                    <li>Choose one of the two options:
+                    <li>Choose one of the four options:
                         <ul>
                             <li><strong>Import my own config:</strong> Select a <code>.winhance</code> configuration file from your computer.</li>
-                            <li><strong>Import recommended config:</strong> Load Winhance's built-in recommended configuration.</li>
+                            <li><strong>Import recommended config:</strong> Load Winhance's built-in recommended settings.</li>
+                            <li><strong>Import backup config:</strong> Load the backup configuration that was automatically created on first launch, capturing your system's original state before any Winhance changes.</li>
+                            <li><strong>Restore Windows defaults:</strong> Apply pre-made configurations from fresh Windows installs (Win11 25H2 and Win10 22H2 available, auto-selected based on your OS).</li>
                         </ul>
                     </li>
-                    <li>A <strong>Unified Configuration Dialog</strong> will appear, allowing you to choose exactly which parts of the config to apply.</li>
                 </ol>
+
+                <h3>Config Review Mode</h3>
+                <p>After selecting a configuration to import, you can choose how to apply it:</p>
+                <ul>
+                    <li><strong>Skip Review</strong> checkbox (unchecked by default): When checked, the configuration is applied immediately without reviewing individual settings.</li>
+                    <li><strong>Config Review Mode</strong> (default): When Skip Review is unchecked, all sections enter review mode:
+                        <ul>
+                            <li>Each section shows a count of pending changes.</li>
+                            <li>Settings are displayed in a read-only (grayed out) state with <strong>Apply</strong> / <strong>Skip</strong> radio buttons per setting.</li>
+                            <li>Each section must be marked complete before the <strong>Apply Config</strong> button becomes available.</li>
+                            <li>Pending changes are counted dynamically in the navigation.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>During app removal confirmation, you can also choose whether to save removal scripts for later use.</p>
+
+                <h3>Backup Configuration</h3>
+                <p>On first launch, Winhance automatically creates a backup configuration that captures all available Winhance setting values as they are on your system before any changes are made. This backup can be imported at any time to revert all Winhance-managed settings back to their original values.</p>
 
                 <h3>Import Options Explained</h3>
                 <p>The import dialog gives you granular control over what gets applied:</p>
@@ -355,7 +374,7 @@
     <footer class="docs-footer">
         <div class="docs-footer-container">
             <div class="docs-footer-info">
-                &copy; 2026 Winhance. Released under the MIT License.
+                &copy; 2026 Winhance.
             </div>
             <div class="docs-footer-meta">
                 <div class="docs-meta-item">

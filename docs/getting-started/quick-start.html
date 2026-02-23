@@ -124,7 +124,7 @@
                     minutes, you'll have a cleaner, faster Windows experience.</p>
 
                 <h2>Step 1: Launch Winhance</h2>
-                <p>After installation, launch Winhance from your desktop or start menu. You'll be taken directly to the <strong>Software & Apps</strong> view, where you can manage Windows apps and install external software.</p>
+                <p>After installation, launch Winhance from your desktop or start menu. You'll be taken to the <strong>Software & Apps</strong> view, where you can manage Windows apps and install external software.</p>
 
                 <div class="callout callout-warning">
                     <div class="callout-title">🛡️ Safety Features & First Launch</div>
@@ -132,8 +132,9 @@
                     <ul>
                         <li><strong>System Restore Point:</strong> A restore point named <code>Winhance initial restore point</code> is created.</li>
                         <li><strong>Registry Backups:</strong> Full registry backups are created and stored at: <code><a href="file:///C:/ProgramData/Winhance/Backups" style="color: inherit;">C:\ProgramData\Winhance\Backups</a></code></li>
+                        <li><strong>Backup Configuration:</strong> A backup config is created capturing all Winhance-managed setting values as they currently are on your system, allowing you to revert changes later.</li>
                     </ul>
-                    <p>This ensures you have a safety net in case you need to revert any changes. Note that registry backups are only created once on first launch.</p>
+                    <p>This ensures you have a safety net in case you need to revert any changes. Note that these backups are only created once on first launch.</p>
                 </div>
 
                 <div class="callout callout-info">
@@ -156,9 +157,8 @@
                 <ol>
                     <li>Navigate to the <strong>Optimize</strong> section in the left menu.</li>
                     <li>Browse through each category: <strong>Privacy & Security</strong>, <strong>Power</strong>, <strong>Gaming & Performance</strong>, <strong>Updates</strong>, <strong>Notifications</strong>, and <strong>Sound</strong>.</li>
-                    <li>Hover over any setting to see a detailed description of what it does.</li>
-                    <li>Select only the settings you want to apply by clicking their toggles.</li>
-                    <li>Once you've made your selections, click <strong>Apply Selections</strong>.</li>
+                    <li>Use the <strong>Technical Details Toggle</strong> (the toggle button next to the search bar) to show or hide registry paths, current values, and recommended values for each setting.</li>
+                    <li>Toggle any setting to apply it - changes take effect immediately when toggled.</li>
                 </ol>
                 <p>You can also navigate to the <strong>Customize</strong> section to apply visual-based settings for your taskbar, start menu, explorer, and Windows theme.</p>
 
@@ -183,6 +183,23 @@
                     <p>Use the search bar at the top of the application to quickly find specific settings or Windows
                         apps you want to remove.</p>
                 </div>
+
+                <h2>Keyboard Shortcuts</h2>
+                <p>Winhance supports comprehensive keyboard shortcuts for fast navigation:</p>
+                <ul>
+                    <li><strong>Ctrl+1</strong> through <strong>Ctrl+5</strong>: Navigate between sections</li>
+                    <li><strong>Ctrl+6</strong>: Open More menu</li>
+                    <li><strong>Ctrl+Shift+1</strong> through <strong>Ctrl+Shift+6</strong>: Title bar buttons</li>
+                    <li><strong>Ctrl+D</strong>: Toggle Technical Details for focused setting</li>
+                    <li><strong>Tab</strong> / <strong>Shift+Tab</strong>: Move between settings</li>
+                </ul>
+
+                <h2>Accessibility</h2>
+                <p>Winhance is designed to be accessible to all users:</p>
+                <ul>
+                    <li><strong>Full keyboard navigation:</strong> Every control in the application can be reached and operated using the keyboard.</li>
+                    <li><strong>Screen reader support:</strong> Narrator and other screen readers are supported - all controls announce their name, state, and changes.</li>
+                </ul>
 
                 <h2>Step 5: Restart Your System</h2>
                 <p>While many changes take effect immediately, we recommend restarting your computer after a major
@@ -228,7 +245,7 @@
     <footer class="docs-footer">
         <div class="docs-footer-container">
             <div class="docs-footer-info">
-                &copy; 2026 Winhance. Released under the MIT License.
+                &copy; 2026 Winhance.
             </div>
             <div class="docs-footer-meta">
                 <div class="docs-meta-item">

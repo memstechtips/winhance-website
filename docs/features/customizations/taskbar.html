@@ -374,21 +374,21 @@
 
                 <div class="setting-card">
                     <div class="setting-header">
-                        <span class="setting-name">Make taskbar transparent</span>
+                        <span class="setting-name">Taskbar Transparency</span>
                         <span class="setting-id">taskbar-transparent</span>
                         <span class="setting-badge win10"><i class="mdi mdi-microsoft-windows"></i>Windows 10 Only</span>
                     </div>
-                    <p class="setting-desc">Controls the transparency of the taskbar.</p>
-                    <p class="setting-desc"><em>Note: Requires "Transparency effects" to be enabled in Windows Theme settings.</em></p>
+                    <p class="setting-desc">Controls the transparency level of the taskbar. Winhance automatically enables Transparency Effects when this setting is applied.</p>
+                    <p class="setting-desc"><em>Note: Requires "Transparency Effects" enabled in Windows Theme. Winhance auto-enables this. Restarts Explorer when applied.</em></p>
                     <details class="registry-details">
                         <summary>Registry Details</summary>
                         <table class="registry-table">
                             <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
                             <tr><th>Value</th><td><code>TaskbarAcrylicOpacity</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (Transparent)</th><td>0</td></tr>
-                            <tr><th>Disabled (Opaque)</th><td>1</td></tr>
-                            <tr><th>Default</th><td>Key absent</td></tr>
+                            <tr><th>Type</th><td>DWORD (Selection)</td></tr>
+                            <tr><th>Windows default</th><td>Key deleted</td></tr>
+                            <tr><th>Transparent</th><td>0</td></tr>
+                            <tr><th>Opaque</th><td>255</td></tr>
                         </table>
                     </details>
                 </div>
@@ -434,7 +434,7 @@
     <footer class="docs-footer">
         <div class="docs-footer-container">
             <div class="docs-footer-info">
-                &copy; 2026 Winhance. Released under the MIT License.
+                &copy; 2026 Winhance.
             </div>
             <div class="docs-footer-meta">
                 <div class="docs-meta-item">

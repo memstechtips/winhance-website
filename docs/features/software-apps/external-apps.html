@@ -131,9 +131,13 @@
                 </ul>
 
                 <div class="callout callout-info">
-                    <div class="callout-title">ℹ️ WinGet Requirements</div>
-                    <p>Winhance will automatically detect if WinGet is installed on your system. If it's missing or
-                        outdated, Winhance will offer to install or update it for you during the process.</p>
+                    <div class="callout-title">ℹ️ WinGet Integration</div>
+                    <p>Winhance bundles WinGet with the application to ensure it is always available. If a system-installed WinGet is found (installed via Microsoft Store), it is used for install and uninstall operations. The bundled copy is used as a fallback on systems without WinGet (e.g., LTSC editions).</p>
+                </div>
+
+                <div class="callout callout-info">
+                    <div class="callout-title">ℹ️ Chocolatey Fallback</div>
+                    <p>If a WinGet install or uninstall fails for certain apps, Winhance can fall back to Chocolatey. You will be prompted for consent before Chocolatey is used. Chocolatey is also used for installation status detection as a secondary source.</p>
                 </div>
 
                 <h2>Status Indicators</h2>
@@ -189,7 +193,7 @@
     <footer class="docs-footer">
         <div class="docs-footer-container">
             <div class="docs-footer-info">
-                &copy; 2026 Winhance. Released under the MIT License.
+                &copy; 2026 Winhance.
             </div>
             <div class="docs-footer-meta">
                 <div class="docs-meta-item">
