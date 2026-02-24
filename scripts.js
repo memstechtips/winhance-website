@@ -330,7 +330,7 @@ function setupMediaTestimonialsSlider() {
 
     // Create a CSS animation directly on the element
     // This avoids the security error when trying to access CSS rules
-    const animationDuration = cards.length * 8; // 8 seconds per card for slower scroll
+    const animationDuration = cards.length * 5;
 
     // Apply the animation directly to the track element
     track.style.animation = `none`; // Reset animation first
