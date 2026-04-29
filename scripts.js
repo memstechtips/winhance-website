@@ -171,7 +171,9 @@ function fetchGitHubData() {
             // Update download count in hero info line
             const downloadCountElement = document.querySelector('.download-count');
             if (downloadCountElement && totalDownloads > 0) {
-                const formattedDownloads = totalDownloads >= 1000
+                const formattedDownloads = totalDownloads >= 1000000
+                    ? (totalDownloads / 1000000).toFixed(1) + 'M+'
+                    : totalDownloads >= 1000
                     ? (totalDownloads / 1000).toFixed(1) + 'k+'
                     : totalDownloads.toLocaleString();
                 downloadCountElement.textContent = formattedDownloads;
