@@ -59,6 +59,8 @@ jobs:
           stars     = int(os.environ['STARS'])
 
           def fmt_k(n):
+              if n >= 1_000_000:
+                  return f"{n/1_000_000:.1f}M+"
               return f"{n/1000:.1f}k+" if n >= 1000 else str(n)
 
           dl_str   = fmt_k(downloads)
