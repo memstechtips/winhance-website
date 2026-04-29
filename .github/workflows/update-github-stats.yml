@@ -1,0 +1,103 @@
+name: Update GitHub Stats
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch GitHub data
+        id: data
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -eo pipefail
+
+          RELEASE=$(curl -sf -H "Authorization: Bearer $GH_TOKEN" \
+            "https://api.github.com/repos/memstechtips/Winhance/releases/latest")
+          VERSION=$(echo "$RELEASE" | jq -r '.tag_name')
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+          TOTAL=0
+          PAGE=1
+          while true; do
+            [ $PAGE -gt 50 ] && break
+            RELEASES=$(curl -sf -H "Authorization: Bearer $GH_TOKEN" \
+              "https://api.github.com/repos/memstechtips/Winhance/releases?per_page=100&page=$PAGE")
+            COUNT=$(echo "$RELEASES" | jq 'length')
+            [ "$COUNT" -eq 0 ] && break
+            PAGE_DL=$(echo "$RELEASES" | jq '[.[].assets[].download_count] | add // 0')
+            TOTAL=$((TOTAL + PAGE_DL))
+            PAGE=$((PAGE + 1))
+          done
+          echo "downloads=$TOTAL" >> "$GITHUB_OUTPUT"
+
+          STARS=$(curl -sf -H "Authorization: Bearer $GH_TOKEN" \
+            "https://api.github.com/repos/memstechtips/Winhance" \
+            | jq -r '.stargazers_count')
+          echo "stars=$STARS" >> "$GITHUB_OUTPUT"
+
+      - name: Update index.html
+        env:
+          VERSION: ${{ steps.data.outputs.version }}
+          DOWNLOADS: ${{ steps.data.outputs.downloads }}
+          STARS: ${{ steps.data.outputs.stars }}
+        run: |
+          python3 - <<'PYEOF'
+          import re, os
+
+          version   = os.environ['VERSION']
+          downloads = int(os.environ['DOWNLOADS'])
+          stars     = int(os.environ['STARS'])
+
+          def fmt_k(n):
+              return f"{n/1000:.1f}k+" if n >= 1000 else str(n)
+
+          dl_str   = fmt_k(downloads)
+          star_str = fmt_k(stars)
+
+          with open('index.html') as f:
+              html = f.read()
+
+          html = re.sub(
+              r'(<strong class="version-number">)[^<]*(</strong>)',
+              lambda m: f'{m.group(1)}{version}{m.group(2)}', html
+          )
+          html = re.sub(
+              r'(<strong class="download-count">)[^<]*(</strong>)',
+              lambda m: f'{m.group(1)}{dl_str}{m.group(2)}', html
+          )
+          html = re.sub(
+              r'(<p class="footer-version">Version )[^<]*(</p>)',
+              lambda m: f'{m.group(1)}{version}{m.group(2)}', html
+          )
+          html = re.sub(
+              r'(<span class="text">)[^<]+( GitHub Stars</span>)',
+              lambda m: f'{m.group(1)}{star_str}{m.group(2)}', html
+          )
+
+          with open('index.html', 'w') as f:
+              f.write(html)
+
+          print(f"Updated: version={version}, downloads={dl_str}, stars={star_str}")
+          PYEOF
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "Memory's Agent"
+          git config user.email "agent@memstechtips.com"
+          git add index.html
+          if git diff --staged --quiet; then
+            echo "Stats are already up to date."
+          else
+            git commit -m "chore: update stats to ${{ steps.data.outputs.version }}"
+            git push
+          fi
