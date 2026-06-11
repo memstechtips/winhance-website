@@ -382,3 +382,98 @@ window.addEventListener('load', () => {
 window.addEventListener('scroll', () => {
     checkIfInView();
 });
+
+/* ===== Sponsors showcase =====
+   Renders the silver-and-up business sponsors (top 5, emerald first) on the
+   download page, using the SAME card markup as the store wall (app.js on
+   store.memstechtips.com is the reference). Data comes from the Winhance
+   repo's `sponsors` branch; names/cities render as TEXT, never HTML. */
+(function () {
+    var wall = document.getElementById('sponsorsGrid');
+    if (!wall || !window.fetch) return;
+
+    var RAW_BASE = 'https://raw.githubusercontent.com/memstechtips/Winhance/sponsors/sponsors/';
+    var TIER_RANK = { emerald: 0, gold: 1, silver: 2 }; // bronze is store-wall-only
+
+    fetch(RAW_BASE + 'sponsors.json', { cache: 'no-cache' })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function (data) {
+            var sponsors = (data && Array.isArray(data.sponsors) ? data.sponsors : [])
+                .filter(function (s) {
+                    return s && TIER_RANK[s.tier] !== undefined && !s.until;
+                })
+                .sort(function (a, b) { return TIER_RANK[a.tier] - TIER_RANK[b.tier]; })
+                .slice(0, 5);
+            if (!sponsors.length) return;
+
+            sponsors.forEach(function (s) {
+                var el = document.createElement('div');
+                el.className = 'scard' + (s.example ? ' scard-example' : '') + ' scard-' + s.tier;
+
+                if (s.example) {
+                    var b = document.createElement('span');
+                    b.className = 'scard-badge';
+                    b.textContent = 'Example — this could be you';
+                    el.appendChild(b);
+                }
+
+                var t = document.createElement('div');
+                t.className = 'scard-tier';
+                t.textContent = s.tier;
+                el.appendChild(t);
+
+                if (s.logo) {
+                    var img = document.createElement('img');
+                    img.className = 'scard-img';
+                    img.src = RAW_BASE + s.logo;
+                    img.alt = '';
+                    img.loading = 'lazy';
+                    el.appendChild(img);
+                } else {
+                    var lg = document.createElement('div');
+                    lg.className = 'scard-logo';
+                    lg.textContent = String(s.name || '?').charAt(0).toUpperCase();
+                    el.appendChild(lg);
+                }
+
+                var nm = document.createElement('div');
+                nm.className = 'scard-name';
+                nm.textContent = String(s.name || '').slice(0, 60);
+                el.appendChild(nm);
+
+                if (s.city) {
+                    var c = document.createElement('div');
+                    c.className = 'scard-meta';
+                    c.textContent = String(s.city).slice(0, 60);
+                    el.appendChild(c);
+                }
+
+                if (s.contact) {
+                    var ct = document.createElement('div');
+                    ct.className = 'scard-meta';
+                    ct.textContent = String(s.contact).slice(0, 60);
+                    el.appendChild(ct);
+                }
+
+                // Clickable website link is a gold-and-up perk.
+                if (s.url && (s.tier === 'gold' || s.tier === 'emerald')) {
+                    try {
+                        var u = new URL(s.url);
+                        if (u.protocol === 'https:' || u.protocol === 'http:') {
+                            var a = document.createElement('a');
+                            a.className = 'scard-url';
+                            a.href = u.href;
+                            a.target = '_blank';
+                            a.rel = 'noopener nofollow';
+                            a.textContent = u.hostname.replace(/^www\./, '');
+                            el.appendChild(a);
+                        }
+                    } catch (e) { /* bad URL in data — skip the link */ }
+                }
+
+                wall.appendChild(el);
+            });
+            wall.hidden = false;
+        })
+        .catch(function () { /* heading + CTAs stay, no cards */ });
+})();
