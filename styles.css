@@ -1791,3 +1791,155 @@ footer {
     color: var(--accent-color);
     font-weight: 600;
 }
+/* ===== Sponsors showcase (download page) =====
+   Cards are styled IDENTICALLY to the store wall (store.memstechtips.com/winhance/)
+   — same class names, same values (store theme style.css is the reference).
+   Data: the Winhance repo's `sponsors` branch. Silver-and-up, top 5, one row. */
+:root {
+    --tier-bronze: #CD7F32;
+    --tier-silver: #AEB6C2;
+    --tier-gold: #FFD700;
+    --tier-emerald: #50C878;
+    --sc-panel: #18181B;
+    --sc-line-2: rgba(255, 255, 255, .13);
+    --sc-faint: rgba(255, 255, 255, .40);
+    --sc-display: 'Archivo', system-ui, sans-serif;
+}
+
+.sponsors-showcase {
+    background-color: var(--dark-bg);
+    padding: var(--section-padding);
+}
+
+.sponsors-sub {
+    color: rgba(255, 255, 255, 0.65);
+    margin-top: 12px;
+}
+
+/* one row, max 5 cards, centered; wraps only on small screens */
+.wall-wnet {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 18px;
+    margin: 36px auto 8px;
+    max-width: 1240px;
+}
+
+.wall-wnet .scard { flex: 0 1 228px; min-width: 0; }
+
+@media (max-width: 960px) {
+    .wall-wnet { flex-wrap: wrap; }
+    .wall-wnet .scard { flex: 0 1 228px; }
+}
+
+/* === store wall card, verbatim values === */
+.scard {
+    position: relative;
+    width: 228px;
+    background: var(--sc-panel);
+    border: 1px solid var(--sc-line-2);
+    border-radius: 15px;
+    padding: 26px 20px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.scard-example { border-style: dashed; border-color: rgba(255, 215, 0, .35); }
+
+.scard-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: .6rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #161300;
+    background: linear-gradient(140deg, #FFE34D, #E6C200);
+    padding: 4px 11px;
+    border-radius: 999px;
+}
+
+.scard-logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid var(--sc-line-2);
+    font-family: var(--sc-display);
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: var(--accent-color);
+}
+
+.scard-name { font-family: var(--sc-display); font-weight: 800; font-size: 1.05rem; color: var(--light-text); }
+.scard-meta { color: var(--sc-faint); font-size: .8rem; line-height: 1.5; }
+
+.scard-url {
+    color: var(--accent-color);
+    font-size: .84rem;
+    font-weight: 600;
+    margin-top: 5px;
+    word-break: break-all;
+    text-decoration: none;
+}
+.scard-url:hover { text-decoration: underline; }
+
+.scard-img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    margin-bottom: 8px;
+    border-radius: 13px;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid var(--sc-line-2);
+    padding: 10px;
+}
+
+.scard-tier {
+    font-size: .58rem;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+.scard-bronze { border-color: rgba(205, 127, 50, .55); }
+.scard-bronze .scard-tier { color: var(--tier-bronze); }
+.scard-silver { border-color: rgba(174, 182, 194, .55); }
+.scard-silver .scard-tier { color: var(--tier-silver); }
+.scard-gold { border-color: rgba(255, 215, 0, .5); }
+.scard-gold .scard-tier { color: var(--tier-gold); }
+.scard-emerald { border-color: rgba(80, 200, 120, .6); box-shadow: 0 0 22px rgba(80, 200, 120, .09); }
+.scard-emerald .scard-tier { color: var(--tier-emerald); }
+
+.scard-bronze .scard-badge { background: linear-gradient(140deg, #E2975B, #B86F28); color: #1A0F03; }
+.scard-silver .scard-badge { background: linear-gradient(140deg, #CDD5E0, #96A0AE); color: #14171C; }
+.scard-emerald .scard-badge { background: linear-gradient(140deg, #72E2A0, #39A861); color: #06180C; }
+
+.sponsors-actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+}
+
+.sponsors-note {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.8rem;
+    margin-top: 18px;
+}
+
+.btn-support-store { border-color: var(--accent-color); }
