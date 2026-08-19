@@ -23,6 +23,26 @@ const DATA_CELL_FIXED_WIDTH = 12 * 2;
 // own label measures.
 const ROLE_CELL_FIXED_WIDTH = DATA_CELL_FIXED_WIDTH + 12 + 4 + 2 + 7 + 9;
 
+// Metrics chip: TechDetail.Chip's own chrome -- 8px left/right padding *2 + 1px border *2 = 18px --
+// on top of the same 24px cell padding every header-band cell shares (mx-setting uses HeaderBand's
+// padding, same 12,4 -> 24px horizontal as Table.Cell's own 12,0, so DATA_CELL_FIXED_WIDTH covers
+// both).
+const CHIP_CHROME = 8 * 2 + 1 * 2;
+
+// var(--mx-char-w) mirrored as a plain number (fix round 1) plus var(--mx-char-w-sm) (fix round 2):
+// two build-time numbers used ONLY to size the deficit passes below (a group's own path text, the
+// mechanism cell's own requirement chips) against the base per-column widths already computed --
+// the actual rendered pixels still come from the CSS vars themselves, these are never emitted as
+// literals. Keep both numbers equal to docs-main.css's `--mx-char-w`/`--mx-char-w-sm` -- the
+// `mirrors the CSS char-width tokens` test in theme-css.test.mjs fails loudly on drift.
+export const CHAR_W = 7.5;
+// TechDetail.Table.GroupPath/HeaderType are Consolas at 11px (not the 12px OptionLabel/HeaderText
+// face var(--mx-char-w) was measured for) -- measured directly in a real render rather than derived
+// by ratio, because font hinting doesn't scale linearly with size. Reused (safely -- it is WIDER,
+// per char, than the ~4.4-4.6px/char a real requirement chip's 10px proportional text measured at)
+// for chip text too, rather than adding a third token for one smaller, rarer case.
+export const CHAR_W_SM = 6.6;
+
 // Only the setting's name inside a chip is a link (the builder marks it with linkText); the prose around
 // it is not. Shared by column chips, requirement chips (mechanism cell) and (Controller ruling 1) the
 // matrix's own requirement chips, which are the ones that actually carry a linkSettingId/linkText in the
@@ -273,14 +293,59 @@ function dataColumnWidth(matrix, index, column) {
   return { fixed: DATA_CELL_FIXED_WIDTH, chars: lengths.reduce((max, n) => Math.max(max, n), 0) };
 }
 
+function pxOf(w) {
+  return w.fixed + w.chars * CHAR_W;
+}
+
+// fix round 2, finding A (severe): a group's own PathRow band was never charged against the columns
+// it spans -- table-layout: fixed made dataColumnWidth's base width authoritative, so a long path
+// that used to just grow its column under table-layout: auto now overflowed it instead and visibly
+// collided with the next column. .mx-path is nowrap (a script/registry path reads worse reflowed),
+// so unlike .mx-group-desc it can never just wrap to absorb a narrow cell -- it has to be charged.
+// Widens dataWidths IN PLACE, evenly across the group's own columns, before renderMatrix sums them.
+function widenForPaths(matrix, dataWidths) {
+  for (const g of matrix.groups) {
+    if (!g.hasPaths) continue;
+    const neededChars = g.paths.reduce((max, p) => Math.max(max, lineLength(p.hasLabel ? p.label : '', p.display)), 0);
+    const neededPx = DATA_CELL_FIXED_WIDTH + neededChars * CHAR_W_SM;
+    const span = dataWidths.slice(g.startColumn, g.startColumn + g.columnSpan);
+    if (!span.length) continue;
+    const deficit = neededPx - span.reduce((sum, w) => sum + pxOf(w), 0);
+    if (deficit <= 0) continue;
+    const perColumn = deficit / span.length;
+    for (const w of span) w.fixed += perColumn;
+  }
+}
+
+// fix round 2, finding B: the mechanism cell's own requirement chips (.mx-setting-chips) were never
+// charged against option+role either, for the same table-layout: fixed reason -- a long unbreakable
+// chip (.mx-chip is nowrap; a badge that reflows mid-word reads as broken, not as a badge) overflowed
+// into the paths row beside it. Widens only the role column, never the option column: the option
+// column's width IS the sticky offset (Controller ruling 1) and .mx-h-role/.mx-role's `left` reads
+// var(--mx-option-w) directly, so growing it here would reopen the fix round 1 sticky-column bug.
+// Plain data-column chips (.mx-col .mx-chips) are deliberately NOT charged -- confirmed live that
+// those only ever spill into blank space at the end of their own row, never into another cell.
+function widenForChips(matrix, optionW, roleW) {
+  if (!matrix.requirements.length) return roleW;
+  const longestChars = matrix.requirements.reduce((max, c) => Math.max(max, c.text.length), 0);
+  const neededPx = DATA_CELL_FIXED_WIDTH + CHIP_CHROME + longestChars * CHAR_W_SM;
+  const deficit = neededPx - (pxOf(optionW) + pxOf(roleW));
+  return deficit > 0 ? { fixed: roleW.fixed + deficit, chars: roleW.chars } : roleW;
+}
+
 export function renderMatrix(matrix, { heading = '', urlFor = () => null, geometries = {} } = {}) {
   if (!matrix) {
     return `<p class="mx-empty">The options are the power plans installed on this PC, so there is no fixed table; Winhance lists them live.</p>`;
   }
   const head = heading ? `<h4 class="mx-build">${esc(heading)}</h4>\n` : '';
   const optionW = optionColumnWidth(matrix);
-  const roleW = roleColumnWidth(matrix);
+  let roleW = roleColumnWidth(matrix);
   const dataWidths = matrix.columns.map((c, i) => dataColumnWidth(matrix, i, c));
+  // Fix round 2: the base per-column widths above are a floor, not the final word -- a group's own
+  // path text and the mechanism cell's own requirement chips can each demand more than that floor,
+  // and table-layout: fixed (finding 2) means nothing grows to meet them on its own anymore.
+  widenForPaths(matrix, dataWidths);
+  roleW = widenForChips(matrix, optionW, roleW);
   // table-layout: fixed (finding 2) makes every <col>'s width authoritative, but ONLY when the table's
   // own width is a definite value the browser doesn't need to redistribute -- an explicit width equal
   // to the exact sum of the columns leaves nothing left over to redistribute, unlike `width: 100%` on a

@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { renderMatrix, renderCard, cardBadges } from '../lib/render-card.mjs';
+import { renderMatrix, renderCard, cardBadges, CHAR_W, CHAR_W_SM } from '../lib/render-card.mjs';
 import { geometries } from '../lib/theme-css.mjs';
 import { esc } from '../lib/html.mjs';
 
@@ -241,4 +241,87 @@ test('chips whose linkSettingId resolves become links on the setting name only',
   const html = renderMatrix(linked.matrix, { urlFor: (id) => `#${id}`, geometries: geo });
   const chip = linked.matrix.columns.flatMap((c) => c.chips).find((ch) => ch.linkSettingId && byId[ch.linkSettingId]);
   assert.match(html, new RegExp(`<a href="#${chip.linkSettingId}" class="mx-chip-link">${chip.linkText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</a>`));
+});
+
+// --- fix round 2: charge a group's paths and the mechanism cell's requirement chips ---
+// (both are `white-space: nowrap`, so unlike wrapping prose they can't absorb a narrow cell on their
+// own -- table-layout: fixed (fix round 1) made the base per-column width authoritative, so anything
+// nowrap that isn't charged against a column just overflows it instead of growing it the way
+// table-layout: auto used to.)
+
+function dataColWidths(html) {
+  return [...html.matchAll(/<col style="width: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)">/g)]
+    .map(([, fixed, chars]) => Number(fixed) + Number(chars) * CHAR_W);
+}
+
+test('a narrow-column group with a long path widens exactly enough to fit it, each group independent of its siblings (finding A)', () => {
+  const m = byId['gaming-xbox-game-dvr'].matrix;
+  assert.equal(m.groups.length, 3, 'fixture must carry three single-column registry groups');
+  assert.ok(m.groups.every((g) => g.columnSpan === 1), 'this case only proves per-group isolation if every group is its own column');
+  const html = renderMatrix(m, { geometries: geo });
+  const colWidths = dataColWidths(html);
+  assert.equal(colWidths.length, 3);
+  m.groups.forEach((g, i) => {
+    const path = g.paths[0];
+    const needed = 24 + (path.label.length + 1 + path.display.length) * CHAR_W_SM;
+    assert.ok(colWidths[i] >= needed - 0.01, `column ${i} is ${colWidths[i]}px, needs >= ${needed}px for "${path.display}"`);
+  });
+  // The three paths are different lengths (27/54/48 chars) -- if widenForPaths pooled the deficit
+  // across the whole matrix instead of per group, the three columns would come out equal instead of
+  // tracking their own group's path.
+  assert.notEqual(colWidths[0], colWidths[1]);
+  assert.notEqual(colWidths[1], colWidths[2]);
+});
+
+test('a group whose path already fits comfortably across its wide span is left at the base width (no spurious widening)', () => {
+  // theme-mode-windows' one registry group spans BOTH data columns -- two columns' worth of base
+  // width comfortably covers its one path, so widenForPaths must find zero deficit and leave
+  // dataColumnWidth's own fixed part (24px, unwidened) on both columns.
+  const m = byId['theme-mode-windows'].matrix;
+  const html = renderMatrix(m, { geometries: geo });
+  const g = m.groups.find((g) => g.hasPaths);
+  assert.equal(g.columnSpan, 2, 'this case only proves the no-op path if the group spans more than one column');
+  const path = g.paths[0];
+  const neededPx = 24 + (path.label.length + 1 + path.display.length) * CHAR_W_SM;
+  const colWidths = dataColWidths(html);
+  const spanned = colWidths.slice(g.startColumn, g.startColumn + g.columnSpan);
+  assert.ok(neededPx < spanned.reduce((s, w) => s + w, 0), 'fixture path must genuinely fit already, or this test proves nothing');
+  assert.match(html, /<col style="width: calc\(24px \+ \d+ \* var\(--mx-char-w\)\)">/g, 'both data columns must still carry the bare base fixed width (24px), unwidened');
+  assert.equal((html.match(/<col style="width: calc\(24px \+ \d+ \* var\(--mx-char-w\)\)">/g) ?? []).length, 2);
+});
+
+test("a long requirement chip widens the role column only -- the option column's sticky width never moves (finding B)", () => {
+  const m = byId['gaming-memory-integrity'].matrix;
+  const longestChip = m.requirements.reduce((max, c) => (c.text.length > max.length ? c.text : max), '');
+  assert.ok(longestChip.length > 40, 'fixture must carry a genuinely long requirement chip');
+  const html = renderMatrix(m, { geometries: geo });
+  // --mx-option-w is untouched: still exactly optionColumnWidth's own formula (45px fixed + longest
+  // option label's chars), never widened by widenForChips.
+  const longestOption = Math.max(...m.options.map((o) => o.label.length));
+  assert.match(html, new RegExp(`--mx-option-w: calc\\(45px \\+ ${longestOption} \\* var\\(--mx-char-w\\)\\);`));
+  // The role column (2nd <col>) is wider than its own base formula (58px fixed) -- it absorbed the deficit.
+  const roleMatch = html.match(/<col class="mx-col-role" style="width: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)">/);
+  assert.ok(roleMatch, 'role column must carry an explicit width');
+  const roleFixed = Number(roleMatch[1]);
+  assert.ok(roleFixed > 58, `role column's fixed part (${roleFixed}px) must exceed the unwidened 58px base`);
+  // And it's wide enough for the chip: 24px mx-setting padding + 18px chip chrome + the chip's own
+  // text at the 11px rate, minus whatever the option+role base already covered.
+  const neededPx = 24 + 18 + longestChip.length * CHAR_W_SM;
+  const optionPx = 45 + longestOption * CHAR_W;
+  const roleChars = Number(roleMatch[2]);
+  const rolePx = roleFixed + roleChars * CHAR_W;
+  assert.ok(optionPx + rolePx >= neededPx - 0.01, `option+role (${optionPx + rolePx}px) must cover the chip's ${neededPx}px`);
+});
+
+test('a matrix with no requirement chips leaves the role column at its base width (no spurious widening)', () => {
+  const m = byId['sound-communication-ducking'].matrix;
+  assert.equal(m.requirements.length, 0);
+  const html = renderMatrix(m, { geometries: geo });
+  const labels = ['Role'];
+  for (const o of m.options) {
+    if (o.isRecommended) labels.push(o.recommendedContext ? `${m.recommendedLabel} (${o.recommendedContext})` : m.recommendedLabel);
+    if (o.isWindowsDefault) labels.push(o.defaultContext ? `${m.defaultLabel} (${o.defaultContext})` : m.defaultLabel);
+  }
+  const longest = Math.max(...labels.map((l) => l.length));
+  assert.match(html, new RegExp(`<col class="mx-col-role" style="width: calc\\(58px \\+ ${longest} \\* var\\(--mx-char-w\\)\\)">`));
 });

@@ -1089,6 +1089,15 @@ html {
    if the font stack below ever changes. */
 :root {
     --mx-char-w: 7.5px;
+    /* fix round 2: .mx-path and .mx-type render Consolas at 11px (TechDetail.Table.GroupPath/
+       HeaderType), not the 12px OptionLabel/HeaderText face --mx-char-w was measured for -- font
+       hinting doesn't scale linearly with size, so this is measured directly, not derived by ratio.
+       Also used (safely wide) for requirement-chip text, a smaller 10px proportional face that
+       measured narrower still -- one token covering "the smaller stuff" beats a third token for the
+       rarer case. render-card.mjs's CHAR_W_SM mirrors this value for its own build-time deficit
+       math (widenForPaths/widenForChips); keep the two in sync -- a consistency test in
+       theme-css.test.mjs checks it every run. */
+    --mx-char-w-sm: 6.6px;
 }
 
 .mx-grid {
