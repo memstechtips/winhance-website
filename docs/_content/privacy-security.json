@@ -1,0 +1,22 @@
+{
+  "intro": [
+    "<p>Windows 10 and 11 come with numerous telemetry and data collection features enabled by default. Winhance gives you back control over your data and improves your system's security posture.</p>"
+  ],
+  "groups": {
+    "Security": "Core Windows security settings including User Account Control, remote access, and system maintenance.",
+    "Content Delivery & Advertising": "Control promotional content, suggested apps, and advertising throughout Windows.",
+    "Lock Screen": "Settings related to the Windows lock screen behavior and content.",
+    "General": "Core privacy settings for advertising ID, language tracking, and personalization.",
+    "Speech": "Settings for speech recognition and voice-based services.",
+    "Inking and typing personalization": "Settings for inking and typing personalization features.",
+    "Diagnostics & Feedback": "Settings for telemetry, diagnostic data collection, and feedback to Microsoft.",
+    "Activity History": "Settings for Windows activity history and timeline features.",
+    "Search permissions": "Settings for Windows Search behavior and cloud integration.",
+    "App Permissions": "Control which system features apps can access."
+  },
+  "video": {
+    "id": "lrq3ph3xi50",
+    "start": 1212,
+    "title": "I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)"
+  }
+}

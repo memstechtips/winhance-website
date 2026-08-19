@@ -1,0 +1,13 @@
+{
+  "intro": [
+    "<p>Fine-tune your Windows audio settings for the best possible experience. Winhance provides quick access to hidden audio settings including startup sounds, ducking preferences, and accessibility audio options.</p>"
+  ],
+  "groups": {
+    "System Sounds": "Control Windows system sounds and audio behavior."
+  },
+  "video": {
+    "id": "lrq3ph3xi50",
+    "start": 2445,
+    "title": "I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)"
+  }
+}

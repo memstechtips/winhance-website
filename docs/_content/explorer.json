@@ -1,0 +1,18 @@
+{
+  "intro": [
+    "<p>Enhance the Windows File Explorer with classic features, improved visibility, and powerful context menu additions. Winhance gives you complete control over how File Explorer looks and behaves.</p>"
+  ],
+  "groups": {
+    "Context Menu": "Customize the right-click context menu with classic features and useful additions.",
+    "Devices and Peripherals": "Settings for device lighting and printer management.",
+    "General": "General File Explorer behavior settings.",
+    "Files and Folders": "Settings for file and folder display, visibility, and behavior.",
+    "Navigation Pane": "Control what appears in the File Explorer navigation pane (left sidebar).",
+    "File Associations": "Configure default applications for file types."
+  },
+  "video": {
+    "id": "lrq3ph3xi50",
+    "start": 2701,
+    "title": "I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)"
+  }
+}

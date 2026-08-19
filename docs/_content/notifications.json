@@ -1,0 +1,16 @@
+{
+  "intro": [
+    "<p>Reduce distractions and take control of Windows notifications. Winhance lets you customize which notifications you receive, silence unwanted alerts, and remove promotional content.</p>"
+  ],
+  "groups": {
+    "Additional Settings": "Control promotional content and suggestions in notifications.",
+    "System Notifications": "Control notifications from Windows system components.",
+    "Privacy Notifications": "Notifications related to privacy and app permissions.",
+    "Security Notifications": "Control security-related notifications from Windows Defender and Security Center."
+  },
+  "video": {
+    "id": "lrq3ph3xi50",
+    "start": 2402,
+    "title": "I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)"
+  }
+}

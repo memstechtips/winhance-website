@@ -1,0 +1,16 @@
+{
+  "intro": [
+    "<p>Take control of Windows Update behavior. Winhance lets you configure update policies, control automatic restarts, manage delivery optimization, and fine-tune how updates are installed on your system.</p>",
+    "<p>Disabling or delaying Windows updates can leave your system vulnerable to security threats. The recommended option is \"Security Updates Only\" which provides essential security patches while deferring feature updates.</p>"
+  ],
+  "groups": {
+    "Update Policy": "Master control for Windows Update behavior.",
+    "Delivery & Store": "Control how updates are downloaded and shared.",
+    "Update Behavior": "Fine-tune how updates are installed and when restarts occur."
+  },
+  "video": {
+    "id": "lrq3ph3xi50",
+    "start": 2094,
+    "title": "I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)"
+  }
+}

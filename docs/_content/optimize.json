@@ -1,0 +1,9 @@
+{
+  "intro": [
+    "<p>Improve your system's performance, privacy, and stability. Winhance provides hundreds of categorized tweaks to make Windows run exactly how you want it.</p>",
+    "<img src=\"../../images/optimize-view.png\" alt=\"Winhance Optimize View\" class=\"screenshot\" style=\"width: 100%; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.3);\">"
+  ],
+  "outro": [
+    "<div class=\"callout callout-warning\"> <div class=\"callout-title\">⚠️ Non-Persistent Settings</div> <p>Optimizations applied in Winhance are <strong>not persistent</strong>. Winhance applies them once at your request but does not continuously monitor or re-apply them if they are changed by Windows later.</p> </div>"
+  ]
+}

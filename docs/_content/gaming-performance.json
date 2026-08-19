@@ -1,0 +1,12 @@
+{
+  "intro": [
+    "<p>Maximize your system's hardware potential. This section contains optimizations designed to reduce input lag, improve frame rates, and eliminate system stutters during gaming or intensive workloads.</p>",
+    "<p>For settings with <strong>\"Absence = Enabled\"</strong>, the feature is ON when the registry key doesn't exist (Windows default behavior). Winhance creates the key to disable the feature.</p>"
+  ],
+  "groups": {},
+  "video": {
+    "id": "lrq3ph3xi50",
+    "start": 1824,
+    "title": "I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)"
+  }
+}
