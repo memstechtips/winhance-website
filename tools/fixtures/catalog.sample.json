@@ -1,0 +1,2267 @@
+{
+  "schemaVersion": 1,
+  "winhanceVersion": "26.08.18",
+  "catalogHash": "fdfaa61e57d5cf6f15a1e7ec9e30cd41d96c5ae73e52d690eb0eb0038f4d7d32",
+  "settingCount": 12,
+  "referenceBuilds": {
+    "win10": 19045,
+    "win11": 26100
+  },
+  "features": [
+    {
+      "id": "WindowsTheme",
+      "settings": [
+        {
+          "id": "theme-mode-windows",
+          "name": "Choose your mode",
+          "description": "Choose between Light and Dark mode for Windows and apps",
+          "group": "Theme mode",
+          "control": "Selection",
+          "isSubjectivePreference": true,
+          "addedInVersion": null,
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 2,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "AppsUseLightTheme",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              },
+              {
+                "header": "SystemUsesLightTheme",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Light Mode",
+                "cells": [
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Dark Mode",
+                "cells": [
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": true,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Mixed",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [
+              {
+                "text": "Asks you to confirm before it runs",
+                "tooltip": "Prompts before applying this setting",
+                "linkSettingId": "",
+                "linkText": "",
+                "hasLink": false
+              },
+              {
+                "text": "Sets: Apps Use Light Theme (Enabled)",
+                "tooltip": "Apps Use Light Theme = Enabled",
+                "linkSettingId": "theme-mode-apps",
+                "linkText": "Apps Use Light Theme",
+                "hasLink": true
+              },
+              {
+                "text": "Sets: Windows Uses Light Theme (Enabled)",
+                "tooltip": "Windows Uses Light Theme = Enabled",
+                "linkSettingId": "theme-mode-system",
+                "linkText": "Windows Uses Light Theme",
+                "hasLink": true
+              },
+              {
+                "text": "Sets: Apps Use Light Theme (Disabled)",
+                "tooltip": "Apps Use Light Theme = Disabled",
+                "linkSettingId": "theme-mode-apps",
+                "linkText": "Apps Use Light Theme",
+                "hasLink": true
+              },
+              {
+                "text": "Sets: Windows Uses Light Theme (Disabled)",
+                "tooltip": "Windows Uses Light Theme = Disabled",
+                "linkSettingId": "theme-mode-system",
+                "linkText": "Windows Uses Light Theme",
+                "hasLink": true
+              }
+            ],
+            "notes": [
+              {
+                "label": "Sets desktop wallpaper (Light Mode)",
+                "detail": "C:\\Windows\\Web\\Wallpaper\\Windows\\img0.jpg",
+                "scope": "Windows 11",
+                "hasScope": true
+              },
+              {
+                "label": "Sets desktop wallpaper (Light Mode)",
+                "detail": "C:\\Windows\\Web\\4K\\Wallpaper\\Windows\\img0_3840x2160.jpg",
+                "scope": "Windows 10",
+                "hasScope": true
+              },
+              {
+                "label": "Sets desktop wallpaper (Dark Mode)",
+                "detail": "C:\\Windows\\Web\\Wallpaper\\Windows\\img19.jpg",
+                "scope": "Windows 11",
+                "hasScope": true
+              },
+              {
+                "label": "Sets desktop wallpaper (Dark Mode)",
+                "detail": "C:\\Windows\\Web\\4K\\Wallpaper\\Windows\\img0_3840x2160.jpg",
+                "scope": "Windows 10",
+                "hasScope": true
+              }
+            ],
+            "notesHeading": "Also happens when you apply, if you agree to the prompt",
+            "notesDetailHeader": "Details",
+            "hasNotes": true,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Light Mode: AppsUseLightTheme 1, SystemUsesLightTheme 1 (Default). Dark Mode: AppsUseLightTheme 0, SystemUsesLightTheme 0 (Recommended). Mixed: AppsUseLightTheme , SystemUsesLightTheme . Registry: HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize."
+          },
+          "matrixWin10": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 2,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "AppsUseLightTheme",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              },
+              {
+                "header": "SystemUsesLightTheme",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Light Mode",
+                "cells": [
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Dark Mode",
+                "cells": [
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": true,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Mixed",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [
+              {
+                "text": "Asks you to confirm before it runs",
+                "tooltip": "Prompts before applying this setting",
+                "linkSettingId": "",
+                "linkText": "",
+                "hasLink": false
+              },
+              {
+                "text": "Sets: Apps Use Light Theme (Enabled)",
+                "tooltip": "Apps Use Light Theme = Enabled",
+                "linkSettingId": "theme-mode-apps",
+                "linkText": "Apps Use Light Theme",
+                "hasLink": true
+              },
+              {
+                "text": "Sets: Windows Uses Light Theme (Enabled)",
+                "tooltip": "Windows Uses Light Theme = Enabled",
+                "linkSettingId": "theme-mode-system",
+                "linkText": "Windows Uses Light Theme",
+                "hasLink": true
+              },
+              {
+                "text": "Sets: Apps Use Light Theme (Disabled)",
+                "tooltip": "Apps Use Light Theme = Disabled",
+                "linkSettingId": "theme-mode-apps",
+                "linkText": "Apps Use Light Theme",
+                "hasLink": true
+              },
+              {
+                "text": "Sets: Windows Uses Light Theme (Disabled)",
+                "tooltip": "Windows Uses Light Theme = Disabled",
+                "linkSettingId": "theme-mode-system",
+                "linkText": "Windows Uses Light Theme",
+                "hasLink": true
+              }
+            ],
+            "notes": [
+              {
+                "label": "Sets desktop wallpaper (Light Mode)",
+                "detail": "C:\\Windows\\Web\\Wallpaper\\Windows\\img0.jpg",
+                "scope": "Windows 11",
+                "hasScope": true
+              },
+              {
+                "label": "Sets desktop wallpaper (Light Mode)",
+                "detail": "C:\\Windows\\Web\\4K\\Wallpaper\\Windows\\img0_3840x2160.jpg",
+                "scope": "Windows 10",
+                "hasScope": true
+              },
+              {
+                "label": "Sets desktop wallpaper (Dark Mode)",
+                "detail": "C:\\Windows\\Web\\Wallpaper\\Windows\\img19.jpg",
+                "scope": "Windows 11",
+                "hasScope": true
+              },
+              {
+                "label": "Sets desktop wallpaper (Dark Mode)",
+                "detail": "C:\\Windows\\Web\\4K\\Wallpaper\\Windows\\img0_3840x2160.jpg",
+                "scope": "Windows 10",
+                "hasScope": true
+              }
+            ],
+            "notesHeading": "Also happens when you apply, if you agree to the prompt",
+            "notesDetailHeader": "Details",
+            "hasNotes": true,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Light Mode: AppsUseLightTheme 1, SystemUsesLightTheme 1. Dark Mode: AppsUseLightTheme 0, SystemUsesLightTheme 0 (Recommended). Mixed: AppsUseLightTheme , SystemUsesLightTheme . Registry: HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ExplorerCustomization",
+      "settings": [
+        {
+          "id": "explorer-customization-context-menu",
+          "name": "Use Classic Context Menu",
+          "description": "Use the Windows 10-style right-click menu with all options visible instead of the simplified Windows 11 menu",
+          "group": "Context Menu",
+          "control": "Toggle",
+          "isSubjectivePreference": true,
+          "addedInVersion": null,
+          "uiParentId": null,
+          "availability": {
+            "builds": [
+              {
+                "min": "22000.0",
+                "max": "*"
+              }
+            ],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": "This setting applies to Windows 11 only",
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "(Default)",
+                "typeName": "String",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "A registry key has one unnamed value, shown as (Default) in Registry Editor. This setting uses that one.",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "On",
+                "cells": [
+                  {
+                    "text": "\"\"",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": true,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Off",
+                "cells": [
+                  {
+                    "text": "deletes key",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": true,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [
+              {
+                "text": "Explorer restart",
+                "tooltip": "Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.",
+                "linkSettingId": "",
+                "linkText": "",
+                "hasLink": false
+              }
+            ],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "On: (Default) \"\" (Recommended). Off: (Default) deletes key (Default), Current. Registry: HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32."
+          },
+          "matrixWin10": null
+        }
+      ]
+    },
+    {
+      "id": "Taskbar",
+      "settings": [
+        {
+          "id": "taskbar-clean",
+          "name": "Clean Taskbar",
+          "description": "Removes all pinned items from the Taskbar",
+          "group": "Layout",
+          "control": "Action",
+          "isSubjectivePreference": true,
+          "addedInVersion": null,
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Taskband",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Taskband"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "Favorites",
+                "typeName": "Binary",
+                "kind": "Value",
+                "chips": [
+                  {
+                    "text": "written, not read",
+                    "tooltip": "Winhance writes this value when you apply, but does not read it back to decide the current state.",
+                    "linkSettingId": "",
+                    "linkText": "",
+                    "hasLink": false
+                  }
+                ],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": true
+              }
+            ],
+            "options": [
+              {
+                "label": "Clean Taskbar",
+                "cells": [
+                  {
+                    "text": "(empty)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "",
+            "requirements": [
+              {
+                "text": "Asks you to confirm before it runs",
+                "tooltip": "Prompts before applying this setting",
+                "linkSettingId": "",
+                "linkText": "",
+                "hasLink": false
+              },
+              {
+                "text": "Explorer restart",
+                "tooltip": "Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.",
+                "linkSettingId": "",
+                "linkText": "",
+                "hasLink": false
+              }
+            ],
+            "notes": [
+              {
+                "label": "Search in taskbar",
+                "detail": "Hide",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Taskbar alignment",
+                "detail": "Left",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Automatically hide the taskbar",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Taskbar Auto-Hide Hover Delay",
+                "detail": "400ms (Default)",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show badges on taskbar apps",
+                "detail": "On",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show flashing on taskbar apps",
+                "detail": "On",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show my taskbar on all displays",
+                "detail": "On",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show taskbar apps on",
+                "detail": "All taskbars",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Share any window from my taskbar",
+                "detail": "On",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show desktop from taskbar corner",
+                "detail": "On",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Combine taskbar buttons and hide labels",
+                "detail": "Always",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Combine taskbar buttons on other taskbars",
+                "detail": "Always",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "System tray icons",
+                "detail": "Show all icons",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show Task View button",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Copilot Companion Button",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Copilot PWA Pin",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Recall Pin",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show Widgets",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Enable 'End Task' in Taskbar",
+                "detail": "On",
+                "scope": "",
+                "hasScope": false
+              }
+            ],
+            "notesHeading": "Also happens when you apply, if you agree to the prompt",
+            "notesDetailHeader": "Details",
+            "hasNotes": true,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Clean Taskbar: Favorites (empty). Registry: HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Taskband."
+          },
+          "matrixWin10": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Taskband",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Taskband"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "Favorites",
+                "typeName": "Binary",
+                "kind": "Value",
+                "chips": [
+                  {
+                    "text": "written, not read",
+                    "tooltip": "Winhance writes this value when you apply, but does not read it back to decide the current state.",
+                    "linkSettingId": "",
+                    "linkText": "",
+                    "hasLink": false
+                  }
+                ],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": true
+              }
+            ],
+            "options": [
+              {
+                "label": "Clean Taskbar",
+                "cells": [
+                  {
+                    "text": "(empty)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "",
+            "requirements": [
+              {
+                "text": "Asks you to confirm before it runs",
+                "tooltip": "Prompts before applying this setting",
+                "linkSettingId": "",
+                "linkText": "",
+                "hasLink": false
+              },
+              {
+                "text": "Explorer restart",
+                "tooltip": "Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.",
+                "linkSettingId": "",
+                "linkText": "",
+                "hasLink": false
+              }
+            ],
+            "notes": [
+              {
+                "label": "Search in taskbar",
+                "detail": "Hide",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Automatically hide the taskbar",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Taskbar Auto-Hide Hover Delay",
+                "detail": "400ms (Default)",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show badges on taskbar apps",
+                "detail": "On",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show my taskbar on all displays",
+                "detail": "On",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show taskbar apps on",
+                "detail": "All taskbars",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Combine taskbar buttons and hide labels",
+                "detail": "Always",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Combine taskbar buttons on other taskbars",
+                "detail": "Always",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Remove 'Meet Now' button from system tray",
+                "detail": "On",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Always show all system tray icons",
+                "detail": "On",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show Task View button",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show News and Interests",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Taskbar Transparency",
+                "detail": "Windows default",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Make taskbar small",
+                "detail": "On",
+                "scope": "",
+                "hasScope": false
+              }
+            ],
+            "notesHeading": "Also happens when you apply, if you agree to the prompt",
+            "notesDetailHeader": "Details",
+            "hasNotes": true,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Clean Taskbar: Favorites (empty). Registry: HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Taskband."
+          }
+        }
+      ]
+    },
+    {
+      "id": "Sound",
+      "settings": [
+        {
+          "id": "sound-startup",
+          "name": "Startup Sound During Boot",
+          "description": "Play the Windows startup sound when your computer boots up",
+          "group": "System Sounds",
+          "control": "Toggle",
+          "isSubjectivePreference": true,
+          "addedInVersion": null,
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\BootAnimation",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\BootAnimation"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              },
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\EditionOverrides",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\EditionOverrides"
+                  }
+                ],
+                "startColumn": 1,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "DisableStartupSound",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              },
+              {
+                "header": "UserSetting_DisableStartupSound",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "On",
+                "cells": [
+                  {
+                    "text": "0 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "0 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Off",
+                "cells": [
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "1 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": true,
+                "isRecommended": true,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "On: DisableStartupSound 0 (or not set), UserSetting_DisableStartupSound 0 (or not set). Off: DisableStartupSound 1, UserSetting_DisableStartupSound 1 (or not set) (Recommended, Default), Current. Registry: HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\BootAnimation. Registry: HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\EditionOverrides."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "sound-communication-ducking",
+          "name": "Sound Ducking Preference",
+          "description": "Automatically lower volume of media and apps when Windows detects communication activity",
+          "group": "System Sounds",
+          "control": "Selection",
+          "isSubjectivePreference": true,
+          "addedInVersion": null,
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Software\\Microsoft\\Multimedia\\Audio",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Software\\Microsoft\\Multimedia\\Audio"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "UserDuckingPreference",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Mute all other sounds",
+                "cells": [
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Reduce the volume of other sounds by 80%",
+                "cells": [
+                  {
+                    "text": "1 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Reduce the volume of other sounds by 50%",
+                "cells": [
+                  {
+                    "text": "2",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Do nothing",
+                "cells": [
+                  {
+                    "text": "3",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": true,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Mute all other sounds: UserDuckingPreference 0. Reduce the volume of other sounds by 80%: UserDuckingPreference 1 (or not set) (Default). Reduce the volume of other sounds by 50%: UserDuckingPreference 2. Do nothing: UserDuckingPreference 3 (Recommended). Registry: HKEY_CURRENT_USER\\Software\\Microsoft\\Multimedia\\Audio."
+          },
+          "matrixWin10": null
+        }
+      ]
+    },
+    {
+      "id": "Power",
+      "settings": [
+        {
+          "id": "power-plan-selection",
+          "name": "Power Plan",
+          "description": "Select the active power plan for your system",
+          "group": null,
+          "control": "PowerPlan",
+          "isSubjectivePreference": true,
+          "addedInVersion": null,
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "matrix": null,
+          "matrixWin10": null
+        },
+        {
+          "id": "power-harddisk-timeout",
+          "name": "Turn off hard disk after",
+          "description": "Specifies the period of inactivity before Windows turns off the hard disk",
+          "group": "Hard Disk",
+          "control": "Slider",
+          "isSubjectivePreference": true,
+          "addedInVersion": null,
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [
+              {
+                "label": "Power setting",
+                "kind": "Power",
+                "description": "Read from your active power plan to determine which option is active, and written with powercfg when you apply one.",
+                "paths": [
+                  {
+                    "full": "0012ee47-9041-4b5d-9b77-535fba8b1442",
+                    "label": "Subgroup",
+                    "hasLabel": true,
+                    "display": "0012ee47-9041-4b5d-9b77-535fba8b1442"
+                  },
+                  {
+                    "full": "6738e2c4-e8a5-4a42-b16a-e040e769756e",
+                    "label": "Setting",
+                    "hasLabel": true,
+                    "display": "6738e2c4-e8a5-4a42-b16a-e040e769756e"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": true,
+                "canOpenRegedit": false
+              }
+            ],
+            "columns": [
+              {
+                "header": "Value",
+                "typeName": "Minutes",
+                "kind": "Power",
+                "chips": [
+                  {
+                    "text": "any value 0+ Minutes",
+                    "tooltip": "This setting takes a number rather than a fixed list of options.",
+                    "linkSettingId": "",
+                    "linkText": "",
+                    "hasLink": false
+                  }
+                ],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": true
+              }
+            ],
+            "options": [
+              {
+                "label": "0 Minutes",
+                "cells": [
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": true,
+                "isRecommended": true,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "20 Minutes",
+                "cells": [
+                  {
+                    "text": "20",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "0 Minutes: Value 0 (Recommended), Current. 20 Minutes: Value 20 (Default). Power setting: 0012ee47-9041-4b5d-9b77-535fba8b1442, 6738e2c4-e8a5-4a42-b16a-e040e769756e."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "power-hibernation-enable",
+          "name": "Hibernation",
+          "description": "Save your session to disk and power down completely, using no battery while preserving your work",
+          "group": "Sleep",
+          "control": "Toggle",
+          "isSubjectivePreference": true,
+          "addedInVersion": null,
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Power",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "HibernateEnabled",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "On",
+                "cells": [
+                  {
+                    "text": "1 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Off",
+                "cells": [
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": true,
+                "isRecommended": true,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [
+              {
+                "text": "Enables: Show Hibernate Option (set automatically)",
+                "tooltip": "Show Hibernate Option = Enabled",
+                "linkSettingId": "start-power-hibernate-option",
+                "linkText": "Show Hibernate Option",
+                "hasLink": true
+              }
+            ],
+            "notes": [
+              {
+                "label": "Native power write",
+                "detail": "level 10 = 1",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Native power write",
+                "detail": "level 10 = 0",
+                "scope": "",
+                "hasScope": false
+              }
+            ],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": true,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "On: HibernateEnabled 1 (or not set) (Default). Off: HibernateEnabled 0 (Recommended), Current. Registry: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Power."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "power-hibernate-timeout",
+          "name": "Hibernate after",
+          "description": "Specifies the period of inactivity before Windows hibernates the computer",
+          "group": "Sleep",
+          "control": "Selection",
+          "isSubjectivePreference": true,
+          "addedInVersion": null,
+          "uiParentId": "power-hibernation-enable",
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [
+              {
+                "label": "Power setting",
+                "kind": "Power",
+                "description": "Read from your active power plan to determine which option is active, and written with powercfg when you apply one.",
+                "paths": [
+                  {
+                    "full": "238c9fa8-0aad-41ed-83f4-97be242c8f20",
+                    "label": "Subgroup",
+                    "hasLabel": true,
+                    "display": "238c9fa8-0aad-41ed-83f4-97be242c8f20"
+                  },
+                  {
+                    "full": "9d7815a6-7ee4-497e-8888-515a05f02364",
+                    "label": "Setting",
+                    "hasLabel": true,
+                    "display": "9d7815a6-7ee4-497e-8888-515a05f02364"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": true,
+                "canOpenRegedit": false
+              }
+            ],
+            "columns": [
+              {
+                "header": "Value",
+                "typeName": "",
+                "kind": "Power",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": false,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Template_TimeIntervals_Option_0",
+                "cells": [
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": true,
+                "isRecommended": true,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_TimeIntervals_Option_1",
+                "cells": [
+                  {
+                    "text": "60",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_TimeIntervals_Option_2",
+                "cells": [
+                  {
+                    "text": "120",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_TimeIntervals_Option_3",
+                "cells": [
+                  {
+                    "text": "180",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_TimeIntervals_Option_4",
+                "cells": [
+                  {
+                    "text": "300",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_TimeIntervals_Option_5",
+                "cells": [
+                  {
+                    "text": "600",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_TimeIntervals_Option_6",
+                "cells": [
+                  {
+                    "text": "900",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_TimeIntervals_Option_7",
+                "cells": [
+                  {
+                    "text": "1200",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_TimeIntervals_Option_8",
+                "cells": [
+                  {
+                    "text": "1500",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_TimeIntervals_Option_9",
+                "cells": [
+                  {
+                    "text": "1800",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_TimeIntervals_Option_10",
+                "cells": [
+                  {
+                    "text": "2700",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_TimeIntervals_Option_11",
+                "cells": [
+                  {
+                    "text": "3600",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_TimeIntervals_Option_12",
+                "cells": [
+                  {
+                    "text": "7200",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_TimeIntervals_Option_13",
+                "cells": [
+                  {
+                    "text": "10800",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_TimeIntervals_Option_14",
+                "cells": [
+                  {
+                    "text": "14400",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_TimeIntervals_Option_15",
+                "cells": [
+                  {
+                    "text": "18000",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Template_TimeIntervals_Option_0: Value 0 (Recommended, Default), Current. Template_TimeIntervals_Option_1: Value 60. Template_TimeIntervals_Option_2: Value 120. Template_TimeIntervals_Option_3: Value 180. Template_TimeIntervals_Option_4: Value 300. Template_TimeIntervals_Option_5: Value 600. Template_TimeIntervals_Option_6: Value 900. Template_TimeIntervals_Option_7: Value 1200. Template_TimeIntervals_Option_8: Value 1500. Template_TimeIntervals_Option_9: Value 1800. Template_TimeIntervals_Option_10: Value 2700. Template_TimeIntervals_Option_11: Value 3600. Template_TimeIntervals_Option_12: Value 7200. Template_TimeIntervals_Option_13: Value 10800. Template_TimeIntervals_Option_14: Value 14400. Template_TimeIntervals_Option_15: Value 18000. Power setting: 238c9fa8-0aad-41ed-83f4-97be242c8f20, 9d7815a6-7ee4-497e-8888-515a05f02364."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "power-hybrid-sleep",
+          "name": "Allow hybrid sleep",
+          "description": "Combines sleep and hibernate by saving your session to disk while staying in low-power mode for faster wake",
+          "group": "Sleep",
+          "control": "Selection",
+          "isSubjectivePreference": true,
+          "addedInVersion": null,
+          "uiParentId": "power-hibernation-enable",
+          "availability": {
+            "builds": [],
+            "hardware": [
+              "HybridSleepCapable"
+            ],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [
+              {
+                "label": "Power setting",
+                "kind": "Power",
+                "description": "Read from your active power plan to determine which option is active, and written with powercfg when you apply one.",
+                "paths": [
+                  {
+                    "full": "238c9fa8-0aad-41ed-83f4-97be242c8f20",
+                    "label": "Subgroup",
+                    "hasLabel": true,
+                    "display": "238c9fa8-0aad-41ed-83f4-97be242c8f20"
+                  },
+                  {
+                    "full": "94ac6d29-73ce-41a6-809f-6363ba21b47e",
+                    "label": "Setting",
+                    "hasLabel": true,
+                    "display": "94ac6d29-73ce-41a6-809f-6363ba21b47e"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": true,
+                "canOpenRegedit": false
+              }
+            ],
+            "columns": [
+              {
+                "header": "Value",
+                "typeName": "",
+                "kind": "Power",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": false,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Template_OnOff_Option_0",
+                "cells": [
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": true,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_OnOff_Option_1",
+                "cells": [
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": true,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [
+              {
+                "text": "Requires: Hibernation (set automatically)",
+                "tooltip": "Hibernation = Enabled",
+                "linkSettingId": "power-hibernation-enable",
+                "linkText": "Hibernation",
+                "hasLink": true
+              }
+            ],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Template_OnOff_Option_0: Value 0, Current. Template_OnOff_Option_1: Value 1 (Recommended, Default). Power setting: 238c9fa8-0aad-41ed-83f4-97be242c8f20, 94ac6d29-73ce-41a6-809f-6363ba21b47e."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "power-fast-startup",
+          "name": "Fast Startup",
+          "description": "Hibernate system state during shutdown for faster boot times (does not affect restart)",
+          "group": "Sleep",
+          "control": "Toggle",
+          "isSubjectivePreference": false,
+          "addedInVersion": null,
+          "uiParentId": "power-hibernation-enable",
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\Session Manager\\Power",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKLM\\SYSTEM\\ControlSet001\\Control\\Session Manager\\Power"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "HiberbootEnabled",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "On",
+                "cells": [
+                  {
+                    "text": "1 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Off",
+                "cells": [
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": true,
+                "isRecommended": true,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [
+              {
+                "text": "Requires: Hibernation (set automatically)",
+                "tooltip": "Hibernation = Enabled",
+                "linkSettingId": "power-hibernation-enable",
+                "linkText": "Hibernation",
+                "hasLink": true
+              }
+            ],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "On: HiberbootEnabled 1 (or not set) (Default). Off: HiberbootEnabled 0 (Recommended), Current. Registry: HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\Session Manager\\Power."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "start-power-hibernate-option",
+          "name": "Show Hibernate Option",
+          "description": "Display the Hibernate option in the Start Menu power button menu",
+          "group": "Sleep",
+          "control": "Toggle",
+          "isSubjectivePreference": true,
+          "addedInVersion": null,
+          "uiParentId": "power-hibernation-enable",
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FlyoutMenuSettings",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FlyoutMenuSettings"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "ShowHibernateOption",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "On",
+                "cells": [
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Off",
+                "cells": [
+                  {
+                    "text": "0 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": true,
+                "isRecommended": true,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [
+              {
+                "text": "Requires: Hibernation (set automatically)",
+                "tooltip": "Hibernation = Enabled",
+                "linkSettingId": "power-hibernation-enable",
+                "linkText": "Hibernation",
+                "hasLink": true
+              }
+            ],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "On: ShowHibernateOption 1. Off: ShowHibernateOption 0 (or not set) (Recommended, Default), Current. Registry: HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FlyoutMenuSettings."
+          },
+          "matrixWin10": null
+        }
+      ]
+    }
+  ]
+}
