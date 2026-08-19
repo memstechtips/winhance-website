@@ -54,7 +54,9 @@ function chipText(chip, urlFor) {
   const url = chip.linkSettingId && chip.linkText ? urlFor(chip.linkSettingId) : null;
   if (!url) return text;
   const linkText = esc(chip.linkText);
-  return text.replace(linkText, `<a href="${esc(url)}">${linkText}</a>`);
+  // Replacer function, not a template string, so a literal `$` in linkText can't be
+  // misread as a replacement pattern (e.g. $&, $1) by String.replace.
+  return text.replace(linkText, () => `<a href="${esc(url)}">${linkText}</a>`);
 }
 
 function optionRow(m, o) {

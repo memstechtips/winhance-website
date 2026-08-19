@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { renderMatrix, renderCard, cardBadges } from '../lib/render-card.mjs';
+import { esc } from '../lib/html.mjs';
 
 const fixture = JSON.parse(readFileSync(new URL('../fixtures/catalog.sample.json', import.meta.url), 'utf8'));
 const all = fixture.features.flatMap((f) => f.settings);
@@ -49,10 +50,28 @@ test('card has id anchor, name, id, description and collapsed details', () => {
 });
 
 test('card with a win10 matrix renders both tables under build headings', () => {
-  const html = renderCard(byId['theme-mode-windows'], ctx);
+  // theme-mode-windows has a real child (theme-mode-apps, kept in the fixture for the
+  // added-in badge test below) that would add its own <table> if rendered nested here;
+  // scope this ctx to no children so the count stays about theme-mode-windows's own
+  // win11/win10 matrices, which is what this test is actually checking.
+  const soloCtx = { childrenOf: new Map(), urlFor: ctx.urlFor };
+  const html = renderCard(byId['theme-mode-windows'], soloCtx);
   assert.match(html, /<h4 class="mx-build">Windows 11<\/h4>/);
   assert.match(html, /<h4 class="mx-build">Windows 10<\/h4>/);
   assert.equal((html.match(/<table class="registry-table mx-table">/g) ?? []).length, 2);
+});
+
+test('notes render one list item per matrix note, with scope only when present', () => {
+  const s = byId['taskbar-clean'];
+  const notes = s.matrix.notes;
+  assert.ok(notes.length > 0, 'fixture must carry taskbar-clean notes');
+  const html = renderCard(s, ctx);
+  assert.match(html, new RegExp(`<div class="mx-notes"><h4>${esc(s.matrix.notesHeading)}</h4>`));
+  for (const n of notes) {
+    const label = esc(n.label).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const scopeGroup = n.scope ? ` <em>\\(${esc(n.scope).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\)</em>` : '';
+    assert.match(html, new RegExp(`<li><strong>${label}</strong>${scopeGroup}:`));
+  }
 });
 
 test('badges: win11-only, laptops-only, preference, added-in', () => {
@@ -60,8 +79,7 @@ test('badges: win11-only, laptops-only, preference, added-in', () => {
   assert.match(cardBadges(byId['lid-close-action']), /<span class="setting-badge laptops"[^>]*>Laptops only<\/span>/);
   assert.match(cardBadges(byId['power-hybrid-sleep']), /<span class="setting-badge hardware"[^>]*>Hybrid sleep capable PCs<\/span>/);
   assert.match(cardBadges(byId['sound-startup']), /<span class="setting-badge preference"[^>]*>Preference<\/span>/);
-  const added = all.find((s) => s.addedInVersion);
-  if (added) assert.match(cardBadges(added), new RegExp(`<span class="setting-badge added"[^>]*>Added in v${added.addedInVersion.replace(/\./g, '\\.')}</span>`));
+  assert.match(cardBadges(byId['theme-mode-apps']), /<span class="setting-badge added"[^>]*>Added in v26\.07\.22<\/span>/);
   assert.equal(cardBadges({ ...byId['sound-communication-ducking'], isSubjectivePreference: false, addedInVersion: null, matrix: { ...byId['sound-communication-ducking'].matrix, requirements: [] } }), '');
 });
 
@@ -73,6 +91,7 @@ test('children render nested inside the parent card', () => {
   for (const k of kids) assert.match(html, new RegExp(`<div class="setting-card setting-card-child" id="${k.id}">`));
 });
 
+// No column chip carries a link in today's export; requirement chips do (tested below). Kept for the day the builder adds one.
 test('chips whose linkSettingId resolves become links on the setting name only', () => {
   const linked = all.find((s) => s.matrix && s.matrix.columns.some((c) => c.chips.some((ch) => ch.linkSettingId && byId[ch.linkSettingId])));
   if (!linked) return;
@@ -82,8 +101,8 @@ test('chips whose linkSettingId resolves become links on the setting name only',
 });
 
 test('code blocks render with language header and escaped body', () => {
-  const withCode = all.find((s) => s.matrix && s.matrix.codeBlocks.length);
-  if (!withCode) return;
+  const withCode = byId['system-restore-protection'];
+  assert.ok(withCode.matrix.codeBlocks.length > 0, 'fixture must carry system-restore-protection code blocks');
   const html = renderCard(withCode, ctx);
   assert.match(html, /<div class="code-block">\s*<div class="code-header"><span class="code-language">(powershell|reg)<\/span>/);
   assert.doesNotMatch(html, /<pre><code>[^<]*<(?!\/code>)/);

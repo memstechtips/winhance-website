@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "winhanceVersion": "26.08.18",
   "catalogHash": "fdfaa61e57d5cf6f15a1e7ec9e30cd41d96c5ae73e52d690eb0eb0038f4d7d32",
-  "settingCount": 13,
+  "settingCount": 15,
   "referenceBuilds": {
     "win10": 19045,
     "win11": 26100
@@ -415,6 +415,118 @@
             "currentTooltip": "This is what your system is set to now",
             "accessibleSummary": "Light Mode: AppsUseLightTheme 1, SystemUsesLightTheme 1. Dark Mode: AppsUseLightTheme 0, SystemUsesLightTheme 0 (Recommended). Mixed: AppsUseLightTheme , SystemUsesLightTheme . Registry: HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize."
           }
+        },
+        {
+          "id": "theme-mode-apps",
+          "name": "Apps Use Light Theme",
+          "description": "Use the light theme for apps such as Settings and File Explorer",
+          "group": "Theme mode",
+          "control": "Toggle",
+          "isSubjectivePreference": true,
+          "addedInVersion": "26.07.22",
+          "uiParentId": "theme-mode-windows",
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "AppsUseLightTheme",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "On",
+                "cells": [
+                  {
+                    "text": "1 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Off",
+                "cells": [
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": true,
+                "isRecommended": true,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "On: AppsUseLightTheme 1 (or not set) (Default). Off: AppsUseLightTheme 0 (Recommended), Current. Registry: HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize."
+          },
+          "matrixWin10": null
         }
       ]
     },
@@ -1263,6 +1375,97 @@
             "defaultTooltip": "How Windows ships out of the box",
             "currentTooltip": "This is what your system is set to now",
             "accessibleSummary": "Mute all other sounds: UserDuckingPreference 0. Reduce the volume of other sounds by 80%: UserDuckingPreference 1 (or not set) (Default). Reduce the volume of other sounds by 50%: UserDuckingPreference 2. Do nothing: UserDuckingPreference 3 (Recommended). Registry: HKEY_CURRENT_USER\\Software\\Microsoft\\Multimedia\\Audio."
+          },
+          "matrixWin10": null
+        }
+      ]
+    },
+    {
+      "id": "GamingPerformance",
+      "settings": [
+        {
+          "id": "system-restore-protection",
+          "name": "System Protection (Restore Points)",
+          "description": "Allow Windows to automatically create restore points for the C: drive, making it possible to undo system changes if something goes wrong",
+          "group": null,
+          "control": "Toggle",
+          "isSubjectivePreference": true,
+          "addedInVersion": "26.05.13",
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [],
+            "columns": [],
+            "options": [
+              {
+                "label": "On",
+                "cells": [],
+                "isCurrent": false,
+                "isRecommended": true,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Off",
+                "cells": [],
+                "isCurrent": true,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "",
+            "requirements": [],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [
+              {
+                "heading": "PowerShell Scripts",
+                "label": "When set to On",
+                "body": "Enable-ComputerRestore -Drive 'C:\\'",
+                "kind": "PowerShell",
+                "description": "Winhance runs this script when you apply the matching option."
+              },
+              {
+                "heading": "PowerShell Scripts",
+                "label": "When set to Off",
+                "body": "Disable-ComputerRestore -Drive 'C:\\'",
+                "kind": "PowerShell",
+                "description": "Winhance runs this script when you apply the matching option."
+              }
+            ],
+            "hasCode": true,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "On:  (Recommended, Default). Off: , Current. ."
           },
           "matrixWin10": null
         }
