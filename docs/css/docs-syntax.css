@@ -1,18 +1,13 @@
 /* Code blocks container */
 pre {
     background-color: var(--code-bg);
-    color: #e1e4e8;
+    color: var(--text-color);
     padding: 1rem;
     border-radius: var(--border-radius);
     overflow-x: auto;
     margin-bottom: 1.5rem;
     border: 1px solid var(--border-color);
     position: relative;
-}
-
-/* Light mode: dark text on light background */
-[data-theme="light"] pre {
-    color: #1f2328;
 }
 
 code {
@@ -28,12 +23,13 @@ code {
     color: var(--accent-color);
 }
 
-/* Light mode inline code */
-[data-theme="light"] :not(pre)>code {
-    color: #0550ae;
-}
-
-/* Syntax Highlighting (Basic mappings - can be extended by library like Prism/Hljs) */
+/* Syntax Highlighting — a code theme is its own palette, tuned for a dark editor
+   panel; kept literal on purpose (not a WinUI token). Verified 2026-08-19 against the
+   new lighter --code-bg wash: readability is unchanged from before this restyle in
+   both themes — dark theme still reads clean, light theme was already a marginal
+   contrast for the brighter tokens (string/operator) against a light panel and stays
+   in that same ballpark, not materially worse. Worth a dedicated light-mode syntax
+   theme if that's ever a priority; out of scope here. */
 .token.comment {
     color: #6a737d;
     font-style: italic;
@@ -68,11 +64,11 @@ code {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
+    background: var(--winui-control-fill-color-default);
+    border: 1px solid var(--winui-control-stroke-color-default);
+    color: var(--text-color);
     padding: 0.25rem 0.5rem;
-    border-radius: 4px;
+    border-radius: var(--winui-control-corner-radius);
     font-size: 0.75rem;
     cursor: pointer;
     opacity: 0;
@@ -84,5 +80,5 @@ pre:hover .copy-code-btn {
 }
 
 .copy-code-btn:hover {
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--winui-subtle-fill-color-tertiary);
 }

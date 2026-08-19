@@ -28,39 +28,61 @@
 }
 
 .sidebar-nav-title {
-    font-size: 0.85rem;
+    font-size: var(--winui-font-size-caption);
+    line-height: var(--winui-line-height-caption);
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--winui-text-fill-color-tertiary);
     margin-bottom: 0.75rem;
     letter-spacing: 0.05em;
 }
 
+/* NavigationViewItem shape: 32px min-height, 4px corner radius, 4px inset from the
+   sidebar's edge so the selection indicator (below) has a gutter to sit in. */
 .sidebar-nav-item {
-    display: block;
-    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-height: 32px;
+    padding: 0.4rem 0.75rem;
+    margin: 0 4px 0.25rem;
     color: var(--text-color);
     text-decoration: none;
-    border-radius: var(--border-radius);
+    border-radius: var(--winui-control-corner-radius);
     font-size: 0.95rem;
     transition: var(--transition);
-    margin-bottom: 0.25rem;
 }
 
 .sidebar-nav-item:hover {
-    background-color: rgba(255, 215, 0, 0.1);
-    color: var(--accent-color);
+    background-color: var(--winui-subtle-fill-color-secondary);
     text-decoration: none;
 }
 
-[data-theme="light"] .sidebar-nav-item:hover {
-    background-color: rgba(0, 120, 212, 0.1);
+.sidebar-nav-item:active {
+    background-color: var(--winui-subtle-fill-color-tertiary);
 }
 
+/* Selected item: the same subtle fill as hover, differentiated by the accent pill
+   below — matches NavigationView, which doesn't lean on a stronger fill to show
+   selection. */
 .sidebar-nav-item.active {
-    background-color: var(--accent-color);
-    color: #000;
+    background-color: var(--winui-subtle-fill-color-secondary);
+    color: var(--text-color);
     font-weight: 600;
+}
+
+/* The NavigationView selection indicator: a 3px accent pill on the leading edge,
+   sitting in the 4px gutter created by .sidebar-nav-item's own margin. */
+.sidebar-nav-item.active::before {
+    content: "";
+    position: absolute;
+    left: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 16px;
+    border-radius: 2px;
+    background-color: var(--winui-accent-fill-default);
 }
 
 /* Sub-navigation styles */
@@ -83,15 +105,6 @@
 
 .sidebar-nav-item.sub-item.active {
     opacity: 1;
-    background-color: rgba(255, 215, 0, 0.15);
-    color: var(--accent-color);
-    border-left: 2px solid var(--accent-color);
-    border-radius: 0 4px 4px 0;
-    margin-left: -1px;
-}
-
-[data-theme="light"] .sidebar-nav-item.sub-item.active {
-    background-color: rgba(0, 120, 212, 0.15);
 }
 
 /* Sidebar toggle for mobile */
@@ -110,12 +123,7 @@
 }
 
 .sidebar-toggle:hover {
-    background-color: rgba(0, 120, 212, 0.1);
-    color: var(--accent-color);
-}
-
-[data-theme="dark"] .sidebar-toggle:hover {
-    background-color: rgba(255, 215, 0, 0.1);
+    background-color: var(--winui-subtle-fill-color-secondary);
 }
 
 @media (max-width: 1024px) {

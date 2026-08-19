@@ -1,52 +1,26 @@
 :root {
-    /* Brand Colors (Base) */
-    --primary-color: #202020;
-    --secondary-color: #303030;
-
-    /* Light Mode Tokens (Blue Accent) */
-    --accent-color: #0078d4;
-    --accent-hover: #005a9e;
-
-    /* Light Mode Tokens */
-    --bg-color: #ffffff;
-    --text-color: #333333;
-    --text-muted: #666666;
-    --border-color: #e1e4e8;
-    --sidebar-bg: #f8f9fa;
-    --code-bg: #cecece;
-    --header-bg: rgba(255, 255, 255, 0.95);
-
-    /* Dark Mode (Default / Inherited from main site feel) */
-    --dark-bg: #151515;
-    --dark-text: #e1e4e8;
-    --dark-muted: #8b949e;
-    --dark-border: #30363d;
-    --dark-sidebar: #1a1a1a;
-    --dark-code: #2d2d2d;
-    --dark-header: rgba(26, 26, 26, 0.95);
+    /* WinUI 3 system tokens (winui-tokens.css) drive every colour here — this file names
+       no literal colour of its own. Both light and dark values come for free because
+       winui-tokens.css re-defines the --winui-* tokens under [data-theme="dark"]. */
+    --bg-color: var(--winui-solid-background-fill-color-base);
+    --text-color: var(--winui-text-fill-color-primary);
+    --text-muted: var(--winui-text-fill-color-secondary);
+    --border-color: var(--winui-card-stroke-color-default);
+    --sidebar-bg: var(--winui-solid-background-fill-color-secondary);
+    --code-bg: var(--winui-subtle-fill-color-secondary);
+    --accent-color: var(--winui-accent-fill-default);
+    /* AccentTextFillColorPrimary — WinUI's own hyperlink/hover variant of the accent,
+       tuned for contrast rather than AccentFillColorDefault's flat-fill use. */
+    --accent-hover: var(--winui-accent-text-primary);
 
     /* Shared Variables */
-    --border-radius: 8px;
+    --border-radius: var(--winui-overlay-corner-radius);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --header-height: 70px;
     --sidebar-width: 300px;
     --max-content-width: 900px;
-    --font-main: 'Overpass', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-main: var(--winui-font-family);
     --font-code: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
-}
-
-[data-theme="dark"] {
-    --bg-color: var(--dark-bg);
-    --text-color: var(--dark-text);
-    --text-muted: var(--dark-muted);
-    --border-color: var(--dark-border);
-    --sidebar-bg: var(--dark-sidebar);
-    --code-bg: var(--dark-code);
-    --header-bg: var(--dark-header);
-
-    /* Dark Mode Accent (Gold) */
-    --accent-color: #FFD700;
-    --accent-hover: #E6C200;
 }
 
 /* Base resets */
@@ -60,7 +34,8 @@ body {
     font-family: var(--font-main);
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.6;
+    font-size: var(--winui-font-size-body);
+    line-height: var(--winui-line-height-body);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -107,24 +82,32 @@ h6 {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: var(--winui-font-size-title);
+    line-height: var(--winui-line-height-title);
+    font-weight: var(--winui-weight-title);
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
     margin-top: 0;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: var(--winui-font-size-subtitle);
+    line-height: var(--winui-line-height-subtitle);
+    font-weight: var(--winui-weight-subtitle);
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.3rem;
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: var(--winui-font-size-body-large);
+    line-height: var(--winui-line-height-body-large);
+    font-weight: var(--winui-weight-body-strong);
 }
 
 h4 {
-    font-size: 1.25rem;
+    font-size: var(--winui-font-size-body-strong);
+    line-height: var(--winui-line-height-body-strong);
+    font-weight: var(--winui-weight-body-strong);
 }
 
 p {
@@ -154,46 +137,40 @@ li {
 }
 
 /* Callout Boxes */
+/* InfoBar treatment: severity background as the fill, a neutral card stroke (never a
+   coloured left bar), BodyStrong title. The emoji already embedded in the generated
+   title text (e.g. "⚠️ Non-Persistent Settings") is the severity icon — no separate
+   icon slot needed. */
 .callout {
-    padding: 1rem 1.5rem;
+    padding: 0.875rem 1rem;
     margin: 1.5rem 0;
-    border-radius: var(--border-radius);
-    border-left: 4px solid #ccc;
-    background-color: var(--sidebar-bg);
+    border-radius: var(--winui-control-corner-radius);
+    border: 1px solid var(--winui-card-stroke-color-default);
+    background-color: var(--winui-system-fill-color-attention-background);
 }
 
-.callout-info {
-    border-left-color: #0078d4;
-    background-color: rgba(0, 120, 212, 0.1);
+.callout-info,
+.callout-note {
+    background-color: var(--winui-system-fill-color-attention-background);
 }
 
-.callout-tip {
-    border-left-color: #28a745;
-    background-color: rgba(40, 167, 69, 0.1);
+.callout-tip,
+.callout-success {
+    background-color: var(--winui-system-fill-color-success-background);
 }
 
 .callout-warning {
-    border-left-color: #ffc107;
-    background-color: rgba(255, 193, 7, 0.1);
+    background-color: var(--winui-system-fill-color-caution-background);
 }
 
 .callout-danger {
-    border-left-color: #dc3545;
-    background-color: rgba(220, 53, 69, 0.1);
-}
-
-.callout-note {
-    border-left-color: var(--accent-color);
-    background-color: rgba(255, 215, 0, 0.1);
-}
-
-.callout-success {
-    border-left-color: #00FF3C;
-    background-color: rgba(0, 255, 60, 0.1);
+    background-color: var(--winui-system-fill-color-critical-background);
 }
 
 .callout-title {
-    font-weight: 700;
+    font-size: var(--winui-font-size-body-strong);
+    line-height: var(--winui-line-height-body-strong);
+    font-weight: var(--winui-weight-body-strong);
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
@@ -226,7 +203,10 @@ li {
     flex-shrink: 0;
 }
 
-/* Correct Winhance colors */
+/* Correct Winhance colors — literal brand/status colours (installed=green, not
+   installed=red, sync=blue), independent of the docs site's own light/dark toggle
+   because they must match the real app's status indicators. Kept out of the WinUI
+   token system deliberately; see the task report's hex-grep notes. */
 .dot-installed {
     background-color: #00FF3C;
     box-shadow: 0 0 6px rgba(0, 255, 60, 0.5);
@@ -272,9 +252,8 @@ header {
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: var(--header-bg);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--winui-divider-stroke-color-default);
     height: var(--header-height);
     transition: background-color 0.3s ease;
 }
@@ -311,12 +290,16 @@ header {
     position: relative;
 }
 
+/* AutoSuggestBox look: a control fill, a default 1px stroke, and — the WinUI TextBox
+   tell — a slightly stronger bottom stroke at rest that becomes a 2px accent underline
+   on focus. */
 .search-container input {
     width: 100%;
-    padding: 0.6rem 1rem 0.6rem 2.5rem;
-    background-color: var(--sidebar-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
+    padding: 0.6rem 1rem calc(0.6rem - 1px) 2.5rem;
+    background-color: var(--winui-control-fill-color-default);
+    border: 1px solid var(--winui-control-stroke-color-default);
+    border-bottom: 1px solid var(--winui-control-stroke-color-secondary);
+    border-radius: var(--winui-control-corner-radius);
     color: var(--text-color);
     font-family: inherit;
     transition: var(--transition);
@@ -324,12 +307,8 @@ header {
 
 .search-container input:focus {
     outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.2);
-}
-
-[data-theme="dark"] .search-container input:focus {
-    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+    border-bottom: 2px solid var(--winui-accent-fill-default);
+    padding-bottom: calc(0.6rem - 2px);
 }
 
 .search-icon {
@@ -354,12 +333,8 @@ header {
 }
 
 .theme-toggle-btn:hover {
-    background-color: rgba(0, 120, 212, 0.1);
+    background-color: var(--winui-subtle-fill-color-secondary);
     color: var(--accent-color);
-}
-
-[data-theme="dark"] .theme-toggle-btn:hover {
-    background-color: rgba(255, 215, 0, 0.1);
 }
 
 .icon-btn.github-btn {
@@ -415,7 +390,7 @@ header {
 }
 
 .search-result-item.active {
-    background-color: rgba(var(--accent-color-rgb, 0, 165, 255), 0.1);
+    background-color: color-mix(in srgb, var(--winui-accent-fill-default) 12%, transparent);
     border-left: 3px solid var(--accent-color);
 }
 
@@ -427,7 +402,8 @@ header {
 }
 
 .result-category {
-    font-size: 0.75rem;
+    font-size: var(--winui-font-size-caption);
+    line-height: var(--winui-line-height-caption);
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -436,10 +412,10 @@ header {
 
 .result-context {
     display: block;
-    font-size: 0.8rem;
+    font-size: var(--winui-font-size-caption);
     color: var(--text-muted);
     margin-top: 0.25rem;
-    line-height: 1.4;
+    line-height: var(--winui-line-height-caption);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -447,7 +423,7 @@ header {
 
 /* Search highlight */
 .search-result-item mark {
-    background-color: rgba(var(--accent-color-rgb, 0, 165, 255), 0.25);
+    background-color: color-mix(in srgb, var(--winui-accent-fill-default) 25%, transparent);
     color: var(--accent-color);
     padding: 0.1em 0.2em;
     border-radius: 3px;
@@ -458,7 +434,8 @@ header {
     padding: 1.5rem;
     text-align: center;
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: var(--winui-font-size-caption);
+    line-height: var(--winui-line-height-caption);
 }
 
 /* Scrollbar styling for search dropdown */
@@ -498,12 +475,14 @@ header {
 }
 
 .docs-footer-info {
-    font-size: 0.9rem;
+    font-size: var(--winui-font-size-caption);
+    line-height: var(--winui-line-height-caption);
     color: var(--text-muted);
 }
 
 .docs-footer-meta {
-    font-size: 0.85rem;
+    font-size: var(--winui-font-size-caption);
+    line-height: var(--winui-line-height-caption);
     color: var(--text-muted);
     display: flex;
     gap: 1.5rem;
@@ -528,11 +507,13 @@ header {
     }
 }
 
-/* Scrollbar styling */
+/* Scrollbar styling — SurfaceStrokeColorDefault is the one WinUI token that's identical
+   in both ThemeDictionaries, which is exactly the "stays a consistent grey either way"
+   behaviour a scrollbar thumb wants. */
 html {
     overflow-y: scroll;
     scrollbar-width: thin;
-    scrollbar-color: #444 transparent;
+    scrollbar-color: var(--winui-surface-stroke-color-default) transparent;
 }
 
 ::-webkit-scrollbar {
@@ -541,36 +522,20 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
+    background: var(--winui-subtle-fill-color-tertiary);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #444;
+    background: var(--winui-surface-stroke-color-default);
     border-radius: 5px;
     border: 2px solid transparent;
     background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #666;
+    background: var(--winui-text-fill-color-tertiary);
     border: 2px solid transparent;
     background-clip: padding-box;
-}
-
-[data-theme="light"] {
-    scrollbar-color: #bbb transparent;
-}
-
-[data-theme="light"] ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-[data-theme="light"] ::-webkit-scrollbar-thumb {
-    background: #bbb;
-}
-
-[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
-    background: #999;
 }
 
 /* Feature Grid & Cards */
@@ -582,9 +547,9 @@ html {
 }
 
 .feature-card {
-    background: var(--sidebar-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
+    background: var(--winui-card-background-fill-color-default);
+    border: 1px solid var(--winui-card-stroke-color-default);
+    border-radius: var(--winui-overlay-corner-radius);
     padding: 1.5rem;
     text-decoration: none;
     transition: var(--transition);
@@ -613,10 +578,6 @@ html {
     opacity: 0.8;
 }
 
-[data-theme="light"] .feature-card:hover {
-    box-shadow: 0 8px 30px rgba(0, 120, 212, 0.1);
-}
-
 /* Status Indicators */
 .status-group {
     display: flex;
@@ -624,9 +585,9 @@ html {
     gap: 1.5rem;
     margin: 1.5rem 0;
     padding: 1.25rem;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--winui-card-background-fill-color-secondary);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--winui-overlay-corner-radius);
 }
 
 .status-item {
@@ -647,6 +608,7 @@ html {
     flex-shrink: 0;
 }
 
+/* Same Winhance status-colour exception as .dot-installed above. */
 .status-indicator.installed {
     background-color: #00FF3C;
     box-shadow: 0 0 10px rgba(0, 255, 60, 0.3);
@@ -705,6 +667,8 @@ html {
     height: 0;
     overflow: hidden;
     max-width: 100%;
+    /* Video letterboxing, not a themed surface — stays black regardless of site theme,
+       same as any video player's backdrop. Not a WinUI token by design. */
     background: #000;
     border-radius: var(--border-radius);
     margin: 1.5rem 0;
@@ -730,28 +694,29 @@ html {
 .removal-status-btn {
     width: 32px;
     height: 32px;
-    border-radius: 4px;
+    border-radius: var(--winui-control-corner-radius);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--winui-subtle-fill-color-tertiary);
+    border: 1px solid var(--winui-control-stroke-color-default);
     cursor: default;
     transition: var(--transition);
 }
 
 .removal-status-btn i {
     font-size: 20px;
-    color: #808080;
-    opacity: 0.5;
+    color: var(--winui-text-fill-color-tertiary);
     transition: var(--transition);
 }
 
 .removal-status-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--winui-subtle-fill-color-secondary);
 }
 
-/* Active state - Bloat (Green) */
+/* Active state - Bloat (Green) — Winhance's own removal-status colours (bloat/Edge/
+   OneDrive), kept literal to match the real app regardless of site theme; see the
+   task report for the full list of these brand-colour exceptions. */
 .removal-status-btn.active.bloat i {
     color: #00FF3C;
     opacity: 1;
@@ -794,17 +759,13 @@ html {
     width: 48px;
     height: 48px;
     background: var(--accent-color);
-    color: var(--bg-color);
+    color: var(--winui-text-on-accent-fill-color-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
     font-weight: 700;
-}
-
-[data-theme="dark"] .step-number {
-    color: #151515;
 }
 
 .step-content {
@@ -826,9 +787,10 @@ html {
 /* Code Block with Header (CLI Commands) */
 .code-block {
     margin: 1.5rem 0;
-    border-radius: var(--border-radius);
+    border-radius: var(--winui-overlay-corner-radius);
     overflow: hidden;
-    border: 1px solid var(--border-color);
+    background: var(--winui-card-background-fill-color-default);
+    border: 1px solid var(--winui-card-stroke-color-default);
 }
 
 .code-header {
@@ -836,17 +798,13 @@ html {
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 1rem;
-    background: rgba(0, 0, 0, 0.3);
-    border-bottom: 1px solid var(--border-color);
-}
-
-[data-theme="light"] .code-header {
-    background: rgba(0, 0, 0, 0.05);
+    background: var(--winui-subtle-fill-color-secondary);
+    border-bottom: 1px solid var(--winui-card-stroke-color-default);
 }
 
 .code-language {
     font-family: var(--font-code);
-    font-size: 0.75rem;
+    font-size: var(--winui-font-size-caption);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: var(--text-muted);
@@ -859,7 +817,7 @@ html {
     color: var(--text-muted);
     cursor: pointer;
     padding: 0.25rem;
-    border-radius: 4px;
+    border-radius: var(--winui-control-corner-radius);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -868,11 +826,7 @@ html {
 
 .copy-button:hover {
     color: var(--accent-color);
-    background: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="light"] .copy-button:hover {
-    background: rgba(0, 0, 0, 0.1);
+    background: var(--winui-subtle-fill-color-secondary);
 }
 
 .code-block pre {
@@ -917,6 +871,8 @@ html {
 .setting-desc {
     color: var(--text-color);
     opacity: 0.9;
+    font-size: var(--winui-font-size-caption);
+    line-height: var(--winui-line-height-caption);
     margin-bottom: 0.75rem;
 }
 
@@ -1067,9 +1023,9 @@ html {
     gap: 0.5rem;
     padding: 0.75rem 1.25rem;
     background-color: var(--accent-color);
-    color: #000;
+    color: var(--winui-text-on-accent-fill-color-primary);
     text-decoration: none;
-    border-radius: var(--border-radius);
+    border-radius: var(--winui-control-corner-radius);
     font-weight: 600;
     font-size: 0.95rem;
     transition: var(--transition);
@@ -1077,18 +1033,10 @@ html {
 
 .page-nav-btn:hover {
     background-color: var(--accent-hover);
-    color: #000;
+    color: var(--winui-text-on-accent-fill-color-primary);
     text-decoration: none;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-[data-theme="light"] .page-nav-btn {
-    color: #fff;
-}
-
-[data-theme="light"] .page-nav-btn:hover {
-    color: #fff;
 }
 
 .page-nav-btn.prev {
@@ -1100,27 +1048,24 @@ html {
 }
 
 /* WIP Banner */
+/* The InfoBar informational treatment, same as .callout-info/.callout-note. */
 .docs-wip-banner {
-    background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 152, 0, 0.15));
-    border-bottom: 1px solid rgba(255, 193, 7, 0.3);
+    background-color: var(--winui-system-fill-color-attention-background);
+    border-bottom: 1px solid var(--winui-card-stroke-color-default);
     padding: 0.75rem 1.5rem;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: var(--winui-font-size-body);
+    line-height: var(--winui-line-height-body);
     color: var(--text-color);
     position: fixed;
     top: var(--header-height);
     left: 0;
     right: 0;
     z-index: 999;
-    backdrop-filter: blur(10px);
 }
 
 .docs-wip-banner strong {
-    color: #ffc107;
-}
-
-[data-theme="light"] .docs-wip-banner strong {
-    color: #d39e00;
+    font-weight: var(--winui-weight-body-strong);
 }
 
 /* Adjust layout for banner */
