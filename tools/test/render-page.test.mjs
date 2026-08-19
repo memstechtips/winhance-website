@@ -46,6 +46,25 @@ test('feature page groups cards under h2 with slug ids and blurbs, children not 
   assert.match(html, /Technical Details<\/div>/); // the standard callout title
 });
 
+test('feature page group callout html renders after the blurb and before the setting cards', () => {
+  const content = {
+    video: { id: 'abc123', start: 10 },
+    intro: ['<p>Intro.</p>'],
+    groups: {
+      'System Sounds': {
+        blurb: 'Control sounds.',
+        html: ['<div class="callout callout-tip"><div class="callout-title">T</div><p>Body</p></div>'],
+      },
+    },
+  };
+  const page = pages.features.find((f) => f.id === 'Sound');
+  const html = renderFeaturePage({ page, area: pages.areas.optimize, feature: sound, content, template, ctx, pages });
+  assert.match(html, /<h2 id="system-sounds">System Sounds<\/h2>\s*<p>Control sounds\.<\/p>\s*<div class="callout callout-tip">/);
+  const calloutIndex = html.indexOf('callout-tip');
+  const cardIndex = html.indexOf('id="sound-startup"');
+  assert.ok(calloutIndex > -1 && cardIndex > -1 && calloutIndex < cardIndex);
+});
+
 test('feature page: ungrouped settings fall under General, grouped order follows first appearance', () => {
   const page = pages.features.find((f) => f.id === 'Power');
   const html = renderFeaturePage({ page, area: pages.areas.optimize, feature: power, content: { intro: [], groups: {} }, template, ctx, pages });

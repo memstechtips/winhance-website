@@ -4,7 +4,12 @@
   ],
   "groups": {
     "Security": "Core Windows security settings including User Account Control, remote access, and system maintenance.",
-    "Content Delivery & Advertising": "Control promotional content, suggested apps, and advertising throughout Windows.",
+    "Content Delivery & Advertising": {
+      "blurb": "Control promotional content, suggested apps, and advertising throughout Windows.",
+      "html": [
+        "<div class=\"callout callout-info\"> <div class=\"callout-title\">Master Control</div> <p>The \"Ads, Suggestions and Promotional Content\" setting is a master control. Set it to <strong>Deny</strong> to disable all advertising features at once, or <strong>Custom</strong> to configure individual settings below.</p> </div>"
+      ]
+    },
     "Lock Screen": "Settings related to the Windows lock screen behavior and content.",
     "General": "Core privacy settings for advertising ID, language tracking, and personalization.",
     "Speech": "Settings for speech recognition and voice-based services.",

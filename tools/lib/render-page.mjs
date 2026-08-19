@@ -66,9 +66,11 @@ export function renderFeaturePage({ page, feature, content, template, ctx, pages
     groups.get(g).push(s);
   }
   const sections = [...groups.entries()].map(([name, settings]) => {
-    const blurb = content.groups?.[name];
+    const entry = content.groups?.[name];
+    const blurb = typeof entry === 'string' ? entry : entry?.blurb ?? '';
+    const extra = typeof entry === 'object' && entry ? (entry.html ?? []).join('\n') : '';
     return `<h2 id="${slug(name)}">${esc(name)}</h2>
-${blurb ? `<p>${blurb}</p>\n` : ''}${settings.map((s) => renderCard(s, ctx)).join('\n\n')}`;
+${blurb ? `<p>${blurb}</p>\n` : ''}${extra ? extra + '\n' : ''}${settings.map((s) => renderCard(s, ctx)).join('\n\n')}`;
   }).join('\n\n');
   const body = `<section id="${slug(page.title)}">
 <h1>${esc(page.title)}</h1>

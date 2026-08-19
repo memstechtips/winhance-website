@@ -3,7 +3,20 @@
     "<p>Maximize your system's hardware potential. This section contains optimizations designed to reduce input lag, improve frame rates, and eliminate system stutters during gaming or intensive workloads.</p>",
     "<p>For settings with <strong>\"Absence = Enabled\"</strong>, the feature is ON when the registry key doesn't exist (Windows default behavior). Winhance creates the key to disable the feature.</p>"
   ],
-  "groups": {},
+  "groups": {
+    "System Services": {
+      "blurb": "",
+      "html": [
+        "<div class=\"callout callout-warning\"> <div class=\"callout-title\">Service Recommendations</div> <p>It is recommended to set non-essential services to <strong>Manual</strong> rather than Disabled. This ensures they don't consume resources at startup but can still be started by Windows if a specific application needs them.</p> </div>"
+      ]
+    },
+    "Visual Effects": {
+      "blurb": "",
+      "html": [
+        "<div class=\"callout callout-info\"> <div class=\"callout-title\">Custom Mode Required</div> <p>The following individual visual effects settings require <strong>Visual Effects</strong> to be set to <strong>\"Custom\"</strong> mode (value 3) to take effect. <strong>Winhance automatically sets Custom mode</strong> when you toggle any of these individual settings, so you don't need to manually change it first.</p> </div>"
+      ]
+    }
+  },
   "video": {
     "id": "lrq3ph3xi50",
     "start": 1824,

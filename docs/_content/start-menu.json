@@ -2,7 +2,14 @@
   "intro": [
     "<p>Declutter your workspace by removing unwanted pins and bloatware from the Windows Start Menu.</p>"
   ],
-  "groups": {},
+  "groups": {
+    "Layout": {
+      "blurb": "",
+      "html": [
+        "<div class=\"callout callout-info\"> <div class=\"callout-title\">ℹ️ Windows Edition Differences</div> <p><strong>Windows 11 Pro and above:</strong> The Recommended section is completely removed from the Start Menu.</p> <p><strong>Windows 11 Home:</strong> The Recommended section remains visible but is disabled—no items will be shown there.</p> </div>"
+      ]
+    }
+  },
   "video": {
     "id": "lrq3ph3xi50",
     "start": 2610,

@@ -2,7 +2,14 @@
   "intro": [
     "<p>Winhance provides a comprehensive power management interface, allowing you to select from system-default plans or apply specialized optimizations.</p>"
   ],
-  "groups": {},
+  "groups": {
+    "General": {
+      "blurb": "",
+      "html": [
+        "<div class=\"callout callout-note\"> <div class=\"callout-title\">💻 Laptop vs Desktop View</div> <p>Winhance intelligently detects if your device has a battery. On a <strong>Desktop</strong>, you will see a single set of controls (AC Power). On a <strong>Laptop</strong>, you will see two sets of controls: one for <strong>Plugged In (AC)</strong> and one for <strong>On Battery (DC)</strong>, allowing for granular control over power consumption.</p> </div>"
+      ]
+    }
+  },
   "video": {
     "id": "lrq3ph3xi50",
     "start": 1379,

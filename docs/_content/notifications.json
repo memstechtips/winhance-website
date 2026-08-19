@@ -3,7 +3,12 @@
     "<p>Reduce distractions and take control of Windows notifications. Winhance lets you customize which notifications you receive, silence unwanted alerts, and remove promotional content.</p>"
   ],
   "groups": {
-    "Additional Settings": "Control promotional content and suggestions in notifications.",
+    "Additional Settings": {
+      "blurb": "Control promotional content and suggestions in notifications.",
+      "html": [
+        "<div class=\"callout callout-warning\"> <div class=\"callout-title\">Dependency Notice</div> <p>Some settings in this section require the \"Ads, Suggestions and Promotional Content\" setting in Privacy & Security to be set to \"Custom\" before they can be modified.</p> </div>"
+      ]
+    },
     "System Notifications": "Control notifications from Windows system components.",
     "Privacy Notifications": "Notifications related to privacy and app permissions.",
     "Security Notifications": "Control security-related notifications from Windows Defender and Security Center."
