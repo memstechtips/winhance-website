@@ -63,22 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
             content: 'Manage Windows apps and install external software. Remove bloatware and unwanted applications.'
         },
         {
-            title: 'Optimize',
-            url: 'features/optimize.html',
-            category: 'Features',
-            sections: ['Privacy', 'Security', 'Performance', 'Power', 'Updates', 'Notifications'],
-            keywords: ['optimize', 'performance', 'speed', 'fast', 'privacy', 'security', 'power', 'battery', 'updates', 'tweaks'],
-            content: 'System optimization features. Privacy settings, security hardening, performance tweaks, power management.'
-        },
-        {
-            title: 'Customize',
-            url: 'features/customize.html',
-            category: 'Features',
-            sections: ['Theme', 'Taskbar', 'Start Menu', 'Explorer'],
-            keywords: ['customize', 'theme', 'appearance', 'look', 'feel', 'visual', 'ui', 'interface', 'personalize'],
-            content: 'Windows customization features. Theme settings, taskbar modifications, Start Menu tweaks, Explorer options.'
-        },
-        {
             title: 'Advanced Tools',
             url: 'features/advanced-tools.html',
             category: 'Features',
@@ -102,88 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
             sections: ['Installing Apps', 'App Categories', 'Winget Integration', 'Chocolatey'],
             keywords: ['external apps', 'install', 'winget', 'chocolatey', 'third party', 'browsers', 'chrome', 'firefox', 'brave', 'vivaldi', 'opera', '7zip', 'vlc', 'notepad++', 'vscode', 'visual studio code', 'git', 'python', 'nodejs', 'java', 'dotnet', 'steam', 'discord', 'spotify', 'zoom', 'slack', 'obs', 'gimp', 'inkscape', 'blender', 'audacity', 'handbrake', 'qbittorrent', 'putty', 'winscp', 'filezilla', 'everything', 'powertoys', 'autohotkey', 'wireshark', 'sysinternals', 'cpu-z', 'gpu-z', 'hwinfo', 'crystaldiskinfo', 'furmark', 'prime95', 'memtest'],
             content: 'Install external applications using Winget or Chocolatey. Browsers, development tools, media players, utilities, and more.'
-        },
-        // Features - Optimizations Sub-pages
-        {
-            title: 'Privacy & Security',
-            url: 'features/optimizations/privacy-security.html',
-            category: 'Optimizations',
-            sections: ['Security Settings', 'User Account Control', 'Windows Defender', 'SmartScreen', 'Firewall', 'BitLocker', 'Content Delivery', 'Lock Screen', 'General Privacy', 'Advertising ID', 'Speech Recognition', 'Inking & Typing', 'Diagnostics & Telemetry', 'Activity History', 'Timeline', 'Search Permissions', 'Cloud Search', 'Bing', 'App Permissions', 'Location', 'Camera', 'Microphone', 'Contacts', 'Calendar', 'Call History', 'Email', 'Tasks', 'Messaging', 'Documents', 'Pictures', 'Videos', 'File System', 'Background Apps'],
-            keywords: ['privacy', 'security', 'telemetry', 'tracking', 'data collection', 'advertising', 'ads', 'advertising id', 'uac', 'user account control', 'defender', 'smartscreen', 'firewall', 'bitlocker', 'encryption', 'speech', 'voice', 'cortana', 'typing', 'inking', 'handwriting', 'diagnostics', 'feedback', 'activity history', 'timeline', 'clipboard history', 'search', 'bing', 'cloud', 'safesearch', 'location', 'gps', 'camera', 'webcam', 'microphone', 'mic', 'contacts', 'calendar', 'email', 'messaging', 'sms', 'documents', 'pictures', 'photos', 'videos', 'file system', 'background apps', 'app permissions', 'ceip', 'customer experience', 'error reporting', 'watson', 'sqm'],
-            content: 'Privacy and security settings. Disable telemetry, advertising ID, Cortana, diagnostics. Control app permissions for camera, microphone, location. Configure UAC, Defender, SmartScreen, BitLocker.'
-        },
-        {
-            title: 'Power Settings',
-            url: 'features/optimizations/power.html',
-            category: 'Optimizations',
-            sections: ['Power Plans', 'Sleep Settings', 'Hibernation', 'USB Power', 'Display Power', 'Battery Saver', 'Fast Startup', 'Lid Close Action', 'Power Button Action'],
-            keywords: ['power', 'battery', 'sleep', 'hibernate', 'hibernation', 'standby', 'suspend', 'wake', 'fast startup', 'quick boot', 'power plan', 'balanced', 'high performance', 'power saver', 'ultimate performance', 'usb', 'selective suspend', 'display', 'screen', 'timeout', 'turn off', 'lid', 'close', 'power button', 'energy', 'consumption', 'laptop', 'battery saver'],
-            content: 'Power management settings. Configure power plans, sleep, hibernation, fast startup. USB selective suspend, display timeout, battery saver options.'
-        },
-        {
-            title: 'Gaming & Performance',
-            url: 'features/optimizations/gaming-performance.html',
-            category: 'Optimizations',
-            sections: ['Game Mode', 'Game Bar', 'Game DVR', 'Hardware Acceleration', 'GPU Scheduling', 'Variable Refresh Rate', 'Auto HDR', 'DirectX', 'Fullscreen Optimizations', 'Mouse Settings', 'Visual Effects', 'Animations', 'Transparency', 'Superfetch', 'Prefetch', 'HPET', 'Timer Resolution', 'Process Priority', 'CPU Affinity', 'Memory Management', 'Virtual Memory', 'Pagefile'],
-            keywords: ['gaming', 'performance', 'fps', 'frames', 'frame rate', 'latency', 'input lag', 'game mode', 'game bar', 'game dvr', 'recording', 'capture', 'screenshot', 'nvidia', 'amd', 'radeon', 'geforce', 'gpu', 'graphics', 'hardware acceleration', 'gpu scheduling', 'hags', 'vrr', 'variable refresh rate', 'freesync', 'gsync', 'adaptive sync', 'hdr', 'auto hdr', 'directx', 'dx11', 'dx12', 'vulkan', 'opengl', 'fullscreen', 'optimizations', 'disable fullscreen optimizations', 'mouse', 'pointer', 'acceleration', 'enhance pointer precision', 'raw input', 'polling rate', 'dpi', 'sensitivity', 'visual effects', 'animations', 'transparency', 'blur', 'acrylic', 'mica', 'superfetch', 'sysmain', 'prefetch', 'hpet', 'timer', 'resolution', 'priority', 'affinity', 'cores', 'threads', 'memory', 'ram', 'virtual memory', 'pagefile', 'swap', 'stuttering', 'stutters', 'lag', 'smooth', 'optimization', 'tweaks', 'csgo', 'valorant', 'fortnite', 'apex', 'call of duty', 'warzone', 'pubg', 'overwatch', 'league of legends', 'dota', 'minecraft', 'roblox', 'gta', 'elden ring', 'cyberpunk'],
-            content: 'Gaming and performance optimizations. Game Mode, Game Bar, Game DVR settings. GPU scheduling, fullscreen optimizations, Auto HDR, mouse acceleration, visual effects, animations. Memory and CPU tweaks for better FPS and lower latency. Nagle\'s Algorithm network latency. Taskbar Transparency selection.'
-        },
-        {
-            title: 'Windows Update',
-            url: 'features/optimizations/update.html',
-            category: 'Optimizations',
-            sections: ['Update Settings', 'Automatic Updates', 'Delivery Optimization', 'P2P Updates', 'Update Notifications', 'Driver Updates', 'Feature Updates', 'Quality Updates', 'Pause Updates', 'Active Hours', 'Restart Options', 'Windows Insider'],
-            keywords: ['update', 'windows update', 'automatic', 'download', 'install', 'patch', 'security update', 'cumulative', 'feature update', 'quality update', 'driver', 'driver update', 'delivery optimization', 'p2p', 'peer to peer', 'bandwidth', 'metered connection', 'pause', 'defer', 'delay', 'active hours', 'restart', 'reboot', 'schedule', 'notification', 'insider', 'preview', 'beta', 'dev channel', 'wufb', 'wsus'],
-            content: 'Windows Update settings. Control automatic updates, delivery optimization, driver updates. Pause updates, set active hours, manage restart behavior.'
-        },
-        {
-            title: 'Notifications',
-            url: 'features/optimizations/notifications.html',
-            category: 'Optimizations',
-            sections: ['Notification Settings', 'Action Center', 'Toast Notifications', 'Lock Screen Notifications', 'App Notifications', 'Focus Assist', 'Do Not Disturb', 'Priority Notifications', 'Quiet Hours', 'Sounds'],
-            keywords: ['notifications', 'notify', 'alert', 'toast', 'popup', 'action center', 'notification center', 'focus assist', 'do not disturb', 'dnd', 'quiet hours', 'priority', 'sounds', 'lock screen', 'banner', 'badge', 'app notifications', 'disable notifications', 'mute', 'silent'],
-            content: 'Notification settings. Disable toast notifications, action center, lock screen notifications. Configure Focus Assist, Do Not Disturb, quiet hours.'
-        },
-        {
-            title: 'Sound Settings',
-            url: 'features/optimizations/sound.html',
-            category: 'Optimizations',
-            sections: ['System Sounds', 'Startup Sound', 'Notification Sounds', 'Sound Scheme', 'Audio Enhancements', 'Spatial Sound', 'Volume Mixer', 'Default Devices'],
-            keywords: ['sound', 'audio', 'volume', 'speaker', 'headphones', 'microphone', 'startup sound', 'notification sound', 'system sounds', 'sound scheme', 'no sounds', 'mute', 'enhancements', 'spatial sound', 'dolby', 'dts', 'windows sonic', 'atmos', 'mixer', 'device', 'output', 'input', 'playback', 'recording', 'realtek', 'high definition audio'],
-            content: 'Sound and audio settings. Disable startup sound, notification sounds, system sounds. Configure audio enhancements, spatial sound, volume mixer.'
-        },
-        // Features - Customizations Sub-pages
-        {
-            title: 'Windows Theme',
-            url: 'features/customizations/theme.html',
-            category: 'Customizations',
-            sections: ['Dark Mode', 'Light Mode', 'Accent Color', 'Transparency', 'Colors', 'Contrast', 'Cursor', 'Fonts', 'Wallpaper', 'Lock Screen'],
-            keywords: ['theme', 'dark mode', 'light mode', 'dark theme', 'light theme', 'accent', 'color', 'colours', 'transparency', 'blur', 'acrylic', 'mica', 'contrast', 'high contrast', 'cursor', 'pointer', 'mouse cursor', 'font', 'fonts', 'wallpaper', 'background', 'desktop background', 'lock screen', 'personalization', 'appearance', 'visual', 'style'],
-            content: 'Windows theme customization. Dark mode, light mode, accent colors, transparency effects. Cursor, fonts, wallpaper, lock screen settings.'
-        },
-        {
-            title: 'Taskbar',
-            url: 'features/customizations/taskbar.html',
-            category: 'Customizations',
-            sections: ['Taskbar Position', 'Taskbar Size', 'Taskbar Icons', 'System Tray', 'Search Box', 'Task View', 'Widgets', 'Chat', 'Copilot', 'Hidden Icons', 'Taskbar Behavior', 'Auto-hide', 'Combine Buttons', 'Badges', 'News and Interests'],
-            keywords: ['taskbar', 'position', 'bottom', 'top', 'left', 'right', 'size', 'small', 'large', 'icons', 'system tray', 'notification area', 'search', 'search box', 'search icon', 'task view', 'virtual desktops', 'widgets', 'news', 'weather', 'chat', 'teams', 'copilot', 'ai', 'hidden icons', 'overflow', 'auto hide', 'autohide', 'combine', 'never combine', 'always combine', 'badges', 'unread', 'news and interests', 'cortana button', 'people', 'ink workspace', 'touch keyboard', 'show desktop', 'transparent', 'transparency', 'opaque'],
-            content: 'Taskbar customization. Position, size, icons. Taskbar Transparency selection (transparent, opaque, default). Hide search box, Task View, Widgets, Chat, Copilot. System tray settings, auto-hide, button combining.'
-        },
-        {
-            title: 'Start Menu',
-            url: 'features/customizations/start-menu.html',
-            category: 'Customizations',
-            sections: ['Start Menu Layout', 'Pinned Apps', 'Recommended', 'Recent Items', 'Folders', 'Start Menu Size', 'All Apps', 'Power Button', 'Account Picture', 'Live Tiles', 'Start Menu Style', 'Classic Start'],
-            keywords: ['start menu', 'start', 'pinned', 'pins', 'recommended', 'suggestions', 'recent', 'recent items', 'recent files', 'recent apps', 'folders', 'documents', 'downloads', 'music', 'pictures', 'videos', 'settings', 'size', 'resize', 'all apps', 'app list', 'power', 'shutdown', 'restart', 'sleep', 'sign out', 'lock', 'account', 'picture', 'avatar', 'live tiles', 'tiles', 'classic', 'windows 10 style', 'windows 11 style', 'full screen', 'show more pins', 'show more recommendations'],
-            content: 'Start Menu customization. Layout, pinned apps, recommended section, recent items. Folders, size, All Apps list. Power button options, account picture.'
-        },
-        {
-            title: 'Explorer',
-            url: 'features/customizations/explorer.html',
-            category: 'Customizations',
-            sections: ['File Extensions', 'Hidden Files', 'Navigation Pane', 'Quick Access', 'Recent Files', 'Frequent Folders', 'This PC', 'Libraries', 'OneDrive', 'Network', 'Ribbon', 'Command Bar', 'Details Pane', 'Preview Pane', 'Status Bar', 'Compact View', 'Item Checkboxes', 'Full Path', 'Context Menu', 'Right Click', 'New Context Menu', 'Classic Context Menu'],
-            keywords: ['explorer', 'file explorer', 'windows explorer', 'file', 'files', 'folders', 'extensions', 'file extensions', 'show extensions', 'hidden files', 'hidden folders', 'show hidden', 'navigation pane', 'nav pane', 'quick access', 'favorites', 'recent files', 'recent folders', 'frequent folders', 'this pc', 'my computer', 'libraries', 'onedrive', 'network', 'ribbon', 'command bar', 'toolbar', 'details pane', 'preview pane', 'status bar', 'compact view', 'compact mode', 'checkboxes', 'item check boxes', 'full path', 'address bar', 'breadcrumbs', 'context menu', 'right click', 'right-click', 'new context menu', 'windows 11 context menu', 'classic context menu', 'show more options', 'full context menu', 'legacy context menu', 'gallery', 'home', 'folder options'],
-            content: 'File Explorer customization. Show file extensions, hidden files. Navigation pane, Quick Access, recent files. Context menu (right-click) options, classic vs new menu. Ribbon, command bar, preview pane.'
         },
         // User Guides
         {
@@ -242,7 +144,9 @@ document.addEventListener('DOMContentLoaded', () => {
             sections: ['Contributing Guide', 'Bug Reports', 'Feature Requests', 'Pull Requests', 'Code Style', 'Development Setup'],
             keywords: ['contribute', 'contributing', 'contribution', 'github', 'bug report', 'issue', 'feature request', 'pull request', 'pr', 'code', 'development', 'developer', 'open source', 'community', 'help'],
             content: 'How to contribute to Winhance. Bug reports, feature requests, pull requests. Development setup and code style guidelines.'
-        }
+        },
+        // @generated:start docs-gen — everything between these markers is rewritten by tools/gen-docs.mjs
+        // @generated:end docs-gen
     ];
 
     let debounceTimer;
