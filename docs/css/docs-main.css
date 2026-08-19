@@ -222,6 +222,11 @@ li {
     flex-shrink: 0;
 }
 
+.icon-not-sync {
+    color: #FF2800;
+    flex-shrink: 0;
+}
+
 .icon-sync-off {
     color: #FF2800;
     flex-shrink: 0;

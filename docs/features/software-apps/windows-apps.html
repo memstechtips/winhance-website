@@ -198,15 +198,18 @@
                         <span>Not Installed</span>
                     </div>
                     <div class="status-item">
-                        <i class="mdi mdi-sync" style="font-size: 20px; color: #00A5FF;"></i>
+                        <i class="mdi mdi-sync icon-sync" style="font-size: 20px;"></i>
                         <span>Can Reinstall</span>
                     </div>
                     <div class="status-item">
-                        <i class="mdi mdi-sync-off" style="font-size: 20px; color: #FF2800;"></i>
+                        <i class="mdi mdi-sync-off icon-not-sync" style="font-size: 20px;"></i>
                         <span>Cannot Reinstall</span>
                     </div>
                 </div>
 
+                <!-- Green/Red/Blue below are Winhance's own status colours (installed/not-installed/
+                     can-reinstall), kept literal to match the real app — same exception as
+                     docs-main.css's .dot-installed/.dot-not-installed/.icon-sync; see the task report. -->
                 <p><strong>Installation Status:</strong> A <span style="color: #00FF3C; font-weight: bold;">Green</span>
                     dot indicates the app is currently present on your system. A <span
                         style="color: #FF2800; font-weight: bold;">Red</span> dot means it is uninstalled.</p>
@@ -224,18 +227,9 @@
                         Status</strong> indicators. These represent the active <strong>Continuous Removal</strong> tasks
                     on your system.</p>
 
-                <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
-                    <defs>
-                        <linearGradient id="edge-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#00FF3C;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#0078D4;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-
                 <div class="status-group" style="flex-direction: column; align-items: flex-start;">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
-                        <i class="mdi mdi-delete-forever" style="font-size: 24px; color: #00A5FF;"></i>
+                        <i class="mdi mdi-delete-forever icon-sync" style="font-size: 24px;"></i>
                         <span style="font-weight: 600; font-size: 1.1rem;">Winhance Removal Status</span>
                     </div>
 

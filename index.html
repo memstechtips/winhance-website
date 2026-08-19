@@ -34,9 +34,12 @@
         content="Enhance your Windows experience by effortlessly debloating, optimizing and customizing your system, giving you more control over how Windows performs.">
     <meta name="twitter:image" content="https://winhance.net/images/winhance-hero.png">
 
+    <link rel="stylesheet" href="docs/css/winui-tokens.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;500;600;700&family=Archivo:wght@400..900&display=swap">
+    <!-- Archivo: only the sponsor cards' --sc-display font (see styles.css); Overpass was
+         unused (the universal rule in styles.css already pins the WinUI font stack) so it's
+         dropped rather than carried as a dead network request. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..900&display=swap">
 </head>
 
 <body>
@@ -466,7 +469,7 @@
         <div class="container">
             <div class="section-title" style="text-align: center;">
                 <h2 style="color: var(--light-text);">Documentation</h2>
-                <p style="color: #ccc; max-width: 600px; margin: 0 auto;">Everything you need to know about setting up
+                <p style="color: var(--winui-text-fill-color-secondary); max-width: 600px; margin: 0 auto;">Everything you need to know about setting up
                     and using Winhance. Comprehensive guides for beginners and advanced users.</p>
             </div>
             <div class="docs-grid">
