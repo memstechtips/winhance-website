@@ -930,98 +930,98 @@
             <tr class="mx-cols"></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Setting_gaming-dns-server_Option_0 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Setting_gaming-dns-server_Option_1</th></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Setting_gaming-dns-server_Option_2</th></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Setting_gaming-dns-server_Option_3</th></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Setting_gaming-dns-server_Option_4</th></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Setting_gaming-dns-server_Option_5</th></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Setting_gaming-dns-server_Option_6</th></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Setting_gaming-dns-server_Option_7</th></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Setting_gaming-dns-server_Option_8</th></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Setting_gaming-dns-server_Option_9</th></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Automatic (DHCP) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Cloudflare (1.1.1.1)</th></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Cloudflare Malware Blocking (1.1.1.2)</th></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Cloudflare Malware + Adult Blocking (1.1.1.3)</th></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Google (8.8.8.8)</th></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Quad9 (9.9.9.9)</th></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">OpenDNS (208.67.222.222)</th></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Cloudflare DoH (1.1.1.1)</th></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Google DoH (8.8.8.8)</th></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Quad9 DoH (9.9.9.9)</th></tr>
             </tbody>
             </table>
             </div>
             <div class="mx-code"><h4>PowerShell Scripts</h4><p>Winhance runs this script when you apply the matching option.</p>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_0</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Automatic (DHCP)</span></div>
             <pre><code>Get-NetAdapter | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ResetServerAddresses }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_0</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Automatic (DHCP)</span></div>
             <pre><code>$known = @(&#39;1.1.1.1&#39;,&#39;1.0.0.1&#39;,&#39;8.8.8.8&#39;,&#39;8.8.4.4&#39;,&#39;9.9.9.9&#39;,&#39;149.112.112.112&#39;); foreach ($s in $known) { netsh dns delete encryption server=$s 2&gt;$null | Out-Null }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_1</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Cloudflare (1.1.1.1)</span></div>
             <pre><code>Get-NetAdapter | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ServerAddresses @(&#39;1.1.1.1&#39;,&#39;1.0.0.1&#39;) }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_1</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Cloudflare (1.1.1.1)</span></div>
             <pre><code>$known = @(&#39;1.1.1.1&#39;,&#39;1.0.0.1&#39;,&#39;8.8.8.8&#39;,&#39;8.8.4.4&#39;,&#39;9.9.9.9&#39;,&#39;149.112.112.112&#39;); foreach ($s in $known) { netsh dns delete encryption server=$s 2&gt;$null | Out-Null }; $t = &#39;{{dohtemplate}}&#39;; if ($t -and $t -notmatch &#39;^\{\{&#39;) { netsh dns add encryption server=1.1.1.1 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null; netsh dns add encryption server=1.0.0.1 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_2</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Cloudflare Malware Blocking (1.1.1.2)</span></div>
             <pre><code>Get-NetAdapter | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ServerAddresses @(&#39;1.1.1.2&#39;,&#39;1.0.0.2&#39;) }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_2</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Cloudflare Malware Blocking (1.1.1.2)</span></div>
             <pre><code>$known = @(&#39;1.1.1.1&#39;,&#39;1.0.0.1&#39;,&#39;8.8.8.8&#39;,&#39;8.8.4.4&#39;,&#39;9.9.9.9&#39;,&#39;149.112.112.112&#39;); foreach ($s in $known) { netsh dns delete encryption server=$s 2&gt;$null | Out-Null }; $t = &#39;{{dohtemplate}}&#39;; if ($t -and $t -notmatch &#39;^\{\{&#39;) { netsh dns add encryption server=1.1.1.2 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null; netsh dns add encryption server=1.0.0.2 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_3</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Cloudflare Malware + Adult Blocking (1.1.1.3)</span></div>
             <pre><code>Get-NetAdapter | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ServerAddresses @(&#39;1.1.1.3&#39;,&#39;1.0.0.3&#39;) }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_3</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Cloudflare Malware + Adult Blocking (1.1.1.3)</span></div>
             <pre><code>$known = @(&#39;1.1.1.1&#39;,&#39;1.0.0.1&#39;,&#39;8.8.8.8&#39;,&#39;8.8.4.4&#39;,&#39;9.9.9.9&#39;,&#39;149.112.112.112&#39;); foreach ($s in $known) { netsh dns delete encryption server=$s 2&gt;$null | Out-Null }; $t = &#39;{{dohtemplate}}&#39;; if ($t -and $t -notmatch &#39;^\{\{&#39;) { netsh dns add encryption server=1.1.1.3 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null; netsh dns add encryption server=1.0.0.3 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_4</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Google (8.8.8.8)</span></div>
             <pre><code>Get-NetAdapter | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ServerAddresses @(&#39;8.8.8.8&#39;,&#39;8.8.4.4&#39;) }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_4</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Google (8.8.8.8)</span></div>
             <pre><code>$known = @(&#39;1.1.1.1&#39;,&#39;1.0.0.1&#39;,&#39;8.8.8.8&#39;,&#39;8.8.4.4&#39;,&#39;9.9.9.9&#39;,&#39;149.112.112.112&#39;); foreach ($s in $known) { netsh dns delete encryption server=$s 2&gt;$null | Out-Null }; $t = &#39;{{dohtemplate}}&#39;; if ($t -and $t -notmatch &#39;^\{\{&#39;) { netsh dns add encryption server=8.8.8.8 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null; netsh dns add encryption server=8.8.4.4 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_5</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Quad9 (9.9.9.9)</span></div>
             <pre><code>Get-NetAdapter | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ServerAddresses @(&#39;9.9.9.9&#39;,&#39;149.112.112.112&#39;) }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_5</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Quad9 (9.9.9.9)</span></div>
             <pre><code>$known = @(&#39;1.1.1.1&#39;,&#39;1.0.0.1&#39;,&#39;8.8.8.8&#39;,&#39;8.8.4.4&#39;,&#39;9.9.9.9&#39;,&#39;149.112.112.112&#39;); foreach ($s in $known) { netsh dns delete encryption server=$s 2&gt;$null | Out-Null }; $t = &#39;{{dohtemplate}}&#39;; if ($t -and $t -notmatch &#39;^\{\{&#39;) { netsh dns add encryption server=9.9.9.9 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null; netsh dns add encryption server=149.112.112.112 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_6</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to OpenDNS (208.67.222.222)</span></div>
             <pre><code>Get-NetAdapter | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ServerAddresses @(&#39;208.67.222.222&#39;,&#39;208.67.220.220&#39;) }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_6</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to OpenDNS (208.67.222.222)</span></div>
             <pre><code>$known = @(&#39;1.1.1.1&#39;,&#39;1.0.0.1&#39;,&#39;8.8.8.8&#39;,&#39;8.8.4.4&#39;,&#39;9.9.9.9&#39;,&#39;149.112.112.112&#39;); foreach ($s in $known) { netsh dns delete encryption server=$s 2&gt;$null | Out-Null }; $t = &#39;{{dohtemplate}}&#39;; if ($t -and $t -notmatch &#39;^\{\{&#39;) { netsh dns add encryption server=208.67.222.222 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null; netsh dns add encryption server=208.67.220.220 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_7</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Cloudflare DoH (1.1.1.1)</span></div>
             <pre><code>Get-NetAdapter | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ServerAddresses @(&#39;1.1.1.1&#39;,&#39;1.0.0.1&#39;) }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_7</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Cloudflare DoH (1.1.1.1)</span></div>
             <pre><code>$known = @(&#39;1.1.1.1&#39;,&#39;1.0.0.1&#39;,&#39;8.8.8.8&#39;,&#39;8.8.4.4&#39;,&#39;9.9.9.9&#39;,&#39;149.112.112.112&#39;); foreach ($s in $known) { netsh dns delete encryption server=$s 2&gt;$null | Out-Null }; $t = &#39;https://cloudflare-dns.com/dns-query&#39;; if ($t -and $t -notmatch &#39;^\{\{&#39;) { netsh dns add encryption server=1.1.1.1 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null; netsh dns add encryption server=1.0.0.1 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_8</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Google DoH (8.8.8.8)</span></div>
             <pre><code>Get-NetAdapter | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ServerAddresses @(&#39;8.8.8.8&#39;,&#39;8.8.4.4&#39;) }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_8</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Google DoH (8.8.8.8)</span></div>
             <pre><code>$known = @(&#39;1.1.1.1&#39;,&#39;1.0.0.1&#39;,&#39;8.8.8.8&#39;,&#39;8.8.4.4&#39;,&#39;9.9.9.9&#39;,&#39;149.112.112.112&#39;); foreach ($s in $known) { netsh dns delete encryption server=$s 2&gt;$null | Out-Null }; $t = &#39;https://dns.google/dns-query&#39;; if ($t -and $t -notmatch &#39;^\{\{&#39;) { netsh dns add encryption server=8.8.8.8 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null; netsh dns add encryption server=8.8.4.4 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_9</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Quad9 DoH (9.9.9.9)</span></div>
             <pre><code>Get-NetAdapter | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ServerAddresses @(&#39;9.9.9.9&#39;,&#39;149.112.112.112&#39;) }</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Setting_gaming-dns-server_Option_9</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Quad9 DoH (9.9.9.9)</span></div>
             <pre><code>$known = @(&#39;1.1.1.1&#39;,&#39;1.0.0.1&#39;,&#39;8.8.8.8&#39;,&#39;8.8.4.4&#39;,&#39;9.9.9.9&#39;,&#39;149.112.112.112&#39;); foreach ($s in $known) { netsh dns delete encryption server=$s 2&gt;$null | Out-Null }; $t = &#39;https://dns.quad9.net/dns-query&#39;; if ($t -and $t -notmatch &#39;^\{\{&#39;) { netsh dns add encryption server=9.9.9.9 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null; netsh dns add encryption server=149.112.112.112 dohtemplate=$t autoupgrade=yes udpfallback=no | Out-Null }</code></pre>
             </div></div>
             </details>
@@ -1246,9 +1246,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3</td></tr>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">ServiceOption_Automatic <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Automatic <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
             </tbody>
             </table>
             </div>
@@ -1272,9 +1272,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Manual</th><td class="mx-cell">3</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_AutomaticRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Manual</th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Automatic (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
             </tbody>
             </table>
             </div>
@@ -1298,9 +1298,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3</td></tr>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">ServiceOption_Automatic <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Automatic <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
             </tbody>
             </table>
             </div>
@@ -1324,9 +1324,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3</td></tr>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">ServiceOption_Automatic <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Automatic <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
             </tbody>
             </table>
             </div>
@@ -1351,9 +1351,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3</td></tr>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">ServiceOption_Automatic <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Automatic <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
             </tbody>
             </table>
             </div>
@@ -1365,9 +1365,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2 (or not set)</td></tr>
             </tbody>
             </table>
             </div>
@@ -1391,9 +1391,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1417,9 +1417,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1443,9 +1443,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1469,9 +1469,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1495,9 +1495,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1521,9 +1521,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1547,9 +1547,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1573,9 +1573,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3</td></tr>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">ServiceOption_Automatic <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Automatic <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
             </tbody>
             </table>
             </div>
@@ -1600,9 +1600,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_DisabledRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">4 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Manual</th><td class="mx-cell">3</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Disabled (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">4 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Manual</th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1614,9 +1614,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">ServiceOption_DisabledRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">4 (or not set)</td></tr>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">ServiceOption_Manual <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Disabled (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">4 (or not set)</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Manual <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1640,9 +1640,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">ServiceOption_DisabledRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">ServiceOption_Manual <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Disabled (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Manual <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1667,9 +1667,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">ServiceOption_Disabled <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">4 (or not set)</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Disabled <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">4 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1681,9 +1681,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4 (or not set)</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1707,9 +1707,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1733,9 +1733,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1759,9 +1759,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1785,9 +1785,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1811,9 +1811,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1838,9 +1838,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1852,9 +1852,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">ServiceOption_Automatic <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Automatic <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1878,9 +1878,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1904,9 +1904,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1930,9 +1930,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1956,9 +1956,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -1982,9 +1982,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -2008,9 +2008,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -2034,9 +2034,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -2060,9 +2060,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -2086,23 +2086,23 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th><th class="mx-col mx-col-value"><code>IsInputAppPreloadEnabled</code><span class="mx-type">DWord</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th><th class="mx-col mx-col-script"><code>Script</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td><td class="mx-cell">0</td><td class="mx-cell mx-check" aria-label="yes">&#10003;</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td><td class="mx-cell">1</td><td class="mx-cell mx-check" aria-label="yes">&#10003;</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td><td class="mx-cell">1</td><td class="mx-cell mx-check" aria-label="yes">&#10003;</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td><td class="mx-cell">0</td><td class="mx-cell mx-check" aria-label="yes">&#10003;</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td><td class="mx-cell">1</td><td class="mx-cell mx-check" aria-label="yes">&#10003;</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td><td class="mx-cell">1</td><td class="mx-cell mx-check" aria-label="yes">&#10003;</td></tr>
             </tbody>
             </table>
             </div>
             <div class="mx-code"><h4>PowerShell Scripts</h4><p>Winhance runs this script when you apply the matching option.</p>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to ServiceOption_Disabled</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Disabled</span></div>
             <pre><code>if([Environment]::OSVersion.Version.Build -ge 22000 -and -not(Get-WinUserLanguageList|?{$_.LanguageTag-match&#39;^(zh|ja|ko)&#39;})){$f=&#39;C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\TextInputHost.exe&#39;; $o=$f-replace&#39;\.exe$&#39;,&#39;.old.exe&#39;; if(Test-Path $f){takeown /f $f /a | Out-Null; icacls $f /grant Administrators:F | Out-Null; if(Test-Path $o){Remove-Item $o -Force}; Rename-Item $f $o -Force}; Stop-Process -Name TextInputHost -Force -ErrorAction SilentlyContinue}</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to ServiceOption_ManualRecommended</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Manual (Recommended)</span></div>
             <pre><code>$f=&#39;C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\TextInputHost.exe&#39;; $o=$f-replace&#39;\.exe$&#39;,&#39;.old.exe&#39;; if(Test-Path $o){if(Test-Path $f){Remove-Item $f -Force}; Rename-Item $o $f -Force}; Start-Process $f -ErrorAction SilentlyContinue</code></pre>
             </div>
             <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to ServiceOption_Automatic</span></div>
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Automatic</span></div>
             <pre><code>$f=&#39;C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\TextInputHost.exe&#39;; $o=$f-replace&#39;\.exe$&#39;,&#39;.old.exe&#39;; if(Test-Path $o){if(Test-Path $f){Remove-Item $f -Force}; Rename-Item $o $f -Force}; Start-Process $f -ErrorAction SilentlyContinue</code></pre>
             </div></div>
             </details>
@@ -2124,9 +2124,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -2150,9 +2150,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -2176,9 +2176,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Disabled</th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">ServiceOption_ManualRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Automatic</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Manual (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Automatic</th><td class="mx-cell">2</td></tr>
             </tbody>
             </table>
             </div>
@@ -2202,9 +2202,9 @@
             <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start</code><span class="mx-type">DWord</span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">ServiceOption_DisabledRecommended <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">4</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">ServiceOption_Manual</th><td class="mx-cell">3</td></tr>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">ServiceOption_Automatic <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Disabled (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Manual</th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Automatic <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
             </tbody>
             </table>
             </div>
