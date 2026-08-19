@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Vendors setting-icon artwork into docs/_assets/icons.json from a pre-fetched source file.
-//   node tools/vendor-icons.mjs [--catalog ../winhance/extras/docs-export/catalog.json] [--source <path>] [--out docs/_assets/icons.json]
+//   node tools/vendor-icons.mjs [--catalog ../winhance/extras/docs-export/catalog.json] [--source tools/icon-sources/icons.json] [--out docs/_assets/icons.json]
 // Exits 1 (without writing) if any catalog icon identity is missing from the source.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 
 const here = fileURLToPath(new URL('.', import.meta.url));
 const DEFAULT_CATALOG = resolve(here, '..', '..', 'winhance', 'extras', 'docs-export', 'catalog.json');
-const DEFAULT_SOURCE = '/tmp/claude-1000/-home-mdp/79ffb703-5c81-4363-bba7-79ff783d52b7/scratchpad/icon-sources/icons.json';
+const DEFAULT_SOURCE = resolve(here, 'icon-sources', 'icons.json');
 const DEFAULT_OUT = resolve(here, '..', 'docs', '_assets', 'icons.json');
 
 function iconIdentities(catalog) {

@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { vendorIcons } from '../vendor-icons.mjs';
 
-const SOURCE_PATH = '/tmp/claude-1000/-home-mdp/79ffb703-5c81-4363-bba7-79ff783d52b7/scratchpad/icon-sources/icons.json';
+const SOURCE_PATH = new URL('../icon-sources/icons.json', import.meta.url);
 const source = JSON.parse(readFileSync(SOURCE_PATH, 'utf8'));
 
 function deepFreeze(value) {
