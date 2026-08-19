@@ -898,41 +898,10 @@ html {
     gap: 0.75rem;
 }
 
-/* When badge exists, use grid layout for proper stacking */
-.setting-header:has(.setting-badge) {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    row-gap: 0.3rem;
-    column-gap: 0.75rem;
-    align-items: center;
-}
-
 .setting-name {
     font-weight: 600;
     font-size: 1.1rem;
     color: var(--text-color);
-}
-
-/* When badge exists, name is in second row (aligned with setting-id) */
-.setting-header:has(.setting-badge) .setting-name {
-    grid-column: 1;
-    grid-row: 2;
-    align-self: center;
-}
-
-/* Badge in top-right (above setting-id) */
-.setting-header:has(.setting-badge) .setting-badge {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: end;
-}
-
-/* Setting ID below badge (same row as name) */
-.setting-header:has(.setting-badge) .setting-id {
-    grid-column: 2;
-    grid-row: 2;
-    justify-self: end;
 }
 
 .setting-id {

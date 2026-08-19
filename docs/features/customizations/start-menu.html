@@ -146,7 +146,52 @@
 
             </tbody>
             </table>
-            </div>
+            </div><div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
+            <ul>
+            <li><strong>Start layout</strong>: More pins</li>
+            <li><strong>Recommended section</strong>: Hide</li>
+            <li><strong>Show recently added apps</strong>: Off</li>
+            <li><strong>Show most used apps</strong>: Off</li>
+            <li><strong>Show recommended files and recently opened items</strong>: Off</li>
+            <li><strong>Show recommendations for tips, shortcuts, new apps, and more</strong>: Off</li>
+            <li><strong>Show account-related notifications</strong>: Off</li>
+            <li><strong>Bing Search Results in Start Menu</strong>: Off</li>
+            </ul></div><div class="mx-code"><h4>PowerShell Scripts</h4><p>Winhance runs this script when you apply the matching option.</p>
+            <div class="code-block">
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">On Apply</span></div>
+            <pre><code>
+            $layoutPath = &#39;C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml&#39;
+            $layoutXml = @&#39;
+            &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+            &lt;LayoutModificationTemplate xmlns:defaultlayout=&quot;http://schemas.microsoft.com/Start/2014/FullDefaultLayout&quot; xmlns:start=&quot;http://schemas.microsoft.com/Start/2014/StartLayout&quot; Version=&quot;1&quot; xmlns:taskbar=&quot;http://schemas.microsoft.com/Start/2014/TaskbarLayout&quot; xmlns=&quot;http://schemas.microsoft.com/Start/2014/LayoutModification&quot;&gt;
+                &lt;LayoutOptions StartTileGroupCellWidth=&quot;6&quot; /&gt;
+                &lt;DefaultLayoutOverride&gt;
+                    &lt;StartLayoutCollection&gt;
+                        &lt;defaultlayout:StartLayout GroupCellWidth=&quot;6&quot; /&gt;
+                    &lt;/StartLayoutCollection&gt;
+                &lt;/DefaultLayoutOverride&gt;
+            &lt;/LayoutModificationTemplate&gt;
+            &#39;@
+            
+            # Future users: drop the clean template into the Default profile (force-create dir, overwrite if present).
+            New-Item -ItemType Directory -Path (Split-Path $layoutPath) -Force | Out-Null
+            [System.IO.File]::WriteAllText($layoutPath, $layoutXml)
+            
+            # Current user only: apply now via their SID (HKU, not HKCU - correct under OTS), then unlock so they can still customize.
+            # Other existing users are intentionally not touched - Win10 has no supported way to apply a
+            # customizable layout to a signed-out profile, so users re-run this per account (see description).
+            $me = ((Get-CimInstance Win32_ComputerSystem).UserName -split &#39;\\&#39;)[-1]
+            if ($me) {
+                $sid = (New-Object System.Security.Principal.NTAccount($me)).Translate([System.Security.Principal.SecurityIdentifier]).Value
+                $key = &quot;HKU\$sid\SOFTWARE\Policies\Microsoft\Windows\Explorer&quot;
+                reg add $key /v StartLayoutFile /t REG_SZ /d $layoutPath /f | Out-Null
+                reg add $key /v LockedStartLayout /t REG_DWORD /d 1 /f | Out-Null
+                Stop-Process -Name StartMenuExperienceHost -Force -EA SilentlyContinue; Start-Sleep 3
+                reg add $key /v LockedStartLayout /t REG_DWORD /d 0 /f | Out-Null
+                Stop-Process -Name StartMenuExperienceHost -Force -EA SilentlyContinue
+            }
+            </code></pre>
+            </div></div>
             <h4 class="mx-build">Windows 10</h4>
             <div class="mx-scroll">
             <table class="registry-table mx-table">
@@ -158,16 +203,12 @@
 
             </tbody>
             </table>
-            </div>
-            <div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
+            </div><div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
             <ul>
-            <li><strong>Start layout</strong>: More pins</li>
-            <li><strong>Recommended section</strong>: Hide</li>
             <li><strong>Show recently added apps</strong>: Off</li>
             <li><strong>Show most used apps</strong>: Off</li>
+            <li><strong>Show suggestions in Start</strong>: Off</li>
             <li><strong>Show recommended files and recently opened items</strong>: Off</li>
-            <li><strong>Show recommendations for tips, shortcuts, new apps, and more</strong>: Off</li>
-            <li><strong>Show account-related notifications</strong>: Off</li>
             <li><strong>Bing Search Results in Start Menu</strong>: Off</li>
             </ul></div><div class="mx-code"><h4>PowerShell Scripts</h4><p>Winhance runs this script when you apply the matching option.</p>
             <div class="code-block">
@@ -228,20 +269,7 @@
             <tr class="mx-option-row"><th scope="row" class="mx-option">Clean Start Menu</th><td class="mx-cell">{&quot;pinnedList&quot;:[]}</td><td class="mx-cell">{&quot;pinnedList&quot;:[]}</td></tr>
             </tbody>
             </table>
-            </div>
-            <h4 class="mx-build">Windows 10</h4>
-            <div class="mx-scroll">
-            <table class="registry-table mx-table">
-            <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Start">HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start</code></th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer">HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ConfigureStartPins</code><span class="mx-type">String</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th><th class="mx-col mx-col-value"><code>ConfigureStartPins</code><span class="mx-type">String</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th></tr>
-            </thead>
-            <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Clean Start Menu</th><td class="mx-cell">{&quot;pinnedList&quot;:[]}</td><td class="mx-cell">{&quot;pinnedList&quot;:[]}</td></tr>
-            </tbody>
-            </table>
-            </div>
-            <div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
+            </div><div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
             <ul>
             <li><strong>Start layout</strong>: More pins</li>
             <li><strong>Recommended section</strong>: Hide</li>
@@ -273,6 +301,46 @@
             Stop-Process -Name &#39;StartMenuExperienceHost&#39; -Force -ErrorAction SilentlyContinue
             </code></pre>
             </div></div>
+            <h4 class="mx-build">Windows 10</h4>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Start">HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start</code></th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer">HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ConfigureStartPins</code><span class="mx-type">String</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th><th class="mx-col mx-col-value"><code>ConfigureStartPins</code><span class="mx-type">String</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Clean Start Menu</th><td class="mx-cell">{&quot;pinnedList&quot;:[]}</td><td class="mx-cell">{&quot;pinnedList&quot;:[]}</td></tr>
+            </tbody>
+            </table>
+            </div><div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
+            <ul>
+            <li><strong>Show recently added apps</strong>: Off</li>
+            <li><strong>Show most used apps</strong>: Off</li>
+            <li><strong>Show suggestions in Start</strong>: Off</li>
+            <li><strong>Show recommended files and recently opened items</strong>: Off</li>
+            <li><strong>Bing Search Results in Start Menu</strong>: Off</li>
+            </ul></div><div class="mx-code"><h4>PowerShell Scripts</h4><p>Winhance runs this script when you apply the matching option.</p>
+            <div class="code-block">
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">On Apply</span></div>
+            <pre><code>
+            # Clear cached pinned-list data (start.bin / start2.bin) for every real user profile.
+            # Iterating HKLM\ProfileList is OTS-safe and admin can delete in any profile, so the
+            # current user and every other user are handled in one loop. ProfileImagePath gives
+            # the correct path even for non-default profile locations (e.g. D:\Users\...).
+            $systemAccounts = @(&#39;Public&#39;,&#39;Default&#39;,&#39;All Users&#39;,&#39;Default User&#39;)
+            Get-ChildItem &#39;HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList&#39; |
+                Where-Object { $_.PSChildName -like &#39;S-1-5-21-*&#39; } |
+                ForEach-Object {
+                    $profilePath = (Get-ItemProperty $_.PSPath -Name &#39;ProfileImagePath&#39; -ErrorAction SilentlyContinue).ProfileImagePath
+                    if ($profilePath -and ((Split-Path $profilePath -Leaf) -notin $systemAccounts)) {
+                        Remove-Item &quot;$profilePath\AppData\Local\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start*.bin&quot; -Force -ErrorAction SilentlyContinue
+                    }
+                }
+            
+            # Restart the Start Menu host so the cleared layout takes effect immediately.
+            Stop-Process -Name &#39;StartMenuExperienceHost&#39; -Force -ErrorAction SilentlyContinue
+            </code></pre>
+            </div></div>
             </details>
             </div>
 
@@ -281,7 +349,7 @@
             <span class="setting-name">Start layout</span>
             <span class="setting-id">start-menu-layout</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span></div>
             <p class="setting-desc">Choose whether the Start Menu shows more pinned apps, more recommendations, or a balanced default layout</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -298,7 +366,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -307,7 +374,7 @@
             <span class="setting-name">All apps view</span>
             <span class="setting-id">start-all-apps-view</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge build" title="Requires Windows build 26100.7171 or higher">Requires Windows build 26100.7171 or higher</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.05.26</span><span class="setting-badge req" title="StartMenuExperienceHost has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">StartMenuExperienceHost restart</span></div>
+            <div class="setting-badges"><span class="setting-badge build" title="Requires Windows build 26100.7171 or higher">Requires Windows build 26100.7171 or higher</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge added">Added in v26.05.26</span><span class="setting-badge req" title="StartMenuExperienceHost has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">StartMenuExperienceHost restart</span></div>
             <p class="setting-desc">Choose how the All apps section in Start is displayed: by category, in a grid, or as a list</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -324,7 +391,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -333,7 +399,7 @@
             <span class="setting-name">Recommended section</span>
             <span class="setting-id">start-recommended-section</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="StartMenuExperienceHost has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">StartMenuExperienceHost restart</span></div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge req" title="StartMenuExperienceHost has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">StartMenuExperienceHost restart</span></div>
             <p class="setting-desc">Show or hide the lower section that displays recently opened files and suggested apps. Hiding this section also removes Windows Spotlight from the lock screen and suggested content in the Settings app</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -349,7 +415,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -374,7 +439,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -399,7 +463,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -424,7 +487,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -449,7 +511,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -474,7 +535,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -499,7 +559,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -524,7 +583,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -548,7 +606,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
             </section>

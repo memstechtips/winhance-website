@@ -130,7 +130,7 @@
             <span class="setting-name">Clean Taskbar</span>
             <span class="setting-id">taskbar-clean</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Prompts before applying this setting">Asks you to confirm before it runs</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <div class="setting-badges"><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge req" title="Prompts before applying this setting">Asks you to confirm before it runs</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
             <p class="setting-desc">Removes all pinned items from the Taskbar</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -145,20 +145,7 @@
             <tr class="mx-option-row"><th scope="row" class="mx-option">Clean Taskbar</th><td class="mx-cell">(empty)</td></tr>
             </tbody>
             </table>
-            </div>
-            <h4 class="mx-build">Windows 10</h4>
-            <div class="mx-scroll">
-            <table class="registry-table mx-table">
-            <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Favorites</code><span class="mx-type">Binary</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th></tr>
-            </thead>
-            <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Clean Taskbar</th><td class="mx-cell">(empty)</td></tr>
-            </tbody>
-            </table>
-            </div>
-            <div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
+            </div><div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
             <ul>
             <li><strong>Search in taskbar</strong>: Hide</li>
             <li><strong>Taskbar alignment</strong>: Left</li>
@@ -180,6 +167,34 @@
             <li><strong>Show Widgets</strong>: Off</li>
             <li><strong>Enable &#39;End Task&#39; in Taskbar</strong>: On</li>
             </ul></div>
+            <h4 class="mx-build">Windows 10</h4>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Favorites</code><span class="mx-type">Binary</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Clean Taskbar</th><td class="mx-cell">(empty)</td></tr>
+            </tbody>
+            </table>
+            </div><div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
+            <ul>
+            <li><strong>Search in taskbar</strong>: Hide</li>
+            <li><strong>Automatically hide the taskbar</strong>: Off</li>
+            <li><strong>Taskbar Auto-Hide Hover Delay</strong>: 400ms (Default)</li>
+            <li><strong>Show badges on taskbar apps</strong>: On</li>
+            <li><strong>Show my taskbar on all displays</strong>: On</li>
+            <li><strong>Show taskbar apps on</strong>: All taskbars</li>
+            <li><strong>Combine taskbar buttons and hide labels</strong>: Always</li>
+            <li><strong>Combine taskbar buttons on other taskbars</strong>: Always</li>
+            <li><strong>Remove &#39;Meet Now&#39; button from system tray</strong>: On</li>
+            <li><strong>Always show all system tray icons</strong>: On</li>
+            <li><strong>Show Task View button</strong>: Off</li>
+            <li><strong>Show News and Interests</strong>: Off</li>
+            <li><strong>Taskbar Transparency</strong>: Windows default</li>
+            <li><strong>Make taskbar small</strong>: On</li>
+            </ul></div>
             </details>
             </div>
 
@@ -189,7 +204,7 @@
             <span class="setting-name">Search in taskbar</span>
             <span class="setting-id">taskbar-search-box-11</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span></div>
             <p class="setting-desc">Choose how the Windows search appears on your taskbar: hidden, icon only, icon with label, or full search box</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -207,7 +222,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -216,7 +230,7 @@
             <span class="setting-name">Search in taskbar</span>
             <span class="setting-id">taskbar-search-box-10</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
             <p class="setting-desc">Choose how the Windows search appears on your taskbar: hidden, icon only, or full search box</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -233,7 +247,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -258,7 +271,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -267,7 +279,7 @@
             <span class="setting-name">Show Task View button</span>
             <span class="setting-id">taskbar-task-view</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <div class="setting-badges"><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
             <p class="setting-desc">Show the Task View button for managing virtual desktops and viewing all open windows at once</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -283,7 +295,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -308,7 +319,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -333,7 +343,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -358,7 +367,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -383,7 +391,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -408,7 +415,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -433,7 +439,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -443,7 +448,7 @@
             <span class="setting-name">Taskbar alignment</span>
             <span class="setting-id">taskbar-alignment</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
             <p class="setting-desc">Align taskbar icons to the left (classic Windows style) or center (Windows 11 default)</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -459,7 +464,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -468,7 +472,7 @@
             <span class="setting-name">Automatically hide the taskbar</span>
             <span class="setting-id">taskbar-auto-hide</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <div class="setting-badges"><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
             <p class="setting-desc">Automatically hides the taskbar when not in use. Hover at the bottom of the screen to reveal it</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -484,7 +488,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -493,7 +496,7 @@
             <span class="setting-name">Taskbar Auto-Hide Hover Delay</span>
             <span class="setting-id">taskbar-extended-hover-time</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.03</span><span class="setting-badge req" title="Reboot for the change to fully take effect">Requires a system restart</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <div class="setting-badges"><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge added">Added in v26.04.03</span><span class="setting-badge req" title="Reboot for the change to fully take effect">Requires a system restart</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
             <p class="setting-desc">Controls how long you must hover at the screen edge before the auto-hidden taskbar appears (in milliseconds). Lower values make the taskbar appear faster when using auto-hide. Default is 400ms</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -513,7 +516,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -522,7 +524,7 @@
             <span class="setting-name">Show badges on taskbar apps</span>
             <span class="setting-id">taskbar-badges</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span></div>
+            <div class="setting-badges"><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge added">Added in v26.04.08</span></div>
             <p class="setting-desc">Show notification badge counters on taskbar app icons to indicate unread messages or alerts</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -538,7 +540,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -547,7 +548,7 @@
             <span class="setting-name">Show flashing on taskbar apps</span>
             <span class="setting-id">taskbar-flashing</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span></div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge added">Added in v26.04.08</span></div>
             <p class="setting-desc">Allow taskbar app icons to flash when they require your attention</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -563,7 +564,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -572,7 +572,7 @@
             <span class="setting-name">Show my taskbar on all displays</span>
             <span class="setting-id">taskbar-multi-display</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <div class="setting-badges"><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
             <p class="setting-desc">Show the taskbar on all connected monitors when using a multi-display setup</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -588,7 +588,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             <div class="setting-children">
             <div class="setting-card setting-card-child" id="taskbar-multi-display-apps">
@@ -596,7 +595,7 @@
             <span class="setting-name">Show taskbar apps on</span>
             <span class="setting-id">taskbar-multi-display-apps</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <div class="setting-badges"><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
             <p class="setting-desc">When using multiple displays, choose which taskbar shows your pinned and running apps</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -613,7 +612,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
             <div class="setting-card setting-card-child" id="taskbar-combine-buttons-other">
@@ -621,7 +619,7 @@
             <span class="setting-name">Combine taskbar buttons on other taskbars</span>
             <span class="setting-id">taskbar-combine-buttons-other</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <div class="setting-badges"><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
             <p class="setting-desc">Control whether taskbar buttons are grouped together and labels are hidden on secondary display taskbars</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -638,7 +636,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
             </div>
@@ -649,7 +646,7 @@
             <span class="setting-name">Share any window from my taskbar</span>
             <span class="setting-id">taskbar-share-window</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span></div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge added">Added in v26.04.08</span></div>
             <p class="setting-desc">Enable sharing any open window directly from the taskbar during a call</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -665,7 +662,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -674,7 +670,7 @@
             <span class="setting-name">Show desktop from taskbar corner</span>
             <span class="setting-id">taskbar-show-desktop</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span></div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge added">Added in v26.04.08</span></div>
             <p class="setting-desc">Click the far corner of the taskbar to quickly show the desktop by minimizing all open windows</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -690,7 +686,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -699,7 +694,7 @@
             <span class="setting-name">Combine taskbar buttons and hide labels</span>
             <span class="setting-id">taskbar-combine-buttons</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <div class="setting-badges"><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
             <p class="setting-desc">Control whether taskbar buttons for the same application are grouped together and whether text labels are shown</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -716,7 +711,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -725,7 +719,7 @@
             <span class="setting-name">Show smaller taskbar buttons</span>
             <span class="setting-id">taskbar-button-size</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge build" title="Requires Windows build 26100.4484 or higher">Requires Windows build 26100.4484 or higher</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <div class="setting-badges"><span class="setting-badge build" title="Requires Windows build 26100.4484 or higher">Requires Windows build 26100.4484 or higher</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
             <p class="setting-desc">Control the size of taskbar buttons. This setting may not persist on all Windows 11 builds</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -742,7 +736,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -751,7 +744,7 @@
             <span class="setting-name">Always show all system tray icons</span>
             <span class="setting-id">taskbar-system-tray-icons</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
             <p class="setting-desc">Show all system tray icons directly on the taskbar instead of hiding them in the overflow menu. To control individual icon visibility, go to Taskbar Settings and select which icons appear on the taskbar</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -767,7 +760,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -792,8 +784,7 @@
             <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Custom <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th></tr>
             </tbody>
             </table>
-            </div>
-            <div class="mx-code"><h4>PowerShell Scripts</h4><p>Winhance runs this script when you apply the matching option.</p>
+            </div><div class="mx-code"><h4>PowerShell Scripts</h4><p>Winhance runs this script when you apply the matching option.</p>
             <div class="code-block">
             <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Show all icons</span></div>
             <pre><code>Set-ItemProperty &#39;HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify&#39; -Name SystemTrayChevronVisibility -Value 0 -Type DWord -Force; Get-ChildItem &#39;HKCU:\Control Panel\NotifyIconSettings&#39; | ForEach-Object { Set-ItemProperty $_.PSPath -Name IsPromoted -Value 1 -Type DWord }</code></pre>
@@ -810,7 +801,7 @@
             <span class="setting-name">Taskbar Transparency</span>
             <span class="setting-id">taskbar-transparent</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span><span class="setting-badge req" title="Transparency effects = Enabled">Requires: <a href="../../features/customizations/theme.html#theme-transparency">Transparency effects</a> (set automatically)</span></div>
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span><span class="setting-badge req" title="Transparency effects = Enabled">Requires: <a href="../../features/customizations/theme.html#theme-transparency">Transparency effects</a> (set automatically)</span></div>
             <p class="setting-desc">Controls the transparency level of the taskbar. Winhance automatically enables Transparency Effects when this setting is applied</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -827,7 +818,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -836,7 +826,7 @@
             <span class="setting-name">Make taskbar small</span>
             <span class="setting-id">taskbar-small</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
             <p class="setting-desc">Reduce the height of the taskbar by using smaller icons, giving you more screen space</p>
             <details class="registry-details">
             <summary>Technical Details</summary>
@@ -852,7 +842,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
 
@@ -877,7 +866,6 @@
             </tbody>
             </table>
             </div>
-
             </details>
             </div>
             </section>

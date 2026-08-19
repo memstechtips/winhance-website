@@ -61,6 +61,20 @@ test('card with a win10 matrix renders both tables under build headings', () => 
   assert.equal((html.match(/<table class="registry-table mx-table">/g) ?? []).length, 2);
 });
 
+test('twin win10/win11 cards render each table followed by its own notes and code blocks', () => {
+  const soloCtx = { childrenOf: new Map(), urlFor: ctx.urlFor };
+  const s = byId['theme-mode-windows'];
+  assert.ok(s.matrixWin10, 'fixture must carry theme-mode-windows matrixWin10');
+  assert.ok(s.matrix.notes.length > 0 && s.matrixWin10.notes.length > 0, 'fixture must carry notes on both matrices');
+  const html = renderCard(s, soloCtx);
+  assert.equal((html.match(/<div class="mx-notes">/g) ?? []).length, 2);
+  const firstNotes = html.indexOf('<div class="mx-notes">');
+  const secondNotes = html.indexOf('<div class="mx-notes">', firstNotes + 1);
+  const win10Heading = html.indexOf('Windows 10</h4>');
+  assert.ok(firstNotes < win10Heading, 'first mx-notes block belongs to the Windows 11 table');
+  assert.ok(secondNotes > win10Heading, 'second mx-notes block belongs to the Windows 10 table');
+});
+
 test('notes render one list item per matrix note, with scope only when present', () => {
   const s = byId['taskbar-clean'];
   const notes = s.matrix.notes;

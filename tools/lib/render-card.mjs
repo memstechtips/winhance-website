@@ -17,7 +17,7 @@ export function renderMatrix(m, { heading = '', urlFor = () => null } = {}) {
 ${m.options.map((o) => optionRow(m, o)).join('\n')}
 </tbody>
 </table>
-</div>`;
+</div>${notes(m)}${codeBlocks(m)}`;
 }
 
 function groupRow(m) {
@@ -118,7 +118,8 @@ export function cardBadges(s, urlFor = () => null) {
     else out.push(badge('hardware', hw, ''));
   }
   if (s.availability.requiresAdvancedUnlock) out.push(badge('advanced', 'Advanced', 'Hidden until Advanced mode is unlocked in Winhance'));
-  if (s.isSubjectivePreference) out.push(badge('preference', 'Preference', 'A matter of taste: Winhance does not recommend a value'));
+  // Verbatim InfoBadge_Preference_Tooltip from en.json: a Preference setting can still carry a Recommended row.
+  if (s.isSubjectivePreference) out.push(badge('preference', 'Preference', "Personal preference — Winhance may suggest a value, but there's no objectively correct answer. Choose whatever fits you."));
   if (s.addedInVersion) out.push(badge('added', `Added in v${s.addedInVersion}`, ''));
   for (const chip of s.matrix?.requirements ?? []) out.push(badgeRaw('req', chipText(chip, urlFor), chip.tooltip));
   return out.join('');
@@ -149,7 +150,6 @@ ${badges ? `<div class="setting-badges">${badges}</div>\n` : ''}<p class="settin
 <details class="registry-details">
 <summary>Technical Details</summary>
 ${body}
-${notes(s.matrix)}${codeBlocks(s.matrix)}
 </details>
 ${kids ? `<div class="setting-children">\n${kids}\n</div>\n` : ''}</div>`;
 }
