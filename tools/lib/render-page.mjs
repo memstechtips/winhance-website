@@ -13,16 +13,22 @@ export function rootFor(path) {
 }
 
 export function fillTemplate(template, values) {
-  const out = template
-    .replace(/\{\{siteRoot\}\}/g, values.root + '../')
-    .replace(/\{\{root\}\}/g, values.root)
-    .replace(/\{\{title\}\}/g, esc(values.title))
-    .replace(/\{\{sidebarOptimize\}\}/g, values.sidebarOptimize)
-    .replace(/\{\{sidebarCustomize\}\}/g, values.sidebarCustomize)
-    .replace(/\{\{content\}\}/g, values.content);
-  const left = out.match(/\{\{\w+\}\}/);
-  if (left) throw new Error(`template placeholder not filled: ${left[0]}`);
-  return out;
+  // Every replacement uses a replacer FUNCTION, not a string: real setting content (script bodies,
+  // registry paths) can contain a literal `$&`, `` $` `` etc. (e.g. a PowerShell regex anchor like
+  // `-replace'\.exe$'`), which String.replace would otherwise reinterpret as a special replacement
+  // pattern (`$&` = "insert the match") and corrupt the output.
+  // {{content}} is filled last and checked separately: real setting content can also legitimately
+  // contain literal `{{...}}` text (e.g. a PowerShell template placeholder like `{{dohtemplate}}`),
+  // which must not be mistaken for an unfilled shell placeholder.
+  const shell = template
+    .replace(/\{\{siteRoot\}\}/g, () => values.root + '../')
+    .replace(/\{\{root\}\}/g, () => values.root)
+    .replace(/\{\{title\}\}/g, () => esc(values.title))
+    .replace(/\{\{sidebarOptimize\}\}/g, () => values.sidebarOptimize)
+    .replace(/\{\{sidebarCustomize\}\}/g, () => values.sidebarCustomize);
+  const left = (shell.match(/\{\{\w+\}\}/g) ?? []).find((m) => m !== '{{content}}');
+  if (left) throw new Error(`template placeholder not filled: ${left}`);
+  return shell.replace(/\{\{content\}\}/g, () => values.content);
 }
 
 export function sidebarSubNav(pages, areaKey, root) {

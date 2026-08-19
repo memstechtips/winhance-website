@@ -1128,3 +1128,36 @@ html {
 .docs-layout.has-banner {
     padding-top: calc(var(--header-height) + 45px);
 }
+
+/* ===== Generated setting cards (tools/gen-docs.mjs) ===== */
+.setting-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: -0.2rem 0 0.6rem; }
+.setting-badge.preference { color: var(--text-muted); }
+.setting-badge.added { border-color: var(--accent-color); color: var(--accent-color); }
+.setting-badge.req { opacity: 0.85; }
+.setting-card-child { margin: 0.6rem 0 0; background: transparent; }
+.setting-children { margin-top: 0.75rem; padding-left: 1rem; border-left: 2px solid var(--border-color); }
+.registry-details > summary { cursor: pointer; font-weight: 500; color: var(--accent-color); }
+.mx-build { margin: 0.9rem 0 0.3rem; font-size: 0.95rem; }
+.mx-scroll { overflow-x: auto; margin-top: 0.5rem; }
+.mx-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.mx-table th, .mx-table td { border: 1px solid var(--border-color); padding: 0.4rem 0.6rem; vertical-align: top; text-align: left; }
+.mx-table thead th { background: var(--code-bg); font-weight: 600; }
+.mx-group-label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
+.mx-path { display: block; font-size: 0.75rem; font-weight: 400; white-space: nowrap; }
+.mx-type { margin-left: 0.4rem; font-size: 0.7rem; font-weight: 400; color: var(--text-muted); }
+.mx-chip { display: inline-block; margin-left: 0.4rem; padding: 0.05rem 0.4rem; border-radius: 10px; font-size: 0.7rem; font-weight: 400; background: rgba(255,255,255,0.08); }
+[data-theme="light"] .mx-chip { background: rgba(0,0,0,0.06); }
+.mx-option { font-weight: 500; white-space: nowrap; }
+.mx-roles { display: inline-flex; flex-wrap: wrap; gap: 0.3rem; margin-left: 0.4rem; vertical-align: middle; }
+.role-badge { display: inline-block; padding: 0.05rem 0.45rem; border-radius: 10px; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
+.role-badge.rec { background: rgba(46, 204, 113, 0.18); color: #2ecc71; }
+.role-badge.def { background: rgba(52, 152, 219, 0.18); color: #3498db; }
+.role-context { margin-left: 0.25rem; font-size: 0.7rem; color: var(--text-muted); }
+.mx-option-row.is-recommended > th { box-shadow: inset 3px 0 0 #2ecc71; }
+.mx-cell { font-family: var(--font-code); font-size: 0.8rem; }
+.mx-check { text-align: center; }
+.mx-empty, .mx-notes, .mx-code { margin-top: 0.75rem; }
+.mx-notes h4, .mx-code h4 { margin: 0 0 0.3rem; font-size: 0.9rem; }
+.mx-notes ul { margin: 0; padding-left: 1.2rem; }
+.code-label { margin-left: auto; font-size: 0.75rem; color: var(--text-muted); }
+.feature-card-count { margin-top: 0.4rem; font-size: 0.8rem; color: var(--text-muted); }

@@ -27,6 +27,26 @@ test('fillTemplate replaces every placeholder and leaves none behind', () => {
   assert.match(html, /docs-wip-banner/);
 });
 
+test('fillTemplate does not choke on literal {{...}} text inside injected content', () => {
+  const html = fillTemplate(template, { title: 'T', root: '../../', content: "<pre><code>$t = '{{dohtemplate}}';</code></pre>", sidebarOptimize: '<a>o</a>', sidebarCustomize: '<a>c</a>' });
+  assert.match(html, /\{\{dohtemplate\}\}/);
+});
+
+test('fillTemplate does not let special replacement patterns in content ($&, $`, $\') corrupt the output', () => {
+  const content = "<pre><code>$f -replace'\\.exe$', '.old.exe'</code></pre>";
+  const html = fillTemplate(template, { title: 'T', root: '../../', content, sidebarOptimize: '<a>o</a>', sidebarCustomize: '<a>c</a>' });
+  assert.ok(html.includes(content));
+  assert.doesNotMatch(html, /\{\{content\}\}/);
+});
+
+test('fillTemplate still throws when the template shell itself has an unfilled placeholder', () => {
+  const badTemplate = '<html>{{title}}{{root}}{{sidebarOptimize}}{{sidebarCustomize}}{{content}}{{oops}}</html>';
+  assert.throws(
+    () => fillTemplate(badTemplate, { title: 'T', root: './', content: 'x', sidebarOptimize: 'a', sidebarCustomize: 'b' }),
+    /template placeholder not filled: \{\{oops\}\}/
+  );
+});
+
 test('sidebarSubNav lists the area pages in _pages order with the root prefix', () => {
   const html = sidebarSubNav(pages, 'optimize', '../../');
   const hrefs = [...html.matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
