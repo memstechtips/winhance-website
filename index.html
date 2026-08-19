@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -40,6 +40,8 @@
          unused (the universal rule in styles.css already pins the WinUI font stack) so it's
          dropped rather than carried as a dead network request. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..900&display=swap">
+
+    <script src="docs/js/theme-load.js"></script>
 </head>
 
 <body>
@@ -94,6 +96,13 @@
                     </a>
                 </li>
                 <li class="nav-icons-group">
+                    <button id="theme-toggle" class="icon-btn theme-toggle-btn" title="Toggle theme">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                        </svg>
+                    </button>
                     <a href="https://github.com/memstechtips/Winhance" target="_blank" class="icon-btn github-btn"
                         title="GitHub">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -700,6 +709,7 @@
         </div>
     </footer>
 
+    <script src="docs/js/docs-theme.js"></script>
     <script src="scripts.js"></script>
 </body>
 

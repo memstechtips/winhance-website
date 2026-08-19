@@ -565,6 +565,19 @@ header {
     transform: translateY(-1px);
 }
 
+/* Theme toggle — same #theme-toggle control and docs/js/docs-theme.js behaviour as the
+   docs header, styled to sit in this header's bordered icon-btn group instead of
+   docs-main.css's bare circular button. */
+.nav-links .theme-toggle-btn {
+    cursor: pointer;
+}
+
+.nav-links .theme-toggle-btn:hover {
+    background-color: var(--winui-subtle-fill-color-secondary);
+    color: var(--accent-color);
+    transform: translateY(-1px);
+}
+
 /* Discord/Ko-fi/PayPal brand colours — kept literal, same rationale as .btn-demo. */
 .nav-links .discord-btn {
     background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
