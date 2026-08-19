@@ -4,6 +4,8 @@
  * Hand-authored — this is the only file in this repo allowed to contain literal colour
  * values. Every value below is either the literal WinUI System token or the app's fixed
  * corner radii / type ramp, sourced from Windows' own WinUI 3 controls, not from Winhance.
+ * Exception: the two --winui-font-family* values are inferred, not fetched — see the
+ * note beside them.
  * The app's OWN values (badge colours, table metrics, chip styling, etc.) live in the
  * generated docs/css/app-tokens.css instead — see tools/lib/theme-css.mjs.
  *
@@ -110,7 +112,12 @@
   /* Font family: WinUI 3 controls default to Segoe UI Variable (Segoe UI Variable Display
      at the Title/TitleLarge/Display steps), falling back to Segoe UI on Windows 10 where the
      variable font isn't present. Winhance's own XAML never overrides this, so it's the plain
-     OS/SDK default (Common_themeresources_any.xaml's ContentControlThemeFontFamily). */
+     OS/SDK default (Common_themeresources_any.xaml's ContentControlThemeFontFamily).
+     NOT independently fetched like the tokens above — inferred from the WinUI 3 SDK default
+     plus confirming Winhance's XAML carries no override. The concatenated family names
+     ("Segoe UI Variable Display") are inference too; the docs name the family and the optical
+     tiers separately. Re-verify against Common_themeresources_any.xaml if this must be
+     byte-exact. */
   --winui-font-family: "Segoe UI Variable", "Segoe UI", sans-serif;
   --winui-font-family-display: "Segoe UI Variable Display", "Segoe UI Variable", "Segoe UI", sans-serif;
 
