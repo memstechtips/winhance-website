@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taskbar - Winhance Docs</title>
+    <title>Taskbar Customization - Winhance Docs</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../styles.css">
     <link rel="stylesheet" href="../../css/docs-main.css">
     <link rel="stylesheet" href="../../css/docs-sidebar.css">
@@ -77,19 +76,19 @@
                     </div>
                     <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
                     <div class="sidebar-sub-nav">
-                        <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
-                        <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
-                        <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
-                        <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
-                        <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
-                        <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
+    <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy &amp; Security</a>
+    <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
+    <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming &amp; Performance</a>
+    <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
+    <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
+    <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
                     </div>
                     <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
                     <div class="sidebar-sub-nav">
-                        <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
-                        <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
-                        <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
-                        <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
+    <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
+    <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
+    <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
+    <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
                     </div>
                     <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
                     <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
@@ -113,306 +112,774 @@
         </aside>
 
         <main class="docs-content">
-            <section id="taskbar">
-                <h1>Taskbar Customization</h1>
-                <div class="video-container">
-                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2524" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <p>Tailor the Windows taskbar to your workflow. Winhance provides options to declutter, realign, and add
-                    functional improvements to your primary navigation bar.</p>
+            <section id="taskbar-customization">
+            <h1>Taskbar Customization</h1>
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2524" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p>Tailor the Windows taskbar to your workflow. Winhance provides options to declutter, realign, and add functional improvements to your primary navigation bar.</p>
+            <div class="callout callout-warning"> <div class="callout-title">⚠️ Setting Persistence</div> <p>Settings found in the <strong>Customizations</strong> view are <strong>not persistent</strong>. Winhance applies these changes once, but it does not use background tasks to re-apply them if they are changed later by Windows or by you manually.</p> </div>
+            <div class="callout callout-info">
+                <div class="callout-title">Technical Details</div>
+                <p>Every setting below can be expanded to show exactly what Winhance reads and writes: registry values, scheduled tasks, power settings and scripts, with the recommended value and the Windows default marked. This is the same table the app shows under each setting's Technical Details.</p>
+            </div>
 
-                <h2>Key Features</h2>
-                <ul>
-                    <li><strong>Taskbar Alignment:</strong> Easily switch between Center (Windows 11 default) and Left
-                        (Classic Windows) alignment.</li>
-                    <li><strong>Transparency & Blur:</strong> Make your taskbar fully transparent or apply a
-                        sophisticated blur effect.</li>
-                    <li><strong>'End Task' Integration:</strong> Enable the ability to right-click any app on the
-                        taskbar to immediately terminate it (Windows 11 only).</li>
-                    <li><strong>Clean Taskbar:</strong> A powerful command that unpins all default items from your taskbar. When executed, you can also choose to apply <strong>recommended taskbar settings</strong>, which automatically hides the task view button, disables widgets, and aligns the taskbar to the left.</li>
-                </ul>
+            <h2 id="layout">Layout</h2>
+            <div class="setting-card" id="taskbar-clean">
+            <div class="setting-header">
+            <span class="setting-name">Clean Taskbar</span>
+            <span class="setting-id">taskbar-clean</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Prompts before applying this setting">Asks you to confirm before it runs</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Removes all pinned items from the Taskbar</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <h4 class="mx-build">Windows 11</h4>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Favorites</code><span class="mx-type">Binary</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Clean Taskbar</th><td class="mx-cell">(empty)</td></tr>
+            </tbody>
+            </table>
+            </div>
+            <h4 class="mx-build">Windows 10</h4>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Favorites</code><span class="mx-type">Binary</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Clean Taskbar</th><td class="mx-cell">(empty)</td></tr>
+            </tbody>
+            </table>
+            </div>
+            <div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
+            <ul>
+            <li><strong>Search in taskbar</strong>: Hide</li>
+            <li><strong>Taskbar alignment</strong>: Left</li>
+            <li><strong>Automatically hide the taskbar</strong>: Off</li>
+            <li><strong>Taskbar Auto-Hide Hover Delay</strong>: 400ms (Default)</li>
+            <li><strong>Show badges on taskbar apps</strong>: On</li>
+            <li><strong>Show flashing on taskbar apps</strong>: On</li>
+            <li><strong>Show my taskbar on all displays</strong>: On</li>
+            <li><strong>Show taskbar apps on</strong>: All taskbars</li>
+            <li><strong>Share any window from my taskbar</strong>: On</li>
+            <li><strong>Show desktop from taskbar corner</strong>: On</li>
+            <li><strong>Combine taskbar buttons and hide labels</strong>: Always</li>
+            <li><strong>Combine taskbar buttons on other taskbars</strong>: Always</li>
+            <li><strong>System tray icons</strong>: Show all icons</li>
+            <li><strong>Show Task View button</strong>: Off</li>
+            <li><strong>Copilot Companion Button</strong>: Off</li>
+            <li><strong>Copilot PWA Pin</strong>: Off</li>
+            <li><strong>Recall Pin</strong>: Off</li>
+            <li><strong>Show Widgets</strong>: Off</li>
+            <li><strong>Enable &#39;End Task&#39; in Taskbar</strong>: On</li>
+            </ul></div>
+            </details>
+            </div>
 
-                <div class="callout callout-warning">
-                    <div class="callout-title">⚠️ Setting Persistence</div>
-                    <p>Settings found in the <strong>Customizations</strong> view are <strong>not persistent</strong>.
-                        Winhance applies these changes once, but it does not use background tasks to re-apply them if
-                        they are changed later by Windows or by you manually.</p>
-                </div>
+            <h2 id="taskbar-icons">Taskbar Icons</h2>
+            <div class="setting-card" id="taskbar-search-box-11">
+            <div class="setting-header">
+            <span class="setting-name">Search in taskbar</span>
+            <span class="setting-id">taskbar-search-box-11</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Choose how the Windows search appears on your taskbar: hidden, icon only, icon with label, or full search box</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search">HKCU\Software\Microsoft\Windows\CurrentVersion\Search</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>SearchboxTaskbarMode</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Hide <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Search icon only</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Search icon and label</th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Search box <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <!-- Layout Section -->
-                <h2>Layout</h2>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Clean Taskbar</span>
-                        <span class="setting-id">taskbar-clean</span>
-                    </div>
-                    <p class="setting-desc">Removes all pinned items from the Taskbar. This action requires confirmation and will restart Explorer to apply changes.</p>
-                    <p class="setting-desc"><strong>Type:</strong> Action button</p>
-                </div>
+            <div class="setting-card" id="taskbar-search-box-10">
+            <div class="setting-header">
+            <span class="setting-name">Search in taskbar</span>
+            <span class="setting-id">taskbar-search-box-10</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Choose how the Windows search appears on your taskbar: hidden, icon only, or full search box</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search">HKCU\Software\Microsoft\Windows\CurrentVersion\Search</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>SearchboxTaskbarMode</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Hide <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Search icon only</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Search box <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <!-- Taskbar Icons Section -->
-                <h3>Taskbar Icons</h3>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Search in taskbar</span>
-                        <span class="setting-id">taskbar-search-box-11</span>
-                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
-                    </div>
-                    <p class="setting-desc">Choose how the Windows search appears on your taskbar: hidden, icon only, icon with label, or full search box.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Hide, Search icon only, Search icon and label, Search box</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Search</code></td></tr>
-                            <tr><th>Value</th><td><code>SearchboxTaskbarMode</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Hide</th><td>0</td></tr>
-                            <tr><th>Search icon only</th><td>1</td></tr>
-                            <tr><th>Search icon and label</th><td>2</td></tr>
-                            <tr><th>Search box</th><td>3</td></tr>
-                            <tr><th>Default</th><td>3 (Search box)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="taskbar-meet-now">
+            <div class="setting-header">
+            <span class="setting-name">Remove &#39;Meet Now&#39; button from system tray</span>
+            <span class="setting-id">taskbar-meet-now</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Controls Meet Now button visibility in the system tray</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer">HKCU\Software\Policies\Microsoft\Windows\Explorer</code><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer">HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer">HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>HideSCAMeetNow</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">deletes key</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Search in taskbar</span>
-                        <span class="setting-id">taskbar-search-box-10</span>
-                        <span class="setting-badge win10"><i class="mdi mdi-microsoft-windows"></i>Windows 10 Only</span>
-                    </div>
-                    <p class="setting-desc">Choose how the Windows search appears on your taskbar: hidden, icon only, or full search box.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Hide, Search icon only, Search box</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Search</code></td></tr>
-                            <tr><th>Value</th><td><code>SearchboxTaskbarMode</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Hide</th><td>0</td></tr>
-                            <tr><th>Search icon only</th><td>1</td></tr>
-                            <tr><th>Search box</th><td>2</td></tr>
-                            <tr><th>Default</th><td>2 (Search box)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Remove 'Meet Now' button from system tray</span>
-                        <span class="setting-id">taskbar-meet-now</span>
-                        <span class="setting-badge win10"><i class="mdi mdi-microsoft-windows"></i>Windows 10 Only</span>
-                    </div>
-                    <p class="setting-desc">Controls Meet Now button visibility in the system tray.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Policies\Microsoft\Windows\Explorer</code></td></tr>
-                            <tr><th>Value</th><td><code>HideSCAMeetNow</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (Hidden)</th><td>1</td></tr>
-                            <tr><th>Disabled (Shown)</th><td>Key deleted</td></tr>
-                            <tr><th>Default</th><td>Key absent (shown)</td></tr>
-                        </table>
-                        <p><em>Note: This setting is also applied to HKCU\...\Policies\Explorer and HKLM\...\Policies\Explorer for full coverage.</em></p>
-                    </details>
-                </div>
+            <div class="setting-card" id="taskbar-task-view">
+            <div class="setting-header">
+            <span class="setting-name">Show Task View button</span>
+            <span class="setting-id">taskbar-task-view</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Show the Task View button for managing virtual desktops and viewing all open windows at once</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ShowTaskViewButton</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show Task View button</span>
-                        <span class="setting-id">taskbar-task-view</span>
-                    </div>
-                    <p class="setting-desc">Show the Task View button for managing virtual desktops and viewing all open windows at once.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
-                            <tr><th>Value</th><td><code>ShowTaskViewButton</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (Shown)</th><td>1</td></tr>
-                            <tr><th>Disabled (Hidden)</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Copilot Preview Button</span>
-                        <span class="setting-id">taskbar-copilot</span>
-                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
-                    </div>
-                    <p class="setting-desc">Show or hide the Copilot Preview button on the taskbar.</p>
-                    <p class="setting-desc"><em>Note: Only available on Windows 11 builds 22621-26099 (22H2/23H2).</em></p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
-                            <tr><th>Value</th><td><code>ShowCopilotButton</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (Shown)</th><td>1</td></tr>
-                            <tr><th>Disabled (Hidden)</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="taskbar-copilot">
+            <div class="setting-header">
+            <span class="setting-name">Copilot Preview Button</span>
+            <span class="setting-id">taskbar-copilot</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge build" title="Compatible with builds: 22621-26099">Compatible with builds: 22621-26099</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Show or hide the Copilot Preview button on the taskbar</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ShowCopilotButton</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show Widgets</span>
-                        <span class="setting-id">taskbar-widgets</span>
-                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
-                    </div>
-                    <p class="setting-desc">Show the Widgets button that displays personalized news, weather, calendar, and other information.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Policies\Microsoft\Dsh</code></td></tr>
-                            <tr><th>Value</th><td><code>AllowNewsAndInterests</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (Shown)</th><td>1</td></tr>
-                            <tr><th>Disabled (Hidden)</th><td>0</td></tr>
-                            <tr><th>Default</th><td>Key absent (Absence = Enabled)</td></tr>
-                        </table>
-                        <p><em>Note: This setting is also applied to HKLM\Software\Policies\Microsoft\Dsh for machine-wide policy.</em></p>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show News and Interests</span>
-                        <span class="setting-id">taskbar-news-and-interests</span>
-                        <span class="setting-badge win10"><i class="mdi mdi-microsoft-windows"></i>Windows 10 Only</span>
-                    </div>
-                    <p class="setting-desc">Show the News and Interests widget that displays headlines, weather, stocks, and other personalized content.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Policies\Microsoft\Windows\Windows Feeds</code></td></tr>
-                            <tr><th>Value</th><td><code>EnableFeeds</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (Shown)</th><td>1</td></tr>
-                            <tr><th>Disabled (Hidden)</th><td>0</td></tr>
-                            <tr><th>Default</th><td>Key absent (Absence = Enabled)</td></tr>
-                        </table>
-                        <p><em>Note: This setting is also applied to HKLM\...\Windows Feeds for machine-wide policy.</em></p>
-                    </details>
-                </div>
+            <div class="setting-card" id="taskbar-copilot-companion">
+            <div class="setting-header">
+            <span class="setting-name">Copilot Companion Button</span>
+            <span class="setting-id">taskbar-copilot-companion</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge added">Added in v26.04.10</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Show or hide the newer Copilot companion button on the taskbar</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>TaskbarCompanion</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <!-- Taskbar Behavior Section -->
-                <h3>Taskbar Behavior</h3>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Taskbar alignment</span>
-                        <span class="setting-id">taskbar-alignment</span>
-                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
-                    </div>
-                    <p class="setting-desc">Align taskbar icons to the left (classic Windows style) or center (Windows 11 default).</p>
-                    <p class="setting-desc"><strong>Options:</strong> Left, Center</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
-                            <tr><th>Value</th><td><code>TaskbarAl</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Left</th><td>0</td></tr>
-                            <tr><th>Center</th><td>1</td></tr>
-                            <tr><th>Default</th><td>1 (Center)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="taskbar-copilot-pwa-pin">
+            <div class="setting-header">
+            <span class="setting-name">Copilot PWA Pin</span>
+            <span class="setting-id">taskbar-copilot-pwa-pin</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge added">Added in v26.04.10</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Show or hide the Copilot PWA pin on the taskbar</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>CopilotPWAPin</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Enable 'End Task' in Taskbar</span>
-                        <span class="setting-id">taskbar-end-task</span>
-                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
-                    </div>
-                    <p class="setting-desc">Adds an 'End Task' option when right-clicking applications on the taskbar for quick termination.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings</code></td></tr>
-                            <tr><th>Value</th><td><code>TaskbarEndTask</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <!-- System Tray Section -->
-                <h3>System Tray</h3>
+            <div class="setting-card" id="taskbar-recall-pin">
+            <div class="setting-header">
+            <span class="setting-name">Recall Pin</span>
+            <span class="setting-id">taskbar-recall-pin</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge added">Added in v26.04.10</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Show or hide the Recall pin on the taskbar</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>RecallPin</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Always show all system tray icons</span>
-                        <span class="setting-id">taskbar-system-tray-icons</span>
-                        <span class="setting-badge win10"><i class="mdi mdi-microsoft-windows"></i>Windows 10 Only</span>
-                    </div>
-                    <p class="setting-desc">Show all system tray icons directly on the taskbar instead of hiding them in the overflow menu (up arrow).</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer</code></td></tr>
-                            <tr><th>Value</th><td><code>EnableAutoTray</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (Show all)</th><td>0</td></tr>
-                            <tr><th>Disabled (Auto-hide)</th><td>1</td></tr>
-                            <tr><th>Default</th><td>1</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <!-- Taskbar Appearance Section -->
-                <h3>Taskbar Appearance</h3>
+            <div class="setting-card" id="taskbar-widgets">
+            <div class="setting-header">
+            <span class="setting-name">Show Widgets</span>
+            <span class="setting-id">taskbar-widgets</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Show the Widgets button that displays personalized news, weather, calendar, and other information</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Policies\Microsoft\Dsh">HKCU\Software\Policies\Microsoft\Dsh</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Dsh">HKLM\Software\Policies\Microsoft\Dsh</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>AllowNewsAndInterests</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Taskbar Transparency</span>
-                        <span class="setting-id">taskbar-transparent</span>
-                        <span class="setting-badge win10"><i class="mdi mdi-microsoft-windows"></i>Windows 10 Only</span>
-                    </div>
-                    <p class="setting-desc">Controls the transparency level of the taskbar. Winhance automatically enables Transparency Effects when this setting is applied.</p>
-                    <p class="setting-desc"><em>Note: Requires "Transparency Effects" enabled in Windows Theme. Winhance auto-enables this. Restarts Explorer when applied.</em></p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
-                            <tr><th>Value</th><td><code>TaskbarAcrylicOpacity</code></td></tr>
-                            <tr><th>Type</th><td>DWORD (Selection)</td></tr>
-                            <tr><th>Windows default</th><td>Key deleted</td></tr>
-                            <tr><th>Transparent</th><td>0</td></tr>
-                            <tr><th>Opaque</th><td>255</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Make taskbar small</span>
-                        <span class="setting-id">taskbar-small</span>
-                        <span class="setting-badge win10"><i class="mdi mdi-microsoft-windows"></i>Windows 10 Only</span>
-                    </div>
-                    <p class="setting-desc">Reduce the height of the taskbar by using smaller icons, giving you more screen space.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
-                            <tr><th>Value</th><td><code>TaskbarSmallIcons</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (Small)</th><td>1</td></tr>
-                            <tr><th>Disabled (Normal)</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="taskbar-news-and-interests">
+            <div class="setting-header">
+            <span class="setting-name">Show News and Interests</span>
+            <span class="setting-id">taskbar-news-and-interests</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Show the News and Interests widget that displays headlines, weather, stocks, and other personalized content</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Windows Feeds">HKCU\Software\Policies\Microsoft\Windows\Windows Feeds</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Windows Feeds">HKLM\Software\Policies\Microsoft\Windows\Windows Feeds</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>EnableFeeds</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
+            </details>
+            </div>
+
+            <h2 id="taskbar-behavior">Taskbar Behavior</h2>
+            <div class="setting-card" id="taskbar-alignment">
+            <div class="setting-header">
+            <span class="setting-name">Taskbar alignment</span>
+            <span class="setting-id">taskbar-alignment</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Align taskbar icons to the left (classic Windows style) or center (Windows 11 default)</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>TaskbarAl</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Left <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Center <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="taskbar-auto-hide">
+            <div class="setting-header">
+            <span class="setting-name">Automatically hide the taskbar</span>
+            <span class="setting-id">taskbar-auto-hide</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Automatically hides the taskbar when not in use. Hover at the bottom of the screen to reveal it</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Settings</code><span class="mx-type">Binary</span><span class="mx-chip" title="Only one byte inside a larger value changes; the rest of the value is left alone.">byte 8</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">On</th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="taskbar-extended-hover-time">
+            <div class="setting-header">
+            <span class="setting-name">Taskbar Auto-Hide Hover Delay</span>
+            <span class="setting-id">taskbar-extended-hover-time</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.03</span><span class="setting-badge req" title="Reboot for the change to fully take effect">Requires a system restart</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Controls how long you must hover at the screen edge before the auto-hidden taskbar appears (in milliseconds). Lower values make the taskbar appear faster when using auto-hide. Default is 400ms</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ExtendedUIHoverTime</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">1ms (Instant)</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">10ms (Very Fast)</th><td class="mx-cell">10</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">50ms (Fast)</th><td class="mx-cell">50</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">100ms (Moderate)</th><td class="mx-cell">100</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">200ms</th><td class="mx-cell">200</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">400ms (Default) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">400 (or not set)</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="taskbar-badges">
+            <div class="setting-header">
+            <span class="setting-name">Show badges on taskbar apps</span>
+            <span class="setting-id">taskbar-badges</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span></div>
+            <p class="setting-desc">Show notification badge counters on taskbar app icons to indicate unread messages or alerts</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>TaskbarBadges</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Off</th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="taskbar-flashing">
+            <div class="setting-header">
+            <span class="setting-name">Show flashing on taskbar apps</span>
+            <span class="setting-id">taskbar-flashing</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span></div>
+            <p class="setting-desc">Allow taskbar app icons to flash when they require your attention</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>TaskbarFlashing</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Off</th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="taskbar-multi-display">
+            <div class="setting-header">
+            <span class="setting-name">Show my taskbar on all displays</span>
+            <span class="setting-id">taskbar-multi-display</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Show the taskbar on all connected monitors when using a multi-display setup</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>MMTaskbarEnabled</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Off</th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            <div class="setting-children">
+            <div class="setting-card setting-card-child" id="taskbar-multi-display-apps">
+            <div class="setting-header">
+            <span class="setting-name">Show taskbar apps on</span>
+            <span class="setting-id">taskbar-multi-display-apps</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">When using multiple displays, choose which taskbar shows your pinned and running apps</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>MMTaskbarMode</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">All taskbars <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Main taskbar and taskbar where window is open</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Taskbar where window is open</th><td class="mx-cell">2</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+            <div class="setting-card setting-card-child" id="taskbar-combine-buttons-other">
+            <div class="setting-header">
+            <span class="setting-name">Combine taskbar buttons on other taskbars</span>
+            <span class="setting-id">taskbar-combine-buttons-other</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Control whether taskbar buttons are grouped together and labels are hidden on secondary display taskbars</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>MMTaskbarGlomLevel</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Always <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">When taskbar is full</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Never</th><td class="mx-cell">2</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+            </div>
+            </div>
+
+            <div class="setting-card" id="taskbar-share-window">
+            <div class="setting-header">
+            <span class="setting-name">Share any window from my taskbar</span>
+            <span class="setting-id">taskbar-share-window</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span></div>
+            <p class="setting-desc">Enable sharing any open window directly from the taskbar during a call</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>TaskbarSn</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Off</th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="taskbar-show-desktop">
+            <div class="setting-header">
+            <span class="setting-name">Show desktop from taskbar corner</span>
+            <span class="setting-id">taskbar-show-desktop</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span></div>
+            <p class="setting-desc">Click the far corner of the taskbar to quickly show the desktop by minimizing all open windows</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>TaskbarSd</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Off</th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="taskbar-combine-buttons">
+            <div class="setting-header">
+            <span class="setting-name">Combine taskbar buttons and hide labels</span>
+            <span class="setting-id">taskbar-combine-buttons</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Control whether taskbar buttons for the same application are grouped together and whether text labels are shown</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>TaskbarGlomLevel</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Always <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">When taskbar is full</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Never</th><td class="mx-cell">2</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="taskbar-button-size">
+            <div class="setting-header">
+            <span class="setting-name">Show smaller taskbar buttons</span>
+            <span class="setting-id">taskbar-button-size</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge build" title="Requires Windows build 26100.4484 or higher">Requires Windows build 26100.4484 or higher</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Control the size of taskbar buttons. This setting may not persist on all Windows 11 builds</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>IconSizePreference</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Always</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">When taskbar is full <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Never</th><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="taskbar-system-tray-icons">
+            <div class="setting-header">
+            <span class="setting-name">Always show all system tray icons</span>
+            <span class="setting-id">taskbar-system-tray-icons</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Show all system tray icons directly on the taskbar instead of hiding them in the overflow menu. To control individual icon visibility, go to Taskbar Settings and select which icons appear on the taskbar</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>EnableAutoTray</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="taskbar-system-tray-icons-11">
+            <div class="setting-header">
+            <span class="setting-name">System tray icons</span>
+            <span class="setting-id">taskbar-system-tray-icons-11</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge added">Added in v25.04.08</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Choose how system tray icons appear on the taskbar. “Show all icons” promotes every icon to the taskbar; “Hide all icons” folds them into the overflow menu; “Custom” leaves your per-icon choices from Windows Settings &gt; Personalization &gt; Taskbar &gt; Other system tray icons unchanged.</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th></tr>
+            <tr class="mx-cols"></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Show all icons <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Hide all icons</th></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Custom <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th></tr>
+            </tbody>
+            </table>
+            </div>
+            <div class="mx-code"><h4>PowerShell Scripts</h4><p>Winhance runs this script when you apply the matching option.</p>
+            <div class="code-block">
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Show all icons</span></div>
+            <pre><code>Set-ItemProperty &#39;HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify&#39; -Name SystemTrayChevronVisibility -Value 0 -Type DWord -Force; Get-ChildItem &#39;HKCU:\Control Panel\NotifyIconSettings&#39; | ForEach-Object { Set-ItemProperty $_.PSPath -Name IsPromoted -Value 1 -Type DWord }</code></pre>
+            </div>
+            <div class="code-block">
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">When set to Hide all icons</span></div>
+            <pre><code>Set-ItemProperty &#39;HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify&#39; -Name SystemTrayChevronVisibility -Value 1 -Type DWord -Force; Get-ChildItem &#39;HKCU:\Control Panel\NotifyIconSettings&#39; | ForEach-Object { Set-ItemProperty $_.PSPath -Name IsPromoted -Value 0 -Type DWord }</code></pre>
+            </div></div>
+            </details>
+            </div>
+
+            <div class="setting-card" id="taskbar-transparent">
+            <div class="setting-header">
+            <span class="setting-name">Taskbar Transparency</span>
+            <span class="setting-id">taskbar-transparent</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span><span class="setting-badge req" title="Transparency effects = Enabled">Requires: <a href="../../features/customizations/theme.html#theme-transparency">Transparency effects</a> (set automatically)</span></div>
+            <p class="setting-desc">Controls the transparency level of the taskbar. Winhance automatically enables Transparency Effects when this setting is applied</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>TaskbarAcrylicOpacity</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Windows default <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">deletes key</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Transparent</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Opaque</th><td class="mx-cell">255</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="taskbar-small">
+            <div class="setting-header">
+            <span class="setting-name">Make taskbar small</span>
+            <span class="setting-id">taskbar-small</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div>
+            <p class="setting-desc">Reduce the height of the taskbar by using smaller icons, giving you more screen space</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>TaskbarSmallIcons</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="taskbar-end-task">
+            <div class="setting-header">
+            <span class="setting-name">Enable &#39;End Task&#39; in Taskbar</span>
+            <span class="setting-id">taskbar-end-task</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span></div>
+            <p class="setting-desc">Adds an &#39;End Task&#39; option when right-clicking applications on the taskbar for quick termination</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>TaskbarEndTask</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
             </section>
         </main>
     </div>

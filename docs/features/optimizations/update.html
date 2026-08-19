@@ -76,19 +76,19 @@
                     </div>
                     <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
                     <div class="sidebar-sub-nav">
-                        <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
-                        <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
-                        <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
-                        <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item active">Update</a>
-                        <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
-                        <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
+    <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy &amp; Security</a>
+    <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
+    <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming &amp; Performance</a>
+    <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
+    <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
+    <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
                     </div>
                     <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
                     <div class="sidebar-sub-nav">
-                        <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
-                        <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
-                        <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
-                        <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
+    <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
+    <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
+    <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
+    <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
                     </div>
                     <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
                     <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
@@ -112,338 +112,322 @@
         </aside>
 
         <main class="docs-content">
-            <section id="update">
-                <h1>Windows Update</h1>
-                <div class="video-container">
-                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2094" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <p>Take control of Windows Update behavior. Winhance lets you configure update policies, control automatic restarts, manage delivery optimization, and fine-tune how updates are installed on your system.</p>
+            <section id="windows-update">
+            <h1>Windows Update</h1>
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2094" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p>Take control of Windows Update behavior. Winhance lets you configure update policies, control automatic restarts, manage delivery optimization, and fine-tune how updates are installed on your system.</p>
+            <p>Disabling or delaying Windows updates can leave your system vulnerable to security threats. The recommended option is "Security Updates Only" which provides essential security patches while deferring feature updates.</p>
+            <div class="callout callout-info">
+                <div class="callout-title">Technical Details</div>
+                <p>Every setting below can be expanded to show exactly what Winhance reads and writes: registry values, scheduled tasks, power settings and scripts, with the recommended value and the Windows default marked. This is the same table the app shows under each setting's Technical Details.</p>
+            </div>
 
-                <div class="callout callout-warning">
-                    <div class="callout-title">Security Warning</div>
-                    <p>Disabling or delaying Windows updates can leave your system vulnerable to security threats. The recommended option is "Security Updates Only" which provides essential security patches while deferring feature updates.</p>
-                </div>
+            <h2 id="update-policy">Update Policy</h2>
+            <p>Master control for Windows Update behavior.</p>
+            <div class="setting-card" id="updates-policy-mode">
+            <div class="setting-header">
+            <span class="setting-name">Windows Update Policy</span>
+            <span class="setting-id">updates-policy-mode</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Control how Windows updates are installed on your system</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="6" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU">HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU">HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code></th><th colspan="16" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings">HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>NoAutoUpdate</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th><th class="mx-col mx-col-value"><code>AUOptions</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th><th class="mx-col mx-col-value"><code>NoAUShutdownOption</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th><th class="mx-col mx-col-value"><code>AlwaysAutoRebootAtScheduledTime</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th><th class="mx-col mx-col-value"><code>AutoInstallMinorUpdates</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th><th class="mx-col mx-col-value"><code>UseWUServer</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th><th class="mx-col mx-col-value"><code>BranchReadinessLevel</code><span class="mx-type">DWord</span></th><th class="mx-col mx-col-value"><code>DeferFeatureUpdates</code><span class="mx-type">DWord</span></th><th class="mx-col mx-col-value"><code>DeferFeatureUpdatesPeriodInDays</code><span class="mx-type">DWord</span></th><th class="mx-col mx-col-value"><code>DeferQualityUpdates</code><span class="mx-type">DWord</span></th><th class="mx-col mx-col-value"><code>DeferQualityUpdatesPeriodInDays</code><span class="mx-type">DWord</span></th><th class="mx-col mx-col-value"><code>PauseFeatureUpdatesStartTime</code><span class="mx-type">String</span></th><th class="mx-col mx-col-value"><code>PauseFeatureUpdatesEndTime</code><span class="mx-type">String</span></th><th class="mx-col mx-col-value"><code>PauseQualityUpdatesStartTime</code><span class="mx-type">String</span></th><th class="mx-col mx-col-value"><code>PauseQualityUpdatesEndTime</code><span class="mx-type">String</span></th><th class="mx-col mx-col-value"><code>PauseUpdatesStartTime</code><span class="mx-type">String</span></th><th class="mx-col mx-col-value"><code>PauseUpdatesExpiryTime</code><span class="mx-type">String</span></th><th class="mx-col mx-col-value"><code>PausedQualityDate</code><span class="mx-type">String</span></th><th class="mx-col mx-col-value"><code>PausedFeatureDate</code><span class="mx-type">String</span></th><th class="mx-col mx-col-value"><code>FlightSettingsMaxPauseDays</code><span class="mx-type">DWord</span></th><th class="mx-col mx-col-value"><code>PausedFeatureStatus</code><span class="mx-type">DWord</span></th><th class="mx-col mx-col-value"><code>PausedQualityStatus</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Normal (Windows Default) <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Security Updates Only (Recommended) <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">deletes key</td><td class="mx-cell">2</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">20</td><td class="mx-cell">1</td><td class="mx-cell">365</td><td class="mx-cell">1</td><td class="mx-cell">7</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Paused for a long time (Unpause in Settings)</th><td class="mx-cell">1</td><td class="mx-cell">1</td><td class="mx-cell">1</td><td class="mx-cell">0</td><td class="mx-cell">0</td><td class="mx-cell">0</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">2025-01-01T00:00:00Z</td><td class="mx-cell">2051-12-31T00:00:00Z</td><td class="mx-cell">2025-01-01T00:00:00Z</td><td class="mx-cell">2051-12-31T00:00:00Z</td><td class="mx-cell">2025-01-01T00:00:00Z</td><td class="mx-cell">2051-12-31T00:00:00Z</td><td class="mx-cell">2025-01-01T00:00:00Z</td><td class="mx-cell">2025-01-01T00:00:00Z</td><td class="mx-cell">10023</td><td class="mx-cell">1</td><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Disabled (NOT Recommended, Security Risk)</th><td class="mx-cell">1</td><td class="mx-cell">1</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">0</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="callout callout-info">
-                    <div class="callout-title">Registry Details</div>
-                    <p>Each setting below includes expandable registry details for power users. Click "Registry Details" to see the exact registry keys and values that are modified.</p>
-                </div>
+            </details>
+            </div>
 
-                <!-- ==================== UPDATE POLICY ==================== -->
-                <h2 id="update-policy">Update Policy</h2>
-                <p>Master control for Windows Update behavior.</p>
+            <h2 id="delivery-and-store">Delivery &amp; Store</h2>
+            <p>Control how updates are downloaded and shared.</p>
+            <div class="setting-card" id="updates-delivery-optimization">
+            <div class="setting-header">
+            <span class="setting-name">Delivery Optimization</span>
+            <span class="setting-id">updates-delivery-optimization</span>
+            </div>
+            <p class="setting-desc">Share downloaded updates with other PCs on your network or the internet to reduce bandwidth usage</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization">HKCU\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization">HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>DODownloadMode</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Windows Default <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">deletes key</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Devices on LAN Only</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Devices on LAN and Internet</th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">ServiceOption_Disabled <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">99</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Windows Update Policy</span>
-                        <span class="setting-id">updates-policy-mode</span>
-                    </div>
-                    <p class="setting-desc">Control how Windows updates are installed on your system. Choose from four modes based on your needs and risk tolerance.</p>
+            </details>
+            </div>
 
-                    <div style="margin: 1rem 0; padding: 1rem; background: var(--code-bg); border-radius: 8px;">
-                        <h4 style="margin: 0 0 0.75rem 0; font-size: 0.9rem;">Available Options:</h4>
-                        <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem;">
-                            <li><strong>Normal (Windows Default)</strong> - Automatic updates enabled with standard Windows behavior</li>
-                            <li><strong>Security Updates Only (Recommended)</strong> - Only install critical security updates, defer feature updates by 1 year</li>
-                            <li><strong>Paused for a long time</strong> - Pause all updates until 2051; manually unpause in Windows Settings when needed</li>
-                            <li><strong>Disabled (NOT Recommended)</strong> - Completely disable Windows Update services and block all updates</li>
-                        </ul>
-                    </div>
+            <div class="setting-card" id="updates-store-auto-download">
+            <div class="setting-header">
+            <span class="setting-name">Auto Update Microsoft Store Apps</span>
+            <span class="setting-id">updates-store-auto-download</span>
+            </div>
+            <p class="setting-desc">Automatically download and install updates for apps from the Microsoft Store</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\WindowsStore">HKCU\SOFTWARE\Policies\Microsoft\WindowsStore</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore">HKLM\SOFTWARE\Policies\Microsoft\WindowsStore</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>AutoDownload</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">4 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">2</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <p style="margin-bottom: 0.5rem; font-size: 0.85rem;">This setting modifies multiple registry values across HKCU and HKLM:</p>
+            </details>
+            </div>
 
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code></td></tr>
-                            <tr><th>Values</th><td><code>NoAutoUpdate</code>, <code>AUOptions</code>, <code>NoAUShutdownOption</code>, <code>AlwaysAutoRebootAtScheduledTime</code>, <code>AutoInstallMinorUpdates</code>, <code>UseWUServer</code></td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code></td></tr>
-                            <tr><th>Values</th><td><code>NoAutoUpdate</code>, <code>AUOptions</code>, <code>NoAUShutdownOption</code>, <code>AlwaysAutoRebootAtScheduledTime</code>, <code>AutoInstallMinorUpdates</code>, <code>UseWUServer</code></td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings</code></td></tr>
-                            <tr><th>Values</th><td><code>BranchReadinessLevel</code>, <code>DeferFeatureUpdates</code>, <code>DeferFeatureUpdatesPeriodInDays</code>, <code>DeferQualityUpdates</code>, <code>DeferQualityUpdatesPeriodInDays</code>, <code>PauseFeatureUpdatesStartTime</code>, <code>PauseFeatureUpdatesEndTime</code>, <code>PauseQualityUpdatesStartTime</code>, <code>PauseQualityUpdatesEndTime</code>, <code>PauseUpdatesStartTime</code>, <code>PauseUpdatesExpiryTime</code>, <code>PausedQualityDate</code>, <code>PausedFeatureDate</code>, <code>FlightSettingsMaxPauseDays</code>, <code>PausedFeatureStatus</code>, <code>PausedQualityStatus</code></td></tr>
-                        </table>
+            <h2 id="update-behavior">Update Behavior</h2>
+            <p>Fine-tune how updates are installed and when restarts occur.</p>
+            <div class="setting-card" id="updates-latest-updates">
+            <div class="setting-header">
+            <span class="setting-name">Get the latest updates as soon as they&#39;re available</span>
+            <span class="setting-id">updates-latest-updates</span>
+            </div>
+            <p class="setting-desc">Be among the first to get the latest non-security updates, fixes, and improvements as they roll out</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings">HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>IsContinuousInnovationOptedIn</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                        <h4 style="margin: 1rem 0 0.5rem 0; font-size: 0.85rem;">Option Value Mappings:</h4>
-                        <table class="registry-table">
-                            <tr>
-                                <th>Normal</th>
-                                <td>All values deleted (Windows default behavior)</td>
-                            </tr>
-                            <tr>
-                                <th>Security Only</th>
-                                <td><code>AUOptions=2</code>, <code>BranchReadinessLevel=20</code>, <code>DeferFeatureUpdates=1</code>, <code>DeferFeatureUpdatesPeriodInDays=365</code>, <code>DeferQualityUpdates=1</code>, <code>DeferQualityUpdatesPeriodInDays=7</code></td>
-                            </tr>
-                            <tr>
-                                <th>Paused</th>
-                                <td><code>NoAutoUpdate=1</code>, <code>AUOptions=1</code>, pause dates set to 2025-2051, <code>FlightSettingsMaxPauseDays=10023</code></td>
-                            </tr>
-                            <tr>
-                                <th>Disabled</th>
-                                <td><code>NoAutoUpdate=1</code>, <code>AUOptions=1</code>, <code>UseWUServer=0</code></td>
-                            </tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <!-- ==================== DELIVERY & STORE ==================== -->
-                <h2 id="delivery-store">Delivery & Store</h2>
-                <p>Control how updates are downloaded and shared.</p>
+            <div class="setting-card" id="updates-other-products">
+            <div class="setting-header">
+            <span class="setting-name">Receive updates for other Microsoft products</span>
+            <span class="setting-id">updates-other-products</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Get Microsoft Office and other updates together with Windows updates</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\WindowsUpdate\UX\Settings">HKLM\Software\Microsoft\WindowsUpdate\UX\Settings</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>AllowMUUpdateService</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">On</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Delivery Optimization</span>
-                        <span class="setting-id">updates-delivery-optimization</span>
-                    </div>
-                    <p class="setting-desc">Share downloaded updates with other PCs on your network or the internet to reduce bandwidth usage.</p>
+            </details>
+            </div>
 
-                    <div style="margin: 1rem 0; padding: 1rem; background: var(--code-bg); border-radius: 8px;">
-                        <h4 style="margin: 0 0 0.75rem 0; font-size: 0.9rem;">Available Options:</h4>
-                        <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem;">
-                            <li><strong>Windows Default</strong> - Use default Windows delivery optimization settings</li>
-                            <li><strong>Devices on LAN Only</strong> - Share updates only with devices on your local network</li>
-                            <li><strong>Devices on LAN and Internet</strong> - Share updates with local devices and over the internet</li>
-                            <li><strong>Disabled</strong> - Don't share or receive updates from other devices</li>
-                        </ul>
-                    </div>
+            <div class="setting-card" id="updates-restart-asap">
+            <div class="setting-header">
+            <span class="setting-name">Get me up to date</span>
+            <span class="setting-id">updates-restart-asap</span>
+            </div>
+            <p class="setting-desc">Restart as soon as possible (even during active hours) to finish updating</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\WindowsUpdate\UX\Settings">HKLM\Software\Microsoft\WindowsUpdate\UX\Settings</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>IsExpedited</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">On</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0 (or not set)</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization</code></td></tr>
-                            <tr><th>Value</th><td><code>DODownloadMode</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Options</th><td>
-                                null = Windows Default<br>
-                                1 = LAN Only<br>
-                                3 = LAN and Internet<br>
-                                99 = Disabled
-                            </td></tr>
-                            <tr><th>Recommended</th><td>99 (Disabled)</td></tr>
-                            <tr><th>Default</th><td>Key absent</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization</code></td></tr>
-                            <tr><th>Value</th><td><code>DODownloadMode</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Auto Update Microsoft Store Apps</span>
-                        <span class="setting-id">updates-store-auto-download</span>
-                    </div>
-                    <p class="setting-desc">Automatically download and install updates for apps from the Microsoft Store.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\WindowsStore</code></td></tr>
-                            <tr><th>Value</th><td><code>AutoDownload</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>4</td></tr>
-                            <tr><th>Disabled</th><td>2</td></tr>
-                            <tr><th>Default</th><td>2 (Absence = Enabled)</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\WindowsStore</code></td></tr>
-                            <tr><th>Value</th><td><code>AutoDownload</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>4</td></tr>
-                            <tr><th>Disabled</th><td>2</td></tr>
-                            <tr><th>Default</th><td>2 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="updates-restart-options">
+            <div class="setting-header">
+            <span class="setting-name">Automatic Restart After Updates</span>
+            <span class="setting-id">updates-restart-options</span>
+            </div>
+            <p class="setting-desc">Allow Windows to automatically restart your PC after installing updates when you are logged in</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU">HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU">HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>NoAutoRebootWithLoggedOnUsers</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">deletes key</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <!-- ==================== UPDATE BEHAVIOR ==================== -->
-                <h2 id="update-behavior">Update Behavior</h2>
-                <p>Fine-tune how updates are installed and when restarts occur.</p>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Get the latest updates as soon as they're available</span>
-                        <span class="setting-id">updates-latest-updates</span>
-                    </div>
-                    <p class="setting-desc">Be among the first to get the latest non-security updates, fixes, and improvements as they roll out.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>IsContinuousInnovationOptedIn</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>Key absent (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="updates-notification-level">
+            <div class="setting-header">
+            <span class="setting-name">Update Notifications</span>
+            <span class="setting-id">updates-notification-level</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Choose how much Windows tells you about available updates and update progress. Hiding all notifications also hides restart warnings.</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="3" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate">HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate">HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>SetUpdateNotificationLevel</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th><th class="mx-col mx-col-value"><code>UpdateNotificationLevel</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th><th class="mx-col mx-col-value"><code>NoUpdateNotificationsDuringActiveHours</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th><th class="mx-col mx-col-value"><code>SetUpdateNotificationLevel</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Show all update notifications <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Hide all except restart warnings</th><td class="mx-cell">1</td><td class="mx-cell">1</td><td class="mx-cell">0 (or not set)</td><td class="mx-cell">deletes key</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Hide all notifications</th><td class="mx-cell">1</td><td class="mx-cell">2</td><td class="mx-cell">0 (or not set)</td><td class="mx-cell">deletes key</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Receive updates for other Microsoft products</span>
-                        <span class="setting-id">updates-other-products</span>
-                    </div>
-                    <p class="setting-desc">Get Microsoft Office and other updates together with Windows updates.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\WindowsUpdate\UX\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>AllowMUUpdateService</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Get me up to date</span>
-                        <span class="setting-id">updates-restart-asap</span>
-                    </div>
-                    <p class="setting-desc">Restart as soon as possible (even during active hours) to finish updating.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\WindowsUpdate\UX\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>IsExpedited</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="updates-restart-notification">
+            <div class="setting-header">
+            <span class="setting-name">Notify me when a restart is required to finish updating</span>
+            <span class="setting-id">updates-restart-notification</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Show notification when your device requires a restart to finish updating</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\WindowsUpdate\UX\Settings">HKLM\Software\Microsoft\WindowsUpdate\UX\Settings</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>RestartNotificationsAllowed2</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">On</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Prevent Automatic Restarts</span>
-                        <span class="setting-id">updates-restart-options</span>
-                    </div>
-                    <p class="setting-desc">Prevents automatic restarts after installing updates when users are logged on.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code></td></tr>
-                            <tr><th>Value</th><td><code>NoAutoRebootWithLoggedOnUsers</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (no auto restart)</th><td>1</td></tr>
-                            <tr><th>Disabled (allow auto restart)</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code></td></tr>
-                            <tr><th>Value</th><td><code>NoAutoRebootWithLoggedOnUsers</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (no auto restart)</th><td>1</td></tr>
-                            <tr><th>Disabled (allow auto restart)</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Update Notifications</span>
-                        <span class="setting-id">updates-notification-level</span>
-                    </div>
-                    <p class="setting-desc">Show or hide notifications about available updates and update progress.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></td></tr>
-                            <tr><th>Value</th><td><code>SetUpdateNotificationLevel</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (show notifications)</th><td>2</td></tr>
-                            <tr><th>Disabled (hide notifications)</th><td>1</td></tr>
-                            <tr><th>Default</th><td>2</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></td></tr>
-                            <tr><th>Value</th><td><code>SetUpdateNotificationLevel</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (show notifications)</th><td>2</td></tr>
-                            <tr><th>Disabled (hide notifications)</th><td>1</td></tr>
-                            <tr><th>Default</th><td>2</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="updates-metered-connection">
+            <div class="setting-header">
+            <span class="setting-name">Download updates over metered connections</span>
+            <span class="setting-id">updates-metered-connection</span>
+            </div>
+            <p class="setting-desc">Allow Windows to download updates when using mobile hotspots or data-limited connections</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings">HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>AllowAutoWindowsUpdateDownloadOverMeteredNetwork</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">On</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0 (or not set)</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Notify me when a restart is required to finish updating</span>
-                        <span class="setting-id">updates-restart-notification</span>
-                    </div>
-                    <p class="setting-desc">Show notification when your device requires a restart to finish updating.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\WindowsUpdate\UX\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>RestartNotificationsAllowed2</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Download updates over metered connections</span>
-                        <span class="setting-id">updates-metered-connection</span>
-                    </div>
-                    <p class="setting-desc">Allow Windows to download updates when using mobile hotspots or data-limited connections.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>AllowAutoWindowsUpdateDownloadOverMeteredNetwork</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="updates-driver-controls">
+            <div class="setting-header">
+            <span class="setting-name">Driver Updates via Windows Update</span>
+            <span class="setting-id">updates-driver-controls</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Include hardware driver updates when downloading and installing Windows Updates</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate">HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate">HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ExcludeWUDriversInQualityUpdate</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">deletes key</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <!-- ==================== UPDATE CONTENT ==================== -->
-                <h2 id="update-content">Update Content</h2>
-                <p>Control what types of content are included in updates.</p>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Do Not Include Drivers with Updates</span>
-                        <span class="setting-id">updates-driver-controls</span>
-                    </div>
-                    <p class="setting-desc">Prevent Windows from automatically downloading and installing hardware driver updates. Useful if you prefer to manage drivers manually or through manufacturer tools.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></td></tr>
-                            <tr><th>Value</th><td><code>ExcludeWUDriversInQualityUpdate</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (exclude drivers)</th><td>1</td></tr>
-                            <tr><th>Disabled (include drivers)</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></td></tr>
-                            <tr><th>Value</th><td><code>ExcludeWUDriversInQualityUpdate</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (exclude drivers)</th><td>1</td></tr>
-                            <tr><th>Disabled (include drivers)</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="updates-driver-coinstallers">
+            <div class="setting-header">
+            <span class="setting-name">Driver Co-Installers</span>
+            <span class="setting-id">updates-driver-coinstallers</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v25.04.08</span></div>
+            <p class="setting-desc">Allows hardware vendors to install companion software alongside device drivers. Disabling this prevents bloatware like Razer Synapse, printer utilities, and other vendor software from being automatically installed when you plug in devices. Your hardware will still work normally with standard drivers.</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Installer">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Installer</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>DisableCoInstallers</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">deletes key</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
 
+            </details>
+            </div>
             </section>
         </main>
     </div>

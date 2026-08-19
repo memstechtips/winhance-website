@@ -75,6 +75,10 @@ body {
 
 .docs-content {
     flex: 1;
+    /* Without this the flex item grows to its widest child (a wide settings
+       table), pushing the layout past the viewport where body's overflow-x
+       clips it. Kept at 0 so wide content scrolls inside its own container. */
+    min-width: 0;
     padding: 3rem 4rem;
     max-width: calc(var(--max-content-width) + 8rem);
     margin: 0 auto;
@@ -1054,6 +1058,32 @@ html {
     color: #ce93d8;
 }
 
+/* Hardware requirement - shares the Laptops palette, it's the same kind of "your PC must have this" */
+.setting-badge.hardware {
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.15), rgba(32, 201, 151, 0.15));
+    border-color: rgba(40, 167, 69, 0.3);
+    color: #28a745;
+}
+
+[data-theme="dark"] .setting-badge.hardware {
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.2), rgba(32, 201, 151, 0.2));
+    border-color: rgba(40, 167, 69, 0.4);
+    color: #5dd879;
+}
+
+/* Build requirement - muted slate, a compatibility footnote rather than a highlight */
+.setting-badge.build {
+    background: rgba(120, 144, 156, 0.12);
+    border-color: rgba(120, 144, 156, 0.35);
+    color: #546e7a;
+}
+
+[data-theme="dark"] .setting-badge.build {
+    background: rgba(144, 164, 174, 0.16);
+    border-color: rgba(144, 164, 174, 0.4);
+    color: #b0bec5;
+}
+
 /* Page Navigation (Prev/Next buttons) */
 .page-nav {
     margin-top: 3rem;
@@ -1160,4 +1190,10 @@ html {
 .mx-notes h4, .mx-code h4 { margin: 0 0 0.3rem; font-size: 0.9rem; }
 .mx-notes ul { margin: 0; padding-left: 1.2rem; }
 .code-label { margin-left: auto; font-size: 0.75rem; color: var(--text-muted); }
-.feature-card-count { margin-top: 0.4rem; font-size: 0.8rem; color: var(--text-muted); }
+/* Needs to out-specify .feature-card p, which sets the description's size and colour. */
+.feature-card p.feature-card-count { margin-top: 0.4rem; font-size: 0.8rem; color: var(--text-muted); opacity: 1; }
+
+/* The header and the WIP banner are fixed over the top of the page, so an anchor jump
+   (a search result, an in-page link) has to stop short of them or it lands behind them. */
+.docs-content [id] { scroll-margin-top: calc(var(--header-height) + 20px); }
+.has-banner .docs-content [id] { scroll-margin-top: calc(var(--header-height) + 65px); }

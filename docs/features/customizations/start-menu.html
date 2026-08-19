@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start Menu - Winhance Docs</title>
+    <title>Start Menu Customization - Winhance Docs</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../styles.css">
     <link rel="stylesheet" href="../../css/docs-main.css">
     <link rel="stylesheet" href="../../css/docs-sidebar.css">
@@ -77,19 +76,19 @@
                     </div>
                     <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
                     <div class="sidebar-sub-nav">
-                        <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
-                        <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
-                        <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
-                        <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
-                        <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
-                        <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
+    <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy &amp; Security</a>
+    <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
+    <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming &amp; Performance</a>
+    <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
+    <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
+    <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
                     </div>
                     <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
                     <div class="sidebar-sub-nav">
-                        <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
-                        <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
-                        <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
-                        <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
+    <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
+    <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
+    <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
+    <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
                     </div>
                     <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
                     <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
@@ -113,360 +112,445 @@
         </aside>
 
         <main class="docs-content">
-            <section id="start-menu">
-                <h1>Start Menu Customization</h1>
-                <div class="video-container">
-                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2610" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <p>Declutter your workspace by removing unwanted pins and bloatware from the Windows Start Menu.</p>
+            <section id="start-menu-customization">
+            <h1>Start Menu Customization</h1>
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2610" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p>Declutter your workspace by removing unwanted pins and bloatware from the Windows Start Menu.</p>
+            <div class="callout callout-warning"> <div class="callout-title">⚠️ Setting Persistence</div> <p>Settings found in the <strong>Customizations</strong> view are <strong>not persistent</strong>. Winhance applies these changes once, but it does not use background tasks to re-apply them if they are changed later by Windows or by you manually.</p> </div>
+            <div class="callout callout-info">
+                <div class="callout-title">Technical Details</div>
+                <p>Every setting below can be expanded to show exactly what Winhance reads and writes: registry values, scheduled tasks, power settings and scripts, with the recommended value and the Windows default marked. This is the same table the app shows under each setting's Technical Details.</p>
+            </div>
 
-                <h2>Key Features</h2>
-                <ul>
-                    <li><strong>Clean Start Menu:</strong> A one-click solution to unpin all default apps and
-                        third-party bloatware (like LinkedIn ghost icons). When executed, you can also apply <strong>recommended start menu settings</strong> to disable suggestions and tracking features.</li>
-                    <li><strong>Remove Recommendations:</strong> Reclaim space by removing the "Recommended" section entirely from the Windows 11 Start Menu.
-                        <br><em>Note: Full removal requires Windows 11 Pro or higher. On Home editions, the section will be disabled but still visible.</em></li>
-                    <li><strong>Disable Bing Search:</strong> Prevent the Start Menu from showing online search results from Bing, keeping your searches local and private.</li>
-                </ul>
+            <h2 id="layout">Layout</h2>
+            <div class="callout callout-info"> <div class="callout-title">ℹ️ Windows Edition Differences</div> <p><strong>Windows 11 Pro and above:</strong> The Recommended section is completely removed from the Start Menu.</p> <p><strong>Windows 11 Home:</strong> The Recommended section remains visible but is disabled—no items will be shown there.</p> </div>
+            <div class="setting-card" id="start-menu-clean-10">
+            <div class="setting-header">
+            <span class="setting-name">Clean Start Menu</span>
+            <span class="setting-id">start-menu-clean-10</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge req" title="Prompts before applying this setting">Asks you to confirm before it runs</span></div>
+            <p class="setting-desc">Removes all pinned items and applies a clean layout for the current user and any newly created profiles. To clean other existing users, run this again while signed in as each of them.</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <h4 class="mx-build">Windows 11</h4>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th></tr>
+            <tr class="mx-cols"></tr>
+            </thead>
+            <tbody>
 
-                <div class="callout callout-warning">
-                    <div class="callout-title">⚠️ Setting Persistence</div>
-                    <p>Settings found in the <strong>Customizations</strong> view are <strong>not persistent</strong>.
-                        Winhance applies these changes once, but it does not use background tasks to re-apply them if
-                        they are changed later by Windows or by you manually.</p>
-                </div>
+            </tbody>
+            </table>
+            </div>
+            <h4 class="mx-build">Windows 10</h4>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th></tr>
+            <tr class="mx-cols"></tr>
+            </thead>
+            <tbody>
 
-                <!-- Layout Section -->
-                <h2>Layout</h2>
+            </tbody>
+            </table>
+            </div>
+            <div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
+            <ul>
+            <li><strong>Start layout</strong>: More pins</li>
+            <li><strong>Recommended section</strong>: Hide</li>
+            <li><strong>Show recently added apps</strong>: Off</li>
+            <li><strong>Show most used apps</strong>: Off</li>
+            <li><strong>Show recommended files and recently opened items</strong>: Off</li>
+            <li><strong>Show recommendations for tips, shortcuts, new apps, and more</strong>: Off</li>
+            <li><strong>Show account-related notifications</strong>: Off</li>
+            <li><strong>Bing Search Results in Start Menu</strong>: Off</li>
+            </ul></div><div class="mx-code"><h4>PowerShell Scripts</h4><p>Winhance runs this script when you apply the matching option.</p>
+            <div class="code-block">
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">On Apply</span></div>
+            <pre><code>
+            $layoutPath = &#39;C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml&#39;
+            $layoutXml = @&#39;
+            &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+            &lt;LayoutModificationTemplate xmlns:defaultlayout=&quot;http://schemas.microsoft.com/Start/2014/FullDefaultLayout&quot; xmlns:start=&quot;http://schemas.microsoft.com/Start/2014/StartLayout&quot; Version=&quot;1&quot; xmlns:taskbar=&quot;http://schemas.microsoft.com/Start/2014/TaskbarLayout&quot; xmlns=&quot;http://schemas.microsoft.com/Start/2014/LayoutModification&quot;&gt;
+                &lt;LayoutOptions StartTileGroupCellWidth=&quot;6&quot; /&gt;
+                &lt;DefaultLayoutOverride&gt;
+                    &lt;StartLayoutCollection&gt;
+                        &lt;defaultlayout:StartLayout GroupCellWidth=&quot;6&quot; /&gt;
+                    &lt;/StartLayoutCollection&gt;
+                &lt;/DefaultLayoutOverride&gt;
+            &lt;/LayoutModificationTemplate&gt;
+            &#39;@
+            
+            # Future users: drop the clean template into the Default profile (force-create dir, overwrite if present).
+            New-Item -ItemType Directory -Path (Split-Path $layoutPath) -Force | Out-Null
+            [System.IO.File]::WriteAllText($layoutPath, $layoutXml)
+            
+            # Current user only: apply now via their SID (HKU, not HKCU - correct under OTS), then unlock so they can still customize.
+            # Other existing users are intentionally not touched - Win10 has no supported way to apply a
+            # customizable layout to a signed-out profile, so users re-run this per account (see description).
+            $me = ((Get-CimInstance Win32_ComputerSystem).UserName -split &#39;\\&#39;)[-1]
+            if ($me) {
+                $sid = (New-Object System.Security.Principal.NTAccount($me)).Translate([System.Security.Principal.SecurityIdentifier]).Value
+                $key = &quot;HKU\$sid\SOFTWARE\Policies\Microsoft\Windows\Explorer&quot;
+                reg add $key /v StartLayoutFile /t REG_SZ /d $layoutPath /f | Out-Null
+                reg add $key /v LockedStartLayout /t REG_DWORD /d 1 /f | Out-Null
+                Stop-Process -Name StartMenuExperienceHost -Force -EA SilentlyContinue; Start-Sleep 3
+                reg add $key /v LockedStartLayout /t REG_DWORD /d 0 /f | Out-Null
+                Stop-Process -Name StartMenuExperienceHost -Force -EA SilentlyContinue
+            }
+            </code></pre>
+            </div></div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Clean Start Menu</span>
-                        <span class="setting-id">start-menu-clean-10</span>
-                        <span class="setting-badge win10"><i class="mdi mdi-microsoft-windows"></i>Windows 10 Only</span>
-                    </div>
-                    <p class="setting-desc">Removes all pinned tiles and applies a clean Start Menu layout for all users on this computer. This action requires confirmation.</p>
-                    <p class="setting-desc"><strong>Type:</strong> Action button</p>
+            <div class="setting-card" id="start-menu-clean-11">
+            <div class="setting-header">
+            <span class="setting-name">Clean Start Menu</span>
+            <span class="setting-id">start-menu-clean-11</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge req" title="Prompts before applying this setting">Asks you to confirm before it runs</span></div>
+            <p class="setting-desc">Removes all pinned items and applies clean layout</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <h4 class="mx-build">Windows 11</h4>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Start">HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start</code></th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer">HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ConfigureStartPins</code><span class="mx-type">String</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th><th class="mx-col mx-col-value"><code>ConfigureStartPins</code><span class="mx-type">String</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Clean Start Menu</th><td class="mx-cell">{&quot;pinnedList&quot;:[]}</td><td class="mx-cell">{&quot;pinnedList&quot;:[]}</td></tr>
+            </tbody>
+            </table>
+            </div>
+            <h4 class="mx-build">Windows 10</h4>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Start">HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start</code></th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer">HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ConfigureStartPins</code><span class="mx-type">String</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th><th class="mx-col mx-col-value"><code>ConfigureStartPins</code><span class="mx-type">String</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Clean Start Menu</th><td class="mx-cell">{&quot;pinnedList&quot;:[]}</td><td class="mx-cell">{&quot;pinnedList&quot;:[]}</td></tr>
+            </tbody>
+            </table>
+            </div>
+            <div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
+            <ul>
+            <li><strong>Start layout</strong>: More pins</li>
+            <li><strong>Recommended section</strong>: Hide</li>
+            <li><strong>Show recently added apps</strong>: Off</li>
+            <li><strong>Show most used apps</strong>: Off</li>
+            <li><strong>Show recommended files and recently opened items</strong>: Off</li>
+            <li><strong>Show recommendations for tips, shortcuts, new apps, and more</strong>: Off</li>
+            <li><strong>Show account-related notifications</strong>: Off</li>
+            <li><strong>Bing Search Results in Start Menu</strong>: Off</li>
+            </ul></div><div class="mx-code"><h4>PowerShell Scripts</h4><p>Winhance runs this script when you apply the matching option.</p>
+            <div class="code-block">
+            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">On Apply</span></div>
+            <pre><code>
+            # Clear cached pinned-list data (start.bin / start2.bin) for every real user profile.
+            # Iterating HKLM\ProfileList is OTS-safe and admin can delete in any profile, so the
+            # current user and every other user are handled in one loop. ProfileImagePath gives
+            # the correct path even for non-default profile locations (e.g. D:\Users\...).
+            $systemAccounts = @(&#39;Public&#39;,&#39;Default&#39;,&#39;All Users&#39;,&#39;Default User&#39;)
+            Get-ChildItem &#39;HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList&#39; |
+                Where-Object { $_.PSChildName -like &#39;S-1-5-21-*&#39; } |
+                ForEach-Object {
+                    $profilePath = (Get-ItemProperty $_.PSPath -Name &#39;ProfileImagePath&#39; -ErrorAction SilentlyContinue).ProfileImagePath
+                    if ($profilePath -and ((Split-Path $profilePath -Leaf) -notin $systemAccounts)) {
+                        Remove-Item &quot;$profilePath\AppData\Local\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start*.bin&quot; -Force -ErrorAction SilentlyContinue
+                    }
+                }
+            
+            # Restart the Start Menu host so the cleared layout takes effect immediately.
+            Stop-Process -Name &#39;StartMenuExperienceHost&#39; -Force -ErrorAction SilentlyContinue
+            </code></pre>
+            </div></div>
+            </details>
+            </div>
 
-                    <h4 style="margin-top: 1rem; margin-bottom: 0.5rem;">How It Works</h4>
-                    <p class="setting-desc">Windows 10 uses an XML-based layout system. Winhance creates a clean layout file and applies it through Windows policies:</p>
-                    <ul class="setting-desc" style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                        <li><strong>Current User:</strong> The layout is applied immediately by temporarily locking the Start Menu layout via registry policy, restarting the Start Menu process, then unlocking it so you can customize again.</li>
-                        <li><strong>Other Existing Users:</strong> Scheduled tasks are created under <code>Winhance\CleanStartMenu_{username}</code> that run once when each user next logs in. The task applies the layout and then self-deletes.</li>
-                        <li><strong>New Users:</strong> The layout file is saved to the Default user profile, so any new user accounts automatically get the clean layout.</li>
-                    </ul>
+            <div class="setting-card" id="start-menu-layout">
+            <div class="setting-header">
+            <span class="setting-name">Start layout</span>
+            <span class="setting-id">start-menu-layout</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Choose whether the Start Menu shows more pinned apps, more recommendations, or a balanced default layout</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start_Layout</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Default <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">More pins <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">More recommendations</th><td class="mx-cell">2</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                    <details class="registry-details">
-                        <summary>Technical Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Layout File Path</th><td><code>C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml</code></td></tr>
-                            <tr><th>Registry Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer</code></td></tr>
-                            <tr><th>Registry Values</th><td><code>LockedStartLayout</code> (DWORD), <code>StartLayoutFile</code> (String)</td></tr>
-                            <tr><th>Process Restarted</th><td>StartMenuExperienceHost</td></tr>
-                        </table>
-                    </details>
+            </details>
+            </div>
 
-                    <details class="registry-details">
-                        <summary>Layout File Contents</summary>
-                        <pre style="background: var(--code-bg); padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: 0.85rem;"><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;LayoutModificationTemplate
-    xmlns:defaultlayout="http://schemas.microsoft.com/Start/2014/FullDefaultLayout"
-    xmlns:start="http://schemas.microsoft.com/Start/2014/StartLayout"
-    Version="1"
-    xmlns:taskbar="http://schemas.microsoft.com/Start/2014/TaskbarLayout"
-    xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification"&gt;
-    &lt;LayoutOptions StartTileGroupCellWidth="6" /&gt;
-    &lt;DefaultLayoutOverride&gt;
-        &lt;StartLayoutCollection&gt;
-            &lt;defaultlayout:StartLayout GroupCellWidth="6" /&gt;
-        &lt;/StartLayoutCollection&gt;
-    &lt;/DefaultLayoutOverride&gt;
-&lt;/LayoutModificationTemplate&gt;</code></pre>
-                        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">This XML defines an empty Start layout with no pinned tiles.</p>
-                    </details>
-                </div>
+            <div class="setting-card" id="start-all-apps-view">
+            <div class="setting-header">
+            <span class="setting-name">All apps view</span>
+            <span class="setting-id">start-all-apps-view</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge build" title="Requires Windows build 26100.7171 or higher">Requires Windows build 26100.7171 or higher</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.05.26</span><span class="setting-badge req" title="StartMenuExperienceHost has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">StartMenuExperienceHost restart</span></div>
+            <p class="setting-desc">Choose how the All apps section in Start is displayed: by category, in a grid, or as a list</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start">HKCU\Software\Microsoft\Windows\CurrentVersion\Start</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>AllAppsViewMode</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Category <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Grid</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">List <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">2</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Clean Start Menu</span>
-                        <span class="setting-id">start-menu-clean-11</span>
-                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
-                    </div>
-                    <p class="setting-desc">Removes all pinned apps and applies a clean Start Menu layout for all users on this computer. This action requires confirmation.</p>
-                    <p class="setting-desc"><strong>Type:</strong> Action button</p>
+            </details>
+            </div>
 
-                    <h4 style="margin-top: 1rem; margin-bottom: 0.5rem;">How It Works</h4>
-                    <p class="setting-desc">Windows 11 uses a binary file system for Start Menu pins and a JSON-based policy for configuration. Winhance cleans the Start Menu through multiple approaches:</p>
-                    <ul class="setting-desc" style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                        <li><strong>Current User:</strong> Deletes the <code>start.bin</code> and <code>start2.bin</code> files from the current user's LocalState folder, then restarts the Start Menu process.</li>
-                        <li><strong>Other Existing Users:</strong> Deletes the same binary files from all other user profiles on the system (requires admin privileges).</li>
-                        <li><strong>New Users:</strong> A system-wide policy is applied via <code>ConfigureStartPins</code> that configures an empty pinned list, ensuring new users get a clean Start Menu.</li>
-                    </ul>
+            <div class="setting-card" id="start-recommended-section">
+            <div class="setting-header">
+            <span class="setting-name">Recommended section</span>
+            <span class="setting-id">start-recommended-section</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="StartMenuExperienceHost has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">StartMenuExperienceHost restart</span></div>
+            <p class="setting-desc">Show or hide the lower section that displays recently opened files and suggested apps. Hiding this section also removes Windows Spotlight from the lock screen and suggested content in the Settings app</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer">HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer">HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Start">HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start</code></th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Education">HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Education</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>HideRecommendedSection</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th><th class="mx-col mx-col-value"><code>IsEducationEnvironment</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Show <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Hide <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">1</td><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                    <details class="registry-details">
-                        <summary>Technical Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Binary Files Deleted</th><td style="word-break: break-all;"><code>%LocalAppData%\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start.bin</code><br><code>%LocalAppData%\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin</code></td></tr>
-                            <tr><th>Policy Registry Path</th><td><code>HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start</code></td></tr>
-                            <tr><th>Policy Value</th><td><code>ConfigureStartPins</code> = <code>{"pinnedList":[]}</code></td></tr>
-                            <tr><th>Process Restarted</th><td>StartMenuExperienceHost</td></tr>
-                        </table>
-                        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);"><strong>Note:</strong> The <code>start.bin</code> and <code>start2.bin</code> files store the user's pinned apps. Deleting them resets the pins to the system default (which is empty due to the policy).</p>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Start layout</span>
-                        <span class="setting-id">start-menu-layout</span>
-                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
-                    </div>
-                    <p class="setting-desc">Choose whether the Start Menu shows more pinned apps, more recommendations, or a balanced default layout.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Default, More pins, More recommendations</p>
-                    <p class="setting-desc"><em>Note: This setting was removed in Windows 11 24H2 build 26120.4250 and later.</em></p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
-                            <tr><th>Value</th><td><code>Start_Layout</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                            <tr><th>More pins</th><td>1</td></tr>
-                            <tr><th>More recommendations</th><td>2</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <h2 id="start-menu-settings">Start Menu Settings</h2>
+            <div class="setting-card" id="start-show-recently-added-apps">
+            <div class="setting-header">
+            <span class="setting-name">Show recently added apps</span>
+            <span class="setting-id">start-show-recently-added-apps</span>
+            </div>
+            <p class="setting-desc">Display a list of recently installed applications at the top of the All Apps list</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start">HKCU\Software\Microsoft\Windows\CurrentVersion\Start</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ShowRecentList</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Recommended section</span>
-                        <span class="setting-id">start-recommended-section</span>
-                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
-                    </div>
-                    <p class="setting-desc">Show or hide the lower section that displays recently opened files and suggested apps.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Show, Hide</p>
-                    <div class="callout callout-info">
-                        <div class="callout-title">ℹ️ Windows Edition Differences</div>
-                        <p><strong>Windows 11 Pro and above:</strong> The Recommended section is completely removed from the Start Menu.</p>
-                        <p><strong>Windows 11 Home:</strong> The Recommended section remains visible but is disabled—no items will be shown there.</p>
-                    </div>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer</code></td></tr>
-                            <tr><th>Value</th><td><code>HideRecommendedSection</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Show</th><td>Value deleted</td></tr>
-                            <tr><th>Hide</th><td>1</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer</code></td></tr>
-                            <tr><th>Value</th><td><code>HideRecommendedSection</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Show</th><td>Value deleted</td></tr>
-                            <tr><th>Hide</th><td>1</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start</code></td></tr>
-                            <tr><th>Value</th><td><code>HideRecommendedSection</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Show</th><td>Value deleted</td></tr>
-                            <tr><th>Hide</th><td>1</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Education</code></td></tr>
-                            <tr><th>Value</th><td><code>IsEducationEnvironment</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Show</th><td>Value deleted</td></tr>
-                            <tr><th>Hide</th><td>1</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <!-- Start Menu Settings Section -->
-                <h3>Start Menu Settings</h3>
+            <div class="setting-card" id="start-show-frequent-list">
+            <div class="setting-header">
+            <span class="setting-name">Show most used apps</span>
+            <span class="setting-id">start-show-frequent-list</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span></div>
+            <p class="setting-desc">Display your frequently launched applications at the top of the All Apps list for quick access</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start">HKCU\Software\Microsoft\Windows\CurrentVersion\Start</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ShowFrequentList</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">On</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0 (or not set)</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show all pins by default</span>
-                        <span class="setting-id">start-show-all-pins-by-default</span>
-                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
-                    </div>
-                    <p class="setting-desc">Automatically expand to show all pinned apps instead of requiring you to click 'All apps'.</p>
-                    <p class="setting-desc"><em>Note: Only available on Windows 11 24H2 build 26120.4250 and later.</em></p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Start</code></td></tr>
-                            <tr><th>Value</th><td><code>ShowAllPinsList</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show recently added apps</span>
-                        <span class="setting-id">start-show-recently-added-apps</span>
-                    </div>
-                    <p class="setting-desc">Display a list of recently installed applications at the top of the All Apps list.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Start</code></td></tr>
-                            <tr><th>Value</th><td><code>ShowRecentList</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="start-track-progs">
+            <div class="setting-header">
+            <span class="setting-name">Show most used apps</span>
+            <span class="setting-id">start-track-progs</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span></div>
+            <p class="setting-desc">Display your frequently launched applications at the top of the All Apps list for quick access</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start_TrackProgs</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show most used apps</span>
-                        <span class="setting-id">start-show-frequent-list</span>
-                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
-                    </div>
-                    <p class="setting-desc">Display your frequently launched applications at the top of the All Apps list for quick access.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Start</code></td></tr>
-                            <tr><th>Value</th><td><code>ShowFrequentList</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show most used apps</span>
-                        <span class="setting-id">start-track-progs</span>
-                        <span class="setting-badge win10"><i class="mdi mdi-microsoft-windows"></i>Windows 10 Only</span>
-                    </div>
-                    <p class="setting-desc">Display your frequently launched applications at the top of the All Apps list for quick access.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
-                            <tr><th>Value</th><td><code>Start_TrackProgs</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="start-show-suggestions">
+            <div class="setting-header">
+            <span class="setting-name">Show suggestions in Start</span>
+            <span class="setting-id">start-show-suggestions</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span></div>
+            <p class="setting-desc">Display app suggestions and promotional content from the Microsoft Store in the Start Menu</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager">HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>SubscribedContent-338388Enabled</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show suggestions in Start</span>
-                        <span class="setting-id">start-show-suggestions</span>
-                        <span class="setting-badge win10"><i class="mdi mdi-microsoft-windows"></i>Windows 10 Only</span>
-                    </div>
-                    <p class="setting-desc">Display app suggestions and promotional content from the Microsoft Store in the Start Menu.</p>
-                    <p class="setting-desc"><em>Note: This setting depends on the "Promotional Content" master setting in Privacy & Security.</em></p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
-                            <tr><th>Value</th><td><code>SubscribedContent-338388Enabled</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show recommended files and recently opened items</span>
-                        <span class="setting-id">start-show-recommended-files</span>
-                    </div>
-                    <p class="setting-desc">Display your recently opened documents and files in the Start Menu's Recommended section for quick access.</p>
-                    <p class="setting-desc"><em>Note: Requires the Recommended section to be shown (not hidden).</em></p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
-                            <tr><th>Value</th><td><code>Start_TrackDocs</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="start-show-recommended-files">
+            <div class="setting-header">
+            <span class="setting-name">Show recommended files and recently opened items</span>
+            <span class="setting-id">start-show-recommended-files</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge req" title="Recommended section = Show">Requires: <a href="#start-recommended-section">Recommended section</a> (set automatically)</span></div>
+            <p class="setting-desc">Display your recently opened documents and files in the Start Menu&#39;s Recommended section for quick access</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start_TrackDocs</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show recommendations for tips, shortcuts, new apps, and more</span>
-                        <span class="setting-id">start-menu-recommendations</span>
-                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
-                    </div>
-                    <p class="setting-desc">Display personalized suggestions from Windows for tips, app shortcuts, and Microsoft Store apps in the Recommended section.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
-                            <tr><th>Value</th><td><code>Start_IrisRecommendations</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show account-related notifications</span>
-                        <span class="setting-id">start-show-account-notifications</span>
-                        <span class="setting-badge win11"><i class="mdi mdi-microsoft-windows"></i>Windows 11 Only</span>
-                    </div>
-                    <p class="setting-desc">Display notifications about Microsoft account sign-in, sync status, and account-related suggestions.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
-                            <tr><th>Value</th><td><code>Start_AccountNotifications</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="start-menu-recommendations">
+            <div class="setting-header">
+            <span class="setting-name">Show recommendations for tips, shortcuts, new apps, and more</span>
+            <span class="setting-id">start-menu-recommendations</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span></div>
+            <p class="setting-desc">Display personalized suggestions from Windows for tips, app shortcuts, and Microsoft Store apps in the Recommended section</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start_IrisRecommendations</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Disable Bing search results</span>
-                        <span class="setting-id">start-disable-bing-search-results</span>
-                    </div>
-                    <p class="setting-desc">Prevent web results from Bing from appearing when searching in the Start Menu, showing only local files and apps.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Policies\Microsoft\Windows\Explorer</code></td></tr>
-                            <tr><th>Value</th><td><code>DisableSearchBoxSuggestions</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (Bing disabled)</th><td>1</td></tr>
-                            <tr><th>Disabled (Bing enabled)</th><td>Key deleted</td></tr>
-                            <tr><th>Default</th><td>Key absent (Bing enabled)</td></tr>
-                        </table>
-                        <p><em>Note: This setting is also applied to HKLM\Software\Policies\Microsoft\Windows\Explorer for machine-wide policy.</em></p>
-                    </details>
-                </div>
+            </details>
+            </div>
 
+            <div class="setting-card" id="start-show-account-notifications">
+            <div class="setting-header">
+            <span class="setting-name">Show account-related notifications</span>
+            <span class="setting-id">start-show-account-notifications</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span></div>
+            <p class="setting-desc">Display notifications about Microsoft account sign-in, sync status, and account-related suggestions</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start_AccountNotifications</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="start-disable-bing-search-results">
+            <div class="setting-header">
+            <span class="setting-name">Bing Search Results in Start Menu</span>
+            <span class="setting-id">start-disable-bing-search-results</span>
+            </div>
+            <p class="setting-desc">Show web results from Bing alongside local files and apps when searching in the Start Menu</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer">HKCU\Software\Policies\Microsoft\Windows\Explorer</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer">HKLM\Software\Policies\Microsoft\Windows\Explorer</code></th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search">HKCU\Software\Microsoft\Windows\CurrentVersion\Search</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>DisableSearchBoxSuggestions</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th><th class="mx-col mx-col-value"><code>BingSearchEnabled</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">deletes key</td><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">1</td><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
             </section>
         </main>
     </div>

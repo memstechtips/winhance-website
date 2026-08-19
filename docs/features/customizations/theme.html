@@ -76,19 +76,19 @@
                     </div>
                     <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
                     <div class="sidebar-sub-nav">
-                        <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
-                        <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
-                        <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
-                        <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
-                        <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
-                        <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
+    <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy &amp; Security</a>
+    <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
+    <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming &amp; Performance</a>
+    <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
+    <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
+    <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
                     </div>
                     <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
                     <div class="sidebar-sub-nav">
-                        <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
-                        <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
-                        <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
-                        <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
+    <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
+    <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
+    <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
+    <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
                     </div>
                     <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
                     <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
@@ -112,94 +112,156 @@
         </aside>
 
         <main class="docs-content">
-            <section id="theme">
-                <h1>Windows Theme</h1>
-                <div class="video-container">
-                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2488" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <p>Personalize the visual aesthetic of your Windows system. Quickly switch between light and dark modes,
-                    adjust transparency effects, and synchronize your wallpaper for a cohesive look.</p>
+            <section id="windows-theme">
+            <h1>Windows Theme</h1>
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2488" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p>Personalize the visual aesthetic of your Windows system. Quickly switch between light and dark modes, adjust transparency effects, and synchronize your wallpaper for a cohesive look.</p>
+            <div class="callout callout-info"> <div class="callout-title">ℹ️ Theme Consistency</div> <p>When switching themes in Winhance, you can choose to automatically apply a matching wallpaper for a perfectly cohesive look.</p> <p><strong>Windows 11 Wallpapers:</strong></p> <ul> <li>Light Mode: <code>C:\Windows\Web\Wallpaper\Windows\img0.jpg</code></li> <li>Dark Mode: <code>C:\Windows\Web\Wallpaper\Windows\img19.jpg</code></li> </ul> <p><strong>Windows 10 Wallpaper:</strong></p> <ul> <li>Default: <code>C:\Windows\Web\4K\Wallpaper\Windows\img0_3840x2160.jpg</code></li> </ul> </div>
+            <div class="callout callout-warning"> <div class="callout-title">⚠️ Setting Persistence</div> <p>Settings found in the <strong>Customizations</strong> view are <strong>not persistent</strong>. Winhance applies these changes once, but it does not use background tasks to re-apply them if they are changed later by Windows or by you manually.</p> </div>
+            <div class="callout callout-info">
+                <div class="callout-title">Technical Details</div>
+                <p>Every setting below can be expanded to show exactly what Winhance reads and writes: registry values, scheduled tasks, power settings and scripts, with the recommended value and the Windows default marked. This is the same table the app shows under each setting's Technical Details.</p>
+            </div>
 
-                <h2>Key Features</h2>
-                <ul>
-                    <li><strong>Light/Dark Mode:</strong> Instantly switch the entire system and supported apps between
-                        light and dark themes.</li>
-                    <li><strong>Transparency Effects:</strong> Toggle the acrylic and mica effects on windows and the
-                        taskbar.</li>
-                    <li><strong>Wallpaper Sync:</strong> When switching themes, Winhance can automatically apply a matching Windows default wallpaper for a cohesive look.</li>
-                </ul>
+            <h2 id="theme-mode">Theme mode</h2>
+            <div class="setting-card" id="theme-mode-windows">
+            <div class="setting-header">
+            <span class="setting-name">Choose your mode</span>
+            <span class="setting-id">theme-mode-windows</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Prompts before applying this setting">Asks you to confirm before it runs</span><span class="setting-badge req" title="Apps Use Light Theme = Enabled">Sets: <a href="#theme-mode-apps">Apps Use Light Theme</a> (Enabled)</span><span class="setting-badge req" title="Windows Uses Light Theme = Enabled">Sets: <a href="#theme-mode-system">Windows Uses Light Theme</a> (Enabled)</span><span class="setting-badge req" title="Apps Use Light Theme = Disabled">Sets: <a href="#theme-mode-apps">Apps Use Light Theme</a> (Disabled)</span><span class="setting-badge req" title="Windows Uses Light Theme = Disabled">Sets: <a href="#theme-mode-system">Windows Uses Light Theme</a> (Disabled)</span></div>
+            <p class="setting-desc">Choose between Light and Dark mode for Windows and apps</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <h4 class="mx-build">Windows 11</h4>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="2" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>AppsUseLightTheme</code><span class="mx-type">DWord</span></th><th class="mx-col mx-col-value"><code>SystemUsesLightTheme</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Light Mode <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Dark Mode <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Mixed</th><td class="mx-cell"></td><td class="mx-cell"></td></tr>
+            </tbody>
+            </table>
+            </div>
+            <h4 class="mx-build">Windows 10</h4>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="2" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>AppsUseLightTheme</code><span class="mx-type">DWord</span></th><th class="mx-col mx-col-value"><code>SystemUsesLightTheme</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Light Mode</th><td class="mx-cell">1</td><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Dark Mode <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Mixed</th><td class="mx-cell"></td><td class="mx-cell"></td></tr>
+            </tbody>
+            </table>
+            </div>
+            <div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
+            <ul>
+            <li><strong>Sets desktop wallpaper (Light Mode)</strong> <em>(Windows 11)</em>: C:\Windows\Web\Wallpaper\Windows\img0.jpg</li>
+            <li><strong>Sets desktop wallpaper (Light Mode)</strong> <em>(Windows 10)</em>: C:\Windows\Web\4K\Wallpaper\Windows\img0_3840x2160.jpg</li>
+            <li><strong>Sets desktop wallpaper (Dark Mode)</strong> <em>(Windows 11)</em>: C:\Windows\Web\Wallpaper\Windows\img19.jpg</li>
+            <li><strong>Sets desktop wallpaper (Dark Mode)</strong> <em>(Windows 10)</em>: C:\Windows\Web\4K\Wallpaper\Windows\img0_3840x2160.jpg</li>
+            </ul></div>
+            </details>
+            <div class="setting-children">
+            <div class="setting-card setting-card-child" id="theme-mode-apps">
+            <div class="setting-header">
+            <span class="setting-name">Apps Use Light Theme</span>
+            <span class="setting-id">theme-mode-apps</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.07.22</span></div>
+            <p class="setting-desc">Use the light theme for apps such as Settings and File Explorer</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>AppsUseLightTheme</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="callout callout-info">
-                    <div class="callout-title">ℹ️ Theme Consistency</div>
-                    <p>When switching themes in Winhance, you can choose to automatically apply a matching wallpaper for
-                        a perfectly cohesive look.</p>
-                    <p><strong>Windows 11 Wallpapers:</strong></p>
-                    <ul>
-                        <li>Light Mode: <code>C:\Windows\Web\Wallpaper\Windows\img0.jpg</code></li>
-                        <li>Dark Mode: <code>C:\Windows\Web\Wallpaper\Windows\img19.jpg</code></li>
-                    </ul>
-                    <p><strong>Windows 10 Wallpaper:</strong></p>
-                    <ul>
-                        <li>Default: <code>C:\Windows\Web\4K\Wallpaper\Windows\img0_3840x2160.jpg</code></li>
-                    </ul>
-                </div>
+            </details>
+            </div>
+            <div class="setting-card setting-card-child" id="theme-mode-system">
+            <div class="setting-header">
+            <span class="setting-name">Windows Uses Light Theme</span>
+            <span class="setting-id">theme-mode-system</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge added">Added in v26.07.22</span></div>
+            <p class="setting-desc">Use the light theme for the Windows shell, including the taskbar, Start menu, and notification center</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <h4 class="mx-build">Windows 11</h4>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>SystemUsesLightTheme</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+            <h4 class="mx-build">Windows 10</h4>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>SystemUsesLightTheme</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">On</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="callout callout-warning">
-                    <div class="callout-title">⚠️ Setting Persistence</div>
-                    <p>Settings found in the <strong>Customizations</strong> view are <strong>not persistent</strong>.
-                        Winhance applies these changes once, but it does not use background tasks to re-apply them if
-                        they are changed later by Windows or by you manually.</p>
-                </div>
+            </details>
+            </div>
+            </div>
+            </div>
 
-                <!-- Windows Theme Section -->
-                <h2>Windows Theme</h2>
+            <h2 id="transparency">Transparency</h2>
+            <div class="setting-card" id="theme-transparency">
+            <div class="setting-header">
+            <span class="setting-name">Transparency effects</span>
+            <span class="setting-id">theme-transparency</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Enable translucent effects for the Start Menu, taskbar, and other Windows interface elements</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>EnableTransparency</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Choose your mode</span>
-                        <span class="setting-id">theme-mode-windows</span>
-                    </div>
-                    <p class="setting-desc">Choose between Light and Dark mode for Windows and apps. This setting affects both the Windows shell (taskbar, Start Menu) and supported applications.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Light Mode, Dark Mode</p>
-                    <p class="setting-desc"><em>Note: Winhance also supports detecting a "Custom" state where apps and system use different themes.</em></p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></td></tr>
-                            <tr><th>Values</th><td><code>AppsUseLightTheme</code>, <code>SystemUsesLightTheme</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Light Mode</th><td>AppsUseLightTheme = 1, SystemUsesLightTheme = 1</td></tr>
-                            <tr><th>Dark Mode</th><td>AppsUseLightTheme = 0, SystemUsesLightTheme = 0</td></tr>
-                            <tr><th>Default</th><td>1 (Light Mode)</td></tr>
-                        </table>
-                        <p><strong>Registry Values Explained:</strong></p>
-                        <ul>
-                            <li><strong>AppsUseLightTheme:</strong> Controls the theme for Windows apps (UWP apps, Settings, etc.)</li>
-                            <li><strong>SystemUsesLightTheme:</strong> Controls the theme for Windows shell (taskbar, Start Menu, notification center)</li>
-                        </ul>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Transparency effects</span>
-                        <span class="setting-id">theme-transparency</span>
-                    </div>
-                    <p class="setting-desc">Enable translucent effects for the Start Menu, taskbar, and other Windows interface elements. This includes acrylic blur effects on Windows 10 and mica effects on Windows 11.</p>
-                    <p class="setting-desc"><em>Note: Disabling transparency can improve performance on lower-end hardware.</em></p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></td></tr>
-                            <tr><th>Value</th><td><code>EnableTransparency</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1</td></tr>
-                        </table>
-                    </details>
-                </div>
-
+            </details>
+            </div>
             </section>
         </main>
     </div>

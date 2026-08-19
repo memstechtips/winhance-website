@@ -2,7 +2,7 @@
 // Renders the winhance.net setting docs from Winhance's catalog export.
 //   node tools/gen-docs.mjs [--catalog ../winhance/extras/docs-export/catalog.json] [--site docs] [--check]
 // --check renders in memory and exits 1 listing files that differ from what is on disk.
-import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname, basename, resolve } from 'node:path';
 import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';

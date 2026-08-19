@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power Management - Winhance Docs</title>
+    <title>Power Management &amp; Plans - Winhance Docs</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -76,19 +76,19 @@
                     </div>
                     <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
                     <div class="sidebar-sub-nav">
-                        <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
-                        <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
-                        <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
-                        <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
-                        <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
-                        <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
+    <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy &amp; Security</a>
+    <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
+    <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming &amp; Performance</a>
+    <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
+    <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
+    <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
                     </div>
                     <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
                     <div class="sidebar-sub-nav">
-                        <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
-                        <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
-                        <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
-                        <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
+    <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
+    <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
+    <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
+    <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
                     </div>
                     <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
                     <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
@@ -112,937 +112,1289 @@
         </aside>
 
         <main class="docs-content">
-            <section id="power">
-                <h1>Power Management & Plans</h1>
-                <div class="video-container">
-                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=1379" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <p>Winhance provides a comprehensive power management interface, allowing you to select from
-                    system-default plans or apply specialized optimizations.</p>
-
-                <h2>Power Plan Selection</h2>
-                <p>The Power Plan ComboBox in Winhance is dynamic and intelligent:</p>
-                <ul>
-                    <li><strong>Custom Plan Detection:</strong> Winhance automatically detects any custom power plans
-                        already present on your system and adds them to the selection list.</li>
-                    <li><strong>Default Windows Plans:</strong> Standard plans such as <em>Balanced</em>, <em>High
-                            Performance</em>, and <em>Power Saver</em> are always available.</li>
-                    <li><strong>Ultimate Performance:</strong> Winhance provides a one-click option to enable and
-                        activate the hidden Windows "Ultimate Performance" plan, which is designed for high-end systems
-                        to minimize micro-latencies.</li>
-                    <li><strong>Winhance Power Plan:</strong> This is a custom preset included with Winhance. It is
-                        based on the Ultimate Performance plan but further tuned for the best possible responsiveness.
-                    </li>
-                    <li><strong>Delete Plans:</strong> You can remove unwanted power plans from your system by clicking the <strong>Trash Can</strong> icon next to the plan name in the dropdown. Note that default Windows schemes can be easily restored if deleted.</li>
-                </ul>
-
-                <div class="callout callout-info">
-                    <div class="callout-title">ℹ️ Advanced Power Settings</div>
-                    <p>Winhance unlocks hidden "Advanced Power Settings" that are normally invisible in the Windows Control Panel. This includes settings like <strong>Processor Boost Mode</strong>, <strong>Core Parking</strong>, and <strong>Energy Performance Preference</strong>.</p>
-                    <p><strong>Warning:</strong> These settings are locked by default for safety. Unlocking and modifying them (especially numeric values) can cause system instability or increased heat generation if set incorrectly. Winhance will show a warning dialog before allowing you to unlock these controls.</p>
-                </div>
-
-                <div class="callout callout-note">
-                    <div class="callout-title">💻 Laptop vs Desktop View</div>
-                    <p>Winhance intelligently detects if your device has a battery. On a <strong>Desktop</strong>, you will see a single set of controls (AC Power). On a <strong>Laptop</strong>, you will see two sets of controls: one for <strong>Plugged In (AC)</strong> and one for <strong>On Battery (DC)</strong>, allowing for granular control over power consumption.</p>
-                </div>
-
-                <div class="callout callout-warning">
-                    <div class="callout-title">⚠️ Setting Persistence</div>
-                    <p>Settings found in the <strong>Optimizations</strong> and <strong>Customizations</strong> views
-                        are <strong>not persistent</strong>. Winhance applies these changes once when you click "Apply",
-                        but it does not use background tasks to re-apply them if they are changed later by Windows or by
-                        you manually.</p>
-                    <p>This is a deliberate design choice to <strong>respect user choice</strong>. For example, if you
-                        set Dark Mode via Winhance but later decide to switch back to Light Mode using the official
-                        Windows Settings app, Winhance will not revert your change on the next reboot.</p>
-                </div>
-
-                <h3>Configuration Export & Power Plans</h3>
-                <p>When you export your Winhance configuration to a <code>.winhance</code> file:</p>
-                <ul>
-                    <li>If a custom power plan is active, the config file will attempt to re-apply that plan when
-                        imported on another system.</li>
-                    <li><strong>Note:</strong> While the plan itself will be selected, some of the <em>advanced</em>
-                        power settings (like specific sub-setting values) might not be identical if the target system
-                        has different hardware capabilities or if those settings weren't explicitly defined in the
-                        custom plan.</li>
-                </ul>
-
-                <!-- Power Plan Section -->
-                <h2>Power Plan</h2>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Power Plan</span>
-                        <span class="setting-id">power-plan-selection</span>
-                    </div>
-                    <p class="setting-desc">Select the active power plan for your system. Options include default Windows plans (Power Saver, Balanced, High Performance), Ultimate Performance, and the custom Winhance Power Plan.</p>
-                    <p class="setting-desc"><strong>Type:</strong> Selection (dynamic options)</p>
-                    <p class="setting-desc"><strong>Built-in Plans:</strong></p>
-                    <ul>
-                        <li><strong>Power saver</strong> (GUID: a1841308-3541-4fab-bc81-f71556f20b4a)</li>
-                        <li><strong>Balanced</strong> (GUID: 381b4222-f694-41f0-9685-ff5bb260df2e)</li>
-                        <li><strong>High performance</strong> (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c)</li>
-                        <li><strong>Ultimate Performance</strong> (GUID: e9a42b02-d5df-448d-aa00-03f14749eb61)</li>
-                        <li><strong>Winhance Power Plan</strong> (GUID: 57696e68-616e-6365-506f-776572000000)</li>
-                    </ul>
-                </div>
-
-                <!-- Display Section -->
-                <h3>Display</h3>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Turn off the display</span>
-                        <span class="setting-id">power-display-timeout</span>
-                    </div>
-                    <p class="setting-desc">Specifies the period of inactivity before Windows turns off the display.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Never, 1-5 minutes, 10-30 minutes, 1-5 hours</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>7516b95f-f776-4464-8c53-06167f40cc99 (SUB_VIDEO)</td></tr>
-                            <tr><th>Setting GUID</th><td>3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e (VIDEOIDLE)</td></tr>
-                            <tr><th>Recommended AC</th><td>0 (Never)</td></tr>
-                            <tr><th>Recommended DC</th><td>300 (5 minutes)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <!-- Hard Disk Section -->
-                <h3>Hard Disk</h3>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Turn off hard disk after</span>
-                        <span class="setting-id">power-harddisk-timeout</span>
-                    </div>
-                    <p class="setting-desc">Specifies the period of inactivity before Windows turns off the hard disk.</p>
-                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0 = Never)</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>0012ee47-9041-4b5d-9b77-535fba8b1442 (SUB_DISK)</td></tr>
-                            <tr><th>Setting GUID</th><td>6738e2c4-e8a5-4a42-b16a-e040e769756e (DISKIDLE)</td></tr>
-                            <tr><th>Units</th><td>Seconds</td></tr>
-                            <tr><th>Recommended AC</th><td>0 (Never)</td></tr>
-                            <tr><th>Recommended DC</th><td>600 (10 minutes)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <!-- Internet Explorer Section -->
-                <h3>Internet Explorer</h3>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">JavaScript Timer Frequency</span>
-                        <span class="setting-id">internet-explorer-javascript-timer</span>
-                    </div>
-                    <p class="setting-desc">Specifies the frequency of JavaScript timers.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Maximum Performance, Maximum Power Savings</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>02f815b5-a5cf-4c84-bf20-649d1f75d3d8</td></tr>
-                            <tr><th>Setting GUID</th><td>4c793e7d-a264-42e1-87d3-7a0d2f523ccd</td></tr>
-                            <tr><th>Recommended AC</th><td>0 (Maximum Performance)</td></tr>
-                            <tr><th>Recommended DC</th><td>0 (Maximum Performance)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <!-- Desktop Background Settings Section -->
-                <h3>Desktop Background Settings</h3>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Desktop Background Slide Show</span>
-                        <span class="setting-id">desktop-slideshow</span>
-                    </div>
-                    <p class="setting-desc">Allow or prevent Windows from rotating through multiple wallpaper images.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Available, Paused</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>0d7dbae2-4294-402a-ba8e-26777e8488cd</td></tr>
-                            <tr><th>Setting GUID</th><td>309dce9b-bef4-4119-9921-a851fb12f0f4</td></tr>
-                            <tr><th>Recommended AC</th><td>1 (Available)</td></tr>
-                            <tr><th>Recommended DC</th><td>1 (Paused)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <!-- Wireless Adapter Settings Section -->
-                <h3>Wireless Adapter Settings</h3>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Power Saving Mode</span>
-                        <span class="setting-id">wireless-power-mode</span>
-                    </div>
-                    <p class="setting-desc">Balance wireless network performance with battery life by adjusting adapter power usage.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Maximum Performance, Low Power Saving, Medium Power Saving, Maximum Power Saving</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>19cbb8fa-5279-450e-9fac-8a3d5fedd0c1</td></tr>
-                            <tr><th>Setting GUID</th><td>12bbebe6-58d6-4636-95bb-3217ef867c1a</td></tr>
-                            <tr><th>Recommended AC</th><td>0 (Maximum Performance)</td></tr>
-                            <tr><th>Recommended DC</th><td>2 (Medium Power Saving)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <!-- Sleep Section -->
-                <h3>Sleep</h3>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Put the computer to sleep</span>
-                        <span class="setting-id">power-sleep-timeout</span>
-                    </div>
-                    <p class="setting-desc">Specifies the period of inactivity before Windows puts the computer to sleep.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Never, 1-5 minutes, 10-30 minutes, 1-5 hours</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>238c9fa8-0aad-41ed-83f4-97be242c8f20 (SUB_SLEEP)</td></tr>
-                            <tr><th>Setting GUID</th><td>29f6c1db-86da-48c5-9fdb-f2b67b1f44da (STANBYIDLE)</td></tr>
-                            <tr><th>Recommended AC</th><td>0 (Never)</td></tr>
-                            <tr><th>Recommended DC</th><td>900 (15 minutes)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Allow wake timers</span>
-                        <span class="setting-id">power-wake-timers</span>
-                    </div>
-                    <p class="setting-desc">Allow scheduled tasks and applications to wake your computer from sleep.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Disable, Enable, Important Wake Timers Only</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>238c9fa8-0aad-41ed-83f4-97be242c8f20 (SUB_SLEEP)</td></tr>
-                            <tr><th>Setting GUID</th><td>bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d (RTCWAKE)</td></tr>
-                            <tr><th>Recommended AC</th><td>0 (Disable)</td></tr>
-                            <tr><th>Recommended DC</th><td>0 (Disable)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Hibernation</span>
-                        <span class="setting-id">power-hibernation-enable</span>
-                    </div>
-                    <p class="setting-desc">Save your session to disk and power down completely, using no battery while preserving your work.</p>
-                    <p class="setting-desc"><strong>Type:</strong> Toggle (command-based)</p>
-                    <details class="registry-details">
-                        <summary>Command Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Enable Command</th><td>powercfg /hibernate on</td></tr>
-                            <tr><th>Disable Command</th><td>powercfg /hibernate off</td></tr>
-                            <tr><th>Recommended</th><td>Disabled</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Hibernate after</span>
-                        <span class="setting-id">power-hibernate-timeout</span>
-                    </div>
-                    <p class="setting-desc">Specifies the period of inactivity before Windows hibernates the computer.</p>
-                    <p class="setting-desc"><em>Note: Requires Hibernation to be enabled.</em></p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>238c9fa8-0aad-41ed-83f4-97be242c8f20 (SUB_SLEEP)</td></tr>
-                            <tr><th>Setting GUID</th><td>9d7815a6-7ee4-497e-8888-515a05f02364 (HIBERNATEIDLE)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Allow hybrid sleep</span>
-                        <span class="setting-id">power-hybrid-sleep</span>
-                    </div>
-                    <p class="setting-desc">Combines sleep and hibernate by saving your session to disk while staying in low-power mode for faster wake.</p>
-                    <p class="setting-desc"><em>Note: Requires Hibernation to be enabled.</em></p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>238c9fa8-0aad-41ed-83f4-97be242c8f20 (SUB_SLEEP)</td></tr>
-                            <tr><th>Setting GUID</th><td>94ac6d29-73ce-41a6-809f-6363ba21b47e (HYBRIDSLEEP)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Fast Startup</span>
-                        <span class="setting-id">power-fast-startup</span>
-                    </div>
-                    <p class="setting-desc">Hibernate system state during shutdown for faster boot times (does not affect restart).</p>
-                    <p class="setting-desc"><em>Note: Requires Hibernation to be enabled.</em></p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power</code></td></tr>
-                            <tr><th>Value</th><td><code>HiberbootEnabled</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show Hibernate Option</span>
-                        <span class="setting-id">start-power-hibernate-option</span>
-                    </div>
-                    <p class="setting-desc">Display the Hibernate option in the Start Menu power button menu.</p>
-                    <p class="setting-desc"><em>Note: Requires Hibernation to be enabled.</em></p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings</code></td></tr>
-                            <tr><th>Value</th><td><code>ShowHibernateOption</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <!-- USB Settings Section -->
-                <h3>USB Settings</h3>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">USB Hub Selective Suspend Timeout</span>
-                        <span class="setting-id">usb-hub-selective-suspend-timeout</span>
-                    </div>
-                    <p class="setting-desc">Set how long USB hubs wait idle before powering down to save energy.</p>
-                    <p class="setting-desc"><strong>Type:</strong> Numeric range (milliseconds)</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>2a737441-1930-4402-8d77-b2bebba308a3</td></tr>
-                            <tr><th>Setting GUID</th><td>0853a681-27c8-4100-a2fd-82013e970683</td></tr>
-                            <tr><th>Units</th><td>Milliseconds</td></tr>
-                            <tr><th>Recommended AC</th><td>0</td></tr>
-                            <tr><th>Recommended DC</th><td>1000</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">USB selective suspend setting</span>
-                        <span class="setting-id">usb-selective-suspend</span>
-                    </div>
-                    <p class="setting-desc">Allow Windows to power down individual USB ports when devices are idle to save energy.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Disabled, Enabled</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>2a737441-1930-4402-8d77-b2bebba308a3</td></tr>
-                            <tr><th>Setting GUID</th><td>48e6b7a6-50f5-4782-a5d4-53bb8f07e226</td></tr>
-                            <tr><th>Recommended AC</th><td>0 (Disabled)</td></tr>
-                            <tr><th>Recommended DC</th><td>1 (Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">USB 3 Link Power Management</span>
-                        <span class="setting-id">usb3-link-power-management</span>
-                    </div>
-                    <p class="setting-desc">Control how aggressively USB 3.0 ports enter low-power states when devices are idle.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Off, Minimum power savings, Moderate power savings, Maximum power savings</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>2a737441-1930-4402-8d77-b2bebba308a3</td></tr>
-                            <tr><th>Setting GUID</th><td>d4e98f31-5ffe-4ce1-be31-1b38b384c009</td></tr>
-                            <tr><th>Recommended AC</th><td>0 (Off)</td></tr>
-                            <tr><th>Recommended DC</th><td>2 (Moderate power savings)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <!-- Intel Graphics Section -->
-                <h3>Intel(R) Graphics Settings</h3>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Intel(R) Graphics Power Plan</span>
-                        <span class="setting-id">intel-graphics-power-plan</span>
-                    </div>
-                    <p class="setting-desc">Balance Intel integrated graphics performance with power consumption and battery life.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Maximum Battery Life, Balanced, Maximum Performance</p>
-                    <p class="setting-desc"><em>Note: Only visible on systems with Intel integrated graphics.</em></p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>44f3beca-a7c0-460e-9df2-bb8b99e0cba6</td></tr>
-                            <tr><th>Setting GUID</th><td>3619c3f2-afb2-4afc-b0e9-e7fef372de36</td></tr>
-                            <tr><th>Recommended AC</th><td>2 (Maximum Performance)</td></tr>
-                            <tr><th>Recommended DC</th><td>1 (Balanced)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <!-- Power Buttons and Lid Section -->
-                <h3>Power Buttons and Lid</h3>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Power button action</span>
-                        <span class="setting-id">power-button-action</span>
-                    </div>
-                    <p class="setting-desc">Choose what happens when you press the physical power button on your computer.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Do nothing, Sleep, Hibernate, Shut down</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>4f971e89-eebd-4455-a8de-9e59040e7347 (SUB_BUTTONS)</td></tr>
-                            <tr><th>Setting GUID</th><td>7648efa3-dd9c-4e3e-b566-50f929386280</td></tr>
-                            <tr><th>Recommended AC</th><td>0 (Do nothing)</td></tr>
-                            <tr><th>Recommended DC</th><td>0 (Do nothing)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Sleep button action</span>
-                        <span class="setting-id">sleep-button-action</span>
-                    </div>
-                    <p class="setting-desc">Choose what happens when you press the dedicated sleep button on your keyboard or computer.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Do nothing, Sleep, Hibernate, Shut down</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>4f971e89-eebd-4455-a8de-9e59040e7347 (SUB_BUTTONS)</td></tr>
-                            <tr><th>Setting GUID</th><td>96996bc0-ad50-47ec-923b-6f41874dd9eb</td></tr>
-                            <tr><th>Recommended AC</th><td>0 (Do nothing)</td></tr>
-                            <tr><th>Recommended DC</th><td>0 (Do nothing)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Lid close action</span>
-                        <span class="setting-id">lid-close-action</span>
-                        <span class="setting-badge laptops">Laptops Only</span>
-                    </div>
-                    <p class="setting-desc">Choose what happens when you close your laptop lid.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Do nothing, Sleep, Hibernate, Shut down</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>4f971e89-eebd-4455-a8de-9e59040e7347 (SUB_BUTTONS)</td></tr>
-                            <tr><th>Setting GUID</th><td>5ca83367-6e45-459f-a27b-476b1d01c936 (LIDACTION)</td></tr>
-                            <tr><th>Recommended AC</th><td>1 (Sleep)</td></tr>
-                            <tr><th>Recommended DC</th><td>1 (Sleep)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <!-- PCI Express Section -->
-                <h3>PCI Express</h3>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Link State Power Management</span>
-                        <span class="setting-id">pci-link-state-power-management</span>
-                    </div>
-                    <p class="setting-desc">Control power savings for PCIe devices like graphics cards, SSDs, and expansion cards.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Off, Moderate power savings, Maximum power savings</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>501a4d13-42af-4429-9fd1-a8218c268e20 (SUB_PCIEXPRESS)</td></tr>
-                            <tr><th>Setting GUID</th><td>ee12f906-d277-404b-b6da-e5fa1a576df5 (ASPM)</td></tr>
-                            <tr><th>Recommended AC</th><td>0 (Off)</td></tr>
-                            <tr><th>Recommended DC</th><td>2 (Maximum power savings)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <!-- Processor Power Management Section -->
-                <h3>Processor Power Management</h3>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Minimum processor state</span>
-                        <span class="setting-id">processor-min-state</span>
-                    </div>
-                    <p class="setting-desc">Set the lowest CPU speed allowed as a percentage of maximum frequency.</p>
-                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
-                            <tr><th>Setting GUID</th><td>893dee8e-2bef-41e0-89c6-b55d0929964c (PROCTHROTTLEMIN)</td></tr>
-                            <tr><th>Units</th><td>%</td></tr>
-                            <tr><th>Recommended AC</th><td>100%</td></tr>
-                            <tr><th>Recommended DC</th><td>5%</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Maximum processor state</span>
-                        <span class="setting-id">processor-max-state</span>
-                    </div>
-                    <p class="setting-desc">Set the highest CPU speed allowed as a percentage of maximum frequency.</p>
-                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
-                            <tr><th>Setting GUID</th><td>bc5038f7-23e0-4960-96da-33abaf5935ec (PROCTHROTTLEMAX)</td></tr>
-                            <tr><th>Units</th><td>%</td></tr>
-                            <tr><th>Recommended AC</th><td>100%</td></tr>
-                            <tr><th>Recommended DC</th><td>100%</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">System cooling policy</span>
-                        <span class="setting-id">system-cooling-policy</span>
-                        <span class="setting-badge advanced">Advanced</span>
-                    </div>
-                    <p class="setting-desc">Choose whether to slow down the processor first (passive) or speed up fans first (active) when hot.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Passive, Active</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
-                            <tr><th>Setting GUID</th><td>94d3a615-a899-4ac5-ae2b-e4d8f634367f</td></tr>
-                            <tr><th>Recommended AC</th><td>1 (Active)</td></tr>
-                            <tr><th>Recommended DC</th><td>1 (Active)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Processor performance boost mode</span>
-                        <span class="setting-id">processor-performance-boost-mode</span>
-                        <span class="setting-badge advanced">Advanced</span>
-                    </div>
-                    <p class="setting-desc">Control how aggressively your CPU boosts above base frequency for demanding tasks.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Disabled, Enabled, Aggressive, Efficient Enabled, Efficient Aggressive, Aggressive At Guaranteed</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
-                            <tr><th>Setting GUID</th><td>be337238-0d82-4146-a960-4f3749d470c7 (PERFBOOSTMODE)</td></tr>
-                            <tr><th>Recommended AC</th><td>2 (Aggressive)</td></tr>
-                            <tr><th>Recommended DC</th><td>1 (Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">CPU Core Parking Minimum Cores</span>
-                        <span class="setting-id">processor-core-parking-min-cores</span>
-                        <span class="setting-badge advanced">Advanced</span>
-                    </div>
-                    <p class="setting-desc">Set the minimum percentage of CPU cores that must remain active and responsive.</p>
-                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
-                            <tr><th>Setting GUID</th><td>0cc5b647-c1df-4637-891a-dec35c318583 (CPMINCORES)</td></tr>
-                            <tr><th>Recommended AC</th><td>0%</td></tr>
-                            <tr><th>Recommended DC</th><td>0%</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">CPU Core Parking Maximum Cores</span>
-                        <span class="setting-id">processor-core-parking-max-cores</span>
-                        <span class="setting-badge advanced">Advanced</span>
-                    </div>
-                    <p class="setting-desc">Set the maximum percentage of CPU cores allowed to be active (100% for best performance).</p>
-                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
-                            <tr><th>Setting GUID</th><td>ea062031-0e34-4ff1-9b6d-eb1059334028 (CPMAXCORES)</td></tr>
-                            <tr><th>Recommended AC</th><td>100%</td></tr>
-                            <tr><th>Recommended DC</th><td>100%</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Processor Energy Performance Preference</span>
-                        <span class="setting-id">processor-energy-performance-preference</span>
-                        <span class="setting-badge advanced">Advanced</span>
-                    </div>
-                    <p class="setting-desc">Balance power efficiency and performance for modern CPUs with HWP (0 = max performance, 100 = max efficiency).</p>
-                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
-                            <tr><th>Setting GUID</th><td>36687f9e-e3a5-4dbf-b1dc-15eb381c6863 (PERFEPP)</td></tr>
-                            <tr><th>Units</th><td>%</td></tr>
-                            <tr><th>Recommended AC</th><td>0% (Max Performance)</td></tr>
-                            <tr><th>Recommended DC</th><td>50%</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Processor Performance Increase Policy</span>
-                        <span class="setting-id">processor-performance-increase-policy</span>
-                        <span class="setting-badge advanced">Advanced</span>
-                    </div>
-                    <p class="setting-desc">Control how quickly CPU ramps up speed when workload increases (for legacy non-HWP processors).</p>
-                    <p class="setting-desc"><strong>Options:</strong> Ideal, Single, Rocket</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
-                            <tr><th>Setting GUID</th><td>465e1f50-b610-473a-ab58-00d1077dc418 (PERFINCPOL)</td></tr>
-                            <tr><th>Recommended AC</th><td>2 (Rocket)</td></tr>
-                            <tr><th>Recommended DC</th><td>0 (Ideal)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Processor Performance Decrease Policy</span>
-                        <span class="setting-id">processor-performance-decrease-policy</span>
-                        <span class="setting-badge advanced">Advanced</span>
-                    </div>
-                    <p class="setting-desc">Control how quickly CPU reduces speed when workload decreases (for legacy non-HWP processors).</p>
-                    <p class="setting-desc"><strong>Options:</strong> Ideal, Single, Rocket</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
-                            <tr><th>Setting GUID</th><td>40fbefc7-2e9d-4d25-a185-0cfd8574bac6 (PERFDECPOL)</td></tr>
-                            <tr><th>Recommended AC</th><td>1 (Single)</td></tr>
-                            <tr><th>Recommended DC</th><td>2 (Rocket)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Processor Performance Increase Threshold</span>
-                        <span class="setting-id">processor-performance-increase-threshold</span>
-                        <span class="setting-badge advanced">Advanced</span>
-                    </div>
-                    <p class="setting-desc">Set CPU usage percentage that triggers speed increase (lower = more responsive, for legacy non-HWP CPUs).</p>
-                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
-                            <tr><th>Setting GUID</th><td>06cadf0e-64ed-448a-8927-ce7bf90eb35d (PERFINCTHRESHOLD)</td></tr>
-                            <tr><th>Units</th><td>%</td></tr>
-                            <tr><th>Recommended AC</th><td>10%</td></tr>
-                            <tr><th>Recommended DC</th><td>30%</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Processor Performance Decrease Threshold</span>
-                        <span class="setting-id">processor-performance-decrease-threshold</span>
-                        <span class="setting-badge advanced">Advanced</span>
-                    </div>
-                    <p class="setting-desc">Set CPU usage percentage that triggers speed reduction (lower = maintains performance longer, for legacy non-HWP CPUs).</p>
-                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>54533251-82be-4824-96c1-47b60b740d00 (SUB_PROCESSOR)</td></tr>
-                            <tr><th>Setting GUID</th><td>12a0ab44-fe28-4fa9-b3bd-4b64f44960a6 (PERFDECTHRESHOLD)</td></tr>
-                            <tr><th>Units</th><td>%</td></tr>
-                            <tr><th>Recommended AC</th><td>8%</td></tr>
-                            <tr><th>Recommended DC</th><td>20%</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Disable Power Throttling</span>
-                        <span class="setting-id">power-throttling</span>
-                    </div>
-                    <p class="setting-desc">Prevents Windows from throttling your CPU to save power, ensuring maximum performance for all applications.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling</code></td></tr>
-                            <tr><th>Value</th><td><code>PowerThrottlingOff</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (Throttling disabled)</th><td>1</td></tr>
-                            <tr><th>Disabled (Throttling enabled)</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <!-- Multimedia Settings Section -->
-                <h3>Multimedia Settings</h3>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">When Sharing Media</span>
-                        <span class="setting-id">multimedia-when-sharing-media</span>
-                    </div>
-                    <p class="setting-desc">Control whether your PC can sleep while streaming media to other devices on your network.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Allow the computer to sleep, Prevent idling to sleep, Allow the computer to enter Away Mode</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>9596fb26-9850-41fd-ac3e-f7c3c00afd4b</td></tr>
-                            <tr><th>Setting GUID</th><td>03680956-93bc-4294-bba6-4e0f09bb717f</td></tr>
-                            <tr><th>Recommended</th><td>1 (Prevent idling to sleep)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Video Playback Quality Bias</span>
-                        <span class="setting-id">multimedia-video-playback-quality-bias</span>
-                    </div>
-                    <p class="setting-desc">Prioritize smooth video playback over battery life when watching videos.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Video playback power-saving bias, Video playback performance bias</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>9596fb26-9850-41fd-ac3e-f7c3c00afd4b</td></tr>
-                            <tr><th>Setting GUID</th><td>10778347-1370-4ee0-8bbd-33bdacaade49</td></tr>
-                            <tr><th>Recommended</th><td>1 (Video playback performance bias)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">When Playing Video</span>
-                        <span class="setting-id">multimedia-when-playing-video</span>
-                    </div>
-                    <p class="setting-desc">Balance video quality and power consumption during video playback.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Optimize video quality, Balanced, Optimize power savings</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>9596fb26-9850-41fd-ac3e-f7c3c00afd4b</td></tr>
-                            <tr><th>Setting GUID</th><td>34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4</td></tr>
-                            <tr><th>Recommended</th><td>0 (Optimize video quality)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <!-- Battery Section -->
-                <h3>Battery</h3>
-                <p><em>These settings only appear on laptops and devices with batteries.</em></p>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Critical battery notification</span>
-                        <span class="setting-id">critical-battery-notification</span>
-                        <span class="setting-badge laptops">Laptops Only</span>
-                    </div>
-                    <p class="setting-desc">Show notification when battery reaches critically low level.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Off, On</p>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Critical battery action</span>
-                        <span class="setting-id">critical-battery-action</span>
-                        <span class="setting-badge laptops">Laptops Only</span>
-                    </div>
-                    <p class="setting-desc">Choose what happens when battery reaches critically low level.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Do nothing, Sleep, Hibernate, Shut down</p>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Low battery level</span>
-                        <span class="setting-id">low-battery-level</span>
-                        <span class="setting-badge laptops">Laptops Only</span>
-                    </div>
-                    <p class="setting-desc">Set the battery percentage that triggers low battery warnings and actions.</p>
-                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Critical battery level</span>
-                        <span class="setting-id">critical-battery-level</span>
-                        <span class="setting-badge laptops">Laptops Only</span>
-                    </div>
-                    <p class="setting-desc">Set the battery percentage that triggers critical battery warnings and emergency actions.</p>
-                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Low battery notification</span>
-                        <span class="setting-id">low-battery-notification</span>
-                        <span class="setting-badge laptops">Laptops Only</span>
-                    </div>
-                    <p class="setting-desc">Show notification when battery reaches low battery level.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Off, On</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>e73a048d-bf27-4f12-9731-8b2076e8891f (SUB_BATTERY)</td></tr>
-                            <tr><th>Setting GUID</th><td>bcded951-187b-4d05-bccc-f7e51960c258 (BATFLAGSLOW)</td></tr>
-                            <tr><th>Recommended</th><td>1 (On)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Low battery action</span>
-                        <span class="setting-id">low-battery-action</span>
-                        <span class="setting-badge laptops">Laptops Only</span>
-                    </div>
-                    <p class="setting-desc">Choose what happens when battery reaches low battery level.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Do nothing, Sleep, Hibernate, Shut down</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>e73a048d-bf27-4f12-9731-8b2076e8891f (SUB_BATTERY)</td></tr>
-                            <tr><th>Setting GUID</th><td>d8742dcb-3e6a-4b3c-b3fe-374623cdcf06 (BATACTIONLOW)</td></tr>
-                            <tr><th>Recommended</th><td>0 (Do nothing)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Reserve battery level</span>
-                        <span class="setting-id">reserve-battery-level</span>
-                        <span class="setting-badge laptops">Laptops Only</span>
-                    </div>
-                    <p class="setting-desc">Set battery percentage reserved to protect battery health and prevent unexpected shutdowns.</p>
-                    <p class="setting-desc"><strong>Type:</strong> Numeric range (0-100%)</p>
-                    <details class="registry-details">
-                        <summary>PowerCfg Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Subgroup GUID</th><td>e73a048d-bf27-4f12-9731-8b2076e8891f (SUB_BATTERY)</td></tr>
-                            <tr><th>Setting GUID</th><td>f3c5027d-cd16-4930-aa6b-90db844a8f00</td></tr>
-                            <tr><th>Units</th><td>%</td></tr>
-                            <tr><th>Recommended</th><td>7%</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <!-- Start Menu Power Options Section -->
-                <h3>Start Menu Power Options</h3>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show Lock Option</span>
-                        <span class="setting-id">start-power-lock-option</span>
-                    </div>
-                    <p class="setting-desc">Display the Lock option in the Start Menu power button menu.</p>
-                    <p class="setting-desc"><em>Note: Requires the Lock Screen to be enabled.</em></p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings</code></td></tr>
-                            <tr><th>Value</th><td><code>ShowLockOption</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show Sleep Option</span>
-                        <span class="setting-id">start-power-sleep-option</span>
-                    </div>
-                    <p class="setting-desc">Display the Sleep option in the Start Menu power button menu.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings</code></td></tr>
-                            <tr><th>Value</th><td><code>ShowSleepOption</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
-
-                <!-- Graphics (AMD/ATI/Switchable) Section -->
-                <h3>Graphics Settings</h3>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">AMD Power Slider Overlay</span>
-                        <span class="setting-id">amd-power-slider-overlay</span>
-                    </div>
-                    <p class="setting-desc">Balance AMD laptop performance and battery life with quick power mode selection.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Better Battery, Better Performance, Best Performance</p>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">ATI PowerPlay Setting</span>
-                        <span class="setting-id">ati-powerplay-setting</span>
-                    </div>
-                    <p class="setting-desc">Control power management for older AMD Radeon graphics cards.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Maximum Battery Life, Balanced, Maximum Performance</p>
-                    <p class="setting-desc"><em>Note: Only visible on systems with legacy AMD/ATI graphics.</em></p>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">GPU Preference (Switchable Graphics)</span>
-                        <span class="setting-id">switchable-graphics-gpu-preference</span>
-                    </div>
-                    <p class="setting-desc">Choose between integrated GPU for battery life or dedicated GPU for performance in hybrid graphics laptops.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Optimize Power Savings, Optimize Performance, Maximize Performance</p>
-                    <p class="setting-desc"><em>Note: Only visible on systems with hybrid graphics (Intel + NVIDIA/AMD).</em></p>
-                </div>
-
+            <section id="power-management-and-plans">
+            <h1>Power Management &amp; Plans</h1>
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=1379" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p>Winhance provides a comprehensive power management interface, allowing you to select from system-default plans or apply specialized optimizations.</p>
+            <div class="callout callout-info"> <div class="callout-title">ℹ️ Advanced Power Settings</div> <p>Winhance unlocks hidden "Advanced Power Settings" that are normally invisible in the Windows Control Panel. This includes settings like <strong>Processor Boost Mode</strong>, <strong>Core Parking</strong>, and <strong>Energy Performance Preference</strong>.</p> <p><strong>Warning:</strong> These settings are locked by default for safety. Unlocking and modifying them (especially numeric values) can cause system instability or increased heat generation if set incorrectly. Winhance will show a warning dialog before allowing you to unlock these controls.</p> </div>
+            <div class="callout callout-warning"> <div class="callout-title">⚠️ Setting Persistence</div> <p>Settings found in the <strong>Optimizations</strong> and <strong>Customizations</strong> views are <strong>not persistent</strong>. Winhance applies these changes once when you click "Apply", but it does not use background tasks to re-apply them if they are changed later by Windows or by you manually.</p> <p>This is a deliberate design choice to <strong>respect user choice</strong>. For example, if you set Dark Mode via Winhance but later decide to switch back to Light Mode using the official Windows Settings app, Winhance will not revert your change on the next reboot.</p> </div>
+            <div class="callout callout-info">
+                <div class="callout-title">Technical Details</div>
+                <p>Every setting below can be expanded to show exactly what Winhance reads and writes: registry values, scheduled tasks, power settings and scripts, with the recommended value and the Windows default marked. This is the same table the app shows under each setting's Technical Details.</p>
+            </div>
+
+            <h2 id="general">General</h2>
+            <div class="callout callout-note"> <div class="callout-title">💻 Laptop vs Desktop View</div> <p>Winhance intelligently detects if your device has a battery. On a <strong>Desktop</strong>, you will see a single set of controls (AC Power). On a <strong>Laptop</strong>, you will see two sets of controls: one for <strong>Plugged In (AC)</strong> and one for <strong>On Battery (DC)</strong>, allowing for granular control over power consumption.</p> </div>
+            <div class="setting-card" id="power-plan-selection">
+            <div class="setting-header">
+            <span class="setting-name">Power Plan</span>
+            <span class="setting-id">power-plan-selection</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Select the active power plan for your system</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <p class="mx-empty">The options are the power plans installed on this PC, so there is no fixed table; Winhance lists them live.</p>
+
+            </details>
+            </div>
+
+            <h2 id="display">Display</h2>
+            <div class="setting-card" id="power-display-timeout">
+            <div class="setting-header">
+            <span class="setting-name">Turn off the display</span>
+            <span class="setting-id">power-display-timeout</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Specifies the period of inactivity before Windows turns off the display</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="7516b95f-f776-4464-8c53-06167f40cc99">7516b95f-f776-4464-8c53-06167f40cc99</code><code class="mx-path" title="3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e">3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_1</th><td class="mx-cell">60</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_2</th><td class="mx-cell">120</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_3</th><td class="mx-cell">180</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_4</th><td class="mx-cell">300</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Template_TimeIntervals_Option_5 <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">600</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Template_TimeIntervals_Option_6 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">900</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_7</th><td class="mx-cell">1200</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_8</th><td class="mx-cell">1500</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_9</th><td class="mx-cell">1800</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_10</th><td class="mx-cell">2700</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_11</th><td class="mx-cell">3600</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_12</th><td class="mx-cell">7200</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_13</th><td class="mx-cell">10800</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_14</th><td class="mx-cell">14400</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_15</th><td class="mx-cell">18000</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <h2 id="hard-disk">Hard Disk</h2>
+            <div class="setting-card" id="power-harddisk-timeout">
+            <div class="setting-header">
+            <span class="setting-name">Turn off hard disk after</span>
+            <span class="setting-id">power-harddisk-timeout</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Specifies the period of inactivity before Windows turns off the hard disk</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="0012ee47-9041-4b5d-9b77-535fba8b1442">0012ee47-9041-4b5d-9b77-535fba8b1442</code><code class="mx-path" title="6738e2c4-e8a5-4a42-b16a-e040e769756e">6738e2c4-e8a5-4a42-b16a-e040e769756e</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-type">Minutes</span><span class="mx-chip" title="This setting takes a number rather than a fixed list of options.">any value 0+ Minutes</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">0 Minutes <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">20 Minutes <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">20</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <h2 id="internet-explorer">Internet Explorer</h2>
+            <div class="setting-card" id="internet-explorer-javascript-timer">
+            <div class="setting-header">
+            <span class="setting-name">JavaScript Timer Frequency</span>
+            <span class="setting-id">internet-explorer-javascript-timer</span>
+            </div>
+            <p class="setting-desc">Specifies the frequency of JavaScript timers</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="02f815b5-a5cf-4c84-bf20-649d1f75d3d8">02f815b5-a5cf-4c84-bf20-649d1f75d3d8</code><code class="mx-path" title="4c793e7d-a264-42e1-87d3-7a0d2f523ccd">4c793e7d-a264-42e1-87d3-7a0d2f523ccd</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_JavaScriptTimers_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_JavaScriptTimers_Option_1 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <h2 id="desktop-background-settings">Desktop Background Settings</h2>
+            <div class="setting-card" id="desktop-slideshow">
+            <div class="setting-header">
+            <span class="setting-name">Desktop Background Slide Show</span>
+            <span class="setting-id">desktop-slideshow</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Allow or prevent Windows from rotating through multiple wallpaper images</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="0d7dbae2-4294-402a-ba8e-26777e8488cd">0d7dbae2-4294-402a-ba8e-26777e8488cd</code><code class="mx-path" title="309dce9b-bef4-4119-9921-a851fb12f0f4">309dce9b-bef4-4119-9921-a851fb12f0f4</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_Slideshow_Option_0 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_Slideshow_Option_1</th><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <h2 id="wireless-adapter-settings">Wireless Adapter Settings</h2>
+            <div class="setting-card" id="wireless-power-mode">
+            <div class="setting-header">
+            <span class="setting-name">Power Saving Mode</span>
+            <span class="setting-id">wireless-power-mode</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Balance wireless network performance with battery life by adjusting adapter power usage</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="19cbb8fa-5279-450e-9fac-8a3d5fedd0c1">19cbb8fa-5279-450e-9fac-8a3d5fedd0c1</code><code class="mx-path" title="12bbebe6-58d6-4636-95bb-3217ef867c1a">12bbebe6-58d6-4636-95bb-3217ef867c1a</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_WirelessPower_Option_0 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_WirelessPower_Option_1</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_WirelessPower_Option_2</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_WirelessPower_Option_3</th><td class="mx-cell">3</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <h2 id="sleep">Sleep</h2>
+            <div class="setting-card" id="power-sleep-timeout">
+            <div class="setting-header">
+            <span class="setting-name">Put the computer to sleep</span>
+            <span class="setting-id">power-sleep-timeout</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Specifies the period of inactivity before Windows puts the computer to sleep</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="238c9fa8-0aad-41ed-83f4-97be242c8f20">238c9fa8-0aad-41ed-83f4-97be242c8f20</code><code class="mx-path" title="29f6c1db-86da-48c5-9fdb-f2b67b1f44da">29f6c1db-86da-48c5-9fdb-f2b67b1f44da</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Template_TimeIntervals_Option_0 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_1</th><td class="mx-cell">60</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_2</th><td class="mx-cell">120</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_3</th><td class="mx-cell">180</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_4</th><td class="mx-cell">300</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_5</th><td class="mx-cell">600</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_6</th><td class="mx-cell">900</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_7</th><td class="mx-cell">1200</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_8</th><td class="mx-cell">1500</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Template_TimeIntervals_Option_9 <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1800</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_10</th><td class="mx-cell">2700</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_11</th><td class="mx-cell">3600</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_12</th><td class="mx-cell">7200</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_13</th><td class="mx-cell">10800</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_14</th><td class="mx-cell">14400</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_15</th><td class="mx-cell">18000</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="power-wake-timers">
+            <div class="setting-header">
+            <span class="setting-name">Allow wake timers</span>
+            <span class="setting-id">power-wake-timers</span>
+            </div>
+            <p class="setting-desc">Allow scheduled tasks and applications to wake your computer from sleep</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="238c9fa8-0aad-41ed-83f4-97be242c8f20">238c9fa8-0aad-41ed-83f4-97be242c8f20</code><code class="mx-path" title="bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d">bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_WakeTimers_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_WakeTimers_Option_1 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_WakeTimers_Option_2</th><td class="mx-cell">2</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="power-hibernation-enable">
+            <div class="setting-header">
+            <span class="setting-name">Hibernation</span>
+            <span class="setting-id">power-hibernation-enable</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Show Hibernate Option = Enabled">Enables: <a href="#start-power-hibernate-option">Show Hibernate Option</a> (set automatically)</span></div>
+            <p class="setting-desc">Save your session to disk and power down completely, using no battery while preserving your work</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power">HKLM\SYSTEM\CurrentControlSet\Control\Power</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>HibernateEnabled</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+            <div class="mx-notes"><h4>Also happens when you apply</h4>
+            <ul>
+            <li><strong>Native power write</strong>: level 10 = 1</li>
+            <li><strong>Native power write</strong>: level 10 = 0</li>
+            </ul></div>
+            </details>
+            <div class="setting-children">
+            <div class="setting-card setting-card-child" id="power-hibernate-timeout">
+            <div class="setting-header">
+            <span class="setting-name">Hibernate after</span>
+            <span class="setting-id">power-hibernate-timeout</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Specifies the period of inactivity before Windows hibernates the computer</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="238c9fa8-0aad-41ed-83f4-97be242c8f20">238c9fa8-0aad-41ed-83f4-97be242c8f20</code><code class="mx-path" title="9d7815a6-7ee4-497e-8888-515a05f02364">9d7815a6-7ee4-497e-8888-515a05f02364</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_TimeIntervals_Option_0 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_1</th><td class="mx-cell">60</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_2</th><td class="mx-cell">120</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_3</th><td class="mx-cell">180</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_4</th><td class="mx-cell">300</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_5</th><td class="mx-cell">600</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_6</th><td class="mx-cell">900</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_7</th><td class="mx-cell">1200</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_8</th><td class="mx-cell">1500</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_9</th><td class="mx-cell">1800</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_10</th><td class="mx-cell">2700</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_11</th><td class="mx-cell">3600</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_12</th><td class="mx-cell">7200</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_13</th><td class="mx-cell">10800</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_14</th><td class="mx-cell">14400</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_TimeIntervals_Option_15</th><td class="mx-cell">18000</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+            <div class="setting-card setting-card-child" id="power-hybrid-sleep">
+            <div class="setting-header">
+            <span class="setting-name">Allow hybrid sleep</span>
+            <span class="setting-id">power-hybrid-sleep</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge hardware" title="Only shown where the firmware supports hybrid sleep">Hybrid sleep capable PCs</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Hibernation = Enabled">Requires: <a href="#power-hibernation-enable">Hibernation</a> (set automatically)</span></div>
+            <p class="setting-desc">Combines sleep and hibernate by saving your session to disk while staying in low-power mode for faster wake</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="238c9fa8-0aad-41ed-83f4-97be242c8f20">238c9fa8-0aad-41ed-83f4-97be242c8f20</code><code class="mx-path" title="94ac6d29-73ce-41a6-809f-6363ba21b47e">94ac6d29-73ce-41a6-809f-6363ba21b47e</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_OnOff_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_OnOff_Option_1 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+            <div class="setting-card setting-card-child" id="power-fast-startup">
+            <div class="setting-header">
+            <span class="setting-name">Fast Startup</span>
+            <span class="setting-id">power-fast-startup</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge req" title="Hibernation = Enabled">Requires: <a href="#power-hibernation-enable">Hibernation</a> (set automatically)</span></div>
+            <p class="setting-desc">Hibernate system state during shutdown for faster boot times (does not affect restart)</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Session Manager\Power">HKLM\SYSTEM\ControlSet001\Control\Session Manager\Power</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>HiberbootEnabled</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+            <div class="setting-card setting-card-child" id="start-power-hibernate-option">
+            <div class="setting-header">
+            <span class="setting-name">Show Hibernate Option</span>
+            <span class="setting-id">start-power-hibernate-option</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Hibernation = Enabled">Requires: <a href="#power-hibernation-enable">Hibernation</a> (set automatically)</span></div>
+            <p class="setting-desc">Display the Hibernate option in the Start Menu power button menu</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ShowHibernateOption</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">On</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0 (or not set)</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+            </div>
+            </div>
+
+            <h2 id="usb-settings">USB settings</h2>
+            <div class="setting-card" id="usb-hub-selective-suspend-timeout">
+            <div class="setting-header">
+            <span class="setting-name">USB Hub Selective Suspend Timeout</span>
+            <span class="setting-id">usb-hub-selective-suspend-timeout</span>
+            </div>
+            <p class="setting-desc">Set how long USB hubs wait idle before powering down to save energy</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="2a737441-1930-4402-8d77-b2bebba308a3">2a737441-1930-4402-8d77-b2bebba308a3</code><code class="mx-path" title="0853a681-27c8-4100-a2fd-82013e970683">0853a681-27c8-4100-a2fd-82013e970683</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-type">Milliseconds</span><span class="mx-chip" title="Windows hides this power setting by default. Winhance unhides it before reading or writing it.">needs unlocking</span><span class="mx-chip" title="This setting takes a number rather than a fixed list of options.">any value 0-100000 Milliseconds</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">0 Milliseconds</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">50 Milliseconds <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">50</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="usb-selective-suspend">
+            <div class="setting-header">
+            <span class="setting-name">USB selective suspend setting</span>
+            <span class="setting-id">usb-selective-suspend</span>
+            </div>
+            <p class="setting-desc">Allow Windows to power down individual USB ports when devices are idle to save energy</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="2a737441-1930-4402-8d77-b2bebba308a3">2a737441-1930-4402-8d77-b2bebba308a3</code><code class="mx-path" title="48e6b7a6-50f5-4782-a5d4-53bb8f07e226">48e6b7a6-50f5-4782-a5d4-53bb8f07e226</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Template_EnabledDisabled_Option_0 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Template_EnabledDisabled_Option_1 <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="usb3-link-power-management">
+            <div class="setting-header">
+            <span class="setting-name">USB 3 Link Power Management</span>
+            <span class="setting-id">usb3-link-power-management</span>
+            </div>
+            <p class="setting-desc">Control how aggressively USB 3.0 ports enter low-power states when devices are idle</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="2a737441-1930-4402-8d77-b2bebba308a3">2a737441-1930-4402-8d77-b2bebba308a3</code><code class="mx-path" title="d4e98f31-5ffe-4ce1-be31-1b38b384c009">d4e98f31-5ffe-4ce1-be31-1b38b384c009</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-chip" title="Windows hides this power setting by default. Winhance unhides it before reading or writing it.">needs unlocking</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Template_Usb3LinkPower_Option_0 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_Usb3LinkPower_Option_1</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Template_Usb3LinkPower_Option_2 <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_Usb3LinkPower_Option_3</th><td class="mx-cell">3</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <h2 id="intel-r-graphics-settings">Intel(R) Graphics Settings</h2>
+            <div class="setting-card" id="intel-graphics-power-plan">
+            <div class="setting-header">
+            <span class="setting-name">Intel(R) Graphics Power Plan</span>
+            <span class="setting-id">intel-graphics-power-plan</span>
+            </div>
+            <p class="setting-desc">Balance Intel integrated graphics performance with power consumption and battery life</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="44f3beca-a7c0-460e-9df2-bb8b99e0cba6">44f3beca-a7c0-460e-9df2-bb8b99e0cba6</code><code class="mx-path" title="3619c3f2-afb2-4afc-b0e9-e7fef372de36">3619c3f2-afb2-4afc-b0e9-e7fef372de36</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_IntelGraphics_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Template_IntelGraphics_Option_1 <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Template_IntelGraphics_Option_2 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">2</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <h2 id="power-buttons-and-lid">Power Buttons and Lid</h2>
+            <div class="setting-card" id="power-button-action">
+            <div class="setting-header">
+            <span class="setting-name">Power button action</span>
+            <span class="setting-id">power-button-action</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Choose what happens when you press the physical power button on your computer</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="4f971e89-eebd-4455-a8de-9e59040e7347">4f971e89-eebd-4455-a8de-9e59040e7347</code><code class="mx-path" title="7648efa3-dd9c-4e3e-b566-50f929386280">7648efa3-dd9c-4e3e-b566-50f929386280</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-chip" title="Windows hides this power setting by default. Winhance unhides it before reading or writing it.">needs unlocking</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_PowerButtonActions_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_PowerButtonActions_Option_1</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_PowerButtonActions_Option_2</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_PowerButtonActions_Option_3 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_PowerButtonActions_Option_4</th><td class="mx-cell">4</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="sleep-button-action">
+            <div class="setting-header">
+            <span class="setting-name">Sleep button action</span>
+            <span class="setting-id">sleep-button-action</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Choose what happens when you press the dedicated sleep button on your keyboard or computer</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="4f971e89-eebd-4455-a8de-9e59040e7347">4f971e89-eebd-4455-a8de-9e59040e7347</code><code class="mx-path" title="96996bc0-ad50-47ec-923b-6f41874dd9eb">96996bc0-ad50-47ec-923b-6f41874dd9eb</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-chip" title="Windows hides this power setting by default. Winhance unhides it before reading or writing it.">needs unlocking</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_PowerButtonActions_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_PowerButtonActions_Option_1 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_PowerButtonActions_Option_2</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_PowerButtonActions_Option_3</th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_PowerButtonActions_Option_4</th><td class="mx-cell">4</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="lid-close-action">
+            <div class="setting-header">
+            <span class="setting-name">Lid close action</span>
+            <span class="setting-id">lid-close-action</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge laptops" title="Only shown on devices with a battery">Laptops only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Choose what happens when you close your laptop lid</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="4f971e89-eebd-4455-a8de-9e59040e7347">4f971e89-eebd-4455-a8de-9e59040e7347</code><code class="mx-path" title="5ca83367-6e45-459f-a27b-476b1d01c936">5ca83367-6e45-459f-a27b-476b1d01c936</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-chip" title="Windows hides this power setting by default. Winhance unhides it before reading or writing it.">needs unlocking</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_LidActions_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_LidActions_Option_1 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_LidActions_Option_2</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_LidActions_Option_3</th><td class="mx-cell">3</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <h2 id="pci-express">PCI Express</h2>
+            <div class="setting-card" id="pci-link-state-power-management">
+            <div class="setting-header">
+            <span class="setting-name">Link State Power Management</span>
+            <span class="setting-id">pci-link-state-power-management</span>
+            </div>
+            <p class="setting-desc">Control power savings for PCIe devices like graphics cards, SSDs, and expansion cards</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="501a4d13-42af-4429-9fd1-a8218c268e20">501a4d13-42af-4429-9fd1-a8218c268e20</code><code class="mx-path" title="ee12f906-d277-404b-b6da-e5fa1a576df5">ee12f906-d277-404b-b6da-e5fa1a576df5</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Template_PciExpress_Option_0 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Template_PciExpress_Option_1 <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_PciExpress_Option_2</th><td class="mx-cell">2</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <h2 id="processor-power-management">Processor Power Management</h2>
+            <div class="setting-card" id="processor-min-state">
+            <div class="setting-header">
+            <span class="setting-name">Minimum processor state</span>
+            <span class="setting-id">processor-min-state</span>
+            </div>
+            <p class="setting-desc">Set the lowest CPU speed allowed as a percentage of maximum frequency</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="54533251-82be-4824-96c1-47b60b740d00">54533251-82be-4824-96c1-47b60b740d00</code><code class="mx-path" title="893dee8e-2bef-41e0-89c6-b55d0929964c">893dee8e-2bef-41e0-89c6-b55d0929964c</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-type">%</span><span class="mx-chip" title="This setting takes a number rather than a fixed list of options.">any value 0-100 %</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">0 %</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">5 % <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">5</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">100 % <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">100</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="processor-max-state">
+            <div class="setting-header">
+            <span class="setting-name">Maximum processor state</span>
+            <span class="setting-id">processor-max-state</span>
+            </div>
+            <p class="setting-desc">Set the highest CPU speed allowed as a percentage of maximum frequency</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="54533251-82be-4824-96c1-47b60b740d00">54533251-82be-4824-96c1-47b60b740d00</code><code class="mx-path" title="bc5038f7-23e0-4960-96da-33abaf5935ec">bc5038f7-23e0-4960-96da-33abaf5935ec</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-type">%</span><span class="mx-chip" title="This setting takes a number rather than a fixed list of options.">any value 0-100 %</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">0 %</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">100 % <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">100</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="system-cooling-policy">
+            <div class="setting-header">
+            <span class="setting-name">System cooling policy</span>
+            <span class="setting-id">system-cooling-policy</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge advanced" title="Hidden until Advanced mode is unlocked in Winhance">Advanced</span></div>
+            <p class="setting-desc">Choose whether to slow down the processor first (passive) or speed up fans first (active) when hot</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="54533251-82be-4824-96c1-47b60b740d00">54533251-82be-4824-96c1-47b60b740d00</code><code class="mx-path" title="94d3a615-a899-4ac5-ae2b-e4d8f634367f">94d3a615-a899-4ac5-ae2b-e4d8f634367f</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-chip" title="Windows hides this power setting by default. Winhance unhides it before reading or writing it.">needs unlocking</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_CoolingPolicy_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_CoolingPolicy_Option_1 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="processor-performance-boost-mode">
+            <div class="setting-header">
+            <span class="setting-name">Processor performance boost mode</span>
+            <span class="setting-id">processor-performance-boost-mode</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge advanced" title="Hidden until Advanced mode is unlocked in Winhance">Advanced</span></div>
+            <p class="setting-desc">Control how aggressively your CPU boosts above base frequency for demanding tasks</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="54533251-82be-4824-96c1-47b60b740d00">54533251-82be-4824-96c1-47b60b740d00</code><code class="mx-path" title="be337238-0d82-4146-a960-4f3749d470c7">be337238-0d82-4146-a960-4f3749d470c7</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-chip" title="Windows hides this power setting by default. Winhance unhides it before reading or writing it.">needs unlocking</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_ProcessorBoostMode_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_ProcessorBoostMode_Option_1</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_ProcessorBoostMode_Option_2 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_ProcessorBoostMode_Option_3</th><td class="mx-cell">3</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_ProcessorBoostMode_Option_4</th><td class="mx-cell">4</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_ProcessorBoostMode_Option_5</th><td class="mx-cell">5</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_ProcessorBoostMode_Option_6</th><td class="mx-cell">6</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="processor-performance-increase-policy">
+            <div class="setting-header">
+            <span class="setting-name">Processor Performance Increase Policy</span>
+            <span class="setting-id">processor-performance-increase-policy</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge advanced" title="Hidden until Advanced mode is unlocked in Winhance">Advanced</span></div>
+            <p class="setting-desc">Control how quickly CPU ramps up speed when workload increases (for legacy non-HWP processors)</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="54533251-82be-4824-96c1-47b60b740d00">54533251-82be-4824-96c1-47b60b740d00</code><code class="mx-path" title="465e1f50-b610-473a-ab58-00d1077dc418">465e1f50-b610-473a-ab58-00d1077dc418</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-chip" title="Windows hides this power setting by default. Winhance unhides it before reading or writing it.">needs unlocking</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Template_PerformanceIncreasePolicy_Option_0 <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_PerformanceIncreasePolicy_Option_1</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Template_PerformanceIncreasePolicy_Option_2 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_PerformanceIncreasePolicy_Option_3</th><td class="mx-cell">3</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="processor-performance-decrease-policy">
+            <div class="setting-header">
+            <span class="setting-name">Processor Performance Decrease Policy</span>
+            <span class="setting-id">processor-performance-decrease-policy</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge advanced" title="Hidden until Advanced mode is unlocked in Winhance">Advanced</span></div>
+            <p class="setting-desc">Control how quickly CPU reduces speed when workload decreases (for legacy non-HWP processors)</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="54533251-82be-4824-96c1-47b60b740d00">54533251-82be-4824-96c1-47b60b740d00</code><code class="mx-path" title="40fbefc7-2e9d-4d25-a185-0cfd8574bac6">40fbefc7-2e9d-4d25-a185-0cfd8574bac6</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-chip" title="Windows hides this power setting by default. Winhance unhides it before reading or writing it.">needs unlocking</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Template_PerformanceDecreasePolicy_Option_0 <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Template_PerformanceDecreasePolicy_Option_1 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_PerformanceDecreasePolicy_Option_2</th><td class="mx-cell">2</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="processor-core-parking-min-cores">
+            <div class="setting-header">
+            <span class="setting-name">CPU Core Parking Minimum Cores</span>
+            <span class="setting-id">processor-core-parking-min-cores</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge advanced" title="Hidden until Advanced mode is unlocked in Winhance">Advanced</span></div>
+            <p class="setting-desc">Set the minimum percentage of CPU cores that must remain active and responsive</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="54533251-82be-4824-96c1-47b60b740d00">54533251-82be-4824-96c1-47b60b740d00</code><code class="mx-path" title="0cc5b647-c1df-4637-891a-dec35c318583">0cc5b647-c1df-4637-891a-dec35c318583</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-type">%</span><span class="mx-chip" title="Windows hides this power setting by default. Winhance unhides it before reading or writing it.">needs unlocking</span><span class="mx-chip" title="Your PC&#39;s firmware or drivers can override this, so Windows may not honour the value.">hardware may override</span><span class="mx-chip" title="This setting takes a number rather than a fixed list of options.">any value 0-100 %</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">0 %</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">100 % <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">100</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="processor-core-parking-max-cores">
+            <div class="setting-header">
+            <span class="setting-name">CPU Core Parking Maximum Cores</span>
+            <span class="setting-id">processor-core-parking-max-cores</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge advanced" title="Hidden until Advanced mode is unlocked in Winhance">Advanced</span></div>
+            <p class="setting-desc">Set the maximum percentage of CPU cores allowed to be active (100% for best performance)</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="54533251-82be-4824-96c1-47b60b740d00">54533251-82be-4824-96c1-47b60b740d00</code><code class="mx-path" title="ea062031-0e34-4ff1-9b6d-eb1059334028">ea062031-0e34-4ff1-9b6d-eb1059334028</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-type">%</span><span class="mx-chip" title="Windows hides this power setting by default. Winhance unhides it before reading or writing it.">needs unlocking</span><span class="mx-chip" title="Your PC&#39;s firmware or drivers can override this, so Windows may not honour the value.">hardware may override</span><span class="mx-chip" title="This setting takes a number rather than a fixed list of options.">any value 0-100 %</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">0 %</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">100 % <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">100</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="processor-energy-performance-preference">
+            <div class="setting-header">
+            <span class="setting-name">Processor Energy Performance Preference</span>
+            <span class="setting-id">processor-energy-performance-preference</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge advanced" title="Hidden until Advanced mode is unlocked in Winhance">Advanced</span></div>
+            <p class="setting-desc">Balance power efficiency and performance for modern CPUs with HWP (0 = max performance, 100 = max efficiency)</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="54533251-82be-4824-96c1-47b60b740d00">54533251-82be-4824-96c1-47b60b740d00</code><code class="mx-path" title="36687f9e-e3a5-4dbf-b1dc-15eb381c6863">36687f9e-e3a5-4dbf-b1dc-15eb381c6863</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-type">%</span><span class="mx-chip" title="Windows hides this power setting by default. Winhance unhides it before reading or writing it.">needs unlocking</span><span class="mx-chip" title="This setting takes a number rather than a fixed list of options.">any value 0-100 %</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">0 % <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">33 % <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">33</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="processor-performance-increase-threshold">
+            <div class="setting-header">
+            <span class="setting-name">Processor Performance Increase Threshold</span>
+            <span class="setting-id">processor-performance-increase-threshold</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge advanced" title="Hidden until Advanced mode is unlocked in Winhance">Advanced</span></div>
+            <p class="setting-desc">Set CPU usage percentage that triggers speed increase (lower = more responsive, for legacy non-HWP CPUs)</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="54533251-82be-4824-96c1-47b60b740d00">54533251-82be-4824-96c1-47b60b740d00</code><code class="mx-path" title="06cadf0e-64ed-448a-8927-ce7bf90eb35d">06cadf0e-64ed-448a-8927-ce7bf90eb35d</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-type">%</span><span class="mx-chip" title="Windows hides this power setting by default. Winhance unhides it before reading or writing it.">needs unlocking</span><span class="mx-chip" title="This setting takes a number rather than a fixed list of options.">any value 0-100 %</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">0 %</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">30 % <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">30</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">60 % <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">60</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="processor-performance-decrease-threshold">
+            <div class="setting-header">
+            <span class="setting-name">Processor Performance Decrease Threshold</span>
+            <span class="setting-id">processor-performance-decrease-threshold</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge advanced" title="Hidden until Advanced mode is unlocked in Winhance">Advanced</span></div>
+            <p class="setting-desc">Set CPU usage percentage that triggers speed reduction (lower = maintains performance longer, for legacy non-HWP CPUs)</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="54533251-82be-4824-96c1-47b60b740d00">54533251-82be-4824-96c1-47b60b740d00</code><code class="mx-path" title="12a0ab44-fe28-4fa9-b3bd-4b64f44960a6">12a0ab44-fe28-4fa9-b3bd-4b64f44960a6</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-type">%</span><span class="mx-chip" title="Windows hides this power setting by default. Winhance unhides it before reading or writing it.">needs unlocking</span><span class="mx-chip" title="This setting takes a number rather than a fixed list of options.">any value 0-100 %</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">0 %</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">10 % <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">10</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">20 % <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">20</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="power-throttling">
+            <div class="setting-header">
+            <span class="setting-name">Power Throttling</span>
+            <span class="setting-id">power-throttling</span>
+            </div>
+            <p class="setting-desc">Allow Windows to reduce CPU performance for background processes to save power</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling">HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>PowerThrottlingOff</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <h2 id="multimedia-settings">Multimedia Settings</h2>
+            <div class="setting-card" id="multimedia-when-sharing-media">
+            <div class="setting-header">
+            <span class="setting-name">When Sharing Media</span>
+            <span class="setting-id">multimedia-when-sharing-media</span>
+            </div>
+            <p class="setting-desc">Control whether your PC can sleep while streaming media to other devices on your network</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="9596fb26-9850-41fd-ac3e-f7c3c00afd4b">9596fb26-9850-41fd-ac3e-f7c3c00afd4b</code><code class="mx-path" title="03680956-93bc-4294-bba6-4e0f09bb717f">03680956-93bc-4294-bba6-4e0f09bb717f</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_MediaSharing_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_MediaSharing_Option_1 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="multimedia-video-playback-quality-bias">
+            <div class="setting-header">
+            <span class="setting-name">Video Playback Quality Bias</span>
+            <span class="setting-id">multimedia-video-playback-quality-bias</span>
+            </div>
+            <p class="setting-desc">Prioritize smooth video playback over battery life when watching videos</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="9596fb26-9850-41fd-ac3e-f7c3c00afd4b">9596fb26-9850-41fd-ac3e-f7c3c00afd4b</code><code class="mx-path" title="10778347-1370-4ee0-8bbd-33bdacaade49">10778347-1370-4ee0-8bbd-33bdacaade49</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_VideoQualityBias_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_VideoQualityBias_Option_1 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="multimedia-when-playing-video">
+            <div class="setting-header">
+            <span class="setting-name">When Playing Video</span>
+            <span class="setting-id">multimedia-when-playing-video</span>
+            </div>
+            <p class="setting-desc">Balance video quality and power consumption during video playback</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="9596fb26-9850-41fd-ac3e-f7c3c00afd4b">9596fb26-9850-41fd-ac3e-f7c3c00afd4b</code><code class="mx-path" title="34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4">34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_VideoPlayback_Option_0 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_VideoPlayback_Option_1</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_VideoPlayback_Option_2</th><td class="mx-cell">2</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <h2 id="battery">Battery</h2>
+            <div class="setting-card" id="critical-battery-notification">
+            <div class="setting-header">
+            <span class="setting-name">Critical battery notification</span>
+            <span class="setting-id">critical-battery-notification</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge laptops" title="Only shown on devices with a battery">Laptops only</span></div>
+            <p class="setting-desc">Show notification when battery reaches critically low level</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="e73a048d-bf27-4f12-9731-8b2076e8891f">e73a048d-bf27-4f12-9731-8b2076e8891f</code><code class="mx-path" title="5dbb7c9f-38e9-40d2-9749-4f8a0e9f640f">5dbb7c9f-38e9-40d2-9749-4f8a0e9f640f</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_OnOff_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_OnOff_Option_1 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="critical-battery-action">
+            <div class="setting-header">
+            <span class="setting-name">Critical battery action</span>
+            <span class="setting-id">critical-battery-action</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge laptops" title="Only shown on devices with a battery">Laptops only</span></div>
+            <p class="setting-desc">Choose what happens when battery reaches critically low level</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="e73a048d-bf27-4f12-9731-8b2076e8891f">e73a048d-bf27-4f12-9731-8b2076e8891f</code><code class="mx-path" title="637ea02f-bbcb-4015-8e2c-a1c7b9c0b546">637ea02f-bbcb-4015-8e2c-a1c7b9c0b546</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_BatteryActions_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_BatteryActions_Option_1</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_BatteryActions_Option_2 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_BatteryActions_Option_3</th><td class="mx-cell">3</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="low-battery-level">
+            <div class="setting-header">
+            <span class="setting-name">Low battery level</span>
+            <span class="setting-id">low-battery-level</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge laptops" title="Only shown on devices with a battery">Laptops only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Set the battery percentage that triggers low battery warnings and actions</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="e73a048d-bf27-4f12-9731-8b2076e8891f">e73a048d-bf27-4f12-9731-8b2076e8891f</code><code class="mx-path" title="8183ba9a-e910-48da-8769-14ae6dc1170a">8183ba9a-e910-48da-8769-14ae6dc1170a</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-type">%</span><span class="mx-chip" title="This setting takes a number rather than a fixed list of options.">any value 0-100 %</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">0 %</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">10 % <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">10</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="critical-battery-level">
+            <div class="setting-header">
+            <span class="setting-name">Critical battery level</span>
+            <span class="setting-id">critical-battery-level</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge laptops" title="Only shown on devices with a battery">Laptops only</span></div>
+            <p class="setting-desc">Set the battery percentage that triggers critical battery warnings and emergency actions</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="e73a048d-bf27-4f12-9731-8b2076e8891f">e73a048d-bf27-4f12-9731-8b2076e8891f</code><code class="mx-path" title="9a66d8d7-4ff7-4ef9-b5a2-5a326ca2a469">9a66d8d7-4ff7-4ef9-b5a2-5a326ca2a469</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-type">%</span><span class="mx-chip" title="This setting takes a number rather than a fixed list of options.">any value 0-100 %</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">0 %</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">5 % <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">5</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="low-battery-notification">
+            <div class="setting-header">
+            <span class="setting-name">Low battery notification</span>
+            <span class="setting-id">low-battery-notification</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge laptops" title="Only shown on devices with a battery">Laptops only</span></div>
+            <p class="setting-desc">Show notification when battery reaches low battery level</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="e73a048d-bf27-4f12-9731-8b2076e8891f">e73a048d-bf27-4f12-9731-8b2076e8891f</code><code class="mx-path" title="bcded951-187b-4d05-bccc-f7e51960c258">bcded951-187b-4d05-bccc-f7e51960c258</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_OnOff_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_OnOff_Option_1 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="low-battery-action">
+            <div class="setting-header">
+            <span class="setting-name">Low battery action</span>
+            <span class="setting-id">low-battery-action</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge laptops" title="Only shown on devices with a battery">Laptops only</span><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Choose what happens when battery reaches low battery level</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="e73a048d-bf27-4f12-9731-8b2076e8891f">e73a048d-bf27-4f12-9731-8b2076e8891f</code><code class="mx-path" title="d8742dcb-3e6a-4b3c-b3fe-374623cdcf06">d8742dcb-3e6a-4b3c-b3fe-374623cdcf06</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Template_BatteryActions_Option_0 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_BatteryActions_Option_1</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_BatteryActions_Option_2</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_BatteryActions_Option_3</th><td class="mx-cell">3</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="reserve-battery-level">
+            <div class="setting-header">
+            <span class="setting-name">Reserve battery level</span>
+            <span class="setting-id">reserve-battery-level</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge laptops" title="Only shown on devices with a battery">Laptops only</span></div>
+            <p class="setting-desc">Set battery percentage reserved to protect battery health and prevent unexpected shutdowns</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="e73a048d-bf27-4f12-9731-8b2076e8891f">e73a048d-bf27-4f12-9731-8b2076e8891f</code><code class="mx-path" title="f3c5027d-cd16-4930-aa6b-90db844a8f00">f3c5027d-cd16-4930-aa6b-90db844a8f00</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code><span class="mx-type">%</span><span class="mx-chip" title="This setting takes a number rather than a fixed list of options.">any value 0-100 %</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">0 %</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">7 % <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">7</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <h2 id="amd-power-slider">AMD Power Slider</h2>
+            <div class="setting-card" id="amd-power-slider-overlay">
+            <div class="setting-header">
+            <span class="setting-name">Overlay</span>
+            <span class="setting-id">amd-power-slider-overlay</span>
+            </div>
+            <p class="setting-desc">Balance AMD laptop performance and battery life with quick power mode selection</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="c763b4ec-0e50-4b6b-9bed-2b92a6ee884e">c763b4ec-0e50-4b6b-9bed-2b92a6ee884e</code><code class="mx-path" title="7ec1751b-60ed-4588-afb5-9819d3d77d90">7ec1751b-60ed-4588-afb5-9819d3d77d90</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_AmdPowerSlider_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_AmdPowerSlider_Option_1</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Template_AmdPowerSlider_Option_2 <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Template_AmdPowerSlider_Option_3 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <h2 id="ati-powerplay">ATI PowerPlay</h2>
+            <div class="setting-card" id="ati-powerplay-setting">
+            <div class="setting-header">
+            <span class="setting-name">ATI PowerPlay Setting</span>
+            <span class="setting-id">ati-powerplay-setting</span>
+            </div>
+            <p class="setting-desc">Control power management for older AMD Radeon graphics cards</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="f693fb01-e858-4f00-b20f-f30e12ac06d6">f693fb01-e858-4f00-b20f-f30e12ac06d6</code><code class="mx-path" title="191f65b5-d45c-4a4f-8aae-1ab8bfd980e6">191f65b5-d45c-4a4f-8aae-1ab8bfd980e6</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_AtiPowerPlay_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Template_AtiPowerPlay_Option_1 <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Template_AtiPowerPlay_Option_2 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">2</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <h2 id="switchable-graphics">Switchable Graphics</h2>
+            <div class="setting-card" id="switchable-graphics-gpu-preference">
+            <div class="setting-header">
+            <span class="setting-name">GPU Preference</span>
+            <span class="setting-id">switchable-graphics-gpu-preference</span>
+            </div>
+            <p class="setting-desc">Choose between integrated GPU for battery life or dedicated GPU for performance in hybrid graphics laptops</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-power" title="Read from your active power plan to determine which option is active, and written with powercfg when you apply one."><span class="mx-group-label">Power setting</span><code class="mx-path" title="e276e160-7cb0-43c6-b20b-73f5dce39954">e276e160-7cb0-43c6-b20b-73f5dce39954</code><code class="mx-path" title="a1662ab2-9d34-4e53-ba8b-2639b9e20857">a1662ab2-9d34-4e53-ba8b-2639b9e20857</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-power"><code>Value</code></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Template_SwitchableGraphics_Option_0</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Template_SwitchableGraphics_Option_1 <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Template_SwitchableGraphics_Option_2 <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">2</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <h2 id="start-menu">Start Menu</h2>
+            <div class="setting-card" id="start-power-lock-option">
+            <div class="setting-header">
+            <span class="setting-name">Show Lock Option</span>
+            <span class="setting-id">start-power-lock-option</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Lock Screen = Enabled">Requires: <a href="../../features/optimizations/privacy-security.html#privacy-lock-screen">Lock Screen</a> (set automatically)</span></div>
+            <p class="setting-desc">Display the Lock option in the Start Menu power button menu</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ShowLockOption</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">deletes key</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="start-power-sleep-option">
+            <div class="setting-header">
+            <span class="setting-name">Show Sleep Option</span>
+            <span class="setting-id">start-power-sleep-option</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Display the Sleep option in the Start Menu power button menu</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ShowSleepOption</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">deletes key</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
             </section>
         </main>
     </div>

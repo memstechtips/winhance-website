@@ -76,19 +76,19 @@
                     </div>
                     <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
                     <div class="sidebar-sub-nav">
-                        <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
-                        <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
-                        <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
-                        <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
-                        <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item active">Notifications</a>
-                        <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
+    <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy &amp; Security</a>
+    <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
+    <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming &amp; Performance</a>
+    <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
+    <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
+    <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
                     </div>
                     <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
                     <div class="sidebar-sub-nav">
-                        <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
-                        <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
-                        <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
-                        <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
+    <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
+    <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
+    <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
+    <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
                     </div>
                     <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
                     <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
@@ -113,368 +113,388 @@
 
         <main class="docs-content">
             <section id="notifications">
-                <h1>Notifications</h1>
-                <div class="video-container">
-                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2402" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <p>Reduce distractions and take control of Windows notifications. Winhance lets you customize which notifications you receive, silence unwanted alerts, and remove promotional content.</p>
+            <h1>Notifications</h1>
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2402" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p>Reduce distractions and take control of Windows notifications. Winhance lets you customize which notifications you receive, silence unwanted alerts, and remove promotional content.</p>
+            <div class="callout callout-info">
+                <div class="callout-title">Technical Details</div>
+                <p>Every setting below can be expanded to show exactly what Winhance reads and writes: registry values, scheduled tasks, power settings and scripts, with the recommended value and the Windows default marked. This is the same table the app shows under each setting's Technical Details.</p>
+            </div>
 
-                <div class="callout callout-info">
-                    <div class="callout-title">Registry Details</div>
-                    <p>Each setting below includes expandable registry details for power users. Click "Registry Details" to see the exact registry keys and values that are modified.</p>
-                </div>
+            <h2 id="general">General</h2>
+            <div class="setting-card" id="windows-pushnotifications">
+            <div class="setting-header">
+            <span class="setting-name">Show Notifications</span>
+            <span class="setting-id">windows-pushnotifications</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Winhance restarts WpnUserService* when you apply this setting.">WpnUserService* restart</span></div>
+            <p class="setting-desc">Get notifications from apps and other senders in Windows</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications">HKCU\Software\Microsoft\Windows\CurrentVersion\PushNotifications</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ToastEnabled</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <!-- ==================== NOTIFICATION CONTROLS ==================== -->
-                <h2 id="notification-controls">Notification Controls</h2>
-                <p>Core settings for Windows notification behavior.</p>
+            </details>
+            <div class="setting-children">
+            <div class="setting-card setting-card-child" id="notifications-sound">
+            <div class="setting-header">
+            <span class="setting-name">Allow notifications to play sounds</span>
+            <span class="setting-id">notifications-sound</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Play audio alerts when notifications arrive from apps and system senders</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings">HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>NOC_GLOBAL_SETTING_ALLOW_NOTIFICATION_SOUND</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show Notifications</span>
-                        <span class="setting-id">windows-pushnotifications</span>
-                    </div>
-                    <p class="setting-desc">Get notifications from apps and other senders in Windows. Disabling this is the master switch for all toast notifications.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\PushNotifications</code></td></tr>
-                            <tr><th>Value</th><td><code>ToastEnabled</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">Note: Changing this setting restarts the WpnUserService.</p>
-                    </details>
-                </div>
+            </details>
+            </div>
+            <div class="setting-card setting-card-child" id="notifications-toast-above-lock">
+            <div class="setting-header">
+            <span class="setting-name">Show notifications on the lock screen</span>
+            <span class="setting-id">notifications-toast-above-lock</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Lock Screen = Enabled">Requires: <a href="../../features/optimizations/privacy-security.html#privacy-lock-screen">Lock Screen</a> (set automatically)</span></div>
+            <p class="setting-desc">Display toast notifications on the lock screen when your device is locked</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings">HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings</code></th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications">HKCU\Software\Microsoft\Windows\CurrentVersion\PushNotifications</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>NOC_GLOBAL_SETTING_ALLOW_TOASTS_ABOVE_LOCK</code><span class="mx-type">DWord</span></th><th class="mx-col mx-col-value"><code>LockScreenToastEnabled</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Allow notifications to play sounds</span>
-                        <span class="setting-id">notifications-sound</span>
-                    </div>
-                    <p class="setting-desc">Play audio alerts when notifications arrive from apps and system senders. Requires "Show Notifications" to be enabled.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>NOC_GLOBAL_SETTING_ALLOW_NOTIFICATION_SOUND</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
+            <div class="setting-card setting-card-child" id="notifications-critical-toast-above-lock">
+            <div class="setting-header">
+            <span class="setting-name">Show reminders and incoming VoIP calls on the lock screen</span>
+            <span class="setting-id">notifications-critical-toast-above-lock</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span><span class="setting-badge req" title="Lock Screen = Enabled">Requires: <a href="../../features/optimizations/privacy-security.html#privacy-lock-screen">Lock Screen</a> (set automatically)</span></div>
+            <p class="setting-desc">Display critical notifications like reminders and VoIP calls when your device is locked</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings">HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>NOC_GLOBAL_SETTING_ALLOW_CRITICAL_TOASTS_ABOVE_LOCK</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show notifications on the lock screen</span>
-                        <span class="setting-id">notifications-toast-above-lock</span>
-                    </div>
-                    <p class="setting-desc">Display toast notifications on the lock screen when your device is locked. Requires Lock Screen to be enabled.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>NOC_GLOBAL_SETTING_ALLOW_TOASTS_ABOVE_LOCK</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\PushNotifications</code></td></tr>
-                            <tr><th>Value</th><td><code>LockScreenToastEnabled</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
+            <div class="setting-card setting-card-child" id="notifications-show-bell-icon">
+            <div class="setting-header">
+            <span class="setting-name">Show notification bell icon</span>
+            <span class="setting-id">notifications-show-bell-icon</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Display the notification bell icon in the system tray</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ShowNotificationIcon</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show reminders and incoming VoIP calls on the lock screen</span>
-                        <span class="setting-id">notifications-critical-toast-above-lock</span>
-                    </div>
-                    <p class="setting-desc">Display critical notifications like reminders and VoIP calls when your device is locked. Requires Lock Screen to be enabled.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>NOC_GLOBAL_SETTING_ALLOW_CRITICAL_TOASTS_ABOVE_LOCK</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
+            </div>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show notification bell icon</span>
-                        <span class="setting-id">notifications-show-bell-icon</span>
-                    </div>
-                    <p class="setting-desc">Display the notification bell icon in the system tray.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></td></tr>
-                            <tr><th>Value</th><td><code>ShowNotificationIcon</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <h2 id="additional-settings">Additional Settings</h2>
+            <p>Control promotional content and suggestions in notifications.</p>
+            <div class="callout callout-warning"> <div class="callout-title">Dependency Notice</div> <p>Some settings in this section require the "Ads, Suggestions and Promotional Content" setting in Privacy & Security to be set to "Custom" before they can be modified.</p> </div>
+            <div class="setting-card" id="notifications-welcome-experience">
+            <div class="setting-header">
+            <span class="setting-name">Show the Windows welcome experience after updates</span>
+            <span class="setting-id">notifications-welcome-experience</span>
+            </div>
+            <p class="setting-desc">Show what&#39;s new and suggested after updates and when signed in</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager">HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>SubscribedContent-310093Enabled</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <!-- ==================== ADDITIONAL SETTINGS ==================== -->
-                <h2 id="additional-settings">Additional Settings</h2>
-                <p>Control promotional content and suggestions in notifications.</p>
+            </details>
+            </div>
 
-                <div class="callout callout-warning">
-                    <div class="callout-title">Dependency Notice</div>
-                    <p>Some settings in this section require the "Ads, Suggestions and Promotional Content" setting in Privacy & Security to be set to "Custom" before they can be modified.</p>
-                </div>
+            <div class="setting-card" id="notifications-system-setting-engagement">
+            <div class="setting-header">
+            <span class="setting-name">Suggest ways to get the most out of Windows and finish setting up this device</span>
+            <span class="setting-id">notifications-system-setting-engagement</span>
+            </div>
+            <p class="setting-desc">Show suggestions to help you complete device setup and optimize Windows features</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement">HKCU\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ScoobeSystemSettingEnabled</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show the Windows welcome experience after updates</span>
-                        <span class="setting-id">notifications-welcome-experience</span>
-                    </div>
-                    <p class="setting-desc">Show what's new and suggested after updates and when signed in. Requires Ads/Promotional Content to be set to "Custom".</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
-                            <tr><th>Value</th><td><code>SubscribedContent-310093Enabled</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Suggest ways to get the most out of Windows and finish setting up this device</span>
-                        <span class="setting-id">notifications-system-setting-engagement</span>
-                    </div>
-                    <p class="setting-desc">Show suggestions to help you complete device setup and optimize Windows features.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement</code></td></tr>
-                            <tr><th>Value</th><td><code>ScoobeSystemSettingEnabled</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="notifications-tips-suggestions">
+            <div class="setting-header">
+            <span class="setting-name">Get tips and suggestions when using Windows</span>
+            <span class="setting-id">notifications-tips-suggestions</span>
+            </div>
+            <p class="setting-desc">Show helpful tips and suggestions while using Windows</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager">HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>SubscribedContent-338389Enabled</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Get tips and suggestions when using Windows</span>
-                        <span class="setting-id">notifications-tips-suggestions</span>
-                    </div>
-                    <p class="setting-desc">Show helpful tips and suggestions while using Windows. Requires Ads/Promotional Content to be set to "Custom".</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
-                            <tr><th>Value</th><td><code>SubscribedContent-338389Enabled</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Show suggestions in Notification Center</span>
-                        <span class="setting-id">notifications-system-pane-suggestions</span>
-                    </div>
-                    <p class="setting-desc">Display helpful suggestions in the Action Center and Notification Center. Requires Ads/Promotional Content to be set to "Custom".</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></td></tr>
-                            <tr><th>Value</th><td><code>SystemPaneSuggestionsEnabled</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="notifications-system-pane-suggestions">
+            <div class="setting-header">
+            <span class="setting-name">Show suggestions in Notification Center</span>
+            <span class="setting-id">notifications-system-pane-suggestions</span>
+            </div>
+            <p class="setting-desc">Display helpful suggestions in the Action Center and Notification Center</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager">HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>SystemPaneSuggestionsEnabled</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <!-- ==================== SYSTEM NOTIFICATIONS ==================== -->
-                <h2 id="system-notifications">System Notifications</h2>
-                <p>Control notifications from Windows system components.</p>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Capability Access Notifications</span>
-                        <span class="setting-id">notifications-capability-access</span>
-                    </div>
-                    <p class="setting-desc">Show notifications when apps request access to system capabilities and permissions.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.CapabilityAccess</code></td></tr>
-                            <tr><th>Value</th><td><code>Enabled</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <h2 id="system-notifications">System Notifications</h2>
+            <p>Control notifications from Windows system components.</p>
+            <div class="setting-card" id="notifications-capability-access">
+            <div class="setting-header">
+            <span class="setting-name">Capability Access Notifications</span>
+            <span class="setting-id">notifications-capability-access</span>
+            </div>
+            <p class="setting-desc">Show notifications when apps request access to system capabilities and permissions</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.CapabilityAccess">HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.CapabilityAccess</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Enabled</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Startup App Notifications</span>
-                        <span class="setting-id">notifications-startup-app</span>
-                    </div>
-                    <p class="setting-desc">Show notifications when apps are added to your Windows startup list.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.StartupApp</code></td></tr>
-                            <tr><th>Value</th><td><code>Enabled</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Clock Change Notifications</span>
-                        <span class="setting-id">notifications-clock-change</span>
-                    </div>
-                    <p class="setting-desc">Show notifications when daylight saving time changes occur.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Control Panel\Desktop</code></td></tr>
-                            <tr><th>Value</th><td><code>DstNotification</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="notifications-startup-app">
+            <div class="setting-header">
+            <span class="setting-name">Startup App Notifications</span>
+            <span class="setting-id">notifications-startup-app</span>
+            </div>
+            <p class="setting-desc">Show notifications when apps are added to your Windows startup list</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.StartupApp">HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.StartupApp</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Enabled</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">On</th><td class="mx-cell">1</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0 (or not set)</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <!-- ==================== PRIVACY NOTIFICATIONS ==================== -->
-                <h2 id="privacy-notifications">Privacy Notifications</h2>
-                <p>Notifications related to privacy and app permissions.</p>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Notify when apps request location</span>
-                        <span class="setting-id">notifications-app-location-request</span>
-                    </div>
-                    <p class="setting-desc">Show notifications when apps attempt to access your location information.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location</code></td></tr>
-                            <tr><th>Value</th><td><code>ShowGlobalPrompts</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="notifications-clock-change">
+            <div class="setting-header">
+            <span class="setting-name">Clock Change Notifications</span>
+            <span class="setting-id">notifications-clock-change</span>
+            </div>
+            <p class="setting-desc">Show notifications when daylight saving time changes occur</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\Desktop">HKCU\Control Panel\Desktop</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>DstNotification</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <!-- ==================== SECURITY NOTIFICATIONS ==================== -->
-                <h2 id="security-notifications">Security Notifications</h2>
-                <p>Control security-related notifications from Windows Defender and Security Center.</p>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Windows Security Notifications</span>
-                        <span class="setting-id">notifications-windows-security</span>
-                    </div>
-                    <p class="setting-desc">Show all notifications from Windows Security about threats, scans, and protection status.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows Defender Security Center\Notifications</code></td></tr>
-                            <tr><th>Value</th><td><code>DisableNotifications</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (notifications ON)</th><td>0</td></tr>
-                            <tr><th>Disabled (notifications OFF)</th><td>1</td></tr>
-                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKCU\Software\Policies\Microsoft\Windows Defender Security Center\Notifications</code></td></tr>
-                            <tr><th>Value</th><td><code>DisableNotifications</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (notifications ON)</th><td>0</td></tr>
-                            <tr><th>Disabled (notifications OFF)</th><td>1</td></tr>
-                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\Software\Policies\Microsoft\Windows Defender Security Center\Notifications</code></td></tr>
-                            <tr><th>Value</th><td><code>DisableNotifications</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (notifications ON)</th><td>0</td></tr>
-                            <tr><th>Disabled (notifications OFF)</th><td>1</td></tr>
-                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKCU\Software\Policies\Microsoft\Windows Defender Security Center\Notifications</code></td></tr>
-                            <tr><th>Value</th><td><code>DisableEnhancedNotifications</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (enhanced ON)</th><td>0</td></tr>
-                            <tr><th>Disabled (enhanced OFF)</th><td>1</td></tr>
-                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\Software\Policies\Microsoft\Windows Defender Security Center\Notifications</code></td></tr>
-                            <tr><th>Value</th><td><code>DisableEnhancedNotifications</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (enhanced ON)</th><td>0</td></tr>
-                            <tr><th>Disabled (enhanced OFF)</th><td>1</td></tr>
-                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <h2 id="privacy-notifications">Privacy Notifications</h2>
+            <p>Notifications related to privacy and app permissions.</p>
+            <div class="setting-card" id="notifications-app-location-request">
+            <div class="setting-header">
+            <span class="setting-name">Notify when apps request location</span>
+            <span class="setting-id">notifications-app-location-request</span>
+            </div>
+            <p class="setting-desc">Show notifications when apps attempt to access your location information</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location">HKCU\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ShowGlobalPrompts</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Off</th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Security and Maintenance Notifications</span>
-                        <span class="setting-id">notifications-security-maintenance</span>
-                    </div>
-                    <p class="setting-desc">Show notifications from the Security and Maintenance Action Center.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance</code></td></tr>
-                            <tr><th>Value</th><td><code>Enabled</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
+            <h2 id="security-notifications">Security Notifications</h2>
+            <p>Control security-related notifications from Windows Defender and Security Center.</p>
+            <div class="setting-card" id="notifications-windows-security">
+            <div class="setting-header">
+            <span class="setting-name">Windows Security Notifications</span>
+            <span class="setting-id">notifications-windows-security</span>
+            </div>
+            <p class="setting-desc">Show all notifications from Windows Security about threats, scans, and protection status</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Defender Security Center\Notifications">HKLM\Software\Microsoft\Windows Defender Security Center\Notifications</code><code class="mx-path" title="HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender Security Center\Notifications">HKCU\Software\Policies\Microsoft\Windows Defender Security Center\Notifications</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender Security Center\Notifications">HKLM\Software\Policies\Microsoft\Windows Defender Security Center\Notifications</code></th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender Security Center\Notifications">HKCU\Software\Policies\Microsoft\Windows Defender Security Center\Notifications</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender Security Center\Notifications">HKLM\Software\Policies\Microsoft\Windows Defender Security Center\Notifications</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>DisableNotifications</code><span class="mx-type">DWord</span></th><th class="mx-col mx-col-value"><code>DisableEnhancedNotifications</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0 (or not set)</td><td class="mx-cell">0 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Off</th><td class="mx-cell">1</td><td class="mx-cell">1</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="notifications-security-maintenance">
+            <div class="setting-header">
+            <span class="setting-name">Security and Maintenance Notifications</span>
+            <span class="setting-id">notifications-security-maintenance</span>
+            </div>
+            <p class="setting-desc">Show notifications from the Security and Maintenance Action Center</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance">HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Enabled</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Off</th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
             </section>
         </main>
     </div>

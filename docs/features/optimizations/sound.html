@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sound - Winhance Docs</title>
+    <title>Sound Optimizations - Winhance Docs</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -76,19 +76,19 @@
                     </div>
                     <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
                     <div class="sidebar-sub-nav">
-                        <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
-                        <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
-                        <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
-                        <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
-                        <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
-                        <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item active">Sound</a>
+    <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy &amp; Security</a>
+    <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
+    <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming &amp; Performance</a>
+    <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
+    <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
+    <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
                     </div>
                     <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
                     <div class="sidebar-sub-nav">
-                        <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
-                        <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
-                        <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
-                        <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
+    <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
+    <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
+    <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
+    <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
                     </div>
                     <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
                     <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
@@ -112,168 +112,190 @@
         </aside>
 
         <main class="docs-content">
-            <section id="sound">
-                <h1>Sound Optimizations</h1>
-                <div class="video-container">
-                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2445" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <p>Fine-tune your Windows audio settings for the best possible experience. Winhance provides quick access to hidden audio settings including startup sounds, ducking preferences, and accessibility audio options.</p>
+            <section id="sound-optimizations">
+            <h1>Sound Optimizations</h1>
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2445" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p>Fine-tune your Windows audio settings for the best possible experience. Winhance provides quick access to hidden audio settings including startup sounds, ducking preferences, and accessibility audio options.</p>
+            <div class="callout callout-info">
+                <div class="callout-title">Technical Details</div>
+                <p>Every setting below can be expanded to show exactly what Winhance reads and writes: registry values, scheduled tasks, power settings and scripts, with the recommended value and the Windows default marked. This is the same table the app shows under each setting's Technical Details.</p>
+            </div>
 
-                <div class="callout callout-info">
-                    <div class="callout-title">Registry Details</div>
-                    <p>Each setting below includes expandable registry details for power users. Click "Registry Details" to see the exact registry keys and values that are modified.</p>
-                </div>
+            <h2 id="system-sounds">System Sounds</h2>
+            <p>Control Windows system sounds and audio behavior.</p>
+            <div class="setting-card" id="sound-startup">
+            <div class="setting-header">
+            <span class="setting-name">Startup Sound During Boot</span>
+            <span class="setting-id">sound-startup</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Play the Windows startup sound when your computer boots up</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation">HKLM\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation</code></th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\EditionOverrides">HKLM\Software\Microsoft\Windows\CurrentVersion\EditionOverrides</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>DisableStartupSound</code><span class="mx-type">DWord</span></th><th class="mx-col mx-col-value"><code>UserSetting_DisableStartupSound</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">On</th><td class="mx-cell">0 (or not set)</td><td class="mx-cell">0 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td><td class="mx-cell">1 (or not set)</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <!-- ==================== SYSTEM SOUNDS ==================== -->
-                <h2 id="system-sounds">System Sounds</h2>
-                <p>Control Windows system sounds and audio behavior.</p>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Startup Sound During Boot</span>
-                        <span class="setting-id">sound-startup</span>
-                    </div>
-                    <p class="setting-desc">Play the Windows startup sound when your computer boots up.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation</code></td></tr>
-                            <tr><th>Value</th><td><code>DisableStartupSound</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (sound ON)</th><td>0</td></tr>
-                            <tr><th>Disabled (sound OFF)</th><td>1</td></tr>
-                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows\CurrentVersion\EditionOverrides</code></td></tr>
-                            <tr><th>Value</th><td><code>UserSetting_DisableStartupSound</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (sound ON)</th><td>0</td></tr>
-                            <tr><th>Disabled (sound OFF)</th><td>1</td></tr>
-                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="sound-communication-ducking">
+            <div class="setting-header">
+            <span class="setting-name">Sound Ducking Preference</span>
+            <span class="setting-id">sound-communication-ducking</span>
+            </div>
+            <div class="setting-badges"><span class="setting-badge preference" title="A matter of taste: Winhance does not recommend a value">Preference</span></div>
+            <p class="setting-desc">Automatically lower volume of media and apps when Windows detects communication activity</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Multimedia\Audio">HKCU\Software\Microsoft\Multimedia\Audio</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>UserDuckingPreference</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Mute all other sounds</th><td class="mx-cell">0</td></tr>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Reduce the volume of other sounds by 80% <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row"><th scope="row" class="mx-option">Reduce the volume of other sounds by 50%</th><td class="mx-cell">2</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Do nothing <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">3</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Sound Ducking Preference</span>
-                        <span class="setting-id">sound-communication-ducking</span>
-                    </div>
-                    <p class="setting-desc">Automatically lower volume of media and apps when Windows detects communication activity (calls, voice chat, etc.).</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Multimedia\Audio</code></td></tr>
-                            <tr><th>Value</th><td><code>UserDuckingPreference</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Options</th><td>
-                                0 = Mute all other sounds<br>
-                                1 = Reduce volume by 80%<br>
-                                2 = Reduce volume by 50%<br>
-                                3 = Do nothing
-                            </td></tr>
-                            <tr><th>Recommended</th><td>3 (Do nothing)</td></tr>
-                            <tr><th>Default</th><td>1 (Reduce by 80%)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Narrator Audio Ducking</span>
-                        <span class="setting-id">sound-narrator-audio-ducking</span>
-                    </div>
-                    <p class="setting-desc">Allow Narrator to automatically lower the volume of other applications when it speaks.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Narrator\NoRoam</code></td></tr>
-                            <tr><th>Value</th><td><code>DuckAudio</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="sound-narrator-audio-ducking">
+            <div class="setting-header">
+            <span class="setting-name">Narrator Audio Ducking</span>
+            <span class="setting-id">sound-narrator-audio-ducking</span>
+            </div>
+            <p class="setting-desc">Allow Narrator to automatically lower the volume of other applications when it speaks</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Narrator\NoRoam">HKCU\Software\Microsoft\Narrator\NoRoam</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>DuckAudio</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Voice Activation for Apps</span>
-                        <span class="setting-id">sound-voice-activation</span>
-                    </div>
-                    <p class="setting-desc">Allow apps to listen and respond to voice commands like "Hey Cortana".</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows\CurrentVersion\SpeechOneCore\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>AgentActivationEnabled</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Last Used Voice Activation Setting</span>
-                        <span class="setting-id">sound-voice-activation-last-used</span>
-                    </div>
-                    <p class="setting-desc">Remember and apply the most recently used voice activation configuration.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows\CurrentVersion\SpeechOneCore\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>AgentActivationLastUsed</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="sound-voice-activation">
+            <div class="setting-header">
+            <span class="setting-name">Voice Activation for Apps</span>
+            <span class="setting-id">sound-voice-activation</span>
+            </div>
+            <p class="setting-desc">Allow apps to listen and respond to voice commands like &#39;Hey Cortana&#39;</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\SpeechOneCore\Settings">HKLM\Software\Microsoft\Windows\CurrentVersion\SpeechOneCore\Settings</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>AgentActivationEnabled</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Accessibility Activation Sounds</span>
-                        <span class="setting-id">sound-accessibility-activation</span>
-                    </div>
-                    <p class="setting-desc">Play sounds when accessibility features like StickyKeys or FilterKeys are activated.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Control Panel\Accessibility</code></td></tr>
-                            <tr><th>Value</th><td><code>Sound on Activation</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            </details>
+            </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Accessibility Warning Sounds</span>
-                        <span class="setting-id">sound-accessibility-warnings</span>
-                    </div>
-                    <p class="setting-desc">Play warning sounds when attempting to activate accessibility features or when accessibility-related events occur.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Control Panel\Accessibility</code></td></tr>
-                            <tr><th>Value</th><td><code>Warning Sounds</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
-                </div>
+            <div class="setting-card" id="sound-voice-activation-last-used">
+            <div class="setting-header">
+            <span class="setting-name">Last Used Voice Activation Setting</span>
+            <span class="setting-id">sound-voice-activation-last-used</span>
+            </div>
+            <p class="setting-desc">Remember and apply the most recently used voice activation configuration</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\SpeechOneCore\Settings">HKLM\Software\Microsoft\Windows\CurrentVersion\SpeechOneCore\Settings</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>AgentActivationLastUsed</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
 
+            </details>
+            </div>
+
+            <div class="setting-card" id="sound-accessibility-activation">
+            <div class="setting-header">
+            <span class="setting-name">Accessibility Activation Sounds</span>
+            <span class="setting-id">sound-accessibility-activation</span>
+            </div>
+            <p class="setting-desc">Play sounds when accessibility features like StickyKeys or FilterKeys are activated</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\Accessibility">HKCU\Control Panel\Accessibility</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Sound on Activation</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
+
+            <div class="setting-card" id="sound-accessibility-warnings">
+            <div class="setting-header">
+            <span class="setting-name">Accessibility Warning Sounds</span>
+            <span class="setting-id">sound-accessibility-warnings</span>
+            </div>
+            <p class="setting-desc">Play warning sounds when attempting to activate accessibility features or when accessibility-related events occur</p>
+            <details class="registry-details">
+            <summary>Technical Details</summary>
+            <div class="mx-scroll">
+            <table class="registry-table mx-table">
+            <thead>
+            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\Accessibility">HKCU\Control Panel\Accessibility</code></th></tr>
+            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Warning Sounds</code><span class="mx-type">DWord</span></th></tr>
+            </thead>
+            <tbody>
+            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
+            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            </tbody>
+            </table>
+            </div>
+
+            </details>
+            </div>
             </section>
         </main>
     </div>
