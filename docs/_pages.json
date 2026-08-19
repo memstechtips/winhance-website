@@ -1,0 +1,18 @@
+{
+  "areas": {
+    "optimize": { "path": "features/optimize.html", "title": "Optimizations", "navLabel": "Optimize", "category": "Optimizations" },
+    "customize": { "path": "features/customize.html", "title": "Customizations", "navLabel": "Customize", "category": "Customizations" }
+  },
+  "features": [
+    { "id": "Privacy", "area": "optimize", "path": "features/optimizations/privacy-security.html", "title": "Privacy & Security", "navLabel": "Privacy & Security", "blurb": "Disable telemetry, tracking, and harden your system security." },
+    { "id": "Power", "area": "optimize", "path": "features/optimizations/power.html", "title": "Power Management & Plans", "navLabel": "Power", "blurb": "Unlock Ultimate Performance and fine-tune processor power settings." },
+    { "id": "GamingPerformance", "area": "optimize", "path": "features/optimizations/gaming-performance.html", "title": "Gaming & Performance", "navLabel": "Gaming & Performance", "blurb": "Reduce latency and maximize frame rates with specialized tweaks." },
+    { "id": "Update", "area": "optimize", "path": "features/optimizations/update.html", "title": "Windows Update", "navLabel": "Update", "blurb": "Control update behavior and prevent driver overwrites." },
+    { "id": "Notifications", "area": "optimize", "path": "features/optimizations/notifications.html", "title": "Notifications", "navLabel": "Notifications", "blurb": "Silence the notifications you never asked for." },
+    { "id": "Sound", "area": "optimize", "path": "features/optimizations/sound.html", "title": "Sound Optimizations", "navLabel": "Sound", "blurb": "Startup sound, ducking and accessibility audio options." },
+    { "id": "WindowsTheme", "area": "customize", "path": "features/customizations/theme.html", "title": "Windows Theme", "navLabel": "Windows Theme", "blurb": "Light or dark mode for Windows and apps, transparency and accent." },
+    { "id": "Taskbar", "area": "customize", "path": "features/customizations/taskbar.html", "title": "Taskbar Customization", "navLabel": "Taskbar", "blurb": "Alignment, search box, widgets, task view and system tray icons." },
+    { "id": "StartMenu", "area": "customize", "path": "features/customizations/start-menu.html", "title": "Start Menu Customization", "navLabel": "Start Menu", "blurb": "Layout, recommendations and a clean start menu." },
+    { "id": "ExplorerCustomization", "area": "customize", "path": "features/customizations/explorer.html", "title": "File Explorer Customization", "navLabel": "Explorer", "blurb": "File Explorer behaviour, context menus, This PC folders and desktop icons." }
+  ]
+}
