@@ -8,6 +8,7 @@ import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { loadPages, renderFeaturePage, renderHubPage } from './lib/render-page.mjs';
 import { searchEntries, searchEntriesJs, spliceBetweenMarkers, docsConfigBlock, versionToIsoDate, renderSitemap } from './lib/site-meta.mjs';
+import { themeCss } from './lib/theme-css.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const DEFAULT_CATALOG = resolve(here, '..', '..', 'winhance', 'extras', 'docs-export', 'catalog.json');
@@ -21,7 +22,7 @@ function hasBlurb(entry) {
   return false;
 }
 
-export function generate({ catalogPath, siteDir, warn = () => {} }) {
+export function generate({ catalogPath, siteDir, warn = () => {}, themePath = join(dirname(catalogPath), 'theme.json') }) {
   const catalog = JSON.parse(readFileSync(catalogPath, 'utf8'));
   if (catalog.schemaVersion !== 1) throw new Error(`unsupported export schemaVersion ${catalog.schemaVersion}`);
   const pages = loadPages(JSON.parse(readFileSync(join(siteDir, '_pages.json'), 'utf8')));
@@ -69,6 +70,7 @@ export function generate({ catalogPath, siteDir, warn = () => {} }) {
   out.set('js/docs-config.js', spliceBetweenMarkers(readFileSync(configPath, 'utf8'), START, END, docsConfigBlock(catalog.winhanceVersion)));
   const sitemapPath = join(siteDir, 'sitemap.xml');
   out.set('sitemap.xml', renderSitemap({ existing: existsSync(sitemapPath) ? readFileSync(sitemapPath, 'utf8') : '', pages, isoDate: versionToIsoDate(catalog.winhanceVersion) }));
+  if (existsSync(themePath)) out.set('css/app-tokens.css', themeCss(JSON.parse(readFileSync(themePath, 'utf8'))));
   return out;
 }
 
@@ -83,11 +85,12 @@ function relative(fromPath, toPath) {
 }
 
 function main() {
-  const { values } = parseArgs({ options: { catalog: { type: 'string' }, site: { type: 'string' }, check: { type: 'boolean' } } });
+  const { values } = parseArgs({ options: { catalog: { type: 'string' }, site: { type: 'string' }, theme: { type: 'string' }, check: { type: 'boolean' } } });
   const catalogPath = resolve(values.catalog ?? DEFAULT_CATALOG);
   const siteDir = resolve(values.site ?? DEFAULT_SITE);
+  const themePath = resolve(values.theme ?? join(dirname(catalogPath), 'theme.json'));
   const warnings = [];
-  const out = generate({ catalogPath, siteDir, warn: (w) => warnings.push(w) });
+  const out = generate({ catalogPath, siteDir, themePath, warn: (w) => warnings.push(w) });
   const changed = [];
   for (const [rel, text] of out) {
     const p = join(siteDir, rel);

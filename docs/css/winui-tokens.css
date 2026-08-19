@@ -1,0 +1,176 @@
+/*
+ * WinUI 3 system design tokens.
+ *
+ * Hand-authored — this is the only file in this repo allowed to contain literal colour
+ * values. Every value below is either the literal WinUI System token or the app's fixed
+ * corner radii / type ramp, sourced from Windows' own WinUI 3 controls, not from Winhance.
+ * The app's OWN values (badge colours, table metrics, chip styling, etc.) live in the
+ * generated docs/css/app-tokens.css instead — see tools/lib/theme-css.mjs.
+ *
+ * Sources (fetched 2026-08-19):
+ *   - microsoft/microsoft-ui-xaml, controls/dev/CommonStyles/Common_themeresources_any.xaml
+ *     (fill/stroke system tokens, both ThemeDictionaries)
+ *   - microsoft/microsoft-ui-xaml, controls/dev/CommonStyles/CornerRadius_themeresources.xaml
+ *     (ControlCornerRadius, OverlayCornerRadius)
+ *   - microsoft/microsoft-ui-xaml, controls/dev/CommonStyles/TextBlock_themeresources*.xaml
+ *     (type ramp font sizes and weights)
+ *   - MicrosoftDocs/windows-dev-docs, hub/apps/design/signature-experiences/typography.md
+ *     (type ramp line heights)
+ *
+ * WinUI writes colour as XAML #AARRGGBB; CSS wants #RRGGBB (alpha FF, opaque) or
+ * #RRGGBBAA (alpha != FF). Every colour below carries its original ARGB in a trailing
+ * comment so the source value is never lost to the reordering.
+ */
+
+:root {
+  /* Fill — text */
+  --winui-text-fill-color-primary: #000000e4; /* #E4000000 */
+  --winui-text-fill-color-secondary: #0000009e; /* #9E000000 */
+  --winui-text-fill-color-tertiary: #00000072; /* #72000000 */
+  --winui-text-fill-color-disabled: #0000005c; /* #5C000000 */
+
+  /* Fill — solid backgrounds */
+  --winui-solid-background-fill-color-base: #F3F3F3; /* #FFF3F3F3 */
+  --winui-solid-background-fill-color-secondary: #EEEEEE; /* #FFEEEEEE */
+  --winui-solid-background-fill-color-tertiary: #F9F9F9; /* #FFF9F9F9 */
+  --winui-solid-background-fill-color-quarternary: #FFFFFF; /* #FFFFFFFF */
+
+  /* Fill — layers and cards */
+  --winui-layer-fill-color-default: #ffffff80; /* #80FFFFFF */
+  --winui-layer-fill-color-alt: #FFFFFF; /* #FFFFFFFF */
+  --winui-card-background-fill-color-default: #ffffffb3; /* #B3FFFFFF */
+  --winui-card-background-fill-color-secondary: #f6f6f680; /* #80F6F6F6 */
+
+  /* Fill — subtle (hover/pressed washes) */
+  --winui-subtle-fill-color-secondary: #00000009; /* #09000000 */
+  --winui-subtle-fill-color-tertiary: #00000006; /* #06000000 */
+
+  /* Stroke */
+  --winui-card-stroke-color-default: #0000000f; /* #0F000000 */
+  --winui-card-stroke-color-default-solid: #EBEBEB; /* #FFEBEBEB */
+  --winui-control-stroke-color-default: #0000000f; /* #0F000000 */
+  --winui-control-stroke-color-secondary: #00000029; /* #29000000 */
+  --winui-divider-stroke-color-default: #0000000f; /* #0F000000 */
+  --winui-surface-stroke-color-default: #75757566; /* #66757575 */
+
+  /* Fill — controls */
+  --winui-control-fill-color-default: #ffffffb3; /* #B3FFFFFF */
+
+  /* Fill — system (status) */
+  --winui-system-fill-color-attention-background: #f6f6f680; /* #80F6F6F6 */
+  --winui-system-fill-color-success-background: #DFF6DD; /* #FFDFF6DD */
+  --winui-system-fill-color-caution-background: #FFF4CE; /* #FFFFF4CE */
+  --winui-system-fill-color-critical-background: #FDE7E9; /* #FFFDE7E9 */
+  --winui-system-fill-color-success: #0F7B0F; /* #FF0F7B0F */
+  --winui-system-fill-color-caution: #9D5D00; /* #FF9D5D00 */
+  --winui-system-fill-color-critical: #C42B1C; /* #FFC42B1C */
+
+  /* Fill/stroke — on accent */
+  --winui-text-on-accent-fill-color-primary: #FFFFFF; /* #FFFFFFFF */
+  --winui-control-stroke-color-on-accent-default: #ffffff14; /* #14FFFFFF */
+
+  /* Radii (CornerRadius_themeresources.xaml) */
+  --winui-control-corner-radius: 4px;
+  --winui-overlay-corner-radius: 8px;
+
+  /* Type ramp: font-size / line-height / weight per step (TextBlock_themeresources*.xaml
+     for size and weight, typography.md for line-height). */
+  --winui-font-size-caption: 12px;
+  --winui-line-height-caption: 16px;
+  --winui-weight-caption: 400;
+
+  --winui-font-size-body: 14px;
+  --winui-line-height-body: 20px;
+  --winui-weight-body: 400;
+
+  --winui-font-size-body-strong: 14px;
+  --winui-line-height-body-strong: 20px;
+  --winui-weight-body-strong: 600;
+
+  --winui-font-size-body-large: 18px;
+  --winui-line-height-body-large: 24px;
+  --winui-weight-body-large: 400;
+
+  --winui-font-size-subtitle: 20px;
+  --winui-line-height-subtitle: 28px;
+  --winui-weight-subtitle: 600;
+
+  --winui-font-size-title: 28px;
+  --winui-line-height-title: 36px;
+  --winui-weight-title: 600;
+
+  --winui-font-size-title-large: 40px;
+  --winui-line-height-title-large: 52px;
+  --winui-weight-title-large: 600;
+
+  --winui-font-size-display: 68px;
+  --winui-line-height-display: 92px;
+  --winui-weight-display: 600;
+
+  /* Font family: WinUI 3 controls default to Segoe UI Variable (Segoe UI Variable Display
+     at the Title/TitleLarge/Display steps), falling back to Segoe UI on Windows 10 where the
+     variable font isn't present. Winhance's own XAML never overrides this, so it's the plain
+     OS/SDK default (Common_themeresources_any.xaml's ContentControlThemeFontFamily). */
+  --winui-font-family: "Segoe UI Variable", "Segoe UI", sans-serif;
+  --winui-font-family-display: "Segoe UI Variable Display", "Segoe UI Variable", "Segoe UI", sans-serif;
+
+  /* Accent — unverified: WinUI's accent is OS-supplied (SystemAccentColor); these apply WinUI's
+     verified role mapping (light darkens -> Dark1/Dark2, dark lightens -> Light2/Light3) to the
+     widely-reported Windows 11 default. Swap here to rebrand. */
+  --winui-accent-fill-default: #005FB8; /* unverified: WinUI's accent is OS-supplied (SystemAccentColor); these apply WinUI's verified role mapping (light darkens -> Dark1/Dark2, dark lightens -> Light2/Light3) to the widely-reported Windows 11 default. Swap here to rebrand. */
+  --winui-accent-text-primary: #003E92; /* unverified: WinUI's accent is OS-supplied (SystemAccentColor); these apply WinUI's verified role mapping (light darkens -> Dark1/Dark2, dark lightens -> Light2/Light3) to the widely-reported Windows 11 default. Swap here to rebrand. */
+}
+
+[data-theme="dark"] {
+  /* Fill — text */
+  --winui-text-fill-color-primary: #FFFFFF; /* #FFFFFFFF */
+  --winui-text-fill-color-secondary: #ffffffc5; /* #C5FFFFFF */
+  --winui-text-fill-color-tertiary: #ffffff87; /* #87FFFFFF */
+  --winui-text-fill-color-disabled: #ffffff5d; /* #5DFFFFFF */
+
+  /* Fill — solid backgrounds */
+  --winui-solid-background-fill-color-base: #202020; /* #FF202020 */
+  --winui-solid-background-fill-color-secondary: #1C1C1C; /* #FF1C1C1C */
+  --winui-solid-background-fill-color-tertiary: #282828; /* #FF282828 */
+  --winui-solid-background-fill-color-quarternary: #2C2C2C; /* #FF2C2C2C */
+
+  /* Fill — layers and cards */
+  --winui-layer-fill-color-default: #3a3a3a4c; /* #4C3A3A3A */
+  --winui-layer-fill-color-alt: #ffffff0d; /* #0DFFFFFF */
+  --winui-card-background-fill-color-default: #ffffff0d; /* #0DFFFFFF */
+  --winui-card-background-fill-color-secondary: #ffffff08; /* #08FFFFFF */
+
+  /* Fill — subtle (hover/pressed washes) */
+  --winui-subtle-fill-color-secondary: #ffffff0f; /* #0FFFFFFF */
+  --winui-subtle-fill-color-tertiary: #ffffff0a; /* #0AFFFFFF */
+
+  /* Stroke */
+  --winui-card-stroke-color-default: #00000019; /* #19000000 */
+  --winui-card-stroke-color-default-solid: #1C1C1C; /* #FF1C1C1C */
+  --winui-control-stroke-color-default: #ffffff12; /* #12FFFFFF */
+  --winui-control-stroke-color-secondary: #ffffff18; /* #18FFFFFF */
+  --winui-divider-stroke-color-default: #ffffff15; /* #15FFFFFF */
+  --winui-surface-stroke-color-default: #75757566; /* #66757575 */
+
+  /* Fill — controls */
+  --winui-control-fill-color-default: #ffffff0f; /* #0FFFFFFF */
+
+  /* Fill — system (status) */
+  --winui-system-fill-color-attention-background: #ffffff08; /* #08FFFFFF */
+  --winui-system-fill-color-success-background: #393D1B; /* #FF393D1B */
+  --winui-system-fill-color-caution-background: #433519; /* #FF433519 */
+  --winui-system-fill-color-critical-background: #442726; /* #FF442726 */
+  --winui-system-fill-color-success: #6CCB5F; /* #FF6CCB5F */
+  --winui-system-fill-color-caution: #FCE100; /* #FFFCE100 */
+  --winui-system-fill-color-critical: #FF99A4; /* #FFFF99A4 */
+
+  /* Fill/stroke — on accent */
+  --winui-text-on-accent-fill-color-primary: #000000; /* #FF000000 */
+  --winui-control-stroke-color-on-accent-default: #ffffff14; /* #14FFFFFF */
+
+  /* Accent — unverified: WinUI's accent is OS-supplied (SystemAccentColor); these apply WinUI's
+     verified role mapping (light darkens -> Dark1/Dark2, dark lightens -> Light2/Light3) to the
+     widely-reported Windows 11 default. Swap here to rebrand. */
+  --winui-accent-fill-default: #60CDFF; /* unverified: WinUI's accent is OS-supplied (SystemAccentColor); these apply WinUI's verified role mapping (light darkens -> Dark1/Dark2, dark lightens -> Light2/Light3) to the widely-reported Windows 11 default. Swap here to rebrand. */
+  --winui-accent-text-primary: #99EBFF; /* unverified: WinUI's accent is OS-supplied (SystemAccentColor); these apply WinUI's verified role mapping (light darkens -> Dark1/Dark2, dark lightens -> Light2/Light3) to the widely-reported Windows 11 default. Swap here to rebrand. */
+}

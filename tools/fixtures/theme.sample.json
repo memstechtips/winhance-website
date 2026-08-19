@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "themes": {
+    "light": {
+      "BadgeRecommendedBackground": "#221A7F37",
+      "BadgeRecommendedBorder": "#401A7F37",
+      "BadgeRecommendedForeground": "#FF1A7F37"
+    },
+    "dark": {
+      "BadgeRecommendedBackground": "#223FB950",
+      "BadgeRecommendedBorder": "#403FB950",
+      "BadgeRecommendedForeground": "#FF3FB950"
+    }
+  },
+  "aliases": {
+    "light": {
+      "TechDetail.Table.StrokeBrush": "CardStrokeColorDefaultBrush"
+    },
+    "dark": {
+      "TechDetail.Table.StrokeBrush": "ControlStrokeColorDefaultBrush"
+    }
+  },
+  "styles": {
+    "BadgePillBase": {
+      "target": "Border",
+      "basedOn": null,
+      "setters": {
+        "Height": "20",
+        "CornerRadius": "10",
+        "Padding": "7,0,9,0",
+        "VerticalAlignment": "Center",
+        "BorderThickness": "1"
+      }
+    },
+    "BadgeRecommendedStyle": {
+      "target": "Border",
+      "basedOn": "BadgePillBase",
+      "setters": {
+        "Background": "{ThemeResource BadgeRecommendedBackground}",
+        "BorderBrush": "{ThemeResource BadgeRecommendedBorder}"
+      }
+    },
+    "TechDetail.Table.HeaderBand": {
+      "target": "Border",
+      "basedOn": null,
+      "setters": {
+        "Background": "{ThemeResource SubtleFillColorSecondaryBrush}",
+        "BorderBrush": "{ThemeResource TechDetail.Table.StrokeBrush}",
+        "MinHeight": "32",
+        "Padding": "12,4"
+      }
+    },
+    "TechDetail.Table.Cell": {
+      "target": "Border",
+      "basedOn": null,
+      "setters": {
+        "BorderBrush": "{ThemeResource TechDetail.Table.StrokeBrush}",
+        "MinHeight": "40",
+        "Padding": "12,0"
+      }
+    },
+    "TechDetail.CodeBlock.PowerShell": {
+      "target": "Border",
+      "basedOn": null,
+      "setters": {
+        "Background": "#FF0D1117",
+        "BorderBrush": "#FF58A6FF",
+        "BorderThickness": "3,0,0,0",
+        "Padding": "10,8",
+        "CornerRadius": "2"
+      }
+    },
+    "TechDetail.CodeText": {
+      "target": "TextBlock",
+      "basedOn": null,
+      "setters": {
+        "FontFamily": "Consolas,Cascadia Code,Courier New",
+        "FontSize": "12",
+        "Foreground": "#FFDDDDDD",
+        "IsTextSelectionEnabled": "True",
+        "TextWrapping": "Wrap"
+      }
+    },
+    "TechDetail.ChipText": {
+      "target": "TextBlock",
+      "basedOn": null,
+      "setters": {
+        "FontSize": "10",
+        "Foreground": "{ThemeResource TextFillColorSecondaryBrush}"
+      }
+    },
+    "TechDetail.ChipLinkText": {
+      "target": "TextBlock",
+      "basedOn": "TechDetail.ChipText",
+      "setters": {
+        "Foreground": "{ThemeResource AccentTextFillColorPrimaryBrush}",
+        "TextDecorations": "Underline"
+      }
+    }
+  },
+  "geometries": {
+    "BadgeRecommendedIconPath": {
+      "data": "M5.28347 1.54556C5.57692 0.950 M6.5 6.5 L7 7Z",
+      "viewBox": 12
+    },
+    "BadgeDefaultIconPath": {
+      "data": "M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z",
+      "viewBox": 11
+    },
+    "BadgePreferenceIconPath": {
+      "data": "M6 1C4.89543 1 4 1.89543 4 3C4 4 5 5 6 6Z",
+      "viewBox": 12
+    }
+  }
+}
