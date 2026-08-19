@@ -57,7 +57,8 @@ test('card with a win10 matrix renders both tables under build headings', () => 
 
 test('badges: win11-only, laptops-only, preference, added-in', () => {
   assert.match(cardBadges(byId['explorer-customization-context-menu']), /<span class="setting-badge win11"[^>]*>Windows 11 only<\/span>/);
-  assert.match(cardBadges(byId['power-hybrid-sleep']), /<span class="setting-badge laptops"[^>]*>Laptops only<\/span>/);
+  assert.match(cardBadges(byId['lid-close-action']), /<span class="setting-badge laptops"[^>]*>Laptops only<\/span>/);
+  assert.match(cardBadges(byId['power-hybrid-sleep']), /<span class="setting-badge hardware"[^>]*>Hybrid sleep capable PCs<\/span>/);
   assert.match(cardBadges(byId['sound-startup']), /<span class="setting-badge preference"[^>]*>Preference<\/span>/);
   const added = all.find((s) => s.addedInVersion);
   if (added) assert.match(cardBadges(added), new RegExp(`<span class="setting-badge added"[^>]*>Added in v${added.addedInVersion.replace(/\./g, '\\.')}</span>`));

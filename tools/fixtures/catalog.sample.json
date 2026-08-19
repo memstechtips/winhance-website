@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "winhanceVersion": "26.08.18",
   "catalogHash": "fdfaa61e57d5cf6f15a1e7ec9e30cd41d96c5ae73e52d690eb0eb0038f4d7d32",
-  "settingCount": 12,
+  "settingCount": 13,
   "referenceBuilds": {
     "win10": 19045,
     "win11": 26100
@@ -2258,6 +2258,166 @@
             "defaultTooltip": "How Windows ships out of the box",
             "currentTooltip": "This is what your system is set to now",
             "accessibleSummary": "On: ShowHibernateOption 1. Off: ShowHibernateOption 0 (or not set) (Recommended, Default), Current. Registry: HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FlyoutMenuSettings."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "lid-close-action",
+          "name": "Lid close action",
+          "description": "Choose what happens when you close your laptop lid",
+          "group": "Power Buttons and Lid",
+          "control": "Selection",
+          "isSubjectivePreference": true,
+          "addedInVersion": null,
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [
+              "Battery"
+            ],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [
+              {
+                "label": "Power setting",
+                "kind": "Power",
+                "description": "Read from your active power plan to determine which option is active, and written with powercfg when you apply one.",
+                "paths": [
+                  {
+                    "full": "4f971e89-eebd-4455-a8de-9e59040e7347",
+                    "label": "Subgroup",
+                    "hasLabel": true,
+                    "display": "4f971e89-eebd-4455-a8de-9e59040e7347"
+                  },
+                  {
+                    "full": "5ca83367-6e45-459f-a27b-476b1d01c936",
+                    "label": "Setting",
+                    "hasLabel": true,
+                    "display": "5ca83367-6e45-459f-a27b-476b1d01c936"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": true,
+                "canOpenRegedit": false
+              }
+            ],
+            "columns": [
+              {
+                "header": "Value",
+                "typeName": "",
+                "kind": "Power",
+                "chips": [
+                  {
+                    "text": "needs unlocking",
+                    "tooltip": "Windows hides this power setting by default. Winhance unhides it before reading or writing it.",
+                    "linkSettingId": "",
+                    "linkText": "",
+                    "hasLink": false
+                  }
+                ],
+                "headerTooltip": "",
+                "hasType": false,
+                "hasChips": true
+              }
+            ],
+            "options": [
+              {
+                "label": "Template_LidActions_Option_0",
+                "cells": [
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": true,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_LidActions_Option_1",
+                "cells": [
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": true,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_LidActions_Option_2",
+                "cells": [
+                  {
+                    "text": "2",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Template_LidActions_Option_3",
+                "cells": [
+                  {
+                    "text": "3",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Template_LidActions_Option_0: Value 0, Current. Template_LidActions_Option_1: Value 1 (Recommended, Default). Template_LidActions_Option_2: Value 2. Template_LidActions_Option_3: Value 3. Power setting: 4f971e89-eebd-4455-a8de-9e59040e7347, 5ca83367-6e45-459f-a27b-476b1d01c936."
           },
           "matrixWin10": null
         }

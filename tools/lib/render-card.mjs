@@ -112,8 +112,8 @@ export function cardBadges(s, urlFor = () => null) {
   else if (msg.win11 && msg.win10) out.push(badge('build', msg.win11, msg.win11));
   for (const hw of s.availability.hardware) {
     if (hw === 'Battery') out.push(badge('laptops', 'Laptops only', 'Only shown on devices with a battery'));
-    else if (hw === 'HybridSleepCapable') out.push(badge('laptops', 'Laptops only', 'Only shown where the firmware supports hybrid sleep'));
-    else out.push(badge('laptops', hw, ''));
+    else if (hw === 'HybridSleepCapable') out.push(badge('hardware', 'Hybrid sleep capable PCs', 'Only shown where the firmware supports hybrid sleep'));
+    else out.push(badge('hardware', hw, ''));
   }
   if (s.availability.requiresAdvancedUnlock) out.push(badge('advanced', 'Advanced', 'Hidden until Advanced mode is unlocked in Winhance'));
   if (s.isSubjectivePreference) out.push(badge('preference', 'Preference', 'A matter of taste: Winhance does not recommend a value'));
