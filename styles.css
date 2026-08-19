@@ -531,6 +531,16 @@ header {
     width: 100%;
 }
 
+/* I3: `.nav-links a` and `.nav-links a:hover` (0,1,1 and 0,2,1) outrank .btn-accent's own color rule
+   (0,1,0) by specificity alone, regardless of source order -- the header's one .btn-accent, the
+   Download button, rendered white-on-light-blue in dark (1.8:1) and near-black-on-dark-blue in light
+   (3.3:1). Scoped high enough to win in both themes and both states, using the same on-accent-fill
+   token the app pairs with AccentButton's own fill. */
+.nav-links a.btn-accent,
+.nav-links a.btn-accent:hover {
+    color: var(--winui-text-on-accent-fill-color-primary);
+}
+
 /* Nav icons group - closer spacing */
 .nav-links .nav-icons-group {
     display: flex;

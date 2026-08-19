@@ -42,10 +42,15 @@ export function generate({ catalogPath, siteDir, warn = () => {}, themePath = jo
   for (const s of all) if (s.uiParentId) childrenOf.set(s.uiParentId, [...(childrenOf.get(s.uiParentId) ?? []), s]);
 
   // Both come from the same export theme.json parses once, so app-tokens.css and every setting card's
-  // pills (Recommended/Windows-default/Preference icons) always agree with each other.
-  const theme = existsSync(themePath) ? JSON.parse(readFileSync(themePath, 'utf8')) : null;
+  // pills (Recommended/Windows-default/Preference icons) always agree with each other. M10: a missing
+  // theme.json or icons.json used to fall back to null/{} silently -- a bare run then rewrote all 10
+  // pages with no pill icons, no app-tokens.css and no icon glyphs, and still printed "wrote 10 file(s)"
+  // as if nothing were wrong. Fail closed instead, matching vendor-icons.mjs's own fail-closed exit.
+  if (!existsSync(themePath)) throw new Error(`theme.json not found at ${themePath} -- app-tokens.css and every setting card's pill icons would silently disappear`);
+  const theme = JSON.parse(readFileSync(themePath, 'utf8'));
   const iconsPath = join(siteDir, '_assets', 'icons.json');
-  const icons = existsSync(iconsPath) ? JSON.parse(readFileSync(iconsPath, 'utf8')).icons : {};
+  if (!existsSync(iconsPath)) throw new Error(`icons.json not found at ${iconsPath} -- run tools/vendor-icons.mjs first`);
+  const icons = JSON.parse(readFileSync(iconsPath, 'utf8')).icons;
 
   const out = new Map();
   const counts = {};
@@ -59,7 +64,8 @@ export function generate({ catalogPath, siteDir, warn = () => {}, themePath = jo
     const ctx = {
       childrenOf,
       icons,
-      geometries: theme ? geometries(theme) : {},
+      geometries: geometries(theme),
+      referenceBuilds: catalog.referenceBuilds,
       urlFor: (id) => {
         const target = pageOfSetting.get(id);
         if (!target) return null;
@@ -78,7 +84,7 @@ export function generate({ catalogPath, siteDir, warn = () => {}, themePath = jo
   out.set('js/docs-config.js', spliceBetweenMarkers(readFileSync(configPath, 'utf8'), START, END, docsConfigBlock(catalog.winhanceVersion)));
   const sitemapPath = join(siteDir, 'sitemap.xml');
   out.set('sitemap.xml', renderSitemap({ existing: existsSync(sitemapPath) ? readFileSync(sitemapPath, 'utf8') : '', pages, isoDate: versionToIsoDate(catalog.winhanceVersion) }));
-  if (theme) out.set('css/app-tokens.css', themeCss(theme));
+  out.set('css/app-tokens.css', themeCss(theme));
   return out;
 }
 

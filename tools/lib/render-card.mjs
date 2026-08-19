@@ -1,10 +1,46 @@
 // Mirrors OptionMatrixView.xaml.cs (Winhance.UI/Features/Common/Controls) row-for-row, cell-for-cell.
-// Every metric/colour is a var(--app-*) or var(--winui-*) from the two generated/hand-written token
-// sheets (see docs/css/docs-main.css); every string comes verbatim off the matrix export. Nothing here
-// is authored data -- if it looks wrong, the fix is in the app's export or the token sheet, not here.
+// Every string comes verbatim off the matrix export, and every metric/colour the app's own THEME
+// DICTIONARIES decide (BadgeStyles.xaml, TechnicalDetailsStyles.xaml) is a var(--app-*) or
+// var(--winui-*) from the two generated/hand-written token sheets (see docs/css/docs-main.css) --
+// wrong there, the fix is in the app's export or the token sheet, not here. But the extractor only
+// parses those three XAML dictionaries: anything the panel's CODE-BEHIND decides instead (constants
+// and layout choices baked into OptionMatrixView.xaml.cs itself, not read from a Style setter) is
+// hand-mirrored below with nothing to catch drift -- CurrentMarkerGutter (21), the pill icon box, the
+// checkmark glyph, every StackPanel Spacing/Margin, BUILD_HEADING, and the split/notesHeading layout
+// rules are all read out of the .cs file by eye. If one of those looks wrong, diff this file against
+// OptionMatrixView.xaml.cs directly -- the export can't tell you.
 import { esc } from './html.mjs';
 
 const BUILD_HEADING = { win11: 'Windows 11', win10: 'Windows 10' };
+
+// DocsCatalogExport's own reference builds (Win10/Win11 WinBuild constants) -- matrix is built
+// against Win11 (26100), matrixWin10 against Win10 (19045). Used only as a fallback when a caller
+// doesn't thread catalog.referenceBuilds through ctx; gen-docs.mjs always does.
+const DEFAULT_REFERENCE_BUILDS = { win10: 19045, win11: 26100 };
+
+// Whole-branch review C2: DocsBuildRange.Format emits "<build>.<revision>", or "*" for the open
+// (int.MaxValue) end -- mirrors BuildVersionGate.IsCompatible's own major-then-revision comparison.
+function parseBuild(text) {
+  if (text === '*') return { build: Infinity, revision: Infinity };
+  const [build, revision] = text.split('.').map(Number);
+  return { build, revision };
+}
+
+function compareBuild(a, b) {
+  return a.build !== b.build ? a.build - b.build : a.revision - b.revision;
+}
+
+// Availability.Allows: an empty builds array means every build; otherwise the reference build must
+// fall inside at least one of the (possibly several, e.g. two disjoint preview windows) ranges.
+function buildAllowed(availability, referenceBuild) {
+  if (!availability.builds.length) return true;
+  const current = { build: referenceBuild, revision: 0 };
+  return availability.builds.some((range) => {
+    const min = parseBuild(range.min);
+    const max = parseBuild(range.max);
+    return compareBuild(current, min) >= 0 && compareBuild(current, max) <= 0;
+  });
+}
 
 // 21px CurrentMarkerGutter + 2*12px Table.Cell padding: the fixed part of every option cell's width,
 // on top of the longest label. Charged in var(--mx-char-w) multiples, not `ch`: `ch` re-resolves
@@ -42,8 +78,9 @@ export const CHAR_W = 7.5;
 // face var(--mx-char-w) was measured for) -- measured directly in a real render rather than derived
 // by ratio, because font hinting doesn't scale linearly with size. Reused (safely -- it is WIDER,
 // per char, than the ~4.4-4.6px/char a real requirement chip's 10px proportional text measured at)
-// for chip text too, rather than adding a third token for one smaller, rarer case.
-export const CHAR_W_SM = 6.6;
+// for chip text too, rather than adding a third token for one smaller, rarer case. M6: the measured
+// advance is 11px exactly (6.600px), leaving 6.6px zero headroom; bumped to 6.8px for real slack.
+export const CHAR_W_SM = 6.8;
 
 // Only the setting's name inside a chip is a link (the builder marks it with linkText); the prose around
 // it is not. Shared by column chips, requirement chips (mechanism cell) and (Controller ruling 1) the
@@ -77,9 +114,17 @@ function qualified(label, context) {
 // The three pill-badge icon geometries are the app's own BadgeRecommendedIconPath / BadgeDefaultIconPath /
 // BadgePreferenceIconPath (FeatureIcons.xaml, via theme.json). fill="currentColor" so the icon always
 // matches the pill's own foreground -- no separate icon-colour var needed.
+// M8: the Windows-logo geometry (BadgeDefaultIconPath) is drawn on an 11x11 canvas, unlike the other
+// two pills' 12x12 ones -- stretching its viewBox to fill a 12x12 <svg> scaled it 9% and re-blurred the
+// 1px pane gaps the 11x11 geometry exists to keep crisp. The outer <svg> and its viewBox now always
+// stay 12x12 (never scaling anything), and a native-size geometry is centred inside it with a translate
+// -- WinUI's own PathIcon centres a smaller Data geometry inside its own box the same way.
 function pillIcon(geometry) {
   if (!geometry) return '';
-  return `<svg viewBox="0 0 ${geometry.viewBox} ${geometry.viewBox}" width="12" height="12" aria-hidden="true"><path d="${esc(geometry.data)}" fill="currentColor"/></svg>`;
+  const offset = round2((12 - geometry.viewBox) / 2);
+  const path = `<path d="${esc(geometry.data)}" fill="currentColor"/>`;
+  const body = offset ? `<g transform="translate(${offset} ${offset})">${path}</g>` : path;
+  return `<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">${body}</svg>`;
 }
 
 function pill(kind, label, tooltip, geometry) {
@@ -140,14 +185,29 @@ function groupHeaderRow(matrix) {
 // Row 1 (PathRow): one band per group WITH paths, one line per destination -- a mirrored value is
 // written to all of them, so listing every path is the only honest answer to "where does this go"
 // (OptionMatrixView.AddGroupHeaders, second loop + PathLine).
+// M9: the path bands emit in document order (matrix.groups' own array order), but the app places
+// each one at FrozenColumns + group.StartColumn -- an assumption that has held for all 414 settings in
+// the real catalog today, with nothing that would notice if a future export ever reordered or
+// resequenced groups. Tracks the running data-column position across EVERY group (paths or not, since
+// a pathless group still occupies its own columns) and throws the moment a hasPaths group's own
+// startColumn disagrees with it, rather than staying quiet and misaligning the row.
 function pathsRow(matrix) {
-  return matrix.groups.filter((g) => g.hasPaths).map((g) => {
-    const lines = g.paths.map((p) => {
-      const caption = p.hasLabel ? `<span class="mx-caption">${esc(p.label)}</span>` : '';
-      return `<span class="mx-pathline">${caption}<code class="mx-path" title="${esc(p.full)}">${esc(p.display)}</code></span>`;
-    }).join('');
-    return `<th class="mx-paths" colspan="${g.columnSpan}">${lines}</th>`;
-  }).join('');
+  let column = 0;
+  const cells = [];
+  for (const g of matrix.groups) {
+    if (g.hasPaths) {
+      if (column !== g.startColumn) {
+        throw new Error(`pathsRow: group "${g.label}" expected at column ${g.startColumn}, document order puts it at ${column}`);
+      }
+      const lines = g.paths.map((p) => {
+        const caption = p.hasLabel ? `<span class="mx-caption">${esc(p.label)}</span>` : '';
+        return `<span class="mx-pathline">${caption}<code class="mx-path" title="${esc(p.full)}">${esc(p.display)}</code></span>`;
+      }).join('');
+      cells.push(`<th class="mx-paths" colspan="${g.columnSpan}">${lines}</th>`);
+    }
+    column += g.columnSpan;
+  }
+  return cells.join('');
 }
 
 // With neither columns nor options the Option/Role headers would be a band over two empty columns --
@@ -242,8 +302,15 @@ function codeHost(matrix) {
 // A width is a fixed px budget plus a character count charged in var(--mx-char-w) -- keeping the two
 // separate (rather than a pre-built calc() string) lets renderMatrix sum every column's width into one
 // table-wide total below, instead of concatenating calc() expressions.
+// M12: every deficit pass above adds plain floats (e.g. a CHAR_W_SM multiple), so `fixed` routinely
+// comes out as float noise like 405.29999999999995 -- round to the nearest hundredth (still exact to
+// well under a sub-pixel) rather than emitting the noise into 1,415 calc() expressions across the site.
+function round2(n) {
+  return Math.round(n * 100) / 100;
+}
+
 function widthCalc({ fixed, chars }) {
-  return `calc(${fixed}px + ${chars} * var(--mx-char-w))`;
+  return `calc(${round2(fixed)}px + ${chars} * var(--mx-char-w))`;
 }
 
 function sumWidths(widths) {
@@ -345,19 +412,47 @@ function widenForChips(matrix, optionW, roleW) {
   return deficit > 0 ? { fixed: roleW.fixed + deficit, chars: roleW.chars } : roleW;
 }
 
+// Whole-branch review C1: the mechanism cell's chips aren't the only nowrap text that can outgrow
+// the base columns -- a note's own label (.mx-note-label, OptionLabel's face, hence CHAR_W not
+// CHAR_W_SM) and the notes-head band's own heading (.mx-group-label) never got charged at all, so
+// start-menu-clean-10's "Also happens when you apply, if you agree to the prompt" wrapped one word
+// per line inside the bare 45px floor optionColumnWidth leaves when there are zero options to size it
+// from. AddNotes' own labelSpan (mirrored in noteSpans) decides which columns the label cell actually
+// occupies: option+role together in the normal (non-split) shape -- exactly widenForChips' shape, so
+// it is charged the same way, widening role only, option's sticky offset left alone. But when the
+// matrix has neither columns nor options (!hasColumnHeaderRow -- start-menu-clean-10's shape), AddNotes
+// drops labelSpan to the option column ALONE (the app's own Table.FrozenColumnCount drops to 1 there
+// too -- see OptionMatrixView.Rebuild), so role's width is not even in the cell the label renders in;
+// there is nowhere else for the deficit to go. That is safe specifically because a matrix this shape
+// has no .mx-option/.mx-role anywhere (no option rows exist to render one), so nothing else depends on
+// --mx-option-w staying at the sticky offset it protects everywhere else.
+function widenForNotes(matrix, optionW, roleW) {
+  if (!matrix.hasNotes) return { optionW, roleW };
+  const longestChars = Math.max(matrix.notesHeading.length, ...matrix.notes.map((n) => n.label.length));
+  const neededPx = DATA_CELL_FIXED_WIDTH + longestChars * CHAR_W;
+  if (!hasColumnHeaderRow(matrix)) {
+    const deficit = neededPx - pxOf(optionW);
+    return deficit > 0 ? { optionW: { fixed: optionW.fixed + deficit, chars: optionW.chars }, roleW } : { optionW, roleW };
+  }
+  const deficit = neededPx - (pxOf(optionW) + pxOf(roleW));
+  return deficit > 0 ? { optionW, roleW: { fixed: roleW.fixed + deficit, chars: roleW.chars } } : { optionW, roleW };
+}
+
 export function renderMatrix(matrix, { heading = '', urlFor = () => null, geometries = {} } = {}) {
   if (!matrix) {
     return `<p class="mx-empty">The options are the power plans installed on this PC, so there is no fixed table; Winhance lists them live.</p>`;
   }
   const head = heading ? `<h4 class="mx-build">${esc(heading)}</h4>\n` : '';
-  const optionW = optionColumnWidth(matrix);
+  let optionW = optionColumnWidth(matrix);
   let roleW = roleColumnWidth(matrix);
   const dataWidths = matrix.columns.map((c, i) => dataColumnWidth(matrix, i, c));
   // Fix round 2: the base per-column widths above are a floor, not the final word -- a group's own
   // path text and the mechanism cell's own requirement chips can each demand more than that floor,
-  // and table-layout: fixed (finding 2) means nothing grows to meet them on its own anymore.
+  // and table-layout: fixed (finding 2) means nothing grows to meet them on its own anymore. Whole-
+  // branch review C1: a note's own label/heading text can too.
   widenForPaths(matrix, dataWidths);
   roleW = widenForChips(matrix, optionW, roleW);
+  ({ optionW, roleW } = widenForNotes(matrix, optionW, roleW));
   // table-layout: fixed (finding 2) makes every <col>'s width authoritative, but ONLY when the slack
   // between the table's own width and its columns has somewhere definite to go. --mx-table-w is the
   // exact sum, so a table at that width has none (verified live: with `width: 100%` on a matrix
@@ -432,14 +527,35 @@ function iconSvg(icon, icons) {
 // WinUI SettingsCard shape: icon · name + description · pills right-aligned, id kept beneath them as a
 // docs-only cross-reference affordance. No <details> -- Technical Details is always visible, directly
 // below the header (Controller ruling 5).
+// Whole-branch review C2: render-card.mjs is the docs-only fallback for whichever build a setting's
+// twin export DOESN'T survive on -- matrixWin10 exists whenever the two reference builds' exports
+// differ (DocsCatalogExport.ExportSetting), which is a fact about the SETTING'S MECHANISM, entirely
+// separate from availability (a fact about which builds the setting even runs on). Rendering both
+// unconditionally showed a Windows-10-only setting's table headed "Windows 11" and four Windows-11-
+// only settings a phantom Windows 10 table that contradicted their own badge. One surviving matrix
+// renders with no build heading -- the app shows exactly one panel there, never two headed sub-tables
+// for a setting that only runs on one build.
+function matrixBody(s, refBuilds, urlFor, geometries) {
+  if (!s.matrixWin10) return renderMatrix(s.matrix, { urlFor, geometries });
+  const candidates = [
+    { matrix: s.matrix, build: refBuilds.win11, heading: BUILD_HEADING.win11 },
+    { matrix: s.matrixWin10, build: refBuilds.win10, heading: BUILD_HEADING.win10 },
+  ];
+  const shown = candidates.filter((c) => buildAllowed(s.availability, c.build));
+  // Availability never actually excludes both reference builds at once in the real catalog -- fail
+  // open onto the win11 export rather than blank a card if it ever did.
+  if (shown.length === 0) return renderMatrix(s.matrix, { urlFor, geometries });
+  if (shown.length === 1) return renderMatrix(shown[0].matrix, { urlFor, geometries });
+  return shown.map((c) => renderMatrix(c.matrix, { heading: c.heading, urlFor, geometries })).join('\n');
+}
+
 export function renderCard(s, ctx, { child = false } = {}) {
   const urlFor = ctx.urlFor ?? (() => null);
   const icons = ctx.icons ?? {};
   const geometries = ctx.geometries ?? {};
+  const refBuilds = ctx.referenceBuilds ?? DEFAULT_REFERENCE_BUILDS;
   const badges = cardBadges(s, urlFor, geometries);
-  const body = s.matrixWin10
-    ? `${renderMatrix(s.matrix, { heading: BUILD_HEADING.win11, urlFor, geometries })}\n${renderMatrix(s.matrixWin10, { heading: BUILD_HEADING.win10, urlFor, geometries })}`
-    : renderMatrix(s.matrix, { urlFor, geometries });
+  const body = matrixBody(s, refBuilds, urlFor, geometries);
   const kids = (ctx.childrenOf.get(s.id) ?? []).map((k) => renderCard(k, ctx, { child: true })).join('\n');
 
   return `<div class="setting-card${child ? ' setting-card-child' : ''}" id="${esc(s.id)}">

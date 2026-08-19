@@ -975,80 +975,60 @@ html {
     }
 }
 
-/* Card-only badges: catalog facts about the setting, not app-styled pills (the app has no
-   on-screen equivalent for these -- see Preference below for the one that does). */
+/* Card-only badges: catalog facts about the setting (OS gate, hardware gate, advanced-mode gate,
+   added-in version) -- not app-styled pills (the app has no on-screen equivalent for these -- see
+   Preference below for the one that does), but restyled from the SAME --app-badge-* families
+   BadgeStyles.xaml defines for its own pills, rather than an unrelated gold-era palette: uppercase,
+   0.5px letter-spacing, a 20px radius and neon gradients that read as a different design language
+   sitting right next to the app's own Preference pill. --app-badge-*-background/border/foreground
+   already carry their own light/dark values (app-tokens.css), so one rule per class covers both
+   themes -- no separate [data-theme="dark"] override needed here anymore. */
 .setting-badge {
     display: inline-flex;
     align-items: center;
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-size: var(--app-badge-text-style-font-size);
+    font-weight: var(--app-badge-text-style-font-weight);
     padding: 0.3rem 0.65rem;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: var(--text-muted);
+    border-radius: var(--winui-control-corner-radius);
+    background: var(--app-badge-default-background);
+    border: 1px solid var(--app-badge-default-border);
+    color: var(--app-badge-default-foreground);
     white-space: nowrap;
     line-height: 1;
 }
 
-[data-theme="light"] .setting-badge {
-    background: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+/* Windows-version badges (Windows 10/11 only, or a narrower build range) -> the preference/blue
+   family -- the same one the app's own OS-version copy uses. */
+.setting-badge.win11,
+.setting-badge.win10,
+.setting-badge.build {
+    background: var(--app-badge-preference-background);
+    border-color: var(--app-badge-preference-border);
+    color: var(--app-badge-preference-foreground);
 }
 
-.setting-badge.win11 {
-    background: linear-gradient(135deg, rgba(0, 200, 255, 0.12), rgba(0, 230, 230, 0.12));
-    border-color: rgba(0, 200, 255, 0.35);
-    color: #00a8cc;
-}
-
-[data-theme="dark"] .setting-badge.win11 {
-    background: linear-gradient(135deg, rgba(0, 210, 255, 0.18), rgba(0, 240, 240, 0.18));
-    border-color: rgba(0, 220, 255, 0.45);
-    color: #00e5ff;
-}
-
-.setting-badge.win10 {
-    background: linear-gradient(135deg, rgba(0, 90, 158, 0.15), rgba(0, 60, 120, 0.15));
-    border-color: rgba(0, 90, 158, 0.35);
-    color: #005a9e;
-}
-
-[data-theme="dark"] .setting-badge.win10 {
-    background: linear-gradient(135deg, rgba(0, 102, 178, 0.2), rgba(0, 80, 150, 0.2));
-    border-color: rgba(0, 120, 200, 0.45);
-    color: #4da6ff;
-}
-
+/* Hardware gates (laptops/battery, hybrid sleep capable) -> the recommended/green family. */
 .setting-badge.laptops,
 .setting-badge.hardware {
-    background: linear-gradient(135deg, rgba(40, 167, 69, 0.15), rgba(32, 201, 151, 0.15));
-    border-color: rgba(40, 167, 69, 0.3);
-    color: #28a745;
+    background: var(--app-badge-recommended-background);
+    border-color: var(--app-badge-recommended-border);
+    color: var(--app-badge-recommended-foreground);
 }
 
-[data-theme="dark"] .setting-badge.laptops,
-[data-theme="dark"] .setting-badge.hardware {
-    background: linear-gradient(135deg, rgba(40, 167, 69, 0.2), rgba(32, 201, 151, 0.2));
-    border-color: rgba(40, 167, 69, 0.4);
-    color: #5dd879;
-}
-
+/* Advanced-mode gate -> the custom/amber family. */
 .setting-badge.advanced {
-    background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 152, 0, 0.15));
-    border-color: rgba(255, 193, 7, 0.3);
-    color: #c79100;
+    background: var(--app-badge-custom-background);
+    border-color: var(--app-badge-custom-border);
+    color: var(--app-badge-custom-foreground);
 }
 
-[data-theme="dark"] .setting-badge.advanced {
-    background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 152, 0, 0.2));
-    border-color: rgba(255, 193, 7, 0.4);
-    color: #ffc107;
+/* "Added in vX" -> the base rule above already is the default/neutral family; kept as its own
+   selector so a future change to .setting-badge's base doesn't silently carry this one along. */
+.setting-badge.added {
+    background: var(--app-badge-default-background);
+    border-color: var(--app-badge-default-border);
+    color: var(--app-badge-default-foreground);
 }
-
-.setting-badge.added { border-color: var(--accent-color); color: var(--accent-color); background: transparent; }
 
 /* ---- Pills: Recommended / Windows default (matrix rows) / Preference (card header) ----
    BadgeStyles.xaml: height 20, radius 10, padding 7,0,9,0, 1px border, 4px icon gap, 11px
@@ -1163,8 +1143,12 @@ html {
        measured narrower still -- one token covering "the smaller stuff" beats a third token for the
        rarer case. render-card.mjs's CHAR_W_SM mirrors this value for its own build-time deficit
        math (widenForPaths/widenForChips); keep the two in sync -- a consistency test in
-       theme-css.test.mjs checks it every run. */
-    --mx-char-w-sm: 6.6px;
+       theme-css.test.mjs checks it every run. M6: the measured advance is 11px exactly (6.600px),
+       leaving 6.6px zero headroom -- a hinting rounding difference of a hundredth of a pixel per
+       character compounds across a long path into a real overshoot. Bumped to 6.8px for real slack;
+       re-run the overshoot scan (every .mx-path/.mx-setting-chips right edge vs its cell) after any
+       future change here. */
+    --mx-char-w-sm: 6.8px;
 }
 
 .mx-grid {

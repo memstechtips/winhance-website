@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "winhanceVersion": "26.08.18",
   "catalogHash": "fdfaa61e57d5cf6f15a1e7ec9e30cd41d96c5ae73e52d690eb0eb0038f4d7d32",
-  "settingCount": 19,
+  "settingCount": 20,
   "referenceBuilds": {
     "win10": 19045,
     "win11": 26100
@@ -3253,6 +3253,246 @@
             "accessibleSummary": "Prompt for Credentials: ConsentPromptBehaviorAdmin 1, PromptOnSecureDesktop 1. Always notify: ConsentPromptBehaviorAdmin 2, PromptOnSecureDesktop 1. Notify when apps try to make changes: ConsentPromptBehaviorAdmin 5, PromptOnSecureDesktop 1 (Recommended, Default). Notify when apps try to make changes (no dim): ConsentPromptBehaviorAdmin 5, PromptOnSecureDesktop 0. Never notify: ConsentPromptBehaviorAdmin 0, PromptOnSecureDesktop 0. Registry: HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System."
           },
           "matrixWin10": null
+        },
+        {
+          "id": "privacy-turn-off-copilot",
+          "name": "Windows Copilot",
+          "description": "Controls whether Windows Copilot is available system-wide via group policy for both current user and local machine",
+          "group": "Windows AI",
+          "icon": {
+            "pack": "Material",
+            "name": "Robot"
+          },
+          "control": "Toggle",
+          "isSubjectivePreference": false,
+          "addedInVersion": "26.04.10",
+          "uiParentId": null,
+          "availability": {
+            "builds": [
+              {
+                "min": "22000.0",
+                "max": "*"
+              }
+            ],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": "This setting applies to Windows 11 only",
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot"
+                  },
+                  {
+                    "full": "HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKLM\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "TurnOffWindowsCopilot",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [
+                  {
+                    "text": "Group Policy",
+                    "tooltip": "A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation's policy can also override it.",
+                    "linkSettingId": "",
+                    "linkText": "",
+                    "hasLink": false
+                  }
+                ],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": true
+              }
+            ],
+            "options": [
+              {
+                "label": "On",
+                "cells": [
+                  {
+                    "text": "0 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Off",
+                "cells": [
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": true,
+                "isRecommended": true,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "On: TurnOffWindowsCopilot 0 (or not set). Off: TurnOffWindowsCopilot 1 (Recommended, Default), Current. Registry: HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot, HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot."
+          },
+          "matrixWin10": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot"
+                  },
+                  {
+                    "full": "HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKLM\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "TurnOffWindowsCopilot",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [
+                  {
+                    "text": "Group Policy",
+                    "tooltip": "A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation's policy can also override it.",
+                    "linkSettingId": "",
+                    "linkText": "",
+                    "hasLink": false
+                  }
+                ],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": true
+              }
+            ],
+            "options": [
+              {
+                "label": "On",
+                "cells": [
+                  {
+                    "text": "0 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Off",
+                "cells": [
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": true,
+                "isRecommended": true,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "On: TurnOffWindowsCopilot 0 (or not set) (Default). Off: TurnOffWindowsCopilot 1 (Recommended), Current. Registry: HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot, HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot."
+          }
         }
       ]
     },
@@ -3262,7 +3502,7 @@
         {
           "id": "start-menu-clean-10",
           "name": "Clean Start Menu",
-          "description": "Removes all pinned items and applies a clean layout for the current user and any newly created profiles.",
+          "description": "Removes all pinned items and applies a clean layout for the current user and any newly created profiles. To clean other existing users, run this again while signed in as each of them.",
           "group": "Layout",
           "icon": {
             "pack": "Material",
@@ -3321,7 +3561,37 @@
                 "hasScope": false
               },
               {
+                "label": "Show recently added apps",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
                 "label": "Show most used apps",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show recommended files and recently opened items",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show recommendations for tips, shortcuts, new apps, and more",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show account-related notifications",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Bing Search Results in Start Menu",
                 "detail": "Off",
                 "scope": "",
                 "hasScope": false
@@ -3334,9 +3604,9 @@
               {
                 "heading": "PowerShell Scripts",
                 "label": "On Apply",
+                "body": "\r\n$layoutPath = 'C:\\Users\\Default\\AppData\\Local\\Microsoft\\Windows\\Shell\\LayoutModification.xml'\r\n$layoutXml = @'\r\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LayoutModificationTemplate xmlns:defaultlayout=\"http://schemas.microsoft.com/Start/2014/FullDefaultLayout\" xmlns:start=\"http://schemas.microsoft.com/Start/2014/StartLayout\" Version=\"1\" xmlns:taskbar=\"http://schemas.microsoft.com/Start/2014/TaskbarLayout\" xmlns=\"http://schemas.microsoft.com/Start/2014/LayoutModification\">\r\n    <LayoutOptions StartTileGroupCellWidth=\"6\" />\r\n    <DefaultLayoutOverride>\r\n        <StartLayoutCollection>\r\n            <defaultlayout:StartLayout GroupCellWidth=\"6\" />\r\n        </StartLayoutCollection>\r\n    </DefaultLayoutOverride>\r\n</LayoutModificationTemplate>\r\n'@\r\n\r\n# Future users: drop the clean template into the Default profile (force-create dir, overwrite if present).\r\nNew-Item -ItemType Directory -Path (Split-Path $layoutPath) -Force | Out-Null\r\n[System.IO.File]::WriteAllText($layoutPath, $layoutXml)\r\n\r\n# Current user only: apply now via their SID (HKU, not HKCU - correct under OTS), then unlock so they can still customize.\r\n# Other existing users are intentionally not touched - Win10 has no supported way to apply a\r\n# customizable layout to a signed-out profile, so users re-run this per account (see description).\r\n$me = ((Get-CimInstance Win32_ComputerSystem).UserName -split '\\\\')[-1]\r\nif ($me) {\r\n    $sid = (New-Object System.Security.Principal.NTAccount($me)).Translate([System.Security.Principal.SecurityIdentifier]).Value\r\n    $key = \"HKU\\$sid\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer\"\r\n    reg add $key /v StartLayoutFile /t REG_SZ /d $layoutPath /f | Out-Null\r\n    reg add $key /v LockedStartLayout /t REG_DWORD /d 1 /f | Out-Null\r\n    Stop-Process -Name StartMenuExperienceHost -Force -EA SilentlyContinue; Start-Sleep 3\r\n    reg add $key /v LockedStartLayout /t REG_DWORD /d 0 /f | Out-Null\r\n    Stop-Process -Name StartMenuExperienceHost -Force -EA SilentlyContinue\r\n}\r\n",
                 "kind": "PowerShell",
-                "description": "",
-                "body": "$layoutPath = 'C:\\Users\\Default\\AppData\\Local\\Microsoft\\Windows\\Shell\\LayoutModification.xml'"
+                "description": "Winhance runs this script when you apply the matching option."
               }
             ],
             "hasCode": true,
@@ -3349,7 +3619,84 @@
             "recommendedTooltip": "What Winhance suggests for most people",
             "defaultTooltip": "How Windows ships out of the box",
             "currentTooltip": "This is what your system is set to now",
-            "accessibleSummary": "Clean Start Menu."
+            "accessibleSummary": ". ."
+          },
+          "matrixWin10": {
+            "groups": [],
+            "columns": [],
+            "options": [],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "",
+            "settingDescription": "",
+            "requirements": [
+              {
+                "text": "Asks you to confirm before it runs",
+                "tooltip": "Prompts before applying this setting",
+                "linkSettingId": "",
+                "linkText": "",
+                "hasLink": false
+              }
+            ],
+            "notes": [
+              {
+                "label": "Show recently added apps",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show most used apps",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show suggestions in Start",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show recommended files and recently opened items",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Bing Search Results in Start Menu",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              }
+            ],
+            "notesHeading": "Also happens when you apply, if you agree to the prompt",
+            "notesDetailHeader": "Details",
+            "hasNotes": true,
+            "codeBlocks": [
+              {
+                "heading": "PowerShell Scripts",
+                "label": "On Apply",
+                "body": "\r\n$layoutPath = 'C:\\Users\\Default\\AppData\\Local\\Microsoft\\Windows\\Shell\\LayoutModification.xml'\r\n$layoutXml = @'\r\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LayoutModificationTemplate xmlns:defaultlayout=\"http://schemas.microsoft.com/Start/2014/FullDefaultLayout\" xmlns:start=\"http://schemas.microsoft.com/Start/2014/StartLayout\" Version=\"1\" xmlns:taskbar=\"http://schemas.microsoft.com/Start/2014/TaskbarLayout\" xmlns=\"http://schemas.microsoft.com/Start/2014/LayoutModification\">\r\n    <LayoutOptions StartTileGroupCellWidth=\"6\" />\r\n    <DefaultLayoutOverride>\r\n        <StartLayoutCollection>\r\n            <defaultlayout:StartLayout GroupCellWidth=\"6\" />\r\n        </StartLayoutCollection>\r\n    </DefaultLayoutOverride>\r\n</LayoutModificationTemplate>\r\n'@\r\n\r\n# Future users: drop the clean template into the Default profile (force-create dir, overwrite if present).\r\nNew-Item -ItemType Directory -Path (Split-Path $layoutPath) -Force | Out-Null\r\n[System.IO.File]::WriteAllText($layoutPath, $layoutXml)\r\n\r\n# Current user only: apply now via their SID (HKU, not HKCU - correct under OTS), then unlock so they can still customize.\r\n# Other existing users are intentionally not touched - Win10 has no supported way to apply a\r\n# customizable layout to a signed-out profile, so users re-run this per account (see description).\r\n$me = ((Get-CimInstance Win32_ComputerSystem).UserName -split '\\\\')[-1]\r\nif ($me) {\r\n    $sid = (New-Object System.Security.Principal.NTAccount($me)).Translate([System.Security.Principal.SecurityIdentifier]).Value\r\n    $key = \"HKU\\$sid\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer\"\r\n    reg add $key /v StartLayoutFile /t REG_SZ /d $layoutPath /f | Out-Null\r\n    reg add $key /v LockedStartLayout /t REG_DWORD /d 1 /f | Out-Null\r\n    Stop-Process -Name StartMenuExperienceHost -Force -EA SilentlyContinue; Start-Sleep 3\r\n    reg add $key /v LockedStartLayout /t REG_DWORD /d 0 /f | Out-Null\r\n    Stop-Process -Name StartMenuExperienceHost -Force -EA SilentlyContinue\r\n}\r\n",
+                "kind": "PowerShell",
+                "description": "Winhance runs this script when you apply the matching option."
+              }
+            ],
+            "hasCode": true,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": ". ."
           }
         }
       ]

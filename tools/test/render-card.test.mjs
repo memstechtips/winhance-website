@@ -84,11 +84,18 @@ test('a both-roles option carries exactly two pills in the role cell and none in
   assert.match(roleCellHtml, /mx-pill-default/);
 });
 
-test('pills carry the app icon geometry, its viewBox, and the qualified label', () => {
+test('pills carry the app icon geometry at native size, centred in a 12x12 box, with the qualified label', () => {
+  // M8: the outer <svg>/viewBox stay 12x12 for EVERY pill -- stretching BadgeDefaultIconPath's 11x11
+  // geometry to fill a 12x12 viewBox scaled it 9% and re-blurred the 1px pane gaps it exists to keep
+  // crisp. A geometry already on a 12x12 canvas (Recommended) renders unwrapped; an 11x11 one
+  // (Default, the Windows logo) is centred with a (12-11)/2 = 0.5 translate, like WinUI's PathIcon.
   const m = byId['security-uac-level'].matrix;
   const html = renderMatrix(m, { geometries: geo });
-  assert.match(html, new RegExp(`<svg viewBox="0 0 ${geo.BadgeRecommendedIconPath.viewBox} ${geo.BadgeRecommendedIconPath.viewBox}" width="12" height="12"[^>]*><path d="${geo.BadgeRecommendedIconPath.data.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}" fill="currentColor"/></svg>`));
-  assert.match(html, new RegExp(`<svg viewBox="0 0 ${geo.BadgeDefaultIconPath.viewBox} ${geo.BadgeDefaultIconPath.viewBox}"`));
+  assert.equal(geo.BadgeRecommendedIconPath.viewBox, 12);
+  assert.equal(geo.BadgeDefaultIconPath.viewBox, 11);
+  assert.match(html, new RegExp(`<svg viewBox="0 0 12 12" width="12" height="12"[^>]*><path d="${geo.BadgeRecommendedIconPath.data.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}" fill="currentColor"/></svg>`));
+  assert.match(html, new RegExp(`<svg viewBox="0 0 12 12" width="12" height="12"[^>]*><g transform="translate\\(0\\.5 0\\.5\\)"><path d="${geo.BadgeDefaultIconPath.data.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}" fill="currentColor"/></g></svg>`));
+  assert.doesNotMatch(html, /viewBox="0 0 11 11"/);
   assert.match(html, /<span class="mx-pill-label">Recommended<\/span>/);
   assert.match(html, /<span class="mx-pill-label">Default<\/span>/);
 });
@@ -302,10 +309,13 @@ test('a narrow-column group with a long path widens exactly enough to fit it, ea
 });
 
 test('a group whose path already fits comfortably across its wide span is left at the base width (no spurious widening)', () => {
-  // theme-mode-windows' one registry group spans BOTH data columns -- two columns' worth of base
+  // security-uac-level's one registry group spans BOTH data columns -- two columns' worth of base
   // width comfortably covers its one path, so widenForPaths must find zero deficit and leave
-  // dataColumnWidth's own fixed part (24px, unwidened) on both columns.
-  const m = byId['theme-mode-windows'].matrix;
+  // dataColumnWidth's own fixed part (24px, unwidened) on both columns. (M6 bumped CHAR_W_SM from
+  // 6.6 to 6.8 for real overshoot headroom, which tipped theme-mode-windows' own path -- previously
+  // this test's fixture -- into genuinely needing a few px of widening; security-uac-level's shorter
+  // path still has comfortable margin.)
+  const m = byId['security-uac-level'].matrix;
   const html = renderMatrix(m, { geometries: geo });
   const g = m.groups.find((g) => g.hasPaths);
   assert.equal(g.columnSpan, 2, 'this case only proves the no-op path if the group spans more than one column');
@@ -373,4 +383,98 @@ test('a matrix with no requirement chips leaves the role column at its base widt
   }
   const longest = Math.max(...labels.map((l) => l.length));
   assert.match(html, new RegExp(`<col class="mx-col-role" style="width: calc\\(58px \\+ ${longest} \\* var\\(--mx-char-w\\)\\)">`));
+});
+
+// --- whole-branch review C1: widenForNotes ---
+
+test('a note label/heading longer than the bare option floor widens the option column when no option rows exist (C1, split shape)', () => {
+  // start-menu-clean-10: 0 columns, 0 options -- AddNotes' own split rule (mirrored in noteSpans)
+  // puts the note label alone in the option column, so widening role (widenForChips' own move) can't
+  // reach it. Safe here specifically because a matrix this shape has no .mx-option/.mx-role anywhere.
+  const m = byId['start-menu-clean-10'].matrix;
+  assert.equal(m.columns.length, 0);
+  assert.equal(m.options.length, 0);
+  assert.ok(m.hasNotes && m.notes.length > 1, 'fixture must carry several start-menu-clean-10 notes');
+  const longest = Math.max(m.notesHeading.length, ...m.notes.map((n) => n.label.length));
+  assert.ok(longest > 20, 'fixture must carry a note label/heading long enough to prove the widening');
+  const html = renderMatrix(m, { geometries: geo });
+  const optionMatch = html.match(/--mx-option-w: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)/);
+  assert.ok(optionMatch, '--mx-option-w must be set inline');
+  const optionPx = Number(optionMatch[1]) + Number(optionMatch[2]) * CHAR_W;
+  const neededPx = 24 + longest * CHAR_W;
+  assert.ok(optionPx >= neededPx - 0.01, `option column is ${optionPx}px, needs >= ${neededPx}px for the longest note label/heading`);
+});
+
+test('a note label longer than the base role floor widens role only when option rows exist (C1, non-split shape)', () => {
+  // taskbar-clean has real columns/options, so AddNotes spans the label over option+role together --
+  // the same shape widenForChips already charges, and the fix must leave optionW exactly alone here.
+  const m = byId['taskbar-clean'].matrix;
+  assert.ok(m.columns.length > 0 && m.options.length > 0, 'fixture must carry both columns and options');
+  assert.ok(m.hasNotes && m.notes.length > 1, 'fixture must carry several taskbar-clean notes');
+  const longest = Math.max(m.notesHeading.length, ...m.notes.map((n) => n.label.length));
+  const html = renderMatrix(m, { geometries: geo });
+  const longestOption = Math.max(...m.options.map((o) => o.label.length));
+  assert.match(html, new RegExp(`--mx-option-w: calc\\(45px \\+ ${longestOption} \\* var\\(--mx-char-w\\)\\);`), 'optionW must stay untouched');
+  const optionMatch = html.match(/--mx-option-w: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)/);
+  const roleMatch = html.match(/<col class="mx-col-role" style="width: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)">/);
+  assert.ok(roleMatch, 'role column must carry an explicit width');
+  const optionPx = Number(optionMatch[1]) + Number(optionMatch[2]) * CHAR_W;
+  const rolePx = Number(roleMatch[1]) + Number(roleMatch[2]) * CHAR_W;
+  const neededPx = 24 + longest * CHAR_W;
+  assert.ok(optionPx + rolePx >= neededPx - 0.01, `option+role (${optionPx + rolePx}px) must cover the note's ${neededPx}px`);
+});
+
+// --- whole-branch review C2: availability-gated matrix rendering ---
+
+test('a Windows-11-only setting with a differing win10 export renders exactly one table, no build heading', () => {
+  const s = byId['privacy-turn-off-copilot'];
+  assert.ok(s.matrixWin10, 'fixture must carry a matrixWin10 twin for this setting');
+  assert.deepEqual(s.availability.builds, [{ min: '22000.0', max: '*' }]);
+  const html = renderCard(s, ctx);
+  assert.equal((html.match(/<table class="mx-grid">/g) ?? []).length, 1);
+  assert.doesNotMatch(html, /<h4 class="mx-build">/);
+});
+
+test('a Windows-10-only setting with a differing win11 export renders exactly one table, headed neither build (C2)', () => {
+  // start-menu-clean-10's badge says "Windows 10 only" (availability blocks the win11 reference
+  // build), but rendering unconditionally showed its WIN11 export -- headed "Windows 11" -- since
+  // matrixWin10 exists whenever the two builds' exports differ, regardless of availability.
+  const s = byId['start-menu-clean-10'];
+  assert.ok(s.matrixWin10, 'fixture must carry a matrixWin10 twin for this setting');
+  assert.deepEqual(s.availability.builds, [{ min: '0.0', max: '21999.2147483647' }]);
+  const html = renderCard(s, ctx);
+  assert.equal((html.match(/<table class="mx-grid">/g) ?? []).length, 1);
+  assert.doesNotMatch(html, /<h4 class="mx-build">/);
+  // The surviving table must be the WIN10 export, not the (unavailable) win11 one.
+  assert.match(html, new RegExp(esc(s.matrixWin10.notes[0].label)));
+});
+
+test('a twin whose availability excludes neither reference build still renders both, headed', () => {
+  const s = byId['theme-mode-windows'];
+  assert.ok(s.matrixWin10, 'fixture must carry a matrixWin10 twin for this setting');
+  assert.deepEqual(s.availability.builds, [], 'fixture must carry an ungated (both-builds) twin');
+  // theme-mode-windows has a UI child (theme-mode-apps) with its own single table -- render solo so
+  // the count below is exactly this card's own two.
+  const soloCtx = { childrenOf: new Map(), icons, geometries: geo, urlFor: ctx.urlFor };
+  const html = renderCard(s, soloCtx);
+  assert.equal((html.match(/<table class="mx-grid">/g) ?? []).length, 2);
+  assert.match(html, /<h4 class="mx-build">Windows 11<\/h4>/);
+  assert.match(html, /<h4 class="mx-build">Windows 10<\/h4>/);
+});
+
+test('C2 build gating threads through renderCard via ctx.referenceBuilds, defaulting to the app export constants', () => {
+  const s = byId['privacy-turn-off-copilot'];
+  // An explicit reference build outside the allowed range (a pre-22000 "win11") reproduces the same
+  // single-table, no-heading result the default win11=26100 constant already proves above --
+  // confirms the gate reads ctx.referenceBuilds rather than a value baked in at import time.
+  const html = renderCard(s, { ...ctx, referenceBuilds: { win10: 19045, win11: 19045 } });
+  assert.equal((html.match(/<table class="mx-grid">/g) ?? []).length, 1);
+});
+
+// --- whole-branch review M9: pathsRow's document-order assumption ---
+
+test('pathsRow throws if a hasPaths group is not at its own declared startColumn (M9)', () => {
+  const base = byId['gaming-xbox-game-dvr'].matrix;
+  const tampered = { ...base, groups: base.groups.map((g, i) => (i === 1 ? { ...g, startColumn: g.startColumn + 1 } : g)) };
+  assert.throws(() => renderMatrix(tampered, { geometries: geo }), /pathsRow:.*expected at column/);
 });

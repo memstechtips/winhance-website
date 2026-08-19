@@ -165,9 +165,11 @@ test('generate() adds css/app-tokens.css when a theme path is given', () => {
   assert.equal(out.get('css/app-tokens.css'), themeCss(theme));
 });
 
-test('generate() omits css/app-tokens.css when no theme.json is found', () => {
-  const out = generate({ catalogPath: join(repo, 'tools', 'fixtures', 'catalog.sample.json'), siteDir: join(repo, 'docs') });
-  assert.ok(!out.has('css/app-tokens.css'));
+// M10: generate() used to omit css/app-tokens.css (and every pill icon) silently when theme.json was
+// missing at the default path -- a bare run rewrote every page with none of the app's own tokens and
+// still reported success. It now fails closed; covered directly in cli.test.mjs.
+test('generate() throws when no theme.json is found at the default path', () => {
+  assert.throws(() => generate({ catalogPath: join(repo, 'tools', 'fixtures', 'catalog.sample.json'), siteDir: join(repo, 'docs') }), /theme\.json not found/);
 });
 
 // --- render-card.mjs's char-width mirrors (fix round 2) ---
