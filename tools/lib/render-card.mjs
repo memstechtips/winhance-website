@@ -18,10 +18,12 @@ const OPTION_CELL_FIXED_WIDTH = 21 + 12 * 2;
 // option column's alone).
 const DATA_CELL_FIXED_WIDTH = 12 * 2;
 
-// BadgePillBase's own metrics on top of the cell padding above: 12px icon + 4px icon-to-label gap +
-// 1px border on both sides + 7px/9px left/right padding = 34px of chrome around whatever the pill's
-// own label measures.
-const ROLE_CELL_FIXED_WIDTH = DATA_CELL_FIXED_WIDTH + 12 + 4 + 2 + 7 + 9;
+// BadgePillBase's own metrics: 12px icon + 4px icon-to-label gap + 1px border on both sides +
+// 7px/9px left/right padding = 34px of chrome around whatever the pill's own label measures.
+const PILL_CHROME = 12 + 4 + 2 + 7 + 9;
+
+// The Spacing of the badges' horizontal StackPanel (OptionMatrixView.AddOptionRow).
+const PILL_GAP = 4;
 
 // Metrics chip: TechDetail.Chip's own chrome -- 8px left/right padding *2 + 1px border *2 = 18px --
 // on top of the same 24px cell padding every header-band cell shares (mx-setting uses HeaderBand's
@@ -258,19 +260,29 @@ function optionColumnWidth(matrix) {
   return { fixed: OPTION_CELL_FIXED_WIDTH, chars: longest };
 }
 
-// Sized to the longest Recommended/Windows-default pill label actually used here, qualified with its
-// context (Qualified()) exactly like the pill itself renders -- fix round 1. Without an explicit width,
-// table-layout: fixed (needed for the option column above) treats this column as "auto" and divides
-// whatever space is left over it and every data column EVENLY, which squeezed both far narrower than
-// their content and forced value text to overlap the next column.
+// Sized to the widest ROW's badges, not the widest single label: AddOptionRow lays an option's badges
+// out in a horizontal StackPanel inside an auto-width Grid column, so a row that is both Recommended
+// and the Windows default shows both pills side by side and stays the same 40px tall as every other
+// row. Charging only the longest label wrapped that pair onto a second line and grew the row past the
+// app's Table.Cell MinHeight. Labels are qualified with their context (Qualified()) exactly like the
+// pill itself renders. An explicit width is needed at all because table-layout: fixed (needed for the
+// option column above) otherwise treats this column as "auto" and divides whatever space is left over
+// it and every data column EVENLY, squeezing both far narrower than their content.
 function roleColumnWidth(matrix) {
-  const labels = [matrix.roleHeader];
+  // The header cell holds plain text rather than a pill, so only the cell's own padding applies to it.
+  let widest = { fixed: DATA_CELL_FIXED_WIDTH, chars: matrix.roleHeader.length };
   for (const o of matrix.options) {
+    const labels = [];
     if (o.isRecommended) labels.push(qualified(matrix.recommendedLabel, o.recommendedContext));
     if (o.isWindowsDefault) labels.push(qualified(matrix.defaultLabel, o.defaultContext));
+    if (!labels.length) continue;
+    const row = {
+      fixed: DATA_CELL_FIXED_WIDTH + labels.length * PILL_CHROME + (labels.length - 1) * PILL_GAP,
+      chars: labels.reduce((sum, l) => sum + l.length, 0),
+    };
+    if (pxOf(row) > pxOf(widest)) widest = row;
   }
-  const longest = labels.reduce((max, l) => Math.max(max, l.length), 0);
-  return { fixed: ROLE_CELL_FIXED_WIDTH, chars: longest };
+  return widest;
 }
 
 // A caption+value pair sharing a line (captionedLine/mx-line) competes against every option's own cell
@@ -346,14 +358,22 @@ export function renderMatrix(matrix, { heading = '', urlFor = () => null, geomet
   // and table-layout: fixed (finding 2) means nothing grows to meet them on its own anymore.
   widenForPaths(matrix, dataWidths);
   roleW = widenForChips(matrix, optionW, roleW);
-  // table-layout: fixed (finding 2) makes every <col>'s width authoritative, but ONLY when the table's
-  // own width is a definite value the browser doesn't need to redistribute -- an explicit width equal
-  // to the exact sum of the columns leaves nothing left over to redistribute, unlike `width: 100%` on a
-  // matrix narrower than its container (verified live: with 100%, Chromium proportionally stretched
-  // every column, including the option column, past --mx-option-w -- reopening the exact bug this fix
-  // round closes).
+  // table-layout: fixed (finding 2) makes every <col>'s width authoritative, but ONLY when the slack
+  // between the table's own width and its columns has somewhere definite to go. --mx-table-w is the
+  // exact sum, so a table at that width has none (verified live: with `width: 100%` on a matrix
+  // narrower than its container, Chromium proportionally stretched every column, including the option
+  // column, past --mx-option-w -- reopening the exact bug this fix round closes).
   const tableW = sumWidths([optionW, roleW, ...dataWidths]);
-  const cols = `<col class="mx-col-option"><col class="mx-col-role" style="width: ${widthCalc(roleW)}">${dataWidths.map((w) => `<col style="width: ${widthCalc(w)}">`).join('')}`;
+  // The LAST column is left auto, which is TableLayout.StretchToViewport ("only the last column grows,
+  // which keeps the earlier columns aligned with their headers"): .mx-grid asks for at least its
+  // container's width, and under fixed layout a single auto column takes the whole remainder -- so a
+  // matrix narrower than the card fills it instead of stopping mid-card and leaving dead space beside
+  // it, exactly as the app's own comment describes. --mx-table-w still carries that column's own
+  // width, so the remainder can never come out narrower than its content.
+  const sized = [{ w: roleW, cls: ' class="mx-col-role"' }, ...dataWidths.map((w) => ({ w, cls: '' }))];
+  const cols = `<col class="mx-col-option">${sized
+    .map(({ w, cls }, i) => (i === sized.length - 1 ? `<col${cls}>` : `<col${cls} style="width: ${widthCalc(w)}">`))
+    .join('')}`;
   const body = matrix.options.map((o) => optionRow(matrix, o, geometries)).join('') + notesRows(matrix);
   const boxClass = matrix.hasCode ? 'mx-box mx-has-code' : 'mx-box';
   const columnsRow = hasColumnHeaderRow(matrix) ? `<tr class="mx-row-columns">${columnHeaderRow(matrix, urlFor)}</tr>` : '';

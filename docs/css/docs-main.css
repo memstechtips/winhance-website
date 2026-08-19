@@ -222,11 +222,6 @@ li {
     flex-shrink: 0;
 }
 
-.icon-not-sync {
-    color: #FF2800;
-    flex-shrink: 0;
-}
-
 .icon-sync-off {
     color: #FF2800;
     flex-shrink: 0;
@@ -263,6 +258,13 @@ header {
     transition: background-color 0.3s ease;
 }
 
+/* The word mark in the bar is an <h1> as well, and the content-heading rule above draws a hairline
+   under every h1 -- which came out as a stray rule under the logo in both themes. */
+.logo h1 {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
 .header-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -285,6 +287,35 @@ header {
     .logo img {
         height: 24px !important;
         margin-right: 8px !important;
+    }
+}
+
+/* Phone widths: the bar's five items (drawer toggle, word mark, search, theme, GitHub) no longer fit
+   side by side. Everything shrank proportionally, "Winhance Docs" wrapped onto a second line, and the
+   word mark grew past the 70px bar and printed over the InfoBar beneath it. The mark keeps one line
+   at a smaller size and stops shrinking; the search box takes whatever is left. */
+@media (max-width: 600px) {
+    .logo {
+        flex-shrink: 0;
+    }
+
+    .logo h1 {
+        font-size: 1rem !important;
+        line-height: 1.4;
+        white-space: nowrap;
+    }
+
+    .logo img {
+        height: 22px !important;
+    }
+
+    .search-container {
+        margin: 0 0.5rem;
+        min-width: 0;
+    }
+
+    .search-container input {
+        padding-left: 2.1rem;
     }
 }
 
@@ -917,6 +948,33 @@ html {
     white-space: nowrap;
 }
 
+/* Phone widths: the header's right-hand column (pills + the id chip) cannot shrink, and a long id
+   like `gaming-performance-explorer-menu-show-delay` is wider than the whole card -- it ran off the
+   right edge, where body's overflow-x: hidden clipped it with no way to scroll it back. Below 600px
+   that column takes a row of its own under the name, left-aligned, and the id chip wraps. */
+@media (max-width: 600px) {
+    .setting-header {
+        flex-wrap: wrap;
+    }
+
+    .setting-pills {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .setting-badges {
+        justify-content: flex-start;
+    }
+
+    .setting-id {
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+}
+
 /* Card-only badges: catalog facts about the setting, not app-styled pills (the app has no
    on-screen equivalent for these -- see Preference below for the one that does). */
 .setting-badge {
@@ -1035,9 +1093,13 @@ html {
 .mx-chips { display: flex; flex-wrap: wrap; gap: 4px; }
 .mx-setting-chips { margin-top: 4px; }
 
+/* inline-block, NOT inline-flex: a chip's content is one run of inline text with the setting name as
+   an <a> inside it (ChipContent splits the sentence around the link and keeps the spaces on either
+   side of it). A flex container turns those runs into anonymous flex items and strips their leading
+   and trailing whitespace, which rendered "Enables: X (set automatically)" as "Enables:X(set
+   automatically)". */
 .mx-chip {
-    display: inline-flex;
-    align-items: center;
+    display: inline-block;
     font-family: var(--winui-font-family);
     font-weight: normal;
     background: var(--app-techdetail-chip-background);
@@ -1106,13 +1168,19 @@ html {
 }
 
 .mx-grid {
-    /* --mx-table-w (set inline per matrix) is the exact sum of every column's own width -- role and
-       data columns get one too (see .mx-grid col rules and render-card.mjs's roleColumnWidth/
-       dataColumnWidth), so there is nothing left over for `fixed` layout to redistribute. `width: 100%`
-       looked right until a matrix narrower than its container: Chromium then proportionally stretches
-       EVERY column, including the option column, past --mx-option-w, reopening the very mismatch this
-       fix round exists to close (verified live, fix round 1). */
-    width: var(--mx-table-w);
+    /* The site-wide `table` rule adds 1.5rem below every table. Inside the box that reads as dead
+       space under the last row -- and above the code blocks, where the app has the grid's own
+       bottom hairline and nothing else. */
+    margin: 0;
+    /* --mx-table-w (set inline per matrix) is the exact sum of every column's own width (see the
+       .mx-grid col rules and render-card.mjs's roleColumnWidth/dataColumnWidth). A plain `width: 100%`
+       looked right until a matrix narrower than its container: with every column sized, Chromium
+       proportionally stretches ALL of them, including the option column, past --mx-option-w, reopening
+       the very mismatch this fix round exists to close (verified live, fix round 1). So the LAST <col>
+       carries no width, and max() hands the slack to that one column alone -- the app's
+       TableLayout.StretchToViewport, whose own comment names the bug this closes ("without the stretch
+       a short table stops mid-card and leaves dead space beside it"). */
+    width: max(var(--mx-table-w), 100%);
     /* Authoritative <col> widths (Controller ruling 1, fix round 1): without `fixed`, a specified
        <col> width is only a hint -- the browser can still grow a column past it to fit content,
        which re-opens the same col-width-vs-sticky-left mismatch the --mx-char-w fix above closes.
@@ -1148,30 +1216,41 @@ html {
 .mx-grid tbody tr:last-child > * { border-bottom: 0; }
 .mx-has-code .mx-grid tbody tr:last-child > * { border-bottom: 1px solid var(--app-techdetail-table-strokebrush); }
 
+/* WinUI's MinHeight maps to `height` on a table cell, NOT to min-height: CSS leaves min-height
+   undefined for table cells and Chromium ignores it outright, while a cell's `height` is a MINIMUM
+   the row grows past whenever its content needs more (CSS 2.1 17.5.3) -- exactly MinHeight's
+   semantics. With min-height these bands came out 30px instead of the app's 32 and the note rows
+   21-22px instead of 40. The one exception is .mx-role, which is a flex container rather than a
+   table cell (see the pill row below), and where min-height is the property that works. */
 .mx-setting, .mx-group, .mx-paths {
     background: var(--app-techdetail-table-headerband-background);
-    min-height: var(--app-techdetail-table-headerband-min-height);
+    height: var(--app-techdetail-table-headerband-min-height);
     padding: var(--app-techdetail-table-headerband-padding);
 }
 
 .mx-h-option, .mx-h-role, .mx-col {
     background: var(--app-techdetail-table-headercell-background);
-    min-height: var(--app-techdetail-table-headercell-min-height);
+    height: var(--app-techdetail-table-headercell-min-height);
     padding: var(--app-techdetail-table-headercell-padding);
     font-family: var(--app-techdetail-table-headertext-font-family), var(--font-code);
     font-size: var(--app-techdetail-table-headertext-font-size);
     font-weight: var(--app-techdetail-table-headertext-font-weight);
 }
 
-.mx-option, .mx-role, .mx-value,
+.mx-option, .mx-value,
 .mx-grid tr.mx-note > th, .mx-grid tr.mx-note > td {
+    height: var(--app-techdetail-table-cell-min-height);
+    padding: var(--app-techdetail-table-cell-padding);
+}
+
+.mx-role {
     min-height: var(--app-techdetail-table-cell-min-height);
     padding: var(--app-techdetail-table-cell-padding);
 }
 
 .mx-grid tr.mx-notes-head > th {
     background: var(--app-techdetail-table-headerband-background);
-    min-height: var(--app-techdetail-table-headerband-min-height);
+    height: var(--app-techdetail-table-headerband-min-height);
     padding: var(--app-techdetail-table-headerband-padding);
 }
 
@@ -1298,7 +1377,10 @@ html {
     white-space: nowrap;
 }
 
-.mx-role { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+/* nowrap: AddOptionRow's badges are a horizontal StackPanel, so a row that is both Recommended and
+   the Windows default shows both pills on one line and keeps the app's 40px row height. The column is
+   sized for exactly that (render-card.mjs's roleColumnWidth), so nothing has to wrap to fit. */
+.mx-role { display: flex; flex-wrap: nowrap; align-items: center; gap: 4px; }
 
 .mx-value code {
     font-family: var(--app-techdetail-table-value-font-family), var(--font-code);
@@ -1427,9 +1509,15 @@ html {
 }
 
 /* WIP Banner */
-/* The InfoBar informational treatment, same as .callout-info/.callout-note. */
+/* The InfoBar informational treatment, same as .callout-info/.callout-note. The fill
+   token is translucent (#80F6F6F6 / #08FFFFFF), which the app composites over an opaque
+   surface. This banner is position:fixed over scrolling content, so it needs that opaque
+   surface itself: the solid page background as the colour layer, the InfoBar fill as an
+   image layer on top of it. */
 .docs-wip-banner {
-    background-color: var(--winui-system-fill-color-attention-background);
+    background-color: var(--winui-solid-background-fill-color-base);
+    background-image: linear-gradient(var(--winui-system-fill-color-attention-background),
+            var(--winui-system-fill-color-attention-background));
     border-bottom: 1px solid var(--winui-card-stroke-color-default);
     padding: 0.75rem 1.5rem;
     text-align: center;

@@ -186,13 +186,34 @@ test('--mx-table-w is set inline on .mx-box as the sum of every column, so table
   // option column, past --mx-option-w. An explicit width equal to the exact sum leaves nothing over.
   const m = byId['security-uac-level'].matrix;
   const html = renderMatrix(m, { geometries: geo });
-  assert.match(html, /--mx-table-w: calc\(\d+px \+ \d+ \* var\(--mx-char-w\)\)"/);
-  // Role and both data columns each carry their own explicit width -- only the option column uses
-  // the CSS-rule-driven var(--mx-option-w); the frozen role column still needs its own <col> width or
-  // it falls into "auto" and gets divided up with the data columns.
-  assert.match(html, /<col class="mx-col-role" style="width: calc\(\d+px \+ \d+ \* var\(--mx-char-w\)\)">/);
-  const dataCols = [...html.matchAll(/<col style="width: calc\((\d+)px \+ (\d+) \* var\(--mx-char-w\)\)">/g)];
-  assert.equal(dataCols.length, m.columns.length);
+  assert.match(html, /--mx-table-w: calc\([\d.]+px \+ \d+ \* var\(--mx-char-w\)\)"/);
+  // Role and every data column but the last carry their own explicit width -- only the option column
+  // uses the CSS-rule-driven var(--mx-option-w); the frozen role column still needs its own <col>
+  // width or it falls into "auto" and gets divided up with the data columns.
+  assert.match(html, /<col class="mx-col-role" style="width: calc\([\d.]+px \+ \d+ \* var\(--mx-char-w\)\)">/);
+  const dataCols = [...html.matchAll(/<col style="width: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)">/g)];
+  assert.equal(dataCols.length, m.columns.length - 1);
+});
+
+test("the last column is left auto so it absorbs the slack, mirroring TableLayout.StretchToViewport", () => {
+  // The app grows only the last column to fill the viewport, "which keeps the earlier columns aligned
+  // with their headers"; without it "a short table stops mid-card and leaves dead space beside it".
+  // On the web that is .mx-grid's max(--mx-table-w, 100%) plus exactly one auto <col> to take the
+  // remainder -- giving every column a width instead made Chromium share the slack proportionally and
+  // pushed the option column past --mx-option-w (fix round 1's sticky-column bug).
+  const html = renderMatrix(byId['security-uac-level'].matrix, { geometries: geo });
+  const colgroup = html.match(/<colgroup>(.*?)<\/colgroup>/s)[1];
+  const cols = [...colgroup.matchAll(/<col[^>]*>/g)].map(([c]) => c);
+  assert.ok(cols.length > 2);
+  for (const col of cols.slice(1, -1)) assert.match(col, /style="width: calc\(/, `${col} must carry its own width`);
+  assert.equal(cols.at(-1), '<col>', 'the last column carries no width at all');
+  // --mx-table-w still counts that column, so the remainder can never be narrower than its content.
+  const tableW = html.match(/--mx-table-w: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)/);
+  const sized = [...colgroup.matchAll(/width: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)/g)];
+  const option = html.match(/--mx-option-w: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)/);
+  const px = ([, fixed, chars]) => Number(fixed) + Number(chars) * CHAR_W;
+  const accounted = px(option) + sized.reduce((sum, m) => sum + px(m), 0);
+  assert.ok(px(tableW) > accounted, 'the unsized last column must still be part of --mx-table-w');
 });
 
 test('twin win10/win11 matrices each render their own box under a build heading', () => {
@@ -249,9 +270,16 @@ test('chips whose linkSettingId resolves become links on the setting name only',
 // nowrap that isn't charged against a column just overflows it instead of growing it the way
 // table-layout: auto used to.)
 
+// Every data column's rendered width, INCLUDING the last one -- which carries no width of its own
+// (it is the auto column that absorbs the viewport slack, mirroring TableLayout.StretchToViewport),
+// so its own base width is recovered from --mx-table-w minus everything that is sized.
 function dataColWidths(html) {
-  return [...html.matchAll(/<col style="width: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)">/g)]
-    .map(([, fixed, chars]) => Number(fixed) + Number(chars) * CHAR_W);
+  const px = ([, fixed, chars]) => Number(fixed) + Number(chars) * CHAR_W;
+  const sized = [...html.matchAll(/<col[^>]*style="width: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)">/g)];
+  const tableW = px(html.match(/--mx-table-w: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)/));
+  const optionW = px(html.match(/--mx-option-w: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)/));
+  const data = sized.slice(1).map(px); // sized[0] is the role column
+  return [...data, tableW - optionW - sized.slice(0, 1).map(px)[0] - data.reduce((s, w) => s + w, 0)];
 }
 
 test('a narrow-column group with a long path widens exactly enough to fit it, each group independent of its siblings (finding A)', () => {
@@ -286,8 +314,14 @@ test('a group whose path already fits comfortably across its wide span is left a
   const colWidths = dataColWidths(html);
   const spanned = colWidths.slice(g.startColumn, g.startColumn + g.columnSpan);
   assert.ok(neededPx < spanned.reduce((s, w) => s + w, 0), 'fixture path must genuinely fit already, or this test proves nothing');
-  assert.match(html, /<col style="width: calc\(24px \+ \d+ \* var\(--mx-char-w\)\)">/g, 'both data columns must still carry the bare base fixed width (24px), unwidened');
-  assert.equal((html.match(/<col style="width: calc\(24px \+ \d+ \* var\(--mx-char-w\)\)">/g) ?? []).length, 2);
+  // Both data columns are still on dataColumnWidth's bare 24px base -- the first shows it in its own
+  // <col>; the second is the auto column, so its width comes back out of --mx-table-w, where an
+  // unwidened base leaves a whole number of --mx-char-w on top of the same 24px.
+  assert.equal((html.match(/<col style="width: calc\(24px \+ \d+ \* var\(--mx-char-w\)\)">/g) ?? []).length, 1);
+  assert.equal(colWidths.length, 2);
+  const charsOnTop = (colWidths[1] - 24) / CHAR_W;
+  assert.ok(Math.abs(charsOnTop - Math.round(charsOnTop)) < 0.01,
+    `the auto column's ${colWidths[1]}px is 24px + ${charsOnTop} chars -- a fractional count means widenForPaths widened it`);
 });
 
 test("a long requirement chip widens the role column only -- the option column's sticky width never moves (finding B)", () => {
@@ -311,6 +345,21 @@ test("a long requirement chip widens the role column only -- the option column's
   const roleChars = Number(roleMatch[2]);
   const rolePx = roleFixed + roleChars * CHAR_W;
   assert.ok(optionPx + rolePx >= neededPx - 0.01, `option+role (${optionPx + rolePx}px) must cover the chip's ${neededPx}px`);
+});
+
+test('a row carrying BOTH pills sizes the role column for the pair side by side, not the longer one alone', () => {
+  // AddOptionRow stacks an option's badges horizontally, so security-uac-level's "Recommended +
+  // Default" row shows both pills on one line and stays 40px like every other row. Charging only the
+  // longest single label left the pair to wrap onto a second line, which grew that row alone.
+  const m = byId['security-uac-level'].matrix;
+  const both = m.options.filter((o) => o.isRecommended && o.isWindowsDefault);
+  assert.equal(both.length, 1, 'fixture must carry exactly one row that is both Recommended and the Windows default');
+  const labels = [m.recommendedLabel, m.defaultLabel];
+  const html = renderMatrix(m, { geometries: geo });
+  // 24px cell padding + a pill's 34px of chrome each + the 4px StackPanel spacing between them.
+  const expected = 24 + 34 * 2 + 4;
+  const chars = labels.reduce((sum, l) => sum + l.length, 0);
+  assert.match(html, new RegExp(`<col class="mx-col-role" style="width: calc\\(${expected}px \\+ ${chars} \\* var\\(--mx-char-w\\)\\)">`));
 });
 
 test('a matrix with no requirement chips leaves the role column at its base width (no spurious widening)', () => {

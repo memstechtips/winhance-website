@@ -52,7 +52,7 @@ function shell(pages, page, title, content, template) {
 
 const CALLOUT = `<div class="callout callout-info">
     <div class="callout-title">Technical Details</div>
-    <p>Every setting below can be expanded to show exactly what Winhance reads and writes: registry values, scheduled tasks, power settings and scripts, with the recommended value and the Windows default marked. This is the same table the app shows under each setting's Technical Details.</p>
+    <p>Every setting below shows exactly what Winhance reads and writes: registry values, scheduled tasks, power settings and scripts, with the recommended value and the Windows default marked. This is the same table the app shows under each setting's Technical Details.</p>
 </div>`;
 
 function video(v) {

@@ -1,9 +1,12 @@
 /* Base Styles
-   Palette is WinUI 3 tokens (docs/css/winui-tokens.css), single light theme — the
-   landing page has no theme toggle, so only the :root (light) values ever apply; see
-   the task report for why that rules out a permanently-dark hero/footer. These
-   variables are kept as an alias layer (matching docs-main.css's --text-color
-   convention) so the rest of this file doesn't need touching one usage at a time. */
+   Palette is WinUI 3 tokens (docs/css/winui-tokens.css), which the landing page loads
+   alongside this file. Both themes apply: the page shares the docs' theme toggle and
+   its localStorage preference, and winui-tokens.css re-declares every token under
+   [data-theme="dark"], so the aliases below resolve to the right theme with no
+   theme-specific rules in this file. They exist as an alias layer (matching
+   docs-main.css's --text-color convention) so the rest of this file didn't need
+   touching one usage at a time. Literal colours belong in winui-tokens.css or the
+   generated app-tokens.css, not here. */
 :root {
     --primary-color: var(--winui-solid-background-fill-color-secondary);
     --secondary-color: var(--winui-subtle-fill-color-secondary);
