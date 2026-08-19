@@ -132,114 +132,121 @@
             <h2 id="theme-mode">Theme mode</h2>
             <div class="setting-card" id="theme-mode-windows">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 3C5.79 3 4 4.79 4 7V14C4 15.1 4.9 16 6 16H9V20C9 21.1 9.9 22 11 22H13C14.1 22 15 21.1 15 20V16H18C19.1 16 20 15.1 20 14V3H8M8 5H12V7H14V5H15V9H17V5H18V10H6V7C6 5.9 6.9 5 8 5M6 14V12H18V14H6Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Choose your mode</span>
+            <p class="setting-desc">Choose between Light and Dark mode for Windows and apps</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span></div>
             <span class="setting-id">theme-mode-windows</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge req" title="Prompts before applying this setting">Asks you to confirm before it runs</span><span class="setting-badge req" title="Apps Use Light Theme = Enabled">Sets: <a href="#theme-mode-apps">Apps Use Light Theme</a> (Enabled)</span><span class="setting-badge req" title="Windows Uses Light Theme = Enabled">Sets: <a href="#theme-mode-system">Windows Uses Light Theme</a> (Enabled)</span><span class="setting-badge req" title="Apps Use Light Theme = Disabled">Sets: <a href="#theme-mode-apps">Apps Use Light Theme</a> (Disabled)</span><span class="setting-badge req" title="Windows Uses Light Theme = Disabled">Sets: <a href="#theme-mode-system">Windows Uses Light Theme</a> (Disabled)</span></div>
-            <p class="setting-desc">Choose between Light and Dark mode for Windows and apps</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
             <h4 class="mx-build">Windows 11</h4>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 10ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="2" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>AppsUseLightTheme</code><span class="mx-type">DWord</span></th><th class="mx-col mx-col-value"><code>SystemUsesLightTheme</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Prompts before applying this setting">Asks you to confirm before it runs</span><span class="mx-chip" title="Apps Use Light Theme = Enabled">Sets: <a href="#theme-mode-apps" class="mx-chip-link">Apps Use Light Theme</a> (Enabled)</span><span class="mx-chip" title="Windows Uses Light Theme = Enabled">Sets: <a href="#theme-mode-system" class="mx-chip-link">Windows Uses Light Theme</a> (Enabled)</span><span class="mx-chip" title="Apps Use Light Theme = Disabled">Sets: <a href="#theme-mode-apps" class="mx-chip-link">Apps Use Light Theme</a> (Disabled)</span><span class="mx-chip" title="Windows Uses Light Theme = Disabled">Sets: <a href="#theme-mode-system" class="mx-chip-link">Windows Uses Light Theme</a> (Disabled)</span></div></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="2"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">AppsUseLightTheme</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">SystemUsesLightTheme</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Light Mode <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td><td class="mx-cell">1</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Dark Mode <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td><td class="mx-cell">0</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Mixed</th><td class="mx-cell"></td><td class="mx-cell"></td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Light Mode</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Dark Mode</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td><td class="mx-value"><code>0</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Mixed</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr class="mx-notes-head"><th colspan="2" scope="col">Also happens when you apply, if you agree to the prompt</th><th colspan="2" scope="col">Details</th></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Sets desktop wallpaper (Light Mode)</span><span class="mx-caption">Windows 11</span></th><td colspan="2">C:\Windows\Web\Wallpaper\Windows\img0.jpg</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Sets desktop wallpaper (Light Mode)</span><span class="mx-caption">Windows 10</span></th><td colspan="2">C:\Windows\Web\4K\Wallpaper\Windows\img0_3840x2160.jpg</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Sets desktop wallpaper (Dark Mode)</span><span class="mx-caption">Windows 11</span></th><td colspan="2">C:\Windows\Web\Wallpaper\Windows\img19.jpg</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Sets desktop wallpaper (Dark Mode)</span><span class="mx-caption">Windows 10</span></th><td colspan="2">C:\Windows\Web\4K\Wallpaper\Windows\img0_3840x2160.jpg</td></tr>
             </tbody>
             </table>
-            </div><div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
-            <ul>
-            <li><strong>Sets desktop wallpaper (Light Mode)</strong> <em>(Windows 11)</em>: C:\Windows\Web\Wallpaper\Windows\img0.jpg</li>
-            <li><strong>Sets desktop wallpaper (Light Mode)</strong> <em>(Windows 10)</em>: C:\Windows\Web\4K\Wallpaper\Windows\img0_3840x2160.jpg</li>
-            <li><strong>Sets desktop wallpaper (Dark Mode)</strong> <em>(Windows 11)</em>: C:\Windows\Web\Wallpaper\Windows\img19.jpg</li>
-            <li><strong>Sets desktop wallpaper (Dark Mode)</strong> <em>(Windows 10)</em>: C:\Windows\Web\4K\Wallpaper\Windows\img0_3840x2160.jpg</li>
-            </ul></div>
+            </div>
+            </div>
             <h4 class="mx-build">Windows 10</h4>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 10ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="2" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>AppsUseLightTheme</code><span class="mx-type">DWord</span></th><th class="mx-col mx-col-value"><code>SystemUsesLightTheme</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Prompts before applying this setting">Asks you to confirm before it runs</span><span class="mx-chip" title="Apps Use Light Theme = Enabled">Sets: <a href="#theme-mode-apps" class="mx-chip-link">Apps Use Light Theme</a> (Enabled)</span><span class="mx-chip" title="Windows Uses Light Theme = Enabled">Sets: <a href="#theme-mode-system" class="mx-chip-link">Windows Uses Light Theme</a> (Enabled)</span><span class="mx-chip" title="Apps Use Light Theme = Disabled">Sets: <a href="#theme-mode-apps" class="mx-chip-link">Apps Use Light Theme</a> (Disabled)</span><span class="mx-chip" title="Windows Uses Light Theme = Disabled">Sets: <a href="#theme-mode-system" class="mx-chip-link">Windows Uses Light Theme</a> (Disabled)</span></div></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="2"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">AppsUseLightTheme</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">SystemUsesLightTheme</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Light Mode</th><td class="mx-cell">1</td><td class="mx-cell">1</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Dark Mode <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td><td class="mx-cell">0</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Mixed</th><td class="mx-cell"></td><td class="mx-cell"></td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Light Mode</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Dark Mode</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td><td class="mx-value"><code>0</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Mixed</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr class="mx-notes-head"><th colspan="2" scope="col">Also happens when you apply, if you agree to the prompt</th><th colspan="2" scope="col">Details</th></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Sets desktop wallpaper (Light Mode)</span><span class="mx-caption">Windows 11</span></th><td colspan="2">C:\Windows\Web\Wallpaper\Windows\img0.jpg</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Sets desktop wallpaper (Light Mode)</span><span class="mx-caption">Windows 10</span></th><td colspan="2">C:\Windows\Web\4K\Wallpaper\Windows\img0_3840x2160.jpg</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Sets desktop wallpaper (Dark Mode)</span><span class="mx-caption">Windows 11</span></th><td colspan="2">C:\Windows\Web\Wallpaper\Windows\img19.jpg</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Sets desktop wallpaper (Dark Mode)</span><span class="mx-caption">Windows 10</span></th><td colspan="2">C:\Windows\Web\4K\Wallpaper\Windows\img0_3840x2160.jpg</td></tr>
             </tbody>
             </table>
-            </div><div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
-            <ul>
-            <li><strong>Sets desktop wallpaper (Light Mode)</strong> <em>(Windows 11)</em>: C:\Windows\Web\Wallpaper\Windows\img0.jpg</li>
-            <li><strong>Sets desktop wallpaper (Light Mode)</strong> <em>(Windows 10)</em>: C:\Windows\Web\4K\Wallpaper\Windows\img0_3840x2160.jpg</li>
-            <li><strong>Sets desktop wallpaper (Dark Mode)</strong> <em>(Windows 11)</em>: C:\Windows\Web\Wallpaper\Windows\img19.jpg</li>
-            <li><strong>Sets desktop wallpaper (Dark Mode)</strong> <em>(Windows 10)</em>: C:\Windows\Web\4K\Wallpaper\Windows\img0_3840x2160.jpg</li>
-            </ul></div>
-            </details>
+            </div>
+            </div>
             <div class="setting-children">
             <div class="setting-card setting-card-child" id="theme-mode-apps">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M16,20H20V16H16M16,14H20V10H16M10,8H14V4H10M16,8H20V4H16M10,14H14V10H10M4,14H8V10H4M4,20H8V16H4M10,20H14V16H10M4,8H8V4H4V8Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Apps Use Light Theme</span>
+            <p class="setting-desc">Use the light theme for apps such as Settings and File Explorer</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.07.22</span></div>
             <span class="setting-id">theme-mode-apps</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge added">Added in v26.07.22</span></div>
-            <p class="setting-desc">Use the light theme for apps such as Settings and File Explorer</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 3ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>AppsUseLightTheme</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">AppsUseLightTheme</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
             </tbody>
             </table>
             </div>
-            </details>
+            </div>
             </div>
             <div class="setting-card setting-card-child" id="theme-mode-system">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21,16H3V4H21M21,2H3C1.89,2 1,2.89 1,4V16A2,2 0 0,0 3,18H10V20H8V22H16V20H14V18H21A2,2 0 0,0 23,16V4C23,2.89 22.1,2 21,2Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Windows Uses Light Theme</span>
+            <p class="setting-desc">Use the light theme for the Windows shell, including the taskbar, Start menu, and notification center</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.07.22</span></div>
             <span class="setting-id">theme-mode-system</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge added">Added in v26.07.22</span></div>
-            <p class="setting-desc">Use the light theme for the Windows shell, including the taskbar, Start menu, and notification center</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
             <h4 class="mx-build">Windows 11</h4>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 3ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>SystemUsesLightTheme</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">SystemUsesLightTheme</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
             </tbody>
             </table>
+            </div>
             </div>
             <h4 class="mx-build">Windows 10</h4>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 3ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>SystemUsesLightTheme</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">SystemUsesLightTheme</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">On</th><td class="mx-cell">1</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>On</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>0</code></td></tr>
             </tbody>
             </table>
             </div>
-            </details>
+            </div>
             </div>
             </div>
             </div>
@@ -247,26 +254,31 @@
             <h2 id="transparency">Transparency</h2>
             <div class="setting-card" id="theme-transparency">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M17.66,8L12,2.35L6.34,8C4.78,9.56 4,11.64 4,13.64C4,15.64 4.78,17.75 6.34,19.31C7.9,20.87 9.95,21.66 12,21.66C14.05,21.66 16.1,20.87 17.66,19.31C19.22,17.75 20,15.64 20,13.64C20,11.64 19.22,9.56 17.66,8M6,14C6,12 6.62,10.73 7.76,9.6L12,5.27L16.24,9.65C17.38,10.77 18,12 18,14H6Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Transparency effects</span>
+            <p class="setting-desc">Enable translucent effects for the Start Menu, taskbar, and other Windows interface elements</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span></div>
             <span class="setting-id">theme-transparency</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span></div>
-            <p class="setting-desc">Enable translucent effects for the Start Menu, taskbar, and other Windows interface elements</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 3ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>EnableTransparency</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">EnableTransparency</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
             </tbody>
             </table>
             </div>
-            </details>
+            </div>
             </div>
             </section>
         </main>

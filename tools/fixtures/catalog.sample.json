@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "winhanceVersion": "26.08.18",
   "catalogHash": "fdfaa61e57d5cf6f15a1e7ec9e30cd41d96c5ae73e52d690eb0eb0038f4d7d32",
-  "settingCount": 15,
+  "settingCount": 16,
   "referenceBuilds": {
     "win10": 19045,
     "win11": 26100
@@ -16,6 +16,10 @@
           "name": "Choose your mode",
           "description": "Choose between Light and Dark mode for Windows and apps",
           "group": "Theme mode",
+          "icon": {
+            "pack": "Material",
+            "name": "BrushVariant"
+          },
           "control": "Selection",
           "isSubjectivePreference": true,
           "addedInVersion": null,
@@ -421,6 +425,10 @@
           "name": "Apps Use Light Theme",
           "description": "Use the light theme for apps such as Settings and File Explorer",
           "group": "Theme mode",
+          "icon": {
+            "pack": "Material",
+            "name": "Apps"
+          },
           "control": "Toggle",
           "isSubjectivePreference": true,
           "addedInVersion": "26.07.22",
@@ -538,6 +546,10 @@
           "name": "Use Classic Context Menu",
           "description": "Use the Windows 10-style right-click menu with all options visible instead of the simplified Windows 11 menu",
           "group": "Context Menu",
+          "icon": {
+            "pack": "Fluent",
+            "name": "Navigation"
+          },
           "control": "Toggle",
           "isSubjectivePreference": true,
           "addedInVersion": null,
@@ -668,6 +680,10 @@
           "name": "Clean Taskbar",
           "description": "Removes all pinned items from the Taskbar",
           "group": "Layout",
+          "icon": {
+            "pack": "Material",
+            "name": "Broom"
+          },
           "control": "Action",
           "isSubjectivePreference": true,
           "addedInVersion": null,
@@ -1090,6 +1106,10 @@
           "name": "Startup Sound During Boot",
           "description": "Play the Windows startup sound when your computer boots up",
           "group": "System Sounds",
+          "icon": {
+            "pack": "Material",
+            "name": "MonitorSpeaker"
+          },
           "control": "Toggle",
           "isSubjectivePreference": true,
           "addedInVersion": null,
@@ -1239,6 +1259,10 @@
           "name": "Sound Ducking Preference",
           "description": "Automatically lower volume of media and apps when Windows detects communication activity",
           "group": "System Sounds",
+          "icon": {
+            "pack": "Material",
+            "name": "VolumeMedium"
+          },
           "control": "Selection",
           "isSubjectivePreference": true,
           "addedInVersion": null,
@@ -1388,6 +1412,10 @@
           "name": "System Protection (Restore Points)",
           "description": "Allow Windows to automatically create restore points for the C: drive, making it possible to undo system changes if something goes wrong",
           "group": null,
+          "icon": {
+            "pack": "Material",
+            "name": "History"
+          },
           "control": "Toggle",
           "isSubjectivePreference": true,
           "addedInVersion": "26.05.13",
@@ -1479,6 +1507,10 @@
           "name": "Power Plan",
           "description": "Select the active power plan for your system",
           "group": null,
+          "icon": {
+            "pack": "Fluent",
+            "name": "NotebookLightning"
+          },
           "control": "PowerPlan",
           "isSubjectivePreference": true,
           "addedInVersion": null,
@@ -1500,6 +1532,10 @@
           "name": "Turn off hard disk after",
           "description": "Specifies the period of inactivity before Windows turns off the hard disk",
           "group": "Hard Disk",
+          "icon": {
+            "pack": "Material",
+            "name": "Harddisk"
+          },
           "control": "Slider",
           "isSubjectivePreference": true,
           "addedInVersion": null,
@@ -1626,6 +1662,10 @@
           "name": "Hibernation",
           "description": "Save your session to disk and power down completely, using no battery while preserving your work",
           "group": "Sleep",
+          "icon": {
+            "pack": "Material",
+            "name": "PowerSleep"
+          },
           "control": "Toggle",
           "isSubjectivePreference": true,
           "addedInVersion": null,
@@ -1759,6 +1799,10 @@
           "name": "Hibernate after",
           "description": "Specifies the period of inactivity before Windows hibernates the computer",
           "group": "Sleep",
+          "icon": {
+            "pack": "Material",
+            "name": "BedClock"
+          },
           "control": "Selection",
           "isSubjectivePreference": true,
           "addedInVersion": null,
@@ -1812,7 +1856,7 @@
             ],
             "options": [
               {
-                "label": "Template_TimeIntervals_Option_0",
+                "label": "Never",
                 "cells": [
                   {
                     "text": "0",
@@ -1828,7 +1872,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_TimeIntervals_Option_1",
+                "label": "1 minute",
                 "cells": [
                   {
                     "text": "60",
@@ -1844,7 +1888,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_TimeIntervals_Option_2",
+                "label": "2 minutes",
                 "cells": [
                   {
                     "text": "120",
@@ -1860,7 +1904,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_TimeIntervals_Option_3",
+                "label": "3 minutes",
                 "cells": [
                   {
                     "text": "180",
@@ -1876,7 +1920,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_TimeIntervals_Option_4",
+                "label": "5 minutes",
                 "cells": [
                   {
                     "text": "300",
@@ -1892,7 +1936,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_TimeIntervals_Option_5",
+                "label": "10 minutes",
                 "cells": [
                   {
                     "text": "600",
@@ -1908,7 +1952,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_TimeIntervals_Option_6",
+                "label": "15 minutes",
                 "cells": [
                   {
                     "text": "900",
@@ -1924,7 +1968,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_TimeIntervals_Option_7",
+                "label": "20 minutes",
                 "cells": [
                   {
                     "text": "1200",
@@ -1940,7 +1984,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_TimeIntervals_Option_8",
+                "label": "25 minutes",
                 "cells": [
                   {
                     "text": "1500",
@@ -1956,7 +2000,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_TimeIntervals_Option_9",
+                "label": "30 minutes",
                 "cells": [
                   {
                     "text": "1800",
@@ -1972,7 +2016,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_TimeIntervals_Option_10",
+                "label": "45 minutes",
                 "cells": [
                   {
                     "text": "2700",
@@ -1988,7 +2032,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_TimeIntervals_Option_11",
+                "label": "1 hour",
                 "cells": [
                   {
                     "text": "3600",
@@ -2004,7 +2048,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_TimeIntervals_Option_12",
+                "label": "2 hours",
                 "cells": [
                   {
                     "text": "7200",
@@ -2020,7 +2064,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_TimeIntervals_Option_13",
+                "label": "3 hours",
                 "cells": [
                   {
                     "text": "10800",
@@ -2036,7 +2080,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_TimeIntervals_Option_14",
+                "label": "4 hours",
                 "cells": [
                   {
                     "text": "14400",
@@ -2052,7 +2096,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_TimeIntervals_Option_15",
+                "label": "5 hours",
                 "cells": [
                   {
                     "text": "18000",
@@ -2092,7 +2136,7 @@
             "recommendedTooltip": "What Winhance suggests for most people",
             "defaultTooltip": "How Windows ships out of the box",
             "currentTooltip": "This is what your system is set to now",
-            "accessibleSummary": "Template_TimeIntervals_Option_0: Value 0 (Recommended, Default), Current. Template_TimeIntervals_Option_1: Value 60. Template_TimeIntervals_Option_2: Value 120. Template_TimeIntervals_Option_3: Value 180. Template_TimeIntervals_Option_4: Value 300. Template_TimeIntervals_Option_5: Value 600. Template_TimeIntervals_Option_6: Value 900. Template_TimeIntervals_Option_7: Value 1200. Template_TimeIntervals_Option_8: Value 1500. Template_TimeIntervals_Option_9: Value 1800. Template_TimeIntervals_Option_10: Value 2700. Template_TimeIntervals_Option_11: Value 3600. Template_TimeIntervals_Option_12: Value 7200. Template_TimeIntervals_Option_13: Value 10800. Template_TimeIntervals_Option_14: Value 14400. Template_TimeIntervals_Option_15: Value 18000. Power setting: 238c9fa8-0aad-41ed-83f4-97be242c8f20, 9d7815a6-7ee4-497e-8888-515a05f02364."
+            "accessibleSummary": "Never: Value 0 (Recommended, Default), Current. 1 minute: Value 60. 2 minutes: Value 120. 3 minutes: Value 180. 5 minutes: Value 300. 10 minutes: Value 600. 15 minutes: Value 900. 20 minutes: Value 1200. 25 minutes: Value 1500. 30 minutes: Value 1800. 45 minutes: Value 2700. 1 hour: Value 3600. 2 hours: Value 7200. 3 hours: Value 10800. 4 hours: Value 14400. 5 hours: Value 18000. Power setting: 238c9fa8-0aad-41ed-83f4-97be242c8f20, 9d7815a6-7ee4-497e-8888-515a05f02364."
           },
           "matrixWin10": null
         },
@@ -2101,6 +2145,10 @@
           "name": "Allow hybrid sleep",
           "description": "Combines sleep and hibernate by saving your session to disk while staying in low-power mode for faster wake",
           "group": "Sleep",
+          "icon": {
+            "pack": "Material",
+            "name": "WeatherNight"
+          },
           "control": "Selection",
           "isSubjectivePreference": true,
           "addedInVersion": null,
@@ -2156,7 +2204,7 @@
             ],
             "options": [
               {
-                "label": "Template_OnOff_Option_0",
+                "label": "Off",
                 "cells": [
                   {
                     "text": "0",
@@ -2172,7 +2220,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_OnOff_Option_1",
+                "label": "On",
                 "cells": [
                   {
                     "text": "1",
@@ -2220,7 +2268,7 @@
             "recommendedTooltip": "What Winhance suggests for most people",
             "defaultTooltip": "How Windows ships out of the box",
             "currentTooltip": "This is what your system is set to now",
-            "accessibleSummary": "Template_OnOff_Option_0: Value 0, Current. Template_OnOff_Option_1: Value 1 (Recommended, Default). Power setting: 238c9fa8-0aad-41ed-83f4-97be242c8f20, 94ac6d29-73ce-41a6-809f-6363ba21b47e."
+            "accessibleSummary": "Off: Value 0, Current. On: Value 1 (Recommended, Default). Power setting: 238c9fa8-0aad-41ed-83f4-97be242c8f20, 94ac6d29-73ce-41a6-809f-6363ba21b47e."
           },
           "matrixWin10": null
         },
@@ -2229,6 +2277,10 @@
           "name": "Fast Startup",
           "description": "Hibernate system state during shutdown for faster boot times (does not affect restart)",
           "group": "Sleep",
+          "icon": {
+            "pack": "Material",
+            "name": "FlashAuto"
+          },
           "control": "Toggle",
           "isSubjectivePreference": false,
           "addedInVersion": null,
@@ -2349,6 +2401,10 @@
           "name": "Show Hibernate Option",
           "description": "Display the Hibernate option in the Start Menu power button menu",
           "group": "Sleep",
+          "icon": {
+            "pack": "Material",
+            "name": "FlashRedEye"
+          },
           "control": "Toggle",
           "isSubjectivePreference": true,
           "addedInVersion": null,
@@ -2469,6 +2525,10 @@
           "name": "Lid close action",
           "description": "Choose what happens when you close your laptop lid",
           "group": "Power Buttons and Lid",
+          "icon": {
+            "pack": "Material",
+            "name": "Laptop"
+          },
           "control": "Selection",
           "isSubjectivePreference": true,
           "addedInVersion": null,
@@ -2532,7 +2592,7 @@
             ],
             "options": [
               {
-                "label": "Template_LidActions_Option_0",
+                "label": "Do nothing",
                 "cells": [
                   {
                     "text": "0",
@@ -2548,7 +2608,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_LidActions_Option_1",
+                "label": "Sleep",
                 "cells": [
                   {
                     "text": "1",
@@ -2564,7 +2624,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_LidActions_Option_2",
+                "label": "Hibernate",
                 "cells": [
                   {
                     "text": "2",
@@ -2580,7 +2640,7 @@
                 "defaultContext": ""
               },
               {
-                "label": "Template_LidActions_Option_3",
+                "label": "Shut down",
                 "cells": [
                   {
                     "text": "3",
@@ -2620,7 +2680,210 @@
             "recommendedTooltip": "What Winhance suggests for most people",
             "defaultTooltip": "How Windows ships out of the box",
             "currentTooltip": "This is what your system is set to now",
-            "accessibleSummary": "Template_LidActions_Option_0: Value 0, Current. Template_LidActions_Option_1: Value 1 (Recommended, Default). Template_LidActions_Option_2: Value 2. Template_LidActions_Option_3: Value 3. Power setting: 4f971e89-eebd-4455-a8de-9e59040e7347, 5ca83367-6e45-459f-a27b-476b1d01c936."
+            "accessibleSummary": "Do nothing: Value 0, Current. Sleep: Value 1 (Recommended, Default). Hibernate: Value 2. Shut down: Value 3. Power setting: 4f971e89-eebd-4455-a8de-9e59040e7347, 5ca83367-6e45-459f-a27b-476b1d01c936."
+          },
+          "matrixWin10": null
+        }
+      ]
+    },
+    {
+      "id": "Privacy",
+      "settings": [
+        {
+          "id": "security-uac-level",
+          "name": "User Account Control Level",
+          "description": "Controls UAC notification level and secure desktop behavior",
+          "group": "Security",
+          "icon": {
+            "pack": "Material",
+            "name": "ShieldAccount"
+          },
+          "control": "Selection",
+          "isSubjectivePreference": false,
+          "addedInVersion": null,
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 2,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "ConsentPromptBehaviorAdmin",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              },
+              {
+                "header": "PromptOnSecureDesktop",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Prompt for Credentials",
+                "cells": [
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Always notify",
+                "cells": [
+                  {
+                    "text": "2",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Notify when apps try to make changes",
+                "cells": [
+                  {
+                    "text": "5",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": true,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Notify when apps try to make changes (no dim)",
+                "cells": [
+                  {
+                    "text": "5",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Never notify",
+                "cells": [
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Prompt for Credentials: ConsentPromptBehaviorAdmin 1, PromptOnSecureDesktop 1. Always notify: ConsentPromptBehaviorAdmin 2, PromptOnSecureDesktop 1. Notify when apps try to make changes: ConsentPromptBehaviorAdmin 5, PromptOnSecureDesktop 1 (Recommended, Default). Notify when apps try to make changes (no dim): ConsentPromptBehaviorAdmin 5, PromptOnSecureDesktop 0. Never notify: ConsentPromptBehaviorAdmin 0, PromptOnSecureDesktop 0. Registry: HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System."
           },
           "matrixWin10": null
         }

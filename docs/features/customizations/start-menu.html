@@ -132,38 +132,32 @@
             <div class="callout callout-info"> <div class="callout-title">ℹ️ Windows Edition Differences</div> <p><strong>Windows 11 Pro and above:</strong> The Recommended section is completely removed from the Start Menu.</p> <p><strong>Windows 11 Home:</strong> The Recommended section remains visible but is disabled—no items will be shown there.</p> </div>
             <div class="setting-card" id="start-menu-clean-10">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M19.36,2.72L20.78,4.14L15.06,9.85C16.13,11.39 16.28,13.24 15.38,14.44L9.06,8.12C10.26,7.22 12.11,7.37 13.65,8.44L19.36,2.72M5.93,17.57C3.92,15.56 2.69,13.16 2.35,10.92L7.23,8.83L14.67,16.27L12.58,21.15C10.34,20.81 7.94,19.58 5.93,17.57Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Clean Start Menu</span>
+            <p class="setting-desc">Removes all pinned items and applies a clean layout for the current user and any newly created profiles. To clean other existing users, run this again while signed in as each of them.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span></div>
             <span class="setting-id">start-menu-clean-10</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span><span class="setting-badge req" title="Prompts before applying this setting">Asks you to confirm before it runs</span></div>
-            <p class="setting-desc">Removes all pinned items and applies a clean layout for the current user and any newly created profiles. To clean other existing users, run this again while signed in as each of them.</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
             <h4 class="mx-build">Windows 11</h4>
+            <div class="mx-box mx-has-code" style="--mx-option-w: calc(45px + 0ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th></tr>
-            <tr class="mx-cols"></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Prompts before applying this setting">Asks you to confirm before it runs</span></div></th></tr>
+            <tr class="mx-row-paths"></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th></tr>
             </thead>
             <tbody>
-
+            <tr class="mx-notes-head"><th colspan="1" scope="col">Also happens when you apply, if you agree to the prompt</th><th colspan="1" scope="col">Details</th></tr><tr class="mx-note"><th colspan="1" scope="row"><span class="mx-note-label">Start layout</span></th><td colspan="1">More pins</td></tr><tr class="mx-note"><th colspan="1" scope="row"><span class="mx-note-label">Recommended section</span></th><td colspan="1">Hide</td></tr><tr class="mx-note"><th colspan="1" scope="row"><span class="mx-note-label">Show recently added apps</span></th><td colspan="1">Off</td></tr><tr class="mx-note"><th colspan="1" scope="row"><span class="mx-note-label">Show most used apps</span></th><td colspan="1">Off</td></tr><tr class="mx-note"><th colspan="1" scope="row"><span class="mx-note-label">Show recommended files and recently opened items</span></th><td colspan="1">Off</td></tr><tr class="mx-note"><th colspan="1" scope="row"><span class="mx-note-label">Show recommendations for tips, shortcuts, new apps, and more</span></th><td colspan="1">Off</td></tr><tr class="mx-note"><th colspan="1" scope="row"><span class="mx-note-label">Show account-related notifications</span></th><td colspan="1">Off</td></tr><tr class="mx-note"><th colspan="1" scope="row"><span class="mx-note-label">Bing Search Results in Start Menu</span></th><td colspan="1">Off</td></tr>
             </tbody>
             </table>
-            </div><div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
-            <ul>
-            <li><strong>Start layout</strong>: More pins</li>
-            <li><strong>Recommended section</strong>: Hide</li>
-            <li><strong>Show recently added apps</strong>: Off</li>
-            <li><strong>Show most used apps</strong>: Off</li>
-            <li><strong>Show recommended files and recently opened items</strong>: Off</li>
-            <li><strong>Show recommendations for tips, shortcuts, new apps, and more</strong>: Off</li>
-            <li><strong>Show account-related notifications</strong>: Off</li>
-            <li><strong>Bing Search Results in Start Menu</strong>: Off</li>
-            </ul></div><div class="mx-code"><h4>PowerShell Scripts</h4><p>Winhance runs this script when you apply the matching option.</p>
-            <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">On Apply</span></div>
-            <pre><code>
+            </div>
+            <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">PowerShell Scripts</span><span class="mx-group-desc">Winhance runs this script when you apply the matching option.</span></div><div class="mx-code-label">On Apply</div><pre class="mx-code-body mx-code-powershell"><code>
             $layoutPath = &#39;C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml&#39;
             $layoutXml = @&#39;
             &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
@@ -194,30 +188,23 @@
                 reg add $key /v LockedStartLayout /t REG_DWORD /d 0 /f | Out-Null
                 Stop-Process -Name StartMenuExperienceHost -Force -EA SilentlyContinue
             }
-            </code></pre>
-            </div></div>
+            </code></pre></div></div>
             <h4 class="mx-build">Windows 10</h4>
+            <div class="mx-box mx-has-code" style="--mx-option-w: calc(45px + 0ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th></tr>
-            <tr class="mx-cols"></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Prompts before applying this setting">Asks you to confirm before it runs</span></div></th></tr>
+            <tr class="mx-row-paths"></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th></tr>
             </thead>
             <tbody>
-
+            <tr class="mx-notes-head"><th colspan="1" scope="col">Also happens when you apply, if you agree to the prompt</th><th colspan="1" scope="col">Details</th></tr><tr class="mx-note"><th colspan="1" scope="row"><span class="mx-note-label">Show recently added apps</span></th><td colspan="1">Off</td></tr><tr class="mx-note"><th colspan="1" scope="row"><span class="mx-note-label">Show most used apps</span></th><td colspan="1">Off</td></tr><tr class="mx-note"><th colspan="1" scope="row"><span class="mx-note-label">Show suggestions in Start</span></th><td colspan="1">Off</td></tr><tr class="mx-note"><th colspan="1" scope="row"><span class="mx-note-label">Show recommended files and recently opened items</span></th><td colspan="1">Off</td></tr><tr class="mx-note"><th colspan="1" scope="row"><span class="mx-note-label">Bing Search Results in Start Menu</span></th><td colspan="1">Off</td></tr>
             </tbody>
             </table>
-            </div><div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
-            <ul>
-            <li><strong>Show recently added apps</strong>: Off</li>
-            <li><strong>Show most used apps</strong>: Off</li>
-            <li><strong>Show suggestions in Start</strong>: Off</li>
-            <li><strong>Show recommended files and recently opened items</strong>: Off</li>
-            <li><strong>Bing Search Results in Start Menu</strong>: Off</li>
-            </ul></div><div class="mx-code"><h4>PowerShell Scripts</h4><p>Winhance runs this script when you apply the matching option.</p>
-            <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">On Apply</span></div>
-            <pre><code>
+            </div>
+            <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">PowerShell Scripts</span><span class="mx-group-desc">Winhance runs this script when you apply the matching option.</span></div><div class="mx-code-label">On Apply</div><pre class="mx-code-body mx-code-powershell"><code>
             $layoutPath = &#39;C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml&#39;
             $layoutXml = @&#39;
             &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
@@ -248,45 +235,37 @@
                 reg add $key /v LockedStartLayout /t REG_DWORD /d 0 /f | Out-Null
                 Stop-Process -Name StartMenuExperienceHost -Force -EA SilentlyContinue
             }
-            </code></pre>
-            </div></div>
-            </details>
+            </code></pre></div></div>
             </div>
 
             <div class="setting-card" id="start-menu-clean-11">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M19.36,2.72L20.78,4.14L15.06,9.85C16.13,11.39 16.28,13.24 15.38,14.44L9.06,8.12C10.26,7.22 12.11,7.37 13.65,8.44L19.36,2.72M5.93,17.57C3.92,15.56 2.69,13.16 2.35,10.92L7.23,8.83L14.67,16.27L12.58,21.15C10.34,20.81 7.94,19.58 5.93,17.57Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Clean Start Menu</span>
+            <p class="setting-desc">Removes all pinned items and applies clean layout</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span></div>
             <span class="setting-id">start-menu-clean-11</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge req" title="Prompts before applying this setting">Asks you to confirm before it runs</span></div>
-            <p class="setting-desc">Removes all pinned items and applies clean layout</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
             <h4 class="mx-build">Windows 11</h4>
+            <div class="mx-box mx-has-code" style="--mx-option-w: calc(45px + 16ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Start">HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start</code></th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer">HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ConfigureStartPins</code><span class="mx-type">String</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th><th class="mx-col mx-col-value"><code>ConfigureStartPins</code><span class="mx-type">String</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Prompts before applying this setting">Asks you to confirm before it runs</span></div></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Registry</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Start">HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer">HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">ConfigureStartPins</code><span class="mx-caption">Value type</span><code class="mx-type">String</code><span class="mx-chips"><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">ConfigureStartPins</code><span class="mx-caption">Value type</span><code class="mx-type">String</code><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Clean Start Menu</th><td class="mx-cell">{&quot;pinnedList&quot;:[]}</td><td class="mx-cell">{&quot;pinnedList&quot;:[]}</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Clean Start Menu</code></th><td class="mx-role"></td><td class="mx-value"><code>{&quot;pinnedList&quot;:[]}</code></td><td class="mx-value"><code>{&quot;pinnedList&quot;:[]}</code></td></tr><tr class="mx-notes-head"><th colspan="2" scope="col">Also happens when you apply, if you agree to the prompt</th><th colspan="2" scope="col">Details</th></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Start layout</span></th><td colspan="2">More pins</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Recommended section</span></th><td colspan="2">Hide</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Show recently added apps</span></th><td colspan="2">Off</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Show most used apps</span></th><td colspan="2">Off</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Show recommended files and recently opened items</span></th><td colspan="2">Off</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Show recommendations for tips, shortcuts, new apps, and more</span></th><td colspan="2">Off</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Show account-related notifications</span></th><td colspan="2">Off</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Bing Search Results in Start Menu</span></th><td colspan="2">Off</td></tr>
             </tbody>
             </table>
-            </div><div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
-            <ul>
-            <li><strong>Start layout</strong>: More pins</li>
-            <li><strong>Recommended section</strong>: Hide</li>
-            <li><strong>Show recently added apps</strong>: Off</li>
-            <li><strong>Show most used apps</strong>: Off</li>
-            <li><strong>Show recommended files and recently opened items</strong>: Off</li>
-            <li><strong>Show recommendations for tips, shortcuts, new apps, and more</strong>: Off</li>
-            <li><strong>Show account-related notifications</strong>: Off</li>
-            <li><strong>Bing Search Results in Start Menu</strong>: Off</li>
-            </ul></div><div class="mx-code"><h4>PowerShell Scripts</h4><p>Winhance runs this script when you apply the matching option.</p>
-            <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">On Apply</span></div>
-            <pre><code>
+            </div>
+            <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">PowerShell Scripts</span><span class="mx-group-desc">Winhance runs this script when you apply the matching option.</span></div><div class="mx-code-label">On Apply</div><pre class="mx-code-body mx-code-powershell"><code>
             # Clear cached pinned-list data (start.bin / start2.bin) for every real user profile.
             # Iterating HKLM\ProfileList is OTS-safe and admin can delete in any profile, so the
             # current user and every other user are handled in one loop. ProfileImagePath gives
@@ -303,30 +282,23 @@
             
             # Restart the Start Menu host so the cleared layout takes effect immediately.
             Stop-Process -Name &#39;StartMenuExperienceHost&#39; -Force -ErrorAction SilentlyContinue
-            </code></pre>
-            </div></div>
+            </code></pre></div></div>
             <h4 class="mx-build">Windows 10</h4>
+            <div class="mx-box mx-has-code" style="--mx-option-w: calc(45px + 16ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Start">HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start</code></th><th colspan="1" class="mx-group mx-group-registry"><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer">HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ConfigureStartPins</code><span class="mx-type">String</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th><th class="mx-col mx-col-value"><code>ConfigureStartPins</code><span class="mx-type">String</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Prompts before applying this setting">Asks you to confirm before it runs</span></div></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Registry</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Start">HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer">HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">ConfigureStartPins</code><span class="mx-caption">Value type</span><code class="mx-type">String</code><span class="mx-chips"><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">ConfigureStartPins</code><span class="mx-caption">Value type</span><code class="mx-type">String</code><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></span></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Clean Start Menu</th><td class="mx-cell">{&quot;pinnedList&quot;:[]}</td><td class="mx-cell">{&quot;pinnedList&quot;:[]}</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Clean Start Menu</code></th><td class="mx-role"></td><td class="mx-value"><code>{&quot;pinnedList&quot;:[]}</code></td><td class="mx-value"><code>{&quot;pinnedList&quot;:[]}</code></td></tr><tr class="mx-notes-head"><th colspan="2" scope="col">Also happens when you apply, if you agree to the prompt</th><th colspan="2" scope="col">Details</th></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Show recently added apps</span></th><td colspan="2">Off</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Show most used apps</span></th><td colspan="2">Off</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Show suggestions in Start</span></th><td colspan="2">Off</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Show recommended files and recently opened items</span></th><td colspan="2">Off</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-label">Bing Search Results in Start Menu</span></th><td colspan="2">Off</td></tr>
             </tbody>
             </table>
-            </div><div class="mx-notes"><h4>Also happens when you apply, if you agree to the prompt</h4>
-            <ul>
-            <li><strong>Show recently added apps</strong>: Off</li>
-            <li><strong>Show most used apps</strong>: Off</li>
-            <li><strong>Show suggestions in Start</strong>: Off</li>
-            <li><strong>Show recommended files and recently opened items</strong>: Off</li>
-            <li><strong>Bing Search Results in Start Menu</strong>: Off</li>
-            </ul></div><div class="mx-code"><h4>PowerShell Scripts</h4><p>Winhance runs this script when you apply the matching option.</p>
-            <div class="code-block">
-            <div class="code-header"><span class="code-language">powershell</span><span class="code-label">On Apply</span></div>
-            <pre><code>
+            </div>
+            <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">PowerShell Scripts</span><span class="mx-group-desc">Winhance runs this script when you apply the matching option.</span></div><div class="mx-code-label">On Apply</div><pre class="mx-code-body mx-code-powershell"><code>
             # Clear cached pinned-list data (start.bin / start2.bin) for every real user profile.
             # Iterating HKLM\ProfileList is OTS-safe and admin can delete in any profile, so the
             # current user and every other user are handled in one loop. ProfileImagePath gives
@@ -343,274 +315,324 @@
             
             # Restart the Start Menu host so the cleared layout takes effect immediately.
             Stop-Process -Name &#39;StartMenuExperienceHost&#39; -Force -ErrorAction SilentlyContinue
-            </code></pre>
-            </div></div>
-            </details>
+            </code></pre></div></div>
             </div>
 
             <div class="setting-card" id="start-menu-layout">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M6 3C4.34315 3 3 4.34315 3 6V14C3 15.6569 4.34315 17 6 17H9.59971C9.43777 16.6832 9.30564 16.3486 9.20703 16H6C4.89543 16 4 15.1046 4 14V10H11.3369C12.2316 9.36997 13.3226 9 14.5 9C15.4002 9 16.2499 9.21628 17 9.59971V6C17 4.34315 15.6569 3 14 3H6ZM12.0647 11.442C12.368 12.5231 11.722 13.642 10.6341 13.9199L10.173 14.0377C10.1581 14.1896 10.1504 14.3438 10.1504 14.4999C10.1504 14.6875 10.1615 14.8725 10.1831 15.0541L10.5326 15.1368C11.652 15.4014 12.318 16.5536 11.9887 17.6557L11.8623 18.0785C12.1195 18.2817 12.3993 18.4559 12.697 18.5964L13.022 18.2523C13.8118 17.416 15.1426 17.4167 15.9315 18.2538L16.2689 18.6118C16.5613 18.4769 16.8367 18.3095 17.0907 18.1142L16.9346 17.5575C16.6313 16.4764 17.2773 15.3575 18.3652 15.0795L18.8258 14.9619C18.8408 14.81 18.8484 14.6559 18.8484 14.4999C18.8484 14.3121 18.8373 14.127 18.8157 13.9452L18.4667 13.8627C17.3473 13.598 16.6813 12.4459 17.0106 11.3438L17.1368 10.9215C16.8796 10.7182 16.5998 10.5439 16.302 10.4034L15.9773 10.7472C15.1875 11.5835 13.8568 11.5828 13.0678 10.7457L12.7305 10.3877C12.438 10.5226 12.1626 10.6899 11.9086 10.8852L12.0647 11.442ZM14.4994 15.4999C13.9471 15.4999 13.4994 15.0521 13.4994 14.4999C13.4994 13.9476 13.9471 13.4999 14.4994 13.4999C15.0517 13.4999 15.4994 13.9476 15.4994 14.4999C15.4994 15.0521 15.0517 15.4999 14.4994 15.4999Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Start layout</span>
+            <p class="setting-desc">Choose whether the Start Menu shows more pinned apps, more recommendations, or a balanced default layout</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span></div>
             <span class="setting-id">start-menu-layout</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span></div>
-            <p class="setting-desc">Choose whether the Start Menu shows more pinned apps, more recommendations, or a balanced default layout</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 20ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start_Layout</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">Start_Layout</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Default <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0 (or not set)</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">More pins <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">1</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">More recommendations</th><td class="mx-cell">2</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Default</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>0 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>More pins</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>More recommendations</code></th><td class="mx-role"></td><td class="mx-value"><code>2</code></td></tr>
             </tbody>
             </table>
             </div>
-            </details>
+            </div>
             </div>
 
             <div class="setting-card" id="start-all-apps-view">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M6 3C4.34315 3 3 4.34315 3 6V14C3 15.6569 4.34315 17 6 17H7V16H6C4.89543 16 4 15.1046 4 14V7H17V6C17 4.34315 15.6569 3 14 3H6ZM4 6C4 4.89543 4.89543 4 6 4H14C15.1046 4 16 4.89543 16 6L4 6ZM14.75 8C13.7835 8 13 8.7835 13 9.75V13H9.75C8.7835 13 8 13.7835 8 14.75V17.25C8 18.2165 8.7835 19 9.75 19H16.5C17.8807 19 19 17.8807 19 16.5V9.75C19 8.7835 18.2165 8 17.25 8H14.75ZM18 16.5C18 17.3284 17.3284 18 16.5 18H14V14H18V16.5ZM14 9.75C14 9.33579 14.3358 9 14.75 9H17.25C17.6642 9 18 9.33579 18 9.75V13H14V9.75ZM9.75 14H13V18H9.75C9.33579 18 9 17.6642 9 17.25V14.75C9 14.3358 9.33579 14 9.75 14Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">All apps view</span>
+            <p class="setting-desc">Choose how the All apps section in Start is displayed: by category, in a grid, or as a list</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge build" title="Requires Windows build 26100.7171 or higher">Requires Windows build 26100.7171 or higher</span><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.05.26</span></div>
             <span class="setting-id">start-all-apps-view</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge build" title="Requires Windows build 26100.7171 or higher">Requires Windows build 26100.7171 or higher</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge added">Added in v26.05.26</span><span class="setting-badge req" title="StartMenuExperienceHost has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">StartMenuExperienceHost restart</span></div>
-            <p class="setting-desc">Choose how the All apps section in Start is displayed: by category, in a grid, or as a list</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 8ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start">HKCU\Software\Microsoft\Windows\CurrentVersion\Start</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>AllAppsViewMode</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="StartMenuExperienceHost has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">StartMenuExperienceHost restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start">HKCU\Software\Microsoft\Windows\CurrentVersion\Start</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">AllAppsViewMode</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Category <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0 (or not set)</td></tr>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">Grid</th><td class="mx-cell">1</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">List <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">2</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Category</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>0 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Grid</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>List</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>2</code></td></tr>
             </tbody>
             </table>
             </div>
-            </details>
+            </div>
             </div>
 
             <div class="setting-card" id="start-recommended-section">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 3H18C19.11 3 20 3.9 20 5V12.08C18.45 11.82 16.92 12.18 15.68 13H12V17H13.08C12.97 17.68 12.97 18.35 13.08 19H4C2.9 19 2 18.11 2 17V5C2 3.9 2.9 3 4 3M4 7V11H10V7H4M12 7V11H18V7H12M4 13V17H10V13H4M16.5 21.6L17.2 18.8L15 16.9L17.9 16.7L19 14L20.1 16.6L23 16.8L20.8 18.7L21.5 21.5L19 20.1L16.5 21.6Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Recommended section</span>
+            <p class="setting-desc">Show or hide the lower section that displays recently opened files and suggested apps. Hiding this section also removes Windows Spotlight from the lock screen and suggested content in the Settings app</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span></div>
             <span class="setting-id">start-recommended-section</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="setting-badge preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you.">Preference</span><span class="setting-badge req" title="StartMenuExperienceHost has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">StartMenuExperienceHost restart</span></div>
-            <p class="setting-desc">Show or hide the lower section that displays recently opened files and suggested apps. Hiding this section also removes Windows Spotlight from the lock screen and suggested content in the Settings app</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 4ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer">HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer">HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Start">HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start</code></th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Education">HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Education</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>HideRecommendedSection</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th><th class="mx-col mx-col-value"><code>IsEducationEnvironment</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="StartMenuExperienceHost has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">StartMenuExperienceHost restart</span></div></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer">HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer">HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Start">HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Education">HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Education</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">HideRecommendedSection</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">IsEducationEnvironment</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">Show <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">deletes key</td><td class="mx-cell">deletes key</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Hide <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">1</td><td class="mx-cell">1</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Show</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>deletes key</code></td><td class="mx-value"><code>deletes key</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Hide</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>1</code></td></tr>
             </tbody>
             </table>
             </div>
-            </details>
+            </div>
             </div>
 
             <h2 id="start-menu-settings">Start Menu Settings</h2>
             <div class="setting-card" id="start-show-recently-added-apps">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 6V20H18V22H3C2.4 22 2 21.6 2 21V6H4M12.1 10.6L10.2 8.8L12.8 8.4L14 6L15.2 8.4L17.8 8.8L15.9 10.7L16.3 13.3L14 12L11.6 13.2L12.1 10.6M8 2H20C21.11 2 22 2.9 22 4V16C22 17.11 21.11 18 20 18H8C6.9 18 6 17.11 6 16V4C6 2.9 6.9 2 8 2M8 4V16H20V4H8Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Show recently added apps</span>
+            <p class="setting-desc">Display a list of recently installed applications at the top of the All Apps list</p>
+            </div>
+            <div class="setting-pills">
             <span class="setting-id">start-show-recently-added-apps</span>
             </div>
-            <p class="setting-desc">Display a list of recently installed applications at the top of the All Apps list</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 3ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start">HKCU\Software\Microsoft\Windows\CurrentVersion\Start</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ShowRecentList</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start">HKCU\Software\Microsoft\Windows\CurrentVersion\Start</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">ShowRecentList</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
             </tbody>
             </table>
             </div>
-            </details>
+            </div>
             </div>
 
             <div class="setting-card" id="start-show-frequent-list">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Show most used apps</span>
+            <p class="setting-desc">Display your frequently launched applications at the top of the All Apps list for quick access</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span></div>
             <span class="setting-id">start-show-frequent-list</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span></div>
-            <p class="setting-desc">Display your frequently launched applications at the top of the All Apps list for quick access</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 3ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start">HKCU\Software\Microsoft\Windows\CurrentVersion\Start</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>ShowFrequentList</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start">HKCU\Software\Microsoft\Windows\CurrentVersion\Start</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">ShowFrequentList</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row"><th scope="row" class="mx-option">On</th><td class="mx-cell">1</td></tr>
-            <tr class="mx-option-row is-recommended is-default"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span> <span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">0 (or not set)</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>On</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>0 (or not set)</code></td></tr>
             </tbody>
             </table>
             </div>
-            </details>
+            </div>
             </div>
 
             <div class="setting-card" id="start-track-progs">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Show most used apps</span>
+            <p class="setting-desc">Display your frequently launched applications at the top of the All Apps list for quick access</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span></div>
             <span class="setting-id">start-track-progs</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span></div>
-            <p class="setting-desc">Display your frequently launched applications at the top of the All Apps list for quick access</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 3ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start_TrackProgs</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">Start_TrackProgs</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
             </tbody>
             </table>
             </div>
-            </details>
+            </div>
             </div>
 
             <div class="setting-card" id="start-show-suggestions">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20,11H23V13H20V11M1,11H4V13H1V11M13,1V4H11V1H13M4.92,3.5L7.05,5.64L5.63,7.05L3.5,4.93L4.92,3.5M16.95,5.63L19.07,3.5L20.5,4.93L18.37,7.05L16.95,5.63M12,6A6,6 0 0,1 18,12C18,14.22 16.79,16.16 15,17.2V19A1,1 0 0,1 14,20H10A1,1 0 0,1 9,19V17.2C7.21,16.16 6,14.22 6,12A6,6 0 0,1 12,6M14,21V22A1,1 0 0,1 13,23H11A1,1 0 0,1 10,22V21H14M11,18H13V15.87C14.73,15.43 16,13.86 16,12A4,4 0 0,0 12,8A4,4 0 0,0 8,12C8,13.86 9.27,15.43 11,15.87V18Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Show suggestions in Start</span>
+            <p class="setting-desc">Display app suggestions and promotional content from the Microsoft Store in the Start Menu</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span></div>
             <span class="setting-id">start-show-suggestions</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win10" title="This setting applies to Windows 10 only">Windows 10 only</span></div>
-            <p class="setting-desc">Display app suggestions and promotional content from the Microsoft Store in the Start Menu</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 3ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager">HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>SubscribedContent-338388Enabled</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager">HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">SubscribedContent-338388Enabled</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
             </tbody>
             </table>
             </div>
-            </details>
+            </div>
             </div>
 
             <div class="setting-card" id="start-show-recommended-files">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 11L10.74 13.75L8 15L10.74 16.26L12 19L13.25 16.26L16 15L13.25 13.75L12 11M6 2H14L20 8V20C20 21.1 19.1 22 18 22H6C4.9 22 4 21.1 4 20V4C4 2.9 4.9 2 6 2M6 4V20H18V9H13V4H6Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Show recommended files and recently opened items</span>
+            <p class="setting-desc">Display your recently opened documents and files in the Start Menu&#39;s Recommended section for quick access</p>
+            </div>
+            <div class="setting-pills">
             <span class="setting-id">start-show-recommended-files</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge req" title="Recommended section = Show">Requires: <a href="#start-recommended-section">Recommended section</a> (set automatically)</span></div>
-            <p class="setting-desc">Display your recently opened documents and files in the Start Menu&#39;s Recommended section for quick access</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 3ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start_TrackDocs</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Recommended section = Show">Requires: <a href="#start-recommended-section" class="mx-chip-link">Recommended section</a> (set automatically)</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">Start_TrackDocs</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
             </tbody>
             </table>
             </div>
-            </details>
+            </div>
             </div>
 
             <div class="setting-card" id="start-menu-recommendations">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 4L11.5 9.5L17 12L11.5 14.5L9 20L6.5 14.5L1 12L6.5 9.5L9 4M9 8.83L8 11L5.83 12L8 13L9 15.17L10 13L12.17 12L10 11L9 8.83M19 9L17.74 6.26L15 5L17.74 3.75L19 1L20.25 3.75L23 5L20.25 6.26L19 9M19 23L17.74 20.26L15 19L17.74 17.75L19 15L20.25 17.75L23 19L20.25 20.26L19 23Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Show recommendations for tips, shortcuts, new apps, and more</span>
+            <p class="setting-desc">Display personalized suggestions from Windows for tips, app shortcuts, and Microsoft Store apps in the Recommended section</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span></div>
             <span class="setting-id">start-menu-recommendations</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span></div>
-            <p class="setting-desc">Display personalized suggestions from Windows for tips, app shortcuts, and Microsoft Store apps in the Recommended section</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 3ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start_IrisRecommendations</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">Start_IrisRecommendations</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
             </tbody>
             </table>
             </div>
-            </details>
+            </div>
             </div>
 
             <div class="setting-card" id="start-show-account-notifications">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M10,21H14A2,2 0 0,1 12,23A2,2 0 0,1 10,21M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M17,11A5,5 0 0,0 12,6A5,5 0 0,0 7,11V18H17V11M19.75,3.19L18.33,4.61C20.04,6.3 21,8.6 21,11H23C23,8.07 21.84,5.25 19.75,3.19M1,11H3C3,8.6 3.96,6.3 5.67,4.61L4.25,3.19C2.16,5.25 1,8.07 1,11Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Show account-related notifications</span>
+            <p class="setting-desc">Display notifications about Microsoft account sign-in, sync status, and account-related suggestions</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span></div>
             <span class="setting-id">start-show-account-notifications</span>
             </div>
-            <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span></div>
-            <p class="setting-desc">Display notifications about Microsoft account sign-in, sync status, and account-related suggestions</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 3ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>Start_AccountNotifications</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">Start_AccountNotifications</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">1 (or not set)</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">0</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
             </tbody>
             </table>
             </div>
-            </details>
+            </div>
             </div>
 
             <div class="setting-card" id="start-disable-bing-search-results">
             <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5,3V19L8.72,21L18,15.82V11.73H18L9.77,8.95L11.38,12.84L13.94,14L8.7,16.92V4.27L5,3" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
             <span class="setting-name">Bing Search Results in Start Menu</span>
+            <p class="setting-desc">Show web results from Bing alongside local files and apps when searching in the Start Menu</p>
+            </div>
+            <div class="setting-pills">
             <span class="setting-id">start-disable-bing-search-results</span>
             </div>
-            <p class="setting-desc">Show web results from Bing alongside local files and apps when searching in the Start Menu</p>
-            <details class="registry-details">
-            <summary>Technical Details</summary>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(45px + 3ch)">
             <div class="mx-scroll">
-            <table class="registry-table mx-table">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"><col><col></colgroup>
             <thead>
-            <tr class="mx-groups"><th class="mx-corner" rowspan="2">Option</th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer">HKCU\Software\Policies\Microsoft\Windows\Explorer</code><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer">HKLM\Software\Policies\Microsoft\Windows\Explorer</code></th><th colspan="1" class="mx-group mx-group-registry" title="Read to determine which option is active, and written when you apply one."><span class="mx-group-label">Registry</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search">HKCU\Software\Microsoft\Windows\CurrentVersion\Search</code></th></tr>
-            <tr class="mx-cols"><th class="mx-col mx-col-value"><code>DisableSearchBoxSuggestions</code><span class="mx-type">DWord</span><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></th><th class="mx-col mx-col-value"><code>BingSearchEnabled</code><span class="mx-type">DWord</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer">HKCU\Software\Policies\Microsoft\Windows\Explorer</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer">HKLM\Software\Policies\Microsoft\Windows\Explorer</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search">HKCU\Software\Microsoft\Windows\CurrentVersion\Search</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">DisableSearchBoxSuggestions</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-caption">Value name</span><code class="mx-name">BingSearchEnabled</code><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></th></tr>
             </thead>
             <tbody>
-            <tr class="mx-option-row is-default"><th scope="row" class="mx-option">On <span class="mx-roles"><span class="role-badge def" title="How Windows ships out of the box">Default</span></span></th><td class="mx-cell">deletes key</td><td class="mx-cell">1 (or not set)</td></tr>
-            <tr class="mx-option-row is-recommended"><th scope="row" class="mx-option">Off <span class="mx-roles"><span class="role-badge rec" title="What Winhance suggests for most people">Recommended</span></span></th><td class="mx-cell">1</td><td class="mx-cell">0</td></tr>
+            <tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 11 11" width="12" height="12" aria-hidden="true"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>deletes key</code></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>0</code></td></tr>
             </tbody>
             </table>
             </div>
-            </details>
+            </div>
             </div>
             </section>
         </main>

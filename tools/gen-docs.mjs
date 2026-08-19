@@ -8,7 +8,7 @@ import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { loadPages, renderFeaturePage, renderHubPage } from './lib/render-page.mjs';
 import { searchEntries, searchEntriesJs, spliceBetweenMarkers, docsConfigBlock, versionToIsoDate, renderSitemap } from './lib/site-meta.mjs';
-import { themeCss } from './lib/theme-css.mjs';
+import { themeCss, geometries } from './lib/theme-css.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const DEFAULT_CATALOG = resolve(here, '..', '..', 'winhance', 'extras', 'docs-export', 'catalog.json');
@@ -41,6 +41,12 @@ export function generate({ catalogPath, siteDir, warn = () => {}, themePath = jo
   const childrenOf = new Map();
   for (const s of all) if (s.uiParentId) childrenOf.set(s.uiParentId, [...(childrenOf.get(s.uiParentId) ?? []), s]);
 
+  // Both come from the same export theme.json parses once, so app-tokens.css and every setting card's
+  // pills (Recommended/Windows-default/Preference icons) always agree with each other.
+  const theme = existsSync(themePath) ? JSON.parse(readFileSync(themePath, 'utf8')) : null;
+  const iconsPath = join(siteDir, '_assets', 'icons.json');
+  const icons = existsSync(iconsPath) ? JSON.parse(readFileSync(iconsPath, 'utf8')).icons : {};
+
   const out = new Map();
   const counts = {};
   for (const feature of catalog.features) {
@@ -52,6 +58,8 @@ export function generate({ catalogPath, siteDir, warn = () => {}, themePath = jo
     for (const g of Object.keys(content.groups ?? {})) if (!groups.has(g)) warn(`${page.path}: blurb for "${g}" matches no group`);
     const ctx = {
       childrenOf,
+      icons,
+      geometries: theme ? geometries(theme) : {},
       urlFor: (id) => {
         const target = pageOfSetting.get(id);
         if (!target) return null;
@@ -70,7 +78,7 @@ export function generate({ catalogPath, siteDir, warn = () => {}, themePath = jo
   out.set('js/docs-config.js', spliceBetweenMarkers(readFileSync(configPath, 'utf8'), START, END, docsConfigBlock(catalog.winhanceVersion)));
   const sitemapPath = join(siteDir, 'sitemap.xml');
   out.set('sitemap.xml', renderSitemap({ existing: existsSync(sitemapPath) ? readFileSync(sitemapPath, 'utf8') : '', pages, isoDate: versionToIsoDate(catalog.winhanceVersion) }));
-  if (existsSync(themePath)) out.set('css/app-tokens.css', themeCss(JSON.parse(readFileSync(themePath, 'utf8'))));
+  if (theme) out.set('css/app-tokens.css', themeCss(theme));
   return out;
 }
 
