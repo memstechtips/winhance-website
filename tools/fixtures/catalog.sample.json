@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "winhanceVersion": "26.08.18",
   "catalogHash": "fdfaa61e57d5cf6f15a1e7ec9e30cd41d96c5ae73e52d690eb0eb0038f4d7d32",
-  "settingCount": 16,
+  "settingCount": 17,
   "referenceBuilds": {
     "win10": 19045,
     "win11": 26100
@@ -2886,6 +2886,104 @@
             "accessibleSummary": "Prompt for Credentials: ConsentPromptBehaviorAdmin 1, PromptOnSecureDesktop 1. Always notify: ConsentPromptBehaviorAdmin 2, PromptOnSecureDesktop 1. Notify when apps try to make changes: ConsentPromptBehaviorAdmin 5, PromptOnSecureDesktop 1 (Recommended, Default). Notify when apps try to make changes (no dim): ConsentPromptBehaviorAdmin 5, PromptOnSecureDesktop 0. Never notify: ConsentPromptBehaviorAdmin 0, PromptOnSecureDesktop 0. Registry: HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System."
           },
           "matrixWin10": null
+        }
+      ]
+    },
+    {
+      "id": "StartMenu",
+      "settings": [
+        {
+          "id": "start-menu-clean-10",
+          "name": "Clean Start Menu",
+          "description": "Removes all pinned items and applies a clean layout for the current user and any newly created profiles.",
+          "group": "Layout",
+          "icon": {
+            "pack": "Material",
+            "name": "Broom"
+          },
+          "control": "Action",
+          "isSubjectivePreference": false,
+          "addedInVersion": null,
+          "uiParentId": null,
+          "availability": {
+            "builds": [
+              {
+                "min": "0.0",
+                "max": "21999.2147483647"
+              }
+            ],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": "This setting applies to Windows 10 only"
+            }
+          },
+          "matrix": {
+            "groups": [],
+            "columns": [],
+            "options": [],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "",
+            "settingDescription": "",
+            "requirements": [
+              {
+                "text": "Asks you to confirm before it runs",
+                "tooltip": "Prompts before applying this setting",
+                "linkSettingId": "",
+                "linkText": "",
+                "hasLink": false
+              }
+            ],
+            "notes": [
+              {
+                "label": "Start layout",
+                "detail": "More pins",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Recommended section",
+                "detail": "Hide",
+                "scope": "",
+                "hasScope": false
+              },
+              {
+                "label": "Show most used apps",
+                "detail": "Off",
+                "scope": "",
+                "hasScope": false
+              }
+            ],
+            "notesHeading": "Also happens when you apply, if you agree to the prompt",
+            "notesDetailHeader": "Details",
+            "hasNotes": true,
+            "codeBlocks": [
+              {
+                "heading": "PowerShell Scripts",
+                "label": "On Apply",
+                "kind": "PowerShell",
+                "description": "",
+                "body": "$layoutPath = 'C:\\Users\\Default\\AppData\\Local\\Microsoft\\Windows\\Shell\\LayoutModification.xml'"
+              }
+            ],
+            "hasCode": true,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Clean Start Menu."
+          }
         }
       ]
     }

@@ -63,6 +63,16 @@ const NUMBER = /^-?\d+(\.\d+)?$/;
 const HEX_COLOR = /^#[0-9A-Fa-f]{6}([0-9A-Fa-f]{2})?$/;
 const REF = /^\{(ThemeResource|StaticResource)\s+([^}]+)\}$/;
 
+// XAML FontWeight is a named WinUI FontWeights member (or occasionally a raw numeric weight);
+// CSS font-weight only accepts a number. Untranslated, "SemiBold" is invalid at computed-value
+// time and the whole declaration falls back to inherited -- every weighted style in the panel
+// silently loses its weight. Names from Windows.UI.Text.FontWeights.
+const FONT_WEIGHTS = {
+  Thin: '100', ExtraLight: '200', Light: '300', SemiLight: '350',
+  Normal: '400', Regular: '400', Medium: '500', SemiBold: '600',
+  Bold: '700', ExtraBold: '800', Black: '900',
+};
+
 function px(n) {
   return n === '0' ? '0' : `${n}px`;
 }
@@ -90,7 +100,8 @@ function resolveRef(kind, key) {
   return `var(${cssVarName(key)})`;
 }
 
-function convertValue(raw) {
+function convertValue(raw, prop) {
+  if (prop === 'FontWeight') return FONT_WEIGHTS[raw] ?? raw; // numeric weights pass through as-is (no px)
   const ref = REF.exec(raw);
   if (ref) return resolveRef(ref[1], ref[2]);
   if (HEX_COLOR.test(raw)) return convertColor(raw);
@@ -126,7 +137,7 @@ export function themeCss(theme) {
   const styleLines = [];
   for (const key of Object.keys(theme.styles)) {
     for (const [prop, value] of resolveSetters(theme.styles, key, memo)) {
-      styleLines.push(`  ${setterVarName(key, prop)}: ${convertValue(value)};`);
+      styleLines.push(`  ${setterVarName(key, prop)}: ${convertValue(value, prop)};`);
     }
   }
 

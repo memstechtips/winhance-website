@@ -7,8 +7,21 @@ import { esc } from './html.mjs';
 const BUILD_HEADING = { win11: 'Windows 11', win10: 'Windows 10' };
 
 // 21px CurrentMarkerGutter + 2*12px Table.Cell padding: the fixed part of every option cell's width,
-// on top of the longest label (monospace, so 1 character == 1ch).
+// on top of the longest label. Charged in var(--mx-char-w) multiples, not `ch`: `ch` re-resolves
+// against whatever font the READING element inherits, and a <col> can't carry its own font-family at
+// all -- the same --mx-option-w value used to end up three different pixel widths across
+// col.mx-col-option's width and .mx-h-role/.mx-role's sticky `left` (Controller ruling 1, fix round 1).
+// A literal px-per-character token sidesteps that: every consumer resolves the identical number.
 const OPTION_CELL_FIXED_WIDTH = 21 + 12 * 2;
+
+// 2*12px Table.Cell padding: every other column's fixed width (no CurrentMarkerGutter -- that's the
+// option column's alone).
+const DATA_CELL_FIXED_WIDTH = 12 * 2;
+
+// BadgePillBase's own metrics on top of the cell padding above: 12px icon + 4px icon-to-label gap +
+// 1px border on both sides + 7px/9px left/right padding = 34px of chrome around whatever the pill's
+// own label measures.
+const ROLE_CELL_FIXED_WIDTH = DATA_CELL_FIXED_WIDTH + 12 + 4 + 2 + 7 + 9;
 
 // Only the setting's name inside a chip is a link (the builder marks it with linkText); the prose around
 // it is not. Shared by column chips, requirement chips (mechanism cell) and (Controller ruling 1) the
@@ -58,10 +71,15 @@ function groupLabelBlock(label, description) {
 }
 
 // A caption sits BESIDE its value rather than above it: a caption on its own line reads as another
-// column heading (OptionMatrixView.CaptionedLine).
+// column heading (OptionMatrixView.CaptionedLine). Always wrapped in its own block-level line (fix
+// round 1, finding 5): the app builds this as one child of a vertical StackPanel, so the name line and
+// the type line beneath it must never be free siblings inside the <th> -- left unwrapped, they flowed
+// as plain inline content and a narrow column wrapped the caption away from its value instead of onto
+// its own row.
 function captionedLine(caption, text, valueClass) {
   const value = `<code class="${valueClass}">${esc(text)}</code>`;
-  return caption ? `<span class="mx-caption">${esc(caption)}</span>${value}` : value;
+  const cap = caption ? `<span class="mx-caption">${esc(caption)}</span>` : '';
+  return `<span class="mx-line">${cap}${value}</span>`;
 }
 
 // Adjacent only: two registry groups separated by a scheduled task stay two headings rather than one
@@ -108,6 +126,14 @@ function pathsRow(matrix) {
     }).join('');
     return `<th class="mx-paths" colspan="${g.columnSpan}">${lines}</th>`;
   }).join('');
+}
+
+// With neither columns nor options the Option/Role headers would be a band over two empty columns --
+// a table that lost its rows (OptionMatrixView.HasColumnHeaderRow). start-menu-clean-10 is exactly
+// this shape: notes/requirements/code carry the whole setting, so the matrix has 0 columns and 0
+// options, and the app renders no column-header row at all.
+function hasColumnHeaderRow(matrix) {
+  return matrix.columns.length > 0 || matrix.options.length > 0;
 }
 
 // Row 2 (ColumnHeaderRow): the frozen Option/Role headers, then per column a caption+header, an optional
@@ -157,10 +183,15 @@ function noteSpans(matrix) {
 function notesRows(matrix) {
   if (!matrix.hasNotes) return '';
   const { labelSpan, detailSpan } = noteSpans(matrix);
-  const head = `<tr class="mx-notes-head"><th colspan="${labelSpan}" scope="col">${esc(matrix.notesHeading)}</th><th colspan="${detailSpan}" scope="col">${esc(matrix.notesDetailHeader)}</th></tr>`;
+  // Named('TechDetail.Table.GroupLabel')/HeaderCaption -- the heading row carries the same two text
+  // styles as every other header band, not bare unstyled text (fix round 1, app-fidelity item 2).
+  const head = `<tr class="mx-notes-head"><th colspan="${labelSpan}" scope="col"><span class="mx-group-label">${esc(matrix.notesHeading)}</span></th><th colspan="${detailSpan}" scope="col"><span class="mx-caption">${esc(matrix.notesDetailHeader)}</span></th></tr>`;
   const rows = matrix.notes.map((n) => {
+    // AddNotes: label and scope sit in a StackPanel{Spacing=1} -- stacked, not side by side (fix
+    // round 1, app-fidelity item 1). mx-note-name is that stack.
     const scope = n.hasScope ? `<span class="mx-caption">${esc(n.scope)}</span>` : '';
-    return `<tr class="mx-note"><th colspan="${labelSpan}" scope="row"><span class="mx-note-label">${esc(n.label)}</span>${scope}</th><td colspan="${detailSpan}">${esc(n.detail)}</td></tr>`;
+    const name = `<span class="mx-note-name"><span class="mx-note-label">${esc(n.label)}</span>${scope}</span>`;
+    return `<tr class="mx-note"><th colspan="${labelSpan}" scope="row">${name}</th><td colspan="${detailSpan}">${esc(n.detail)}</td></tr>`;
   }).join('');
   return head + rows;
 }
@@ -186,12 +217,60 @@ function codeHost(matrix) {
   return `<div class="mx-code-host">${parts.join('')}</div>`;
 }
 
+// A width is a fixed px budget plus a character count charged in var(--mx-char-w) -- keeping the two
+// separate (rather than a pre-built calc() string) lets renderMatrix sum every column's width into one
+// table-wide total below, instead of concatenating calc() expressions.
+function widthCalc({ fixed, chars }) {
+  return `calc(${fixed}px + ${chars} * var(--mx-char-w))`;
+}
+
+function sumWidths(widths) {
+  return widths.reduce((sum, w) => ({ fixed: sum.fixed + w.fixed, chars: sum.chars + w.chars }), { fixed: 0, chars: 0 });
+}
+
 // Controller ruling 1: sticky columns need no JS. --mx-option-w is the fixed gutter+padding plus the
-// longest option label in ch (labels render monospace, so ch is exact); .mx-col-option takes that width
-// and the Role column/cells sit sticky at that same offset.
+// longest option label's character count times var(--mx-char-w) (fix round 1: was `<N>ch`, which
+// resolves per-element against whatever font it inherits rather than the table's monospace font --
+// see the constant above); .mx-col-option takes that width and the Role column/cells sit sticky at
+// that same offset, so both read the exact same pixel value no matter what resolves the var.
 function optionColumnWidth(matrix) {
   const longest = matrix.options.reduce((max, o) => Math.max(max, o.label.length), 0);
-  return `calc(${OPTION_CELL_FIXED_WIDTH}px + ${longest}ch)`;
+  return { fixed: OPTION_CELL_FIXED_WIDTH, chars: longest };
+}
+
+// Sized to the longest Recommended/Windows-default pill label actually used here, qualified with its
+// context (Qualified()) exactly like the pill itself renders -- fix round 1. Without an explicit width,
+// table-layout: fixed (needed for the option column above) treats this column as "auto" and divides
+// whatever space is left over it and every data column EVENLY, which squeezed both far narrower than
+// their content and forced value text to overlap the next column.
+function roleColumnWidth(matrix) {
+  const labels = [matrix.roleHeader];
+  for (const o of matrix.options) {
+    if (o.isRecommended) labels.push(qualified(matrix.recommendedLabel, o.recommendedContext));
+    if (o.isWindowsDefault) labels.push(qualified(matrix.defaultLabel, o.defaultContext));
+  }
+  const longest = labels.reduce((max, l) => Math.max(max, l.length), 0);
+  return { fixed: ROLE_CELL_FIXED_WIDTH, chars: longest };
+}
+
+// A caption+value pair sharing a line (captionedLine/mx-line) competes against every option's own cell
+// text for this column's width -- the caption's own length has to be charged too, or a column sized
+// only to its value text wraps/overflows under its own header. char-w is calibrated for the panel's
+// monospace face; charging the caption's proportional text the same rate runs slightly wide rather
+// than short, which is the safe direction for a column that must never wrap (fix round 1, finding 2).
+function lineLength(caption, text) {
+  return caption ? caption.length + 1 + text.length : text.length; // +1 stands in for the 6px caption-value gap
+}
+
+function dataColumnWidth(matrix, index, column) {
+  const nameCaption = column.kind === 'Value' ? matrix.valueNameLabel : column.kind === 'Task' ? matrix.taskLabel : '';
+  const lengths = [lineLength(nameCaption, column.header)];
+  if (column.hasType) lengths.push(lineLength(column.kind === 'Value' ? matrix.valueTypeLabel : '', column.typeName));
+  for (const o of matrix.options) {
+    const cell = o.cells[index];
+    if (cell && cell.hasText) lengths.push(cell.text.length);
+  }
+  return { fixed: DATA_CELL_FIXED_WIDTH, chars: lengths.reduce((max, n) => Math.max(max, n), 0) };
 }
 
 export function renderMatrix(matrix, { heading = '', urlFor = () => null, geometries = {} } = {}) {
@@ -199,18 +278,29 @@ export function renderMatrix(matrix, { heading = '', urlFor = () => null, geomet
     return `<p class="mx-empty">The options are the power plans installed on this PC, so there is no fixed table; Winhance lists them live.</p>`;
   }
   const head = heading ? `<h4 class="mx-build">${esc(heading)}</h4>\n` : '';
-  const cols = `<col class="mx-col-option"><col class="mx-col-role">${matrix.columns.map(() => '<col>').join('')}`;
+  const optionW = optionColumnWidth(matrix);
+  const roleW = roleColumnWidth(matrix);
+  const dataWidths = matrix.columns.map((c, i) => dataColumnWidth(matrix, i, c));
+  // table-layout: fixed (finding 2) makes every <col>'s width authoritative, but ONLY when the table's
+  // own width is a definite value the browser doesn't need to redistribute -- an explicit width equal
+  // to the exact sum of the columns leaves nothing left over to redistribute, unlike `width: 100%` on a
+  // matrix narrower than its container (verified live: with 100%, Chromium proportionally stretched
+  // every column, including the option column, past --mx-option-w -- reopening the exact bug this fix
+  // round closes).
+  const tableW = sumWidths([optionW, roleW, ...dataWidths]);
+  const cols = `<col class="mx-col-option"><col class="mx-col-role" style="width: ${widthCalc(roleW)}">${dataWidths.map((w) => `<col style="width: ${widthCalc(w)}">`).join('')}`;
   const body = matrix.options.map((o) => optionRow(matrix, o, geometries)).join('') + notesRows(matrix);
   const boxClass = matrix.hasCode ? 'mx-box mx-has-code' : 'mx-box';
+  const columnsRow = hasColumnHeaderRow(matrix) ? `<tr class="mx-row-columns">${columnHeaderRow(matrix, urlFor)}</tr>` : '';
 
-  return `${head}<div class="${boxClass}" style="--mx-option-w: ${optionColumnWidth(matrix)}">
+  return `${head}<div class="${boxClass}" style="--mx-option-w: ${widthCalc(optionW)}; --mx-table-w: ${widthCalc(tableW)}">
 <div class="mx-scroll">
 <table class="mx-grid">
 <colgroup>${cols}</colgroup>
 <thead>
 <tr class="mx-row-mechanism">${settingCell(matrix, urlFor)}${groupHeaderRow(matrix)}</tr>
 <tr class="mx-row-paths">${pathsRow(matrix)}</tr>
-<tr class="mx-row-columns">${columnHeaderRow(matrix, urlFor)}</tr>
+${columnsRow}
 </thead>
 <tbody>
 ${body}

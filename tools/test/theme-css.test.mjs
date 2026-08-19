@@ -93,6 +93,27 @@ test('MinHeight "32" converts to "32px"', () => {
   assert.match(css, /--app-techdetail-table-headerband-min-height:\s*32px;/);
 });
 
+// fix round 1 (finding 3): theme.json exports named WinUI FontWeights ("SemiBold"), which is not
+// legal CSS -- every font-weight setter using it was invalid at computed-value time and silently
+// fell back to the inherited weight. Pin the one mapping the panel actually depends on.
+test('FontWeight "SemiBold" converts to the CSS numeric weight 600, not passed through as a string', () => {
+  const css = themeCss(theme);
+  assert.match(css, /--app-techdetail-table-optionlabel-font-weight:\s*600;/);
+  assert.doesNotMatch(css, /-font-weight:\s*SemiBold;/);
+});
+
+test('a numeric FontWeight passes through unitless (no px, unlike other numeric setters)', () => {
+  const withNumericWeight = {
+    ...theme,
+    styles: {
+      ...theme.styles,
+      'Test.NumericWeight': { target: 'TextBlock', basedOn: null, setters: { FontWeight: '450' } },
+    },
+  };
+  const css = themeCss(withNumericWeight);
+  assert.match(css, /--app-test-numericweight-font-weight:\s*450;/);
+});
+
 test('CornerRadius "10" converts to "10px"', () => {
   const css = themeCss(theme);
   assert.match(css, /--app-badge-pill-base-corner-radius:\s*10px;/);

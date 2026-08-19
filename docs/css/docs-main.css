@@ -1065,16 +1065,45 @@ html {
     background: var(--winui-card-background-fill-color-default);
 }
 
+/* fix round 1 (finding 1): docs-syntax.css's site-wide `:not(pre)>code` rule grey-pills every
+   inline <code> (background/padding/radius) -- the app draws these as plain text on the cell
+   background (mx-name/mx-type/mx-path/option & value code), not as inline-code chips. A class
+   selector always outranks two type selectors, so this wins regardless of stylesheet load order.
+   Code-BLOCK bodies (.mx-code-body code, a <pre> descendant `:not(pre)>code` never matched anyway)
+   are untouched -- they only set font-family/size/color below, never background/padding. */
+.mx-box :where(code) {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+}
+
 .mx-scroll { overflow-x: auto; }
 
-/* Base font is Consolas (TechDetail.Table.OptionLabel/HeaderText both use it): --mx-option-w's `ch`
-   component is computed against the option label's own monospace font, and `ch` is a font-relative
-   unit -- resolving it in ANY other font here (including the table's own <col>, which cannot carry
-   its own font-family) would size column 0 differently from where column 1 sticks, opening a gap the
-   next column's content shows through. Every non-monospace cell (group/caption text) sets its own
-   WinUI font back explicitly below. */
+/* fix round 1 (finding 2): the glyph advance for the panel's own 12px monospace face, used as a
+   literal px multiplier for --mx-option-w instead of `ch`. `ch` re-resolves per element against
+   whatever font THAT element inherits -- and a <col> can't carry a font-family at all -- so the
+   same --mx-option-w value used to compute three different pixel widths across col.mx-col-option's
+   width and .mx-h-role/.mx-role's sticky `left`, leaving a gap the scrolling data columns showed
+   through. A literal px value resolves identically everywhere, by construction. Measured against
+   the resolved font stack in a real render; re-measure (getBoundingClientRect on a lone character)
+   if the font stack below ever changes. */
+:root {
+    --mx-char-w: 7.5px;
+}
+
 .mx-grid {
-    width: 100%;
+    /* --mx-table-w (set inline per matrix) is the exact sum of every column's own width -- role and
+       data columns get one too (see .mx-grid col rules and render-card.mjs's roleColumnWidth/
+       dataColumnWidth), so there is nothing left over for `fixed` layout to redistribute. `width: 100%`
+       looked right until a matrix narrower than its container: Chromium then proportionally stretches
+       EVERY column, including the option column, past --mx-option-w, reopening the very mismatch this
+       fix round exists to close (verified live, fix round 1). */
+    width: var(--mx-table-w);
+    /* Authoritative <col> widths (Controller ruling 1, fix round 1): without `fixed`, a specified
+       <col> width is only a hint -- the browser can still grow a column past it to fit content,
+       which re-opens the same col-width-vs-sticky-left mismatch the --mx-char-w fix above closes.
+       `fixed` makes col.mx-col-option's width the actual layout width, full stop. */
+    table-layout: fixed;
     /* NOT collapse: collapsed borders force table cells through a separate background/paint pass
        that Chromium and Firefox both get wrong for `position: sticky` cells -- a sticky cell's
        background stops masking the (non-sticky) data-column content scrolling underneath it, and
@@ -1184,24 +1213,39 @@ html {
     font-family: var(--winui-font-family);
     font-size: var(--app-techdetail-table-groupdescription-font-size);
     color: var(--app-techdetail-table-groupdescription-foreground);
+    font-weight: normal; /* fix round 1 (finding 3): GroupDescription carries no FontWeight setter in
+      the app -- without an explicit reset here it inherited the <th> it always sits inside's browser-
+      default bold instead of the app's regular weight. */
 }
 
+/* No margin of its own -- every place a caption sits beside its value is a flex row with its own
+   6px gap (.mx-line, .mx-pathline); a margin here on top of that gap would double the space the
+   app's own Spacing="6" StackPanel draws once. Where a caption stands alone (notes heading/scope)
+   there's nothing after it for a margin to separate anyway. */
 .mx-caption {
     font-family: var(--winui-font-family);
     font-size: var(--app-techdetail-table-headercaption-font-size);
     font-weight: var(--app-techdetail-table-headercaption-font-weight);
     color: var(--app-techdetail-table-headercaption-foreground);
-    margin-right: 6px;
 }
 
 .mx-pathline { display: flex; align-items: baseline; gap: 6px; }
 .mx-pathline + .mx-pathline { margin-top: 2px; }
+
+/* fix round 1 (finding 5): each caption+value pair from captionedLine() is its own block-level flex
+   line -- mirrors AddColumnHeaders' vertical StackPanel{Spacing=1} of horizontal Spacing=6 lines.
+   Unwrapped, the name line and type line were free inline siblings inside the <th>: a wide column
+   showed both on one line, a narrow one wrapped the caption away from its value. */
+.mx-line { display: flex; align-items: baseline; gap: 6px; }
+.mx-line + .mx-line { margin-top: 1px; }
 
 .mx-path {
     font-family: var(--app-techdetail-table-grouppath-font-family), var(--font-code);
     font-size: var(--app-techdetail-table-grouppath-font-size);
     color: var(--app-techdetail-table-grouppath-foreground);
     white-space: nowrap;
+    font-weight: normal; /* fix round 1 (finding 3): GroupPath carries no FontWeight setter in the app
+      either -- same <th> default-bold leak as .mx-group-desc above (measured 700 instead of 400). */
 }
 
 .mx-name {
@@ -1223,6 +1267,15 @@ html {
 
 .mx-gutter { display: inline-block; width: 21px; } /* CurrentMarkerGutter -- never draws a marker on the web */
 
+/* fix round 1 (finding 2, follow-on): the gutter and the code label are two separate inline boxes,
+   and a browser is free to break a line BETWEEN two inline siblings even though `.mx-option code`
+   itself is nowrap -- --mx-option-w is sized with zero slack for the longest label, so a sub-pixel
+   glyph-metric difference from --mx-char-w's estimate was enough to wrap the label onto its own
+   line under the gutter. Ban that break point outright; table-layout: fixed already guarantees the
+   cell's LAYOUT width matches --mx-option-w regardless, so any leftover fraction of a pixel just
+   overflows invisibly instead of wrapping. */
+.mx-option { white-space: nowrap; }
+
 .mx-option code {
     font-family: var(--app-techdetail-table-optionlabel-font-family), var(--font-code);
     font-size: var(--app-techdetail-table-optionlabel-font-size);
@@ -1240,12 +1293,14 @@ html {
     white-space: nowrap;
 }
 
+/* AddNotes: label above scope in a StackPanel{Spacing=1} -- stacked, not side by side. */
+.mx-note-name { display: flex; flex-direction: column; gap: 1px; }
+
 .mx-note-label {
     font-family: var(--app-techdetail-table-optionlabel-font-family), var(--font-code);
     font-size: var(--app-techdetail-table-optionlabel-font-size);
     font-weight: var(--app-techdetail-table-optionlabel-font-weight);
     color: var(--text-color);
-    margin-right: 6px;
 }
 
 .mx-note td {
@@ -1264,7 +1319,16 @@ html {
     justify-content: center;
 }
 
-.mx-code-separator { border-top: var(--app-techdetail-table-codeseparator-border-thickness) solid var(--app-techdetail-table-codeseparator-border-brush); }
+/* fix round 1 (finding 4): border-width accepts a 4-value thickness (it's a longhand for the four
+   per-side widths); border-top does not -- it only takes ONE width. The generated thickness var here
+   is a correct 4-value T/R/B/L conversion (1px 0 0 0), so `border-top: var(...) solid var(...)` was
+   invalid at computed-value time and the whole declaration was dropped, leaving no separator line at
+   all. Split into the three longhands so the 4-value width resolves where it's legal. */
+.mx-code-separator {
+    border-width: var(--app-techdetail-table-codeseparator-border-thickness);
+    border-style: solid;
+    border-color: var(--app-techdetail-table-codeseparator-border-brush);
+}
 
 .mx-code-label {
     margin: 8px 12px 4px;
@@ -1283,16 +1347,23 @@ html {
     white-space: pre;
 }
 
+/* fix round 1 (finding 4): same border-left/4-value-width mismatch as .mx-code-separator above --
+   the app's 3px accent bar (PowerShell #58A6FF, .reg #F0C674, spec S3) never rendered because
+   `border-left: 0 0 0 3px solid ...` is invalid (border-left only takes one width). */
 .mx-code-body.mx-code-powershell {
     background: var(--app-techdetail-codeblock-powershell-background);
-    border-left: var(--app-techdetail-codeblock-powershell-border-thickness) solid var(--app-techdetail-codeblock-powershell-border-brush);
+    border-width: var(--app-techdetail-codeblock-powershell-border-thickness);
+    border-style: solid;
+    border-color: var(--app-techdetail-codeblock-powershell-border-brush);
     padding: var(--app-techdetail-codeblock-powershell-padding);
     border-radius: var(--app-techdetail-codeblock-powershell-corner-radius);
 }
 
 .mx-code-body.mx-code-regcontent {
     background: var(--app-techdetail-codeblock-regcontent-background);
-    border-left: var(--app-techdetail-codeblock-regcontent-border-thickness) solid var(--app-techdetail-codeblock-regcontent-border-brush);
+    border-width: var(--app-techdetail-codeblock-regcontent-border-thickness);
+    border-style: solid;
+    border-color: var(--app-techdetail-codeblock-regcontent-border-brush);
     padding: var(--app-techdetail-codeblock-regcontent-padding);
     border-radius: var(--app-techdetail-codeblock-regcontent-corner-radius);
 }

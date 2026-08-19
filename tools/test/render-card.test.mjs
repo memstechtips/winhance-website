@@ -31,6 +31,21 @@ test('thead has exactly the three app header rows, in order', () => {
   assert.deepEqual(order, ['mx-row-mechanism', 'mx-row-paths', 'mx-row-columns']);
 });
 
+// fix round 1 (finding 6): HasColumnHeaderRow is false when a matrix has neither columns nor
+// options -- an Option/Role band over an empty table is a table that lost its rows.
+// start-menu-clean-10 is exactly that shape (notes/requirements/code carry the whole setting).
+test('a matrix with no columns and no options renders no mx-row-columns row at all', () => {
+  const m = byId['start-menu-clean-10'].matrix;
+  assert.equal(m.columns.length, 0);
+  assert.equal(m.options.length, 0);
+  const html = renderMatrix(m, { geometries: geo });
+  assert.doesNotMatch(html, /<tr class="mx-row-columns">/);
+  assert.doesNotMatch(html, /class="mx-h-option"/);
+  assert.doesNotMatch(html, /class="mx-h-role"/);
+  const thead = html.match(/<thead>([\s\S]*?)<\/thead>/)[1];
+  assert.equal((thead.match(/<tr/g) ?? []).length, 2, 'only mechanism + paths rows remain');
+});
+
 test('the setting cell spans both frozen columns over both header rows', () => {
   const html = renderMatrix(byId['sound-startup'].matrix, { geometries: geo });
   assert.match(html, /<th class="mx-setting" colspan="2" rowspan="2">/);
@@ -105,9 +120,21 @@ test('notes render as rows inside tbody, after the option rows, split label/deta
   const lastOptionIndex = tbody.lastIndexOf('<tr><th class="mx-option"');
   const notesHeadIndex = tbody.indexOf('<tr class="mx-notes-head">');
   assert.ok(lastOptionIndex < notesHeadIndex, 'notes must follow every option row');
-  assert.match(tbody, new RegExp(`<tr class="mx-notes-head"><th colspan="2" scope="col">${esc(m.notesHeading)}</th><th colspan="1" scope="col">${esc(m.notesDetailHeader)}</th></tr>`));
+  // The heading row carries the app's own GroupLabel/HeaderCaption text styles (fix round 1),
+  // not bare text.
+  assert.match(tbody, new RegExp(`<tr class="mx-notes-head"><th colspan="2" scope="col"><span class="mx-group-label">${esc(m.notesHeading)}</span></th><th colspan="1" scope="col"><span class="mx-caption">${esc(m.notesDetailHeader)}</span></th></tr>`));
   const firstNote = m.notes[0];
-  assert.match(tbody, new RegExp(`<th colspan="2" scope="row"><span class="mx-note-label">${esc(firstNote.label)}</span></th><td colspan="1">${esc(firstNote.detail)}</td>`));
+  assert.ok(!firstNote.hasScope, 'first taskbar-clean note must be scope-less for this assertion');
+  assert.match(tbody, new RegExp(`<th colspan="2" scope="row"><span class="mx-note-name"><span class="mx-note-label">${esc(firstNote.label)}</span></span></th><td colspan="1">${esc(firstNote.detail)}</td>`));
+});
+
+test('a scoped note stacks its label above its scope, not side by side (AddNotes StackPanel{Spacing=1})', () => {
+  const m = byId['theme-mode-windows'].matrix;
+  const scoped = m.notes.find((n) => n.hasScope);
+  assert.ok(scoped, 'fixture must carry a scoped theme-mode-windows note');
+  const html = renderMatrix(m, { geometries: geo });
+  const reEscape = (s) => esc(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  assert.match(html, new RegExp(`<span class="mx-note-name"><span class="mx-note-label">${reEscape(scoped.label)}</span><span class="mx-caption">${reEscape(scoped.scope)}</span></span>`));
 });
 
 test('code blocks render inside .mx-box but after .mx-scroll closes, one heading band per distinct heading', () => {
@@ -139,11 +166,33 @@ test('the setting icon renders as an inline svg with the app icon geometry', () 
   assert.match(html, new RegExp(`<span class="setting-icon"><svg viewBox="${art.viewBox}" width="20" height="20"[^>]*><path d="${art.path.slice(0, 20).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
 });
 
-test('--mx-option-w is set inline on .mx-box from the longest option label', () => {
+test('--mx-option-w is set inline on .mx-box from the longest option label, in var(--mx-char-w) multiples', () => {
+  // fix round 1 (finding 2): `<N>ch` re-resolves per element against whatever font it inherits --
+  // a <col> can't carry a font-family at all -- so the same value used to compute three different
+  // pixel widths. A literal var(--mx-char-w) multiplier resolves identically everywhere.
   const m = byId['sound-communication-ducking'].matrix;
   const longest = Math.max(...m.options.map((o) => o.label.length));
   const html = renderMatrix(m, { geometries: geo });
-  assert.match(html, new RegExp(`<div class="mx-box" style="--mx-option-w: calc\\(45px \\+ ${longest}ch\\)">`));
+  assert.match(html, new RegExp(`<div class="mx-box" style="--mx-option-w: calc\\(45px \\+ ${longest} \\* var\\(--mx-char-w\\)\\);`));
+  assert.doesNotMatch(html, /--mx-option-w:[^;]*ch\)/);
+});
+
+test('--mx-table-w is set inline on .mx-box as the sum of every column, so table-layout: fixed has nothing left to redistribute', () => {
+  // fix round 1 (finding 2, follow-on): `width: 100%` with only the option column sized left Role
+  // and every data column as "auto" -- table-layout: fixed then divided the leftover space over them
+  // EVENLY regardless of content, squeezing values into overlapping text. Verified live that even
+  // giving every column its own width doesn't fix it while the table's own width is a percentage
+  // narrower than its natural content: Chromium proportionally stretches every column, including the
+  // option column, past --mx-option-w. An explicit width equal to the exact sum leaves nothing over.
+  const m = byId['security-uac-level'].matrix;
+  const html = renderMatrix(m, { geometries: geo });
+  assert.match(html, /--mx-table-w: calc\(\d+px \+ \d+ \* var\(--mx-char-w\)\)"/);
+  // Role and both data columns each carry their own explicit width -- only the option column uses
+  // the CSS-rule-driven var(--mx-option-w); the frozen role column still needs its own <col> width or
+  // it falls into "auto" and gets divided up with the data columns.
+  assert.match(html, /<col class="mx-col-role" style="width: calc\(\d+px \+ \d+ \* var\(--mx-char-w\)\)">/);
+  const dataCols = [...html.matchAll(/<col style="width: calc\((\d+)px \+ (\d+) \* var\(--mx-char-w\)\)">/g)];
+  assert.equal(dataCols.length, m.columns.length);
 });
 
 test('twin win10/win11 matrices each render their own box under a build heading', () => {

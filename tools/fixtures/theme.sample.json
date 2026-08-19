@@ -96,6 +96,17 @@
         "Foreground": "{ThemeResource AccentTextFillColorPrimaryBrush}",
         "TextDecorations": "Underline"
       }
+    },
+    "TechDetail.Table.OptionLabel": {
+      "target": "TextBlock",
+      "basedOn": null,
+      "setters": {
+        "FontFamily": "Consolas",
+        "FontSize": "12",
+        "FontWeight": "SemiBold",
+        "VerticalAlignment": "Center",
+        "IsTextSelectionEnabled": "True"
+      }
     }
   },
   "geometries": {
