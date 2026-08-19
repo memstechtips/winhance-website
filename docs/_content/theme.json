@@ -1,6 +1,8 @@
 {
   "intro": [
-    "<p>Personalize the visual aesthetic of your Windows system. Quickly switch between light and dark modes, adjust transparency effects, and synchronize your wallpaper for a cohesive look.</p>"
+    "<p>Personalize the visual aesthetic of your Windows system. Quickly switch between light and dark modes, adjust transparency effects, and synchronize your wallpaper for a cohesive look.</p>",
+    "<div class=\"callout callout-info\"> <div class=\"callout-title\">ℹ️ Theme Consistency</div> <p>When switching themes in Winhance, you can choose to automatically apply a matching wallpaper for a perfectly cohesive look.</p> <p><strong>Windows 11 Wallpapers:</strong></p> <ul> <li>Light Mode: <code>C:\\Windows\\Web\\Wallpaper\\Windows\\img0.jpg</code></li> <li>Dark Mode: <code>C:\\Windows\\Web\\Wallpaper\\Windows\\img19.jpg</code></li> </ul> <p><strong>Windows 10 Wallpaper:</strong></p> <ul> <li>Default: <code>C:\\Windows\\Web\\4K\\Wallpaper\\Windows\\img0_3840x2160.jpg</code></li> </ul> </div>",
+    "<div class=\"callout callout-warning\"> <div class=\"callout-title\">⚠️ Setting Persistence</div> <p>Settings found in the <strong>Customizations</strong> view are <strong>not persistent</strong>. Winhance applies these changes once, but it does not use background tasks to re-apply them if they are changed later by Windows or by you manually.</p> </div>"
   ],
   "groups": {},
   "video": {

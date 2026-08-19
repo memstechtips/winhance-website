@@ -1,6 +1,7 @@
 {
   "intro": [
-    "<p>Tailor the Windows taskbar to your workflow. Winhance provides options to declutter, realign, and add functional improvements to your primary navigation bar.</p>"
+    "<p>Tailor the Windows taskbar to your workflow. Winhance provides options to declutter, realign, and add functional improvements to your primary navigation bar.</p>",
+    "<div class=\"callout callout-warning\"> <div class=\"callout-title\">⚠️ Setting Persistence</div> <p>Settings found in the <strong>Customizations</strong> view are <strong>not persistent</strong>. Winhance applies these changes once, but it does not use background tasks to re-apply them if they are changed later by Windows or by you manually.</p> </div>"
   ],
   "groups": {},
   "video": {

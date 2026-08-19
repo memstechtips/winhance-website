@@ -1,6 +1,8 @@
 {
   "intro": [
-    "<p>Winhance provides a comprehensive power management interface, allowing you to select from system-default plans or apply specialized optimizations.</p>"
+    "<p>Winhance provides a comprehensive power management interface, allowing you to select from system-default plans or apply specialized optimizations.</p>",
+    "<div class=\"callout callout-info\"> <div class=\"callout-title\">ℹ️ Advanced Power Settings</div> <p>Winhance unlocks hidden \"Advanced Power Settings\" that are normally invisible in the Windows Control Panel. This includes settings like <strong>Processor Boost Mode</strong>, <strong>Core Parking</strong>, and <strong>Energy Performance Preference</strong>.</p> <p><strong>Warning:</strong> These settings are locked by default for safety. Unlocking and modifying them (especially numeric values) can cause system instability or increased heat generation if set incorrectly. Winhance will show a warning dialog before allowing you to unlock these controls.</p> </div>",
+    "<div class=\"callout callout-warning\"> <div class=\"callout-title\">⚠️ Setting Persistence</div> <p>Settings found in the <strong>Optimizations</strong> and <strong>Customizations</strong> views are <strong>not persistent</strong>. Winhance applies these changes once when you click \"Apply\", but it does not use background tasks to re-apply them if they are changed later by Windows or by you manually.</p> <p>This is a deliberate design choice to <strong>respect user choice</strong>. For example, if you set Dark Mode via Winhance but later decide to switch back to Light Mode using the official Windows Settings app, Winhance will not revert your change on the next reboot.</p> </div>"
   ],
   "groups": {
     "General": {
