@@ -143,7 +143,22 @@
             <span class="setting-id">power-plan-selection</span>
             </div>
             </div>
-            <p class="mx-empty">The options are the power plans installed on this PC, so there is no fixed table; Winhance lists them live.</p>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 20 * var(--mx-char-w)); --mx-table-w: calc(72px + 60 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24px + 4 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Power plan</span><span class="mx-group-desc">Selecting a power plan applies it by its scheme GUID, creating the plan if it isn&#39;t installed.</span></th></tr>
+            <tr class="mx-row-paths"></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-power" scope="col"><span class="mx-line"><code class="mx-name">Scheme GUID</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>Power Saver</code></th><td class="mx-role"></td><td class="mx-value"><code>a1841308-3541-4fab-bc81-f71556f20b4a</code></td></tr><tr><th class="mx-option" scope="row"><code>Balanced</code></th><td class="mx-role"></td><td class="mx-value"><code>381b4222-f694-41f0-9685-ff5bb260df2e</code></td></tr><tr><th class="mx-option" scope="row"><code>High Performance</code></th><td class="mx-role"></td><td class="mx-value"><code>8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c</code></td></tr><tr><th class="mx-option" scope="row"><code>Ultimate Performance</code></th><td class="mx-role"></td><td class="mx-value"><code>e9a42b02-d5df-448d-aa00-03f14749eb61</code></td></tr><tr><th class="mx-option" scope="row"><code>Winhance Power Plan</code></th><td class="mx-role"></td><td class="mx-value"><code>57696e68-616e-6365-506f-776572000000</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            <p class="mx-note-live">Winhance always offers these plans, creating one that is not installed yet. Any other power plan already on your PC is listed with them, with its own scheme GUID.</p>
             </div>
 
             <h2 id="display">Display</h2>

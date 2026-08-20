@@ -448,7 +448,7 @@ function widenForNotes(matrix, optionW, roleW) {
 
 export function renderMatrix(matrix, { heading = '', urlFor = () => null, geometries = {} } = {}) {
   if (!matrix) {
-    return `<p class="mx-empty">The options are the power plans installed on this PC, so there is no fixed table; Winhance lists them live.</p>`;
+    return `<p class="mx-empty">Winhance has nothing to document for this setting.</p>`;
   }
   const head = heading ? `<h4 class="mx-build">${esc(heading)}</h4>\n` : '';
   let optionW = optionColumnWidth(matrix);
@@ -557,13 +557,22 @@ function matrixBody(s, refBuilds, urlFor, geometries) {
   return shown.map((c) => renderMatrix(c.matrix, { heading: c.heading, urlFor, geometries })).join('\n');
 }
 
+// The one line on a docs page that is NOT mirrored from the app -- it exists to say what the page
+// cannot show. A power plan dropdown is built at runtime from the schemes on the machine; the export
+// lists the five plans Winhance always offers (PowerPlanCatalog.BuiltInPowerPlans), which is the part
+// that is build-time true, and this says so rather than letting a reader take the five for the lot.
+const POWER_PLAN_NOTE =
+  'Winhance always offers these plans, creating one that is not installed yet. '
+  + 'Any other power plan already on your PC is listed with them, with its own scheme GUID.';
+
 export function renderCard(s, ctx, { child = false } = {}) {
   const urlFor = ctx.urlFor ?? (() => null);
   const icons = ctx.icons ?? {};
   const geometries = ctx.geometries ?? {};
   const refBuilds = ctx.referenceBuilds ?? DEFAULT_REFERENCE_BUILDS;
   const badges = cardBadges(s, urlFor, geometries);
-  const body = matrixBody(s, refBuilds, urlFor, geometries);
+  const body = matrixBody(s, refBuilds, urlFor, geometries)
+    + (s.control === 'PowerPlan' ? `\n<p class="mx-note-live">${esc(POWER_PLAN_NOTE)}</p>` : '');
   const kids = (ctx.childrenOf.get(s.id) ?? []).map((k) => renderCard(k, ctx, { child: true })).join('\n');
 
   return `<div class="setting-card${child ? ' setting-card-child' : ''}" id="${esc(s.id)}">

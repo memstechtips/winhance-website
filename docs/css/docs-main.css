@@ -1114,6 +1114,16 @@ html {
 
 .mx-empty { margin-top: 0.75rem; color: var(--text-muted); font-size: var(--winui-font-size-caption); }
 
+/* The one caption on a card that isn't mirrored from the app: it says what a static page cannot show
+   about a list the app builds at runtime. Italic so it doesn't read as one of the app's own strings. */
+.mx-note-live {
+    margin: 0.4rem 0 0;
+    color: var(--text-muted);
+    font-size: var(--winui-font-size-caption);
+    line-height: var(--winui-line-height-caption);
+    font-style: italic;
+}
+
 .mx-box {
     margin-top: 0.5rem;
     border: 1px solid var(--app-techdetail-table-strokebrush);
