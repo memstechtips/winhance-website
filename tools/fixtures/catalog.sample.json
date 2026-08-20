@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "winhanceVersion": "26.08.20",
-  "catalogHash": "0138666d454ea2b2867dadf6b8d7e871bae8fc649d71a7567a48e7d7e6187fc0",
-  "settingCount": 22,
+  "catalogHash": "0770af7c054fbd49a080006f84e1649d36ef5ad9c2056c6e18e77210c7395538",
+  "settingCount": 24,
   "referenceBuilds": {
     "win10": 19045,
     "win11": 26100
@@ -155,36 +155,50 @@
                 "linkSettingId": "",
                 "linkText": "",
                 "hasLink": false
-              },
-              {
-                "text": "Sets: Apps Use Light Theme (Enabled)",
-                "tooltip": "Apps Use Light Theme = Enabled",
-                "linkSettingId": "theme-mode-apps",
-                "linkText": "Apps Use Light Theme",
-                "hasLink": true
-              },
-              {
-                "text": "Sets: Windows Uses Light Theme (Enabled)",
-                "tooltip": "Windows Uses Light Theme = Enabled",
-                "linkSettingId": "theme-mode-system",
-                "linkText": "Windows Uses Light Theme",
-                "hasLink": true
-              },
-              {
-                "text": "Sets: Apps Use Light Theme (Disabled)",
-                "tooltip": "Apps Use Light Theme = Disabled",
-                "linkSettingId": "theme-mode-apps",
-                "linkText": "Apps Use Light Theme",
-                "hasLink": true
-              },
-              {
-                "text": "Sets: Windows Uses Light Theme (Disabled)",
-                "tooltip": "Windows Uses Light Theme = Disabled",
-                "linkSettingId": "theme-mode-system",
-                "linkText": "Windows Uses Light Theme",
-                "hasLink": true
               }
             ],
+            "optionLinks": [
+              {
+                "option": "Light Mode",
+                "chips": [
+                  {
+                    "text": "Sets: Apps Use Light Theme (Enabled)",
+                    "tooltip": "Apps Use Light Theme = Enabled",
+                    "linkSettingId": "theme-mode-apps",
+                    "linkText": "Apps Use Light Theme",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Windows Uses Light Theme (Enabled)",
+                    "tooltip": "Windows Uses Light Theme = Enabled",
+                    "linkSettingId": "theme-mode-system",
+                    "linkText": "Windows Uses Light Theme",
+                    "hasLink": true
+                  }
+                ]
+              },
+              {
+                "option": "Dark Mode",
+                "chips": [
+                  {
+                    "text": "Sets: Apps Use Light Theme (Disabled)",
+                    "tooltip": "Apps Use Light Theme = Disabled",
+                    "linkSettingId": "theme-mode-apps",
+                    "linkText": "Apps Use Light Theme",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Windows Uses Light Theme (Disabled)",
+                    "tooltip": "Windows Uses Light Theme = Disabled",
+                    "linkSettingId": "theme-mode-system",
+                    "linkText": "Windows Uses Light Theme",
+                    "hasLink": true
+                  }
+                ]
+              }
+            ],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": true,
             "notes": [
               {
                 "label": "Sets desktop wallpaper (Light Mode)",
@@ -348,36 +362,50 @@
                 "linkSettingId": "",
                 "linkText": "",
                 "hasLink": false
-              },
-              {
-                "text": "Sets: Apps Use Light Theme (Enabled)",
-                "tooltip": "Apps Use Light Theme = Enabled",
-                "linkSettingId": "theme-mode-apps",
-                "linkText": "Apps Use Light Theme",
-                "hasLink": true
-              },
-              {
-                "text": "Sets: Windows Uses Light Theme (Enabled)",
-                "tooltip": "Windows Uses Light Theme = Enabled",
-                "linkSettingId": "theme-mode-system",
-                "linkText": "Windows Uses Light Theme",
-                "hasLink": true
-              },
-              {
-                "text": "Sets: Apps Use Light Theme (Disabled)",
-                "tooltip": "Apps Use Light Theme = Disabled",
-                "linkSettingId": "theme-mode-apps",
-                "linkText": "Apps Use Light Theme",
-                "hasLink": true
-              },
-              {
-                "text": "Sets: Windows Uses Light Theme (Disabled)",
-                "tooltip": "Windows Uses Light Theme = Disabled",
-                "linkSettingId": "theme-mode-system",
-                "linkText": "Windows Uses Light Theme",
-                "hasLink": true
               }
             ],
+            "optionLinks": [
+              {
+                "option": "Light Mode",
+                "chips": [
+                  {
+                    "text": "Sets: Apps Use Light Theme (Enabled)",
+                    "tooltip": "Apps Use Light Theme = Enabled",
+                    "linkSettingId": "theme-mode-apps",
+                    "linkText": "Apps Use Light Theme",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Windows Uses Light Theme (Enabled)",
+                    "tooltip": "Windows Uses Light Theme = Enabled",
+                    "linkSettingId": "theme-mode-system",
+                    "linkText": "Windows Uses Light Theme",
+                    "hasLink": true
+                  }
+                ]
+              },
+              {
+                "option": "Dark Mode",
+                "chips": [
+                  {
+                    "text": "Sets: Apps Use Light Theme (Disabled)",
+                    "tooltip": "Apps Use Light Theme = Disabled",
+                    "linkSettingId": "theme-mode-apps",
+                    "linkText": "Apps Use Light Theme",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Windows Uses Light Theme (Disabled)",
+                    "tooltip": "Windows Uses Light Theme = Disabled",
+                    "linkSettingId": "theme-mode-system",
+                    "linkText": "Windows Uses Light Theme",
+                    "hasLink": true
+                  }
+                ]
+              }
+            ],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": true,
             "notes": [
               {
                 "label": "Sets desktop wallpaper (Light Mode)",
@@ -519,6 +547,9 @@
             "settingLabel": "Options",
             "settingDescription": "Selecting an option makes the changes shown to the right.",
             "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -654,6 +685,9 @@
                 "hasLink": false
               }
             ],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -783,6 +817,9 @@
                 "hasLink": false
               }
             ],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [
               {
                 "label": "Search in taskbar",
@@ -997,6 +1034,9 @@
                 "hasLink": false
               }
             ],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [
               {
                 "label": "Search in taskbar",
@@ -1240,6 +1280,9 @@
             "settingLabel": "Options",
             "settingDescription": "Selecting an option makes the changes shown to the right.",
             "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -1389,6 +1432,9 @@
             "settingLabel": "Options",
             "settingDescription": "Selecting an option makes the changes shown to the right.",
             "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -1470,6 +1516,9 @@
             "settingLabel": "Options",
             "settingDescription": "",
             "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -1684,6 +1733,9 @@
             "settingLabel": "Options",
             "settingDescription": "Selecting an option makes the changes shown to the right.",
             "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -1845,15 +1897,24 @@
                 "linkSettingId": "",
                 "linkText": "",
                 "hasLink": false
-              },
-              {
-                "text": "Requires: Virtualization Based Security (VBS) (set automatically)",
-                "tooltip": "Virtualization Based Security (VBS) = Enabled",
-                "linkSettingId": "gaming-virtualization-based-security",
-                "linkText": "Virtualization Based Security (VBS)",
-                "hasLink": true
               }
             ],
+            "optionLinks": [
+              {
+                "option": "Off",
+                "chips": [
+                  {
+                    "text": "Requires: Virtualization Based Security (VBS) (set automatically)",
+                    "tooltip": "Virtualization Based Security (VBS) = Enabled",
+                    "linkSettingId": "gaming-virtualization-based-security",
+                    "linkText": "Virtualization Based Security (VBS)",
+                    "hasLink": true
+                  }
+                ]
+              }
+            ],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": true,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -2010,6 +2071,9 @@
                 "hasLink": false
               }
             ],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -2026,6 +2090,539 @@
             "defaultTooltip": "How Windows ships out of the box",
             "currentTooltip": "This is what your system is set to now",
             "accessibleSummary": "Disabled: Start 4. Manual (Recommended): Start 3 (Recommended). Automatic: Start 2 (or not set) (Default). Registry: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\CDPSvc, HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\CDPUserSvc."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "visual-effects-mode",
+          "name": "Visual Effects",
+          "description": "Choose how Windows displays visual effects",
+          "group": "Visual Effects",
+          "icon": {
+            "pack": "Material",
+            "name": "MonitorEye"
+          },
+          "control": "Selection",
+          "isSubjectivePreference": true,
+          "addedInVersion": null,
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "VisualFXSetting",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Let Windows choose what's best for my computer",
+                "cells": [
+                  {
+                    "text": "0 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Adjust for best appearance",
+                "cells": [
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Adjust for best performance",
+                "cells": [
+                  {
+                    "text": "2",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Custom",
+                "cells": [
+                  {
+                    "text": "3",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": true,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [
+              {
+                "text": "Requires a system restart",
+                "tooltip": "Reboot for the change to fully take effect",
+                "linkSettingId": "",
+                "linkText": "",
+                "hasLink": false
+              }
+            ],
+            "optionLinks": [
+              {
+                "option": "Let Windows choose what's best for my computer",
+                "chips": [
+                  {
+                    "text": "Sets: Animate controls and elements inside windows (Disabled)",
+                    "tooltip": "Animate controls and elements inside windows = Disabled",
+                    "linkSettingId": "ui-effects",
+                    "linkText": "Animate controls and elements inside windows",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Animate windows when minimizing and maximizing (Disabled)",
+                    "tooltip": "Animate windows when minimizing and maximizing = Disabled",
+                    "linkSettingId": "window-animation",
+                    "linkText": "Animate windows when minimizing and maximizing",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Animations in the taskbar (Disabled)",
+                    "tooltip": "Animations in the taskbar = Disabled",
+                    "linkSettingId": "taskbar-animations",
+                    "linkText": "Animations in the taskbar",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Enable Peek (Enabled)",
+                    "tooltip": "Enable Peek = Enabled",
+                    "linkSettingId": "enable-peek",
+                    "linkText": "Enable Peek",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Fade or slide menus into view (Disabled)",
+                    "tooltip": "Fade or slide menus into view = Disabled",
+                    "linkSettingId": "menu-animation",
+                    "linkText": "Fade or slide menus into view",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Fade or slide ToolTips into view (Disabled)",
+                    "tooltip": "Fade or slide ToolTips into view = Disabled",
+                    "linkSettingId": "fade-tooltip",
+                    "linkText": "Fade or slide ToolTips into view",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Fade out menu items after clicking (Disabled)",
+                    "tooltip": "Fade out menu items after clicking = Disabled",
+                    "linkSettingId": "fade-menu-items",
+                    "linkText": "Fade out menu items after clicking",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Save taskbar thumbnail previews (Enabled)",
+                    "tooltip": "Save taskbar thumbnail previews = Enabled",
+                    "linkSettingId": "taskbar-thumbnails",
+                    "linkText": "Save taskbar thumbnail previews",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show shadows under mouse pointer (Disabled)",
+                    "tooltip": "Show shadows under mouse pointer = Disabled",
+                    "linkSettingId": "mouse-shadow",
+                    "linkText": "Show shadows under mouse pointer",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show shadows under windows (Disabled)",
+                    "tooltip": "Show shadows under windows = Disabled",
+                    "linkSettingId": "window-shadows",
+                    "linkText": "Show shadows under windows",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show thumbnails instead of icons (Enabled)",
+                    "tooltip": "Show thumbnails instead of icons = Enabled",
+                    "linkSettingId": "show-thumbnails",
+                    "linkText": "Show thumbnails instead of icons",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show translucent selection rectangle (Enabled)",
+                    "tooltip": "Show translucent selection rectangle = Enabled",
+                    "linkSettingId": "translucent-selection",
+                    "linkText": "Show translucent selection rectangle",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show window contents while dragging (Enabled)",
+                    "tooltip": "Show window contents while dragging = Enabled",
+                    "linkSettingId": "drag-full-windows",
+                    "linkText": "Show window contents while dragging",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Slide open combo boxes (Disabled)",
+                    "tooltip": "Slide open combo boxes = Disabled",
+                    "linkSettingId": "combo-box-animation",
+                    "linkText": "Slide open combo boxes",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Smooth edges of screen fonts (Enabled)",
+                    "tooltip": "Smooth edges of screen fonts = Enabled",
+                    "linkSettingId": "font-smoothing",
+                    "linkText": "Smooth edges of screen fonts",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Smooth-scroll list boxes (Enabled)",
+                    "tooltip": "Smooth-scroll list boxes = Enabled",
+                    "linkSettingId": "smooth-scroll-listboxes",
+                    "linkText": "Smooth-scroll list boxes",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Use drop shadows for icon labels on the desktop (Disabled)",
+                    "tooltip": "Use drop shadows for icon labels on the desktop = Disabled",
+                    "linkSettingId": "drop-shadows",
+                    "linkText": "Use drop shadows for icon labels on the desktop",
+                    "hasLink": true
+                  }
+                ]
+              },
+              {
+                "option": "Adjust for best appearance",
+                "chips": [
+                  {
+                    "text": "Sets: Animate controls and elements inside windows (Enabled)",
+                    "tooltip": "Animate controls and elements inside windows = Enabled",
+                    "linkSettingId": "ui-effects",
+                    "linkText": "Animate controls and elements inside windows",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Animate windows when minimizing and maximizing (Enabled)",
+                    "tooltip": "Animate windows when minimizing and maximizing = Enabled",
+                    "linkSettingId": "window-animation",
+                    "linkText": "Animate windows when minimizing and maximizing",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Animations in the taskbar (Enabled)",
+                    "tooltip": "Animations in the taskbar = Enabled",
+                    "linkSettingId": "taskbar-animations",
+                    "linkText": "Animations in the taskbar",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Enable Peek (Enabled)",
+                    "tooltip": "Enable Peek = Enabled",
+                    "linkSettingId": "enable-peek",
+                    "linkText": "Enable Peek",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Fade or slide menus into view (Enabled)",
+                    "tooltip": "Fade or slide menus into view = Enabled",
+                    "linkSettingId": "menu-animation",
+                    "linkText": "Fade or slide menus into view",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Fade or slide ToolTips into view (Enabled)",
+                    "tooltip": "Fade or slide ToolTips into view = Enabled",
+                    "linkSettingId": "fade-tooltip",
+                    "linkText": "Fade or slide ToolTips into view",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Fade out menu items after clicking (Enabled)",
+                    "tooltip": "Fade out menu items after clicking = Enabled",
+                    "linkSettingId": "fade-menu-items",
+                    "linkText": "Fade out menu items after clicking",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Save taskbar thumbnail previews (Enabled)",
+                    "tooltip": "Save taskbar thumbnail previews = Enabled",
+                    "linkSettingId": "taskbar-thumbnails",
+                    "linkText": "Save taskbar thumbnail previews",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show shadows under mouse pointer (Enabled)",
+                    "tooltip": "Show shadows under mouse pointer = Enabled",
+                    "linkSettingId": "mouse-shadow",
+                    "linkText": "Show shadows under mouse pointer",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show shadows under windows (Enabled)",
+                    "tooltip": "Show shadows under windows = Enabled",
+                    "linkSettingId": "window-shadows",
+                    "linkText": "Show shadows under windows",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show thumbnails instead of icons (Enabled)",
+                    "tooltip": "Show thumbnails instead of icons = Enabled",
+                    "linkSettingId": "show-thumbnails",
+                    "linkText": "Show thumbnails instead of icons",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show translucent selection rectangle (Enabled)",
+                    "tooltip": "Show translucent selection rectangle = Enabled",
+                    "linkSettingId": "translucent-selection",
+                    "linkText": "Show translucent selection rectangle",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show window contents while dragging (Enabled)",
+                    "tooltip": "Show window contents while dragging = Enabled",
+                    "linkSettingId": "drag-full-windows",
+                    "linkText": "Show window contents while dragging",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Slide open combo boxes (Enabled)",
+                    "tooltip": "Slide open combo boxes = Enabled",
+                    "linkSettingId": "combo-box-animation",
+                    "linkText": "Slide open combo boxes",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Smooth edges of screen fonts (Enabled)",
+                    "tooltip": "Smooth edges of screen fonts = Enabled",
+                    "linkSettingId": "font-smoothing",
+                    "linkText": "Smooth edges of screen fonts",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Smooth-scroll list boxes (Enabled)",
+                    "tooltip": "Smooth-scroll list boxes = Enabled",
+                    "linkSettingId": "smooth-scroll-listboxes",
+                    "linkText": "Smooth-scroll list boxes",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Use drop shadows for icon labels on the desktop (Enabled)",
+                    "tooltip": "Use drop shadows for icon labels on the desktop = Enabled",
+                    "linkSettingId": "drop-shadows",
+                    "linkText": "Use drop shadows for icon labels on the desktop",
+                    "hasLink": true
+                  }
+                ]
+              },
+              {
+                "option": "Adjust for best performance",
+                "chips": [
+                  {
+                    "text": "Sets: Animate controls and elements inside windows (Disabled)",
+                    "tooltip": "Animate controls and elements inside windows = Disabled",
+                    "linkSettingId": "ui-effects",
+                    "linkText": "Animate controls and elements inside windows",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Animate windows when minimizing and maximizing (Disabled)",
+                    "tooltip": "Animate windows when minimizing and maximizing = Disabled",
+                    "linkSettingId": "window-animation",
+                    "linkText": "Animate windows when minimizing and maximizing",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Animations in the taskbar (Disabled)",
+                    "tooltip": "Animations in the taskbar = Disabled",
+                    "linkSettingId": "taskbar-animations",
+                    "linkText": "Animations in the taskbar",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Enable Peek (Disabled)",
+                    "tooltip": "Enable Peek = Disabled",
+                    "linkSettingId": "enable-peek",
+                    "linkText": "Enable Peek",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Fade or slide menus into view (Disabled)",
+                    "tooltip": "Fade or slide menus into view = Disabled",
+                    "linkSettingId": "menu-animation",
+                    "linkText": "Fade or slide menus into view",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Fade or slide ToolTips into view (Disabled)",
+                    "tooltip": "Fade or slide ToolTips into view = Disabled",
+                    "linkSettingId": "fade-tooltip",
+                    "linkText": "Fade or slide ToolTips into view",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Fade out menu items after clicking (Disabled)",
+                    "tooltip": "Fade out menu items after clicking = Disabled",
+                    "linkSettingId": "fade-menu-items",
+                    "linkText": "Fade out menu items after clicking",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Save taskbar thumbnail previews (Disabled)",
+                    "tooltip": "Save taskbar thumbnail previews = Disabled",
+                    "linkSettingId": "taskbar-thumbnails",
+                    "linkText": "Save taskbar thumbnail previews",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show shadows under mouse pointer (Disabled)",
+                    "tooltip": "Show shadows under mouse pointer = Disabled",
+                    "linkSettingId": "mouse-shadow",
+                    "linkText": "Show shadows under mouse pointer",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show shadows under windows (Disabled)",
+                    "tooltip": "Show shadows under windows = Disabled",
+                    "linkSettingId": "window-shadows",
+                    "linkText": "Show shadows under windows",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show thumbnails instead of icons (Disabled)",
+                    "tooltip": "Show thumbnails instead of icons = Disabled",
+                    "linkSettingId": "show-thumbnails",
+                    "linkText": "Show thumbnails instead of icons",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show translucent selection rectangle (Disabled)",
+                    "tooltip": "Show translucent selection rectangle = Disabled",
+                    "linkSettingId": "translucent-selection",
+                    "linkText": "Show translucent selection rectangle",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show window contents while dragging (Disabled)",
+                    "tooltip": "Show window contents while dragging = Disabled",
+                    "linkSettingId": "drag-full-windows",
+                    "linkText": "Show window contents while dragging",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Slide open combo boxes (Disabled)",
+                    "tooltip": "Slide open combo boxes = Disabled",
+                    "linkSettingId": "combo-box-animation",
+                    "linkText": "Slide open combo boxes",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Smooth edges of screen fonts (Disabled)",
+                    "tooltip": "Smooth edges of screen fonts = Disabled",
+                    "linkSettingId": "font-smoothing",
+                    "linkText": "Smooth edges of screen fonts",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Smooth-scroll list boxes (Disabled)",
+                    "tooltip": "Smooth-scroll list boxes = Disabled",
+                    "linkSettingId": "smooth-scroll-listboxes",
+                    "linkText": "Smooth-scroll list boxes",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Use drop shadows for icon labels on the desktop (Disabled)",
+                    "tooltip": "Use drop shadows for icon labels on the desktop = Disabled",
+                    "linkSettingId": "drop-shadows",
+                    "linkText": "Use drop shadows for icon labels on the desktop",
+                    "hasLink": true
+                  }
+                ]
+              }
+            ],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": true,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Let Windows choose what's best for my computer: VisualFXSetting 0 (or not set) (Default). Adjust for best appearance: VisualFXSetting 1. Adjust for best performance: VisualFXSetting 2. Custom: VisualFXSetting 3 (Recommended). Registry: HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects."
           },
           "matrixWin10": null
         }
@@ -2173,6 +2770,9 @@
             "settingLabel": "Options",
             "settingDescription": "Selecting an option makes the changes shown to the right.",
             "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -2304,6 +2904,9 @@
             "settingLabel": "Options",
             "settingDescription": "Selecting an option makes the changes shown to the right.",
             "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -2420,15 +3023,23 @@
             "taskLabel": "Task",
             "settingLabel": "Options",
             "settingDescription": "Selecting an option makes the changes shown to the right.",
-            "requirements": [
+            "requirements": [],
+            "optionLinks": [
               {
-                "text": "Enables: Show Hibernate Option (set automatically)",
-                "tooltip": "Show Hibernate Option = Enabled",
-                "linkSettingId": "start-power-hibernate-option",
-                "linkText": "Show Hibernate Option",
-                "hasLink": true
+                "option": "On",
+                "chips": [
+                  {
+                    "text": "Enables: Show Hibernate Option (set automatically)",
+                    "tooltip": "Show Hibernate Option = Enabled",
+                    "linkSettingId": "start-power-hibernate-option",
+                    "linkText": "Show Hibernate Option",
+                    "hasLink": true
+                  }
+                ]
               }
             ],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": true,
             "notes": [
               {
                 "label": "Native power write",
@@ -2789,6 +3400,9 @@
             "settingLabel": "Options",
             "settingDescription": "Selecting an option makes the changes shown to the right.",
             "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -2913,15 +3527,35 @@
             "taskLabel": "Task",
             "settingLabel": "Options",
             "settingDescription": "Selecting an option makes the changes shown to the right.",
-            "requirements": [
+            "requirements": [],
+            "optionLinks": [
               {
-                "text": "Requires: Hibernation (set automatically)",
-                "tooltip": "Hibernation = Enabled",
-                "linkSettingId": "power-hibernation-enable",
-                "linkText": "Hibernation",
-                "hasLink": true
+                "option": "Off",
+                "chips": [
+                  {
+                    "text": "Requires: Hibernation (set automatically)",
+                    "tooltip": "Hibernation = Enabled",
+                    "linkSettingId": "power-hibernation-enable",
+                    "linkText": "Hibernation",
+                    "hasLink": true
+                  }
+                ]
+              },
+              {
+                "option": "On",
+                "chips": [
+                  {
+                    "text": "Requires: Hibernation (set automatically)",
+                    "tooltip": "Hibernation = Enabled",
+                    "linkSettingId": "power-hibernation-enable",
+                    "linkText": "Hibernation",
+                    "hasLink": true
+                  }
+                ]
               }
             ],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": true,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -3038,15 +3672,23 @@
             "taskLabel": "Task",
             "settingLabel": "Options",
             "settingDescription": "Selecting an option makes the changes shown to the right.",
-            "requirements": [
+            "requirements": [],
+            "optionLinks": [
               {
-                "text": "Requires: Hibernation (set automatically)",
-                "tooltip": "Hibernation = Enabled",
-                "linkSettingId": "power-hibernation-enable",
-                "linkText": "Hibernation",
-                "hasLink": true
+                "option": "Off",
+                "chips": [
+                  {
+                    "text": "Requires: Hibernation (set automatically)",
+                    "tooltip": "Hibernation = Enabled",
+                    "linkSettingId": "power-hibernation-enable",
+                    "linkText": "Hibernation",
+                    "hasLink": true
+                  }
+                ]
               }
             ],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": true,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -3163,15 +3805,23 @@
             "taskLabel": "Task",
             "settingLabel": "Options",
             "settingDescription": "Selecting an option makes the changes shown to the right.",
-            "requirements": [
+            "requirements": [],
+            "optionLinks": [
               {
-                "text": "Requires: Hibernation (set automatically)",
-                "tooltip": "Hibernation = Enabled",
-                "linkSettingId": "power-hibernation-enable",
-                "linkText": "Hibernation",
-                "hasLink": true
+                "option": "Off",
+                "chips": [
+                  {
+                    "text": "Requires: Hibernation (set automatically)",
+                    "tooltip": "Hibernation = Enabled",
+                    "linkSettingId": "power-hibernation-enable",
+                    "linkText": "Hibernation",
+                    "hasLink": true
+                  }
+                ]
               }
             ],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": true,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -3337,6 +3987,9 @@
             "settingLabel": "Options",
             "settingDescription": "Selecting an option makes the changes shown to the right.",
             "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -3541,6 +4194,9 @@
             "settingLabel": "Options",
             "settingDescription": "Selecting an option makes the changes shown to the right.",
             "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -3677,6 +4333,9 @@
             "settingLabel": "Options",
             "settingDescription": "Selecting an option makes the changes shown to the right.",
             "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -3783,6 +4442,9 @@
             "settingLabel": "Options",
             "settingDescription": "Selecting an option makes the changes shown to the right.",
             "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
@@ -3800,6 +4462,377 @@
             "currentTooltip": "This is what your system is set to now",
             "accessibleSummary": "On: TurnOffWindowsCopilot 0 (or not set) (Default). Off: TurnOffWindowsCopilot 1 (Recommended), Current. Registry: HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot, HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot."
           }
+        },
+        {
+          "id": "privacy-ads-promotional-master",
+          "name": "Ads, Suggestions and Promotional Content",
+          "description": "Controls all advertising, suggestions, and promotional content throughout Windows",
+          "group": "Content Delivery & Advertising",
+          "icon": {
+            "pack": "Material",
+            "name": "AdvertisementsOff"
+          },
+          "control": "Selection",
+          "isSubjectivePreference": false,
+          "addedInVersion": null,
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Software\\Winhance\\Settings",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Software\\Winhance\\Settings"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "AdsPromotionalContentMode",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Allow",
+                "cells": [
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Deny",
+                "cells": [
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": true,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Custom",
+                "cells": [
+                  {
+                    "text": "2 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "optionLinks": [
+              {
+                "option": "Allow",
+                "chips": [
+                  {
+                    "text": "Sets: Content Delivery (Enabled)",
+                    "tooltip": "Content Delivery = Enabled",
+                    "linkSettingId": "privacy-content-delivery-allowed",
+                    "linkText": "Content Delivery",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Subscribed Content (Enabled)",
+                    "tooltip": "Subscribed Content = Enabled",
+                    "linkSettingId": "privacy-subscribed-content",
+                    "linkText": "Subscribed Content",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Feature Management (Enabled)",
+                    "tooltip": "Feature Management = Enabled",
+                    "linkSettingId": "privacy-feature-management",
+                    "linkText": "Feature Management",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Soft Landing Experiences (Enabled)",
+                    "tooltip": "Soft Landing Experiences = Enabled",
+                    "linkSettingId": "privacy-soft-landing",
+                    "linkText": "Soft Landing Experiences",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: OEM Pre-installed Apps (Enabled)",
+                    "tooltip": "OEM Pre-installed Apps = Enabled",
+                    "linkSettingId": "privacy-oem-preinstalled-apps",
+                    "linkText": "OEM Pre-installed Apps",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Pre-installed Suggested Apps (Enabled)",
+                    "tooltip": "Pre-installed Suggested Apps = Enabled",
+                    "linkSettingId": "privacy-preinstalled-apps",
+                    "linkText": "Pre-installed Suggested Apps",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Pre-installed Apps History Tracking (Enabled)",
+                    "tooltip": "Pre-installed Apps History Tracking = Enabled",
+                    "linkSettingId": "privacy-preinstalled-apps-ever",
+                    "linkText": "Pre-installed Apps History Tracking",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Silent App Installation (Enabled)",
+                    "tooltip": "Silent App Installation = Enabled",
+                    "linkSettingId": "privacy-silent-installed-apps",
+                    "linkText": "Silent App Installation",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Windows Spotlight on Lock Screen (Enabled)",
+                    "tooltip": "Windows Spotlight on Lock Screen = Enabled",
+                    "linkSettingId": "privacy-rotating-lock-screen",
+                    "linkText": "Windows Spotlight on Lock Screen",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Lock Screen Fun Facts and Tips (Enabled)",
+                    "tooltip": "Lock Screen Fun Facts and Tips = Enabled",
+                    "linkSettingId": "privacy-lock-screen-overlay",
+                    "linkText": "Lock Screen Fun Facts and Tips",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show me suggested content in the Settings app (Enabled)",
+                    "tooltip": "Show me suggested content in the Settings app = Enabled",
+                    "linkSettingId": "privacy-settings-content",
+                    "linkText": "Show me suggested content in the Settings app",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Timeline Suggestions (Enabled)",
+                    "tooltip": "Timeline Suggestions = Enabled",
+                    "linkSettingId": "privacy-timeline-suggestions",
+                    "linkText": "Timeline Suggestions",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show the Windows welcome experience after updates (Enabled)",
+                    "tooltip": "Show the Windows welcome experience after updates = Enabled",
+                    "linkSettingId": "notifications-welcome-experience",
+                    "linkText": "Show the Windows welcome experience after updates",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Get tips and suggestions when using Windows (Enabled)",
+                    "tooltip": "Get tips and suggestions when using Windows = Enabled",
+                    "linkSettingId": "notifications-tips-suggestions",
+                    "linkText": "Get tips and suggestions when using Windows",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show suggestions in Notification Center (Enabled)",
+                    "tooltip": "Show suggestions in Notification Center = Enabled",
+                    "linkSettingId": "notifications-system-pane-suggestions",
+                    "linkText": "Show suggestions in Notification Center",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show suggestions in Start (Enabled)",
+                    "tooltip": "Show suggestions in Start = Enabled",
+                    "linkSettingId": "start-show-suggestions",
+                    "linkText": "Show suggestions in Start",
+                    "hasLink": true
+                  }
+                ]
+              },
+              {
+                "option": "Deny",
+                "chips": [
+                  {
+                    "text": "Sets: Content Delivery (Disabled)",
+                    "tooltip": "Content Delivery = Disabled",
+                    "linkSettingId": "privacy-content-delivery-allowed",
+                    "linkText": "Content Delivery",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Subscribed Content (Disabled)",
+                    "tooltip": "Subscribed Content = Disabled",
+                    "linkSettingId": "privacy-subscribed-content",
+                    "linkText": "Subscribed Content",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Feature Management (Disabled)",
+                    "tooltip": "Feature Management = Disabled",
+                    "linkSettingId": "privacy-feature-management",
+                    "linkText": "Feature Management",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Soft Landing Experiences (Disabled)",
+                    "tooltip": "Soft Landing Experiences = Disabled",
+                    "linkSettingId": "privacy-soft-landing",
+                    "linkText": "Soft Landing Experiences",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: OEM Pre-installed Apps (Disabled)",
+                    "tooltip": "OEM Pre-installed Apps = Disabled",
+                    "linkSettingId": "privacy-oem-preinstalled-apps",
+                    "linkText": "OEM Pre-installed Apps",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Pre-installed Suggested Apps (Disabled)",
+                    "tooltip": "Pre-installed Suggested Apps = Disabled",
+                    "linkSettingId": "privacy-preinstalled-apps",
+                    "linkText": "Pre-installed Suggested Apps",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Pre-installed Apps History Tracking (Disabled)",
+                    "tooltip": "Pre-installed Apps History Tracking = Disabled",
+                    "linkSettingId": "privacy-preinstalled-apps-ever",
+                    "linkText": "Pre-installed Apps History Tracking",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Silent App Installation (Disabled)",
+                    "tooltip": "Silent App Installation = Disabled",
+                    "linkSettingId": "privacy-silent-installed-apps",
+                    "linkText": "Silent App Installation",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Windows Spotlight on Lock Screen (Disabled)",
+                    "tooltip": "Windows Spotlight on Lock Screen = Disabled",
+                    "linkSettingId": "privacy-rotating-lock-screen",
+                    "linkText": "Windows Spotlight on Lock Screen",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Lock Screen Fun Facts and Tips (Disabled)",
+                    "tooltip": "Lock Screen Fun Facts and Tips = Disabled",
+                    "linkSettingId": "privacy-lock-screen-overlay",
+                    "linkText": "Lock Screen Fun Facts and Tips",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show me suggested content in the Settings app (Disabled)",
+                    "tooltip": "Show me suggested content in the Settings app = Disabled",
+                    "linkSettingId": "privacy-settings-content",
+                    "linkText": "Show me suggested content in the Settings app",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Timeline Suggestions (Disabled)",
+                    "tooltip": "Timeline Suggestions = Disabled",
+                    "linkSettingId": "privacy-timeline-suggestions",
+                    "linkText": "Timeline Suggestions",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show the Windows welcome experience after updates (Disabled)",
+                    "tooltip": "Show the Windows welcome experience after updates = Disabled",
+                    "linkSettingId": "notifications-welcome-experience",
+                    "linkText": "Show the Windows welcome experience after updates",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Get tips and suggestions when using Windows (Disabled)",
+                    "tooltip": "Get tips and suggestions when using Windows = Disabled",
+                    "linkSettingId": "notifications-tips-suggestions",
+                    "linkText": "Get tips and suggestions when using Windows",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show suggestions in Notification Center (Disabled)",
+                    "tooltip": "Show suggestions in Notification Center = Disabled",
+                    "linkSettingId": "notifications-system-pane-suggestions",
+                    "linkText": "Show suggestions in Notification Center",
+                    "hasLink": true
+                  },
+                  {
+                    "text": "Sets: Show suggestions in Start (Disabled)",
+                    "tooltip": "Show suggestions in Start = Disabled",
+                    "linkSettingId": "start-show-suggestions",
+                    "linkText": "Show suggestions in Start",
+                    "hasLink": true
+                  }
+                ]
+              }
+            ],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": true,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Allow: AdsPromotionalContentMode 0. Deny: AdsPromotionalContentMode 1 (Recommended). Custom: AdsPromotionalContentMode 2 (or not set) (Default). Registry: HKEY_CURRENT_USER\\Software\\Winhance\\Settings."
+          },
+          "matrixWin10": null
         }
       ]
     },
@@ -3855,6 +4888,9 @@
                 "hasLink": false
               }
             ],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [
               {
                 "label": "Start layout",
@@ -3950,6 +4986,9 @@
                 "hasLink": false
               }
             ],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [
               {
                 "label": "Show recently added apps",
@@ -4180,6 +5219,9 @@
                 "hasLink": false
               }
             ],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
             "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",

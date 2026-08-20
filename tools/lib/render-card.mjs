@@ -285,6 +285,21 @@ function notesRows(matrix) {
 // Under the grid, inside the same border: per heading a band (once per distinct heading, even across
 // several blocks), per block a label row and the body in its own horizontal scroller
 // (OptionMatrixView.AddCodeBlocks).
+// Mirrors OptionMatrixView.AddOptionLinks: a heading band and a row per option, OUTSIDE the table's
+// horizontal scroller, so the chips wrap against the panel's own width. Inside the grid they would wrap
+// against the table's width instead -- on a matrix wider than the card, half of them would sit past the
+// right edge with only the table's scrollbar to reach them, which is the app bug this band exists to fix.
+function optionLinksHost(matrix, urlFor) {
+  if (!matrix.hasOptionLinks) return '';
+  const rows = matrix.optionLinks.map((row) => `<div class="mx-links-row">`
+    + `<span class="mx-links-option">${esc(row.option)}</span>`
+    + `<span class="mx-links-chips">${row.chips.map((c) => chipEl(c, urlFor)).join('')}</span>`
+    + `</div>`).join('');
+  return `<div class="mx-links-host">`
+    + `<div class="mx-links-head"><span class="mx-group-label">${esc(matrix.optionLinksHeading)}</span></div>`
+    + `${rows}</div>`;
+}
+
 function codeHost(matrix) {
   if (!matrix.hasCode) return '';
   const parts = [];
@@ -478,7 +493,9 @@ export function renderMatrix(matrix, { heading = '', urlFor = () => null, geomet
     .map(({ w, cls }, i) => (i === sized.length - 1 ? `<col${cls}>` : `<col${cls} style="width: ${widthCalc(w)}">`))
     .join('')}`;
   const body = matrix.options.map((o) => optionRow(matrix, o, geometries)).join('') + notesRows(matrix);
-  const boxClass = matrix.hasCode ? 'mx-box mx-has-code' : 'mx-box';
+  // Marks that SOMETHING follows the grid inside the box, so the grid's last row keeps its bottom
+  // hairline instead of leaning on the box border. Either band qualifies.
+  const boxClass = matrix.hasCode || matrix.hasOptionLinks ? 'mx-box mx-has-below' : 'mx-box';
   const columnsRow = hasColumnHeaderRow(matrix) ? `<tr class="mx-row-columns">${columnHeaderRow(matrix, urlFor)}</tr>` : '';
 
   return `${head}<div class="${boxClass}" style="--mx-option-w: ${widthCalc(optionW)}; --mx-table-w: ${widthCalc(tableW)}">
@@ -495,7 +512,7 @@ ${body}
 </tbody>
 </table>
 </div>
-${codeHost(matrix)}</div>`;
+${optionLinksHost(matrix, urlFor)}${codeHost(matrix)}</div>`;
 }
 
 // Card-level facts about the SETTING (not any one option): OS gate, hardware, advanced unlock, added-in,

@@ -18,11 +18,7 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --header-height: 70px;
     --sidebar-width: 300px;
-    /* Prose measure. Paragraphs, headings and callouts stay here; only the generated setting cards
-       are allowed the wider frame below, because a Technical Details matrix is a table, not prose --
-       security-uac-level's is 1150px wide and was permanently scrolled inside a 900px card. */
     --max-content-width: 900px;
-    --max-wide-width: 1360px;
     --font-main: var(--winui-font-family);
     --font-code: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
 }
@@ -59,15 +55,9 @@ body {
        clips it. Kept at 0 so wide content scrolls inside its own container. */
     min-width: 0;
     padding: 3rem 4rem;
-    max-width: calc(var(--max-wide-width) + 8rem);
+    max-width: calc(var(--max-content-width) + 8rem);
     margin: 0 auto;
     margin-left: var(--sidebar-width);
-}
-
-/* The column is sized for the widest setting card; everything else in it keeps the prose measure,
-   left-aligned, so line lengths don't grow with the viewport. .setting-card is the one opt-out. */
-.docs-content > section > *:not(.setting-card) {
-    max-width: var(--max-content-width);
 }
 
 @media (max-width: 1024px) {
@@ -1232,7 +1222,7 @@ html {
    longest option label) sizes column 0 and offsets column 1's sticky left. Grid lines sit on each
    cell's own right/bottom edge (never left/top), so the box's own border is the only outer edge --
    two 1px lines a pixel apart would read as a smudge. The last row keeps its bottom line only when
-   code blocks follow it (mx-has-code); otherwise the box border below it is the only line needed. */
+   another band follows it (mx-has-below); otherwise the box border below it is the only line needed. */
 .mx-grid col.mx-col-option { width: var(--mx-option-w); }
 
 .mx-grid th, .mx-grid td {
@@ -1244,7 +1234,7 @@ html {
 
 .mx-grid tr > *:last-child { border-right: 0; }
 .mx-grid tbody tr:last-child > * { border-bottom: 0; }
-.mx-has-code .mx-grid tbody tr:last-child > * { border-bottom: 1px solid var(--app-techdetail-table-strokebrush); }
+.mx-has-below .mx-grid tbody tr:last-child > * { border-bottom: 1px solid var(--app-techdetail-table-strokebrush); }
 
 /* WinUI's MinHeight maps to `height` on a table cell, NOT to min-height: CSS leaves min-height
    undefined for table cells and Chromium ignores it outright, while a cell's `height` is a MINIMUM
@@ -1430,6 +1420,55 @@ html {
     font-family: var(--app-techdetail-table-value-font-family), var(--font-code);
     font-size: var(--app-techdetail-table-value-font-size);
     color: var(--text-color);
+}
+
+/* ---- "Also sets": inside .mx-box, below .mx-scroll, above the code blocks. Mirrors
+   OptionMatrixView.AddOptionLinks -- one heading band, then a row per option whose chips wrap against
+   the PANEL's width rather than the table's, which is the whole point of it living out here. ---- */
+.mx-links-head {
+    background: var(--app-techdetail-table-headerband-background);
+    min-height: var(--app-techdetail-table-headerband-min-height);
+    padding: var(--app-techdetail-table-headerband-padding);
+    border-bottom: 1px solid var(--app-techdetail-table-strokebrush);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mx-links-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: var(--app-techdetail-table-linkrow-padding);
+    border-bottom: 1px solid var(--app-techdetail-table-linkrow-border-brush);
+}
+
+/* The box's own border closes the last row; two hairlines a pixel apart read as a smudge. Code blocks
+   below need the line kept, and .mx-code-heading deliberately draws no top border of its own. */
+.mx-links-host:last-child > .mx-links-row:last-child { border-bottom: 0; }
+
+.mx-links-option {
+    flex: 0 0 auto;
+    padding-top: 2px;
+    font-family: var(--app-techdetail-table-optionlabel-font-family), var(--font-code);
+    font-size: var(--app-techdetail-table-optionlabel-font-size);
+    font-weight: var(--app-techdetail-table-optionlabel-font-weight);
+    color: var(--text-color);
+}
+
+.mx-links-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    min-width: 0;
+}
+
+/* A chip is nowrap so a badge never reflows mid-word, but "Sets: Show me suggested content in the
+   Settings app (Enabled)" is wider than a phone. Below the panel's own breakpoint the label goes on
+   its own line and chips may wrap inside themselves rather than overflow the card. */
+@media (max-width: 600px) {
+    .mx-links-row { flex-direction: column; gap: 6px; }
+    .mx-links-chips .mx-chip { white-space: normal; }
 }
 
 /* ---- Code blocks: inside .mx-box, below .mx-scroll (own horizontal scroller per block) ---- */

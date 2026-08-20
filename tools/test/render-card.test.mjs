@@ -149,7 +149,7 @@ test('code blocks render inside .mx-box but after .mx-scroll closes, one heading
   const s = byId['system-restore-protection'];
   assert.ok(s.matrix.codeBlocks.length > 1, 'fixture must carry more than one system-restore-protection code block');
   const html = renderMatrix(s.matrix, { geometries: geo });
-  const boxOpen = html.indexOf('<div class="mx-box mx-has-code"');
+  const boxOpen = html.indexOf('<div class="mx-box mx-has-below"');
   const scrollClose = html.indexOf('</div>\n</div>'); // .mx-scroll then its own wrapper close, immediately before the code host
   const codeHostIndex = html.indexOf('<div class="mx-code-host">');
   const boxClose = html.lastIndexOf('</div>');
@@ -234,15 +234,23 @@ test('twin win10/win11 matrices each render their own box under a build heading'
 
 test('requirement chips render inside the mechanism cell, not as card badges', () => {
   const s = byId['theme-mode-windows'];
-  const link = s.matrix.requirements.find((c) => c.linkSettingId && byId[c.linkSettingId]);
-  assert.ok(link, 'fixture must carry a linked requirement chip on theme-mode-windows');
+  assert.ok(s.matrix.requirements.length > 0, 'fixture must carry a setting-level chip (the confirm prompt)');
   const html = renderCard(s, ctx);
   const settingCellHtml = html.match(/<th class="mx-setting"[^]*?<\/th>/)[0];
   assert.match(settingCellHtml, /class="mx-chip"/);
-  assert.match(settingCellHtml, new RegExp(`<a href="#${link.linkSettingId}" class="mx-chip-link">${esc(link.linkText)}</a>`));
-  // The link belongs to the matrix's own mechanism cell, never duplicated into the card header badges.
+  // Setting-level only: what this setting does when you apply it. Which other settings an OPTION
+  // changes belongs to that option, and moved to the "Also sets" band below the grid.
+  assert.doesNotMatch(settingCellHtml, /mx-chip-link/);
   const headerBadges = html.match(/<div class="setting-badges">([\s\S]*?)<\/div>/);
   if (headerBadges) assert.doesNotMatch(headerBadges[1], /mx-chip|req/);
+});
+
+test('a linked "Also sets" chip carries an anchor to the setting it names', () => {
+  const s = byId['theme-mode-windows'];
+  const link = s.matrix.optionLinks.flatMap((r) => r.chips).find((c) => c.linkSettingId && byId[c.linkSettingId]);
+  assert.ok(link, 'fixture must carry a linked chip on theme-mode-windows');
+  const band = renderCard(s, ctx).match(/<div class="mx-links-host">[^]*?$/)[0];
+  assert.match(band, new RegExp(`<a href="#${link.linkSettingId}" class="mx-chip-link">${esc(link.linkText)}</a>`));
 });
 
 test('card badges: win11-only, laptops-only, added-in, and the preference pill with its own icon', () => {
@@ -335,6 +343,37 @@ test('a group whose path already fits comfortably across its wide span is left a
     `the auto column's ${colWidths[1]}px is 24px + ${charsOnTop} chars -- a fractional count means widenForPaths widened it`);
 });
 
+test('"Also sets" is a band per option, outside the table\'s scroller', () => {
+  const m = byId['privacy-ads-promotional-master'].matrix;
+  assert.equal(m.optionLinks.length, 2, 'Allow and Deny each set the other settings; Custom sets none');
+  assert.equal(m.requirements.length, 0, 'the per-option links must have left the setting-level chip strip');
+  const html = renderCard(byId['privacy-ads-promotional-master'], ctx);
+  // Outside .mx-scroll: inside it the chips would wrap against the TABLE's width, and half of a
+  // 16-chip row would sit past the card's right edge (the app bug this band exists to fix).
+  assert.ok(html.indexOf('</div>\n', html.indexOf('mx-scroll')) < html.indexOf('mx-links-host'));
+  assert.doesNotMatch(html.slice(html.indexOf('mx-scroll'), html.indexOf('mx-links-host')), /mx-links-row/);
+  assert.equal((html.match(/mx-links-row/g) ?? []).length, 2);
+  assert.match(html, /<span class="mx-links-option">Allow<\/span>/);
+  assert.match(html, /<span class="mx-links-option">Deny<\/span>/);
+  // All 32 survive the move -- the old strip deduped them to 32 across both options and showed no
+  // sign of which option was which; here each option carries its own 16.
+  const band = html.match(/<div class="mx-links-host">[^]*?$/)[0];
+  assert.equal((band.match(/class="mx-chip"/g) ?? []).length, 32);
+  assert.match(band, /Sets: Content Delivery \(Enabled\)/);
+  assert.match(band, /Sets: Content Delivery \(Disabled\)/);
+});
+
+test('a matrix with an "Also sets" band keeps the grid\'s bottom hairline', () => {
+  // Same rule as code blocks: something follows the grid inside the box, so its last row draws the
+  // line rather than leaning on the box border.
+  const html = renderMatrix(byId['privacy-ads-promotional-master'].matrix, { geometries: geo });
+  assert.match(html, /<div class="mx-box mx-has-below"/);
+});
+
+test('a setting whose options set nothing renders no band', () => {
+  assert.doesNotMatch(renderMatrix(byId['sound-startup'].matrix, { geometries: geo }), /mx-links-host/);
+});
+
 test("a per-option warning renders as a banner naming the option that raises it", () => {
   const s = byId['start-recommended-section'];
   assert.equal(s.optionWarnings.length, 1, 'fixture must carry the Windows 11 Home warning');
@@ -369,25 +408,24 @@ test('the option column is never narrower than its own "Option" heading', () => 
 });
 
 test("a long requirement chip widens the role column only -- the option column's sticky width never moves (finding B)", () => {
-  const m = byId['gaming-memory-integrity'].matrix;
+  // Since the per-option links moved to their own band, the mechanism cell only ever holds the
+  // setting's apply behaviour -- at most two chips, the longest 34 characters. Still charged: under
+  // table-layout: fixed a nowrap chip that outgrows option+role overflows into the paths row beside it.
+  const m = byId['theme-mode-windows'].matrix;
   const longestChip = m.requirements.reduce((max, c) => (c.text.length > max.length ? c.text : max), '');
-  assert.ok(longestChip.length > 40, 'fixture must carry a genuinely long requirement chip');
+  assert.ok(longestChip.length > 30, 'fixture must carry a genuinely long requirement chip');
   const html = renderMatrix(m, { geometries: geo });
   // --mx-option-w is untouched: still exactly optionColumnWidth's own formula (24px fixed + the
   // longest of the option labels and the "Option" heading), never widened by widenForChips.
   const longestOption = Math.max(m.optionHeader.length, ...m.options.map((o) => o.label.length));
   assert.match(html, new RegExp(`--mx-option-w: calc\\(24px \\+ ${longestOption} \\* var\\(--mx-char-w\\)\\);`));
-  // The role column (2nd <col>) is wider than its own base formula (58px fixed) -- it absorbed the deficit.
   const roleMatch = html.match(/<col class="mx-col-role" style="width: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)">/);
   assert.ok(roleMatch, 'role column must carry an explicit width');
-  const roleFixed = Number(roleMatch[1]);
-  assert.ok(roleFixed > 58, `role column's fixed part (${roleFixed}px) must exceed the unwidened 58px base`);
-  // And it's wide enough for the chip: 24px mx-setting padding + 18px chip chrome + the chip's own
-  // text at the 11px rate, minus whatever the option+role base already covered.
+  // And option+role together are wide enough for the chip: 24px mx-setting padding + 18px chip
+  // chrome + the chip's own text at the 11px rate.
   const neededPx = 24 + 18 + longestChip.length * CHAR_W_SM;
   const optionPx = 24 + longestOption * CHAR_W;
-  const roleChars = Number(roleMatch[2]);
-  const rolePx = roleFixed + roleChars * CHAR_W;
+  const rolePx = Number(roleMatch[1]) + Number(roleMatch[2]) * CHAR_W;
   assert.ok(optionPx + rolePx >= neededPx - 0.01, `option+role (${optionPx + rolePx}px) must cover the chip's ${neededPx}px`);
 });
 

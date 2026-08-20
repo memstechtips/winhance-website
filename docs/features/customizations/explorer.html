@@ -169,7 +169,7 @@
             <span class="setting-id">explorer-customization-shortcut-arrow</span>
             </div>
             </div>
-            <div class="mx-box mx-has-code" style="--mx-option-w: calc(24px + 17 * var(--mx-char-w)); --mx-table-w: calc(469.6px + 54 * var(--mx-char-w))">
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 17 * var(--mx-char-w)); --mx-table-w: calc(469.6px + 54 * var(--mx-char-w))">
             <div class="mx-scroll">
             <table class="mx-grid">
             <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col style="width: calc(363.6px + 20 * var(--mx-char-w))"><col></colgroup>
@@ -379,7 +379,7 @@
             <span class="setting-id">explorer-take-ownership</span>
             </div>
             </div>
-            <div class="mx-box mx-has-code" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(190.8px + 46 * var(--mx-char-w))">
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(190.8px + 46 * var(--mx-char-w))">
             <div class="mx-scroll">
             <table class="mx-grid">
             <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col style="width: calc(84.8px + 20 * var(--mx-char-w))"><col></colgroup>
@@ -458,12 +458,12 @@
             <span class="setting-id">explorer-context-menu-toggle-extensions</span>
             </div>
             </div>
-            <div class="mx-box mx-has-code" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(420.6px + 71 * var(--mx-char-w))">
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(311.4px + 71 * var(--mx-char-w))">
             <div class="mx-scroll">
             <table class="mx-grid">
-            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(205.2px + 18 * var(--mx-char-w))"><col style="width: calc(167.4px + 38 * var(--mx-char-w))"><col></colgroup>
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col style="width: calc(167.4px + 38 * var(--mx-char-w))"><col></colgroup>
             <thead>
-            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Use Classic Context Menu = Enabled">Requires: <a href="#explorer-customization-context-menu" class="mx-chip-link">Use Classic Context Menu</a> (set automatically)</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Also runs</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Also runs</span></th></tr>
             <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CLASSES_ROOT\AllFilesystemObjects\shell\Windows.ShowFileExtensions">HKCR\AllFilesystemObjects\shell\Windows.ShowFileExtensions</code></span></th></tr>
             <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">ExplorerCommandHandler</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to determine which option is active. The change itself is made by the registry file below.">read only to detect</span></span></th><th class="mx-col mx-col-regfile" scope="col"><span class="mx-line"><code class="mx-name">.reg file</code></span></th></tr>
             </thead>
@@ -472,7 +472,7 @@
             </tbody>
             </table>
             </div>
-            <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">Registry Content</span><span class="mx-group-desc">Winhance imports this registry file when you apply the matching option.</span></div><div class="mx-code-label">When set to On</div><pre class="mx-code-body mx-code-regcontent"><code>Windows Registry Editor Version 5.00
+            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">On</span><span class="mx-links-chips"><span class="mx-chip" title="Use Classic Context Menu = Enabled">Requires: <a href="#explorer-customization-context-menu" class="mx-chip-link">Use Classic Context Menu</a> (set automatically)</span></span></div></div><div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">Registry Content</span><span class="mx-group-desc">Winhance imports this registry file when you apply the matching option.</span></div><div class="mx-code-label">When set to On</div><pre class="mx-code-body mx-code-regcontent"><code>Windows Registry Editor Version 5.00
             
             [HKEY_CLASSES_ROOT\AllFilesystemObjects\shell\Windows.ShowFileExtensions]
             &quot;CommandStateSync&quot;=&quot;&quot;
@@ -533,12 +533,12 @@
             <span class="setting-id">explorer-context-menu-sfc</span>
             </div>
             </div>
-            <div class="mx-box mx-has-code" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(414.2px + 51 * var(--mx-char-w))">
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(305px + 51 * var(--mx-char-w))">
             <div class="mx-scroll">
             <table class="mx-grid">
-            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(205.2px + 18 * var(--mx-char-w))"><col style="width: calc(161px + 18 * var(--mx-char-w))"><col></colgroup>
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col style="width: calc(161px + 18 * var(--mx-char-w))"><col></colgroup>
             <thead>
-            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Use Classic Context Menu = Enabled">Requires: <a href="#explorer-customization-context-menu" class="mx-chip-link">Use Classic Context Menu</a> (set automatically)</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Also runs</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Also runs</span></th></tr>
             <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CLASSES_ROOT\Directory\Background\shell\SFC">HKCR\Directory\Background\shell\SFC</code></span></th></tr>
             <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">MUIVerb</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to determine which option is active. The change itself is made by the registry file below.">read only to detect</span></span></th><th class="mx-col mx-col-regfile" scope="col"><span class="mx-line"><code class="mx-name">.reg file</code></span></th></tr>
             </thead>
@@ -547,7 +547,7 @@
             </tbody>
             </table>
             </div>
-            <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">Registry Content</span><span class="mx-group-desc">Winhance imports this registry file when you apply the matching option.</span></div><div class="mx-code-label">When set to On</div><pre class="mx-code-body mx-code-regcontent"><code>Windows Registry Editor Version 5.00
+            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">On</span><span class="mx-links-chips"><span class="mx-chip" title="Use Classic Context Menu = Enabled">Requires: <a href="#explorer-customization-context-menu" class="mx-chip-link">Use Classic Context Menu</a> (set automatically)</span></span></div></div><div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">Registry Content</span><span class="mx-group-desc">Winhance imports this registry file when you apply the matching option.</span></div><div class="mx-code-label">When set to On</div><pre class="mx-code-body mx-code-regcontent"><code>Windows Registry Editor Version 5.00
             
             ; Created by: Shawn Brink
             ; Created on: March 12, 2020
@@ -590,12 +590,12 @@
             <span class="setting-id">explorer-context-menu-dism</span>
             </div>
             </div>
-            <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(349.2px + 265 * var(--mx-char-w))">
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(240px + 265 * var(--mx-char-w))">
             <div class="mx-scroll">
             <table class="mx-grid">
-            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(205.2px + 18 * var(--mx-char-w))"><col style="width: calc(24px + 20 * var(--mx-char-w))"><col style="width: calc(24px + 17 * var(--mx-char-w))"><col style="width: calc(24px + 23 * var(--mx-char-w))"><col style="width: calc(24px + 20 * var(--mx-char-w))"><col></colgroup>
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col style="width: calc(24px + 20 * var(--mx-char-w))"><col style="width: calc(24px + 17 * var(--mx-char-w))"><col style="width: calc(24px + 23 * var(--mx-char-w))"><col style="width: calc(24px + 20 * var(--mx-char-w))"><col></colgroup>
             <thead>
-            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Use Classic Context Menu = Enabled">Requires: <a href="#explorer-customization-context-menu" class="mx-chip-link">Use Classic Context Menu</a> (set automatically)</span></div></th><th class="mx-group" colspan="5" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="5" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
             <tr class="mx-row-paths"><th class="mx-paths" colspan="4"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CLASSES_ROOT\Directory\Background\shell\RepairWindowsImage">HKCR\Directory\Background\shell\RepairWindowsImage</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CLASSES_ROOT\Directory\Background\shell\RepairWindowsImage\command">HKCR\Directory\Background\shell\RepairWindowsImage\command</code></span></th></tr>
             <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">MUIVerb</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">Icon</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">HasLUAShield</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th><th class="mx-col mx-col-value" scope="col" title="A registry key has one unnamed value, shown as (Default) in Registry Editor. This setting uses that one."><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">(Default)</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th><th class="mx-col mx-col-value" scope="col" title="A registry key has one unnamed value, shown as (Default) in Registry Editor. This setting uses that one."><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">(Default)</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th></tr>
             </thead>
@@ -604,7 +604,7 @@
             </tbody>
             </table>
             </div>
-            </div>
+            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">On</span><span class="mx-links-chips"><span class="mx-chip" title="Use Classic Context Menu = Enabled">Requires: <a href="#explorer-customization-context-menu" class="mx-chip-link">Use Classic Context Menu</a> (set automatically)</span></span></div></div></div>
             </div>
 
             <div class="setting-card" id="explorer-context-menu-chkdsk">
@@ -619,12 +619,12 @@
             <span class="setting-id">explorer-context-menu-chkdsk</span>
             </div>
             </div>
-            <div class="mx-box mx-has-code" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(434.6px + 51 * var(--mx-char-w))">
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(325.4px + 51 * var(--mx-char-w))">
             <div class="mx-scroll">
             <table class="mx-grid">
-            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(205.2px + 18 * var(--mx-char-w))"><col style="width: calc(181.4px + 18 * var(--mx-char-w))"><col></colgroup>
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col style="width: calc(181.4px + 18 * var(--mx-char-w))"><col></colgroup>
             <thead>
-            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Use Classic Context Menu = Enabled">Requires: <a href="#explorer-customization-context-menu" class="mx-chip-link">Use Classic Context Menu</a> (set automatically)</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Also runs</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Also runs</span></th></tr>
             <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CLASSES_ROOT\Directory\Background\shell\CHKDSK">HKCR\Directory\Background\shell\CHKDSK</code></span></th></tr>
             <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">MUIVerb</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to determine which option is active. The change itself is made by the registry file below.">read only to detect</span></span></th><th class="mx-col mx-col-regfile" scope="col"><span class="mx-line"><code class="mx-name">.reg file</code></span></th></tr>
             </thead>
@@ -633,7 +633,7 @@
             </tbody>
             </table>
             </div>
-            <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">Registry Content</span><span class="mx-group-desc">Winhance imports this registry file when you apply the matching option.</span></div><div class="mx-code-label">When set to On</div><pre class="mx-code-body mx-code-regcontent"><code>Windows Registry Editor Version 5.00
+            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">On</span><span class="mx-links-chips"><span class="mx-chip" title="Use Classic Context Menu = Enabled">Requires: <a href="#explorer-customization-context-menu" class="mx-chip-link">Use Classic Context Menu</a> (set automatically)</span></span></div></div><div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">Registry Content</span><span class="mx-group-desc">Winhance imports this registry file when you apply the matching option.</span></div><div class="mx-code-label">When set to On</div><pre class="mx-code-body mx-code-regcontent"><code>Windows Registry Editor Version 5.00
             
             [HKEY_CLASSES_ROOT\Directory\Background\shell\CHKDSK]
             &quot;Icon&quot;=&quot;imageres.dll,-36&quot;
@@ -679,12 +679,12 @@
             <span class="setting-id">explorer-context-menu-ps1-edit-run</span>
             </div>
             </div>
-            <div class="mx-box mx-has-code" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(529.8px + 51 * var(--mx-char-w))">
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(420.6px + 51 * var(--mx-char-w))">
             <div class="mx-scroll">
             <table class="mx-grid">
-            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(205.2px + 18 * var(--mx-char-w))"><col style="width: calc(276.6px + 18 * var(--mx-char-w))"><col></colgroup>
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col style="width: calc(276.6px + 18 * var(--mx-char-w))"><col></colgroup>
             <thead>
-            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Use Classic Context Menu = Enabled">Requires: <a href="#explorer-customization-context-menu" class="mx-chip-link">Use Classic Context Menu</a> (set automatically)</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Also runs</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Also runs</span></th></tr>
             <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\Shell\Edit-Run-with">HKCR\SystemFileAssociations\.ps1\Shell\Edit-Run-with</code></span></th></tr>
             <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">MUIVerb</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to determine which option is active. The change itself is made by the registry file below.">read only to detect</span></span></th><th class="mx-col mx-col-regfile" scope="col"><span class="mx-line"><code class="mx-name">.reg file</code></span></th></tr>
             </thead>
@@ -693,7 +693,7 @@
             </tbody>
             </table>
             </div>
-            <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">Registry Content</span><span class="mx-group-desc">Winhance imports this registry file when you apply the matching option.</span></div><div class="mx-code-label">When set to On</div><pre class="mx-code-body mx-code-regcontent"><code>Windows Registry Editor Version 5.00
+            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">On</span><span class="mx-links-chips"><span class="mx-chip" title="Use Classic Context Menu = Enabled">Requires: <a href="#explorer-customization-context-menu" class="mx-chip-link">Use Classic Context Menu</a> (set automatically)</span></span></div></div><div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">Registry Content</span><span class="mx-group-desc">Winhance imports this registry file when you apply the matching option.</span></div><div class="mx-code-label">When set to On</div><pre class="mx-code-body mx-code-regcontent"><code>Windows Registry Editor Version 5.00
             
             ; Created by: Shawn Brink
             ; Created on: December 4, 2023
@@ -799,12 +799,12 @@
             <span class="setting-id">explorer-context-menu-compress-to</span>
             </div>
             </div>
-            <div class="mx-box mx-has-code" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(359.4px + 71 * var(--mx-char-w))">
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(250.2px + 71 * var(--mx-char-w))">
             <div class="mx-scroll">
             <table class="mx-grid">
-            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(205.2px + 18 * var(--mx-char-w))"><col style="width: calc(106.2px + 38 * var(--mx-char-w))"><col></colgroup>
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col style="width: calc(106.2px + 38 * var(--mx-char-w))"><col></colgroup>
             <thead>
-            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Use Classic Context Menu = Enabled">Requires: <a href="#explorer-customization-context-menu" class="mx-chip-link">Use Classic Context Menu</a> (set automatically)</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Also runs</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Also runs</span></th></tr>
             <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CLASSES_ROOT\*\shell\CompressToFullMenu_ForOldContextMenu">HKCR\*\shell\CompressToFullMenu_ForOldContextMenu</code></span></th></tr>
             <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">ExplorerCommandHandler</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to determine which option is active. The change itself is made by the registry file below.">read only to detect</span></span></th><th class="mx-col mx-col-regfile" scope="col"><span class="mx-line"><code class="mx-name">.reg file</code></span></th></tr>
             </thead>
@@ -813,7 +813,7 @@
             </tbody>
             </table>
             </div>
-            <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">Registry Content</span><span class="mx-group-desc">Winhance imports this registry file when you apply the matching option.</span></div><div class="mx-code-label">When set to On</div><pre class="mx-code-body mx-code-regcontent"><code>Windows Registry Editor Version 5.00
+            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">On</span><span class="mx-links-chips"><span class="mx-chip" title="Use Classic Context Menu = Enabled">Requires: <a href="#explorer-customization-context-menu" class="mx-chip-link">Use Classic Context Menu</a> (set automatically)</span></span></div></div><div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">Registry Content</span><span class="mx-group-desc">Winhance imports this registry file when you apply the matching option.</span></div><div class="mx-code-label">When set to On</div><pre class="mx-code-body mx-code-regcontent"><code>Windows Registry Editor Version 5.00
             
             ; Credit: ThioJoe - https://github.com/ThioJoe/
             ; Source: https://gist.github.com/ThioJoe/f4b0799e2f0d95466f4c2bd4e46d1e67
@@ -1462,12 +1462,12 @@
             <span class="setting-id">explorer-customization-show-lnk-extension</span>
             </div>
             </div>
-            <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(308.5px + 36 * var(--mx-char-w))">
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(106px + 36 * var(--mx-char-w))">
             <div class="mx-scroll">
             <table class="mx-grid">
-            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(260.5px + 7 * var(--mx-char-w))"><col></colgroup>
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
             <thead>
-            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span><span class="mx-chip" title="Show file extensions = Enabled">Requires: <a href="#explorer-customization-show-file-ext" class="mx-chip-link">Show file extensions</a> (set automatically)</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
             <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CLASSES_ROOT\lnkfile">HKCR\lnkfile</code></span></th></tr>
             <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">NeverShowExt</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th></tr>
             </thead>
@@ -1476,7 +1476,7 @@
             </tbody>
             </table>
             </div>
-            </div>
+            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">On</span><span class="mx-links-chips"><span class="mx-chip" title="Show file extensions = Enabled">Requires: <a href="#explorer-customization-show-file-ext" class="mx-chip-link">Show file extensions</a> (set automatically)</span></span></div></div></div>
             </div>
 
             <div class="setting-card" id="explorer-customization-hide-merge-conflicts">
@@ -1899,7 +1899,7 @@
             <span class="setting-id">explorer-enable-photo-viewer</span>
             </div>
             </div>
-            <div class="mx-box mx-has-code" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(183.8px + 59 * var(--mx-char-w))">
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(183.8px + 59 * var(--mx-char-w))">
             <div class="mx-scroll">
             <table class="mx-grid">
             <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col style="width: calc(39.8px + 26 * var(--mx-char-w))"><col></colgroup>
@@ -2044,7 +2044,7 @@
             <span class="setting-id">explorer-customization-legacy-notepad</span>
             </div>
             </div>
-            <div class="mx-box mx-has-code" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(877.3px + 71 * var(--mx-char-w))">
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(877.3px + 71 * var(--mx-char-w))">
             <div class="mx-scroll">
             <table class="mx-grid">
             <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col style="width: calc(213.3px + 21 * var(--mx-char-w))"><col style="width: calc(520px + 20 * var(--mx-char-w))"><col></colgroup>
@@ -2500,12 +2500,12 @@
             <span class="setting-id">explorer-customization-nav-show-all-folders</span>
             </div>
             </div>
-            <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(455.2px + 56 * var(--mx-char-w))">
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(373.2px + 56 * var(--mx-char-w))">
             <div class="mx-scroll">
             <table class="mx-grid">
-            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(178px + 18 * var(--mx-char-w))"><col></colgroup>
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col></colgroup>
             <thead>
-            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span><span class="mx-chip" title="Show Desktop folder = Enabled">Enables: <a href="#explorer-customization-nav-saf-desktop" class="mx-chip-link">Show Desktop folder</a> (set automatically)</span><span class="mx-chip" title="Show Documents folder = Enabled">Enables: <a href="#explorer-customization-nav-saf-documents" class="mx-chip-link">Show Documents folder</a> (set automatically)</span><span class="mx-chip" title="Show Downloads folder = Enabled">Enables: <a href="#explorer-customization-nav-saf-downloads" class="mx-chip-link">Show Downloads folder</a> (set automatically)</span><span class="mx-chip" title="Show Music folder = Enabled">Enables: <a href="#explorer-customization-nav-saf-music" class="mx-chip-link">Show Music folder</a> (set automatically)</span><span class="mx-chip" title="Show Pictures folder = Enabled">Enables: <a href="#explorer-customization-nav-saf-pictures" class="mx-chip-link">Show Pictures folder</a> (set automatically)</span><span class="mx-chip" title="Show Videos folder = Enabled">Enables: <a href="#explorer-customization-nav-saf-videos" class="mx-chip-link">Show Videos folder</a> (set automatically)</span><span class="mx-chip" title="Show Libraries = Enabled">Enables: <a href="#explorer-customization-nav-show-libraries" class="mx-chip-link">Show Libraries</a> (set automatically)</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
             <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></span></th></tr>
             <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">NavPaneShowAllFolders</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
             </thead>
@@ -2514,7 +2514,7 @@
             </tbody>
             </table>
             </div>
-            </div>
+            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">On</span><span class="mx-links-chips"><span class="mx-chip" title="Show Desktop folder = Enabled">Enables: <a href="#explorer-customization-nav-saf-desktop" class="mx-chip-link">Show Desktop folder</a> (set automatically)</span><span class="mx-chip" title="Show Documents folder = Enabled">Enables: <a href="#explorer-customization-nav-saf-documents" class="mx-chip-link">Show Documents folder</a> (set automatically)</span><span class="mx-chip" title="Show Downloads folder = Enabled">Enables: <a href="#explorer-customization-nav-saf-downloads" class="mx-chip-link">Show Downloads folder</a> (set automatically)</span><span class="mx-chip" title="Show Music folder = Enabled">Enables: <a href="#explorer-customization-nav-saf-music" class="mx-chip-link">Show Music folder</a> (set automatically)</span><span class="mx-chip" title="Show Pictures folder = Enabled">Enables: <a href="#explorer-customization-nav-saf-pictures" class="mx-chip-link">Show Pictures folder</a> (set automatically)</span><span class="mx-chip" title="Show Videos folder = Enabled">Enables: <a href="#explorer-customization-nav-saf-videos" class="mx-chip-link">Show Videos folder</a> (set automatically)</span><span class="mx-chip" title="Show Libraries = Enabled">Enables: <a href="#explorer-customization-nav-show-libraries" class="mx-chip-link">Show Libraries</a> (set automatically)</span></span></div></div></div>
             <div class="setting-children">
             <div class="setting-card setting-card-child" id="explorer-customization-nav-saf-desktop">
             <div class="setting-header">

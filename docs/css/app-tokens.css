@@ -178,6 +178,8 @@
   --app-techdetail-table-cell-border-brush: var(--app-techdetail-table-strokebrush);
   --app-techdetail-table-cell-min-height: 40px;
   --app-techdetail-table-cell-padding: 0 12px;
+  --app-techdetail-table-linkrow-border-brush: var(--app-techdetail-table-strokebrush);
+  --app-techdetail-table-linkrow-padding: 8px 12px;
   --app-techdetail-table-codeseparator-border-brush: var(--app-techdetail-table-strokebrush);
   --app-techdetail-table-codeseparator-border-thickness: 1px 0 0 0;
   --app-techdetail-table-optionlabel-font-family: Consolas;
