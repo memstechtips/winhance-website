@@ -106,8 +106,9 @@ test('no is-current, current marker, or reading output anywhere in a card', () =
   assert.doesNotMatch(html, /mx-empty-reading/);
   assert.doesNotMatch(html, /mx-reading/);
   assert.doesNotMatch(html, /CheckmarkCircle/);
-  // the 21px marker gutter is kept for label alignment, but stays empty
-  assert.match(html, /<span class="mx-gutter"><\/span>/);
+  // no gutter either -- the app reserves 21px beside the label for the current marker; the web,
+  // which never draws one, would just be reserving room for something that cannot appear.
+  assert.doesNotMatch(html, /mx-gutter/);
 });
 
 test('no <details> anywhere in a rendered card -- the panel is always visible', () => {
@@ -180,7 +181,7 @@ test('--mx-option-w is set inline on .mx-box from the longest option label, in v
   const m = byId['sound-communication-ducking'].matrix;
   const longest = Math.max(...m.options.map((o) => o.label.length));
   const html = renderMatrix(m, { geometries: geo });
-  assert.match(html, new RegExp(`<div class="mx-box" style="--mx-option-w: calc\\(45px \\+ ${longest} \\* var\\(--mx-char-w\\)\\);`));
+  assert.match(html, new RegExp(`<div class="mx-box" style="--mx-option-w: calc\\(24px \\+ ${longest} \\* var\\(--mx-char-w\\)\\);`));
   assert.doesNotMatch(html, /--mx-option-w:[^;]*ch\)/);
 });
 
@@ -334,15 +335,25 @@ test('a group whose path already fits comfortably across its wide span is left a
     `the auto column's ${colWidths[1]}px is 24px + ${charsOnTop} chars -- a fractional count means widenForPaths widened it`);
 });
 
+test('the option column is never narrower than its own "Option" heading', () => {
+  // table-layout: fixed means a column sized only to its cell text clips its heading instead of
+  // growing for it -- an On/Off selection's 3-character labels left "Option" printing over Role.
+  const m = byId['gaming-memory-integrity'].matrix;
+  const longestLabel = Math.max(...m.options.map((o) => o.label.length));
+  assert.ok(longestLabel < m.optionHeader.length, 'fixture must have labels shorter than the heading');
+  const html = renderMatrix(m, { geometries: geo });
+  assert.match(html, new RegExp(`--mx-option-w: calc\\(24px \\+ ${m.optionHeader.length} \\* var\\(--mx-char-w\\)\\);`));
+});
+
 test("a long requirement chip widens the role column only -- the option column's sticky width never moves (finding B)", () => {
   const m = byId['gaming-memory-integrity'].matrix;
   const longestChip = m.requirements.reduce((max, c) => (c.text.length > max.length ? c.text : max), '');
   assert.ok(longestChip.length > 40, 'fixture must carry a genuinely long requirement chip');
   const html = renderMatrix(m, { geometries: geo });
-  // --mx-option-w is untouched: still exactly optionColumnWidth's own formula (45px fixed + longest
-  // option label's chars), never widened by widenForChips.
-  const longestOption = Math.max(...m.options.map((o) => o.label.length));
-  assert.match(html, new RegExp(`--mx-option-w: calc\\(45px \\+ ${longestOption} \\* var\\(--mx-char-w\\)\\);`));
+  // --mx-option-w is untouched: still exactly optionColumnWidth's own formula (24px fixed + the
+  // longest of the option labels and the "Option" heading), never widened by widenForChips.
+  const longestOption = Math.max(m.optionHeader.length, ...m.options.map((o) => o.label.length));
+  assert.match(html, new RegExp(`--mx-option-w: calc\\(24px \\+ ${longestOption} \\* var\\(--mx-char-w\\)\\);`));
   // The role column (2nd <col>) is wider than its own base formula (58px fixed) -- it absorbed the deficit.
   const roleMatch = html.match(/<col class="mx-col-role" style="width: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)">/);
   assert.ok(roleMatch, 'role column must carry an explicit width');
@@ -351,7 +362,7 @@ test("a long requirement chip widens the role column only -- the option column's
   // And it's wide enough for the chip: 24px mx-setting padding + 18px chip chrome + the chip's own
   // text at the 11px rate, minus whatever the option+role base already covered.
   const neededPx = 24 + 18 + longestChip.length * CHAR_W_SM;
-  const optionPx = 45 + longestOption * CHAR_W;
+  const optionPx = 24 + longestOption * CHAR_W;
   const roleChars = Number(roleMatch[2]);
   const rolePx = roleFixed + roleChars * CHAR_W;
   assert.ok(optionPx + rolePx >= neededPx - 0.01, `option+role (${optionPx + rolePx}px) must cover the chip's ${neededPx}px`);
@@ -413,8 +424,8 @@ test('a note label longer than the base role floor widens role only when option 
   assert.ok(m.hasNotes && m.notes.length > 1, 'fixture must carry several taskbar-clean notes');
   const longest = Math.max(m.notesHeading.length, ...m.notes.map((n) => n.label.length));
   const html = renderMatrix(m, { geometries: geo });
-  const longestOption = Math.max(...m.options.map((o) => o.label.length));
-  assert.match(html, new RegExp(`--mx-option-w: calc\\(45px \\+ ${longestOption} \\* var\\(--mx-char-w\\)\\);`), 'optionW must stay untouched');
+  const longestOption = Math.max(m.optionHeader.length, ...m.options.map((o) => o.label.length));
+  assert.match(html, new RegExp(`--mx-option-w: calc\\(24px \\+ ${longestOption} \\* var\\(--mx-char-w\\)\\);`), 'optionW must stay untouched');
   const optionMatch = html.match(/--mx-option-w: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)/);
   const roleMatch = html.match(/<col class="mx-col-role" style="width: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)">/);
   assert.ok(roleMatch, 'role column must carry an explicit width');

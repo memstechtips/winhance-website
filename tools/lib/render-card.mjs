@@ -42,16 +42,20 @@ function buildAllowed(availability, referenceBuild) {
   });
 }
 
-// 21px CurrentMarkerGutter + 2*12px Table.Cell padding: the fixed part of every option cell's width,
-// on top of the longest label. Charged in var(--mx-char-w) multiples, not `ch`: `ch` re-resolves
-// against whatever font the READING element inherits, and a <col> can't carry its own font-family at
-// all -- the same --mx-option-w value used to end up three different pixel widths across
-// col.mx-col-option's width and .mx-h-role/.mx-role's sticky `left` (Controller ruling 1, fix round 1).
-// A literal px-per-character token sidesteps that: every consumer resolves the identical number.
-const OPTION_CELL_FIXED_WIDTH = 21 + 12 * 2;
+// 2*12px Table.Cell padding: the fixed part of every option cell's width, on top of the longest
+// label. Charged in var(--mx-char-w) multiples, not `ch`: `ch` re-resolves against whatever font the
+// READING element inherits, and a <col> can't carry its own font-family at all -- the same
+// --mx-option-w value used to end up three different pixel widths across col.mx-col-option's width
+// and .mx-h-role/.mx-role's sticky `left` (Controller ruling 1, fix round 1). A literal
+// px-per-character token sidesteps that: every consumer resolves the identical number.
+// The app also reserves a 21px CurrentMarkerGutter here; the web does not, because the web never
+// draws a current marker at all (that is live machine state, ruled out of the docs). Reserving room
+// for something that can never appear cost every frozen option column 21px, and the frozen columns
+// are exactly what squeezes the scrolling registry columns on a wide matrix like security-uac-level.
+const OPTION_CELL_FIXED_WIDTH = 12 * 2;
 
-// 2*12px Table.Cell padding: every other column's fixed width (no CurrentMarkerGutter -- that's the
-// option column's alone).
+// 2*12px Table.Cell padding: every other column's fixed width -- same as the option column now that
+// the gutter is gone.
 const DATA_CELL_FIXED_WIDTH = 12 * 2;
 
 // BadgePillBase's own metrics: 12px icon + 4px icon-to-label gap + 1px border on both sides +
@@ -242,7 +246,7 @@ function optionRow(matrix, option, geometries) {
   if (option.isRecommended) pills.push(pill('recommended', qualified(matrix.recommendedLabel, option.recommendedContext), matrix.recommendedTooltip, geometries.BadgeRecommendedIconPath));
   if (option.isWindowsDefault) pills.push(pill('default', qualified(matrix.defaultLabel, option.defaultContext), matrix.defaultTooltip, geometries.BadgeDefaultIconPath));
   const cells = matrix.columns.map((_, i) => valueCell(option.cells[i])).join('');
-  return `<tr><th class="mx-option" scope="row"><span class="mx-gutter"></span><code>${esc(option.label)}</code></th><td class="mx-role">${pills.join('')}</td>${cells}</tr>`;
+  return `<tr><th class="mx-option" scope="row"><code>${esc(option.label)}</code></th><td class="mx-role">${pills.join('')}</td>${cells}</tr>`;
 }
 
 function valueCell(cell) {
@@ -323,7 +327,11 @@ function sumWidths(widths) {
 // see the constant above); .mx-col-option takes that width and the Role column/cells sit sticky at
 // that same offset, so both read the exact same pixel value no matter what resolves the var.
 function optionColumnWidth(matrix) {
-  const longest = matrix.options.reduce((max, o) => Math.max(max, o.label.length), 0);
+  // The column header ("Option") is charged alongside the labels for the same reason roleColumnWidth
+  // charges "Role": on a matrix whose longest label is shorter than its own heading (a two-state
+  // On/Off selection, say) a column sized only to the labels clips its heading under the Role column
+  // beside it -- table-layout: fixed means nothing grows to fit it.
+  const longest = matrix.options.reduce((max, o) => Math.max(max, o.label.length), matrix.optionHeader.length);
   return { fixed: OPTION_CELL_FIXED_WIDTH, chars: longest };
 }
 
@@ -416,7 +424,7 @@ function widenForChips(matrix, optionW, roleW) {
 // the base columns -- a note's own label (.mx-note-label, OptionLabel's face, hence CHAR_W not
 // CHAR_W_SM) and the notes-head band's own heading (.mx-group-label) never got charged at all, so
 // start-menu-clean-10's "Also happens when you apply, if you agree to the prompt" wrapped one word
-// per line inside the bare 45px floor optionColumnWidth leaves when there are zero options to size it
+// per line inside the bare 24px floor optionColumnWidth leaves when there are zero options to size it
 // from. AddNotes' own labelSpan (mirrored in noteSpans) decides which columns the label cell actually
 // occupies: option+role together in the normal (non-split) shape -- exactly widenForChips' shape, so
 // it is charged the same way, widening role only, option's sticky offset left alone. But when the

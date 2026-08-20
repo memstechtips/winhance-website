@@ -18,7 +18,11 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --header-height: 70px;
     --sidebar-width: 300px;
+    /* Prose measure. Paragraphs, headings and callouts stay here; only the generated setting cards
+       are allowed the wider frame below, because a Technical Details matrix is a table, not prose --
+       security-uac-level's is 1150px wide and was permanently scrolled inside a 900px card. */
     --max-content-width: 900px;
+    --max-wide-width: 1360px;
     --font-main: var(--winui-font-family);
     --font-code: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
 }
@@ -55,9 +59,15 @@ body {
        clips it. Kept at 0 so wide content scrolls inside its own container. */
     min-width: 0;
     padding: 3rem 4rem;
-    max-width: calc(var(--max-content-width) + 8rem);
+    max-width: calc(var(--max-wide-width) + 8rem);
     margin: 0 auto;
     margin-left: var(--sidebar-width);
+}
+
+/* The column is sized for the widest setting card; everything else in it keeps the prose measure,
+   left-aligned, so line lengths don't grow with the viewport. .setting-card is the one opt-out. */
+.docs-content > section > *:not(.setting-card) {
+    max-width: var(--max-content-width);
 }
 
 @media (max-width: 1024px) {
@@ -1342,15 +1352,12 @@ html {
 
 .mx-col .mx-chips { margin-top: 2px; }
 
-.mx-gutter { display: inline-block; width: 21px; } /* CurrentMarkerGutter -- never draws a marker on the web */
-
-/* fix round 1 (finding 2, follow-on): the gutter and the code label are two separate inline boxes,
-   and a browser is free to break a line BETWEEN two inline siblings even though `.mx-option code`
-   itself is nowrap -- --mx-option-w is sized with zero slack for the longest label, so a sub-pixel
-   glyph-metric difference from --mx-char-w's estimate was enough to wrap the label onto its own
-   line under the gutter. Ban that break point outright; table-layout: fixed already guarantees the
-   cell's LAYOUT width matches --mx-option-w regardless, so any leftover fraction of a pixel just
-   overflows invisibly instead of wrapping. */
+/* fix round 1 (finding 2, follow-on): --mx-option-w is sized with zero slack for the longest label,
+   so a sub-pixel glyph-metric difference from --mx-char-w's estimate was enough to wrap the label
+   onto a second line. Ban wrapping outright; table-layout: fixed already guarantees the cell's
+   LAYOUT width matches --mx-option-w regardless, so any leftover fraction of a pixel just overflows
+   invisibly instead of wrapping. (The 21px CurrentMarkerGutter that used to sit beside the label is
+   gone -- see render-card.mjs's OPTION_CELL_FIXED_WIDTH.) */
 .mx-option { white-space: nowrap; }
 
 .mx-option code {
