@@ -565,6 +565,33 @@ const POWER_PLAN_NOTE =
   'Winhance always offers these plans, creating one that is not installed yet. '
   + 'Any other power plan already on your PC is listed with them, with its own scheme GUID.';
 
+// SettingItemViewModel raises a per-option warning as an InfoBar under the card, at Error severity, and
+// only while that option is selected. A docs page has no selection, so every warning the setting can raise
+// is shown at once and each names the option that raises it -- "When set to X" is the only part of the
+// banner not mirrored from the app. Placed above the panel rather than below it, which is where the app
+// puts it: in the app the Technical Details are COLLAPSED, so its banner sits right under the setting; on
+// the web they are always open, and a banner after a 40-row table is nowhere near the setting it is about.
+function optionWarnings(s) {
+  if (!s.optionWarnings?.length) return '';
+  // The catalog repeats one warning across every option it applies to (Connected Devices Platform
+  // Service authors the same sentence on both Disabled and Manual). In the app only the selected
+  // option's copy is ever on screen; printing all of them here would just look like a stutter.
+  const byText = new Map();
+  for (const w of s.optionWarnings) {
+    if (!byText.has(w.text)) byText.set(w.text, []);
+    byText.get(w.text).push(w.option);
+  }
+  const rows = [...byText].map(([text, options]) => `<div class="setting-banner">`
+    + `<span class="setting-banner-when">When set to ${esc(joinOptions(options))}</span>`
+    + `<p class="setting-banner-text">${esc(text)}</p></div>`).join('\n');
+  return `\n${rows}`;
+}
+
+function joinOptions(options) {
+  if (options.length === 1) return options[0];
+  return `${options.slice(0, -1).join(', ')} or ${options[options.length - 1]}`;
+}
+
 export function renderCard(s, ctx, { child = false } = {}) {
   const urlFor = ctx.urlFor ?? (() => null);
   const icons = ctx.icons ?? {};
@@ -585,7 +612,7 @@ export function renderCard(s, ctx, { child = false } = {}) {
 <div class="setting-pills">
 ${badges ? `<div class="setting-badges">${badges}</div>\n` : ''}<span class="setting-id">${esc(s.id)}</span>
 </div>
-</div>
+</div>${optionWarnings(s)}
 ${body}
 ${kids ? `<div class="setting-children">\n${kids}\n</div>\n` : ''}</div>`;
 }

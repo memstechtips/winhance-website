@@ -1114,6 +1114,32 @@ html {
 
 .mx-empty { margin-top: 0.75rem; color: var(--text-muted); font-size: var(--winui-font-size-caption); }
 
+/* The app's own per-option warning, raised there as an InfoBar at Error severity (see
+   SettingStatusBannerManager.ComputeBannerForValue). Same treatment as the page-level callouts above:
+   the severity fill, a neutral card stroke, no coloured left bar. */
+.setting-banner {
+    margin-bottom: 0.75rem;
+    padding: 0.6rem 0.85rem;
+    border: 1px solid var(--winui-card-stroke-color-default);
+    border-radius: var(--winui-control-corner-radius);
+    background-color: var(--winui-system-fill-color-critical-background);
+}
+
+.setting-banner-when {
+    display: block;
+    font-size: var(--winui-font-size-caption);
+    line-height: var(--winui-line-height-caption);
+    font-weight: var(--winui-weight-body-strong);
+    color: var(--winui-system-fill-color-critical);
+}
+
+.setting-banner-text {
+    margin: 2px 0 0;
+    font-size: var(--winui-font-size-caption);
+    line-height: var(--winui-line-height-caption);
+    color: var(--text-color);
+}
+
 /* The one caption on a card that isn't mirrored from the app: it says what a static page cannot show
    about a list the app builds at runtime. Italic so it doesn't read as one of the app's own strings. */
 .mx-note-live {

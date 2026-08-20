@@ -335,6 +335,29 @@ test('a group whose path already fits comfortably across its wide span is left a
     `the auto column's ${colWidths[1]}px is 24px + ${charsOnTop} chars -- a fractional count means widenForPaths widened it`);
 });
 
+test("a per-option warning renders as a banner naming the option that raises it", () => {
+  const s = byId['start-recommended-section'];
+  assert.equal(s.optionWarnings.length, 1, 'fixture must carry the Windows 11 Home warning');
+  const html = renderCard(s, ctx);
+  assert.match(html, /<span class="setting-banner-when">When set to Hide<\/span>/);
+  assert.ok(html.includes(s.optionWarnings[0].text), 'the banner carries the app\'s own text, verbatim');
+  // Above the panel, not below it -- the app's Technical Details are collapsed, the web's never are.
+  assert.ok(html.indexOf('setting-banner') < html.indexOf('mx-box'));
+});
+
+test('one warning authored on several options becomes one banner naming them all', () => {
+  const s = byId['gaming-connected-devices-platform-service'];
+  assert.equal(s.optionWarnings.length, 2, 'fixture must carry the same text on two options');
+  assert.equal(s.optionWarnings[0].text, s.optionWarnings[1].text);
+  const html = renderCard(s, ctx);
+  assert.equal((html.match(/setting-banner"/g) ?? []).length, 1, 'the repeated text prints once');
+  assert.match(html, /When set to Disabled or Manual \(Recommended\)/);
+});
+
+test('a setting with no option warnings renders no banner', () => {
+  assert.doesNotMatch(renderCard(byId['sound-startup'], ctx), /setting-banner/);
+});
+
 test('the option column is never narrower than its own "Option" heading', () => {
   // table-layout: fixed means a column sized only to its cell text clips its heading instead of
   // growing for it -- an On/Off selection's 3-character labels left "Option" printing over Role.

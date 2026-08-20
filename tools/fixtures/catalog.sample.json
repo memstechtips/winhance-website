@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "winhanceVersion": "26.08.18",
-  "catalogHash": "fdfaa61e57d5cf6f15a1e7ec9e30cd41d96c5ae73e52d690eb0eb0038f4d7d32",
-  "settingCount": 20,
+  "winhanceVersion": "26.08.20",
+  "catalogHash": "0138666d454ea2b2867dadf6b8d7e871bae8fc649d71a7567a48e7d7e6187fc0",
+  "settingCount": 22,
   "referenceBuilds": {
     "win10": 19045,
     "win11": 26100
@@ -33,6 +33,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -442,6 +443,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -568,6 +570,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -697,6 +700,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -1123,6 +1127,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -1276,6 +1281,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -1429,6 +1435,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [],
             "columns": [],
@@ -1519,6 +1526,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -1717,6 +1725,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -1863,6 +1872,162 @@
             "accessibleSummary": "On: Enabled 1, Locked 1 (or not set), WasEnabledBy 2 (Default). Off: Enabled 0, Locked 0, WasEnabledBy 0 (Recommended), Current. Registry: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\DeviceGuard\\Scenarios\\HypervisorEnforcedCodeIntegrity."
           },
           "matrixWin10": null
+        },
+        {
+          "id": "gaming-connected-devices-platform-service",
+          "name": "Connected Devices Platform Service",
+          "description": "Enables cross-device experiences like phone linking and nearby sharing. Disabling reduces background activity and device interaction logging",
+          "group": "System Services",
+          "icon": {
+            "pack": "Material",
+            "name": "CellphoneLink"
+          },
+          "control": "Selection",
+          "isSubjectivePreference": true,
+          "addedInVersion": "26.03.27",
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [
+            {
+              "option": "Disabled",
+              "text": "Manual or Disabled startup can break Windows Night Light and delay cross-device features (Phone Link, Nearby Sharing, clipboard sync). Choose Automatic if you use Night Light."
+            },
+            {
+              "option": "Manual (Recommended)",
+              "text": "Manual or Disabled startup can break Windows Night Light and delay cross-device features (Phone Link, Nearby Sharing, clipboard sync). Choose Automatic if you use Night Light."
+            }
+          ],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\CDPSvc",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\CDPSvc"
+                  },
+                  {
+                    "full": "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\CDPUserSvc",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\CDPUserSvc"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "Start",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Disabled",
+                "cells": [
+                  {
+                    "text": "4",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Manual (Recommended)",
+                "cells": [
+                  {
+                    "text": "3",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": true,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Automatic",
+                "cells": [
+                  {
+                    "text": "2 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [
+              {
+                "text": "Requires a system restart",
+                "tooltip": "Reboot for the change to fully take effect",
+                "linkSettingId": "",
+                "linkText": "",
+                "hasLink": false
+              }
+            ],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Disabled: Start 4. Manual (Recommended): Start 3 (Recommended). Automatic: Start 2 (or not set) (Default). Registry: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\CDPSvc, HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\CDPUserSvc."
+          },
+          "matrixWin10": null
         }
       ]
     },
@@ -1891,7 +2056,140 @@
               "win11": null
             }
           },
-          "matrix": null,
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Power plan",
+                "kind": "PowerPlan",
+                "description": "Selecting a power plan applies it by its scheme GUID, creating the plan if it isn't installed.",
+                "paths": [],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": false,
+                "canOpenRegedit": false
+              }
+            ],
+            "columns": [
+              {
+                "header": "Scheme GUID",
+                "typeName": "",
+                "kind": "Power",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": false,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Power Saver",
+                "cells": [
+                  {
+                    "text": "a1841308-3541-4fab-bc81-f71556f20b4a",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Balanced",
+                "cells": [
+                  {
+                    "text": "381b4222-f694-41f0-9685-ff5bb260df2e",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "High Performance",
+                "cells": [
+                  {
+                    "text": "8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Ultimate Performance",
+                "cells": [
+                  {
+                    "text": "e9a42b02-d5df-448d-aa00-03f14749eb61",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Winhance Power Plan",
+                "cells": [
+                  {
+                    "text": "57696e68-616e-6365-506f-776572000000",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Power Saver: Scheme GUID a1841308-3541-4fab-bc81-f71556f20b4a. Balanced: Scheme GUID 381b4222-f694-41f0-9685-ff5bb260df2e. High Performance: Scheme GUID 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c. Ultimate Performance: Scheme GUID e9a42b02-d5df-448d-aa00-03f14749eb61. Winhance Power Plan: Scheme GUID 57696e68-616e-6365-506f-776572000000. ."
+          },
           "matrixWin10": null
         },
         {
@@ -1916,6 +2214,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -2046,6 +2345,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -2183,6 +2483,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -2531,6 +2832,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -2661,6 +2963,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -2785,6 +3088,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -2911,6 +3215,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -3078,6 +3383,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -3281,6 +3587,7 @@
               "win11": null
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [
               {
@@ -3526,6 +3833,7 @@
               "win11": "This setting applies to Windows 10 only"
             }
           },
+          "optionWarnings": [],
           "matrix": {
             "groups": [],
             "columns": [],
@@ -3698,6 +4006,198 @@
             "currentTooltip": "This is what your system is set to now",
             "accessibleSummary": ". ."
           }
+        },
+        {
+          "id": "start-recommended-section",
+          "name": "Recommended section",
+          "description": "Show or hide the lower section that displays recently opened files and suggested apps. Hiding this section also removes Windows Spotlight from the lock screen and suggested content in the Settings app",
+          "group": "Layout",
+          "icon": {
+            "pack": "Material",
+            "name": "TableStar"
+          },
+          "control": "Selection",
+          "isSubjectivePreference": true,
+          "addedInVersion": null,
+          "uiParentId": null,
+          "availability": {
+            "builds": [
+              {
+                "min": "22000.0",
+                "max": "*"
+              }
+            ],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": "This setting applies to Windows 11 only",
+              "win11": null
+            }
+          },
+          "optionWarnings": [
+            {
+              "option": "Hide",
+              "text": "Windows 11 Home keeps the Recommended section on screen and only empties it. The section is removed entirely on Pro and above."
+            }
+          ],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer"
+                  },
+                  {
+                    "full": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer"
+                  },
+                  {
+                    "full": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\PolicyManager\\current\\device\\Start",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKLM\\SOFTWARE\\Microsoft\\PolicyManager\\current\\device\\Start"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              },
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\PolicyManager\\current\\device\\Education",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKLM\\SOFTWARE\\Microsoft\\PolicyManager\\current\\device\\Education"
+                  }
+                ],
+                "startColumn": 1,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "HideRecommendedSection",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [
+                  {
+                    "text": "Group Policy",
+                    "tooltip": "A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation's policy can also override it.",
+                    "linkSettingId": "",
+                    "linkText": "",
+                    "hasLink": false
+                  }
+                ],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": true
+              },
+              {
+                "header": "IsEducationEnvironment",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Show",
+                "cells": [
+                  {
+                    "text": "deletes key",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "deletes key",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Hide",
+                "cells": [
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": true,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [
+              {
+                "text": "StartMenuExperienceHost restart",
+                "tooltip": "StartMenuExperienceHost has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.",
+                "linkSettingId": "",
+                "linkText": "",
+                "hasLink": false
+              }
+            ],
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Show: HideRecommendedSection deletes key, IsEducationEnvironment deletes key (Default). Hide: HideRecommendedSection 1, IsEducationEnvironment 1 (Recommended). Registry: HKEY_CURRENT_USER\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer, HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer, HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\PolicyManager\\current\\device\\Start. Registry: HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\PolicyManager\\current\\device\\Education."
+          },
+          "matrixWin10": null
         }
       ]
     }
