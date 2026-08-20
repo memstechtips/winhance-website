@@ -142,8 +142,8 @@ p {
     flex: 1;
 }
 
-/* Ko-fi / PayPal brand colours — kept literal on purpose, same as the Discord button
-   below; these are third-party brand marks, not app chrome. */
+/* Ko-fi / PayPal brand colours — kept literal on purpose; these are third-party brand
+   marks, not app chrome. */
 .btn-support-half:first-child {
     background: linear-gradient(135deg, #13C3FF 0%, #0BA5D9 100%);
     color: #FFFFFF;
@@ -507,7 +507,7 @@ header {
     transform: translateY(2px);
 }
 
-/* Move regular nav items (Home, Features, Community, FAQ) down slightly */
+/* Move regular nav items (Home, Features, Download, FAQ) down slightly */
 .nav-links li:not(.nav-icons-group):not(.nav-download-btn) a {
     transform: translateY(8px);
 }
@@ -548,7 +548,7 @@ header {
     margin-left: 25px;
 }
 
-/* Icon-only buttons for GitHub and Discord */
+/* Icon-only buttons in the nav bar */
 .nav-links .icon-btn {
     width: 38px;
     height: 38px;
@@ -591,17 +591,7 @@ header {
     transform: translateY(-1px);
 }
 
-/* Discord/Ko-fi/PayPal brand colours — kept literal, same rationale as .btn-demo. */
-.nav-links .discord-btn {
-    background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
-    border: 1px solid rgba(88, 101, 242, 0.3);
-}
-
-.nav-links .discord-btn:hover {
-    background: linear-gradient(135deg, #4752C4 0%, #3C45A5 100%);
-    transform: translateY(-1px);
-}
-
+/* Ko-fi/PayPal brand colours — kept literal, same rationale as .btn-demo. */
 .nav-links .kofi-btn {
     background: linear-gradient(135deg, #13C3FF 0%, #0BA5D9 100%);
     border: 1px solid rgba(19, 195, 255, 0.3);
@@ -1222,112 +1212,11 @@ header {
     }
 }
 
-/* Community Section — currently unused by index.html markup, kept for parity with
-   scripts.js's stale selector; restyled to the same WinUI tokens as the rest of the
-   file so it isn't a dead pocket of the old gold palette if it's ever revived. */
-.community {
-    padding: var(--section-padding);
-    background-color: var(--primary-color);
-    color: var(--light-text);
-}
-
-.community .section-title {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.community .section-title h2 {
-    color: var(--light-text);
-}
-
 .section-subtitle {
     font-size: var(--winui-font-size-body-large);
     color: var(--winui-text-fill-color-secondary);
     margin-bottom: 50px;
     text-align: center;
-}
-
-.community-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.community-card {
-    background: var(--winui-card-background-fill-color-default);
-    border: 1px solid var(--winui-card-stroke-color-default);
-    border-radius: var(--border-radius);
-    padding: 40px 30px;
-    text-align: center;
-    transition: var(--transition);
-    text-decoration: none;
-    color: var(--light-text);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-}
-
-.community-card:hover {
-    transform: translateY(-4px);
-    background: var(--winui-card-background-fill-color-secondary);
-    border-color: var(--accent-color);
-}
-
-.community-card.discord-card:hover {
-    border-color: #5865F2;
-}
-
-.community-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: var(--winui-subtle-fill-color-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    transition: var(--transition);
-    color: var(--accent-color);
-}
-
-.community-card:hover .community-icon {
-    transform: scale(1.05);
-    background: var(--winui-subtle-fill-color-tertiary);
-}
-
-/* Discord brand colour — kept literal, same rationale as .btn-demo above. */
-.discord-card .community-icon {
-    color: #5865F2;
-}
-
-.community-card h3 {
-    margin-bottom: 15px;
-    color: var(--light-text);
-}
-
-.community-card p {
-    font-size: var(--winui-font-size-body);
-    color: var(--winui-text-fill-color-secondary);
-    line-height: var(--winui-line-height-body);
-    margin-bottom: 20px;
-}
-
-.community-card .stat {
-    font-size: var(--winui-font-size-caption);
-    color: var(--accent-color);
-    font-weight: var(--winui-weight-body-strong);
-    padding: 8px 16px;
-    background: var(--winui-subtle-fill-color-secondary);
-    border-radius: var(--border-radius);
-    margin-top: auto;
-}
-
-.discord-card .stat {
-    color: #5865F2;
-    background: rgba(88, 101, 242, 0.1);
 }
 
 /* Call to Action */
@@ -1692,10 +1581,6 @@ footer {
     .section-title h2::after {
         left: 50%;
         transform: translateX(-50%);
-    }
-
-    .community-cards {
-        grid-template-columns: 1fr;
     }
 }
 

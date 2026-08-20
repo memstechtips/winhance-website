@@ -100,15 +100,6 @@ function fetchGitHubData() {
                 const formattedCount = starCount.toLocaleString();
                 starsElement.textContent = `${formattedCount} GitHub Stars`;
             }
-
-            // Update community section star count
-            const communityStatElement = document.querySelector('.community-card .stat');
-            if (communityStatElement && starCount) {
-                const formattedCount = starCount >= 1000
-                    ? (starCount / 1000).toFixed(1) + 'k+'
-                    : starCount.toLocaleString();
-                communityStatElement.textContent = `${formattedCount} Stars`;
-            }
         })
         .catch(error => {
             console.error('Error fetching GitHub stars:', error);
