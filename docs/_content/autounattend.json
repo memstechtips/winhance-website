@@ -1,0 +1,6 @@
+{
+  "intro": [
+    "<p>Winhance builds an <code>autounattend.xml</code> answer file: the file Windows Setup reads so it can install without stopping to ask. Everything on this page is written into that file when you build it. None of it is read from, or applied to, the PC you are using.</p>",
+    "<p>This section is the reference for what each setting puts in the file. For how to use the file once you have it, see the <a href=\"../guides/autounattend.html\">Autounattend Guide</a>.</p>"
+  ]
+}

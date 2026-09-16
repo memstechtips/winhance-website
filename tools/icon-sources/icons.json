@@ -1,5 +1,9 @@
 {
  "_meta": {
+  "appasset": {
+   "license": "First-party: the Winhance rocket, CC BY-SA 4.0 (OpenMoji-derived); attribution in the app's src/Winhance.UI/Assets/ICON-ATTRIBUTION.md.",
+   "source": "Not stored in this file: tools/vendor-icons.mjs reads AppAsset/<file> from the app's src/Winhance.UI/Assets/AppIcons/<file> at vendor time and embeds it as a PNG data URI."
+  },
   "fluent": {
    "license": "MIT (repo LICENSE: MIT License, Copyright (c) 2020 Microsoft Corporation)",
    "ref": "main@84e8a2ae0e55b3cbe176b5cc33154fe82ef363cc (2026-08-13), fetched 2026-08-19",

@@ -911,6 +911,19 @@ html {
 
 .setting-icon svg { width: 20px; height: 20px; }
 
+/* An app PNG used as a mask, so it paints in the text colour like the svg icons in both themes. */
+.setting-icon-image {
+    width: 20px;
+    height: 20px;
+    background-color: currentColor;
+    -webkit-mask-image: var(--icon-image);
+    mask-image: var(--icon-image);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+
 .setting-header-text { flex: 1 1 auto; min-width: 0; }
 
 .setting-name {

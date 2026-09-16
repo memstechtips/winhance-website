@@ -20,7 +20,7 @@ test('rootFor computes the relative prefix from the page depth', () => {
 });
 
 test('fillTemplate replaces every placeholder and leaves none behind', () => {
-  const html = fillTemplate(template, { title: 'T', root: '../../', content: '<p>x</p>', sidebarOptimize: '<a>o</a>', sidebarCustomize: '<a>c</a>' });
+  const html = fillTemplate(template, { title: 'T', root: '../../', content: '<p>x</p>', sidebarOptimize: '<a>o</a>', sidebarCustomize: '<a>c</a>', sidebarAutounattend: '<a>a</a>' });
   assert.match(html, /<title>T - Winhance Docs<\/title>/);
   assert.match(html, /src="\.\.\/\.\.\/\.\.\/images\/winhance-rocket\.png"/);
   assert.doesNotMatch(html, /\{\{\w+\}\}/);
@@ -28,21 +28,21 @@ test('fillTemplate replaces every placeholder and leaves none behind', () => {
 });
 
 test('fillTemplate does not choke on literal {{...}} text inside injected content', () => {
-  const html = fillTemplate(template, { title: 'T', root: '../../', content: "<pre><code>$t = '{{dohtemplate}}';</code></pre>", sidebarOptimize: '<a>o</a>', sidebarCustomize: '<a>c</a>' });
+  const html = fillTemplate(template, { title: 'T', root: '../../', content: "<pre><code>$t = '{{dohtemplate}}';</code></pre>", sidebarOptimize: '<a>o</a>', sidebarCustomize: '<a>c</a>', sidebarAutounattend: '<a>a</a>' });
   assert.match(html, /\{\{dohtemplate\}\}/);
 });
 
 test('fillTemplate does not let special replacement patterns in content ($&, $`, $\') corrupt the output', () => {
   const content = "<pre><code>$f -replace'\\.exe$', '.old.exe'</code></pre>";
-  const html = fillTemplate(template, { title: 'T', root: '../../', content, sidebarOptimize: '<a>o</a>', sidebarCustomize: '<a>c</a>' });
+  const html = fillTemplate(template, { title: 'T', root: '../../', content, sidebarOptimize: '<a>o</a>', sidebarCustomize: '<a>c</a>', sidebarAutounattend: '<a>a</a>' });
   assert.ok(html.includes(content));
   assert.doesNotMatch(html, /\{\{content\}\}/);
 });
 
 test('fillTemplate still throws when the template shell itself has an unfilled placeholder', () => {
-  const badTemplate = '<html>{{title}}{{root}}{{sidebarOptimize}}{{sidebarCustomize}}{{content}}{{oops}}</html>';
+  const badTemplate = '<html>{{title}}{{root}}{{sidebarOptimize}}{{sidebarCustomize}}{{sidebarAutounattend}}{{content}}{{oops}}</html>';
   assert.throws(
-    () => fillTemplate(badTemplate, { title: 'T', root: './', content: 'x', sidebarOptimize: 'a', sidebarCustomize: 'b' }),
+    () => fillTemplate(badTemplate, { title: 'T', root: './', content: 'x', sidebarOptimize: 'a', sidebarCustomize: 'b', sidebarAutounattend: 'c' }),
     /template placeholder not filled: \{\{oops\}\}/
   );
 });
@@ -102,4 +102,31 @@ test('hub page lists the area pages with counts', () => {
   assert.match(html, /<a href="optimizations\/sound\.html" class="feature-card">/);
   assert.match(html, /7 settings/);
   assert.match(html, /<p>Hub intro\.<\/p>[\s\S]*features-grid[\s\S]*<div class="callout">x<\/div>/);
+});
+
+// --- the third area: Autounattend ---
+
+test('sidebarSubNav lists the third area, and the shell fills its placeholder on every page', () => {
+  const html = sidebarSubNav(pages, 'autounattend', '../../');
+  assert.deepEqual(
+    [...html.matchAll(/href="([^"]+)"/g)].map((m) => m[1]),
+    pages.features.filter((f) => f.area === 'autounattend').map((f) => '../../' + f.path)
+  );
+  assert.match(html, /sidebar-nav-item sub-item">Answer file</);
+  // The template placeholder and the shell's replace have to land together: one without the other
+  // either throws or silently prints "undefined" where a sub-nav belongs.
+  const page = pages.features.find((f) => f.id === 'Autounattend');
+  const feature = fixture.features.find((f) => f.id === 'Autounattend');
+  const rendered = renderFeaturePage({ page, feature, content: { intro: [], groups: {} }, template, ctx, pages });
+  const aside = rendered.match(/<aside[\s\S]*?<\/aside>/)[0];
+  assert.doesNotMatch(aside, /undefined|\{\{/);
+  assert.match(aside, /href="\.\.\/\.\.\/features\/autounattend\/answer-file\.html"/);
+  assert.match(aside, /href="\.\.\/\.\.\/features\/customizations\/time-region-language\.html"/);
+});
+
+test('hub page renders the third area with its own feature card', () => {
+  const html = renderHubPage({ area: pages.areas.autounattend, areaKey: 'autounattend', pages, counts: { Autounattend: 15 }, content: {}, template });
+  assert.match(html, /<h1>Autounattend<\/h1>/);
+  assert.match(html, /<a href="autounattend\/answer-file\.html" class="feature-card">/);
+  assert.match(html, /15 settings/);
 });

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "winhanceVersion": "26.08.20",
+  "winhanceVersion": "26.09.15",
   "catalogHash": "0770af7c054fbd49a080006f84e1649d36ef5ad9c2056c6e18e77210c7395538",
-  "settingCount": 24,
+  "settingCount": 39,
   "referenceBuilds": {
     "win10": 19045,
     "win11": 26100
@@ -566,6 +566,1717 @@
             "defaultTooltip": "How Windows ships out of the box",
             "currentTooltip": "This is what your system is set to now",
             "accessibleSummary": "On: AppsUseLightTheme 1 (or not set) (Default). Off: AppsUseLightTheme 0 (Recommended), Current. Registry: HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "theme-wallpaper",
+          "name": "Desktop background",
+          "description": "A picture, a solid color or a slideshow, and how it fits the screen. Choose one of Windows' own pictures, keep this PC's, or browse for your own.",
+          "group": "Background",
+          "icon": {
+            "pack": "Material",
+            "name": "ImageOutline"
+          },
+          "control": "Selection",
+          "isSubjectivePreference": true,
+          "addedInVersion": "26.09.10",
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Wallpapers",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Wallpapers"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              },
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Control Panel\\Desktop",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Control Panel\\Desktop"
+                  }
+                ],
+                "startColumn": 1,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "BackgroundType",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              },
+              {
+                "header": "WallPaper",
+                "typeName": "String",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Picture",
+                "cells": [
+                  {
+                    "text": "0 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Solid color",
+                "cells": [
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "\"\" (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Slideshow",
+                "cells": [
+                  {
+                    "text": "2",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows spotlight",
+                "cells": [
+                  {
+                    "text": "3",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Picture: BackgroundType 0 (or not set), WallPaper  (Default). Solid color: BackgroundType 1, WallPaper \"\" (or not set). Slideshow: BackgroundType 2, WallPaper . Windows spotlight: BackgroundType 3, WallPaper . Registry: HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Wallpapers. Registry: HKEY_CURRENT_USER\\Control Panel\\Desktop."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "theme-wallpaper-picture",
+          "name": "Choose a photo",
+          "description": "One of Windows' own pictures, this PC's, one it showed lately, or a picture you browse for.",
+          "group": "Background",
+          "icon": {
+            "pack": "Material",
+            "name": "ImageOutline"
+          },
+          "control": "KeyedSelection",
+          "isSubjectivePreference": true,
+          "addedInVersion": "26.09.14",
+          "uiParentId": "theme-wallpaper",
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Control Panel\\Desktop",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Control Panel\\Desktop"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              },
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Wallpapers",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Wallpapers"
+                  }
+                ],
+                "startColumn": 1,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              },
+              {
+                "label": "Choose a photo",
+                "kind": "Reference",
+                "description": "One of Windows' own pictures, this PC's, one it showed lately, or a picture you browse for.",
+                "paths": [],
+                "startColumn": 2,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": false,
+                "canOpenRegedit": false
+              }
+            ],
+            "columns": [
+              {
+                "header": "WallPaper",
+                "typeName": "String",
+                "kind": "Value",
+                "chips": [
+                  {
+                    "text": "options come from Windows",
+                    "tooltip": "Windows supplies this list, so the choices and their names differ from one PC to another.",
+                    "linkSettingId": "",
+                    "linkText": "",
+                    "hasLink": false
+                  }
+                ],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": true
+              },
+              {
+                "header": "CurrentWallpaperPath",
+                "typeName": "String",
+                "kind": "Value",
+                "chips": [
+                  {
+                    "text": "written, not read",
+                    "tooltip": "Winhance writes this value when you apply, but does not read it back to decide the current state.",
+                    "linkSettingId": "",
+                    "linkText": "",
+                    "hasLink": false
+                  },
+                  {
+                    "text": "options come from Windows",
+                    "tooltip": "Windows supplies this list, so the choices and their names differ from one PC to another.",
+                    "linkSettingId": "",
+                    "linkText": "",
+                    "hasLink": false
+                  }
+                ],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": true
+              },
+              {
+                "header": "Path",
+                "typeName": "",
+                "kind": "Reference",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": false,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Windows 11 light",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "C:\\Windows\\Web\\Wallpaper\\Windows\\img0.jpg",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows 11 dark",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "C:\\Windows\\Web\\Wallpaper\\Windows\\img19.jpg",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows 10",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "C:\\Windows\\Web\\4K\\Wallpaper\\Windows\\img0_3840x2160.jpg",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Windows 11 light: WallPaper , CurrentWallpaperPath , Path C:\\Windows\\Web\\Wallpaper\\Windows\\img0.jpg. Windows 11 dark: WallPaper , CurrentWallpaperPath , Path C:\\Windows\\Web\\Wallpaper\\Windows\\img19.jpg. Windows 10: WallPaper , CurrentWallpaperPath , Path C:\\Windows\\Web\\4K\\Wallpaper\\Windows\\img0_3840x2160.jpg. Registry: HKEY_CURRENT_USER\\Control Panel\\Desktop. Registry: HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Wallpapers."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "theme-wallpaper-fit",
+          "name": "Fit",
+          "description": "How the picture fills the screen.",
+          "group": "Background",
+          "icon": {
+            "pack": "Material",
+            "name": "ImageOutline"
+          },
+          "control": "Selection",
+          "isSubjectivePreference": true,
+          "addedInVersion": "26.09.14",
+          "uiParentId": "theme-wallpaper",
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Control Panel\\Desktop",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Control Panel\\Desktop"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 2,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "WallpaperStyle",
+                "typeName": "String",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              },
+              {
+                "header": "TileWallpaper",
+                "typeName": "String",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Fill",
+                "cells": [
+                  {
+                    "text": "10",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "0 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Fit",
+                "cells": [
+                  {
+                    "text": "6",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Stretch",
+                "cells": [
+                  {
+                    "text": "2",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Tile",
+                "cells": [
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Center",
+                "cells": [
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Span",
+                "cells": [
+                  {
+                    "text": "22",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "0",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Fill: WallpaperStyle 10, TileWallpaper 0 (or not set) (Default). Fit: WallpaperStyle 6, TileWallpaper 0. Stretch: WallpaperStyle 2, TileWallpaper 0. Tile: WallpaperStyle 0, TileWallpaper 1. Center: WallpaperStyle 0, TileWallpaper 0. Span: WallpaperStyle 22, TileWallpaper 0. Registry: HKEY_CURRENT_USER\\Control Panel\\Desktop."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "theme-wallpaper-color",
+          "name": "Choose your background color",
+          "description": "One of Windows' own colors, or any color you pick.",
+          "group": "Background",
+          "icon": {
+            "pack": "Material",
+            "name": "ImageOutline"
+          },
+          "control": "KeyedSelection",
+          "isSubjectivePreference": true,
+          "addedInVersion": "26.09.14",
+          "uiParentId": "theme-wallpaper",
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Control Panel\\Colors",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Control Panel\\Colors"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              },
+              {
+                "label": "Choose your background color",
+                "kind": "Reference",
+                "description": "One of Windows' own colors, or any color you pick.",
+                "paths": [],
+                "startColumn": 1,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": false,
+                "canOpenRegedit": false
+              }
+            ],
+            "columns": [
+              {
+                "header": "Background",
+                "typeName": "String",
+                "kind": "Value",
+                "chips": [
+                  {
+                    "text": "options come from Windows",
+                    "tooltip": "Windows supplies this list, so the choices and their names differ from one PC to another.",
+                    "linkSettingId": "",
+                    "linkText": "",
+                    "hasLink": false
+                  }
+                ],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": true
+              },
+              {
+                "header": "Value",
+                "typeName": "",
+                "kind": "Reference",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": false,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "#FF8C00",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#FF8C00",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#E81123",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#E81123",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#D13438",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#D13438",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#C30052",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#C30052",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#BF0077",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#BF0077",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#9A0089",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#9A0089",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#881798",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#881798",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#744DA9",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#744DA9",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#10893E",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#10893E",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#107C10",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#107C10",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#018574",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#018574",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#2D7D9A",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#2D7D9A",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#0063B1",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#0063B1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#6B69D6",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#6B69D6",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#8E8CD8",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#8E8CD8",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#8764B8",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#8764B8",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#038387",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#038387",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#486860",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#486860",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#525E54",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#525E54",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#7E735F",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#7E735F",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#4C4A48",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#4C4A48",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#515C6B",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#515C6B",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#4A5459",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#4A5459",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "#000000",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "#000000",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "#FF8C00: Background , Value #FF8C00. #E81123: Background , Value #E81123. #D13438: Background , Value #D13438. #C30052: Background , Value #C30052. #BF0077: Background , Value #BF0077. #9A0089: Background , Value #9A0089. #881798: Background , Value #881798. #744DA9: Background , Value #744DA9. #10893E: Background , Value #10893E. #107C10: Background , Value #107C10. #018574: Background , Value #018574. #2D7D9A: Background , Value #2D7D9A. #0063B1: Background , Value #0063B1. #6B69D6: Background , Value #6B69D6. #8E8CD8: Background , Value #8E8CD8. #8764B8: Background , Value #8764B8. #038387: Background , Value #038387. #486860: Background , Value #486860. #525E54: Background , Value #525E54. #7E735F: Background , Value #7E735F. #4C4A48: Background , Value #4C4A48. #515C6B: Background , Value #515C6B. #4A5459: Background , Value #4A5459. #000000: Background , Value #000000. Registry: HKEY_CURRENT_USER\\Control Panel\\Colors."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "theme-wallpaper-album",
+          "name": "Choose a picture album for a slideshow",
+          "description": "The folder whose pictures the desktop cycles through.",
+          "group": "Background",
+          "icon": {
+            "pack": "Material",
+            "name": "ImageOutline"
+          },
+          "control": "TextBox",
+          "isSubjectivePreference": true,
+          "addedInVersion": "26.09.14",
+          "uiParentId": "theme-wallpaper",
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Also runs",
+                "kind": "AlsoRuns",
+                "description": "",
+                "paths": [],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": false,
+                "canOpenRegedit": false
+              }
+            ],
+            "columns": [
+              {
+                "header": "album",
+                "typeName": "",
+                "kind": "Script",
+                "chips": [
+                  {
+                    "text": "applied through the desktop slideshow",
+                    "tooltip": "Windows records the folder as an id only the shell can build, so Winhance hands it to the desktop slideshow instead of writing a value.",
+                    "linkSettingId": "",
+                    "linkText": "",
+                    "hasLink": false
+                  }
+                ],
+                "headerTooltip": "",
+                "hasType": false,
+                "hasChips": true
+              }
+            ],
+            "options": [
+              {
+                "label": "Allowed form",
+                "cells": [
+                  {
+                    "text": "^.{1,}$",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Default",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "",
+            "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [
+              {
+                "heading": "PowerShell Scripts",
+                "label": "On Apply",
+                "body": "$album = '{{value}}'\r\n$slideshowKey = Get-ItemProperty -Path 'HKCU:\\Control Panel\\Personalization\\Desktop Slideshow' -ErrorAction SilentlyContinue\r\n$desktopKey = Get-ItemProperty -Path 'HKCU:\\Control Panel\\Desktop' -ErrorAction SilentlyContinue\r\n$interval = if ($slideshowKey.Interval) { [int]$slideshowKey.Interval } else { 1800000 }\r\n$shuffle = if ($slideshowKey.Shuffle -eq 1) { 1 } else { 0 }\r\n$position = switch (\"$($desktopKey.WallpaperStyle)\") { '0' { 0 } '2' { 2 } '6' { 3 } '22' { 5 } default { 4 } }\r\nif (\"$($desktopKey.TileWallpaper)\" -eq '1') { $position = 1 }\r\nAdd-Type -TypeDefinition @'\r\nusing System;\r\nusing System.Runtime.InteropServices;\r\nnamespace Winhance.Desktop {\r\n    [ComImport, Guid(\"43826D1E-E718-42EE-BC55-A1E261C37BFE\"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]\r\n    public interface IShellItem { }\r\n    [ComImport, Guid(\"B63EA76D-1F85-456F-A19C-48159EFA858B\"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]\r\n    public interface IShellItemArray { }\r\n    [ComImport, Guid(\"B92B56A9-8B55-4E14-9A89-0199BBB6F93B\"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]\r\n    public interface IDesktopWallpaper {\r\n        void SetWallpaper([MarshalAs(UnmanagedType.LPWStr)] string monitorID, [MarshalAs(UnmanagedType.LPWStr)] string wallpaper);\r\n        [return: MarshalAs(UnmanagedType.LPWStr)] string GetWallpaper([MarshalAs(UnmanagedType.LPWStr)] string monitorID);\r\n        [return: MarshalAs(UnmanagedType.LPWStr)] string GetMonitorDevicePathAt(uint monitorIndex);\r\n        uint GetMonitorDevicePathCount();\r\n        void GetMonitorRECT([MarshalAs(UnmanagedType.LPWStr)] string monitorID, IntPtr displayRect);\r\n        void SetBackgroundColor(uint color);\r\n        uint GetBackgroundColor();\r\n        void SetPosition(int position);\r\n        int GetPosition();\r\n        void SetSlideshow(IShellItemArray items);\r\n        IShellItemArray GetSlideshow();\r\n        void SetSlideshowOptions(int options, uint slideshowTick);\r\n        void GetSlideshowOptions(out int options, out uint slideshowTick);\r\n        void AdvanceSlideshow([MarshalAs(UnmanagedType.LPWStr)] string monitorID, int direction);\r\n        int GetStatus();\r\n        void Enable(int enable);\r\n    }\r\n    [ComImport, Guid(\"C2CF3110-460E-4FC1-B9D0-8A1C0C9CC4BD\")]\r\n    public class DesktopWallpaper { }\r\n    public static class Shell {\r\n        static Guid itemId = new Guid(\"43826D1E-E718-42EE-BC55-A1E261C37BFE\");\r\n        static Guid arrayId = new Guid(\"B63EA76D-1F85-456F-A19C-48159EFA858B\");\r\n        [DllImport(\"shell32.dll\", CharSet = CharSet.Unicode, ExactSpelling = true)]\r\n        static extern int SHCreateItemFromParsingName(string path, IntPtr bindContext, ref Guid riid, out IShellItem item);\r\n        [DllImport(\"shell32.dll\", ExactSpelling = true)]\r\n        static extern int SHCreateShellItemArrayFromShellItem(IShellItem item, ref Guid riid, out IShellItemArray items);\r\n        public static IShellItemArray Album(string folder) {\r\n            IShellItem folderItem;\r\n            Marshal.ThrowExceptionForHR(SHCreateItemFromParsingName(folder, IntPtr.Zero, ref itemId, out folderItem));\r\n            IShellItemArray items;\r\n            Marshal.ThrowExceptionForHR(SHCreateShellItemArrayFromShellItem(folderItem, ref arrayId, out items));\r\n            return items;\r\n        }\r\n    }\r\n}\r\n'@\r\n$desktop = [Winhance.Desktop.IDesktopWallpaper](New-Object Winhance.Desktop.DesktopWallpaper)\r\ntry {\r\n    $desktop.SetSlideshow([Winhance.Desktop.Shell]::Album($album))\r\n    $desktop.SetSlideshowOptions($shuffle, $interval)\r\n    $desktop.SetPosition($position)\r\n    Write-Log \"Desktop background set: slideshow of $album\" \"SUCCESS\"\r\n} catch {\r\n    Write-Log \"Desktop background slideshow failed: $($_.Exception.Message)\" \"ERROR\"\r\n}",
+                "kind": "PowerShell",
+                "description": "Winhance runs this script when you apply the matching option."
+              }
+            ],
+            "hasCode": true,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Allowed form: album ^.{1,}$. Default: album . ."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "theme-wallpaper-interval",
+          "name": "Change picture every",
+          "description": "How long each picture stays before the next.",
+          "group": "Background",
+          "icon": {
+            "pack": "Material",
+            "name": "ImageOutline"
+          },
+          "control": "Selection",
+          "isSubjectivePreference": true,
+          "addedInVersion": "26.09.14",
+          "uiParentId": "theme-wallpaper",
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Control Panel\\Personalization\\Desktop Slideshow",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Control Panel\\Personalization\\Desktop Slideshow"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "Interval",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "1 minute",
+                "cells": [
+                  {
+                    "text": "60000",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "10 minutes",
+                "cells": [
+                  {
+                    "text": "600000",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "30 minutes",
+                "cells": [
+                  {
+                    "text": "1800000 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "1 hour",
+                "cells": [
+                  {
+                    "text": "3600000",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "6 hours",
+                "cells": [
+                  {
+                    "text": "21600000",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "1 day",
+                "cells": [
+                  {
+                    "text": "86400000",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "1 minute: Interval 60000. 10 minutes: Interval 600000. 30 minutes: Interval 1800000 (or not set) (Default). 1 hour: Interval 3600000. 6 hours: Interval 21600000. 1 day: Interval 86400000. Registry: HKEY_CURRENT_USER\\Control Panel\\Personalization\\Desktop Slideshow."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "theme-wallpaper-shuffle",
+          "name": "Shuffle the picture order",
+          "description": "Show the pictures in random order instead of by name.",
+          "group": "Background",
+          "icon": {
+            "pack": "Material",
+            "name": "ImageOutline"
+          },
+          "control": "Toggle",
+          "isSubjectivePreference": true,
+          "addedInVersion": "26.09.14",
+          "uiParentId": "theme-wallpaper",
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_CURRENT_USER\\Control Panel\\Personalization\\Desktop Slideshow",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKCU\\Control Panel\\Personalization\\Desktop Slideshow"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "Shuffle",
+                "typeName": "DWord",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "On",
+                "cells": [
+                  {
+                    "text": "1",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Off",
+                "cells": [
+                  {
+                    "text": "0 (or not set)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": true,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "On: Shuffle 1. Off: Shuffle 0 (or not set) (Default), Current. Registry: HKEY_CURRENT_USER\\Control Panel\\Personalization\\Desktop Slideshow."
           },
           "matrixWin10": null
         }
@@ -2640,7 +4351,7 @@
             "pack": "Fluent",
             "name": "NotebookLightning"
           },
-          "control": "PowerPlan",
+          "control": "KeyedSelection",
           "isSubjectivePreference": true,
           "addedInVersion": null,
           "uiParentId": null,
@@ -2968,6 +4679,17 @@
                 "openRegeditTooltip": "Open in Registry Editor",
                 "hasPaths": true,
                 "canOpenRegedit": true
+              },
+              {
+                "label": "Also runs",
+                "kind": "AlsoRuns",
+                "description": "",
+                "paths": [],
+                "startColumn": 1,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": false,
+                "canOpenRegedit": false
               }
             ],
             "columns": [
@@ -2979,6 +4701,15 @@
                 "headerTooltip": "",
                 "hasType": true,
                 "hasChips": false
+              },
+              {
+                "header": "Script",
+                "typeName": "",
+                "kind": "Script",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": false,
+                "hasChips": false
               }
             ],
             "options": [
@@ -2989,6 +4720,11 @@
                     "text": "1 (or not set)",
                     "isCheck": false,
                     "hasText": true
+                  },
+                  {
+                    "text": "",
+                    "isCheck": true,
+                    "hasText": false
                   }
                 ],
                 "isCurrent": false,
@@ -3005,6 +4741,11 @@
                     "text": "0",
                     "isCheck": false,
                     "hasText": true
+                  },
+                  {
+                    "text": "",
+                    "isCheck": true,
+                    "hasText": false
                   }
                 ],
                 "isCurrent": true,
@@ -3040,25 +4781,27 @@
             ],
             "optionLinksHeading": "Also sets",
             "hasOptionLinks": true,
-            "notes": [
-              {
-                "label": "Native power write",
-                "detail": "level 10 = 1",
-                "scope": "",
-                "hasScope": false
-              },
-              {
-                "label": "Native power write",
-                "detail": "level 10 = 0",
-                "scope": "",
-                "hasScope": false
-              }
-            ],
+            "notes": [],
             "notesHeading": "Also happens when you apply",
             "notesDetailHeader": "Details",
-            "hasNotes": true,
-            "codeBlocks": [],
-            "hasCode": false,
+            "hasNotes": false,
+            "codeBlocks": [
+              {
+                "heading": "PowerShell Scripts",
+                "label": "When set to On",
+                "body": "powercfg /hibernate on",
+                "kind": "PowerShell",
+                "description": "Winhance runs this script when you apply the matching option."
+              },
+              {
+                "heading": "PowerShell Scripts",
+                "label": "When set to Off",
+                "body": "powercfg /hibernate off",
+                "kind": "PowerShell",
+                "description": "Winhance runs this script when you apply the matching option."
+              }
+            ],
+            "hasCode": true,
             "readingLabel": "",
             "readingCells": [],
             "hasReading": false,
@@ -3068,7 +4811,7 @@
             "recommendedTooltip": "What Winhance suggests for most people",
             "defaultTooltip": "How Windows ships out of the box",
             "currentTooltip": "This is what your system is set to now",
-            "accessibleSummary": "On: HibernateEnabled 1 (or not set) (Default). Off: HibernateEnabled 0 (Recommended), Current. Registry: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Power."
+            "accessibleSummary": "On: HibernateEnabled 1 (or not set), Script Current (Default). Off: HibernateEnabled 0, Script Current (Recommended), Current. Registry: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Power."
           },
           "matrixWin10": null
         },
@@ -5238,6 +6981,1450 @@
             "defaultTooltip": "How Windows ships out of the box",
             "currentTooltip": "This is what your system is set to now",
             "accessibleSummary": "Show: HideRecommendedSection deletes key, IsEducationEnvironment deletes key (Default). Hide: HideRecommendedSection 1, IsEducationEnvironment 1 (Recommended). Registry: HKEY_CURRENT_USER\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer, HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer, HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\PolicyManager\\current\\device\\Start. Registry: HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\PolicyManager\\current\\device\\Education."
+          },
+          "matrixWin10": null
+        }
+      ]
+    },
+    {
+      "id": "TimeRegionLanguage",
+      "settings": [
+        {
+          "id": "region-time-zone",
+          "name": "Time Zone",
+          "description": "The time zone this PC keeps its clock in. Applies at once.",
+          "group": "Time",
+          "icon": {
+            "pack": "Material",
+            "name": "ClockStart"
+          },
+          "control": "KeyedSelection",
+          "isSubjectivePreference": true,
+          "addedInVersion": "26.09.05",
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              }
+            ],
+            "columns": [
+              {
+                "header": "TimeZoneKeyName",
+                "typeName": "String",
+                "kind": "Value",
+                "chips": [
+                  {
+                    "text": "options come from Windows",
+                    "tooltip": "Windows supplies this list, so the choices and their names differ from one PC to another.",
+                    "linkSettingId": "",
+                    "linkText": "",
+                    "hasLink": false
+                  }
+                ],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": true
+              }
+            ],
+            "options": [],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": ". Registry: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation."
+          },
+          "matrixWin10": null
+        }
+      ]
+    },
+    {
+      "id": "Autounattend",
+      "settings": [
+        {
+          "id": "autounattend-architecture-x64",
+          "name": "x64",
+          "description": "Intel and AMD PCs, which is most of them. Tick every architecture this file should install on; one file can cover all three.",
+          "group": "Processor architecture",
+          "icon": {
+            "pack": "Material",
+            "name": "Chip"
+          },
+          "control": "CheckBox",
+          "isSubjectivePreference": false,
+          "addedInVersion": "26.09.07",
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Registry",
+                "kind": "Registry",
+                "description": "Read to determine which option is active, and written when you apply one.",
+                "paths": [
+                  {
+                    "full": "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "Open in Registry Editor",
+                "hasPaths": true,
+                "canOpenRegedit": true
+              },
+              {
+                "label": "Processor architecture",
+                "kind": "Architecture",
+                "description": "Every component in the file is written once per checked architecture.",
+                "paths": [],
+                "startColumn": 1,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": false,
+                "canOpenRegedit": false
+              }
+            ],
+            "columns": [
+              {
+                "header": "PROCESSOR_ARCHITECTURE",
+                "typeName": "String",
+                "kind": "Value",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": true,
+                "hasChips": false
+              },
+              {
+                "header": "amd64",
+                "typeName": "",
+                "kind": "AnswerFile",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": false,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Checked",
+                "cells": [
+                  {
+                    "text": "AMD64",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "amd64",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Unchecked",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "Not written",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": true,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Checked: PROCESSOR_ARCHITECTURE AMD64, amd64 amd64 (Default). Unchecked: PROCESSOR_ARCHITECTURE , amd64 Not written, Current. Registry: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "autounattend-edition",
+          "name": "Windows edition",
+          "description": "Which edition Setup installs. The edition has to be on the installation media, or Setup asks you to pick one anyway. These keys tell Setup which edition to install. They do not activate Windows, so you still need your own licence afterwards.",
+          "group": "Edition and product key",
+          "icon": {
+            "pack": "Material",
+            "name": "DesktopClassic"
+          },
+          "control": "Selection",
+          "isSubjectivePreference": false,
+          "addedInVersion": "26.09.07",
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Answer file",
+                "kind": "AnswerFile",
+                "description": "Written into autounattend.xml when you build it; never read from this PC.",
+                "paths": [
+                  {
+                    "full": "windowsPE",
+                    "label": "Pass",
+                    "hasLabel": true,
+                    "display": "windowsPE"
+                  },
+                  {
+                    "full": "Microsoft-Windows-Setup",
+                    "label": "Component",
+                    "hasLabel": true,
+                    "display": "Microsoft-Windows-Setup"
+                  },
+                  {
+                    "full": "UserData/ProductKey/Key",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "UserData/ProductKey/Key"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": true,
+                "canOpenRegedit": false
+              },
+              {
+                "label": "Answer file",
+                "kind": "AnswerFile",
+                "description": "Written into autounattend.xml when you build it; never read from this PC.",
+                "paths": [
+                  {
+                    "full": "windowsPE",
+                    "label": "Pass",
+                    "hasLabel": true,
+                    "display": "windowsPE"
+                  },
+                  {
+                    "full": "Microsoft-Windows-Setup",
+                    "label": "Component",
+                    "hasLabel": true,
+                    "display": "Microsoft-Windows-Setup"
+                  },
+                  {
+                    "full": "UserData/ProductKey/WillShowUI",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "UserData/ProductKey/WillShowUI"
+                  }
+                ],
+                "startColumn": 1,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": true,
+                "canOpenRegedit": false
+              }
+            ],
+            "columns": [
+              {
+                "header": "Key",
+                "typeName": "",
+                "kind": "AnswerFile",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": false,
+                "hasChips": false
+              },
+              {
+                "header": "WillShowUI",
+                "typeName": "",
+                "kind": "AnswerFile",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": false,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Ask me during setup",
+                "cells": [
+                  {
+                    "text": "00000-00000-00000-00000-00000",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "Always",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows 11 Home",
+                "cells": [
+                  {
+                    "text": "YTMG3-N6DKC-DKB77-7M9GH-8HVX7",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "OnError",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows 11 Home N",
+                "cells": [
+                  {
+                    "text": "4CPRK-NM3K3-X6XXQ-RXX86-WXCHW",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "OnError",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows 11 Home Single Language",
+                "cells": [
+                  {
+                    "text": "BT79Q-G7N6G-PGBYW-4YWX6-6F4BT",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "OnError",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows 11 Pro",
+                "cells": [
+                  {
+                    "text": "VK7JG-NPHTM-C97JM-9MPGT-3V66T",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "OnError",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows 11 Pro N",
+                "cells": [
+                  {
+                    "text": "2B87N-8KFHP-DKV6R-Y2C8J-PKCKT",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "OnError",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows 11 Pro for Workstations",
+                "cells": [
+                  {
+                    "text": "DXG7C-N36C4-C4HTG-X4T3X-2YV77",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "OnError",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows 11 Pro for Workstations N",
+                "cells": [
+                  {
+                    "text": "WYPNQ-8C467-V2W6J-TX4WX-WT2RQ",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "OnError",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows 11 Pro Education",
+                "cells": [
+                  {
+                    "text": "8PTT6-RNW4C-6V7J2-C2D3X-MHBPB",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "OnError",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows 11 Pro Education N",
+                "cells": [
+                  {
+                    "text": "GJTYN-HDMQY-FRR76-HVGC7-QPF8P",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "OnError",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows 11 Education",
+                "cells": [
+                  {
+                    "text": "YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "OnError",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows 11 Education N",
+                "cells": [
+                  {
+                    "text": "84NGF-MHBT6-FXBX8-QWJK7-DRR8H",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "OnError",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows 11 Enterprise",
+                "cells": [
+                  {
+                    "text": "XGVPP-NMH47-7TTHJ-W3FW7-8HV2C",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "OnError",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Windows 11 Enterprise N",
+                "cells": [
+                  {
+                    "text": "WGGHN-J84D6-QYCPR-T7PJ7-X766F",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "OnError",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Use my own product key",
+                "cells": [
+                  {
+                    "text": "Not written",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "OnError",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Use the key stored in this PC's firmware",
+                "cells": [
+                  {
+                    "text": "Not written",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "Never",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Ask me during setup: Key 00000-00000-00000-00000-00000, WillShowUI Always (Default). Windows 11 Home: Key YTMG3-N6DKC-DKB77-7M9GH-8HVX7, WillShowUI OnError. Windows 11 Home N: Key 4CPRK-NM3K3-X6XXQ-RXX86-WXCHW, WillShowUI OnError. Windows 11 Home Single Language: Key BT79Q-G7N6G-PGBYW-4YWX6-6F4BT, WillShowUI OnError. Windows 11 Pro: Key VK7JG-NPHTM-C97JM-9MPGT-3V66T, WillShowUI OnError. Windows 11 Pro N: Key 2B87N-8KFHP-DKV6R-Y2C8J-PKCKT, WillShowUI OnError. Windows 11 Pro for Workstations: Key DXG7C-N36C4-C4HTG-X4T3X-2YV77, WillShowUI OnError. Windows 11 Pro for Workstations N: Key WYPNQ-8C467-V2W6J-TX4WX-WT2RQ, WillShowUI OnError. Windows 11 Pro Education: Key 8PTT6-RNW4C-6V7J2-C2D3X-MHBPB, WillShowUI OnError. Windows 11 Pro Education N: Key GJTYN-HDMQY-FRR76-HVGC7-QPF8P, WillShowUI OnError. Windows 11 Education: Key YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY, WillShowUI OnError. Windows 11 Education N: Key 84NGF-MHBT6-FXBX8-QWJK7-DRR8H, WillShowUI OnError. Windows 11 Enterprise: Key XGVPP-NMH47-7TTHJ-W3FW7-8HV2C, WillShowUI OnError. Windows 11 Enterprise N: Key WGGHN-J84D6-QYCPR-T7PJ7-X766F, WillShowUI OnError. Use my own product key: Key Not written, WillShowUI OnError. Use the key stored in this PC's firmware: Key Not written, WillShowUI Never. Answer file: windowsPE, Microsoft-Windows-Setup, UserData/ProductKey/Key. Answer file: windowsPE, Microsoft-Windows-Setup, UserData/ProductKey/WillShowUI."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "autounattend-product-key",
+          "name": "Product key",
+          "description": "Your own 25-character key, in five groups of five. Setup uses it to pick the edition and to activate Windows. Choose 'Use my own product key' in the Windows edition dropdown to use it.",
+          "group": "Edition and product key",
+          "icon": {
+            "pack": "Fluent",
+            "name": "LockClosedKey"
+          },
+          "control": "TextBox",
+          "isSubjectivePreference": false,
+          "addedInVersion": "26.09.07",
+          "uiParentId": "autounattend-edition",
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Answer file",
+                "kind": "AnswerFile",
+                "description": "Written into autounattend.xml when you build it; never read from this PC.",
+                "paths": [
+                  {
+                    "full": "windowsPE",
+                    "label": "Pass",
+                    "hasLabel": true,
+                    "display": "windowsPE"
+                  },
+                  {
+                    "full": "Microsoft-Windows-Setup",
+                    "label": "Component",
+                    "hasLabel": true,
+                    "display": "Microsoft-Windows-Setup"
+                  },
+                  {
+                    "full": "UserData/ProductKey/Key",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "UserData/ProductKey/Key"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": true,
+                "canOpenRegedit": false
+              },
+              {
+                "label": "Answer file",
+                "kind": "AnswerFile",
+                "description": "Written into autounattend.xml when you build it; never read from this PC.",
+                "paths": [
+                  {
+                    "full": "specialize",
+                    "label": "Pass",
+                    "hasLabel": true,
+                    "display": "specialize"
+                  },
+                  {
+                    "full": "Microsoft-Windows-Shell-Setup",
+                    "label": "Component",
+                    "hasLabel": true,
+                    "display": "Microsoft-Windows-Shell-Setup"
+                  },
+                  {
+                    "full": "ProductKey",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "ProductKey"
+                  }
+                ],
+                "startColumn": 1,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": true,
+                "canOpenRegedit": false
+              }
+            ],
+            "columns": [
+              {
+                "header": "Key",
+                "typeName": "",
+                "kind": "AnswerFile",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": false,
+                "hasChips": false
+              },
+              {
+                "header": "ProductKey",
+                "typeName": "",
+                "kind": "AnswerFile",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": false,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Allowed form",
+                "cells": [
+                  {
+                    "text": "^([A-Z0-9]{5}-){4}[A-Z0-9]{5}$",
+                    "isCheck": false,
+                    "hasText": true
+                  },
+                  {
+                    "text": "^([A-Z0-9]{5}-){4}[A-Z0-9]{5}$",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Default",
+                "cells": [
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  },
+                  {
+                    "text": "",
+                    "isCheck": false,
+                    "hasText": false
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "",
+            "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Allowed form: Key ^([A-Z0-9]{5}-){4}[A-Z0-9]{5}$, ProductKey ^([A-Z0-9]{5}-){4}[A-Z0-9]{5}$. Default: Key , ProductKey . Answer file: windowsPE, Microsoft-Windows-Setup, UserData/ProductKey/Key. Answer file: specialize, Microsoft-Windows-Shell-Setup, ProductKey."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "autounattend-account",
+          "name": "Account at setup",
+          "description": "How the first account is created. A local account keeps Setup offline; a Microsoft account uses the normal online sign-in.",
+          "group": "Accounts",
+          "icon": {
+            "pack": "Material",
+            "name": "AccountCog"
+          },
+          "control": "Selection",
+          "isSubjectivePreference": false,
+          "addedInVersion": "26.09.07",
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Answer file",
+                "kind": "AnswerFile",
+                "description": "Written into autounattend.xml when you build it; never read from this PC.",
+                "paths": [
+                  {
+                    "full": "oobeSystem",
+                    "label": "Pass",
+                    "hasLabel": true,
+                    "display": "oobeSystem"
+                  },
+                  {
+                    "full": "Microsoft-Windows-Shell-Setup",
+                    "label": "Component",
+                    "hasLabel": true,
+                    "display": "Microsoft-Windows-Shell-Setup"
+                  },
+                  {
+                    "full": "OOBE/HideOnlineAccountScreens",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "OOBE/HideOnlineAccountScreens"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": true,
+                "canOpenRegedit": false
+              }
+            ],
+            "columns": [
+              {
+                "header": "HideOnlineAccountScreens",
+                "typeName": "",
+                "kind": "AnswerFile",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": false,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Local account",
+                "cells": [
+                  {
+                    "text": "true",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Microsoft account",
+                "cells": [
+                  {
+                    "text": "Not written",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Create the accounts now",
+                "cells": [
+                  {
+                    "text": "true",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "Selecting an option makes the changes shown to the right.",
+            "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [
+              {
+                "heading": "Windows Setup commands",
+                "label": "When set to Local account",
+                "body": "reg.exe add \"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\OOBE\" /v BypassNRO /t REG_DWORD /d 1 /f",
+                "kind": "SetupCommand",
+                "description": "Windows Setup runs this command during installation when the matching option is chosen."
+              },
+              {
+                "heading": "Windows Setup commands",
+                "label": "When set to Local account",
+                "body": "powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -Command \"Get-NetAdapter | Disable-NetAdapter -Confirm:$false\"",
+                "kind": "SetupCommand",
+                "description": "Windows Setup runs this command during installation when the matching option is chosen."
+              }
+            ],
+            "hasCode": true,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Local account: HideOnlineAccountScreens true (Default). Microsoft account: HideOnlineAccountScreens Not written. Create the accounts now: HideOnlineAccountScreens true. Answer file: oobeSystem, Microsoft-Windows-Shell-Setup, OOBE/HideOnlineAccountScreens."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "autounattend-accounts",
+          "name": "Accounts to create",
+          "description": "The accounts Setup creates before the first sign-in. Setup skips its own account screens when this file creates at least one account.",
+          "group": "Accounts",
+          "icon": {
+            "pack": "Material",
+            "name": "AccountSupervisor"
+          },
+          "control": "List",
+          "isSubjectivePreference": false,
+          "addedInVersion": "26.09.07",
+          "uiParentId": "autounattend-account",
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [
+              {
+                "label": "Answer file",
+                "kind": "AnswerFile",
+                "description": "Written into autounattend.xml when you build it; never read from this PC.",
+                "paths": [
+                  {
+                    "full": "oobeSystem",
+                    "label": "Pass",
+                    "hasLabel": true,
+                    "display": "oobeSystem"
+                  },
+                  {
+                    "full": "Microsoft-Windows-Shell-Setup",
+                    "label": "Component",
+                    "hasLabel": true,
+                    "display": "Microsoft-Windows-Shell-Setup"
+                  },
+                  {
+                    "full": "UserAccounts/LocalAccounts",
+                    "label": "Path",
+                    "hasLabel": true,
+                    "display": "UserAccounts/LocalAccounts"
+                  }
+                ],
+                "startColumn": 0,
+                "columnSpan": 1,
+                "openRegeditTooltip": "",
+                "hasPaths": true,
+                "canOpenRegedit": false
+              }
+            ],
+            "columns": [
+              {
+                "header": "LocalAccounts",
+                "typeName": "",
+                "kind": "AnswerFile",
+                "chips": [],
+                "headerTooltip": "",
+                "hasType": false,
+                "hasChips": false
+              }
+            ],
+            "options": [
+              {
+                "label": "Account name",
+                "cells": [
+                  {
+                    "text": "name (Text): ^(?![. ]+$)[^\"/\\\\\\[\\]:;|=,+*?<>]{1,20}$",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Display name",
+                "cells": [
+                  {
+                    "text": "display-name (Text)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Group",
+                "cells": [
+                  {
+                    "text": "group (Selection)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Password",
+                "cells": [
+                  {
+                    "text": "password (Password)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Obscure the password in the file",
+                "cells": [
+                  {
+                    "text": "obscure (CheckBox)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Sign in automatically once",
+                "cells": [
+                  {
+                    "text": "auto-logon (CheckBox)",
+                    "isCheck": false,
+                    "hasText": true
+                  }
+                ],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "",
+            "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [],
+            "hasCode": false,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "Account name: LocalAccounts name (Text): ^(?![. ]+$)[^\"/\\\\\\[\\]:;|=,+*?<>]{1,20}$. Display name: LocalAccounts display-name (Text). Group: LocalAccounts group (Selection). Password: LocalAccounts password (Password). Obscure the password in the file: LocalAccounts obscure (CheckBox). Sign in automatically once: LocalAccounts auto-logon (CheckBox). Answer file: oobeSystem, Microsoft-Windows-Shell-Setup, UserAccounts/LocalAccounts."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "autounattend-netfx3",
+          "name": ".NET Framework 3.5",
+          "description": "Installs .NET Framework 3.5 from the installation media during setup, so older apps that need it work without a download.",
+          "group": "After setup",
+          "icon": {
+            "pack": "Material",
+            "name": "PackageVariantPlus"
+          },
+          "control": "Toggle",
+          "isSubjectivePreference": false,
+          "addedInVersion": "26.09.07",
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [],
+            "columns": [],
+            "options": [
+              {
+                "label": "On",
+                "cells": [],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Off",
+                "cells": [],
+                "isCurrent": true,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "",
+            "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [
+              {
+                "heading": "Windows Setup commands",
+                "label": "When set to On",
+                "body": "powershell.exe -NoProfile -WindowStyle Hidden -Command \"foreach($d in 'C','D','E','F','G','H','I','J','K'){$src=Join-Path ($d+':') 'sources\\sxs';if(Test-Path $src\\*.cab){dism /Online /Enable-Feature /FeatureName:NetFx3 /All /LimitAccess /Source:$src;break}}\"",
+                "kind": "SetupCommand",
+                "description": "Windows Setup runs this command during installation when the matching option is chosen."
+              }
+            ],
+            "hasCode": true,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "On:  (Default). Off: , Current. ."
+          },
+          "matrixWin10": null
+        },
+        {
+          "id": "autounattend-desktop-shortcut",
+          "name": "Install Winhance shortcut",
+          "description": "Puts an 'Install Winhance' shortcut on the desktop of every new account. Opening it downloads and installs Winhance.",
+          "group": "General",
+          "icon": {
+            "pack": "AppAsset",
+            "name": "winhance-rocket-white-transparent-bg.png"
+          },
+          "control": "Toggle",
+          "isSubjectivePreference": false,
+          "addedInVersion": "26.09.10",
+          "uiParentId": null,
+          "availability": {
+            "builds": [],
+            "hardware": [],
+            "requiresAdvancedUnlock": false,
+            "message": {
+              "win10": null,
+              "win11": null
+            }
+          },
+          "optionWarnings": [],
+          "matrix": {
+            "groups": [],
+            "columns": [],
+            "options": [
+              {
+                "label": "On",
+                "cells": [],
+                "isCurrent": false,
+                "isRecommended": false,
+                "isWindowsDefault": true,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              },
+              {
+                "label": "Off",
+                "cells": [],
+                "isCurrent": true,
+                "isRecommended": false,
+                "isWindowsDefault": false,
+                "currentContext": "",
+                "recommendedContext": "",
+                "defaultContext": ""
+              }
+            ],
+            "optionHeader": "Option",
+            "roleHeader": "Role",
+            "pathLabel": "Path",
+            "valueNameLabel": "Value name",
+            "valueTypeLabel": "Value type",
+            "taskLabel": "Task",
+            "settingLabel": "Options",
+            "settingDescription": "",
+            "requirements": [],
+            "optionLinks": [],
+            "optionLinksHeading": "Also sets",
+            "hasOptionLinks": false,
+            "notes": [],
+            "notesHeading": "Also happens when you apply",
+            "notesDetailHeader": "Details",
+            "hasNotes": false,
+            "codeBlocks": [
+              {
+                "heading": "PowerShell Scripts",
+                "label": "When set to On",
+                "body": "$shortcutPath = \"C:\\Users\\Default\\Desktop\\Install Winhance.lnk\"\r\n$WshShell = New-Object -ComObject WScript.Shell\r\n$shortcut = $WshShell.CreateShortcut($shortcutPath)\r\n$shortcut.TargetPath = \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\"\r\n$shortcut.Arguments = \"-ExecutionPolicy Bypass -NoProfile -Command `\"irm 'https://get.winhance.net' | iex`\"\"\r\n$shortcut.IconLocation = \"C:\\Windows\\System32\\appwiz.cpl,0\"\r\n$shortcut.WorkingDirectory = \"C:\\Windows\\System32\"\r\n$shortcut.Description = \"Download and install Winhance from GitHub\"\r\n$shortcut.Save()\r\n$bytes = [System.IO.File]::ReadAllBytes($shortcutPath)\r\n$bytes[21] = 34\r\n[System.IO.File]::WriteAllBytes($shortcutPath, $bytes)",
+                "kind": "PowerShell",
+                "description": "Winhance runs this script when you apply the matching option."
+              }
+            ],
+            "hasCode": true,
+            "readingLabel": "",
+            "readingCells": [],
+            "hasReading": false,
+            "currentLabel": "Current",
+            "recommendedLabel": "Recommended",
+            "defaultLabel": "Default",
+            "recommendedTooltip": "What Winhance suggests for most people",
+            "defaultTooltip": "How Windows ships out of the box",
+            "currentTooltip": "This is what your system is set to now",
+            "accessibleSummary": "On:  (Default). Off: , Current. ."
           },
           "matrixWin10": null
         }

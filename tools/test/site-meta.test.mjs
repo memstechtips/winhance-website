@@ -29,6 +29,9 @@ test('search entries: one per generated page plus one per setting with page#id u
   assert.equal(startup.title, 'Startup Sound During Boot');
   assert.ok(startup.keywords.includes('sound-startup'));
   assert.ok(entries.some((e) => e.url === 'features/optimize.html'));
+  const answerFile = entries.find((e) => e.url === 'features/autounattend/answer-file.html');
+  assert.equal(answerFile.category, 'Autounattend');
+  assert.ok(answerFile.sections.includes('Processor architecture'));
   // every setting in the catalog gets an entry
   const settingCount = catalog.features.flatMap((f) => f.settings).length;
   assert.equal(entries.filter((e) => e.url.includes('#')).length, settingCount);
@@ -48,5 +51,8 @@ test('renderSitemap keeps hand-page lastmod and stamps generated pages', () => {
   assert.match(xml, /<loc>https:\/\/winhance\.net\/docs\/guides\/wimutil\.html<\/loc>\s*<lastmod>2026-01-10<\/lastmod>/);
   assert.match(xml, /<loc>https:\/\/winhance\.net\/docs\/features\/optimizations\/sound\.html<\/loc>\s*<lastmod>2026-08-19<\/lastmod>/);
   assert.match(xml, /<loc>https:\/\/winhance\.net\/docs\/features\/customizations\/explorer\.html<\/loc>/);
-  assert.equal((xml.match(/<url>/g) ?? []).length, 1 + 12);
+  assert.match(xml, /<loc>https:\/\/winhance\.net\/docs\/features\/autounattend\/answer-file\.html<\/loc>/);
+  // 15 generated pages (12 feature pages and 3 area hubs), plus the one hand page the existing sitemap
+  // carried that _pages.json knows nothing about.
+  assert.equal((xml.match(/<url>/g) ?? []).length, 1 + 15);
 });

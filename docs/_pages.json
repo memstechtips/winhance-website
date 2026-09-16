@@ -1,7 +1,8 @@
 {
   "areas": {
     "optimize": { "path": "features/optimize.html", "title": "Optimizations", "navLabel": "Optimize", "category": "Optimizations" },
-    "customize": { "path": "features/customize.html", "title": "Customizations", "navLabel": "Customize", "category": "Customizations" }
+    "customize": { "path": "features/customize.html", "title": "Customizations", "navLabel": "Customize", "category": "Customizations" },
+    "autounattend": { "path": "features/autounattend.html", "title": "Autounattend", "navLabel": "Autounattend", "category": "Autounattend" }
   },
   "features": [
     { "id": "Privacy", "area": "optimize", "path": "features/optimizations/privacy-security.html", "title": "Privacy & Security", "navLabel": "Privacy & Security", "blurb": "Disable telemetry, tracking, and harden your system security." },
@@ -13,6 +14,8 @@
     { "id": "WindowsTheme", "area": "customize", "path": "features/customizations/theme.html", "title": "Windows Theme", "navLabel": "Windows Theme", "blurb": "Light or dark mode for Windows and apps, transparency and accent." },
     { "id": "Taskbar", "area": "customize", "path": "features/customizations/taskbar.html", "title": "Taskbar Customization", "navLabel": "Taskbar", "blurb": "Alignment, search box, widgets, task view and system tray icons." },
     { "id": "StartMenu", "area": "customize", "path": "features/customizations/start-menu.html", "title": "Start Menu Customization", "navLabel": "Start Menu", "blurb": "Layout, recommendations and a clean start menu." },
-    { "id": "ExplorerCustomization", "area": "customize", "path": "features/customizations/explorer.html", "title": "File Explorer Customization", "navLabel": "Explorer", "blurb": "File Explorer behaviour, context menus, This PC folders and desktop icons." }
+    { "id": "ExplorerCustomization", "area": "customize", "path": "features/customizations/explorer.html", "title": "File Explorer Customization", "navLabel": "Explorer", "blurb": "File Explorer behaviour, context menus, This PC folders and desktop icons." },
+    { "id": "TimeRegionLanguage", "area": "customize", "path": "features/customizations/time-region-language.html", "title": "Time, Region and Language", "navLabel": "Time & Region", "blurb": "Time zone, regional format, keyboard layout, and the date, number and currency formats Windows uses." },
+    { "id": "Autounattend", "area": "autounattend", "path": "features/autounattend/answer-file.html", "title": "Autounattend.xml Settings", "navLabel": "Answer file", "blurb": "What Winhance writes into autounattend.xml: architectures, edition, accounts, the setup screens Windows shows, and what runs after setup." }
   ]
 }

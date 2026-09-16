@@ -174,6 +174,14 @@ test('the setting icon renders as an inline svg with the app icon geometry', () 
   assert.match(html, new RegExp(`<span class="setting-icon"><svg viewBox="${art.viewBox}" width="20" height="20"[^>]*><path d="${art.path.slice(0, 20).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
 });
 
+test('an app-asset icon renders as a span masked by the PNG, not as an svg', () => {
+  const image = 'data:image/png;base64,iVBORw0KGgo=';
+  const setting = { ...byId['sound-startup'], icon: { pack: 'AppAsset', name: 'winhance-rocket-white-transparent-bg.png' } };
+  const html = renderCard(setting, { ...ctx, icons: { 'AppAsset/winhance-rocket-white-transparent-bg.png': { image } } });
+  assert.ok(html.includes(`<span class="setting-icon"><span class="setting-icon-image" style="--icon-image:url(${image})" aria-hidden="true"></span></span>`));
+  assert.doesNotMatch(html, /<span class="setting-icon"><svg/);
+});
+
 test('--mx-option-w is set inline on .mx-box from the longest option label, in var(--mx-char-w) multiples', () => {
   // fix round 1 (finding 2): `<N>ch` re-resolves per element against whatever font it inherits --
   // a <col> can't carry a font-family at all -- so the same value used to compute three different
@@ -549,4 +557,105 @@ test('pathsRow throws if a hasPaths group is not at its own declared startColumn
   const base = byId['gaming-xbox-game-dvr'].matrix;
   const tampered = { ...base, groups: base.groups.map((g, i) => (i === 1 ? { ...g, startColumn: g.startColumn + 1 } : g)) };
   assert.throws(() => renderMatrix(tampered, { geometries: geo }), /pathsRow:.*expected at column/);
+});
+
+// --- the control kinds the Autounattend page and the desktop background brought in ---
+
+test('the power-plan note follows the matrix group kind, not the control kind', () => {
+  const plan = byId['power-plan-selection'];
+  assert.equal(plan.control, 'KeyedSelection', 'the PowerPlan control kind was folded into KeyedSelection');
+  assert.ok(plan.matrix.groups.some((g) => g.kind === 'PowerPlan'), 'the reference group kind is what survived');
+  assert.match(renderCard(plan, ctx), /<p class="mx-note-live">Winhance always offers these plans/);
+  // region-time-zone is the same control kind with no reference group behind it, and the note's wording
+  // is about power schemes -- following the control would print it on all five region dropdowns.
+  const zone = byId['region-time-zone'];
+  assert.equal(zone.control, 'KeyedSelection');
+  assert.doesNotMatch(renderCard(zone, ctx), /mx-note-live/);
+});
+
+// OptionMatrixView.xaml.cs:282-284 tests RegFile and paints everything else with the PowerShell style,
+// so a kind the site has never seen lands where the app puts it.
+test('a SetupCommand block gets the PowerShell style, the way the app paints every non-RegFile block', () => {
+  const s = byId['autounattend-netfx3'];
+  assert.ok(s.matrix.codeBlocks.some((b) => b.kind === 'SetupCommand'), 'fixture must carry a SetupCommand block');
+  const html = renderCard(s, ctx);
+  assert.match(html, /<pre class="mx-code-body mx-code-powershell">/);
+  assert.doesNotMatch(html, /mx-code-regcontent/);
+});
+
+test('a CheckBox card renders its Checked/Unchecked rows under the Architecture group band', () => {
+  const s = byId['autounattend-architecture-x64'];
+  assert.equal(s.control, 'CheckBox');
+  const html = renderCard(s, ctx);
+  const labels = [...html.matchAll(/<th class="mx-option" scope="row"><code>([^<]*)<\/code>/g)].map((m) => m[1]);
+  assert.deepEqual(labels, ['Checked', 'Unchecked']);
+  assert.match(html, /<th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Processor architecture<\/span>/);
+  assert.match(html, /<th class="mx-col mx-col-answerfile" scope="col">/);
+});
+
+test('a TextBox child card renders the Allowed form row under one merged Answer file band over two path cells', () => {
+  const s = byId['autounattend-product-key'];
+  assert.equal(s.control, 'TextBox');
+  assert.equal(s.uiParentId, 'autounattend-edition');
+  const html = renderCard(s, ctx, { child: true });
+  assert.match(html, /class="setting-card setting-card-child"/);
+  // Two AnswerFile groups at columns 0 and 1 merge into one band; each keeps its own path cell.
+  assert.match(html, /<th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Answer file<\/span>/);
+  assert.equal((html.match(/<th class="mx-paths" colspan="1">/g) ?? []).length, 2);
+  assert.match(html, /<th class="mx-option" scope="row"><code>Allowed form<\/code><\/th>/);
+});
+
+// A List card documents the fields the catalog declares, one row each, so the page shows what a row asks for
+// without inventing how the app lays it out.
+test('the accounts List card renders one Allowed-form row per declared field', () => {
+  const s = byId['autounattend-accounts'];
+  assert.equal(s.control, 'List');
+  const html = renderCard(s, ctx, { child: true });
+  const labels = [...html.matchAll(/<th class="mx-option" scope="row"><code>([^<]*)<\/code>/g)].map((m) => m[1]);
+  assert.deepEqual(labels, ['Account name', 'Display name', 'Group', 'Password', 'Obscure the password in the file', 'Sign in automatically once']);
+  assert.equal((html.match(/<table class="mx-grid">/g) ?? []).length, 1);
+});
+
+test('the desktop background is a parent Selection whose six children render as child cards under it', () => {
+  const s = byId['theme-wallpaper'];
+  assert.equal(s.control, 'Selection');
+  assert.equal(s.matrixWin10, null, 'one build box: the kinds are the same registry value on both builds');
+  const html = renderCard(s, ctx);
+  const labels = [...html.matchAll(/<th class="mx-option" scope="row"><code>([^<]*)<\/code>/g)].map((m) => m[1]);
+  assert.deepEqual(labels.slice(0, 4), ['Picture', 'Solid color', 'Slideshow', 'Windows spotlight']);
+  assert.equal((html.match(/class="setting-card setting-card-child"/g) ?? []).length, 6);
+  for (const id of ['picture', 'fit', 'color', 'album', 'interval', 'shuffle']) {
+    assert.equal(byId[`theme-wallpaper-${id}`].uiParentId, 'theme-wallpaper');
+  }
+});
+
+test('the picture child lists the Windows pictures as reference rows without the power-plan note', () => {
+  const s = byId['theme-wallpaper-picture'];
+  assert.equal(s.control, 'KeyedSelection');
+  const html = renderCard(s, ctx, { child: true });
+  // Windows' own pictures ARE the option rows; this PC's picture and the recents are per-machine and not exported.
+  assert.match(html, /<th class="mx-option" scope="row"><code>Windows 11 light<\/code><\/th>/);
+  assert.match(html, /<th class="mx-option" scope="row"><code>Windows 10<\/code><\/th>/);
+  // The reference group is not the power-plan group, so the note about power schemes stays off this card.
+  assert.doesNotMatch(html, /mx-note-live/);
+});
+
+test('the album child is a TextBox applied through the desktop slideshow, with its script', () => {
+  const s = byId['theme-wallpaper-album'];
+  assert.equal(s.control, 'TextBox');
+  const html = renderCard(s, ctx, { child: true });
+  assert.match(html, /<span class="mx-chip" title="[^"]*">applied through the desktop slideshow<\/span>/);
+  assert.match(html, /<pre class="mx-code-body mx-code-powershell">/);
+});
+
+test('a keyed card whose options Windows supplies renders its column header over an empty body', () => {
+  const s = byId['region-time-zone'];
+  assert.equal(s.matrix.options.length, 0);
+  assert.ok(s.matrix.columns.length > 0);
+  const html = renderCard(s, ctx);
+  assert.match(html, /<tr class="mx-row-columns">/);
+  assert.match(html, /<code class="mx-name">TimeZoneKeyName<\/code>/);
+  // The export answers "why is this empty" itself, as a column chip, so the site adds no prose of its own.
+  assert.match(html, /<span class="mx-chip" title="[^"]*">options come from Windows<\/span>/);
+  assert.match(html, /<tbody>\s*<\/tbody>/);
 });

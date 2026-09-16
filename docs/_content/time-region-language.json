@@ -1,0 +1,12 @@
+{
+  "intro": [
+    "<p>Where Windows is, what time it keeps, and how it writes dates, numbers and currency. Winhance sets all of it from one page, writing the same registry values Windows keeps.</p>",
+    "<p>The five dropdowns at the top are filled by Windows itself, so the list of time zones, formats, locations and keyboard layouts differs from one PC to another. Their tables name the values Winhance writes rather than listing choices a page cannot know in advance.</p>"
+  ],
+  "groups": {
+    "Time": "The time zone this PC keeps its clock in. The change takes effect as soon as you apply it.",
+    "Region": "The regional format Windows starts from, and the country or region apps use for local content. The format here sets the defaults that the Formats group overrides one at a time.",
+    "Language and keyboard": "The keyboard layout Windows starts with, and the code page it uses for programs that are not Unicode aware. The layout applies at your next sign-in, the code page after a restart.",
+    "Formats": "Individual overrides for the pieces of the regional format: the short date, the first day of the week, the decimal and list separators, and whether measurements are metric or imperial."
+  }
+}

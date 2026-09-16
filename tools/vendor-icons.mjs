@@ -2,8 +2,10 @@
 // Vendors setting-icon artwork into docs/_assets/icons.json from a pre-fetched source file.
 //   node tools/vendor-icons.mjs [--catalog ../winhance/extras/docs-export/catalog.json] [--source tools/icon-sources/icons.json] [--out docs/_assets/icons.json]
 // Exits 1 (without writing) if any catalog icon identity is missing from the source.
-import { readFileSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+// AppAsset/<file> is not in the source: it is the app's own PNG, read from <winhance repo>/src/Winhance.UI/Assets/AppIcons,
+// where the repo is the one the --catalog file sits in.
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
 import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
 
@@ -22,12 +24,18 @@ function iconIdentities(catalog) {
   return [...ids].sort();
 }
 
-export function vendorIcons({ catalog, source }) {
+export function vendorIcons({ catalog, source, appRoot }) {
   const wanted = iconIdentities(catalog);
   const wantedSet = new Set(wanted);
   const icons = {};
   const missing = [];
   for (const key of wanted) {
+    if (key.startsWith('AppAsset/')) {
+      const file = join(appRoot, 'src', 'Winhance.UI', 'Assets', 'AppIcons', key.slice('AppAsset/'.length));
+      if (existsSync(file)) icons[key] = { image: `data:image/png;base64,${readFileSync(file).toString('base64')}` };
+      else missing.push(key);
+      continue;
+    }
     const entry = source.icons[key];
     if (entry) icons[key] = { viewBox: entry.viewBox, path: entry.path };
     else missing.push(key);
@@ -48,7 +56,8 @@ function main() {
 
   const catalog = JSON.parse(readFileSync(catalogPath, 'utf8'));
   const source = JSON.parse(readFileSync(sourcePath, 'utf8'));
-  const { icons, meta, missing, unused } = vendorIcons({ catalog, source });
+  const appRoot = resolve(dirname(catalogPath), '..', '..');
+  const { icons, meta, missing, unused } = vendorIcons({ catalog, source, appRoot });
 
   console.log(`resolved ${Object.keys(icons).length}, missing ${missing.length}, unused ${unused.length}`);
   if (missing.length) {

@@ -25,7 +25,8 @@ export function fillTemplate(template, values) {
     .replace(/\{\{root\}\}/g, () => values.root)
     .replace(/\{\{title\}\}/g, () => esc(values.title))
     .replace(/\{\{sidebarOptimize\}\}/g, () => values.sidebarOptimize)
-    .replace(/\{\{sidebarCustomize\}\}/g, () => values.sidebarCustomize);
+    .replace(/\{\{sidebarCustomize\}\}/g, () => values.sidebarCustomize)
+    .replace(/\{\{sidebarAutounattend\}\}/g, () => values.sidebarAutounattend);
   const left = (shell.match(/\{\{\w+\}\}/g) ?? []).find((m) => m !== '{{content}}');
   if (left) throw new Error(`template placeholder not filled: ${left}`);
   return shell.replace(/\{\{content\}\}/g, () => values.content);
@@ -47,6 +48,11 @@ function shell(pages, page, title, content, template) {
     content: indent(content, 12),
     sidebarOptimize: sidebarSubNav(pages, 'optimize', root),
     sidebarCustomize: sidebarSubNav(pages, 'customize', root),
+    // The sidebar's area sub-navs are threaded one by one rather than looped over pages.areas, because
+    // the template decides where each area sits among the hand-written Features entries -- Autounattend
+    // goes after Customize, matching the app's own nav order (NavSidebar.xaml:28-64: Software & Apps, Optimize
+    // and Customize fill the top panel, Autounattend opens the bottom one).
+    sidebarAutounattend: sidebarSubNav(pages, 'autounattend', root),
   });
 }
 

@@ -1,0 +1,13 @@
+{
+  "intro": [
+    "<p>Every setting below is written into <code>autounattend.xml</code> when you build the file. Nothing here is read from this PC, so the tables show the answer-file pass, component and path each value lands in instead of a registry key.</p>"
+  ],
+  "groups": {
+    "Processor architecture": "Which processor architectures the file covers. Every component in the file is written once per architecture you tick, so one file can install on x64, ARM64 and x86 PCs.",
+    "Edition and product key": "The edition Setup installs, and the key it uses to pick it. The built-in keys select an edition without activating Windows; your own key selects and activates.",
+    "Windows 11 requirements": "Setup's checks for TPM 2.0, Secure Boot and the RAM, storage, CPU and disk minimums. Turning them off lets Setup install on a PC that fails them.",
+    "Accounts": "How the first account is created, and the local accounts Setup makes before the first sign-in. In Winhance each account you add also carries a display name, a group, a password and the sign-in options; the part that is the same on every PC, and so the part documented here, is the name rule below.",
+    "Setup screens": "The pages Setup shows while Windows installs, and the name this PC gets on the network. Turning a page off answers it in the file so Setup does not stop there.",
+    "General": "What Setup adds once Windows is installed: .NET Framework 3.5 from the installation media, and an Install Winhance shortcut on the desktop of every new account."
+  }
+}

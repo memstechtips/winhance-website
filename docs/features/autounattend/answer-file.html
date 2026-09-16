@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autounattend.xml Settings - Winhance Docs</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!-- --font-main is now var(--winui-font-family) (Segoe UI Variable / Segoe UI, system
+         fonts) — no longer needs Overpass. JetBrains Mono stays, code blocks still use it. -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../css/winui-tokens.css">
+    <link rel="stylesheet" href="../../css/app-tokens.css">
+    <link rel="stylesheet" href="../../css/docs-main.css">
+    <link rel="stylesheet" href="../../css/docs-sidebar.css">
+    <link rel="stylesheet" href="../../css/docs-syntax.css">
+    <script src="../../js/theme-load.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="../../index.html" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="../../../images/winhance-rocket.png" alt="Winhance Logo"
+                        style="height: 32px; margin-right: 12px;">
+                    <h1 style="font-size: 1.5rem; margin: 0; color: var(--text-color);">Winhance <span
+                            style="font-weight: 300; opacity: 0.7;">Docs</span></h1>
+                </a>
+            </div>
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="docs-search" placeholder="Search documentation...">
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+                </button>
+                <a href="https://github.com/memstechtips/Winhance" target="_blank" class="icon-btn github-btn"
+                    title="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="docs-wip-banner">
+        <strong>Work in Progress:</strong> Documentation is a work in progress. Some pages may be incomplete.
+    </div>
+
+    <div class="docs-layout has-banner">
+                        <aside class="docs-sidebar">
+            <nav>
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Getting Started</div>
+                    <a href="../../getting-started/installation.html" class="sidebar-nav-item">Installation</a>
+                    <a href="../../getting-started/quick-start.html" class="sidebar-nav-item">Quick Start</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Features</div>
+                    <a href="../../features/software-apps.html" class="sidebar-nav-item">Software & Apps</a>
+                    <div class="sidebar-sub-nav">
+                        <a href="../../features/software-apps/windows-apps.html" class="sidebar-nav-item sub-item">Windows Apps</a>
+                        <a href="../../features/software-apps/external-apps.html" class="sidebar-nav-item sub-item">External Apps</a>
+                    </div>
+                    <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
+                    <div class="sidebar-sub-nav">
+    <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy &amp; Security</a>
+    <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
+    <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming &amp; Performance</a>
+    <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
+    <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
+    <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
+                    </div>
+                    <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
+                    <div class="sidebar-sub-nav">
+    <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
+    <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
+    <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
+    <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
+    <a href="../../features/customizations/time-region-language.html" class="sidebar-nav-item sub-item">Time &amp; Region</a>
+                    </div>
+                    <a href="../../features/autounattend.html" class="sidebar-nav-item">Autounattend</a>
+                    <div class="sidebar-sub-nav">
+    <a href="../../features/autounattend/answer-file.html" class="sidebar-nav-item sub-item">Answer file</a>
+                    </div>
+                    <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
+                    <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">User Guides</div>
+                    <a href="../../guides/configuration-files.html" class="sidebar-nav-item">Configuration Files</a>
+                    <a href="../../guides/wimutil.html" class="sidebar-nav-item">WIMUtil Guide</a>
+                    <a href="../../guides/autounattend.html" class="sidebar-nav-item">Autounattend Guide</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Reference</div>
+                    <a href="../../reference/cli-commands.html" class="sidebar-nav-item">CLI Commands</a>
+                    <a href="../../reference/changelog.html" class="sidebar-nav-item">Changelog</a>
+                    <a href="../../reference/troubleshooting.html" class="sidebar-nav-item">Troubleshooting</a>
+                    <a href="../../reference/contributing.html" class="sidebar-nav-item">How to Contribute</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="docs-content">
+            <section id="autounattend-xml-settings">
+            <h1>Autounattend.xml Settings</h1>
+
+            <p>Every setting below is written into <code>autounattend.xml</code> when you build the file. Nothing here is read from this PC, so the tables show the answer-file pass, component and path each value lands in instead of a registry key.</p>
+            <div class="callout callout-info">
+                <div class="callout-title">Technical Details</div>
+                <p>Every setting below shows exactly what Winhance reads and writes: registry values, scheduled tasks, power settings and scripts, with the recommended value and the Windows default marked. This is the same table the app shows under each setting's Technical Details.</p>
+            </div>
+
+            <h2 id="processor-architecture">Processor architecture</h2>
+            <p>Which processor architectures the file covers. Every component in the file is written once per architecture you tick, so one file can install on x64, ARM64 and x86 PCs.</p>
+            <div class="setting-card" id="autounattend-architecture-x64">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6,4H18V5H21V7H18V9H21V11H18V13H21V15H18V17H21V19H18V20H6V19H3V17H6V15H3V13H6V11H3V9H6V7H3V5H6V4M11,15V18H12V15H11M13,15V18H14V15H13M15,15V18H16V15H15Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">x64</span>
+            <p class="setting-desc">Intel and AMD PCs, which is most of them. Tick every architecture this file should install on; one file can cover all three.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge added">Added in v26.09.07</span></div>
+            <span class="setting-id">autounattend-architecture-x64</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 9 * var(--mx-char-w)); --mx-table-w: calc(358.5px + 60 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col style="width: calc(252.5px + 33 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read from this PC to work out the current state; never written.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Processor architecture</span><span class="mx-group-desc">Every component in the file is written once per checked architecture.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment">HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">PROCESSOR_ARCHITECTURE</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span></span></th><th class="mx-col mx-col-answerfile" scope="col"><span class="mx-line"><code class="mx-name">amd64</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>Checked</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>AMD64</code></td><td class="mx-value"><code>amd64</code></td></tr><tr><th class="mx-option" scope="row"><code>Unchecked</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"><code>Not written</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <div class="setting-card" id="autounattend-architecture-arm64">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6,4H18V5H21V7H18V9H21V11H18V13H21V15H18V17H21V19H18V20H6V19H3V17H6V15H3V13H6V11H3V9H6V7H3V5H6V4M11,15V18H12V15H11M13,15V18H14V15H13M15,15V18H16V15H15Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">ARM64</span>
+            <p class="setting-desc">Snapdragon and other ARM PCs, such as the Surface Pro X.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge added">Added in v26.09.07</span></div>
+            <span class="setting-id">autounattend-architecture-arm64</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 9 * var(--mx-char-w)); --mx-table-w: calc(358.5px + 60 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col style="width: calc(252.5px + 33 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read from this PC to work out the current state; never written.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Processor architecture</span><span class="mx-group-desc">Every component in the file is written once per checked architecture.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment">HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">PROCESSOR_ARCHITECTURE</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span></span></th><th class="mx-col mx-col-answerfile" scope="col"><span class="mx-line"><code class="mx-name">arm64</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>Checked</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>ARM64</code></td><td class="mx-value"><code>arm64</code></td></tr><tr><th class="mx-option" scope="row"><code>Unchecked</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"><code>Not written</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <div class="setting-card" id="autounattend-architecture-x86">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6,4H18V5H21V7H18V9H21V11H18V13H21V15H18V17H21V19H18V20H6V19H3V17H6V15H3V13H6V11H3V9H6V7H3V5H6V4M11,15V18H12V15H11M13,15V18H14V15H13M15,15V18H16V15H15Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">x86</span>
+            <p class="setting-desc">32-bit PCs. Windows 11 has no 32-bit media, so this only matters for Windows 10.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge added">Added in v26.09.07</span></div>
+            <span class="setting-id">autounattend-architecture-x86</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 9 * var(--mx-char-w)); --mx-table-w: calc(358.5px + 60 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col style="width: calc(252.5px + 33 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read from this PC to work out the current state; never written.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Processor architecture</span><span class="mx-group-desc">Every component in the file is written once per checked architecture.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment">HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">PROCESSOR_ARCHITECTURE</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span></span></th><th class="mx-col mx-col-answerfile" scope="col"><span class="mx-line"><code class="mx-name">x86</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>Checked</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>x86</code></td><td class="mx-value"><code>x86</code></td></tr><tr><th class="mx-option" scope="row"><code>Unchecked</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"><code>Not written</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <h2 id="edition-and-product-key">Edition and product key</h2>
+            <p>The edition Setup installs, and the key it uses to pick it. The built-in keys select an edition without activating Windows; your own key selects and activates.</p>
+            <div class="setting-card" id="autounattend-edition">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6,2C4.89,2 4,2.89 4,4V12C4,13.11 4.89,14 6,14H18C19.11,14 20,13.11 20,12V4C20,2.89 19.11,2 18,2H6M6,4H18V12H6V4M4,15C2.89,15 2,15.89 2,17V20C2,21.11 2.89,22 4,22H20C21.11,22 22,21.11 22,20V17C22,15.89 21.11,15 20,15H4M8,17H20V20H8V17M9,17.75V19.25H13V17.75H9M15,17.75V19.25H19V17.75H15Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Windows edition</span>
+            <p class="setting-desc">Which edition Setup installs. The edition has to be on the installation media, or Setup asks you to pick one anyway. These keys tell Setup which edition to install. They do not activate Windows, so you still need your own licence afterwards.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge added">Added in v26.09.07</span></div>
+            <span class="setting-id">autounattend-edition</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 40 * var(--mx-char-w)); --mx-table-w: calc(299.9px + 86 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col style="width: calc(30.9px + 29 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Answer file</span><span class="mx-group-desc">Written into autounattend.xml when you build it; never read from this PC.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Pass</span><code class="mx-path" title="windowsPE">windowsPE</code></span><span class="mx-pathline"><span class="mx-caption">Component</span><code class="mx-path" title="Microsoft-Windows-Setup">Microsoft-Windows-Setup</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="UserData/ProductKey/Key">UserData/ProductKey/Key</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Pass</span><code class="mx-path" title="windowsPE">windowsPE</code></span><span class="mx-pathline"><span class="mx-caption">Component</span><code class="mx-path" title="Microsoft-Windows-Setup">Microsoft-Windows-Setup</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="UserData/ProductKey/WillShowUI">UserData/ProductKey/WillShowUI</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-answerfile" scope="col"><span class="mx-line"><code class="mx-name">Key</code></span></th><th class="mx-col mx-col-answerfile" scope="col"><span class="mx-line"><code class="mx-name">WillShowUI</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>Ask me during setup</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>00000-00000-00000-00000-00000</code></td><td class="mx-value"><code>Always</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows 11 Home</code></th><td class="mx-role"></td><td class="mx-value"><code>YTMG3-N6DKC-DKB77-7M9GH-8HVX7</code></td><td class="mx-value"><code>OnError</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows 11 Home N</code></th><td class="mx-role"></td><td class="mx-value"><code>4CPRK-NM3K3-X6XXQ-RXX86-WXCHW</code></td><td class="mx-value"><code>OnError</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows 11 Home Single Language</code></th><td class="mx-role"></td><td class="mx-value"><code>BT79Q-G7N6G-PGBYW-4YWX6-6F4BT</code></td><td class="mx-value"><code>OnError</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows 11 Pro</code></th><td class="mx-role"></td><td class="mx-value"><code>VK7JG-NPHTM-C97JM-9MPGT-3V66T</code></td><td class="mx-value"><code>OnError</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows 11 Pro N</code></th><td class="mx-role"></td><td class="mx-value"><code>2B87N-8KFHP-DKV6R-Y2C8J-PKCKT</code></td><td class="mx-value"><code>OnError</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows 11 Pro for Workstations</code></th><td class="mx-role"></td><td class="mx-value"><code>DXG7C-N36C4-C4HTG-X4T3X-2YV77</code></td><td class="mx-value"><code>OnError</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows 11 Pro for Workstations N</code></th><td class="mx-role"></td><td class="mx-value"><code>WYPNQ-8C467-V2W6J-TX4WX-WT2RQ</code></td><td class="mx-value"><code>OnError</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows 11 Pro Education</code></th><td class="mx-role"></td><td class="mx-value"><code>8PTT6-RNW4C-6V7J2-C2D3X-MHBPB</code></td><td class="mx-value"><code>OnError</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows 11 Pro Education N</code></th><td class="mx-role"></td><td class="mx-value"><code>GJTYN-HDMQY-FRR76-HVGC7-QPF8P</code></td><td class="mx-value"><code>OnError</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows 11 Education</code></th><td class="mx-role"></td><td class="mx-value"><code>YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY</code></td><td class="mx-value"><code>OnError</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows 11 Education N</code></th><td class="mx-role"></td><td class="mx-value"><code>84NGF-MHBT6-FXBX8-QWJK7-DRR8H</code></td><td class="mx-value"><code>OnError</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows 11 Enterprise</code></th><td class="mx-role"></td><td class="mx-value"><code>XGVPP-NMH47-7TTHJ-W3FW7-8HV2C</code></td><td class="mx-value"><code>OnError</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows 11 Enterprise N</code></th><td class="mx-role"></td><td class="mx-value"><code>WGGHN-J84D6-QYCPR-T7PJ7-X766F</code></td><td class="mx-value"><code>OnError</code></td></tr><tr><th class="mx-option" scope="row"><code>Use my own product key</code></th><td class="mx-role"></td><td class="mx-value"><code>Not written</code></td><td class="mx-value"><code>OnError</code></td></tr><tr><th class="mx-option" scope="row"><code>Use the key stored in this PC&#39;s firmware</code></th><td class="mx-role"></td><td class="mx-value"><code>Not written</code></td><td class="mx-value"><code>Never</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            <div class="setting-children">
+            <div class="setting-card setting-card-child" id="autounattend-product-key">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M16 10C17.6569 10 19 11.3431 19 13C19 14.6569 17.6569 16 16 16C15.6494 16 15.3128 15.9397 15 15.8291V16.5C15 16.7761 14.7761 17 14.5 17H14V17.5C14 17.7761 13.7761 18 13.5 18H13V18.5C13 18.7761 12.7761 19 12.5 19H10.5C10.2239 19 10 18.7761 10 18.5V17.4141C10 17.1489 10.1055 16.8945 10.293 16.707L13.1289 13.8711C13.0454 13.5954 13 13.303 13 13C13 11.3431 14.3431 10 16 10ZM10 1C12.2091 1 14 2.79086 14 5V7.0498C14.9798 7.24867 15.7496 8.02107 15.9482 9.00098C15.6046 9.00533 15.2716 9.05288 14.9541 9.13867C14.7922 8.48503 14.2037 8 13.5 8H6.5C5.67157 8 5 8.67157 5 9.5V15.5C5 16.3284 5.67157 17 6.5 17H9.04492C9.01627 17.1352 9.00001 17.2737 9 17.4141V18H6.5C5.11929 18 4 16.8807 4 15.5V9.5C4 8.29051 4.85886 7.28142 6 7.0498V5C6 2.79086 7.79086 1 10 1ZM10 11.5C10.5523 11.5 11 11.9477 11 12.5C11 13.0523 10.5523 13.5 10 13.5C9.44772 13.5 9 13.0523 9 12.5C9 11.9477 9.44772 11.5 10 11.5ZM16.75 11.5C16.3358 11.5 16 11.8358 16 12.25C16 12.6642 16.3358 13 16.75 13C17.1642 13 17.5 12.6642 17.5 12.25C17.5 11.8358 17.1642 11.5 16.75 11.5ZM10 2C8.34315 2 7 3.34315 7 5V7H13V5C13 3.34315 11.6569 2 10 2Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Product key</span>
+            <p class="setting-desc">Your own 25-character key, in five groups of five. Setup uses it to pick the edition and to activate Windows. Choose &#39;Use my own product key&#39; in the Windows edition dropdown to use it.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge added">Added in v26.09.07</span></div>
+            <span class="setting-id">autounattend-product-key</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 12 * var(--mx-char-w)); --mx-table-w: calc(136.2px + 76 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24px + 4 * var(--mx-char-w))"><col style="width: calc(24px + 30 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Answer file</span><span class="mx-group-desc">Written into autounattend.xml when you build it; never read from this PC.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Pass</span><code class="mx-path" title="windowsPE">windowsPE</code></span><span class="mx-pathline"><span class="mx-caption">Component</span><code class="mx-path" title="Microsoft-Windows-Setup">Microsoft-Windows-Setup</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="UserData/ProductKey/Key">UserData/ProductKey/Key</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Pass</span><code class="mx-path" title="specialize">specialize</code></span><span class="mx-pathline"><span class="mx-caption">Component</span><code class="mx-path" title="Microsoft-Windows-Shell-Setup">Microsoft-Windows-Shell-Setup</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="ProductKey">ProductKey</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-answerfile" scope="col"><span class="mx-line"><code class="mx-name">Key</code></span></th><th class="mx-col mx-col-answerfile" scope="col"><span class="mx-line"><code class="mx-name">ProductKey</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>Allowed form</code></th><td class="mx-role"></td><td class="mx-value"><code>^([A-Z0-9]{5}-){4}[A-Z0-9]{5}$</code></td><td class="mx-value"><code>^([A-Z0-9]{5}-){4}[A-Z0-9]{5}$</code></td></tr><tr><th class="mx-option" scope="row"><code>Default</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+            <h2 id="windows-11-requirements">Windows 11 requirements</h2>
+            <p>Setup's checks for TPM 2.0, Secure Boot and the RAM, storage, CPU and disk minimums. Turning them off lets Setup install on a PC that fails them.</p>
+            <div class="setting-card" id="autounattend-hardware-checks">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Hardware checks</span>
+            <p class="setting-desc">Setup&#39;s checks for TPM 2.0, Secure Boot and the RAM, storage, CPU and disk minimums. Off lets Setup install on a PC that fails them. The POPCNT CPU instruction requirement added in 24H2 cannot be skipped.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge added">Added in v26.09.07</span></div>
+            <span class="setting-id">autounattend-hardware-checks</span>
+            </div>
+            </div>
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(82px + 13 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span></th></tr>
+            <tr class="mx-row-paths"></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td></tr>
+            </tbody>
+            </table>
+            </div>
+            <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">Windows Setup commands</span><span class="mx-group-desc">Windows Setup runs this command during installation when the matching option is chosen.</span></div><div class="mx-code-label">When set to Off</div><pre class="mx-code-body mx-code-powershell"><code>reg.exe add &quot;HKLM\SYSTEM\Setup\LabConfig&quot; /v BypassTPMCheck /t REG_DWORD /d 1 /f</code></pre><div class="mx-code-separator"></div><div class="mx-code-label">When set to Off</div><pre class="mx-code-body mx-code-powershell"><code>reg.exe add &quot;HKLM\SYSTEM\Setup\LabConfig&quot; /v BypassSecureBootCheck /t REG_DWORD /d 1 /f</code></pre><div class="mx-code-separator"></div><div class="mx-code-label">When set to Off</div><pre class="mx-code-body mx-code-powershell"><code>reg.exe add &quot;HKLM\SYSTEM\Setup\LabConfig&quot; /v BypassStorageCheck /t REG_DWORD /d 1 /f</code></pre><div class="mx-code-separator"></div><div class="mx-code-label">When set to Off</div><pre class="mx-code-body mx-code-powershell"><code>reg.exe add &quot;HKLM\SYSTEM\Setup\LabConfig&quot; /v BypassCPUCheck /t REG_DWORD /d 1 /f</code></pre><div class="mx-code-separator"></div><div class="mx-code-label">When set to Off</div><pre class="mx-code-body mx-code-powershell"><code>reg.exe add &quot;HKLM\SYSTEM\Setup\LabConfig&quot; /v BypassRAMCheck /t REG_DWORD /d 1 /f</code></pre><div class="mx-code-separator"></div><div class="mx-code-label">When set to Off</div><pre class="mx-code-body mx-code-powershell"><code>reg.exe add &quot;HKLM\SYSTEM\Setup\LabConfig&quot; /v BypassDiskCheck /t REG_DWORD /d 1 /f</code></pre></div></div>
+            </div>
+
+            <h2 id="accounts">Accounts</h2>
+            <p>How the first account is created, and the local accounts Setup makes before the first sign-in. In Winhance each account you add also carries a display name, a group, a password and the sign-in options; the part that is the same on every PC, and so the part documented here, is the name rule below.</p>
+            <div class="setting-card" id="autounattend-account">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M10 4A4 4 0 0 0 6 8A4 4 0 0 0 10 12A4 4 0 0 0 14 8A4 4 0 0 0 10 4M17 12C16.87 12 16.76 12.09 16.74 12.21L16.55 13.53C16.25 13.66 15.96 13.82 15.7 14L14.46 13.5C14.35 13.5 14.22 13.5 14.15 13.63L13.15 15.36C13.09 15.47 13.11 15.6 13.21 15.68L14.27 16.5C14.25 16.67 14.24 16.83 14.24 17C14.24 17.17 14.25 17.33 14.27 17.5L13.21 18.32C13.12 18.4 13.09 18.53 13.15 18.64L14.15 20.37C14.21 20.5 14.34 20.5 14.46 20.5L15.7 20C15.96 20.18 16.24 20.35 16.55 20.47L16.74 21.79C16.76 21.91 16.86 22 17 22H19C19.11 22 19.22 21.91 19.24 21.79L19.43 20.47C19.73 20.34 20 20.18 20.27 20L21.5 20.5C21.63 20.5 21.76 20.5 21.83 20.37L22.83 18.64C22.89 18.53 22.86 18.4 22.77 18.32L21.7 17.5C21.72 17.33 21.74 17.17 21.74 17C21.74 16.83 21.73 16.67 21.7 16.5L22.76 15.68C22.85 15.6 22.88 15.47 22.82 15.36L21.82 13.63C21.76 13.5 21.63 13.5 21.5 13.5L20.27 14C20 13.82 19.73 13.65 19.42 13.53L19.23 12.21C19.22 12.09 19.11 12 19 12H17M10 14C5.58 14 2 15.79 2 18V20H11.68A7 7 0 0 1 11 17A7 7 0 0 1 11.64 14.09C11.11 14.03 10.56 14 10 14M18 15.5C18.83 15.5 19.5 16.17 19.5 17C19.5 17.83 18.83 18.5 18 18.5C17.16 18.5 16.5 17.83 16.5 17C16.5 16.17 17.17 15.5 18 15.5Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Account at setup</span>
+            <p class="setting-desc">How the first account is created. A local account keeps Setup offline; a Microsoft account uses the normal online sign-in.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge added">Added in v26.09.07</span></div>
+            <span class="setting-id">autounattend-account</span>
+            </div>
+            </div>
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 23 * var(--mx-char-w)); --mx-table-w: calc(191.2px + 54 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Answer file</span><span class="mx-group-desc">Written into autounattend.xml when you build it; never read from this PC.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Pass</span><code class="mx-path" title="oobeSystem">oobeSystem</code></span><span class="mx-pathline"><span class="mx-caption">Component</span><code class="mx-path" title="Microsoft-Windows-Shell-Setup">Microsoft-Windows-Shell-Setup</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="OOBE/HideOnlineAccountScreens">OOBE/HideOnlineAccountScreens</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-answerfile" scope="col"><span class="mx-line"><code class="mx-name">HideOnlineAccountScreens</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>Local account</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>true</code></td></tr><tr><th class="mx-option" scope="row"><code>Microsoft account</code></th><td class="mx-role"></td><td class="mx-value"><code>Not written</code></td></tr><tr><th class="mx-option" scope="row"><code>Create the accounts now</code></th><td class="mx-role"></td><td class="mx-value"><code>true</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">Windows Setup commands</span><span class="mx-group-desc">Windows Setup runs this command during installation when the matching option is chosen.</span></div><div class="mx-code-label">When set to Local account</div><pre class="mx-code-body mx-code-powershell"><code>reg.exe add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE&quot; /v BypassNRO /t REG_DWORD /d 1 /f</code></pre><div class="mx-code-separator"></div><div class="mx-code-label">When set to Local account</div><pre class="mx-code-body mx-code-powershell"><code>powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -Command &quot;Get-NetAdapter | Disable-NetAdapter -Confirm:$false&quot;</code></pre></div></div>
+            <div class="setting-children">
+            <div class="setting-card setting-card-child" id="autounattend-accounts">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M16.5,12A2.5,2.5 0 0,0 19,9.5A2.5,2.5 0 0,0 16.5,7A2.5,2.5 0 0,0 14,9.5A2.5,2.5 0 0,0 16.5,12M9,11A3,3 0 0,0 12,8A3,3 0 0,0 9,5A3,3 0 0,0 6,8A3,3 0 0,0 9,11M16.5,14C14.67,14 11,14.92 11,16.75V19H22V16.75C22,14.92 18.33,14 16.5,14M9,13C6.67,13 2,14.17 2,16.5V19H9V16.75C9,15.9 9.33,14.41 11.37,13.28C10.5,13.1 9.66,13 9,13Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Accounts to create</span>
+            <p class="setting-desc">The accounts Setup creates before the first sign-in. Setup skips its own account screens when this file creates at least one account.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge added">Added in v26.09.07</span></div>
+            <span class="setting-id">autounattend-accounts</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 32 * var(--mx-char-w)); --mx-table-w: calc(429.7px + 141 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24px + 4 * var(--mx-char-w))"><col style="width: calc(24px + 52 * var(--mx-char-w))"><col style="width: calc(85.5px + 19 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Answer file</span><span class="mx-group-desc">Written into autounattend.xml when you build it; never read from this PC.</span></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read from this PC to work out the current state; never written.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Pass</span><code class="mx-path" title="oobeSystem">oobeSystem</code></span><span class="mx-pathline"><span class="mx-caption">Component</span><code class="mx-path" title="Microsoft-Windows-Shell-Setup">Microsoft-Windows-Shell-Setup</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="UserAccounts/LocalAccounts">UserAccounts/LocalAccounts</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Volatile Environment">HKCU\Volatile Environment</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-answerfile" scope="col"><span class="mx-line"><code class="mx-name">LocalAccounts</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">USERNAME</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">LastLoggedOnDisplayName</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>Account name</code></th><td class="mx-role"></td><td class="mx-value"><code>name (Text): ^(?![. ]+$)[^&quot;/\\\[\]:;|=,+*?&lt;&gt;]{1,20}$</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Display name</code></th><td class="mx-role"></td><td class="mx-value"><code>display-name (Text)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Group</code></th><td class="mx-role"></td><td class="mx-value"><code>group (Selection)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Password</code></th><td class="mx-role"></td><td class="mx-value"><code>password (Password)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Obscure the password in the file</code></th><td class="mx-role"></td><td class="mx-value"><code>obscure (CheckBox)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Sign in automatically once</code></th><td class="mx-role"></td><td class="mx-value"><code>auto-logon (CheckBox)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+            <h2 id="setup-screens">Setup screens</h2>
+            <p>The pages Setup shows while Windows installs, and the name this PC gets on the network. Turning a page off answers it in the file so Setup does not stop there.</p>
+            <div class="setting-card" id="autounattend-licence-page">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M23.5 17L18.5 22L15 18.5L16.5 17L18.5 19L22 15.5L23.5 17M6 2C4.89 2 4 2.89 4 4V20C4 21.11 4.89 22 6 22H13.81C13.28 21.09 13 20.05 13 19C13 18.67 13.03 18.33 13.08 18H6V16H13.81C14.27 15.2 14.91 14.5 15.68 14H6V12H18V13.08C18.33 13.03 18.67 13 19 13C19.34 13 19.67 13.03 20 13.08V8L14 2M13 3.5L18.5 9H13Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Show licence page</span>
+            <p class="setting-desc">The Windows licence terms page during Setup. Off accepts the terms in the answer file so Setup does not stop there.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge added">Added in v26.09.07</span></div>
+            <span class="setting-id">autounattend-licence-page</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(281.2px + 25 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Answer file</span><span class="mx-group-desc">Written into autounattend.xml when you build it; never read from this PC.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Pass</span><code class="mx-path" title="oobeSystem">oobeSystem</code></span><span class="mx-pathline"><span class="mx-caption">Component</span><code class="mx-path" title="Microsoft-Windows-Shell-Setup">Microsoft-Windows-Shell-Setup</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="OOBE/HideEULAPage">OOBE/HideEULAPage</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-answerfile" scope="col"><span class="mx-line"><code class="mx-name">HideEULAPage</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"></td><td class="mx-value"><code>Not written</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>true</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <div class="setting-card" id="autounattend-oem-registration-page">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5,3V21H11V17.5H13V21H19V3H5M7,5H9V7H7V5M11,5H13V7H11V5M15,5H17V7H15V5M7,9H9V11H7V9M11,9H13V11H11V9M15,9H17V11H15V9M7,13H9V15H7V13M11,13H13V15H11V13M15,13H17V15H15V13M7,17H9V19H7V17M15,17H17V19H15V17Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Show OEM registration</span>
+            <p class="setting-desc">The manufacturer registration page some OEM images add to Setup.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge added">Added in v26.09.07</span></div>
+            <span class="setting-id">autounattend-oem-registration-page</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(183.7px + 38 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Answer file</span><span class="mx-group-desc">Written into autounattend.xml when you build it; never read from this PC.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Pass</span><code class="mx-path" title="oobeSystem">oobeSystem</code></span><span class="mx-pathline"><span class="mx-caption">Component</span><code class="mx-path" title="Microsoft-Windows-Shell-Setup">Microsoft-Windows-Shell-Setup</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="OOBE/HideOEMRegistrationScreen">OOBE/HideOEMRegistrationScreen</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-answerfile" scope="col"><span class="mx-line"><code class="mx-name">HideOEMRegistrationScreen</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"></td><td class="mx-value"><code>Not written</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>true</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <div class="setting-card" id="autounattend-network-page">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15,20A1,1 0 0,0 14,19H13V17H17A2,2 0 0,0 19,15V5A2,2 0 0,0 17,3H7A2,2 0 0,0 5,5V15A2,2 0 0,0 7,17H11V19H10A1,1 0 0,0 9,20H2V22H9A1,1 0 0,0 10,23H14A1,1 0 0,0 15,22H22V20H15M7,15V5H17V15H7Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Show network page</span>
+            <p class="setting-desc">The wireless setup page during Setup. Off hides it; Windows still connects once you reach the desktop.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge added">Added in v26.09.07</span></div>
+            <span class="setting-id">autounattend-network-page</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(198.7px + 36 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Answer file</span><span class="mx-group-desc">Written into autounattend.xml when you build it; never read from this PC.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Pass</span><code class="mx-path" title="oobeSystem">oobeSystem</code></span><span class="mx-pathline"><span class="mx-caption">Component</span><code class="mx-path" title="Microsoft-Windows-Shell-Setup">Microsoft-Windows-Shell-Setup</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="OOBE/HideWirelessSetupInOOBE">OOBE/HideWirelessSetupInOOBE</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-answerfile" scope="col"><span class="mx-line"><code class="mx-name">HideWirelessSetupInOOBE</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"></td><td class="mx-value"><code>Not written</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>true</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <div class="setting-card" id="autounattend-privacy">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.1 14.8,9.5V11C15.4,11 16,11.6 16,12.3V15.8C16,16.4 15.4,17 14.7,17H9.2C8.6,17 8,16.4 8,15.7V12.2C8,11.6 8.6,11 9.2,11V9.5C9.2,8.1 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,9.5V11H13.5V9.5C13.5,8.7 12.8,8.2 12,8.2Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Privacy settings</span>
+            <p class="setting-desc">What Setup does with the privacy questions: location, diagnostic data, tailored experiences, advertising ID and Find my device.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge added">Added in v26.09.07</span></div>
+            <span class="setting-id">autounattend-privacy</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 27 * var(--mx-char-w)); --mx-table-w: calc(273.7px + 47 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Answer file</span><span class="mx-group-desc">Written into autounattend.xml when you build it; never read from this PC.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Pass</span><code class="mx-path" title="oobeSystem">oobeSystem</code></span><span class="mx-pathline"><span class="mx-caption">Component</span><code class="mx-path" title="Microsoft-Windows-Shell-Setup">Microsoft-Windows-Shell-Setup</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="OOBE/ProtectYourPC">OOBE/ProtectYourPC</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-answerfile" scope="col"><span class="mx-line"><code class="mx-name">ProtectYourPC</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>Turn them all off</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>3</code></td></tr><tr><th class="mx-option" scope="row"><code>Accept the express settings</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Ask me during setup</code></th><td class="mx-role"></td><td class="mx-value"><code>Not written</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <div class="setting-card" id="autounattend-computer-name">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4,6H20V16H4M20,18A2,2 0 0,0 22,16V6C22,4.89 21.1,4 20,4H4C2.89,4 2,4.89 2,6V16A2,2 0 0,0 4,18H0V20H24V18H20Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Computer name</span>
+            <p class="setting-desc">The name this PC gets on the network. Leave it empty and Setup picks one.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge added">Added in v26.09.07</span></div>
+            <span class="setting-id">autounattend-computer-name</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 12 * var(--mx-char-w)); --mx-table-w: calc(361.5px + 90 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24px + 4 * var(--mx-char-w))"><col style="width: calc(24px + 55 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Answer file</span><span class="mx-group-desc">Written into autounattend.xml when you build it; never read from this PC.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read from this PC to work out the current state; never written.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Pass</span><code class="mx-path" title="specialize">specialize</code></span><span class="mx-pathline"><span class="mx-caption">Component</span><code class="mx-path" title="Microsoft-Windows-Shell-Setup">Microsoft-Windows-Shell-Setup</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="ComputerName">ComputerName</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters">HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-answerfile" scope="col"><span class="mx-line"><code class="mx-name">ComputerName</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">Hostname</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>Allowed form</code></th><td class="mx-role"></td><td class="mx-value"><code>^(?!\d+$)[A-Za-z0-9](?:[A-Za-z0-9-]{0,13}[A-Za-z0-9])?$</code></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Default</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <h2 id="general">General</h2>
+            <p>What Setup adds once Windows is installed: .NET Framework 3.5 from the installation media, and an Install Winhance shortcut on the desktop of every new account.</p>
+            <div class="setting-card" id="autounattend-netfx3">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M13 15.6C13.3 15.8 13.7 15.8 14 15.6L19 12.7V13C19.7 13 20.4 13.1 21 13.4V11.6L22 11C22.5 10.7 22.6 10.1 22.4 9.6L20.9 7.1C20.8 6.9 20.7 6.7 20.5 6.6L12.6 2.2C12.4 2.1 12.2 2 12 2S11.6 2.1 11.4 2.2L3.6 6.6C3.4 6.7 3.2 6.8 3.1 7L1.6 9.6C1.3 10.1 1.5 10.7 2 11C2.3 11.2 2.7 11.2 3 11V16.5C3 16.9 3.2 17.2 3.5 17.4L11.4 21.8C11.6 21.9 11.8 22 12 22S12.4 21.9 12.6 21.8L13.5 21.3C13.2 20.7 13.1 20 13 19.3M11 19.3L5 15.9V9.2L11 12.6V19.3M20.1 9.7L13.8 13.3L13.2 12.3L19.5 8.7L20.1 9.7M12 10.8V4.2L18 7.5L12 10.8M20 15V18H23V20H20V23H18V20H15V18H18V15H20Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">.NET Framework 3.5</span>
+            <p class="setting-desc">Installs .NET Framework 3.5 from the installation media during setup, so older apps that need it work without a download.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge added">Added in v26.09.07</span></div>
+            <span class="setting-id">autounattend-netfx3</span>
+            </div>
+            </div>
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(82px + 13 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span></th></tr>
+            <tr class="mx-row-paths"></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"></td></tr>
+            </tbody>
+            </table>
+            </div>
+            <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">Windows Setup commands</span><span class="mx-group-desc">Windows Setup runs this command during installation when the matching option is chosen.</span></div><div class="mx-code-label">When set to On</div><pre class="mx-code-body mx-code-powershell"><code>powershell.exe -NoProfile -WindowStyle Hidden -Command &quot;foreach($d in &#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;,&#39;G&#39;,&#39;H&#39;,&#39;I&#39;,&#39;J&#39;,&#39;K&#39;){$src=Join-Path ($d+&#39;:&#39;) &#39;sources\sxs&#39;;if(Test-Path $src\*.cab){dism /Online /Enable-Feature /FeatureName:NetFx3 /All /LimitAccess /Source:$src;break}}&quot;</code></pre></div></div>
+            </div>
+
+            <div class="setting-card" id="autounattend-desktop-shortcut">
+            <div class="setting-header">
+            <span class="setting-icon"><span class="setting-icon-image" style="--icon-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEsklEQVR42u2ZXYiUVRjH/2dm1l3xYy/Ssi7WAvvSxaiwtqDQu4ztQ28SioIgsgvpogQlZKmwJIrMTYgubIsyKI3Aojv7sKKioKICL9JirUYs1mhbd3Vmfl3sc+Dh8M7shjPvrjDPzTlz5j3n/Z/n+T8f57xSW9rSlnNawky+HAiGoeCHE2zVEAKzSmtAASidcxYACpIUQqi5seWSrpO0TNISSd1mhZOShiW9EkI4BoQZswQQgKL7fRXwIvAbk/Iv9WWrzcm0WCEH8MUQAiGEKtAHHJT0raR+Sa9LuknSBZJWSSrbtAlJ45Iqki6aSa6XrF0I7DGNfg6srfP8SmeVU9a+2sgCeYDvA/4ATgDrkmeuBy4GVrqxy4AjjkKv5b4BB36DgXgHWBgpBSwGPgKOA3cCFWAw+gmwFPjB5u7KdQMO/H0G4En33xwLoQftvz+BdU7bAzFS2SZHgW2NNlBqgcNWgH5JQ5IeCyE8ZS+vhRBOmyXKkt6W9JeFyv2SapLmTi5DQdKYpA5Jhxu9s9TkGF8Dlkk6IGnQwHdYNPHymeWgUdvEx7aBk5NpItSAPklzJH1pc2qtjPEloMP63wNfRbNbuRCfC0CnOXWk0HpHobfcuoPAr67kaEk5UEzGHjUgPQa2kFLM2huAv4ER4A6b8x2w2Dn6CWBH0x04I6susmizB6hN5XTOIsuBLcAqYDPQ7daPm7rElyBNcVLXXwHstlAYpQwsMOuEqWqiBhHsJ+C99J1NAQ+cb8DHHfBxi+WPJ0AK9QDEitT7kI3fY2tenkXDs6KMJZ1hB/wMUDXqnLYIFDlc/J/+FIDzTBkvNEX7XgPAEwnwmvUrscZJuQ9cCtwSI1CjKGb9D4GjlvCKZxV9/EuBlx3YalLunrF2u7NUCdgK/ANMAAuywmECftDWWdEUx3UcHbKFxzLAewvcbvN6reKMsjuLDl7DwA579tZmUicAc4FPnZYj4FoGnfqAtRbfo2OPABd6jSZaLzoFrW9Z0WZaHQB+TjbiLTLi+hPWPugoVUj8o9ey9iiwJpeKE5gPPGxZMso+4E3rV5213jcNd3ruA0scZQ4BPS0H72O20+heYD9wo22o4uhUBrqSNa4GnrNnq8DGrATZ0rOttT3A08AVlnWPJ9EIG1sN3A3sBL5JHH/QUyu3GwXgIQNatvPru8n59RfTcj2JvnGb0auUh+ZjxHg+npqS42IEf9jS/wfOIhWXrWPG/h2Y37IyuQ5tthmofvvdDRxzmn0D6LJzLnXyRaTYM3lFnAj+WnvxAy52b3EHko3AzXZZtS9JblFqtqmxemeFll0DAl8AX1u/y9o1xvWl9rtitVKn5YNqRrLDHVCKeYG/0iWpu7JMD+wyzS6y35sTK0Q6HZ3OWaHZjrvJNBm1eb+Np7X7Bpcv5rnbtYrT/uo8Y37cwEsu/EVNbko0PeB8I87bbpses2ceyftyKjrwXtPgKTuwRG0OJ5spJQeTXsf/Z2fyanAoIxyOAQeA3jplcqxkDwE709I5l09MQMEul66RdK+keXbp9KOkT0IIR9xNXHWKNYJ91Jg9n4mMKoXpRrNWSpgGgBREzX8ialRDzbqPc21pS1tmn/wHwaF4hDtenJUAAAAASUVORK5CYII=)" aria-hidden="true"></span></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Install Winhance shortcut</span>
+            <p class="setting-desc">Puts an &#39;Install Winhance&#39; shortcut on the desktop of every new account. Opening it downloads and installs Winhance.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="setting-badge added">Added in v26.09.10</span></div>
+            <span class="setting-id">autounattend-desktop-shortcut</span>
+            </div>
+            </div>
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(82px + 13 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role"></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span></th></tr>
+            <tr class="mx-row-paths"></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"></td></tr>
+            </tbody>
+            </table>
+            </div>
+            <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">PowerShell Scripts</span><span class="mx-group-desc">Winhance runs this script when you apply the matching option.</span></div><div class="mx-code-label">When set to On</div><pre class="mx-code-body mx-code-powershell"><code>$shortcutPath = &quot;C:\Users\Default\Desktop\Install Winhance.lnk&quot;
+            $WshShell = New-Object -ComObject WScript.Shell
+            $shortcut = $WshShell.CreateShortcut($shortcutPath)
+            $shortcut.TargetPath = &quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot;
+            $shortcut.Arguments = &quot;-ExecutionPolicy Bypass -NoProfile -Command `&quot;irm &#39;https://get.winhance.net&#39; | iex`&quot;&quot;
+            $shortcut.IconLocation = &quot;C:\Windows\System32\appwiz.cpl,0&quot;
+            $shortcut.WorkingDirectory = &quot;C:\Windows\System32&quot;
+            $shortcut.Description = &quot;Download and install Winhance from GitHub&quot;
+            $shortcut.Save()
+            $bytes = [System.IO.File]::ReadAllBytes($shortcutPath)
+            $bytes[21] = 34
+            [System.IO.File]::WriteAllBytes($shortcutPath, $bytes)</code></pre></div></div>
+            </div>
+            </section>
+        </main>
+    </div>
+
+    <button class="sidebar-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+
+    <script src="../../js/docs-theme.js"></script>
+    <script src="../../js/docs-navigation.js"></script>
+    <script src="../../js/docs-search.js"></script>
+    <script src="../../js/docs-config.js"></script>
+    <script src="../../js/docs-metrics.js"></script>
+
+    <footer class="docs-footer">
+        <div class="docs-footer-container">
+            <div class="docs-footer-info">
+                &copy; 2026 Winhance.
+            </div>
+            <div class="docs-footer-meta">
+                <div class="docs-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                    <span class="docs-version">Docs v1.0.0</span>
+                </div>
+                <div class="docs-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <span class="docs-last-updated">Last Updated: Jan 28, 2026</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

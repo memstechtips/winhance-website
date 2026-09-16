@@ -4,27 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}} - Winhance Docs</title>
+    <title>Autounattend - Winhance Docs</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <!-- --font-main is now var(--winui-font-family) (Segoe UI Variable / Segoe UI, system
          fonts) — no longer needs Overpass. JetBrains Mono stays, code blocks still use it. -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
-    <link rel="stylesheet" href="{{siteRoot}}styles.css">
-    <link rel="stylesheet" href="{{root}}css/winui-tokens.css">
-    <link rel="stylesheet" href="{{root}}css/app-tokens.css">
-    <link rel="stylesheet" href="{{root}}css/docs-main.css">
-    <link rel="stylesheet" href="{{root}}css/docs-sidebar.css">
-    <link rel="stylesheet" href="{{root}}css/docs-syntax.css">
-    <script src="{{root}}js/theme-load.js"></script>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../css/winui-tokens.css">
+    <link rel="stylesheet" href="../css/app-tokens.css">
+    <link rel="stylesheet" href="../css/docs-main.css">
+    <link rel="stylesheet" href="../css/docs-sidebar.css">
+    <link rel="stylesheet" href="../css/docs-syntax.css">
+    <script src="../js/theme-load.js"></script>
 </head>
 
 <body>
     <header>
         <div class="header-container">
             <div class="logo">
-                <a href="{{root}}index.html" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="{{siteRoot}}images/winhance-rocket.png" alt="Winhance Logo"
+                <a href="../index.html" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="../../images/winhance-rocket.png" alt="Winhance Logo"
                         style="height: 32px; margin-right: 12px;">
                     <h1 style="font-size: 1.5rem; margin: 0; color: var(--text-color);">Winhance <span
                             style="font-weight: 300; opacity: 0.7;">Docs</span></h1>
@@ -67,46 +67,73 @@
             <nav>
                 <div class="sidebar-nav-group">
                     <div class="sidebar-nav-title">Getting Started</div>
-                    <a href="{{root}}getting-started/installation.html" class="sidebar-nav-item">Installation</a>
-                    <a href="{{root}}getting-started/quick-start.html" class="sidebar-nav-item">Quick Start</a>
+                    <a href="../getting-started/installation.html" class="sidebar-nav-item">Installation</a>
+                    <a href="../getting-started/quick-start.html" class="sidebar-nav-item">Quick Start</a>
                 </div>
 
                 <div class="sidebar-nav-group">
                     <div class="sidebar-nav-title">Features</div>
-                    <a href="{{root}}features/software-apps.html" class="sidebar-nav-item">Software & Apps</a>
+                    <a href="../features/software-apps.html" class="sidebar-nav-item">Software & Apps</a>
                     <div class="sidebar-sub-nav">
-                        <a href="{{root}}features/software-apps/windows-apps.html" class="sidebar-nav-item sub-item">Windows Apps</a>
-                        <a href="{{root}}features/software-apps/external-apps.html" class="sidebar-nav-item sub-item">External Apps</a>
+                        <a href="../features/software-apps/windows-apps.html" class="sidebar-nav-item sub-item">Windows Apps</a>
+                        <a href="../features/software-apps/external-apps.html" class="sidebar-nav-item sub-item">External Apps</a>
                     </div>
-                    <a href="{{root}}features/optimize.html" class="sidebar-nav-item">Optimize</a>
-                    {{sidebarOptimize}}
-                    <a href="{{root}}features/customize.html" class="sidebar-nav-item">Customize</a>
-                    {{sidebarCustomize}}
-                    <a href="{{root}}features/autounattend.html" class="sidebar-nav-item">Autounattend</a>
-                    {{sidebarAutounattend}}
-                    <a href="{{root}}features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
-                    <a href="{{root}}features/settings.html" class="sidebar-nav-item">Settings</a>
+                    <a href="../features/optimize.html" class="sidebar-nav-item">Optimize</a>
+                    <div class="sidebar-sub-nav">
+    <a href="../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy &amp; Security</a>
+    <a href="../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
+    <a href="../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming &amp; Performance</a>
+    <a href="../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
+    <a href="../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
+    <a href="../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
+                    </div>
+                    <a href="../features/customize.html" class="sidebar-nav-item">Customize</a>
+                    <div class="sidebar-sub-nav">
+    <a href="../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
+    <a href="../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
+    <a href="../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
+    <a href="../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
+    <a href="../features/customizations/time-region-language.html" class="sidebar-nav-item sub-item">Time &amp; Region</a>
+                    </div>
+                    <a href="../features/autounattend.html" class="sidebar-nav-item">Autounattend</a>
+                    <div class="sidebar-sub-nav">
+    <a href="../features/autounattend/answer-file.html" class="sidebar-nav-item sub-item">Answer file</a>
+                    </div>
+                    <a href="../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
+                    <a href="../features/settings.html" class="sidebar-nav-item">Settings</a>
                 </div>
 
                 <div class="sidebar-nav-group">
                     <div class="sidebar-nav-title">User Guides</div>
-                    <a href="{{root}}guides/configuration-files.html" class="sidebar-nav-item">Configuration Files</a>
-                    <a href="{{root}}guides/wimutil.html" class="sidebar-nav-item">WIMUtil Guide</a>
-                    <a href="{{root}}guides/autounattend.html" class="sidebar-nav-item">Autounattend Guide</a>
+                    <a href="../guides/configuration-files.html" class="sidebar-nav-item">Configuration Files</a>
+                    <a href="../guides/wimutil.html" class="sidebar-nav-item">WIMUtil Guide</a>
+                    <a href="../guides/autounattend.html" class="sidebar-nav-item">Autounattend Guide</a>
                 </div>
 
                 <div class="sidebar-nav-group">
                     <div class="sidebar-nav-title">Reference</div>
-                    <a href="{{root}}reference/cli-commands.html" class="sidebar-nav-item">CLI Commands</a>
-                    <a href="{{root}}reference/changelog.html" class="sidebar-nav-item">Changelog</a>
-                    <a href="{{root}}reference/troubleshooting.html" class="sidebar-nav-item">Troubleshooting</a>
-                    <a href="{{root}}reference/contributing.html" class="sidebar-nav-item">How to Contribute</a>
+                    <a href="../reference/cli-commands.html" class="sidebar-nav-item">CLI Commands</a>
+                    <a href="../reference/changelog.html" class="sidebar-nav-item">Changelog</a>
+                    <a href="../reference/troubleshooting.html" class="sidebar-nav-item">Troubleshooting</a>
+                    <a href="../reference/contributing.html" class="sidebar-nav-item">How to Contribute</a>
                 </div>
             </nav>
         </aside>
 
         <main class="docs-content">
-{{content}}
+            <section id="autounattend-overview">
+            <h1>Autounattend</h1>
+            <p>Winhance builds an <code>autounattend.xml</code> answer file: the file Windows Setup reads so it can install without stopping to ask. Everything on this page is written into that file when you build it. None of it is read from, or applied to, the PC you are using.</p>
+            <p>This section is the reference for what each setting puts in the file. For how to use the file once you have it, see the <a href="../guides/autounattend.html">Autounattend Guide</a>.</p>
+            <div class="features-grid">
+            <a href="autounattend/answer-file.html" class="feature-card">
+                <div class="feature-card-title">Answer file</div>
+                <p>What Winhance writes into autounattend.xml: architectures, edition, accounts, the setup screens Windows shows, and what runs after setup.</p>
+                <p class="feature-card-count">15 settings</p>
+            </a>
+            </div>
+
+            </section>
         </main>
     </div>
 
@@ -119,11 +146,11 @@
         </svg>
     </button>
 
-    <script src="{{root}}js/docs-theme.js"></script>
-    <script src="{{root}}js/docs-navigation.js"></script>
-    <script src="{{root}}js/docs-search.js"></script>
-    <script src="{{root}}js/docs-config.js"></script>
-    <script src="{{root}}js/docs-metrics.js"></script>
+    <script src="../js/docs-theme.js"></script>
+    <script src="../js/docs-navigation.js"></script>
+    <script src="../js/docs-search.js"></script>
+    <script src="../js/docs-config.js"></script>
+    <script src="../js/docs-metrics.js"></script>
 
     <footer class="docs-footer">
         <div class="docs-footer-container">

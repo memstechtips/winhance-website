@@ -15,6 +15,10 @@ Two upstreams, keyed `Material/<PascalName>` and `Fluent/<PascalName>`:
   (Copyright (c) 2020 Microsoft Corporation). Source:
   `https://github.com/microsoft/fluentui-system-icons`.
 
+A third pack, `AppAsset/<file>`, is first-party and not stored here: `vendor-icons.mjs`
+reads the PNG from the Winhance repo's `src/Winhance.UI/Assets/AppIcons/<file>` and embeds
+it as a data URI, and the card paints it in the text colour, as the app does.
+
 Full licence text and source URLs for both are recorded verbatim in the
 file's own `_meta` block.
 

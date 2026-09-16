@@ -153,14 +153,15 @@ function captionedLine(caption, text, valueClass) {
   return `<span class="mx-line">${cap}${value}</span>`;
 }
 
-// Adjacent only: two registry groups separated by a scheduled task stay two headings rather than one
-// reaching across the task (OptionMatrixView.ConsecutiveByKind).
+// Adjacent and same-worded only: two registry groups separated by a scheduled task stay two headings rather
+// than one reaching across the task, and a read-only group keeps its own heading rather than inheriting the
+// written one's (OptionMatrixView.ConsecutiveByKind).
 function consecutiveByKind(groups) {
   const runs = [];
   for (const g of groups) {
     const last = runs.length ? runs[runs.length - 1] : null;
     const prev = last ? last[last.length - 1] : null;
-    if (prev && prev.kind === g.kind && prev.startColumn + prev.columnSpan === g.startColumn) last.push(g);
+    if (prev && prev.kind === g.kind && prev.description === g.description && prev.startColumn + prev.columnSpan === g.startColumn) last.push(g);
     else runs.push([g]);
   }
   return runs;
@@ -311,7 +312,10 @@ function codeHost(matrix) {
     } else {
       parts.push('<div class="mx-code-separator"></div>');
     }
-    const kindClass = block.kind === 'PowerShell' ? 'mx-code-powershell' : 'mx-code-regcontent';
+    // Tested the same way round as the app: OptionMatrixView.xaml.cs:282-284 picks the RegContent style
+    // for RegFile and the PowerShell style for everything else, so a kind the site has never met (today
+    // SetupCommand) lands where the app puts it instead of being painted as a .reg payload.
+    const kindClass = block.kind === 'RegFile' ? 'mx-code-regcontent' : 'mx-code-powershell';
     parts.push(`<div class="mx-code-label">${esc(block.label)}</div>`);
     parts.push(`<pre class="mx-code-body ${kindClass}"><code>${esc(block.body)}</code></pre>`);
   }
@@ -546,6 +550,7 @@ function badge(cls, text, tooltip) {
 function iconSvg(icon, icons) {
   const art = icon ? icons[`${icon.pack}/${icon.name}`] : null;
   if (!art) return '';
+  if (art.image) return `<span class="setting-icon-image" style="--icon-image:url(${esc(art.image)})" aria-hidden="true"></span>`;
   return `<svg viewBox="${esc(art.viewBox)}" width="20" height="20" aria-hidden="true"><path d="${esc(art.path)}" fill="currentColor"/></svg>`;
 }
 
@@ -582,6 +587,10 @@ const POWER_PLAN_NOTE =
   'Winhance always offers these plans, creating one that is not installed yet. '
   + 'Any other power plan already on your PC is listed with them, with its own scheme GUID.';
 
+function hasPowerPlanGroup(s) {
+  return [s.matrix, s.matrixWin10].some((m) => (m?.groups ?? []).some((g) => g.kind === 'PowerPlan'));
+}
+
 // SettingItemViewModel raises a per-option warning as an InfoBar under the card, at Error severity, and
 // only while that option is selected. A docs page has no selection, so every warning the setting can raise
 // is shown at once and each names the option that raises it -- "When set to X" is the only part of the
@@ -615,8 +624,12 @@ export function renderCard(s, ctx, { child = false } = {}) {
   const geometries = ctx.geometries ?? {};
   const refBuilds = ctx.referenceBuilds ?? DEFAULT_REFERENCE_BUILDS;
   const badges = cardBadges(s, urlFor, geometries);
+  // Triggered off the matrix's own group kind, not the control kind: the PowerPlan control was folded
+  // into KeyedSelection, which the five region dropdowns also use -- and the note's wording is about
+  // power schemes, so it would be wrong on those. MatrixGroupKind.PowerPlan is the reference group the
+  // builder adds for exactly this one card.
   const body = matrixBody(s, refBuilds, urlFor, geometries)
-    + (s.control === 'PowerPlan' ? `\n<p class="mx-note-live">${esc(POWER_PLAN_NOTE)}</p>` : '');
+    + (hasPowerPlanGroup(s) ? `\n<p class="mx-note-live">${esc(POWER_PLAN_NOTE)}</p>` : '');
   const kids = (ctx.childrenOf.get(s.id) ?? []).map((k) => renderCard(k, ctx, { child: true })).join('\n');
 
   return `<div class="setting-card${child ? ' setting-card-child' : ''}" id="${esc(s.id)}">

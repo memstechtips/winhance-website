@@ -1,9 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, writeFileSync, mkdtempSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdtempSync, mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { vendorIcons } from '../vendor-icons.mjs';
 
 const SOURCE_PATH = new URL('../icon-sources/icons.json', import.meta.url);
@@ -79,6 +80,41 @@ test('vendorIcons dedupes repeated icon identities across settings', () => {
 function scratchDir() {
   return mkdtempSync(join(tmpdir(), 'vendor-icons-'));
 }
+
+const PNG = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+
+function appRepo() {
+  const root = scratchDir();
+  const assets = join(root, 'src', 'Winhance.UI', 'Assets', 'AppIcons');
+  mkdirSync(assets, { recursive: true });
+  writeFileSync(join(assets, 'rocket.png'), PNG);
+  return root;
+}
+
+function appAssetCatalog(...names) {
+  return { features: [{ id: 'Stub', settings: names.map((name, i) => ({ id: `s${i}`, icon: { pack: 'AppAsset', name } })) }] };
+}
+
+test('vendorIcons embeds an AppAsset identity as the app PNG, and reports a file the app lacks as missing', () => {
+  const { icons, missing } = vendorIcons({ catalog: appAssetCatalog('rocket.png', 'gone.png'), source, appRoot: appRepo() });
+  assert.deepEqual(icons, { 'AppAsset/rocket.png': { image: `data:image/png;base64,${PNG.toString('base64')}` } });
+  assert.deepEqual(missing, ['AppAsset/gone.png']);
+});
+
+test('CLI reads AppAsset files from the repo the --catalog file sits in', () => {
+  const root = appRepo();
+  const exportDir = join(root, 'extras', 'docs-export');
+  mkdirSync(exportDir, { recursive: true });
+  const catalogPath = join(exportDir, 'catalog.json');
+  const outPath = join(root, 'icons.json');
+  writeFileSync(catalogPath, JSON.stringify(appAssetCatalog('rocket.png')));
+
+  const cli = new URL('../vendor-icons.mjs', import.meta.url).pathname;
+  execFileSync('node', [cli, '--catalog', catalogPath, '--source', fileURLToPath(SOURCE_PATH), '--out', outPath], { encoding: 'utf8' });
+
+  const parsed = JSON.parse(readFileSync(outPath, 'utf8'));
+  assert.equal(parsed.icons['AppAsset/rocket.png'].image, `data:image/png;base64,${PNG.toString('base64')}`);
+});
 
 test('CLI writes a deterministic, sorted icons.json and reports counts', () => {
   const dir = scratchDir();

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time, Region and Language - Winhance Docs</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!-- --font-main is now var(--winui-font-family) (Segoe UI Variable / Segoe UI, system
+         fonts) — no longer needs Overpass. JetBrains Mono stays, code blocks still use it. -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../css/winui-tokens.css">
+    <link rel="stylesheet" href="../../css/app-tokens.css">
+    <link rel="stylesheet" href="../../css/docs-main.css">
+    <link rel="stylesheet" href="../../css/docs-sidebar.css">
+    <link rel="stylesheet" href="../../css/docs-syntax.css">
+    <script src="../../js/theme-load.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="../../index.html" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="../../../images/winhance-rocket.png" alt="Winhance Logo"
+                        style="height: 32px; margin-right: 12px;">
+                    <h1 style="font-size: 1.5rem; margin: 0; color: var(--text-color);">Winhance <span
+                            style="font-weight: 300; opacity: 0.7;">Docs</span></h1>
+                </a>
+            </div>
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="docs-search" placeholder="Search documentation...">
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+                </button>
+                <a href="https://github.com/memstechtips/Winhance" target="_blank" class="icon-btn github-btn"
+                    title="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="docs-wip-banner">
+        <strong>Work in Progress:</strong> Documentation is a work in progress. Some pages may be incomplete.
+    </div>
+
+    <div class="docs-layout has-banner">
+                        <aside class="docs-sidebar">
+            <nav>
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Getting Started</div>
+                    <a href="../../getting-started/installation.html" class="sidebar-nav-item">Installation</a>
+                    <a href="../../getting-started/quick-start.html" class="sidebar-nav-item">Quick Start</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Features</div>
+                    <a href="../../features/software-apps.html" class="sidebar-nav-item">Software & Apps</a>
+                    <div class="sidebar-sub-nav">
+                        <a href="../../features/software-apps/windows-apps.html" class="sidebar-nav-item sub-item">Windows Apps</a>
+                        <a href="../../features/software-apps/external-apps.html" class="sidebar-nav-item sub-item">External Apps</a>
+                    </div>
+                    <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
+                    <div class="sidebar-sub-nav">
+    <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy &amp; Security</a>
+    <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
+    <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming &amp; Performance</a>
+    <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
+    <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
+    <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
+                    </div>
+                    <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
+                    <div class="sidebar-sub-nav">
+    <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
+    <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
+    <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
+    <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
+    <a href="../../features/customizations/time-region-language.html" class="sidebar-nav-item sub-item">Time &amp; Region</a>
+                    </div>
+                    <a href="../../features/autounattend.html" class="sidebar-nav-item">Autounattend</a>
+                    <div class="sidebar-sub-nav">
+    <a href="../../features/autounattend/answer-file.html" class="sidebar-nav-item sub-item">Answer file</a>
+                    </div>
+                    <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
+                    <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">User Guides</div>
+                    <a href="../../guides/configuration-files.html" class="sidebar-nav-item">Configuration Files</a>
+                    <a href="../../guides/wimutil.html" class="sidebar-nav-item">WIMUtil Guide</a>
+                    <a href="../../guides/autounattend.html" class="sidebar-nav-item">Autounattend Guide</a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <div class="sidebar-nav-title">Reference</div>
+                    <a href="../../reference/cli-commands.html" class="sidebar-nav-item">CLI Commands</a>
+                    <a href="../../reference/changelog.html" class="sidebar-nav-item">Changelog</a>
+                    <a href="../../reference/troubleshooting.html" class="sidebar-nav-item">Troubleshooting</a>
+                    <a href="../../reference/contributing.html" class="sidebar-nav-item">How to Contribute</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="docs-content">
+            <section id="time-region-and-language">
+            <h1>Time, Region and Language</h1>
+
+            <p>Where Windows is, what time it keeps, and how it writes dates, numbers and currency. Winhance sets all of it from one page, writing the same registry values Windows keeps.</p>
+            <p>The five dropdowns at the top are filled by Windows itself, so the list of time zones, formats, locations and keyboard layouts differs from one PC to another. Their tables name the values Winhance writes rather than listing choices a page cannot know in advance.</p>
+            <div class="callout callout-info">
+                <div class="callout-title">Technical Details</div>
+                <p>Every setting below shows exactly what Winhance reads and writes: registry values, scheduled tasks, power settings and scripts, with the recommended value and the Windows default marked. This is the same table the app shows under each setting's Technical Details.</p>
+            </div>
+
+            <h2 id="time">Time</h2>
+            <p>The time zone this PC keeps its clock in. The change takes effect as soon as you apply it.</p>
+            <div class="setting-card" id="region-time-zone">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12,1C8.14,1 5,4.14 5,8A7,7 0 0,0 12,15C15.86,15 19,11.87 19,8C19,4.14 15.86,1 12,1M12,3.15C14.67,3.15 16.85,5.32 16.85,8C16.85,10.68 14.67,12.85 12,12.85A4.85,4.85 0 0,1 7.15,8A4.85,4.85 0 0,1 12,3.15M11,5V8.69L14.19,10.53L14.94,9.23L12.5,7.82V5M4,16V24H6V21H18V24L22,20L18,16V19H6V16" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Time Zone</span>
+            <p class="setting-desc">The time zone this PC keeps its clock in. Applies at once.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.09.05</span></div>
+            <span class="setting-id">region-time-zone</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(298.6px + 36 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24px + 4 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation">HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">TimeZoneKeyName</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th></tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <h2 id="region">Region</h2>
+            <p>The regional format Windows starts from, and the country or region apps use for local content. The format here sets the defaults that the Formats group overrides one at a time.</p>
+            <div class="setting-card" id="region-format">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12,2A8,8 0 0,0 4,10C4,14.03 7,17.42 11,17.93V19H10A1,1 0 0,0 9,20H2V22H9A1,1 0 0,0 10,23H14A1,1 0 0,0 15,22H22V20H15A1,1 0 0,0 14,19H13V17.93C17,17.43 20,14.03 20,10A8,8 0 0,0 12,2M12,4C12,4 12.74,5.28 13.26,7H10.74C11.26,5.28 12,4 12,4M9.77,4.43C9.5,4.93 9.09,5.84 8.74,7H6.81C7.5,5.84 8.5,4.93 9.77,4.43M14.23,4.44C15.5,4.94 16.5,5.84 17.19,7H15.26C14.91,5.84 14.5,4.93 14.23,4.44M6.09,9H8.32C8.28,9.33 8.25,9.66 8.25,10C8.25,10.34 8.28,10.67 8.32,11H6.09C6.03,10.67 6,10.34 6,10C6,9.66 6.03,9.33 6.09,9M10.32,9H13.68C13.72,9.33 13.75,9.66 13.75,10C13.75,10.34 13.72,10.67 13.68,11H10.32C10.28,10.67 10.25,10.34 10.25,10C10.25,9.66 10.28,9.33 10.32,9M15.68,9H17.91C17.97,9.33 18,9.66 18,10C18,10.34 17.97,10.67 17.91,11H15.68C15.72,10.67 15.75,10.34 15.75,10C15.75,9.66 15.72,9.33 15.68,9M6.81,13H8.74C9.09,14.16 9.5,15.07 9.77,15.56C8.5,15.06 7.5,14.16 6.81,13M10.74,13H13.26C12.74,14.72 12,16 12,16C12,16 11.26,14.72 10.74,13M15.26,13H17.19C16.5,14.16 15.5,15.07 14.23,15.57C14.5,15.07 14.91,14.16 15.26,13Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Regional Format</span>
+            <p class="setting-desc">How dates, times, numbers and currency are written. Sets the defaults the Formats group below can override.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.09.05</span></div>
+            <span class="setting-id">region-format</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(792.6px + 643 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24.6px + 4 * var(--mx-char-w))"><col style="width: calc(24px + 21 * var(--mx-char-w))"><col style="width: calc(24px + 17 * var(--mx-char-w))"><col style="width: calc(24px + 19 * var(--mx-char-w))"><col style="width: calc(24px + 20 * var(--mx-char-w))"><col style="width: calc(24px + 17 * var(--mx-char-w))"><col style="width: calc(24px + 21 * var(--mx-char-w))"><col style="width: calc(24px + 20 * var(--mx-char-w))"><col style="width: calc(24px + 22 * var(--mx-char-w))"><col style="width: calc(24px + 21 * var(--mx-char-w))"><col style="width: calc(24px + 26 * var(--mx-char-w))"><col style="width: calc(24px + 19 * var(--mx-char-w))"><col style="width: calc(24px + 25 * var(--mx-char-w))"><col style="width: calc(24px + 26 * var(--mx-char-w))"><col style="width: calc(24px + 20 * var(--mx-char-w))"><col style="width: calc(24px + 24 * var(--mx-char-w))"><col style="width: calc(24px + 20 * var(--mx-char-w))"><col style="width: calc(24px + 23 * var(--mx-char-w))"><col style="width: calc(24px + 22 * var(--mx-char-w))"><col style="width: calc(24px + 20 * var(--mx-char-w))"><col style="width: calc(24px + 19 * var(--mx-char-w))"><col style="width: calc(24px + 21 * var(--mx-char-w))"><col style="width: calc(24px + 17 * var(--mx-char-w))"><col style="width: calc(24px + 17 * var(--mx-char-w))"><col style="width: calc(24px + 17 * var(--mx-char-w))"><col style="width: calc(24px + 17 * var(--mx-char-w))"><col style="width: calc(24px + 21 * var(--mx-char-w))"><col style="width: calc(24px + 17 * var(--mx-char-w))"><col style="width: calc(24px + 17 * var(--mx-char-w))"><col style="width: calc(24px + 18 * var(--mx-char-w))"><col style="width: calc(24px + 22 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="intl has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">intl restart</span></div></th><th class="mx-group" colspan="31" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="31"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\International">HKCU\Control Panel\International</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">LocaleName</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">Locale</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sDecimal</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sThousand</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sList</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sShortDate</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sLongDate</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sTimeFormat</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sShortTime</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">iFirstDayOfWeek</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">iMeasure</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sMonDecimalSep</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sMonThousandSep</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sCurrency</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sNegativeSign</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sGrouping</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sMonGrouping</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">iCurrDigits</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">iCurrency</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">iNegCurr</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">iNegNumber</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">s1159</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">s2359</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sDate</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sTime</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sYearMonth</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">iDate</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">iTime</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">iTLZero</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">iTimePrefix</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">iFirstWeekOfYear</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th></tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <div class="setting-card" id="region-home-location">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Home Location</span>
+            <p class="setting-desc">The country or region apps use for local content.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.09.05</span></div>
+            <span class="setting-id">region-home-location</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(96.6px + 44 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24.6px + 4 * var(--mx-char-w))"><col style="width: calc(24px + 17 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="intl has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">intl restart</span></div></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="2"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\International\Geo">HKCU\Control Panel\International\Geo</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">Nation</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">Name</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th></tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <h2 id="language-and-keyboard">Language and keyboard</h2>
+            <p>The keyboard layout Windows starts with, and the code page it uses for programs that are not Unicode aware. The layout applies at your next sign-in, the code page after a restart.</p>
+            <div class="setting-card" id="region-keyboard-layout">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M19,10H17V8H19M19,13H17V11H19M16,10H14V8H16M16,13H14V11H16M16,17H8V15H16M7,10H5V8H7M7,13H5V11H7M8,11H10V13H8M8,8H10V10H8M11,11H13V13H11M11,8H13V10H11M20,5H4C2.89,5 2,5.89 2,7V17A2,2 0 0,0 4,19H20A2,2 0 0,0 22,17V7C22,5.89 21.1,5 20,5Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Keyboard Layout</span>
+            <p class="setting-desc">The layout Windows starts with. Applies at your next sign-in.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.09.05</span></div>
+            <span class="setting-id">region-keyboard-layout</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(317px + 44 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24px + 4 * var(--mx-char-w))"><col style="width: calc(120.9px + 17 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Keyboard Layout\Preload">HKCU\Keyboard Layout\Preload</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Keyboard Layout\Substitutes">HKCU\Keyboard Layout\Substitutes</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">1</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col" title="This setting uses the registry key itself, not one named value inside it."><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">(Key)</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th></tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <div class="setting-card" id="region-system-locale">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Language for Non-Unicode Programs</span>
+            <p class="setting-desc">The code page Windows uses for programs that are not Unicode aware. Applies after a restart.</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.09.05</span></div>
+            <span class="setting-id">region-system-locale</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(472px + 79 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(113px + 4 * var(--mx-char-w))"><col style="width: calc(263px + 18 * var(--mx-char-w))"><col style="width: calc(24px + 17 * var(--mx-char-w))"><col style="width: calc(24px + 17 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Reboot for the change to fully take effect">Requires a system restart</span></div></th><th class="mx-group" colspan="4" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Nls\Language">HKLM\SYSTEM\CurrentControlSet\Control\Nls\Language</code></span></th><th class="mx-paths" colspan="3"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Nls\CodePage">HKLM\SYSTEM\CurrentControlSet\Control\Nls\CodePage</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">Default</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">ACP</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">OEMCP</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">MACCP</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th></tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <h2 id="formats">Formats</h2>
+            <p>Individual overrides for the pieces of the regional format: the short date, the first day of the week, the decimal and list separators, and whether measurements are metric or imperial.</p>
+            <div class="setting-card" id="explorer-customization-short-date">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9,10V12H7V10H9M13,10V12H11V10H13M17,10V12H15V10H17M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5A2,2 0 0,1 5,3H6V1H8V3H16V1H18V3H19M19,19V8H5V19H19M9,14V16H7V14H9M13,14V16H11V14H13M17,14V16H15V14H17Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Short Date Format</span>
+            <p class="setting-desc">Choose the format used to display short dates across Windows</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.04.10</span></div>
+            <span class="setting-id">explorer-customization-short-date</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 11 * var(--mx-char-w)); --mx-table-w: calc(166.1px + 36 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24px + 4 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="intl has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">intl restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\International">HKCU\Control Panel\International</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sShortDate</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>M/d/yyyy</code></th><td class="mx-role"></td><td class="mx-value"><code>M/d/yyyy (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>dd/MM/yyyy</code></th><td class="mx-role"></td><td class="mx-value"><code>dd/MM/yyyy</code></td></tr><tr><th class="mx-option" scope="row"><code>yyyy-MM-dd</code></th><td class="mx-role"></td><td class="mx-value"><code>yyyy-MM-dd</code></td></tr><tr><th class="mx-option" scope="row"><code>yyyy/MM/dd</code></th><td class="mx-role"></td><td class="mx-value"><code>yyyy/MM/dd</code></td></tr><tr><th class="mx-option" scope="row"><code>dd MMM yyyy</code></th><td class="mx-role"></td><td class="mx-value"><code>dd MMM yyyy</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <div class="setting-card" id="explorer-customization-first-day-of-week">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M9,10H7V17H9V10Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">First Day of Week</span>
+            <p class="setting-desc">Choose which day is displayed as the first day of the week in calendars</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.04.10</span></div>
+            <span class="setting-id">explorer-customization-first-day-of-week</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 9 * var(--mx-char-w)); --mx-table-w: calc(162.6px + 42 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="intl has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">intl restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\International">HKCU\Control Panel\International</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">iFirstDayOfWeek</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>Sunday</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>6 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Monday</code></th><td class="mx-role"></td><td class="mx-value"><code>0</code></td></tr><tr><th class="mx-option" scope="row"><code>Tuesday</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Wednesday</code></th><td class="mx-role"></td><td class="mx-value"><code>2</code></td></tr><tr><th class="mx-option" scope="row"><code>Thursday</code></th><td class="mx-role"></td><td class="mx-value"><code>3</code></td></tr><tr><th class="mx-option" scope="row"><code>Friday</code></th><td class="mx-role"></td><td class="mx-value"><code>4</code></td></tr><tr><th class="mx-option" scope="row"><code>Saturday</code></th><td class="mx-role"></td><td class="mx-value"><code>5</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <div class="setting-card" id="explorer-customization-number-decimal">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4,17V9H2V7H6V17H4M22,15C22,16.11 21.1,17 20,17H16V15H20V13H18V11H20V9H16V7H20A2,2 0 0,1 22,9V10.5A1.5,1.5 0 0,1 20.5,12A1.5,1.5 0 0,1 22,13.5V15M14,15V17H8V13C8,11.89 8.9,11 10,11H12V9H8V7H12A2,2 0 0,1 14,9V11C14,12.11 13.1,13 12,13H10V15H14Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Number Decimal Symbol</span>
+            <p class="setting-desc">Choose the symbol used to separate whole numbers from decimals in number formatting</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.04.10</span></div>
+            <span class="setting-id">explorer-customization-number-decimal</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 14 * var(--mx-char-w)); --mx-table-w: calc(181.1px + 37 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24px + 4 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="intl has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">intl restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\International">HKCU\Control Panel\International</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sDecimal</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>. (Period)</code></th><td class="mx-role"></td><td class="mx-value"><code>. (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>, (Comma)</code></th><td class="mx-role"></td><td class="mx-value"><code>,</code></td></tr><tr><th class="mx-option" scope="row"><code>  (Space)</code></th><td class="mx-role"></td><td class="mx-value"><code> </code></td></tr><tr><th class="mx-option" scope="row"><code>&#39; (Apostrophe)</code></th><td class="mx-role"></td><td class="mx-value"><code>&#39;</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <div class="setting-card" id="explorer-customization-list-separator">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7,5H21V7H7V5M7,13V11H21V13H7M4,4.5A1.5,1.5 0 0,1 5.5,6A1.5,1.5 0 0,1 4,7.5A1.5,1.5 0 0,1 2.5,6A1.5,1.5 0 0,1 4,4.5M4,10.5A1.5,1.5 0 0,1 5.5,12A1.5,1.5 0 0,1 4,13.5A1.5,1.5 0 0,1 2.5,12A1.5,1.5 0 0,1 4,10.5M7,19V17H21V19H7M4,16.5A1.5,1.5 0 0,1 5.5,18A1.5,1.5 0 0,1 4,19.5A1.5,1.5 0 0,1 2.5,18A1.5,1.5 0 0,1 4,16.5Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">List Separator</span>
+            <p class="setting-desc">Choose the character used to separate items in lists, such as in CSV exports and formulas</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.04.10</span></div>
+            <span class="setting-id">explorer-customization-list-separator</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 13 * var(--mx-char-w)); --mx-table-w: calc(230.1px + 37 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="intl has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">intl restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\International">HKCU\Control Panel\International</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sList</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>, (Comma)</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>, (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>; (Semicolon)</code></th><td class="mx-role"></td><td class="mx-value"><code>;</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <div class="setting-card" id="explorer-customization-measurement-system">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3,5V21H9V19.5H7V18H9V16.5H5V15H9V13.5H7V12H9V10.5H5V9H9V5H10.5V9H12V7H13.5V9H15V5H16.5V9H18V7H19.5V9H21V3H5A2,2 0 0,0 3,5M6,7A1,1 0 0,1 5,6A1,1 0 0,1 6,5A1,1 0 0,1 7,6A1,1 0 0,1 6,7Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Measurement System</span>
+            <p class="setting-desc">Choose whether Windows uses the metric or U.S. imperial measurement system</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.04.10</span></div>
+            <span class="setting-id">explorer-customization-measurement-system</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 15 * var(--mx-char-w)); --mx-table-w: calc(181.1px + 38 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24px + 4 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="intl has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">intl restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\International">HKCU\Control Panel\International</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">iMeasure</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>Metric</code></th><td class="mx-role"></td><td class="mx-value"><code>0 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>U.S. (Imperial)</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+
+            <div class="setting-card" id="explorer-customization-currency-decimal">
+            <div class="setting-header">
+            <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4.41 3L3 4.41L5.69 7.1C4.63 8.46 4 10.15 4 12C4 13.85 4.63 15.55 5.69 16.9L3 19.59L4.41 21L7.1 18.31C8.46 19.37 10.15 20 12 20C13.85 20 15.55 19.37 16.9 18.31L19.59 21L21 19.59L18.31 16.9C19.37 15.54 20 13.85 20 12C20 10.15 19.37 8.45 18.31 7.1L21 4.41L19.59 3L16.9 5.69C15.54 4.63 13.85 4 12 4C10.15 4 8.45 4.63 7.1 5.69L4.41 3M12 6C15.31 6 18 8.69 18 12C18 15.31 15.31 18 12 18C8.69 18 6 15.31 6 12C6 8.69 8.69 6 12 6Z" fill="currentColor"/></svg></span>
+            <div class="setting-header-text">
+            <span class="setting-name">Currency Decimal Symbol</span>
+            <p class="setting-desc">Choose the symbol used to separate whole numbers from decimals in currency formatting</p>
+            </div>
+            <div class="setting-pills">
+            <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.04.10</span></div>
+            <span class="setting-id">explorer-customization-currency-decimal</span>
+            </div>
+            </div>
+            <div class="mx-box" style="--mx-option-w: calc(24px + 14 * var(--mx-char-w)); --mx-table-w: calc(136.1px + 43 * var(--mx-char-w))">
+            <div class="mx-scroll">
+            <table class="mx-grid">
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24px + 4 * var(--mx-char-w))"><col></colgroup>
+            <thead>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="intl has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">intl restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\International">HKCU\Control Panel\International</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">sMonDecimalSep</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th></tr>
+            </thead>
+            <tbody>
+            <tr><th class="mx-option" scope="row"><code>. (Period)</code></th><td class="mx-role"></td><td class="mx-value"><code>. (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>, (Comma)</code></th><td class="mx-role"></td><td class="mx-value"><code>,</code></td></tr><tr><th class="mx-option" scope="row"><code>  (Space)</code></th><td class="mx-role"></td><td class="mx-value"><code> </code></td></tr><tr><th class="mx-option" scope="row"><code>&#39; (Apostrophe)</code></th><td class="mx-role"></td><td class="mx-value"><code>&#39;</code></td></tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+            </section>
+        </main>
+    </div>
+
+    <button class="sidebar-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+
+    <script src="../../js/docs-theme.js"></script>
+    <script src="../../js/docs-navigation.js"></script>
+    <script src="../../js/docs-search.js"></script>
+    <script src="../../js/docs-config.js"></script>
+    <script src="../../js/docs-metrics.js"></script>
+
+    <footer class="docs-footer">
+        <div class="docs-footer-container">
+            <div class="docs-footer-info">
+                &copy; 2026 Winhance.
+            </div>
+            <div class="docs-footer-meta">
+                <div class="docs-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                    <span class="docs-version">Docs v1.0.0</span>
+                </div>
+                <div class="docs-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <span class="docs-last-updated">Last Updated: Jan 28, 2026</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

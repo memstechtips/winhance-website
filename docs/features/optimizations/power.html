@@ -93,6 +93,11 @@
     <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
     <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
     <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
+    <a href="../../features/customizations/time-region-language.html" class="sidebar-nav-item sub-item">Time &amp; Region</a>
+                    </div>
+                    <a href="../../features/autounattend.html" class="sidebar-nav-item">Autounattend</a>
+                    <div class="sidebar-sub-nav">
+    <a href="../../features/autounattend/answer-file.html" class="sidebar-nav-item sub-item">Answer file</a>
                     </div>
                     <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
                     <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
@@ -380,21 +385,21 @@
             <span class="setting-id">power-hibernation-enable</span>
             </div>
             </div>
-            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(246.9px + 44 * var(--mx-char-w))">
+            <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(253.9px + 50 * var(--mx-char-w))">
             <div class="mx-scroll">
             <table class="mx-grid">
-            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(75px + 11 * var(--mx-char-w))"><col></colgroup>
+            <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col style="width: calc(147.9px + 27 * var(--mx-char-w))"><col></colgroup>
             <thead>
-            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+            <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Also runs</span></th></tr>
             <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power">HKLM\SYSTEM\CurrentControlSet\Control\Power</code></span></th></tr>
-            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">HibernateEnabled</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+            <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">HibernateEnabled</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th><th class="mx-col mx-col-script" scope="col"><span class="mx-line"><code class="mx-name">Script</code></span></th></tr>
             </thead>
             <tbody>
-            <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr><tr class="mx-notes-head"><th colspan="2" scope="col"><span class="mx-group-label">Also happens when you apply</span></th><th colspan="1" scope="col"><span class="mx-caption">Details</span></th></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-name"><span class="mx-note-label">Native power write</span></span></th><td colspan="1">level 10 = 1</td></tr><tr class="mx-note"><th colspan="2" scope="row"><span class="mx-note-name"><span class="mx-note-label">Native power write</span></span></th><td colspan="1">level 10 = 0</td></tr>
+            <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td><td class="mx-value">✓</td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td><td class="mx-value">✓</td></tr>
             </tbody>
             </table>
             </div>
-            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">On</span><span class="mx-links-chips"><span class="mx-chip" title="Show Hibernate Option = Enabled">Enables: <a href="#start-power-hibernate-option" class="mx-chip-link">Show Hibernate Option</a> (set automatically)</span></span></div></div></div>
+            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">On</span><span class="mx-links-chips"><span class="mx-chip" title="Show Hibernate Option = Common_Enabled">Enables: <a href="#start-power-hibernate-option" class="mx-chip-link">Show Hibernate Option</a> (set automatically)</span></span></div></div><div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">PowerShell Scripts</span><span class="mx-group-desc">Winhance runs this script when you apply the matching option.</span></div><div class="mx-code-label">When set to On</div><pre class="mx-code-body mx-code-powershell"><code>powercfg /hibernate on</code></pre><div class="mx-code-separator"></div><div class="mx-code-label">When set to Off</div><pre class="mx-code-body mx-code-powershell"><code>powercfg /hibernate off</code></pre></div></div>
             <div class="setting-children">
             <div class="setting-card setting-card-child" id="power-hibernate-timeout">
             <div class="setting-header">
@@ -450,7 +455,7 @@
             </tbody>
             </table>
             </div>
-            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">Off</span><span class="mx-links-chips"><span class="mx-chip" title="Hibernation = Enabled">Requires: <a href="#power-hibernation-enable" class="mx-chip-link">Hibernation</a> (set automatically)</span></span></div><div class="mx-links-row"><span class="mx-links-option">On</span><span class="mx-links-chips"><span class="mx-chip" title="Hibernation = Enabled">Requires: <a href="#power-hibernation-enable" class="mx-chip-link">Hibernation</a> (set automatically)</span></span></div></div></div>
+            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">Off</span><span class="mx-links-chips"><span class="mx-chip" title="Hibernation = Common_Enabled">Requires: <a href="#power-hibernation-enable" class="mx-chip-link">Hibernation</a> (set automatically)</span></span></div><div class="mx-links-row"><span class="mx-links-option">On</span><span class="mx-links-chips"><span class="mx-chip" title="Hibernation = Common_Enabled">Requires: <a href="#power-hibernation-enable" class="mx-chip-link">Hibernation</a> (set automatically)</span></span></div></div></div>
             </div>
             <div class="setting-card setting-card-child" id="power-fast-startup">
             <div class="setting-header">
@@ -477,7 +482,7 @@
             </tbody>
             </table>
             </div>
-            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">Off</span><span class="mx-links-chips"><span class="mx-chip" title="Hibernation = Enabled">Requires: <a href="#power-hibernation-enable" class="mx-chip-link">Hibernation</a> (set automatically)</span></span></div></div></div>
+            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">Off</span><span class="mx-links-chips"><span class="mx-chip" title="Hibernation = Common_Enabled">Requires: <a href="#power-hibernation-enable" class="mx-chip-link">Hibernation</a> (set automatically)</span></span></div></div></div>
             </div>
             <div class="setting-card setting-card-child" id="start-power-hibernate-option">
             <div class="setting-header">
@@ -505,7 +510,7 @@
             </tbody>
             </table>
             </div>
-            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">Off</span><span class="mx-links-chips"><span class="mx-chip" title="Hibernation = Enabled">Requires: <a href="#power-hibernation-enable" class="mx-chip-link">Hibernation</a> (set automatically)</span></span></div></div></div>
+            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">Off</span><span class="mx-links-chips"><span class="mx-chip" title="Hibernation = Common_Enabled">Requires: <a href="#power-hibernation-enable" class="mx-chip-link">Hibernation</a> (set automatically)</span></span></div></div></div>
             </div>
             </div>
             </div>
@@ -1490,7 +1495,7 @@
             </tbody>
             </table>
             </div>
-            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">Off</span><span class="mx-links-chips"><span class="mx-chip" title="Lock Screen = Enabled">Requires: <a href="../../features/optimizations/privacy-security.html#privacy-lock-screen" class="mx-chip-link">Lock Screen</a> (set automatically)</span></span></div></div></div>
+            <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">Off</span><span class="mx-links-chips"><span class="mx-chip" title="Lock Screen = Common_Enabled">Requires: <a href="../../features/optimizations/privacy-security.html#privacy-lock-screen" class="mx-chip-link">Lock Screen</a> (set automatically)</span></span></div></div></div>
             </div>
 
             <div class="setting-card" id="start-power-sleep-option">

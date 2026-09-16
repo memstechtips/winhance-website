@@ -4,9 +4,9 @@
  */
 // @generated:start docs-gen
 const DocsConfig = {
-    version: 'Docs v26.08.20',
-    lastUpdated: 'Aug 20, 2026',
-    winhanceVersion: 'v26.08.20',
+    version: 'Docs v26.09.18',
+    lastUpdated: 'Sep 18, 2026',
+    winhanceVersion: 'v26.09.18',
     githubReleasesUrl: 'https://github.com/memstechtips/Winhance/releases'
 };
 // @generated:end docs-gen
