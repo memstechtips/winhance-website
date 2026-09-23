@@ -1773,6 +1773,15 @@ footer {
 .scard-emerald { border-color: rgba(80, 200, 120, .6); box-shadow: 0 0 22px rgba(80, 200, 120, .09); }
 .scard-emerald .scard-tier { color: var(--tier-emerald); }
 
+/* Same treatment as the in-app cards (Winhance SponsorsDialogBuilder): a tier-coloured wash fading down
+   from the top, and a filled diamond (emerald) or star (gold) before the tier name. */
+.scard-bronze { background: linear-gradient(180deg, rgba(205, 127, 50, .19) 0%, rgba(205, 127, 50, 0) 60%), var(--sc-panel); }
+.scard-silver { background: linear-gradient(180deg, rgba(174, 182, 194, .19) 0%, rgba(174, 182, 194, 0) 60%), var(--sc-panel); }
+.scard-gold { background: linear-gradient(180deg, rgba(255, 215, 0, .19) 0%, rgba(255, 215, 0, 0) 60%), var(--sc-panel); }
+.scard-emerald { background: linear-gradient(180deg, rgba(80, 200, 120, .19) 0%, rgba(80, 200, 120, 0) 60%), var(--sc-panel); }
+.scard-gold .scard-tier::before { content: '\2605\00a0'; }
+.scard-emerald .scard-tier::before { content: '\25C6\00a0'; }
+
 .scard-bronze .scard-badge { background: linear-gradient(140deg, #E2975B, #B86F28); color: #1A0F03; }
 .scard-silver .scard-badge { background: linear-gradient(140deg, #CDD5E0, #96A0AE); color: #14171C; }
 .scard-emerald .scard-badge { background: linear-gradient(140deg, #72E2A0, #39A861); color: #06180C; }
