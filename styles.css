@@ -1734,9 +1734,6 @@ footer {
     object-fit: contain;
     margin-bottom: 8px;
     border-radius: 13px;
-    background: rgba(255, 255, 255, .05);
-    border: 1px solid var(--sc-line-2);
-    padding: 10px;
 }
 
 .scard-tier {
