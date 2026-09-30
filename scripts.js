@@ -399,14 +399,7 @@ window.addEventListener('scroll', () => {
 
             sponsors.forEach(function (s) {
                 var el = document.createElement('div');
-                el.className = 'scard' + (s.example ? ' scard-example' : '') + ' scard-' + s.tier;
-
-                if (s.example) {
-                    var b = document.createElement('span');
-                    b.className = 'scard-badge';
-                    b.textContent = 'Example — this could be you';
-                    el.appendChild(b);
-                }
+                el.className = 'scard scard-' + s.tier;
 
                 var t = document.createElement('div');
                 t.className = 'scard-tier';
@@ -431,6 +424,14 @@ window.addEventListener('scroll', () => {
                 nm.className = 'scard-name';
                 nm.textContent = String(s.name || '').slice(0, 60);
                 el.appendChild(nm);
+
+                // Slogan is a gold-and-up perk.
+                if (s.slogan && (s.tier === 'gold' || s.tier === 'emerald')) {
+                    var sg = document.createElement('div');
+                    sg.className = 'scard-slogan';
+                    sg.textContent = String(s.slogan).slice(0, 80);
+                    el.appendChild(sg);
+                }
 
                 if (s.city) {
                     var c = document.createElement('div');

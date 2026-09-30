@@ -1697,24 +1697,6 @@ footer {
     gap: 3px;
 }
 
-.scard-example { border-style: dashed; border-color: rgba(255, 215, 0, .35); }
-
-.scard-badge {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    font-size: .6rem;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: #161300;
-    background: linear-gradient(140deg, #FFE34D, #E6C200);
-    padding: 4px 11px;
-    border-radius: 999px;
-}
-
 .scard-logo {
     width: 64px;
     height: 64px;
@@ -1734,6 +1716,7 @@ footer {
    store wall, independent of this page's own (now-light) palette. */
 .scard-name { font-family: var(--sc-display); font-weight: 800; font-size: 1.05rem; color: #FFFFFF; }
 .scard-meta { color: var(--sc-faint); font-size: .8rem; line-height: 1.5; }
+.scard-slogan { color: rgba(255, 255, 255, .62); font-size: .8rem; font-style: italic; line-height: 1.4; margin-bottom: 2px; }
 
 .scard-url {
     color: var(--accent-color);
@@ -1781,10 +1764,6 @@ footer {
 .scard-emerald { background: linear-gradient(180deg, rgba(80, 200, 120, .19) 0%, rgba(80, 200, 120, 0) 60%), var(--sc-panel); }
 .scard-gold .scard-tier::before { content: '\2605\00a0'; }
 .scard-emerald .scard-tier::before { content: '\25C6\00a0'; }
-
-.scard-bronze .scard-badge { background: linear-gradient(140deg, #E2975B, #B86F28); color: #1A0F03; }
-.scard-silver .scard-badge { background: linear-gradient(140deg, #CDD5E0, #96A0AE); color: #14171C; }
-.scard-emerald .scard-badge { background: linear-gradient(140deg, #72E2A0, #39A861); color: #06180C; }
 
 .sponsors-actions {
     display: flex;
