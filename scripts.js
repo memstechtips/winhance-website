@@ -449,13 +449,6 @@ window.addEventListener('scroll', () => {
                     el.appendChild(c);
                 }
 
-                if (s.contact) {
-                    var ct = document.createElement('div');
-                    ct.className = 'scard-meta';
-                    ct.textContent = String(s.contact).slice(0, 60);
-                    el.appendChild(ct);
-                }
-
                 // Clickable website link is a gold-and-up perk.
                 if (s.url && (s.tier === 'gold' || s.tier === 'emerald')) {
                     try {
