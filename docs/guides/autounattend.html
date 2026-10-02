@@ -4,402 +4,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autounattend Guide - Winhance Docs</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
-    <link rel="stylesheet" href="../../styles.css">
+    <title>Answer file setup - Winhance Docs</title>
+    <meta name="description" content="Build an autounattend.xml with Builder mode, put it on your installation media, and know what Windows does with it from Setup to the first sign-in.">
+    <meta name="theme-color" content="#0b1422">
+    <link rel="icon" type="image/png" sizes="256x256" href="../../images/winhance-rocket.png">
+    <link rel="preload" href="../../fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="../css/winui-tokens.css">
     <link rel="stylesheet" href="../css/app-tokens.css">
-    <link rel="stylesheet" href="../css/docs-main.css">
-    <link rel="stylesheet" href="../css/docs-sidebar.css">
-    <link rel="stylesheet" href="../css/docs-syntax.css">
-    <script src="../js/theme-load.js"></script>
+    <link rel="stylesheet" href="../../base.css">
+    <link rel="stylesheet" href="../css/docs.css">
+    <link rel="stylesheet" href="../css/setting-card.css">
     
+    <script src="../js/theme-load.js"></script>
 </head>
 
-<body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <a href="../index.html" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="../../images/winhance-rocket.png" alt="Winhance Logo"
-                        style="height: 32px; margin-right: 12px;">
-                    <h1 style="font-size: 1.5rem; margin: 0; color: var(--text-color);">Winhance <span
-                            style="font-weight: 300; opacity: 0.7;">Docs</span></h1>
-                </a>
+<body class="docs">
+    <!-- gen:icons --><svg class="sprite" aria-hidden="true"><symbol id="i-ChevronLeft" viewBox="0 0 20 20"><path fill="currentColor" d="M12.3534 15.8537C12.1585 16.0493 11.8419 16.0499 11.6463 15.855L6.16178 10.39C5.94607 10.1751 5.94607 9.82574 6.16178 9.6108L11.6463 4.14582C11.8419 3.9509 12.1585 3.95147 12.3534 4.14708C12.5483 4.34269 12.5477 4.65927 12.3521 4.85418L7.18753 10.0004L12.3521 15.1466C12.5477 15.3415 12.5483 15.6581 12.3534 15.8537Z"/></symbol><symbol id="i-HeartFilled" viewBox="0 0 20 20"><path fill="currentColor" d="M9.38843 4.28963C7.69278 2.57693 4.94954 2.5686 3.26122 4.2739C1.5729 5.9792 1.58114 8.75004 3.27679 10.4627L9.55368 16.8028C9.81404 17.0657 10.2362 17.0657 10.4965 16.8028L16.7408 10.4994C18.4252 8.78856 18.4199 6.02549 16.7239 4.31249C15.0252 2.59671 12.2807 2.58838 10.5894 4.29673L9.99299 4.90026L9.38843 4.28963Z"/></symbol><symbol id="i-Navigation" viewBox="0 0 20 20"><path fill="currentColor" d="M2 4.5C2 4.22386 2.22386 4 2.5 4H17.5C17.7761 4 18 4.22386 18 4.5C18 4.77614 17.7761 5 17.5 5H2.5C2.22386 5 2 4.77614 2 4.5ZM2 9.5C2 9.22386 2.22386 9 2.5 9H17.5C17.7761 9 18 9.22386 18 9.5C18 9.77614 17.7761 10 17.5 10H2.5C2.22386 10 2 9.77614 2 9.5ZM2.5 14C2.22386 14 2 14.2239 2 14.5C2 14.7761 2.22386 15 2.5 15H17.5C17.7761 15 18 14.7761 18 14.5C18 14.2239 17.7761 14 17.5 14H2.5Z"/></symbol><symbol id="i-Search" viewBox="0 0 20 20"><path fill="currentColor" d="M13.7291 14.4362C12.5924 15.411 11.115 16 9.5 16C5.91015 16 3 13.0899 3 9.5C3 5.91015 5.91015 3 9.5 3C13.0899 3 16 5.91015 16 9.5C16 11.115 15.411 12.5924 14.4361 13.7292L17.8535 17.1465C18.0487 17.3417 18.0487 17.6583 17.8535 17.8536C17.6799 18.0271 17.4105 18.0464 17.2156 17.9114L17.1464 17.8536L13.7291 14.4362ZM13.0196 13.7266C13.276 13.5128 13.5127 13.2761 13.7265 13.0197C14.5216 12.0659 15 10.8388 15 9.5C15 6.46243 12.5376 4 9.5 4C6.46243 4 4 6.46243 4 9.5C4 12.5376 6.46243 15 9.5 15C10.8388 15 12.0658 14.5217 13.0196 13.7266Z"/></symbol><symbol id="i-WeatherMoon" viewBox="0 0 20 20"><path fill="currentColor" d="M15.4932 13.4967C13.5653 16.8358 9.2957 17.9798 5.95663 16.052C5.20013 15.6152 4.54451 15.0515 4.01047 14.3887C6.8412 13.3015 8.56844 11.9681 9.60339 9.99249C10.651 7.99273 10.9395 5.83183 10.3628 3.08319C11.2605 3.20148 12.1328 3.49537 12.9378 3.96018C16.2769 5.88799 17.421 10.1576 15.4932 13.4967ZM5.45663 16.918C9.27399 19.122 14.1552 17.8141 16.3592 13.9967C18.5631 10.1793 17.2552 5.2981 13.4378 3.09415C12.3371 2.45863 11.1233 2.10173 9.88082 2.03507C9.4801 2.01357 9.17217 2.38477 9.26732 2.77462C9.95545 5.59395 9.70125 7.65076 8.71759 9.52844C7.78322 11.312 6.17301 12.559 3.16661 13.635C2.79667 13.7674 2.65251 14.2143 2.87537 14.538C3.54192 15.5059 4.41706 16.3178 5.45663 16.918Z"/></symbol><symbol id="i-WeatherSunny" viewBox="0 0 20 20"><path fill="currentColor" d="M10 2C10.2761 2 10.5 2.22386 10.5 2.5V3.5C10.5 3.77614 10.2761 4 10 4C9.72386 4 9.5 3.77614 9.5 3.5V2.5C9.5 2.22386 9.72386 2 10 2ZM10 14C12.2091 14 14 12.2091 14 10C14 7.79086 12.2091 6 10 6C7.79086 6 6 7.79086 6 10C6 12.2091 7.79086 14 10 14ZM10 13C8.34315 13 7 11.6569 7 10C7 8.34315 8.34315 7 10 7C11.6569 7 13 8.34315 13 10C13 11.6569 11.6569 13 10 13ZM17.5 10.5C17.7761 10.5 18 10.2761 18 10C18 9.72386 17.7761 9.5 17.5 9.5H16.5C16.2239 9.5 16 9.72386 16 10C16 10.2761 16.2239 10.5 16.5 10.5H17.5ZM10 16C10.2761 16 10.5 16.2239 10.5 16.5V17.5C10.5 17.7761 10.2761 18 10 18C9.72386 18 9.5 17.7761 9.5 17.5V16.5C9.5 16.2239 9.72386 16 10 16ZM3.5 10.5C3.77614 10.5 4 10.2761 4 10C4 9.72386 3.77614 9.5 3.5 9.5H2.46289C2.18675 9.5 1.96289 9.72386 1.96289 10C1.96289 10.2761 2.18675 10.5 2.46289 10.5H3.5ZM4.14645 4.14645C4.34171 3.95118 4.65829 3.95118 4.85355 4.14645L5.85355 5.14645C6.04882 5.34171 6.04882 5.65829 5.85355 5.85355C5.65829 6.04882 5.34171 6.04882 5.14645 5.85355L4.14645 4.85355C3.95118 4.65829 3.95118 4.34171 4.14645 4.14645ZM4.85355 15.8536C4.65829 16.0488 4.34171 16.0488 4.14645 15.8536C3.95118 15.6583 3.95118 15.3417 4.14645 15.1464L5.14645 14.1464C5.34171 13.9512 5.65829 13.9512 5.85355 14.1464C6.04882 14.3417 6.04882 14.6583 5.85355 14.8536L4.85355 15.8536ZM15.8536 4.14645C15.6583 3.95118 15.3417 3.95118 15.1464 4.14645L14.1464 5.14645C13.9512 5.34171 13.9512 5.65829 14.1464 5.85355C14.3417 6.04882 14.6583 6.04882 14.8536 5.85355L15.8536 4.85355C16.0488 4.65829 16.0488 4.34171 15.8536 4.14645ZM15.1464 15.8536C15.3417 16.0488 15.6583 16.0488 15.8536 15.8536C16.0488 15.6583 16.0488 15.3417 15.8536 15.1464L14.8536 14.1464C14.6583 13.9512 14.3417 13.9512 14.1464 14.1464C13.9512 14.3417 13.9512 14.6583 14.1464 14.8536L15.1464 15.8536Z"/></symbol></svg><!-- /gen:icons -->
+    <a class="skip" href="#content">Skip to content</a>
+
+    <header class="topbar">
+        <div class="docs-wrap topbar-row">
+            <button type="button" class="icon-btn docs-menu" aria-label="Show or hide the docs menu" aria-controls="docs-nav" aria-expanded="false">
+                <svg class="i"><use href="#i-Navigation"/></svg>
+            </button>
+            <a class="brand" href="../../index.html" aria-label="Winhance home">
+                <img class="brand-mark" src="../../images/winhance-rocket.png" alt="" width="28" height="28">
+                <span>Winhance</span>
+            </a>
+            <nav class="site-tabs" aria-label="Site">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html" aria-current="true">Docs</a>
+            </nav>
+            <div class="search-container" role="search">
+                <svg class="i"><use href="#i-Search"/></svg>
+                <input type="search" id="docs-search" placeholder="Search the docs" autocomplete="off" aria-label="Search the docs">
+                <kbd class="search-key" aria-hidden="true">/</kbd>
             </div>
-            <div class="search-container">
-                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                <input type="text" id="docs-search" placeholder="Search documentation...">
-            </div>
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle theme">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
-                    </svg>
+            <div class="topbar-actions">
+                <button type="button" id="theme-toggle" class="icon-btn" aria-label="Switch between light and dark">
+                    <svg class="i i-sun"><use href="#i-WeatherSunny"/></svg>
+                    <svg class="i i-moon"><use href="#i-WeatherMoon"/></svg>
                 </button>
-                <a href="https://github.com/memstechtips/Winhance" target="_blank" class="icon-btn github-btn"
-                    title="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
+                <a class="icon-btn" href="https://github.com/memstechtips/Winhance" target="_blank" rel="noopener" aria-label="Winhance on GitHub">
+                    <svg class="i" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a class="icon-btn icon-btn-heart" href="https://store.memstechtips.com/winhance/" target="_blank" rel="noopener" aria-label="Support Winhance">
+                    <svg class="i"><use href="#i-HeartFilled"/></svg>
+                </a>
+                <a class="btn btn-primary btn-small" href="https://github.com/memstechtips/Winhance/releases/latest/download/Winhance.Installer.exe">
+                    <span class="dl-rocket" aria-hidden="true"><i></i></span>
+                    <span>Download</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <div class="docs-wip-banner">
-        <strong>Work in Progress:</strong> Documentation is a work in progress. Some pages may be incomplete.
-    </div>
-
-    <div class="docs-layout has-banner">
-                        <aside class="docs-sidebar">
-            <nav>
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Getting Started</div>
-                    <a href="../getting-started/installation.html" class="sidebar-nav-item">Installation</a>
-                    <a href="../getting-started/quick-start.html" class="sidebar-nav-item">Quick Start</a>
+    <div class="docs-wrap docs-layout">
+        <aside class="docs-sidebar" id="docs-nav">
+            <a class="nav-home" href="../../index.html"><svg class="i"><use href="#i-ChevronLeft"/></svg>Back to Winhance home</a>
+            <nav aria-label="Documentation">
+                <div class="nav-group">
+                    <p class="nav-title">Get started</p>
+                    <a class="nav-item" href="../index.html">Overview</a>
+                    <a class="nav-item" href="../getting-started/installation.html">Installation</a>
+                    <a class="nav-item" href="../getting-started/quick-start.html">Quick start</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Features</div>
-                    <a href="../features/software-apps.html" class="sidebar-nav-item">Software & Apps</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../features/software-apps/windows-apps.html" class="sidebar-nav-item sub-item">Windows Apps</a>
-                        <a href="../features/software-apps/external-apps.html" class="sidebar-nav-item sub-item">External Apps</a>
-                    </div>
-                    <a href="../features/optimize.html" class="sidebar-nav-item">Optimize</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
-                        <a href="../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
-                        <a href="../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
-                        <a href="../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
-                        <a href="../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
-                        <a href="../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
-                    </div>
-                    <a href="../features/customize.html" class="sidebar-nav-item">Customize</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
-                        <a href="../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
-                        <a href="../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
-                        <a href="../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
-                        <a href="../features/customizations/time-region-language.html" class="sidebar-nav-item sub-item">Time &amp; Region</a>
-                    </div>
-                    <a href="../features/autounattend.html" class="sidebar-nav-item">Autounattend</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../features/autounattend/answer-file.html" class="sidebar-nav-item sub-item">Answer file</a>
-                    </div>
-                    <a href="../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
-                    <a href="../features/settings.html" class="sidebar-nav-item">Settings</a>
+                <div class="nav-group">
+                    <p class="nav-title">Features</p>
+                    <a class="nav-item" href="../features/software-apps.html">Software &amp; Apps</a>
+                    <a class="nav-item nav-sub" href="../features/software-apps/windows-apps.html">Windows apps</a>
+                    <a class="nav-item nav-sub" href="../features/software-apps/external-apps.html">External apps</a>
+                    <a class="nav-item" href="../features/optimize.html">Optimize</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/privacy-security.html">Privacy &amp; Security</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/power.html">Power</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/gaming-performance.html">Gaming &amp; Performance</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/update.html">Update</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/notifications.html">Notifications</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/sound.html">Sound</a>
+                    <a class="nav-item" href="../features/customize.html">Customize</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/theme.html">Windows Theme</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/taskbar.html">Taskbar</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/start-menu.html">Start Menu</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/explorer.html">Explorer</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/time-region-language.html">Time &amp; Region</a>
+                    <a class="nav-item" href="../features/autounattend.html">Autounattend</a>
+                    <a class="nav-item nav-sub" href="../features/autounattend/answer-file.html">Answer file</a>
+                    <a class="nav-item" href="../features/advanced-tools.html">Unattend &amp; WIMUtil</a>
+                    <a class="nav-item" href="../features/settings.html">Settings</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">User Guides</div>
-                    <a href="../guides/configuration-files.html" class="sidebar-nav-item">Configuration Files</a>
-                    <a href="../guides/wimutil.html" class="sidebar-nav-item">WIMUtil Guide</a>
-                    <a href="../guides/autounattend.html" class="sidebar-nav-item">Autounattend Guide</a>
+                <div class="nav-group">
+                    <p class="nav-title">Guides</p>
+                    <a class="nav-item" href="../guides/configuration-files.html">Configuration files</a>
+                    <a class="nav-item" href="../guides/wimutil.html">WIMUtil</a>
+                    <a class="nav-item" href="../guides/autounattend.html" aria-current="page">Answer file setup</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Reference</div>
-                    <a href="../reference/cli-commands.html" class="sidebar-nav-item">CLI Commands</a>
-                    <a href="../reference/changelog.html" class="sidebar-nav-item">Changelog</a>
-                    <a href="../reference/troubleshooting.html" class="sidebar-nav-item">Troubleshooting</a>
-                    <a href="../reference/contributing.html" class="sidebar-nav-item">How to Contribute</a>
+                <div class="nav-group">
+                    <p class="nav-title">Reference</p>
+                    <a class="nav-item" href="../reference/troubleshooting.html">Troubleshooting</a>
+                    <a class="nav-item" href="../reference/cli-commands.html">Command line</a>
+                    <a class="nav-item" href="../reference/changelog.html">Releases</a>
+                    <a class="nav-item" href="../reference/contributing.html">Contributing</a>
                 </div>
             </nav>
         </aside>
 
-        <main class="docs-content">
-            <section id="autounattend">
-                <h1>Understanding Autounattend XML</h1>
-                
-                <div class="video-grid">
-                    <div class="video-card">
-                        <h3>How the XML File Works (Line by Line)</h3>
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/JnaUDCsb8AY" title="How the Winhance/UnattendedWinstall autounattend.xml File Works" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="video-card">
-                        <h3>Creating an Autounattend with Winhance</h3>
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/j0lVY9ZUzSc" title="The PERFECT Windows Install Starts HERE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
+        <main class="docs-main" id="content">
+            <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Docs</a><span class="sep" aria-hidden="true">/</span><span>Guides</span></nav>
+            <article class="docs-content">
+                <h1>Answer file setup</h1>
+                <p class="lead">Build an autounattend.xml with Builder mode, put it on your installation media, and know what Windows does with it from Setup to the first sign-in.</p>
 
-                <p>Winhance generates custom <code>autounattend.xml</code> files based on your current settings. These are sophisticated answer files that automate the Windows setup, bypass hardware restrictions, and apply your custom configuration immediately during installation.</p>
+                <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/j0lVY9ZUzSc" title="The PERFECT Windows Install Starts HERE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
 
-                <div class="callout callout-info">
-                    <div class="callout-title">Relationship with UnattendedWinstall</div>
-                    <p>The <a href="https://github.com/memstechtips/UnattendedWinstall" target="_blank">UnattendedWinstall</a> project on GitHub provides a pre-configured <code>autounattend.xml</code> file that was generated using Winhance with recommended settings. It's designed for users who want a clean, optimized Windows experience without needing to configure individual options.</p>
-                    <p>In fact, if you apply the <strong>Recommended</strong> configuration in Winhance, then select all the "Not Installed" items in the Windows Apps section and generate an XML file, you'll get essentially the same result as the UnattendedWinstall XML.</p>
-                    <p><strong>Use Winhance</strong> if you want to customize exactly which apps to remove and which settings to apply. <strong>Use UnattendedWinstall directly</strong> if you're happy with the pre-configured recommended settings.</p>
-                </div>
+                <p>An answer file is an <code>autounattend.xml</code> that Windows Setup reads from the root of the installation media. It answers Setup's questions so the install runs without stopping, and Winhance uses it to carry your apps, settings and scripts onto the new PC. Nothing you choose here changes the PC you are using.</p>
+                <p>If you only want the reference for each setting, see <a href="../features/autounattend/answer-file.html">Autounattend.xml settings</a>.</p>
 
-                <div class="callout callout-info">
-                    <div class="callout-title">What is an Answer File?</div>
-                    <p>An "answer file" (or unattend file) is a Microsoft-supported feature that allows automated, hands-off Windows installations. The <code>autounattend.xml</code> file contains instructions that Windows Setup reads automatically when detected in the root of installation media. This is an official Microsoft deployment method used by enterprises and OEMs.</p>
-                </div>
-
-                <h2>XML Structure & Configuration Passes</h2>
-                <p>The answer file is divided into specific "passes" that run at different stages of the Windows installation. Windows Setup processes these passes sequentially. Here is exactly what happens in each pass:</p>
-
-                <h3>1. windowsPE (Pre-Installation Environment)</h3>
-                <p>This pass runs in the Windows PE environment <strong>before</strong> Windows is installed to the disk.</p>
+                <h2 id="builder-mode">Builder mode</h2>
+                <p>Builder mode lets you make a config or an answer file from the settings in the app without applying anything to this PC. While you are in it, the normal app actions are turned off.</p>
+                <ol class="steps">
+                <li><h3>Enter Builder mode</h3><p>Switch the <strong>Winhance Mode</strong> selector in the title bar to <strong>Builder</strong>. The first time, a short introduction explains the mode; tick <strong>Don't show this again</strong> to skip it next time.</p></li>
+                <li><h3>Choose a starting point</h3><p>The <strong>Start Builder from...</strong> window offers four starting points:</p>
                 <ul>
-                    <li><strong>Hardware Requirement Bypass:</strong> Automatically adds registry keys to <code>HKLM\SYSTEM\Setup\LabConfig</code> to bypass Windows 11 hardware checks:
-                        <ul>
-                            <li><code>BypassTPMCheck</code> - Skips TPM 2.0 requirement</li>
-                            <li><code>BypassSecureBootCheck</code> - Skips Secure Boot requirement</li>
-                            <li><code>BypassRAMCheck</code> - Skips 4GB RAM requirement</li>
-                            <li><code>BypassCPUCheck</code> - Skips CPU compatibility check</li>
-                            <li><code>BypassStorageCheck</code> - Skips storage space requirement</li>
-                            <li><code>BypassDiskCheck</code> - Skips disk type requirement</li>
-                        </ul>
-                    </li>
-                    <li><strong>Edition Selection:</strong> Sets a blank Product Key (<code>00000-00000-00000-00000-00000</code>) with <code>WillShowUI=Always</code>. This ensures the Windows Edition selection screen appears, allowing you to choose between Home, Pro, etc.</li>
-                    <li><strong>EULA Acceptance:</strong> Automatically accepts the End User License Agreement.</li>
-                </ul>
-                <div class="callout callout-warning">
-                    <div class="callout-title">Note for Laptops with Embedded OEM Keys</div>
-                    <p>If your laptop has an OEM product key embedded in the UEFI firmware, Windows may behave differently depending on the version:</p>
-                    <ul>
-                        <li><strong>Windows 11:</strong> You'll see the "Enter product key" screen where you can click "I don't have a product key" to see all available editions.</li>
-                        <li><strong>Windows 10:</strong> You'll see the edition selection screen, but it may only show the OEM edition. <strong>Workaround:</strong> Click the <strong>Back</strong> button, then click <strong>Next</strong> again. This time you'll see the product key screen where you can click "I don't have a product key" to see all editions.</li>
-                    </ul>
-                    <p>To skip this entirely and force a specific edition, see the <a href="#forcing-a-windows-edition">Forcing a Windows Edition</a> section below.</p>
-                </div>
-
-                <h3>2. specialize (First Boot - System Context)</h3>
-                <p>This pass runs when Windows boots for the very first time, but <strong>before</strong> any user logs in. It runs under the <code>SYSTEM</code> account with full privileges.</p>
+                <li><strong>The current state of this machine</strong>: every setting starts at this PC's current value.</li>
+                <li><strong>All Winhance recommended settings</strong></li>
+                <li><strong>All Windows default settings</strong></li>
+                <li><strong>A saved Winhance config or answer file</strong>: reopens a <code>.winhance</code> file or an answer file Winhance made (see <a href="#reopen-an-answer-file">reopen an answer file</a>).</li>
+                </ul></li>
+                <li><h3>Pick the Autounattend target</h3><p>The Builder bar at the top of the window has two targets, <strong>Config</strong> and <strong>Autounattend</strong>. Pick <strong>Autounattend</strong>. This unlocks the <strong>Unattend</strong> page in the left navigation, which holds the choices that only exist in an answer file.</p></li>
+                <li><h3>Pick the target Windows</h3><p>The dropdown on the Builder bar sets the Windows release the file is for: Windows 11 26H2, 25H2, 24H2, 23H2, Windows 10 22H2, or <strong>All Windows versions</strong>. It starts at the newest release. Only settings that exist on the release you pick are shown and saved. If you switch to a release that lacks some settings you already set, Winhance warns you; they are left out of the file but come back if you switch back.</p>
+                <p>Tick <strong>Show settings for other hardware</strong> to also see settings this PC cannot have, such as battery settings on a desktop.</p></li>
+                <li><h3>Make your choices</h3><p>Work through the pages:</p>
                 <ul>
-                    <li><strong>Script Extraction:</strong> A PowerShell command extracts the embedded <code>Winhancements.ps1</code> script from within the XML file itself (stored in a custom <code>&lt;Extensions&gt;</code> section) to <code>C:\ProgramData\Winhance\Unattend\Scripts\</code>.</li>
-                    <li><strong>BypassNRO:</strong> Adds the <code>BypassNRO</code> registry key to <code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE</code>. This allows setting up Windows with a local account without requiring an internet connection—essential for privacy-conscious users.</li>
-                    <li><strong>Disable Network Adapters:</strong> Temporarily disables all network adapters using <code>Get-NetAdapter | Disable-NetAdapter</code>. This is crucial because it:
-                        <ul>
-                            <li>Prevents Windows from forcing a Microsoft Account login during OOBE</li>
-                            <li>Stops Windows Update from downloading drivers or updates during setup</li>
-                            <li>Ensures the local account creation option is available</li>
-                        </ul>
-                    </li>
-                    <li><strong>Enable .NET Framework 3.5:</strong> Searches for the installation media (drives C through K) and installs .NET Framework 3.5 directly from <code>\sources\sxs</code> using DISM. This legacy framework is required by some older applications.</li>
-                    <li><strong>Run Winhancements.ps1:</strong> Executes the extracted PowerShell script in "System Mode" to perform machine-wide configuration (see detailed explanation below).</li>
-                </ul>
-
-                <h3>3. oobeSystem (Out of Box Experience)</h3>
-                <p>This pass runs during the OOBE phase—when you would normally see the "Let's set things up for you" screens.</p>
-                <ul>
-                    <li><strong>Skip OOBE Screens:</strong> Automatically hides several setup screens:
-                        <ul>
-                            <li><code>HideEULAPage</code> - Skips the license agreement</li>
-                            <li><code>HideOEMRegistrationScreen</code> - Skips manufacturer registration</li>
-                            <li><code>HideOnlineAccountScreens</code> - Skips Microsoft Account prompts</li>
-                            <li><code>HideWirelessSetupInOOBE</code> - Skips WiFi connection setup</li>
-                        </ul>
-                    </li>
-                    <li><strong>Privacy Settings:</strong> Sets <code>ProtectYourPC=3</code> which disables sending diagnostic data during OOBE.</li>
-                    <li><strong>First Logon Command:</strong> When you log in for the first time, a command automatically re-enables all network adapters that were disabled in the specialize pass. Your internet connection is restored.</li>
-                </ul>
-                <p><strong>What you'll see:</strong> After these automated steps, you'll only need to select your region, keyboard layout, and create your username. No Microsoft Account prompts, no "let's connect you to a network" delays.</p>
-
-                <h2>The Winhancements.ps1 Script</h2>
-                <p>Embedded inside the XML file is a dynamically generated PowerShell script named <code>Winhancements.ps1</code>. This script is the engine that applies all your Winhance settings. When you click "Generate" in Winhance, your current app selections and toggle states are converted into this script.</p>
-
-                <div class="callout callout-info">
-                    <div class="callout-title">System Mode (Runs During specialize Pass)</div>
-                    <p>The script runs automatically during the specialize pass with SYSTEM privileges. It performs <strong>machine-wide</strong> actions:</p>
-                    <ul>
-                        <li><strong>Windows App Removal:</strong> Uninstalls the Windows apps you had checked in Winhance (Appx packages, Capabilities, Optional Features).</li>
-                        <li><strong>Removal Scripts:</strong> Creates persistent removal scripts for Bloatware, Microsoft Edge, and OneDrive in <code>C:\ProgramData\Winhance\Unattend\Scripts\</code>.</li>
-                        <li><strong>Scheduled Tasks:</strong> Registers Windows Scheduled Tasks that run the removal scripts at system startup. This ensures apps don't come back after Windows Updates.</li>
-                        <li><strong>HKLM Registry Tweaks:</strong> Applies your Optimize settings that use <code>HKEY_LOCAL_MACHINE</code> registry keys (telemetry settings, Windows Update policies, system-wide privacy settings, etc.).</li>
-                        <li><strong>Install Winhance Shortcut:</strong> Creates a desktop shortcut that downloads and installs Winhance after first login.</li>
-                    </ul>
-                </div>
-
-                <div class="callout callout-info">
-                    <div class="callout-title">User Mode (Runs at User Logon)</div>
-                    <p>A Windows Scheduled Task called <code>WinhanceUserCustomizations</code> is registered during System Mode. This task runs the script with the <code>-UserCustomizations</code> parameter at every user logon to apply <strong>user-specific</strong> settings:</p>
-                    <ul>
-                        <li><strong>HKCU Registry Tweaks:</strong> Applies your Customize settings that use <code>HKEY_CURRENT_USER</code> registry keys (Theme, Explorer preferences, Start Menu layout, etc.).</li>
-                        <li><strong>Taskbar Configuration:</strong> Applies your taskbar settings and pins.</li>
-                        <li><strong>Start Menu Layout:</strong> Removes pinned apps and disables the Recommended section if configured.</li>
-                        <li><strong>Visual Settings:</strong> Applies dark/light mode, transparency effects, and other visual customizations.</li>
-                    </ul>
-                    <p><strong>One-Time Application Per User:</strong> When User Mode runs successfully, it creates a registry marker at <code>HKCU\Software\Winhance\UserCustomizationsApplied</code>. On subsequent logons, the script checks for this marker and skips applying settings if they've already been applied. This means:</p>
-                    <ul>
-                        <li>Each user account on the computer gets customizations applied <strong>once</strong> on their first login.</li>
-                        <li>New user accounts created later will also receive the customizations on their first login.</li>
-                        <li><strong>To re-apply customizations:</strong> Delete the registry key at <code>HKCU\Software\Winhance\UserCustomizationsApplied</code> and log out/in, or run the script manually with <code>-UserCustomizations</code>.</li>
-                    </ul>
-                    <p>This two-phase approach ensures both system-wide and user-specific settings are properly applied with the correct permissions, while avoiding redundant processing on every login.</p>
-                </div>
-
-                <h2>Post-Installation: "Some settings are managed by your organization"</h2>
-                <p>After installation, you may see messages in Windows Settings saying "Some of these settings are managed by your organization." This is <strong>normal and expected</strong>.</p>
-                <p>This message appears because the XML applies settings using Group Policy registry keys (under <code>HKLM\SOFTWARE\Policies</code>). These are the same mechanisms enterprises use to enforce settings. The benefit is that Windows Update cannot override these settings—they remain enforced until you change them via Winhance or manually.</p>
-
-                <h2 id="forcing-a-windows-edition">Windows Edition Selection & Forcing Specific Editions</h2>
-
-                <div class="callout callout-success">
-                    <div class="callout-title">Video Tutorial: Windows Edition Selection Issues Explained</div>
-                    <p>This video explains how Windows 10 and 11 behave differently with OEM keys and autounattend files, and how to force a specific edition:</p>
-                    <div class="video-container" style="margin-top: 1rem;">
-                        <iframe src="https://www.youtube-nocookie.com/embed/4y7abJIvTPk" title="Can't Select Windows Edition During Clean Installation? Here's The Fix" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <h3>How the Default Blank Key Works</h3>
-                <p>By default, the Winhance-generated XML uses a blank product key (<code>00000-00000-00000-00000-00000</code>) with <code>WillShowUI=Always</code>. This configuration tells Windows Setup to display the edition selection UI. However, the behavior differs between Windows 10 and 11 when your computer has an OEM key embedded in the UEFI/BIOS:</p>
-                <ul>
-                    <li><strong>Windows 11:</strong> Shows the product key entry screen where you can click "I don't have a product key" to see all available editions.</li>
-                    <li><strong>Windows 10:</strong> Shows the edition selection UI, but may only display the OEM edition. Click <strong>Back</strong>, then <strong>Next</strong>, then "I don't have a product key" to see all editions.</li>
-                </ul>
-
-                <h3>Forcing a Specific Edition</h3>
-                <p>If you want to skip the edition selection entirely and always install a specific edition (e.g., Pro on a laptop with a Home OEM key), you can edit the <code>&lt;ProductKey&gt;</code> section of the XML file:</p>
-                <ol>
-                    <li>Open your <code>autounattend.xml</code> file in a text editor (Notepad, VS Code, etc.)</li>
-                    <li>Find all instances of the <code>&lt;Key&gt;</code> tag (there are three—one each for x86, ARM64, and AMD64 processor architectures)</li>
-                    <li>Replace the blank key with a <strong>Generic Installation Key</strong> from the table below</li>
-                    <li>Optionally, change <code>&lt;WillShowUI&gt;Always&lt;/WillShowUI&gt;</code> to <code>&lt;WillShowUI&gt;Never&lt;/WillShowUI&gt;</code> to skip the edition selection screen entirely</li>
+                <li><strong>Unattend</strong>: the answer-file settings, such as edition, accounts, disk layout and setup screens. The <strong>Included from other features</strong> card at the top counts what the other pages add to the file.</li>
+                <li><strong>Software &amp; Apps</strong>: checked Windows apps are removed while Windows installs. Checked External Software apps are installed for everyone on the new PC after setup, by Winhance.</li>
+                <li><strong>Optimize</strong> and <strong>Customize</strong>: every setting card has a tick that decides whether it goes in the file. Use <strong>Include All Settings</strong> or <strong>Exclude All Settings</strong> under <strong>Quick Actions</strong> to change a whole page.</li>
+                </ul></li>
+                <li><h3>Save</h3><p>Click <strong>Save autounattend.xml</strong> on the Builder bar. The file must be named <code>autounattend.xml</code>, because that is the only name Setup looks for. Winhance checks that the generated script and XML are valid before it writes the file.</p></li>
                 </ol>
+                <p>You can save both kinds of file in one session: save a config with the <strong>Config</strong> target, then switch to <strong>Autounattend</strong> and save the answer file. <strong>Cancel</strong> on the Builder bar leaves Builder mode and discards your choices.</p>
+                <div class="callout callout-tip"><p class="callout-title">Building media? Start from WIMUtil instead</p><p>The <strong>Set up the answer file</strong> button in <a href="wimutil.html">WIMUtil</a> opens the same Builder session, sets the target Windows to the build on your ISO, and writes the file straight onto the media. It also adds two options this page does not have on its own: putting the External Software installers on the ISO so they install offline, and adding <strong>Your own installers</strong>.</p></div>
+
+                <h2 id="what-the-file-covers">What the answer file covers</h2>
+                <p>The <strong>Unattend</strong> page groups its settings like this. Each one is documented on the <a href="../features/autounattend/answer-file.html">Autounattend.xml settings</a> page.</p>
+                <ul>
+                <li><strong>Processor architecture</strong>: x64, ARM64 and x86. One file can cover all three.</li>
+                <li><strong>Edition and product key</strong>: ask during Setup, pick an edition, use your own key, or use the key stored in the PC's firmware. The built-in keys choose an edition but do not activate Windows.</li>
+                <li><strong>Windows 11 requirements</strong>: turn off Setup's TPM, Secure Boot, CPU, RAM, storage and disk checks.</li>
+                <li><strong>Disk and partitions</strong>: let Setup ask, or wipe a disk and partition it for UEFI or BIOS with nothing to click. Wiping erases that disk, so check the disk number first.</li>
+                <li><strong>Accounts</strong>: a local account, a Microsoft account, or accounts the file creates for you, and whether Setup stays online.</li>
+                <li><strong>Setup screens</strong>: Setup language, the licence, OEM registration and network pages, the privacy questions, and the computer name.</li>
+                <li><strong>General</strong>: .NET Framework 3.5, how Winhance gets onto the new PC, and whether app installers are deleted after they run.</li>
+                <li><strong>Your own scripts</strong>: PowerShell, command, batch or registry scripts that run once, either system-wide or for each person who signs in.</li>
+                </ul>
+                <p>On top of that, the file carries the Windows apps to remove, the External Software apps to install, and every included Optimize and Customize setting.</p>
+                <div class="callout callout-warning"><p class="callout-title">Treat the file as private</p><p>If the file creates accounts with passwords, it contains those passwords. <strong>Obscure the password in the file</strong> stores them as base64, which hides them from a glance but not from anyone who decodes them.</p></div>
+
+                <h2 id="put-it-on-media">Put it on installation media</h2>
+                <ul>
+                <li><strong>With WIMUtil (recommended).</strong> Generate the file in step 2 of <a href="wimutil.html">WIMUtil</a>, add drivers if you want them, then create an ISO or write a USB drive. This is the only way to include drivers and offline installers.</li>
+                <li><strong>On an existing Windows USB drive.</strong> Copy your saved <code>autounattend.xml</code> to the root of a USB drive that already holds Windows installation files. Setup picks it up from there.</li>
+                </ul>
+                <p>Ventoy users can attach the file to a Windows ISO with Ventoy's auto install plugin instead. This video walks through it:</p>
+                <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/4AGZQJTyCOs" title="How to Use Ventoy with Autounattend.xml" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+
+                <h2 id="during-installation">What happens during installation</h2>
+                <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/JnaUDCsb8AY" title="How the Winhance/UnattendedWinstall autounattend.xml File Works" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+                <ol class="steps">
+                <li><h3>Setup starts</h3><p>Setup reads the file and applies what you chose for the setup language, edition, hardware checks and disk. Any screen the file does not answer still appears.</p></li>
+                <li><h3>Windows prepares the PC</h3><p>Before the first setup screens, still running as the system, the file unpacks Winhance's scripts to <code>C:\ProgramData\Winhance\Unattend\Scripts</code> and runs <code>Winhancements.ps1</code>. It installs any drivers WIMUtil added, removes the Windows apps you checked, applies the machine-wide settings, runs your system-wide scripts, and registers the scheduled tasks below.</p></li>
+                <li><h3>The setup screens</h3><p>You see only the screens the file left open, for example the account screens if the file does not create the accounts. A local account keeps Setup offline. If you chose <strong>Disconnect until Setup finishes</strong>, the network comes back at the first sign-in.</p></li>
+                <li><h3>The first sign-in</h3><p>A scheduled task named <code>WinhanceUserCustomizations</code> runs at every sign-in. The first time an account signs in, it applies the per-user settings (theme, taskbar, Start menu, Explorer and the rest) and that account's per-user scripts, then restarts the PC about 20 seconds later so they take effect. It marks the account as done in <code>HKCU\Software\Winhance\UserCustomizationsApplied</code>, so later sign-ins skip it. Accounts created later get the same treatment at their own first sign-in.</p></li>
+                <li><h3>After the restart</h3><p>What happens next depends on <strong>Winhance on the new PC</strong>. With <strong>Desktop shortcut</strong>, every new account gets an <strong>Install Winhance</strong> shortcut that installs Winhance and then the External Software apps you checked. With <strong>Install automatically after setup</strong>, that happens on its own at the next sign-in, and retries at the following sign-in if it fails. With <strong>Don't add</strong>, nothing is installed.</p></li>
+                </ol>
+
+                <h2 id="after-installation">On the new PC</h2>
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Edition</th>
-                            <th>Generic Installation Key</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Windows 10/11 Pro</strong></td>
-                            <td><code>VK7JG-NPHTM-C97JM-9MPGT-3V66T</code></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Windows 10/11 Home</strong></td>
-                            <td><code>YTMG3-N6DKC-DKB77-7M9GH-8HVX7</code></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Windows 10/11 Enterprise</strong></td>
-                            <td><code>XGVPP-NMH47-7TTHJ-W3FW7-8HV2C</code></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Windows 10/11 Education</strong></td>
-                            <td><code>YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY</code></td>
-                        </tr>
-                    </tbody>
+                <thead><tr><th>What</th><th>Where</th></tr></thead>
+                <tbody>
+                <tr><td>Winhance scripts from the answer file</td><td><code>C:\ProgramData\Winhance\Unattend\Scripts</code></td></tr>
+                <tr><td>Log of what the script did</td><td><code>C:\ProgramData\Winhance\Unattend\Logs\Winhancements.txt</code></td></tr>
+                <tr><td>App removal scripts</td><td><code>C:\ProgramData\Winhance\Scripts</code></td></tr>
+                <tr><td>Scheduled tasks</td><td>The <code>Winhance</code> folder in Task Scheduler. The removal tasks run the removal scripts again at sign-in or startup, so removed apps stay removed after Windows updates.</td></tr>
+                <tr><td>Setup's copy of the answer file</td><td><code>C:\Windows\Panther\unattend.xml</code></td></tr>
+                </tbody>
                 </table>
-                <p>A complete list of Generic Installation Keys for all editions is available on <a href="https://gist.github.com/rvrsh3ll/0810c6ed60e44cf7932e4fbae25880df" target="_blank">on GitHub</a>.</p>
+                <p>To apply an account's per-user settings again, delete the <code>UserCustomizationsApplied</code> value under <code>HKCU\Software\Winhance</code> and sign out and back in.</p>
+                <p>Some settings are written as Windows policies, so Windows Settings may show "Some of these settings are managed by your organization". That is expected. Change them back with Winhance.</p>
 
-                <div class="callout callout-warning">
-                    <div class="callout-title">Generic Keys Do Not Activate Windows</div>
-                    <p>These are <strong>Generic Installation Keys</strong> provided by Microsoft—they allow installation of a specific edition but do <strong>not activate Windows</strong>. After installation, Windows will be unactivated and you'll need to provide your own valid license key to activate it. If you have a valid license key (purchased from Microsoft or a reseller), you can enter it directly in the XML instead of a generic key, and Windows will activate automatically after installation.</p>
-                </div>
+                <h2 id="reopen-an-answer-file">Reopen an answer file</h2>
+                <p>Every answer file Winhance makes carries a copy of your choices, the target Windows and, from WIMUtil, the media choices. To change one, enter Builder mode, choose <strong>A saved Winhance config or answer file</strong> and pick the <code>autounattend.xml</code>. Builder opens with the Autounattend target and everything set the way you left it.</p>
+                <p>Builder cannot open an answer file another tool made, or one from an older Winhance version that did not store its choices. Generate that file again with the current version.</p>
 
-                <h2>File Location After Installation</h2>
-                <p>After Windows is installed using your custom ISO, you can find the Winhance scripts and files at:</p>
-                <ul>
-                    <li><strong>Scripts:</strong> <code>C:\ProgramData\Winhance\Unattend\Scripts\</code></li>
-                    <li><strong>Drivers (if added via WIMUtil):</strong> <code>C:\Windows\Drivers\</code></li>
-                    <li><strong>Original XML (copied by Windows Setup):</strong> <code>C:\Windows\Panther\unattend.xml</code></li>
-                </ul>
-
-                <h2>What's NOT Included in the XML</h2>
-                <p>The autounattend.xml <strong>does not include</strong> external software installations. External apps from the "External Software" section in Winhance (browsers, utilities, etc.) are not part of the XML file because:</p>
-                <ul>
-                    <li>They require an internet connection to download via WinGet</li>
-                    <li>Software versions change frequently</li>
-                    <li>Users typically want to choose software after the initial setup</li>
-                </ul>
-                <p>To install external software after using your custom ISO, use the <strong>"Install Winhance"</strong> desktop shortcut that's created automatically. This will download Winhance so you can install your preferred software from the External Software section.</p>
-
-                <h2>Cross-Version Compatibility</h2>
-                <p>When generating an XML in Winhance, you can use the <strong>version filter toggle</strong> (filter icon in the top bar) to include settings for both Windows 10 and Windows 11. Turn off the filter before generating to create an XML that works on either version—the script will automatically apply only the settings relevant to the installed Windows version.</p>
-
-                <h2>Using Your Autounattend.xml Without WIMUtil</h2>
-                <p>While WIMUtil is the recommended way to create a custom ISO with your XML embedded, you can also use the <code>autounattend.xml</code> file directly with these alternative methods:</p>
-
-                <h3>Method 1: USB Root Directory</h3>
-                <p>After creating a bootable Windows USB with <a href="https://rufus.ie/" target="_blank">Rufus</a>, simply copy your <code>autounattend.xml</code> file to the root of the USB drive. Windows Setup will automatically detect and use it.</p>
-                <div class="callout callout-warning">
-                    <div class="callout-title">Rufus Note</div>
-                    <p>When using Rufus, avoid selecting any "Customize Your Windows Experience" options—these would create a conflicting answer file. Let your Winhance-generated XML handle all customizations.</p>
-                </div>
-
-                <h3>Method 2: Ventoy Auto Install Plugin</h3>
-                <p><a href="https://github.com/ventoy/Ventoy/releases" target="_blank">Ventoy</a> is a tool that creates a bootable USB where you can simply copy ISO files without reformatting. It also supports automatic answer file injection:</p>
-                <ol>
-                    <li>Install Ventoy on a USB drive</li>
-                    <li>Create a folder structure: <code>ISO\Windows\</code> for your Windows ISO files</li>
-                    <li>Create a folder: <code>Templates\</code> for your <code>autounattend.xml</code></li>
-                    <li>Configure Ventoy's Auto Install Plugin to associate your XML with your Windows ISO</li>
-                </ol>
-                <p>This method lets you store multiple Windows ISOs and choose which one to boot, all using the same answer file.</p>
-
-                <div class="callout callout-success">
-                    <div class="callout-title">Video Tutorial: Using Ventoy with Autounattend</div>
-                    <p>For a step-by-step visual guide on setting up Ventoy with the Auto Install Plugin for autounattend.xml files, watch this tutorial:</p>
-                    <div class="video-container" style="margin-top: 1rem;">
-                        <iframe src="https://www.youtube-nocookie.com/embed/4AGZQJTyCOs" title="How to Use Ventoy with Autounattend.xml" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <h3>Method 3: Edit the ISO Directly</h3>
-                <p>You can use tools like <a href="https://www.anyburn.com/" target="_blank">AnyBurn</a> to edit an official Windows ISO and embed your <code>autounattend.xml</code> file directly into the root of the ISO. This creates a self-contained ISO similar to what WIMUtil produces, but without the driver injection capabilities.</p>
-
-                <div class="page-nav">
-                    <a href="wimutil.html" class="page-nav-btn prev">&larr; WIMUtil Guide</a>
-                    <a href="../reference/cli-commands.html" class="page-nav-btn next">CLI Commands &rarr;</a>
-                </div>
-            </section>
+                <h2 id="edition-selection">Edition selection on PCs with a firmware key</h2>
+                <p>Many laptops store a Windows key in their firmware, and Setup may use it to pick the edition without asking. To control the edition, choose it in the <strong>Windows edition</strong> setting on the Unattend page. This video explains how Windows 10 and 11 behave with these keys:</p>
+                <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/4y7abJIvTPk" title="Can't Select Windows Edition During Clean Installation? Here's The Fix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+            </article>
+            <nav class="pager" aria-label="More pages"><a class="pager-prev" href="../guides/wimutil.html"><span>Previous</span>WIMUtil</a><a class="pager-next" href="../reference/troubleshooting.html"><span>Next</span>Troubleshooting</a></nav>
         </main>
+
+        <aside class="docs-toc" aria-label="On this page">
+            <p class="toc-title">On this page</p>
+            <ul>
+                <li><a href="#builder-mode">Builder mode</a></li>
+                <li><a href="#what-the-file-covers">What the answer file covers</a></li>
+                <li><a href="#put-it-on-media">Put it on installation media</a></li>
+                <li><a href="#during-installation">What happens during installation</a></li>
+                <li><a href="#after-installation">On the new PC</a></li>
+                <li><a href="#reopen-an-answer-file">Reopen an answer file</a></li>
+                <li><a href="#edition-selection">Edition selection on PCs with a firmware key</a></li>
+            </ul>
+        </aside>
     </div>
 
-    <button class="sidebar-toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-    </button>
-
-    <script src="../js/docs-theme.js"></script>
-    <script src="../js/docs-navigation.js"></script>
-    <script src="../js/docs-search.js"></script>
-    <script src="../js/docs-config.js"></script>
-
-    <!-- Documentation Footer -->
-    <footer class="docs-footer">
-        <div class="docs-footer-container">
-            <div class="docs-footer-info">
-                &copy; 2026 Winhance.
+    <footer class="footer">
+        <div class="wrap footer-grid">
+            <div>
+                <a class="brand" href="../../index.html">
+                    <img class="brand-mark" src="../../images/winhance-rocket.png" alt="" width="24" height="24">
+                    <span>Winhance</span>
+                </a>
+                <p class="footer-version">These docs describe Winhance v26.10.01</p>
             </div>
-            <div class="docs-footer-meta">
-                <div class="docs-meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-                    <span class="docs-version">Docs v1.0.0</span>
-                </div>
-                <div class="docs-meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                    <span class="docs-last-updated">Last Updated: Jan 29, 2026</span>
-                </div>
-            </div>
+            <ul class="footer-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../index.html">Documentation</a></li>
+                <li><a href="https://github.com/memstechtips/Winhance/releases" target="_blank" rel="noopener">Releases</a></li>
+                <li><a href="https://github.com/memstechtips/Winhance" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://store.memstechtips.com/winhance/" target="_blank" rel="noopener">Support Winhance</a></li>
+            </ul>
+            <p class="footer-made">&copy; 2026 Winhance. Made by <a href="https://memstechtips.com/" target="_blank" rel="noopener">Memory</a>.</p>
         </div>
     </footer>
 
+    
+    <script src="../js/docs-search.js"></script>
+    <script src="../js/docs.js"></script>
+    <script src="../js/docs-metrics.js"></script>
 </body>
 
 </html>

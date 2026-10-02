@@ -1,0 +1,87 @@
+<h1>Answer file setup</h1>
+<p class="lead">Build an autounattend.xml with Builder mode, put it on your installation media, and know what Windows does with it from Setup to the first sign-in.</p>
+
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/j0lVY9ZUzSc" title="The PERFECT Windows Install Starts HERE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+
+<p>An answer file is an <code>autounattend.xml</code> that Windows Setup reads from the root of the installation media. It answers Setup's questions so the install runs without stopping, and Winhance uses it to carry your apps, settings and scripts onto the new PC. Nothing you choose here changes the PC you are using.</p>
+<p>If you only want the reference for each setting, see <a href="../features/autounattend/answer-file.html">Autounattend.xml settings</a>.</p>
+
+<h2 id="builder-mode">Builder mode</h2>
+<p>Builder mode lets you make a config or an answer file from the settings in the app without applying anything to this PC. While you are in it, the normal app actions are turned off.</p>
+<ol class="steps">
+<li><h3>Enter Builder mode</h3><p>Switch the <strong>Winhance Mode</strong> selector in the title bar to <strong>Builder</strong>. The first time, a short introduction explains the mode; tick <strong>Don't show this again</strong> to skip it next time.</p></li>
+<li><h3>Choose a starting point</h3><p>The <strong>Start Builder from...</strong> window offers four starting points:</p>
+<ul>
+<li><strong>The current state of this machine</strong>: every setting starts at this PC's current value.</li>
+<li><strong>All Winhance recommended settings</strong></li>
+<li><strong>All Windows default settings</strong></li>
+<li><strong>A saved Winhance config or answer file</strong>: reopens a <code>.winhance</code> file or an answer file Winhance made (see <a href="#reopen-an-answer-file">reopen an answer file</a>).</li>
+</ul></li>
+<li><h3>Pick the Autounattend target</h3><p>The Builder bar at the top of the window has two targets, <strong>Config</strong> and <strong>Autounattend</strong>. Pick <strong>Autounattend</strong>. This unlocks the <strong>Unattend</strong> page in the left navigation, which holds the choices that only exist in an answer file.</p></li>
+<li><h3>Pick the target Windows</h3><p>The dropdown on the Builder bar sets the Windows release the file is for: Windows 11 26H2, 25H2, 24H2, 23H2, Windows 10 22H2, or <strong>All Windows versions</strong>. It starts at the newest release. Only settings that exist on the release you pick are shown and saved. If you switch to a release that lacks some settings you already set, Winhance warns you; they are left out of the file but come back if you switch back.</p>
+<p>Tick <strong>Show settings for other hardware</strong> to also see settings this PC cannot have, such as battery settings on a desktop.</p></li>
+<li><h3>Make your choices</h3><p>Work through the pages:</p>
+<ul>
+<li><strong>Unattend</strong>: the answer-file settings, such as edition, accounts, disk layout and setup screens. The <strong>Included from other features</strong> card at the top counts what the other pages add to the file.</li>
+<li><strong>Software &amp; Apps</strong>: checked Windows apps are removed while Windows installs. Checked External Software apps are installed for everyone on the new PC after setup, by Winhance.</li>
+<li><strong>Optimize</strong> and <strong>Customize</strong>: every setting card has a tick that decides whether it goes in the file. Use <strong>Include All Settings</strong> or <strong>Exclude All Settings</strong> under <strong>Quick Actions</strong> to change a whole page.</li>
+</ul></li>
+<li><h3>Save</h3><p>Click <strong>Save autounattend.xml</strong> on the Builder bar. The file must be named <code>autounattend.xml</code>, because that is the only name Setup looks for. Winhance checks that the generated script and XML are valid before it writes the file.</p></li>
+</ol>
+<p>You can save both kinds of file in one session: save a config with the <strong>Config</strong> target, then switch to <strong>Autounattend</strong> and save the answer file. <strong>Cancel</strong> on the Builder bar leaves Builder mode and discards your choices.</p>
+<div class="callout callout-tip"><p class="callout-title">Building media? Start from WIMUtil instead</p><p>The <strong>Set up the answer file</strong> button in <a href="wimutil.html">WIMUtil</a> opens the same Builder session, sets the target Windows to the build on your ISO, and writes the file straight onto the media. It also adds two options this page does not have on its own: putting the External Software installers on the ISO so they install offline, and adding <strong>Your own installers</strong>.</p></div>
+
+<h2 id="what-the-file-covers">What the answer file covers</h2>
+<p>The <strong>Unattend</strong> page groups its settings like this. Each one is documented on the <a href="../features/autounattend/answer-file.html">Autounattend.xml settings</a> page.</p>
+<ul>
+<li><strong>Processor architecture</strong>: x64, ARM64 and x86. One file can cover all three.</li>
+<li><strong>Edition and product key</strong>: ask during Setup, pick an edition, use your own key, or use the key stored in the PC's firmware. The built-in keys choose an edition but do not activate Windows.</li>
+<li><strong>Windows 11 requirements</strong>: turn off Setup's TPM, Secure Boot, CPU, RAM, storage and disk checks.</li>
+<li><strong>Disk and partitions</strong>: let Setup ask, or wipe a disk and partition it for UEFI or BIOS with nothing to click. Wiping erases that disk, so check the disk number first.</li>
+<li><strong>Accounts</strong>: a local account, a Microsoft account, or accounts the file creates for you, and whether Setup stays online.</li>
+<li><strong>Setup screens</strong>: Setup language, the licence, OEM registration and network pages, the privacy questions, and the computer name.</li>
+<li><strong>General</strong>: .NET Framework 3.5, how Winhance gets onto the new PC, and whether app installers are deleted after they run.</li>
+<li><strong>Your own scripts</strong>: PowerShell, command, batch or registry scripts that run once, either system-wide or for each person who signs in.</li>
+</ul>
+<p>On top of that, the file carries the Windows apps to remove, the External Software apps to install, and every included Optimize and Customize setting.</p>
+<div class="callout callout-warning"><p class="callout-title">Treat the file as private</p><p>If the file creates accounts with passwords, it contains those passwords. <strong>Obscure the password in the file</strong> stores them as base64, which hides them from a glance but not from anyone who decodes them.</p></div>
+
+<h2 id="put-it-on-media">Put it on installation media</h2>
+<ul>
+<li><strong>With WIMUtil (recommended).</strong> Generate the file in step 2 of <a href="wimutil.html">WIMUtil</a>, add drivers if you want them, then create an ISO or write a USB drive. This is the only way to include drivers and offline installers.</li>
+<li><strong>On an existing Windows USB drive.</strong> Copy your saved <code>autounattend.xml</code> to the root of a USB drive that already holds Windows installation files. Setup picks it up from there.</li>
+</ul>
+<p>Ventoy users can attach the file to a Windows ISO with Ventoy's auto install plugin instead. This video walks through it:</p>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/4AGZQJTyCOs" title="How to Use Ventoy with Autounattend.xml" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+
+<h2 id="during-installation">What happens during installation</h2>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/JnaUDCsb8AY" title="How the Winhance/UnattendedWinstall autounattend.xml File Works" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+<ol class="steps">
+<li><h3>Setup starts</h3><p>Setup reads the file and applies what you chose for the setup language, edition, hardware checks and disk. Any screen the file does not answer still appears.</p></li>
+<li><h3>Windows prepares the PC</h3><p>Before the first setup screens, still running as the system, the file unpacks Winhance's scripts to <code>C:\ProgramData\Winhance\Unattend\Scripts</code> and runs <code>Winhancements.ps1</code>. It installs any drivers WIMUtil added, removes the Windows apps you checked, applies the machine-wide settings, runs your system-wide scripts, and registers the scheduled tasks below.</p></li>
+<li><h3>The setup screens</h3><p>You see only the screens the file left open, for example the account screens if the file does not create the accounts. A local account keeps Setup offline. If you chose <strong>Disconnect until Setup finishes</strong>, the network comes back at the first sign-in.</p></li>
+<li><h3>The first sign-in</h3><p>A scheduled task named <code>WinhanceUserCustomizations</code> runs at every sign-in. The first time an account signs in, it applies the per-user settings (theme, taskbar, Start menu, Explorer and the rest) and that account's per-user scripts, then restarts the PC about 20 seconds later so they take effect. It marks the account as done in <code>HKCU\Software\Winhance\UserCustomizationsApplied</code>, so later sign-ins skip it. Accounts created later get the same treatment at their own first sign-in.</p></li>
+<li><h3>After the restart</h3><p>What happens next depends on <strong>Winhance on the new PC</strong>. With <strong>Desktop shortcut</strong>, every new account gets an <strong>Install Winhance</strong> shortcut that installs Winhance and then the External Software apps you checked. With <strong>Install automatically after setup</strong>, that happens on its own at the next sign-in, and retries at the following sign-in if it fails. With <strong>Don't add</strong>, nothing is installed.</p></li>
+</ol>
+
+<h2 id="after-installation">On the new PC</h2>
+<table>
+<thead><tr><th>What</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td>Winhance scripts from the answer file</td><td><code>C:\ProgramData\Winhance\Unattend\Scripts</code></td></tr>
+<tr><td>Log of what the script did</td><td><code>C:\ProgramData\Winhance\Unattend\Logs\Winhancements.txt</code></td></tr>
+<tr><td>App removal scripts</td><td><code>C:\ProgramData\Winhance\Scripts</code></td></tr>
+<tr><td>Scheduled tasks</td><td>The <code>Winhance</code> folder in Task Scheduler. The removal tasks run the removal scripts again at sign-in or startup, so removed apps stay removed after Windows updates.</td></tr>
+<tr><td>Setup's copy of the answer file</td><td><code>C:\Windows\Panther\unattend.xml</code></td></tr>
+</tbody>
+</table>
+<p>To apply an account's per-user settings again, delete the <code>UserCustomizationsApplied</code> value under <code>HKCU\Software\Winhance</code> and sign out and back in.</p>
+<p>Some settings are written as Windows policies, so Windows Settings may show "Some of these settings are managed by your organization". That is expected. Change them back with Winhance.</p>
+
+<h2 id="reopen-an-answer-file">Reopen an answer file</h2>
+<p>Every answer file Winhance makes carries a copy of your choices, the target Windows and, from WIMUtil, the media choices. To change one, enter Builder mode, choose <strong>A saved Winhance config or answer file</strong> and pick the <code>autounattend.xml</code>. Builder opens with the Autounattend target and everything set the way you left it.</p>
+<p>Builder cannot open an answer file another tool made, or one from an older Winhance version that did not store its choices. Generate that file again with the current version.</p>
+
+<h2 id="edition-selection">Edition selection on PCs with a firmware key</h2>
+<p>Many laptops store a Windows key in their firmware, and Setup may use it to pick the edition without asking. To control the edition, choose it in the <strong>Windows edition</strong> setting on the Unattend page. This video explains how Windows 10 and 11 behave with these keys:</p>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/4y7abJIvTPk" title="Can't Select Windows Edition During Clean Installation? Here's The Fix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>

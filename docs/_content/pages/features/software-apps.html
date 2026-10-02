@@ -1,0 +1,65 @@
+<section id="software-apps-overview">
+    <h1>Software &amp; Apps</h1>
+    <p class="lead">Remove the apps and features that come with Windows, and install third-party apps, from one page with two tabs.</p>
+
+    <div class="app-demo" data-page="SoftwareApps"></div>
+
+    <h2 id="tabs">The two tabs</h2>
+    <p>Open <strong>Software &amp; Apps</strong> from the top of the sidebar. The page has two tabs:</p>
+    <div class="link-grid">
+        <a class="link-card" href="software-apps/windows-apps.html"><span class="link-card-title">Windows Apps &amp; Features</span><span>Remove built-in apps, Windows capabilities and optional features, and keep them removed.</span></a>
+        <a class="link-card" href="software-apps/external-apps.html"><span class="link-card-title">External Software</span><span>Install and uninstall third-party apps, grouped by category.</span></a>
+    </div>
+    <p>Both tabs work the same way: check the items you want, then click a button in the bar above the list.</p>
+
+    <h2 id="find-and-select">Find and select items</h2>
+    <ul>
+        <li>Type in the search box at the top right (<strong>Type here to search...</strong>) to filter the current tab. It matches names and descriptions.</li>
+        <li>Use <strong>Select All</strong>, <strong>Select All Installed</strong> or <strong>Select All Not Installed</strong> above the list to check items in bulk. In <strong>Table View</strong>, the checkbox in the first column header selects everything.</li>
+    </ul>
+
+    <h2 id="buttons">Buttons</h2>
+    <table>
+        <thead>
+            <tr><th>Button</th><th>What it does</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>Install Selected Items</strong></td><td>Installs the checked items. On the Windows tab this restores apps and features you removed.</td></tr>
+            <tr><td><strong>Uninstall Selected Items</strong></td><td>Removes the checked items.</td></tr>
+            <tr><td><strong>Refresh</strong></td><td>Checks again what is installed. The shortcut is <kbd>F5</kbd>.</td></tr>
+            <tr><td><strong>Help</strong></td><td>Shows a short guide for the current tab. On the Windows tab it also shows the removal status icons.</td></tr>
+        </tbody>
+    </table>
+    <p>In Normal mode, both action buttons stay disabled until you check at least one item. Winhance asks you to confirm and lists the items before it starts. When the window is narrow, the button labels shrink to icons; hover over one to see its name.</p>
+
+    <h2 id="views">Views and sorting</h2>
+    <p>The three buttons next to <strong>Help</strong> switch between <strong>Card View</strong>, <strong>Table View</strong> and <strong>Compact View</strong>. Winhance remembers the view you pick.</p>
+    <ul>
+        <li><strong>Card View</strong> shows each item with its icon, description and status labels.</li>
+        <li><strong>Table View</strong> shows columns you can sort by clicking a header. The Windows tab has <strong>Name</strong>, <strong>Description</strong>, <strong>Type</strong>, <strong>Status</strong> and <strong>Installable</strong>. The External Software tab has <strong>Name</strong>, <strong>Description</strong>, <strong>Group</strong> and <strong>Status</strong>.</li>
+        <li><strong>Compact View</strong> fits many items on screen, with small status icons beside each name.</li>
+    </ul>
+    <p>In card and compact view, the <strong>Sort</strong> menu offers <strong>Name A-Z (Installed First)</strong> (the default), <strong>Name A-Z</strong> and <strong>Name Z-A</strong>. It is disabled in table view, where the column headers do the sorting.</p>
+
+    <h2 id="status-labels">Status labels</h2>
+    <table>
+        <thead>
+            <tr><th>Label</th><th>Meaning</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>Installed</strong> / <strong>Not Installed</strong></td><td>Whether the item is on this PC right now.</td></tr>
+            <tr><td><strong>Installable</strong></td><td>Windows tab only. You can reinstall the item after removing it.</td></tr>
+            <tr><td><strong>Permanent</strong></td><td>Windows tab only. Once removed, the item cannot be reinstalled.</td></tr>
+            <tr><td><strong>Warning</strong></td><td>Windows tab only. Removing the item may cause system instability.</td></tr>
+        </tbody>
+    </table>
+    <p>Card view only shows the <strong>Installed</strong>, <strong>Permanent</strong> and <strong>Warning</strong> labels. Table and compact view show the install status of every item and, on the Windows tab, whether it can be reinstalled. In every view you can hover over any label for a short explanation.</p>
+
+    <h2 id="modes">In Builder and Config Review mode</h2>
+    <p>The mode switcher in the title bar changes what the checkboxes mean:</p>
+    <ul>
+        <li><strong>Builder</strong> mode never touches this PC. Your checks are saved into the config or <code>autounattend.xml</code> you are building, and a banner above the list says what will happen to them. In an answer file, checked Windows apps are removed during installation and checked external apps are installed for everyone on the new PC.</li>
+        <li><strong>Config Review</strong> mode shows the apps from a config you imported. Use the <strong>Install Selected Items</strong> and <strong>Uninstall Selected Items</strong> toggles to choose what happens to the checked apps when you apply the config, or uncheck everything to skip apps.</li>
+    </ul>
+    <p>See <a href="../guides/configuration-files.html">Configuration files</a> for how configs are saved and imported.</p>
+</section>

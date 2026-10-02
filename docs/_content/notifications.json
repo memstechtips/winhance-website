@@ -1,17 +1,18 @@
 {
   "intro": [
-    "<p>Reduce distractions and take control of Windows notifications. Winhance lets you customize which notifications you receive, silence unwanted alerts, and remove promotional content.</p>"
+    "<p>Which notifications Windows shows, where it shows them, and the tips and suggestions it mixes in with them.</p>"
   ],
   "groups": {
     "Additional Settings": {
-      "blurb": "Control promotional content and suggestions in notifications.",
+      "blurb": "The welcome experience after updates, setup suggestions, and tips while you use Windows.",
       "html": [
-        "<div class=\"callout callout-warning\"> <div class=\"callout-title\">Dependency Notice</div> <p>Some settings in this section require the \"Ads, Suggestions and Promotional Content\" setting in Privacy & Security to be set to \"Custom\" before they can be modified.</p> </div>"
+        "<div class=\"callout callout-note\"><p class=\"callout-title\">Also set from Privacy &amp; Security</p><p>Three of these are linked to <a href=\"privacy-security.html#content-delivery-and-advertising\">Ads, Suggestions and Promotional Content</a>. Choosing Allow or Deny there turns them on or off along with the other promotional settings.</p></div>"
       ]
     },
-    "System Notifications": "Control notifications from Windows system components.",
-    "Privacy Notifications": "Notifications related to privacy and app permissions.",
-    "Security Notifications": "Control security-related notifications from Windows Defender and Security Center."
+    "System Notifications": "Notifications when apps ask for access, when an app is added to startup, and when the clock changes for daylight saving time.",
+    "Privacy Notifications": "A notification when an app asks for your location.",
+    "Security Notifications": "Notifications from Windows Security and from Security and Maintenance.",
+    "General": "Notifications as a whole. The sound and lock screen settings can only be changed while Show Notifications is on."
   },
   "video": {
     "id": "lrq3ph3xi50",

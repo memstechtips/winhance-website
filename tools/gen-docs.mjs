@@ -6,8 +6,9 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname, basename, resolve } from 'node:path';
 import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
-import { loadPages, renderFeaturePage, renderHubPage } from './lib/render-page.mjs';
-import { searchEntries, searchEntriesJs, spliceBetweenMarkers, docsConfigBlock, versionToIsoDate, renderSitemap } from './lib/site-meta.mjs';
+import { loadPages, navList, renderFeaturePage, renderHubPage, renderStaticPage } from './lib/render-page.mjs';
+import { searchEntries, staticSearchEntry, searchEntriesJs, spliceBetweenMarkers, versionToIsoDate, renderSitemap } from './lib/site-meta.mjs';
+import { spliceSprite } from './gen-demo.mjs';
 import { themeCss, geometries } from './lib/theme-css.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -66,6 +67,7 @@ export function generate({ catalogPath, siteDir, warn = () => {}, themePath = jo
       icons,
       geometries: geometries(theme),
       referenceBuilds: catalog.referenceBuilds,
+      version: catalog.winhanceVersion,
       urlFor: (id) => {
         const target = pageOfSetting.get(id);
         if (!target) return null;
@@ -75,15 +77,27 @@ export function generate({ catalogPath, siteDir, warn = () => {}, themePath = jo
     out.set(page.path, renderFeaturePage({ page, feature, content, template, ctx, pages }));
   }
   for (const [key, area] of Object.entries(pages.areas)) {
-    out.set(area.path, renderHubPage({ area, areaKey: key, pages, counts, content: contents[key], template }));
+    out.set(area.path, renderHubPage({ area, areaKey: key, pages, counts, content: contents[key], template, version: catalog.winhanceVersion }));
   }
+  // Every other page in the nav is hand-written: its body is docs/_content/pages/<path>.
+  const statics = [];
+  const generated = new Set([...pages.features.map((f) => f.path), ...Object.values(pages.areas).map((a) => a.path)]);
+  for (const item of navList(pages)) {
+    if (generated.has(item.path)) continue;
+    const src = join(siteDir, '_content', 'pages', item.path);
+    if (!existsSync(src)) throw new Error(`${item.path} is in the nav but has no body at _content/pages/${item.path}`);
+    const body = readFileSync(src, 'utf8');
+    out.set(item.path, renderStaticPage({ path: item.path, body, template, pages, version: catalog.winhanceVersion }));
+    statics.push(staticSearchEntry(item, body));
+  }
+  // Each page carries only the icons it uses, from the same vendored set as the landing page.
+  const siteIcons = JSON.parse(readFileSync(join(here, 'icon-sources', 'site-icons.json'), 'utf8')).icons;
+  for (const [path, html] of out) out.set(path, spliceSprite(html, siteIcons));
 
   const searchPath = join(siteDir, 'js', 'docs-search.js');
-  out.set('js/docs-search.js', spliceBetweenMarkers(readFileSync(searchPath, 'utf8'), START, END, searchEntriesJs(searchEntries({ pages, catalog, contents }))));
-  const configPath = join(siteDir, 'js', 'docs-config.js');
-  out.set('js/docs-config.js', spliceBetweenMarkers(readFileSync(configPath, 'utf8'), START, END, docsConfigBlock(catalog.winhanceVersion)));
+  out.set('js/docs-search.js', spliceBetweenMarkers(readFileSync(searchPath, 'utf8'), START, END, searchEntriesJs([...statics, ...searchEntries({ pages, catalog, contents })])));
   const sitemapPath = join(siteDir, 'sitemap.xml');
-  out.set('sitemap.xml', renderSitemap({ existing: existsSync(sitemapPath) ? readFileSync(sitemapPath, 'utf8') : '', pages, isoDate: versionToIsoDate(catalog.winhanceVersion) }));
+  out.set('sitemap.xml', renderSitemap({ existing: existsSync(sitemapPath) ? readFileSync(sitemapPath, 'utf8') : '', pages, statics: statics.map((e) => e.url), isoDate: versionToIsoDate(catalog.winhanceVersion) }));
   out.set('css/app-tokens.css', themeCss(theme));
   return out;
 }

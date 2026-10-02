@@ -1,0 +1,126 @@
+<h1>Configuration files</h1>
+<p class="lead">Save your Winhance settings and app choices to a .winhance file, then import it on this PC or another one, with a review step before anything changes.</p>
+
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/m4i9wroDOjA?start=2422" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+
+<p>A config is a <code>.winhance</code> file. It holds the value of every Winhance setting plus the apps you checked under <strong>Software &amp; Apps</strong>. Use one to set up a second PC the same way, to keep your choices safe before you reinstall Windows, or to share a setup with someone else.</p>
+
+<h2 id="whats-in-a-config">What a config contains</h2>
+<table>
+<thead><tr><th>Section</th><th>What it holds</th></tr></thead>
+<tbody>
+<tr><td><code>WindowsApps</code></td><td>The Windows apps, capabilities and optional features you checked.</td></tr>
+<tr><td><code>ExternalApps</code></td><td>The External Software apps you checked, with their WinGet IDs.</td></tr>
+<tr><td><code>Optimize</code></td><td>One entry per Optimize page (Privacy &amp; Security, Power, Gaming &amp; Performance, Update, Notifications, Sound) with the value of each setting.</td></tr>
+<tr><td><code>Customize</code></td><td>The same for the Customize pages: Windows Theme, Taskbar, Start Menu, Explorer, and Time, region and language.</td></tr>
+<tr><td><code>Autounattend</code></td><td>Answer-file choices from the Unattend page, when the file has any.</td></tr>
+</tbody>
+</table>
+<p>A saved config also records the name of the PC it came from, so you can tell files from different machines apart. A file made in Builder mode for one Windows release records that release too.</p>
+
+<h2 id="save-a-config">Save a config</h2>
+<p>There are two ways to save one.</p>
+<ul>
+<li><strong>From this PC as it is now.</strong> Open <strong>Settings</strong>, find <strong>Backup &amp; Restore</strong> and click <strong>Export</strong>. The file gets the current value of every setting on this PC, plus whichever apps you have checked on the <strong>Software &amp; Apps</strong> page. Check the apps you want in the file before you export.</li>
+<li><strong>From choices you make without applying them.</strong> Switch the <strong>Winhance Mode</strong> selector in the title bar to <strong>Builder</strong>, pick <strong>Config</strong> on the Builder bar, set things the way you want, then click <strong>Save Config</strong>. Nothing changes on this PC. See <a href="autounattend.html#builder-mode">Builder mode</a> for the starting points and the target Windows picker.</li>
+</ul>
+<p>If no Windows apps are checked, Winhance asks before saving, because the imported file would then check no apps.</p>
+
+<h2 id="import-a-config">Import a config</h2>
+<ol class="steps">
+<li><h3>Open the import window</h3><p>Click <strong>Import</strong> under <strong>Settings</strong> &gt; <strong>Backup &amp; Restore</strong>, or switch the <strong>Winhance Mode</strong> selector to <strong>Config Review</strong>. Both open the <strong>Import Config</strong> window.</p></li>
+<li><h3>Pick a source</h3><p>Choose one of the four options:</p>
+<ul>
+<li><strong>Import my own config</strong>: a <code>.winhance</code> file from your computer.</li>
+<li><strong>Import recommended config</strong>: the config that ships with Winhance (see <a href="#recommended-config">below</a>).</li>
+<li><strong>Import backup config</strong>: the backup Winhance made the first time it ran on this PC.</li>
+<li><strong>Restore Windows defaults</strong>: the values a clean install of Windows uses. Winhance loads the Windows 11 25H2 defaults on Windows 11 and the Windows 10 22H2 defaults on Windows 10.</li>
+</ul></li>
+<li><h3>Review it, or apply it straight away</h3><p>Leave <strong>Skip review and apply immediately</strong> unticked and click <strong>Continue</strong> to open the config in <a href="#config-review">Config Review mode</a>. Tick it to apply the config without reviewing, using the options in the next section.</p></li>
+</ol>
+
+<h3>Skip review and apply immediately</h3>
+<p>Ticking the box turns on these options:</p>
+<ul>
+<li><strong>Windows Apps</strong>: <strong>Install</strong>, <strong>Uninstall</strong> (the default) or <strong>Select Only</strong>. Select Only checks the apps on the Software &amp; Apps page and leaves the removal to you.</li>
+<li><strong>External Apps</strong>: <strong>Install</strong> (the default), <strong>Uninstall</strong> or <strong>Select Only</strong>.</li>
+<li><strong>Clean Taskbar</strong> and <strong>Clean Start Menu</strong>: ticked by default. Each one runs only if the config itself has it selected.</li>
+</ul>
+<p>Click <strong>Continue</strong>. Winhance shows a progress overlay while it works, then tells you when the configuration is applied. Some settings only take effect after a restart, so restart when it finishes.</p>
+
+<h2 id="config-review">Config Review mode</h2>
+<p>Config Review compares the config with this PC and shows you every change before anything is applied. It is a review screen, not an editor, and the normal app actions are turned off while you are in it.</p>
+<ul>
+<li>Every setting stays on screen. A setting the config would change shows its current value and the config's value, with <strong>Apply</strong> and <strong>Don't apply</strong> buttons.</li>
+<li>To see only the settings that would change, open the <strong>View</strong> menu and turn on <strong>Show Only Changes</strong>.</li>
+<li>On the Software &amp; Apps page, tick the apps you want and choose <strong>Install</strong> or <strong>Uninstall</strong>. Leave none ticked to skip apps.</li>
+<li>The bar at the top counts your progress, for example "12 of 40 reviewed (9 will be applied)". Settings in the file that this PC does not have are set aside, and the bar says how many.</li>
+<li><strong>Apply Config</strong> becomes available once you have decided on every change. <strong>Cancel</strong> leaves review mode without changing anything.</li>
+</ul>
+
+<h2 id="backup-config">The backup config</h2>
+<p>The first time Winhance runs, it saves the current value of every setting and the list of installed Windows apps to <code>%LOCALAPPDATA%\Winhance\Backup</code>, as <code>UserBackup_<em>date</em>_<em>time</em>.winhance</code>. Import it with <strong>Import backup config</strong> to put the settings Winhance manages back the way they were. If the folder holds more than one backup, Winhance asks which one to use.</p>
+<div class="callout callout-tip"><p class="callout-title">Make a restore point too</p><p>The backup config only covers settings Winhance knows about. A System Restore point covers the rest. You can create one from the <strong>Settings</strong> page.</p></div>
+
+<h2 id="recommended-config">The recommended config</h2>
+<p><strong>Import recommended config</strong> loads the config that ships inside Winhance. It covers every Optimize and Customize page, checks most of the built-in Windows apps for removal, and checks these External Software apps for installation:</p>
+<p>Brave, ONLYOFFICE Desktop Editors, SumatraPDF, OBS Studio, MPC-BE, Greenshot, FastStone, Nilesoft Shell, StartAllBack, Steam, 7-Zip, File Converter, UniGetUI and Notepad++.</p>
+<p>Import it with review on the first time, so you can see what it would change and skip anything you want to keep.</p>
+
+<h2 id="file-format">File format</h2>
+<p>A <code>.winhance</code> file is indented JSON. You can open it in any text editor. A short file looks like this:</p>
+<pre><code class="language-json">{
+  "Version": "2.0",
+  "CreatedAt": "2026-10-01T09:30:00Z",
+  "ComputerName": "DESKTOP-01",
+  "WindowsApps": {
+    "IsIncluded": true,
+    "Items": []
+  },
+  "ExternalApps": {
+    "IsIncluded": true,
+    "Items": [
+      {
+        "Id": "external-app-brave",
+        "Name": "Brave",
+        "IsSelected": true,
+        "InputType": 0,
+        "WinGetPackageId": "Brave.Brave"
+      }
+    ]
+  },
+  "Customize": {
+    "IsIncluded": true,
+    "Features": {
+      "WindowsTheme": {
+        "IsIncluded": true,
+        "Items": [
+          {
+            "Id": "theme-mode-windows",
+            "Name": "Choose your mode",
+            "InputType": 1,
+            "SelectedIndex": 1
+          }
+        ]
+      }
+    }
+  },
+  "Optimize": {
+    "IsIncluded": true,
+    "Features": {
+      "Privacy": {
+        "IsIncluded": true,
+        "Items": [
+          {
+            "Id": "privacy-diagnostics",
+            "Name": "Send Diagnostic Data",
+            "IsSelected": false,
+            "InputType": 0
+          }
+        ]
+      }
+    }
+  }
+}</code></pre>
+<p>Each setting is stored by its <code>Id</code>. A toggle stores <code>IsSelected</code>, a dropdown stores <code>SelectedIndex</code>, and other controls store their own value fields. A real export lists every setting, not just one per page.</p>
+<div class="callout callout-warning"><p class="callout-title">Only version 2.0 files load</p><p>Winhance refuses a file whose <code>Version</code> is not <code>2.0</code>. If an old config is refused, set Winhance up the way you want and export a new one.</p></div>

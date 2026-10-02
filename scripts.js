@@ -1,378 +1,259 @@
-// Initialize button hover effects and fetch GitHub data
-document.addEventListener('DOMContentLoaded', function() {
-    // Add hover effects to buttons
-    const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(button => {
-        button.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px)';
-        });
+// winhance.net landing page: theme switch, the PowerShell copy button, live GitHub numbers, the
+// readout under the demo window, and the sponsor cards.
 
-        button.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
+(function () {
+    var root = document.documentElement;
+    var toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) { /* private mode: theme just won't stick */ }
     });
+})();
 
-    // PowerShell command copy-to-clipboard functionality
-    const copyBtn = document.getElementById('copy-powershell-btn');
-    const codeElement = document.getElementById('powershell-code');
+(function () {
+    var button = document.getElementById('copy-powershell-btn');
+    var code = document.getElementById('powershell-code');
+    if (!button || !code) return;
 
-    if (copyBtn && codeElement) {
-        copyBtn.addEventListener('click', function() {
-            // Get the text content
-            const textToCopy = codeElement.textContent;
-
-            // Use the modern Clipboard API
-            navigator.clipboard.writeText(textToCopy).then(function() {
-                // Success feedback
-                const copyIcon = copyBtn.querySelector('.copy-icon');
-                const checkmarkIcon = copyBtn.querySelector('.checkmark-icon');
-
-                // Hide copy icon, show checkmark
-                copyIcon.style.display = 'none';
-                checkmarkIcon.style.display = 'block';
-                copyBtn.classList.add('copied');
-
-                // Reset after 2 seconds
-                setTimeout(function() {
-                    copyIcon.style.display = 'block';
-                    checkmarkIcon.style.display = 'none';
-                    copyBtn.classList.remove('copied');
-                }, 2000);
-            }).catch(function(err) {
-                // Fallback for older browsers
-                console.error('Failed to copy text: ', err);
-
-                // Try the old method
-                const textArea = document.createElement('textarea');
-                textArea.value = textToCopy;
-                textArea.style.position = 'fixed';
-                textArea.style.left = '-999999px';
-                document.body.appendChild(textArea);
-                textArea.select();
-
-                try {
-                    document.execCommand('copy');
-                    const copyIcon = copyBtn.querySelector('.copy-icon');
-                    const checkmarkIcon = copyBtn.querySelector('.checkmark-icon');
-
-                    copyIcon.style.display = 'none';
-                    checkmarkIcon.style.display = 'block';
-                    copyBtn.classList.add('copied');
-
-                    setTimeout(function() {
-                        copyIcon.style.display = 'block';
-                        checkmarkIcon.style.display = 'none';
-                        copyBtn.classList.remove('copied');
-                    }, 2000);
-                } catch (err) {
-                    console.error('Fallback copy failed: ', err);
-                }
-
-                document.body.removeChild(textArea);
-            });
-        });
+    function copied() {
+        button.classList.add('is-done');
+        button.setAttribute('aria-label', 'Copied');
+        setTimeout(function () {
+            button.classList.remove('is-done');
+            button.setAttribute('aria-label', 'Copy the command');
+        }, 2000);
     }
 
-    // Fetch GitHub data (stars, version, downloads)
-    fetchGitHubData();
-});
+    function fallback(text) {
+        var area = document.createElement('textarea');
+        area.value = text;
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        try { if (document.execCommand('copy')) copied(); } catch (e) { /* nothing left to try */ }
+        document.body.removeChild(area);
+    }
 
-// Function to fetch GitHub data (stars, version, downloads)
-function fetchGitHubData() {
-    const repoOwner = 'memstechtips';
-    const repoName = 'Winhance';
-    const repoUrl = `https://api.github.com/repos/${repoOwner}/${repoName}`;
-    const releasesUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/releases/latest`;
-
-    // Fetch repository data for stars
-    fetch(repoUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            const starCount = data.stargazers_count;
-            const starsElement = document.querySelector('.github-stars-badge .text');
-            if (starsElement && starCount) {
-                // Format the number with commas for thousands
-                const formattedCount = starCount.toLocaleString();
-                starsElement.textContent = `${formattedCount} GitHub Stars`;
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching GitHub stars:', error);
-            // Keep the hardcoded value as fallback
-        });
-
-    // Fetch latest release data for version info
-    fetch(releasesUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Update version badge
-            const versionElement = document.querySelector('.version-text');
-            if (versionElement && data.tag_name) {
-                versionElement.textContent = data.tag_name;
-            }
-
-            // Update version number in hero info line
-            const versionNumberElement = document.querySelector('.version-number');
-            if (versionNumberElement && data.tag_name) {
-                versionNumberElement.textContent = data.tag_name;
-            }
-
-            // Update footer version
-            const footerVersionElement = document.querySelector('.footer-version');
-            if (footerVersionElement && data.tag_name) {
-                footerVersionElement.textContent = `Version ${data.tag_name}`;
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching GitHub release data:', error);
-            // Keep the hardcoded values as fallback
-        });
-
-    // Fetch ALL releases to calculate total downloads across all versions
-    const allReleasesUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/releases`;
-    fetch(allReleasesUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(releases => {
-            // Calculate total downloads from all releases
-            let totalDownloads = 0;
-
-            releases.forEach(release => {
-                if (release.assets && release.assets.length > 0) {
-                    release.assets.forEach(asset => {
-                        totalDownloads += asset.download_count;
-                    });
-                }
-            });
-
-            // Update download count in hero info line
-            const downloadCountElement = document.querySelector('.download-count');
-            if (downloadCountElement && totalDownloads > 0) {
-                const formattedDownloads = totalDownloads >= 1000000
-                    ? (totalDownloads / 1000000).toFixed(1) + 'M+'
-                    : totalDownloads >= 1000
-                    ? (totalDownloads / 1000).toFixed(1) + 'k+'
-                    : totalDownloads.toLocaleString();
-                downloadCountElement.textContent = formattedDownloads;
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching all GitHub releases:', error);
-            // Keep the hardcoded value as fallback
-        });
-}
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
+    button.addEventListener('click', function () {
+        var text = code.textContent;
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(copied, function () { fallback(text); });
+        } else {
+            fallback(text);
         }
+    });
+})();
+
+// The stats workflow rewrites these numbers into the HTML every six hours; this refreshes them live
+// when the GitHub API allows it, and leaves the baked-in values alone when it doesn't.
+(function () {
+    var api = 'https://api.github.com/repos/memstechtips/Winhance';
+
+    function short(n) {
+        if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M+';
+        if (n >= 1000) return (n / 1000).toFixed(1) + 'k+';
+        return String(n);
+    }
+
+    function get(url) {
+        return fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+    }
+
+    get(api).then(function (repo) {
+        var el = document.querySelector('.github-stars-badge .text');
+        if (el && repo.stargazers_count) el.textContent = short(repo.stargazers_count) + ' GitHub Stars';
+    }).catch(function () {});
+
+    get(api + '/releases/latest').then(function (release) {
+        if (!release.tag_name) return;
+        document.querySelectorAll('.version-number').forEach(function (el) { el.textContent = release.tag_name; });
+        document.querySelectorAll('.footer-version').forEach(function (el) { el.textContent = 'Version ' + release.tag_name; });
+    }).catch(function () {});
+
+    get(api + '/releases?per_page=100').then(function (releases) {
+        var total = 0;
+        releases.forEach(function (r) { (r.assets || []).forEach(function (a) { total += a.download_count; }); });
+        var el = document.querySelector('.download-count');
+        // One page of releases undercounts once there are more than 100; only ever move the number up.
+        if (el && total && parseFloat(el.textContent) <= parseFloat(short(total))) el.textContent = short(total);
+    }).catch(function () {});
+})();
+
+// The "Open it" buttons in each chapter open that page in the window above.
+(function () {
+    var stage = document.getElementById('winhance-demo');
+    if (!stage) return;
+
+    document.querySelectorAll('[data-open]').forEach(function (button) {
+        button.addEventListener('click', function () {
+            if (!window.WinhanceDemo) return;
+            window.WinhanceDemo.open(button.getAttribute('data-open'));
+            stage.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+        });
+    });
+})();
+
+// A download click sends the button's rocket diving out of it; the browser handles the download itself.
+document.querySelectorAll('.dl-rocket').forEach(function (rocket) {
+    var done = 0;
+    rocket.closest('a').addEventListener('click', function () {
+        rocket.classList.remove('is-launching');
+        void rocket.offsetWidth;
+        rocket.classList.add('is-launching');
+        clearTimeout(done);
+        done = setTimeout(function () { rocket.classList.remove('is-launching'); }, 950);
     });
 });
 
-// Animation on scroll
-const animateElements = document.querySelectorAll('.animate-fadeInUp');
-
-function checkIfInView() {
-    const windowHeight = window.innerHeight;
-    const windowTopPosition = window.scrollY;
-    const windowBottomPosition = windowTopPosition + windowHeight;
-
-    animateElements.forEach((element, index) => {
-        const elementHeight = element.offsetHeight;
-        const elementTopPosition = element.offsetTop;
-        const elementBottomPosition = elementTopPosition + elementHeight;
-
-        // Check if element is in viewport
-        if (
-            (elementBottomPosition >= windowTopPosition) &&
-            (elementTopPosition <= windowBottomPosition)
-        ) {
-            // Add a slight delay for each element to create a cascade effect
-            setTimeout(() => {
-                element.classList.add('fadeInUp');
-            }, index * 150);
-        }
+/* ===== Flight path =====
+   Down the left edge, the rocket rides a line from the sponsors to the finale: nose down while you scroll
+   down, nose up when you scroll back. */
+(function () {
+    var flight = document.querySelector('.flight');
+    var from = document.querySelector('#sponsors h2');
+    var to = document.querySelector('.finale');
+    if (!flight || !from || !to) return;
+    var main = flight.parentElement;
+    var svg = flight.querySelector('.flight-path');
+    var track = flight.querySelector('.flight-track');
+    var fill = flight.querySelector('.flight-fill');
+    var heads = Array.prototype.filter.call(main.querySelectorAll('section h2'), function (h) { return !to.contains(h); });
+    var nodes = heads.map(function () {
+        var node = document.createElement('span');
+        node.className = 'flight-node';
+        flight.appendChild(node);
+        return node;
     });
-}
+    var top = 0, total = 0, samples = [], stops = [], blocks = [];
+    var lastY = window.scrollY, turn = 135, still = 0, ticking = false;
+    // The solid things the line passes under; the rocket fades over them. A pinned area's copy and scene
+    // move as they stick, so they are checked where they are now instead.
+    var PANELS = '.mode, .sponsors-panel, .press-list a, .newpc, .open-points, .voice-list li, .faq-list';
+    var stuck = main.querySelectorAll('.area-copy, .scene');
+    var inBlock = function (x, y, pad) {
+        return blocks.some(function (b) { return x > b[0] - pad && x < b[0] + b[2] + pad && y > b[1] - pad && y < b[1] + b[3] + pad; });
+    };
+    flight.classList.add('is-on');
 
-// Parallax effect removed - hero image now uses simple hover scale effect
+    // The line swings between the side margins, turning beside each section heading. Each bend leaves and
+    // meets its turn vertically, so the curve is smooth all the way: no corners.
+    var measure = function () {
+        var base = main.getBoundingClientRect().top + window.scrollY;
+        var mainBox = main.getBoundingClientRect();
+        var width = main.clientWidth;
+        var wrap = Math.min(width, 1200);
+        var left = Math.max(24, (width - wrap) / 2 + 4), right = width - left;
+        top = from.getBoundingClientRect().top + window.scrollY - base;
+        var height = to.getBoundingClientRect().top + window.scrollY - base + 56 - top;
 
-// FAQ accordion functionality
-function initFaqAccordion() {
-    const faqItems = document.querySelectorAll('.faq-item');
+        var add = function (r) {
+            if (r.width && r.height) blocks.push([r.left - mainBox.left - 8, r.top + window.scrollY - base - top - 8, r.width + 16, r.height + 16]);
+        };
+        blocks = [];
+        main.querySelectorAll(PANELS).forEach(function (el) { add(el.getBoundingClientRect()); });
 
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-
-        question.addEventListener('click', () => {
-            // Close all other items
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item && otherItem.classList.contains('active')) {
-                    otherItem.classList.remove('active');
-                }
-            });
-
-            // Toggle current item
-            item.classList.toggle('active');
+        // From the first heading (on the left) to the finale's top edge, landing on the left.
+        var points = heads.map(function (h, i) {
+            return [i % 2 ? right : left, h.getBoundingClientRect().top + window.scrollY - base - top + 18];
         });
-    });
-}
-
-// Testimonials slider functionality
-function setupTestimonialsSlider() {
-    const track = document.querySelector('.testimonials-track');
-
-    if (!track) return;
-
-    // Clone the testimonial cards to create a seamless infinite scroll effect
-    const cards = track.querySelectorAll('.testimonial-card');
-
-    // Clone each card and append to the track
-    cards.forEach(card => {
-        const clone = card.cloneNode(true);
-        track.appendChild(clone);
-    });
-
-    // Calculate the total width of original cards
-    const cardWidth = 300; // Width of each card in pixels
-    const gapWidth = 20; // Gap between cards in pixels
-    const totalWidth = (cardWidth + gapWidth) * (cards.length);
-
-    // Create a CSS animation directly on the element
-    // This avoids the security error when trying to access CSS rules
-    const animationDuration = cards.length * 5; // 5 seconds per card
-
-    // Apply the animation directly to the track element
-    track.style.animation = `none`; // Reset animation first
-
-    // Force reflow
-    void track.offsetWidth;
-
-    // Set new animation
-    track.style.animation = `scroll ${animationDuration}s linear infinite`;
-    track.style.animationFillMode = 'forwards';
-
-    // Create a style element for the keyframes
-    const styleElement = document.createElement('style');
-    styleElement.textContent = `
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-${totalWidth}px);
+        points.push([left, height]);
+        // Walked from the curve's own formula (getPointAtLength is far too slow to call thousands of times):
+        // samples: [length so far, x, y, direction]. Height only grows along the curve, so a height finds
+        // its sample. The path is drawn through the same samples, so its length is the walked total.
+        var d = 'M' + points[0][0].toFixed(1) + ' ' + points[0][1].toFixed(1);
+        samples = [[0, points[0][0], points[0][1], 90]];
+        total = 0;
+        for (var i = 1; i < points.length; i++) {
+            var a = points[i - 1], b = points[i], bend = (b[1] - a[1]) / 2;
+            var c1 = [a[0], a[1] + bend], c2 = [b[0], b[1] - bend];
+            for (var k = 1; k <= 96; k++) {
+                var t = k / 96, u = 1 - t;
+                var x = u * u * u * a[0] + 3 * u * u * t * c1[0] + 3 * u * t * t * c2[0] + t * t * t * b[0];
+                var y = u * u * u * a[1] + 3 * u * u * t * c1[1] + 3 * u * t * t * c2[1] + t * t * t * b[1];
+                var dx = 3 * u * u * (c1[0] - a[0]) + 6 * u * t * (c2[0] - c1[0]) + 3 * t * t * (b[0] - c2[0]);
+                var dy = 3 * u * u * (c1[1] - a[1]) + 6 * u * t * (c2[1] - c1[1]) + 3 * t * t * (b[1] - c2[1]);
+                var prev = samples[samples.length - 1];
+                var step = Math.hypot(x - prev[1], y - prev[2]);
+                d += 'L' + x.toFixed(1) + ' ' + y.toFixed(1);
+                total += step;
+                samples.push([total, x, y, Math.atan2(dy, dx) * 180 / Math.PI]);
             }
         }
-    `;
-    document.head.appendChild(styleElement);
-
-    // Add hover event listeners to pause/resume animation
-    track.addEventListener('mouseenter', () => {
-        track.style.animationPlayState = 'paused';
-    });
-
-    track.addEventListener('mouseleave', () => {
-        track.style.animationPlayState = 'running';
-    });
-}
-
-// Media testimonials slider functionality
-function setupMediaTestimonialsSlider() {
-    const track = document.querySelector('.media-testimonials-track');
-
-    if (!track) return;
-
-    // Clone the media testimonial cards to create a seamless infinite scroll effect
-    const cards = track.querySelectorAll('.media-testimonial-card');
-
-    // Clone each card and append to the track
-    cards.forEach(card => {
-        const clone = card.cloneNode(true);
-        track.appendChild(clone);
-    });
-
-    // Calculate the total width of original cards
-    const cardWidth = 350; // Width of each card in pixels
-    const gapWidth = 20; // Gap between cards in pixels
-    const totalWidth = (cardWidth + gapWidth) * (cards.length);
-
-    // Create a CSS animation directly on the element
-    // This avoids the security error when trying to access CSS rules
-    const animationDuration = cards.length * 5;
-
-    // Apply the animation directly to the track element
-    track.style.animation = `none`; // Reset animation first
-
-    // Force reflow
-    void track.offsetWidth;
-
-    // Set new animation
-    track.style.animation = `mediaScroll ${animationDuration}s linear infinite`;
-    track.style.animationFillMode = 'forwards';
-
-    // Create a style element for the keyframes
-    const styleElement = document.createElement('style');
-    styleElement.textContent = `
-        @keyframes mediaScroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-${totalWidth}px);
+        flight.style.top = top + 'px';
+        flight.style.height = height + 'px';
+        svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
+        track.setAttribute('d', d);
+        fill.setAttribute('d', d);
+        fill.style.strokeDasharray = total + ' ' + total;
+        stops = points.slice(0, -1).map(function (p, i) {
+            nodes[i].style.left = p[0] + 'px';
+            nodes[i].style.top = p[1] + 'px';
+            nodes[i].classList.toggle('is-under', inBlock(p[0], p[1], 0));
+            return p[1];
+        });
+        update();
+    };
+    var sampleAt = function (y) {
+        var lo = 0, hi = samples.length - 1;
+        while (lo < hi) {
+            var mid = (lo + hi) >> 1;
+            if (samples[mid][2] < y) lo = mid + 1; else hi = mid;
+        }
+        return lo;
+    };
+    var update = function () {
+        ticking = false;
+        if (!total) return;
+        var base = main.getBoundingClientRect().top + window.scrollY;
+        var y = window.scrollY + window.innerHeight * .5 - base - top;
+        var index = sampleAt(y), at = samples[index], l = at[0];
+        fill.style.strokeDashoffset = total - l;
+        flight.style.setProperty('--flight-x', at[1] + 'px');
+        flight.style.setProperty('--flight-y', at[2] + 'px');
+        stops.forEach(function (sy, i) { nodes[i].classList.toggle('is-passed', sy <= at[2] + 1); });
+        flight.classList.toggle('is-landed', l >= total);
+        var over = inBlock(at[1], at[2], 16);
+        var mb = main.getBoundingClientRect(), rx = at[1] + mb.left, ry = at[2] + top + mb.top;
+        // Over a scene it hides outright: a faint rocket reads as part of the picture.
+        var hidden = false;
+        for (var i = 0; i < stuck.length; i++) {
+            var sr = stuck[i].getBoundingClientRect();
+            if (rx > sr.left - 16 && rx < sr.right + 16 && ry > sr.top - 16 && ry < sr.bottom + 16) {
+                if (stuck[i].classList.contains('scene')) hidden = true; else over = true;
             }
         }
-    `;
-    document.head.appendChild(styleElement);
-
-    // Add hover event listeners to pause/resume animation
-    track.addEventListener('mouseenter', () => {
-        track.style.animationPlayState = 'paused';
-    });
-
-    track.addEventListener('mouseleave', () => {
-        track.style.animationPlayState = 'running';
-    });
-}
-
-// Run on load and scroll
-window.addEventListener('load', () => {
-    checkIfInView();
-    initFaqAccordion();
-    setupTestimonialsSlider();
-    setupMediaTestimonialsSlider();
-
-    // Add a class to body after page is fully loaded for potential page transitions
-    document.body.classList.add('page-loaded');
-});
-
-window.addEventListener('scroll', () => {
-    checkIfInView();
-});
+        flight.classList.toggle('is-over', over);
+        flight.classList.toggle('is-hidden', hidden);
+        // Nose along the curve, reversed while scrolling back up. The artwork points up and right (-45deg).
+        var dy = window.scrollY - lastY;
+        lastY = window.scrollY;
+        var heading = at[3] + 45 + (dy < 0 ? 180 : 0);
+        if (dy || !flight.style.getPropertyValue('--flight-turn')) {
+            // Unwrapped against the last angle, so the turn takes the short way round.
+            turn += ((heading - turn) % 360 + 540) % 360 - 180;
+            flight.style.setProperty('--flight-turn', turn + 'deg');
+        }
+    };
+    window.addEventListener('scroll', function () {
+        flight.classList.add('is-moving');
+        clearTimeout(still);
+        still = setTimeout(function () { flight.classList.remove('is-moving'); }, 160);
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    // Fonts, sponsor cards and the demo change the page's height after load; one rebuild per frame.
+    var queued = false;
+    var remeasure = function () {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(function () { queued = false; measure(); });
+    };
+    window.addEventListener('resize', remeasure);
+    if (window.ResizeObserver) new ResizeObserver(remeasure).observe(main);
+    measure();
+})();
 
 /* ===== Sponsors showcase =====
    Renders the silver-and-up business sponsors (top 5, emerald first) on the

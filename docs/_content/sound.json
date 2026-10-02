@@ -1,9 +1,9 @@
 {
   "intro": [
-    "<p>Fine-tune your Windows audio settings for the best possible experience. Winhance provides quick access to hidden audio settings including startup sounds, ducking preferences, and accessibility audio options.</p>"
+    "<p>The startup sound, what Windows does to other audio during calls, voice activation for apps, and the sounds accessibility shortcuts make.</p>"
   ],
   "groups": {
-    "System Sounds": "Control Windows system sounds and audio behavior."
+    "System Sounds": "The startup sound, how much Windows lowers other audio during calls and while Narrator speaks, voice activation for apps, and accessibility sounds."
   },
   "video": {
     "id": "lrq3ph3xi50",

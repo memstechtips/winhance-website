@@ -1,0 +1,71 @@
+<section id="external-apps">
+    <h1>External Software</h1>
+    <p class="lead">Install popular third-party apps in one batch, with WinGet, the Microsoft Store, Chocolatey or a direct download as the source.</p>
+
+    <div class="app-demo" data-page="SoftwareApps" data-tab="external"></div>
+
+    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/m4i9wroDOjA?start=1214" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+
+    <h2 id="whats-in-the-list">What's in the list</h2>
+    <p>The <strong>External Software</strong> tab of <a href="../software-apps.html">Software &amp; Apps</a> lists over 200 apps, grouped into these categories:</p>
+    <ul>
+        <li>Browsers</li>
+        <li>Compression</li>
+        <li>Customization Utilities</li>
+        <li>Development Apps</li>
+        <li>Document Viewers</li>
+        <li>File &amp; Disk Management</li>
+        <li>Gaming</li>
+        <li>Imaging</li>
+        <li>Messaging, Email &amp; Calendar</li>
+        <li>Multimedia (Audio &amp; Video)</li>
+        <li>Online Storage &amp; Backup</li>
+        <li>Optical Disc Tools</li>
+        <li>Other Utilities</li>
+        <li>Privacy &amp; Security</li>
+        <li>Remote Access</li>
+        <li>Runtimes &amp; Dependencies</li>
+    </ul>
+    <p>Each app has a small link button next to its name that opens the developer's website, so you can read about it before you install.</p>
+
+    <h2 id="install-apps">Install apps</h2>
+    <ol class="steps">
+        <li>
+            <h3>Check the apps you want</h3>
+            <p>Use the search box or browse the categories, and check as many apps as you like.</p>
+        </li>
+        <li>
+            <h3>Click Install Selected Items</h3>
+            <p>Confirm the list in the <strong>Confirm Installation</strong> dialog. Winhance installs the apps one after another and shows the progress of each.</p>
+<div data-wd-dialog="install" data-tab="external" role="figure" aria-label="The Confirm Installation dialog"></div>
+        </li>
+        <li>
+            <h3>Check the result</h3>
+            <p>Winhance refreshes the install status when it finishes. Apps that failed stay checked, so clicking <strong>Install Selected Items</strong> again retries only those.</p>
+        </li>
+    </ol>
+    <p>To remove apps, check them and click <strong>Uninstall Selected Items</strong>.</p>
+
+    <h2 id="install-sources">Where apps come from</h2>
+    <p>Winhance tries each source the app supports, in this order, and stops at the first one that works:</p>
+    <ol>
+        <li><strong>WinGet</strong>, from the WinGet community repository.</li>
+        <li><strong>WinGet with the Microsoft Store source</strong>, for apps that are also published in the Store.</li>
+        <li><strong>Chocolatey</strong>, for apps that have a Chocolatey package. If Chocolatey is not installed, Winhance installs it first.</li>
+        <li><strong>Direct download</strong> of the app's installer, for apps that have a download link.</li>
+    </ol>
+    <p>A few apps are not on WinGet at all, and those go straight to the direct download. When an app installs as a portable program, Winhance adds Start menu shortcuts for it.</p>
+    <div class="callout callout-note">
+        <p class="callout-title">WinGet comes with Winhance</p>
+        <p>Winhance ships its own copy of WinGet and uses it first, so you do not need WinGet installed in Windows. It only uses the copy in Windows if its own is missing.</p>
+    </div>
+
+    <h2 id="status">How Winhance knows what is installed</h2>
+    <p>The <strong>Installed</strong> status comes from several places: WinGet, Chocolatey, Store packages, the list of installed programs in Windows, and known install folders. When you uninstall, Winhance uses the tool that matches how the app was found, so an app installed with Chocolatey is removed with Chocolatey, and so on.</p>
+
+    <h2 id="managing-software">Updating and managing apps</h2>
+    <p>Winhance installs and uninstalls apps, but it does not update them. For updates and ongoing management, install <strong>UniGetUI</strong> from the <strong>Other Utilities</strong> category. It is a window for WinGet, Chocolatey and other package managers.</p>
+
+    <h2 id="request-an-app">Request an app</h2>
+    <p>If an app you use is missing, open a feature request on <a href="https://github.com/memstechtips/Winhance/issues">GitHub</a> with the app's name and its WinGet ID if it has one.</p>
+</section>

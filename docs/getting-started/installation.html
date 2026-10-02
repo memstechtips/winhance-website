@@ -5,253 +5,240 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Installation - Winhance Docs</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
-    <link rel="stylesheet" href="../../styles.css">
+    <meta name="description" content="Install Winhance with the installer, as a portable copy, or with one PowerShell command, and keep it up to date.">
+    <meta name="theme-color" content="#0b1422">
+    <link rel="icon" type="image/png" sizes="256x256" href="../../images/winhance-rocket.png">
+    <link rel="preload" href="../../fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="../css/winui-tokens.css">
     <link rel="stylesheet" href="../css/app-tokens.css">
-    <link rel="stylesheet" href="../css/docs-main.css">
-    <link rel="stylesheet" href="../css/docs-sidebar.css">
-    <link rel="stylesheet" href="../css/docs-syntax.css">
+    <link rel="stylesheet" href="../../base.css">
+    <link rel="stylesheet" href="../css/docs.css">
+    <link rel="stylesheet" href="../css/setting-card.css">
+    
     <script src="../js/theme-load.js"></script>
 </head>
 
-<body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <a href="../index.html" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="../../images/winhance-rocket.png" alt="Winhance Logo"
-                        style="height: 32px; margin-right: 12px;">
-                    <h1 style="font-size: 1.5rem; margin: 0; color: var(--text-color);">Winhance <span
-                            style="font-weight: 300; opacity: 0.7;">Docs</span></h1>
-                </a>
+<body class="docs">
+    <!-- gen:icons --><svg class="sprite" aria-hidden="true"><symbol id="i-ChevronLeft" viewBox="0 0 20 20"><path fill="currentColor" d="M12.3534 15.8537C12.1585 16.0493 11.8419 16.0499 11.6463 15.855L6.16178 10.39C5.94607 10.1751 5.94607 9.82574 6.16178 9.6108L11.6463 4.14582C11.8419 3.9509 12.1585 3.95147 12.3534 4.14708C12.5483 4.34269 12.5477 4.65927 12.3521 4.85418L7.18753 10.0004L12.3521 15.1466C12.5477 15.3415 12.5483 15.6581 12.3534 15.8537Z"/></symbol><symbol id="i-HeartFilled" viewBox="0 0 20 20"><path fill="currentColor" d="M9.38843 4.28963C7.69278 2.57693 4.94954 2.5686 3.26122 4.2739C1.5729 5.9792 1.58114 8.75004 3.27679 10.4627L9.55368 16.8028C9.81404 17.0657 10.2362 17.0657 10.4965 16.8028L16.7408 10.4994C18.4252 8.78856 18.4199 6.02549 16.7239 4.31249C15.0252 2.59671 12.2807 2.58838 10.5894 4.29673L9.99299 4.90026L9.38843 4.28963Z"/></symbol><symbol id="i-Navigation" viewBox="0 0 20 20"><path fill="currentColor" d="M2 4.5C2 4.22386 2.22386 4 2.5 4H17.5C17.7761 4 18 4.22386 18 4.5C18 4.77614 17.7761 5 17.5 5H2.5C2.22386 5 2 4.77614 2 4.5ZM2 9.5C2 9.22386 2.22386 9 2.5 9H17.5C17.7761 9 18 9.22386 18 9.5C18 9.77614 17.7761 10 17.5 10H2.5C2.22386 10 2 9.77614 2 9.5ZM2.5 14C2.22386 14 2 14.2239 2 14.5C2 14.7761 2.22386 15 2.5 15H17.5C17.7761 15 18 14.7761 18 14.5C18 14.2239 17.7761 14 17.5 14H2.5Z"/></symbol><symbol id="i-Search" viewBox="0 0 20 20"><path fill="currentColor" d="M13.7291 14.4362C12.5924 15.411 11.115 16 9.5 16C5.91015 16 3 13.0899 3 9.5C3 5.91015 5.91015 3 9.5 3C13.0899 3 16 5.91015 16 9.5C16 11.115 15.411 12.5924 14.4361 13.7292L17.8535 17.1465C18.0487 17.3417 18.0487 17.6583 17.8535 17.8536C17.6799 18.0271 17.4105 18.0464 17.2156 17.9114L17.1464 17.8536L13.7291 14.4362ZM13.0196 13.7266C13.276 13.5128 13.5127 13.2761 13.7265 13.0197C14.5216 12.0659 15 10.8388 15 9.5C15 6.46243 12.5376 4 9.5 4C6.46243 4 4 6.46243 4 9.5C4 12.5376 6.46243 15 9.5 15C10.8388 15 12.0658 14.5217 13.0196 13.7266Z"/></symbol><symbol id="i-WeatherMoon" viewBox="0 0 20 20"><path fill="currentColor" d="M15.4932 13.4967C13.5653 16.8358 9.2957 17.9798 5.95663 16.052C5.20013 15.6152 4.54451 15.0515 4.01047 14.3887C6.8412 13.3015 8.56844 11.9681 9.60339 9.99249C10.651 7.99273 10.9395 5.83183 10.3628 3.08319C11.2605 3.20148 12.1328 3.49537 12.9378 3.96018C16.2769 5.88799 17.421 10.1576 15.4932 13.4967ZM5.45663 16.918C9.27399 19.122 14.1552 17.8141 16.3592 13.9967C18.5631 10.1793 17.2552 5.2981 13.4378 3.09415C12.3371 2.45863 11.1233 2.10173 9.88082 2.03507C9.4801 2.01357 9.17217 2.38477 9.26732 2.77462C9.95545 5.59395 9.70125 7.65076 8.71759 9.52844C7.78322 11.312 6.17301 12.559 3.16661 13.635C2.79667 13.7674 2.65251 14.2143 2.87537 14.538C3.54192 15.5059 4.41706 16.3178 5.45663 16.918Z"/></symbol><symbol id="i-WeatherSunny" viewBox="0 0 20 20"><path fill="currentColor" d="M10 2C10.2761 2 10.5 2.22386 10.5 2.5V3.5C10.5 3.77614 10.2761 4 10 4C9.72386 4 9.5 3.77614 9.5 3.5V2.5C9.5 2.22386 9.72386 2 10 2ZM10 14C12.2091 14 14 12.2091 14 10C14 7.79086 12.2091 6 10 6C7.79086 6 6 7.79086 6 10C6 12.2091 7.79086 14 10 14ZM10 13C8.34315 13 7 11.6569 7 10C7 8.34315 8.34315 7 10 7C11.6569 7 13 8.34315 13 10C13 11.6569 11.6569 13 10 13ZM17.5 10.5C17.7761 10.5 18 10.2761 18 10C18 9.72386 17.7761 9.5 17.5 9.5H16.5C16.2239 9.5 16 9.72386 16 10C16 10.2761 16.2239 10.5 16.5 10.5H17.5ZM10 16C10.2761 16 10.5 16.2239 10.5 16.5V17.5C10.5 17.7761 10.2761 18 10 18C9.72386 18 9.5 17.7761 9.5 17.5V16.5C9.5 16.2239 9.72386 16 10 16ZM3.5 10.5C3.77614 10.5 4 10.2761 4 10C4 9.72386 3.77614 9.5 3.5 9.5H2.46289C2.18675 9.5 1.96289 9.72386 1.96289 10C1.96289 10.2761 2.18675 10.5 2.46289 10.5H3.5ZM4.14645 4.14645C4.34171 3.95118 4.65829 3.95118 4.85355 4.14645L5.85355 5.14645C6.04882 5.34171 6.04882 5.65829 5.85355 5.85355C5.65829 6.04882 5.34171 6.04882 5.14645 5.85355L4.14645 4.85355C3.95118 4.65829 3.95118 4.34171 4.14645 4.14645ZM4.85355 15.8536C4.65829 16.0488 4.34171 16.0488 4.14645 15.8536C3.95118 15.6583 3.95118 15.3417 4.14645 15.1464L5.14645 14.1464C5.34171 13.9512 5.65829 13.9512 5.85355 14.1464C6.04882 14.3417 6.04882 14.6583 5.85355 14.8536L4.85355 15.8536ZM15.8536 4.14645C15.6583 3.95118 15.3417 3.95118 15.1464 4.14645L14.1464 5.14645C13.9512 5.34171 13.9512 5.65829 14.1464 5.85355C14.3417 6.04882 14.6583 6.04882 14.8536 5.85355L15.8536 4.85355C16.0488 4.65829 16.0488 4.34171 15.8536 4.14645ZM15.1464 15.8536C15.3417 16.0488 15.6583 16.0488 15.8536 15.8536C16.0488 15.6583 16.0488 15.3417 15.8536 15.1464L14.8536 14.1464C14.6583 13.9512 14.3417 13.9512 14.1464 14.1464C13.9512 14.3417 13.9512 14.6583 14.1464 14.8536L15.1464 15.8536Z"/></symbol></svg><!-- /gen:icons -->
+    <a class="skip" href="#content">Skip to content</a>
+
+    <header class="topbar">
+        <div class="docs-wrap topbar-row">
+            <button type="button" class="icon-btn docs-menu" aria-label="Show or hide the docs menu" aria-controls="docs-nav" aria-expanded="false">
+                <svg class="i"><use href="#i-Navigation"/></svg>
+            </button>
+            <a class="brand" href="../../index.html" aria-label="Winhance home">
+                <img class="brand-mark" src="../../images/winhance-rocket.png" alt="" width="28" height="28">
+                <span>Winhance</span>
+            </a>
+            <nav class="site-tabs" aria-label="Site">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html" aria-current="true">Docs</a>
+            </nav>
+            <div class="search-container" role="search">
+                <svg class="i"><use href="#i-Search"/></svg>
+                <input type="search" id="docs-search" placeholder="Search the docs" autocomplete="off" aria-label="Search the docs">
+                <kbd class="search-key" aria-hidden="true">/</kbd>
             </div>
-            <div class="search-container">
-                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                <input type="text" id="docs-search" placeholder="Search documentation...">
-            </div>
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle theme">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
-                    </svg>
+            <div class="topbar-actions">
+                <button type="button" id="theme-toggle" class="icon-btn" aria-label="Switch between light and dark">
+                    <svg class="i i-sun"><use href="#i-WeatherSunny"/></svg>
+                    <svg class="i i-moon"><use href="#i-WeatherMoon"/></svg>
                 </button>
-                <a href="https://github.com/memstechtips/Winhance" target="_blank" class="icon-btn github-btn"
-                    title="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
+                <a class="icon-btn" href="https://github.com/memstechtips/Winhance" target="_blank" rel="noopener" aria-label="Winhance on GitHub">
+                    <svg class="i" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a class="icon-btn icon-btn-heart" href="https://store.memstechtips.com/winhance/" target="_blank" rel="noopener" aria-label="Support Winhance">
+                    <svg class="i"><use href="#i-HeartFilled"/></svg>
+                </a>
+                <a class="btn btn-primary btn-small" href="https://github.com/memstechtips/Winhance/releases/latest/download/Winhance.Installer.exe">
+                    <span class="dl-rocket" aria-hidden="true"><i></i></span>
+                    <span>Download</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <div class="docs-wip-banner">
-        <strong>Work in Progress:</strong> Documentation is a work in progress. Some pages may be incomplete.
-    </div>
-
-    <div class="docs-layout has-banner">
-                        <aside class="docs-sidebar">
-            <nav>
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Getting Started</div>
-                    <a href="../getting-started/installation.html" class="sidebar-nav-item">Installation</a>
-                    <a href="../getting-started/quick-start.html" class="sidebar-nav-item">Quick Start</a>
+    <div class="docs-wrap docs-layout">
+        <aside class="docs-sidebar" id="docs-nav">
+            <a class="nav-home" href="../../index.html"><svg class="i"><use href="#i-ChevronLeft"/></svg>Back to Winhance home</a>
+            <nav aria-label="Documentation">
+                <div class="nav-group">
+                    <p class="nav-title">Get started</p>
+                    <a class="nav-item" href="../index.html">Overview</a>
+                    <a class="nav-item" href="../getting-started/installation.html" aria-current="page">Installation</a>
+                    <a class="nav-item" href="../getting-started/quick-start.html">Quick start</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Features</div>
-                    <a href="../features/software-apps.html" class="sidebar-nav-item">Software & Apps</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../features/software-apps/windows-apps.html" class="sidebar-nav-item sub-item">Windows Apps</a>
-                        <a href="../features/software-apps/external-apps.html" class="sidebar-nav-item sub-item">External Apps</a>
-                    </div>
-                    <a href="../features/optimize.html" class="sidebar-nav-item">Optimize</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
-                        <a href="../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
-                        <a href="../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
-                        <a href="../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
-                        <a href="../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
-                        <a href="../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
-                    </div>
-                    <a href="../features/customize.html" class="sidebar-nav-item">Customize</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
-                        <a href="../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
-                        <a href="../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
-                        <a href="../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
-                        <a href="../features/customizations/time-region-language.html" class="sidebar-nav-item sub-item">Time &amp; Region</a>
-                    </div>
-                    <a href="../features/autounattend.html" class="sidebar-nav-item">Autounattend</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../features/autounattend/answer-file.html" class="sidebar-nav-item sub-item">Answer file</a>
-                    </div>
-                    <a href="../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
-                    <a href="../features/settings.html" class="sidebar-nav-item">Settings</a>
+                <div class="nav-group">
+                    <p class="nav-title">Features</p>
+                    <a class="nav-item" href="../features/software-apps.html">Software &amp; Apps</a>
+                    <a class="nav-item nav-sub" href="../features/software-apps/windows-apps.html">Windows apps</a>
+                    <a class="nav-item nav-sub" href="../features/software-apps/external-apps.html">External apps</a>
+                    <a class="nav-item" href="../features/optimize.html">Optimize</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/privacy-security.html">Privacy &amp; Security</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/power.html">Power</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/gaming-performance.html">Gaming &amp; Performance</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/update.html">Update</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/notifications.html">Notifications</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/sound.html">Sound</a>
+                    <a class="nav-item" href="../features/customize.html">Customize</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/theme.html">Windows Theme</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/taskbar.html">Taskbar</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/start-menu.html">Start Menu</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/explorer.html">Explorer</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/time-region-language.html">Time &amp; Region</a>
+                    <a class="nav-item" href="../features/autounattend.html">Autounattend</a>
+                    <a class="nav-item nav-sub" href="../features/autounattend/answer-file.html">Answer file</a>
+                    <a class="nav-item" href="../features/advanced-tools.html">Unattend &amp; WIMUtil</a>
+                    <a class="nav-item" href="../features/settings.html">Settings</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">User Guides</div>
-                    <a href="../guides/configuration-files.html" class="sidebar-nav-item">Configuration Files</a>
-                    <a href="../guides/wimutil.html" class="sidebar-nav-item">WIMUtil Guide</a>
-                    <a href="../guides/autounattend.html" class="sidebar-nav-item">Autounattend Guide</a>
+                <div class="nav-group">
+                    <p class="nav-title">Guides</p>
+                    <a class="nav-item" href="../guides/configuration-files.html">Configuration files</a>
+                    <a class="nav-item" href="../guides/wimutil.html">WIMUtil</a>
+                    <a class="nav-item" href="../guides/autounattend.html">Answer file setup</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Reference</div>
-                    <a href="../reference/cli-commands.html" class="sidebar-nav-item">CLI Commands</a>
-                    <a href="../reference/changelog.html" class="sidebar-nav-item">Changelog</a>
-                    <a href="../reference/troubleshooting.html" class="sidebar-nav-item">Troubleshooting</a>
-                    <a href="../reference/contributing.html" class="sidebar-nav-item">How to Contribute</a>
+                <div class="nav-group">
+                    <p class="nav-title">Reference</p>
+                    <a class="nav-item" href="../reference/troubleshooting.html">Troubleshooting</a>
+                    <a class="nav-item" href="../reference/cli-commands.html">Command line</a>
+                    <a class="nav-item" href="../reference/changelog.html">Releases</a>
+                    <a class="nav-item" href="../reference/contributing.html">Contributing</a>
                 </div>
             </nav>
         </aside>
 
-        <main class="docs-content">
-            <section id="installation">
+        <main class="docs-main" id="content">
+            <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Docs</a><span class="sep" aria-hidden="true">/</span><span>Get started</span></nav>
+            <article class="docs-content">
                 <h1>Installation</h1>
-                <p>Winhance can be installed using several methods depending on your preference. All methods are safe
-                    and use the official signed binaries.</p>
+                <p class="lead">Install Winhance with the installer, as a portable copy, or with one PowerShell command, and keep it up to date.</p>
 
-                <div class="callout callout-warning">
-                    <div class="callout-title">⚠️ Administrator Privileges Requested</div>
-                    <p>Winhance requires administrator privileges to modify system settings, remove bloatware, and
-                        optimize your Windows installation. Please ensure you run the installer as an administrator.</p>
-                </div>
+                <p>Every method uses the same file, <code>Winhance.Installer.exe</code>, from the latest GitHub release. The installer asks whether you want a regular installation or a portable one.</p>
 
-                <h2>Method 1: PowerShell One-Liner (Recommended)</h2>
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/m4i9wroDOjA?start=284" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <p>The fastest way to install Winhance is through a single PowerShell command. This automatically
-                    downloads the latest installer and launches it for you.</p>
-                <div class="code-block">
-                    <div class="code-header">
-                        <span class="code-language">powershell</span>
-                        <button class="copy-button" aria-label="Copy code" onclick="navigator.clipboard.writeText('irm &quot;https://get.winhance.net&quot; | iex')">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    <pre><code class="language-powershell">irm "https://get.winhance.net" | iex</code></pre>
-                </div>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Right-click the <strong>Start button</strong> and select <strong>Terminal (Admin)</strong> or
-                        <strong>PowerShell (Admin)</strong>.
+                <h2 id="requirements">System requirements</h2>
+                <ul>
+                    <li><strong>Windows 10 or Windows 11.</strong></li>
+                    <li><strong>A 64-bit (x64) PC.</strong> The installer also runs on Windows 11 on Arm, where Windows runs Winhance through x64 emulation. There is no 32-bit version.</li>
+                    <li><strong>Administrator rights.</strong> Winhance always starts elevated, so Windows shows a User Account Control prompt each time you open it.</li>
+                </ul>
+                <p>You don't need to install .NET or any other runtime first. Winhance ships with everything it needs. An internet connection is needed to download Winhance, to check for updates, and to install apps from the <strong>Software &amp; Apps</strong> page.</p>
+
+                <h2 id="installer">Install with the installer</h2>
+                <ol class="steps">
+                    <li>
+                        <h3>Download the installer</h3>
+                        <p>Download <a href="https://github.com/memstechtips/Winhance/releases/latest/download/Winhance.Installer.exe">Winhance.Installer.exe</a> from the latest release, or use the download button on the Winhance home page.</p>
                     </li>
-                    <li>Copy and paste the command above into the window.</li>
-                    <li>Press <strong>Enter</strong> and wait for the installer to download and launch.</li>
+                    <li>
+                        <h3>Choose the installation type</h3>
+                        <p>Run the file and accept the license. Under <strong>Installation type</strong>, choose <strong>Perform a regular installation</strong> or <strong>Perform a portable installation</strong>. For a regular installation you can also pick <strong>Create a shortcut on the Desktop</strong> and <strong>Create a shortcut in the Start menu</strong>.</p>
+                    </li>
+                    <li>
+                        <h3>Pick a folder</h3>
+                        <p>By default, a regular installation goes to <code>C:\Program Files\Winhance</code> and a portable one to a <code>Winhance</code> folder on your desktop. You can change the folder before you continue.</p>
+                    </li>
+                    <li>
+                        <h3>Finish and launch</h3>
+                        <p>When setup finishes, leave the launch box ticked to open Winhance, then accept the User Account Control prompt.</p>
+                    </li>
                 </ol>
 
-                <h2>Method 2: Manual Download</h2>
-                <p>If you prefer a manual download, you can get the installer directly from our website or GitHub.</p>
+                <h3 id="regular-or-portable">Regular or portable?</h3>
+                <table>
+                    <thead>
+                        <tr><th></th><th>Regular</th><th>Portable</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Default folder</td><td><code>C:\Program Files\Winhance</code></td><td><code>Desktop\Winhance</code></td></tr>
+                        <tr><td>Shortcuts</td><td>Desktop and Start menu, if you tick them</td><td>None</td></tr>
+                        <tr><td>Uninstaller</td><td>Yes, in Windows Settings under installed apps</td><td>No, delete the folder</td></tr>
+                    </tbody>
+                </table>
+                <p>Both run the same app with the same features. You can move a portable folder anywhere, including to a USB drive. Either way, Winhance keeps its logs, scripts and change history in <code>C:\ProgramData\Winhance</code>, and the backup config it makes on first launch in <code>%LOCALAPPDATA%\Winhance\Backup</code>. Uninstalling, or deleting a portable folder, leaves those in place.</p>
+
+                <h2 id="powershell">Install with PowerShell</h2>
+                <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/m4i9wroDOjA?start=284" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+                <p>This one command downloads the installer and runs it for you, without the setup wizard.</p>
+                <ol class="steps">
+                    <li>
+                        <h3>Open PowerShell as administrator</h3>
+                        <p>Right-click the <strong>Start</strong> button and choose <strong>Terminal (Admin)</strong> or <strong>Windows PowerShell (Admin)</strong>.</p>
+                    </li>
+                    <li>
+                        <h3>Run the command</h3>
+                <pre><code class="language-powershell">irm "https://get.winhance.net" | iex</code></pre>
+                    </li>
+                    <li>
+                        <h3>Pick normal or portable</h3>
+                        <p>Type <kbd>1</kbd> for <strong>Normal Installation</strong> or <kbd>2</kbd> for <strong>Portable</strong>, then press <kbd>Enter</kbd>.</p>
+                    </li>
+                </ol>
+                <p>What the script does next:</p>
                 <ul>
-                    <li><strong>Official Website:</strong> <a href="https://winhance.net">winhance.net</a> (Click the
-                        Download button)</li>
-                    <li><strong>GitHub Releases:</strong> <a
-                            href="https://github.com/memstechtips/Winhance/releases/latest">Latest Release</a></li>
+                    <li>It downloads the latest <code>Winhance.Installer.exe</code> from GitHub to <code>C:\ProgramData\Winhance\Unattend\WinhanceInstaller.exe</code>.</li>
+                    <li><strong>Normal</strong> installs Winhance silently to <code>C:\Program Files\Winhance</code> with Desktop and Start menu shortcuts, then opens it.</li>
+                    <li><strong>Portable</strong> puts Winhance in a <code>Winhance</code> folder on your desktop, then opens it. You can move that folder anywhere.</li>
                 </ul>
+                <p>The downloaded installer stays in <code>C:\ProgramData\Winhance\Unattend</code>. You can delete it once Winhance is running. See <a href="../reference/cli-commands.html">Command line</a> for the installer switches the script uses.</p>
 
-                <h2>Method 3: Portable Version</h2>
-                <p>During the installation wizard, you have the option to choose a <strong>Portable</strong>
-                    installation. This is
-                    ideal if you want to run Winhance from a USB drive or don't want to install it permanently on your
-                    system.</p>
-                <div class="callout callout-info">
-                    <div class="callout-title">ℹ️ Portable Mode</div>
-                    <p>The portable version offers the exact same features as the installable version but keeps all
-                        settings in its local folder.</p>
-                </div>
+                <h2 id="updates">Updates</h2>
+                <p>Each time Winhance starts, it checks GitHub for a newer release. If there is one, an <strong>Update Available</strong> bar shows your version and the latest one. If there isn't, Winhance says nothing.</p>
+                <ol class="steps">
+                    <li>
+                        <h3>Download the update</h3>
+                        <p>Click <strong>Install Now</strong> on the bar. To check yourself, open <strong>More</strong> at the bottom of the sidebar and choose <strong>Check for Updates</strong>.</p>
+                    </li>
+                    <li>
+                        <h3>Relaunch</h3>
+                        <p>When the download finishes, click <strong>Relaunch</strong>. Winhance closes, the installer updates it in the same folder, and Winhance opens again.</p>
+                    </li>
+                </ol>
+                <p>A portable copy stays portable and a regular installation stays regular, so the update never moves your copy somewhere else. To see which version you have, open <strong>More</strong>: the version is the first line of the menu.</p>
 
-                <h2>System Requirements</h2>
-                <p>Before installing, ensure your system meets the following requirements:</p>
-
-                <h3>Operating System</h3>
-                <ul>
-                    <li><strong>Windows 10:</strong> 64-bit (x64), version 2004 or later</li>
-                    <li><strong>Windows 11:</strong> 64-bit (x64), version 23H2 or later</li>
-                </ul>
-
-                <h3>Software</h3>
-                <ul>
-                    <li><strong>.NET 10 Desktop Runtime:</strong> Required to run Winhance. The installer will automatically install this if not present.</li>
-                    <li><strong>PowerShell 5.1+:</strong> Included with Windows 10/11, required for some advanced features.</li>
-                </ul>
-
-                <h3>Other Requirements</h3>
-                <ul>
-                    <li><strong>Administrator privileges:</strong> Required for system-level changes.</li>
-                    <li><strong>Internet connection:</strong> Required for downloading Winhance and installing external apps via WinGet. Core optimization features work offline.</li>
-                </ul>
-
-                <div class="page-nav">
-                    <a href="../index.html" class="page-nav-btn prev">&larr; Overview</a>
-                    <a href="quick-start.html" class="page-nav-btn next">Quick Start &rarr;</a>
-                </div>
-            </section>
+                <h2 id="uninstall">Uninstall</h2>
+                <p>For a regular installation, uninstall <strong>Winhance</strong> from installed apps in Windows Settings. For a portable copy, close Winhance and delete its folder.</p>
+                <p>Uninstalling doesn't undo changes Winhance made to Windows. Undo those first if you want them gone, as described in <a href="../reference/troubleshooting.html#undo-changes">Troubleshooting</a>.</p>
+            </article>
+            <nav class="pager" aria-label="More pages"><a class="pager-prev" href="../index.html"><span>Previous</span>Overview</a><a class="pager-next" href="../getting-started/quick-start.html"><span>Next</span>Quick start</a></nav>
         </main>
+
+        <aside class="docs-toc" aria-label="On this page">
+            <p class="toc-title">On this page</p>
+            <ul>
+                <li><a href="#requirements">System requirements</a></li>
+                <li><a href="#installer">Install with the installer</a></li>
+                <li><a href="#powershell">Install with PowerShell</a></li>
+                <li><a href="#updates">Updates</a></li>
+                <li><a href="#uninstall">Uninstall</a></li>
+            </ul>
+        </aside>
     </div>
 
-    <button class="sidebar-toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-    </button>
-
-    <script src="../js/theme-load.js"></script>
-    <script src="../js/docs-theme.js"></script>
-    <script src="../js/docs-navigation.js"></script>
-    <script src="../js/docs-search.js"></script>
-    <script src="../js/docs-config.js"></script>
-
-    <!-- Documentation Footer -->
-    <footer class="docs-footer">
-        <div class="docs-footer-container">
-            <div class="docs-footer-info">
-                &copy; 2026 Winhance.
+    <footer class="footer">
+        <div class="wrap footer-grid">
+            <div>
+                <a class="brand" href="../../index.html">
+                    <img class="brand-mark" src="../../images/winhance-rocket.png" alt="" width="24" height="24">
+                    <span>Winhance</span>
+                </a>
+                <p class="footer-version">These docs describe Winhance v26.10.01</p>
             </div>
-            <div class="docs-footer-meta">
-                <div class="docs-meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-                    </svg>
-                    <span class="docs-version">Docs v1.0.0</span>
-                </div>
-                <div class="docs-meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
-                    <span class="docs-last-updated">Last Updated: Jan 27, 2026</span>
-                </div>
-            </div>
+            <ul class="footer-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../index.html">Documentation</a></li>
+                <li><a href="https://github.com/memstechtips/Winhance/releases" target="_blank" rel="noopener">Releases</a></li>
+                <li><a href="https://github.com/memstechtips/Winhance" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://store.memstechtips.com/winhance/" target="_blank" rel="noopener">Support Winhance</a></li>
+            </ul>
+            <p class="footer-made">&copy; 2026 Winhance. Made by <a href="https://memstechtips.com/" target="_blank" rel="noopener">Memory</a>.</p>
         </div>
     </footer>
 
+    
+    <script src="../js/docs-search.js"></script>
+    <script src="../js/docs.js"></script>
+    <script src="../js/docs-metrics.js"></script>
 </body>
 
 </html>

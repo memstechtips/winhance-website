@@ -4,307 +4,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WIMUtil Guide - Winhance Docs</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
-    <link rel="stylesheet" href="../../styles.css">
+    <title>WIMUtil - Winhance Docs</title>
+    <meta name="description" content="Build your own Windows installation media from a Windows ISO: add an answer file and drivers, then save a new ISO or write it straight to a USB drive.">
+    <meta name="theme-color" content="#0b1422">
+    <link rel="icon" type="image/png" sizes="256x256" href="../../images/winhance-rocket.png">
+    <link rel="preload" href="../../fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="../css/winui-tokens.css">
     <link rel="stylesheet" href="../css/app-tokens.css">
-    <link rel="stylesheet" href="../css/docs-main.css">
-    <link rel="stylesheet" href="../css/docs-sidebar.css">
-    <link rel="stylesheet" href="../css/docs-syntax.css">
+    <link rel="stylesheet" href="../../base.css">
+    <link rel="stylesheet" href="../css/docs.css">
+    <link rel="stylesheet" href="../css/setting-card.css">
+    <link rel="stylesheet" href="../../demo/winhance-demo.css">
     <script src="../js/theme-load.js"></script>
-    
 </head>
 
-<body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <a href="../index.html" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="../../images/winhance-rocket.png" alt="Winhance Logo"
-                        style="height: 32px; margin-right: 12px;">
-                    <h1 style="font-size: 1.5rem; margin: 0; color: var(--text-color);">Winhance <span
-                            style="font-weight: 300; opacity: 0.7;">Docs</span></h1>
-                </a>
+<body class="docs">
+    <!-- gen:icons --><svg class="sprite" aria-hidden="true"><symbol id="i-ChevronLeft" viewBox="0 0 20 20"><path fill="currentColor" d="M12.3534 15.8537C12.1585 16.0493 11.8419 16.0499 11.6463 15.855L6.16178 10.39C5.94607 10.1751 5.94607 9.82574 6.16178 9.6108L11.6463 4.14582C11.8419 3.9509 12.1585 3.95147 12.3534 4.14708C12.5483 4.34269 12.5477 4.65927 12.3521 4.85418L7.18753 10.0004L12.3521 15.1466C12.5477 15.3415 12.5483 15.6581 12.3534 15.8537Z"/></symbol><symbol id="i-HeartFilled" viewBox="0 0 20 20"><path fill="currentColor" d="M9.38843 4.28963C7.69278 2.57693 4.94954 2.5686 3.26122 4.2739C1.5729 5.9792 1.58114 8.75004 3.27679 10.4627L9.55368 16.8028C9.81404 17.0657 10.2362 17.0657 10.4965 16.8028L16.7408 10.4994C18.4252 8.78856 18.4199 6.02549 16.7239 4.31249C15.0252 2.59671 12.2807 2.58838 10.5894 4.29673L9.99299 4.90026L9.38843 4.28963Z"/></symbol><symbol id="i-Navigation" viewBox="0 0 20 20"><path fill="currentColor" d="M2 4.5C2 4.22386 2.22386 4 2.5 4H17.5C17.7761 4 18 4.22386 18 4.5C18 4.77614 17.7761 5 17.5 5H2.5C2.22386 5 2 4.77614 2 4.5ZM2 9.5C2 9.22386 2.22386 9 2.5 9H17.5C17.7761 9 18 9.22386 18 9.5C18 9.77614 17.7761 10 17.5 10H2.5C2.22386 10 2 9.77614 2 9.5ZM2.5 14C2.22386 14 2 14.2239 2 14.5C2 14.7761 2.22386 15 2.5 15H17.5C17.7761 15 18 14.7761 18 14.5C18 14.2239 17.7761 14 17.5 14H2.5Z"/></symbol><symbol id="i-Search" viewBox="0 0 20 20"><path fill="currentColor" d="M13.7291 14.4362C12.5924 15.411 11.115 16 9.5 16C5.91015 16 3 13.0899 3 9.5C3 5.91015 5.91015 3 9.5 3C13.0899 3 16 5.91015 16 9.5C16 11.115 15.411 12.5924 14.4361 13.7292L17.8535 17.1465C18.0487 17.3417 18.0487 17.6583 17.8535 17.8536C17.6799 18.0271 17.4105 18.0464 17.2156 17.9114L17.1464 17.8536L13.7291 14.4362ZM13.0196 13.7266C13.276 13.5128 13.5127 13.2761 13.7265 13.0197C14.5216 12.0659 15 10.8388 15 9.5C15 6.46243 12.5376 4 9.5 4C6.46243 4 4 6.46243 4 9.5C4 12.5376 6.46243 15 9.5 15C10.8388 15 12.0658 14.5217 13.0196 13.7266Z"/></symbol><symbol id="i-WeatherMoon" viewBox="0 0 20 20"><path fill="currentColor" d="M15.4932 13.4967C13.5653 16.8358 9.2957 17.9798 5.95663 16.052C5.20013 15.6152 4.54451 15.0515 4.01047 14.3887C6.8412 13.3015 8.56844 11.9681 9.60339 9.99249C10.651 7.99273 10.9395 5.83183 10.3628 3.08319C11.2605 3.20148 12.1328 3.49537 12.9378 3.96018C16.2769 5.88799 17.421 10.1576 15.4932 13.4967ZM5.45663 16.918C9.27399 19.122 14.1552 17.8141 16.3592 13.9967C18.5631 10.1793 17.2552 5.2981 13.4378 3.09415C12.3371 2.45863 11.1233 2.10173 9.88082 2.03507C9.4801 2.01357 9.17217 2.38477 9.26732 2.77462C9.95545 5.59395 9.70125 7.65076 8.71759 9.52844C7.78322 11.312 6.17301 12.559 3.16661 13.635C2.79667 13.7674 2.65251 14.2143 2.87537 14.538C3.54192 15.5059 4.41706 16.3178 5.45663 16.918Z"/></symbol><symbol id="i-WeatherSunny" viewBox="0 0 20 20"><path fill="currentColor" d="M10 2C10.2761 2 10.5 2.22386 10.5 2.5V3.5C10.5 3.77614 10.2761 4 10 4C9.72386 4 9.5 3.77614 9.5 3.5V2.5C9.5 2.22386 9.72386 2 10 2ZM10 14C12.2091 14 14 12.2091 14 10C14 7.79086 12.2091 6 10 6C7.79086 6 6 7.79086 6 10C6 12.2091 7.79086 14 10 14ZM10 13C8.34315 13 7 11.6569 7 10C7 8.34315 8.34315 7 10 7C11.6569 7 13 8.34315 13 10C13 11.6569 11.6569 13 10 13ZM17.5 10.5C17.7761 10.5 18 10.2761 18 10C18 9.72386 17.7761 9.5 17.5 9.5H16.5C16.2239 9.5 16 9.72386 16 10C16 10.2761 16.2239 10.5 16.5 10.5H17.5ZM10 16C10.2761 16 10.5 16.2239 10.5 16.5V17.5C10.5 17.7761 10.2761 18 10 18C9.72386 18 9.5 17.7761 9.5 17.5V16.5C9.5 16.2239 9.72386 16 10 16ZM3.5 10.5C3.77614 10.5 4 10.2761 4 10C4 9.72386 3.77614 9.5 3.5 9.5H2.46289C2.18675 9.5 1.96289 9.72386 1.96289 10C1.96289 10.2761 2.18675 10.5 2.46289 10.5H3.5ZM4.14645 4.14645C4.34171 3.95118 4.65829 3.95118 4.85355 4.14645L5.85355 5.14645C6.04882 5.34171 6.04882 5.65829 5.85355 5.85355C5.65829 6.04882 5.34171 6.04882 5.14645 5.85355L4.14645 4.85355C3.95118 4.65829 3.95118 4.34171 4.14645 4.14645ZM4.85355 15.8536C4.65829 16.0488 4.34171 16.0488 4.14645 15.8536C3.95118 15.6583 3.95118 15.3417 4.14645 15.1464L5.14645 14.1464C5.34171 13.9512 5.65829 13.9512 5.85355 14.1464C6.04882 14.3417 6.04882 14.6583 5.85355 14.8536L4.85355 15.8536ZM15.8536 4.14645C15.6583 3.95118 15.3417 3.95118 15.1464 4.14645L14.1464 5.14645C13.9512 5.34171 13.9512 5.65829 14.1464 5.85355C14.3417 6.04882 14.6583 6.04882 14.8536 5.85355L15.8536 4.85355C16.0488 4.65829 16.0488 4.34171 15.8536 4.14645ZM15.1464 15.8536C15.3417 16.0488 15.6583 16.0488 15.8536 15.8536C16.0488 15.6583 16.0488 15.3417 15.8536 15.1464L14.8536 14.1464C14.6583 13.9512 14.3417 13.9512 14.1464 14.1464C13.9512 14.3417 13.9512 14.6583 14.1464 14.8536L15.1464 15.8536Z"/></symbol></svg><!-- /gen:icons -->
+    <a class="skip" href="#content">Skip to content</a>
+
+    <header class="topbar">
+        <div class="docs-wrap topbar-row">
+            <button type="button" class="icon-btn docs-menu" aria-label="Show or hide the docs menu" aria-controls="docs-nav" aria-expanded="false">
+                <svg class="i"><use href="#i-Navigation"/></svg>
+            </button>
+            <a class="brand" href="../../index.html" aria-label="Winhance home">
+                <img class="brand-mark" src="../../images/winhance-rocket.png" alt="" width="28" height="28">
+                <span>Winhance</span>
+            </a>
+            <nav class="site-tabs" aria-label="Site">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html" aria-current="true">Docs</a>
+            </nav>
+            <div class="search-container" role="search">
+                <svg class="i"><use href="#i-Search"/></svg>
+                <input type="search" id="docs-search" placeholder="Search the docs" autocomplete="off" aria-label="Search the docs">
+                <kbd class="search-key" aria-hidden="true">/</kbd>
             </div>
-            <div class="search-container">
-                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                <input type="text" id="docs-search" placeholder="Search documentation...">
-            </div>
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle theme">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
-                    </svg>
+            <div class="topbar-actions">
+                <button type="button" id="theme-toggle" class="icon-btn" aria-label="Switch between light and dark">
+                    <svg class="i i-sun"><use href="#i-WeatherSunny"/></svg>
+                    <svg class="i i-moon"><use href="#i-WeatherMoon"/></svg>
                 </button>
-                <a href="https://github.com/memstechtips/Winhance" target="_blank" class="icon-btn github-btn"
-                    title="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
+                <a class="icon-btn" href="https://github.com/memstechtips/Winhance" target="_blank" rel="noopener" aria-label="Winhance on GitHub">
+                    <svg class="i" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a class="icon-btn icon-btn-heart" href="https://store.memstechtips.com/winhance/" target="_blank" rel="noopener" aria-label="Support Winhance">
+                    <svg class="i"><use href="#i-HeartFilled"/></svg>
+                </a>
+                <a class="btn btn-primary btn-small" href="https://github.com/memstechtips/Winhance/releases/latest/download/Winhance.Installer.exe">
+                    <span class="dl-rocket" aria-hidden="true"><i></i></span>
+                    <span>Download</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <div class="docs-wip-banner">
-        <strong>Work in Progress:</strong> Documentation is a work in progress. Some pages may be incomplete.
-    </div>
-
-    <div class="docs-layout has-banner">
-                        <aside class="docs-sidebar">
-            <nav>
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Getting Started</div>
-                    <a href="../getting-started/installation.html" class="sidebar-nav-item">Installation</a>
-                    <a href="../getting-started/quick-start.html" class="sidebar-nav-item">Quick Start</a>
+    <div class="docs-wrap docs-layout">
+        <aside class="docs-sidebar" id="docs-nav">
+            <a class="nav-home" href="../../index.html"><svg class="i"><use href="#i-ChevronLeft"/></svg>Back to Winhance home</a>
+            <nav aria-label="Documentation">
+                <div class="nav-group">
+                    <p class="nav-title">Get started</p>
+                    <a class="nav-item" href="../index.html">Overview</a>
+                    <a class="nav-item" href="../getting-started/installation.html">Installation</a>
+                    <a class="nav-item" href="../getting-started/quick-start.html">Quick start</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Features</div>
-                    <a href="../features/software-apps.html" class="sidebar-nav-item">Software & Apps</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../features/software-apps/windows-apps.html" class="sidebar-nav-item sub-item">Windows Apps</a>
-                        <a href="../features/software-apps/external-apps.html" class="sidebar-nav-item sub-item">External Apps</a>
-                    </div>
-                    <a href="../features/optimize.html" class="sidebar-nav-item">Optimize</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
-                        <a href="../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
-                        <a href="../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
-                        <a href="../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
-                        <a href="../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
-                        <a href="../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
-                    </div>
-                    <a href="../features/customize.html" class="sidebar-nav-item">Customize</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
-                        <a href="../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
-                        <a href="../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
-                        <a href="../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
-                        <a href="../features/customizations/time-region-language.html" class="sidebar-nav-item sub-item">Time &amp; Region</a>
-                    </div>
-                    <a href="../features/autounattend.html" class="sidebar-nav-item">Autounattend</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../features/autounattend/answer-file.html" class="sidebar-nav-item sub-item">Answer file</a>
-                    </div>
-                    <a href="../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
-                    <a href="../features/settings.html" class="sidebar-nav-item">Settings</a>
+                <div class="nav-group">
+                    <p class="nav-title">Features</p>
+                    <a class="nav-item" href="../features/software-apps.html">Software &amp; Apps</a>
+                    <a class="nav-item nav-sub" href="../features/software-apps/windows-apps.html">Windows apps</a>
+                    <a class="nav-item nav-sub" href="../features/software-apps/external-apps.html">External apps</a>
+                    <a class="nav-item" href="../features/optimize.html">Optimize</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/privacy-security.html">Privacy &amp; Security</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/power.html">Power</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/gaming-performance.html">Gaming &amp; Performance</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/update.html">Update</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/notifications.html">Notifications</a>
+                    <a class="nav-item nav-sub" href="../features/optimizations/sound.html">Sound</a>
+                    <a class="nav-item" href="../features/customize.html">Customize</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/theme.html">Windows Theme</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/taskbar.html">Taskbar</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/start-menu.html">Start Menu</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/explorer.html">Explorer</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/time-region-language.html">Time &amp; Region</a>
+                    <a class="nav-item" href="../features/autounattend.html">Autounattend</a>
+                    <a class="nav-item nav-sub" href="../features/autounattend/answer-file.html">Answer file</a>
+                    <a class="nav-item" href="../features/advanced-tools.html">Unattend &amp; WIMUtil</a>
+                    <a class="nav-item" href="../features/settings.html">Settings</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">User Guides</div>
-                    <a href="../guides/configuration-files.html" class="sidebar-nav-item">Configuration Files</a>
-                    <a href="../guides/wimutil.html" class="sidebar-nav-item">WIMUtil Guide</a>
-                    <a href="../guides/autounattend.html" class="sidebar-nav-item">Autounattend Guide</a>
+                <div class="nav-group">
+                    <p class="nav-title">Guides</p>
+                    <a class="nav-item" href="../guides/configuration-files.html">Configuration files</a>
+                    <a class="nav-item" href="../guides/wimutil.html" aria-current="page">WIMUtil</a>
+                    <a class="nav-item" href="../guides/autounattend.html">Answer file setup</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Reference</div>
-                    <a href="../reference/cli-commands.html" class="sidebar-nav-item">CLI Commands</a>
-                    <a href="../reference/changelog.html" class="sidebar-nav-item">Changelog</a>
-                    <a href="../reference/troubleshooting.html" class="sidebar-nav-item">Troubleshooting</a>
-                    <a href="../reference/contributing.html" class="sidebar-nav-item">How to Contribute</a>
+                <div class="nav-group">
+                    <p class="nav-title">Reference</p>
+                    <a class="nav-item" href="../reference/troubleshooting.html">Troubleshooting</a>
+                    <a class="nav-item" href="../reference/cli-commands.html">Command line</a>
+                    <a class="nav-item" href="../reference/changelog.html">Releases</a>
+                    <a class="nav-item" href="../reference/contributing.html">Contributing</a>
                 </div>
             </nav>
         </aside>
 
-        <main class="docs-content">
-            <section id="wimutil">
-                <h1>WIMUtil Step-by-Step Guide</h1>
-                <div class="video-container">
-                    <iframe src="https://www.youtube-nocookie.com/embed/m4i9wroDOjA?start=3753" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <p>WIMUtil (Windows Installation Media Utility) is designed to make creating a custom Windows installer
-                    as simple as possible. Follow this guide to create your first customized ISO.</p>
+        <main class="docs-main" id="content">
+            <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Docs</a><span class="sep" aria-hidden="true">/</span><span>Guides</span></nav>
+            <article class="docs-content">
+                <h1>WIMUtil</h1>
+                <p class="lead">Build your own Windows installation media from a Windows ISO: add an answer file and drivers, then save a new ISO or write it straight to a USB drive.</p>
 
-                <div class="callout callout-warning">
-                    <div class="callout-title">Important: Official ISOs Only</div>
-                    <p>WIMUtil is designed to work only with <strong>official Microsoft Windows 10 and Windows 11 ISO files</strong>. Although Custom ISOs from third-party sources might work, they are not supported.</p>
-                </div>
-
-                <img src="../../images/wimutil-view.png" alt="Winhance WIMUtil Interface" class="screenshot" style="width: 100%; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
-
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h2>Select and Extract your Windows ISO</h2>
-                        <p>First, you need an official Windows 10 or 11 ISO file. You can download these directly from
-                            Microsoft using the download links provided in the WIMUtil interface.</p>
-
-                        <h3 style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--accent-color);">1a. Extract the ISO</h3>
-                        <ul>
-                            <li>Select your ISO using the <strong>Select ISO</strong> button.</li>
-                            <li>Choose a <strong>Working Directory</strong> on a drive with at least 15-20GB of free
-                                space. This is where the ISO contents will be extracted.</li>
-                            <li><strong>Already Extracted?</strong> If you've previously extracted an ISO to a folder, check the <strong>"ISO already extracted"</strong> checkbox, then select that folder. This skips the extraction step.</li>
-                            <li>Click <strong>Start Extraction</strong>. Winhance will mount the ISO and copy its
-                                contents to your working directory.</li>
-                        </ul>
-                        <p><strong>Note:</strong> Extraction time depends on the ISO size and your drive speed. The process will mount the ISO, copy all files, and then dismount automatically.</p>
-
-                        <h3 style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--accent-color);">1b. Convert Image Format (Optional)</h3>
-                        <p>After extraction, an optional conversion card appears. Windows images come in two formats:</p>
-                        <ul>
-                            <li><strong>WIM (Windows Imaging Format):</strong> Larger file size, but faster installation speed.</li>
-                            <li><strong>ESD (Electronic Software Download):</strong> Highly compressed, results in a smaller ISO file.</li>
-                        </ul>
-                        <p>WIMUtil automatically detects your current format and displays conversion options:</p>
-                        <ul>
-                            <li><strong>WIM → ESD:</strong> Compresses the image to reduce the final ISO size.</li>
-                            <li><strong>ESD → WIM:</strong> Decompresses for faster installation performance.</li>
-                        </ul>
-                        <div class="callout callout-info">
-                            <div class="callout-title">ℹ️ Conversion Note</div>
-                            <p>Conversion can take 10-20 minutes depending on your hardware. Most users can skip this step entirely—it's primarily for advanced users who have specific size or speed requirements.</p>
-                        </div>
+                <div class="app-demo desktop">
+                    <div id="winhance-demo" class="wd-host stage-window" data-page="WimUtil" data-focus="This demo shows the WIMUtil page" role="region" aria-label="Interactive Winhance demo: WIMUtil">
+                        <noscript><p class="stage-fallback">Turn on JavaScript to try this page of Winhance in your browser.</p></noscript>
+                    </div>
+                    <div class="readout" id="readout" aria-live="polite">
+                        <p class="readout-idle">Click through the steps in the window above to see what each one does.</p>
                     </div>
                 </div>
 
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h2>Add an Autounattend XML (Recommended)</h2>
-                        <p>This is the "brain" of your customized installer. The <code>autounattend.xml</code> file automates the Windows setup process and applies your settings during installation. Select <strong>one</strong> of the following options:</p>
-                        <ul>
-                            <li><strong>Generate Winhance XML:</strong> Creates an XML file based on your <em>current selections in Winhance</em>. Your checked Windows Apps will be uninstalled, and all Optimize/Customize settings will be applied at their current states. This is the recommended option for most users.</li>
-                            <li><strong>Download UnattendedWinstall XML:</strong> Downloads the latest pre-configured XML from the <a href="https://github.com/memstechtips/UnattendedWinstall" target="_blank">UnattendedWinstall</a> project on GitHub. Requires internet connection.</li>
-                            <li><strong>Select XML File:</strong> Choose an existing <code>autounattend.xml</code> file from your computer. Use this if you've created a custom XML using the <a href="https://schneegans.de/windows/unattend-generator/" target="_blank">Schneegans XML Generator</a> or have a saved XML from a previous session.</li>
-                        </ul>
-                        <div class="callout callout-warning">
-                            <div class="callout-title">Before Generating</div>
-                            <p>Before clicking Generate, make sure your Winhance settings are configured exactly how you want them. Check the Windows Apps you want removed, and toggle all Optimize and Customize settings to your desired states. You can only use <strong>one</strong> XML file—they cannot be combined.</p>
-                        </div>
-                        <p>For a detailed explanation of what the autounattend.xml does, see the <a href="autounattend.html">Autounattend Guide</a>.</p>
-                    </div>
-                </div>
+                <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/m4i9wroDOjA?start=3753" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
 
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h2>Inject Drivers (Recommended)</h2>
-                        <p>Ensure your hardware works perfectly immediately after installation by including drivers in your custom ISO.</p>
-                        <ul>
-                            <li><strong>Extract & Add System Drivers:</strong> Winhance exports all third-party drivers (WiFi, GPU, Chipset, Audio, etc.) from your <em>currently running system</em> and injects them into the installer. <strong>Highly recommended</strong> if you are reinstalling Windows on the same machine—your hardware will be fully functional immediately after installation.</li>
-                            <li><strong>Add Custom Drivers:</strong> Select a folder containing <code>.inf</code> driver files. These will be added alongside any system-extracted drivers (they don't override each other).</li>
-                        </ul>
-                        <p><strong>How drivers are organized:</strong></p>
-                        <ul>
-                            <li><strong>WinPE Drivers</strong> (<code>sources/$WinpeDriver$</code>): Storage/disk controller drivers needed during Windows Setup to detect your disks.</li>
-                            <li><strong>Post-Install Drivers</strong> (<code>sources/$OEM$/$$</code>): All other drivers (WiFi, GPU, Audio, etc.), copied to <code>C:\Windows\Drivers</code> and installed via the official Windows <code>SetupComplete.cmd</code> mechanism.</li>
-                        </ul>
+                <p>WIMUtil (Windows Installation Media Utility) is the <strong>WIMUtil</strong> page in the left navigation. Use it when you want to install Windows with your settings already baked in, or reinstall Windows on a PC and have its drivers ready from the first boot. It works in four steps. Step 1 has to finish first; steps 2 to 4 unlock after it, and steps 2 and 3 are optional.</p>
+                <p>WIMUtil is not available while you are in Config Review mode.</p>
 
-                        <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">How Post-Install Drivers Are Installed</h3>
-                        <p>WIMUtil uses Microsoft's official <code>SetupComplete.cmd</code> script mechanism—a batch file that Windows Setup automatically executes after installation completes. This script runs <code>pnputil /add-driver</code> to install each driver from the <code>C:\Windows\Drivers</code> folder. This is the same method used by OEMs and enterprises.</p>
+                <ol class="steps">
+                <li>
+                <h3>Select Windows ISO</h3>
+                <p>You need a Windows 10 or Windows 11 ISO. If you don't have one, the <strong>Windows 10</strong> and <strong>Windows 11</strong> buttons next to <strong>Download Windows ISO</strong> open Microsoft's download pages.</p>
+                <ul>
+                <li>Click <strong>Select ISO</strong> and choose the ISO file.</li>
+                <li>Under <strong>Select working directory</strong>, keep the default folder (<code>%TEMP%\WinhanceWIM</code>) or click <strong>Select Folder</strong> to pick a drive with more space. Winhance creates a <code>WinhanceWIM</code> folder inside the one you pick. The ISO's contents are copied here, and everything you add in the next steps goes here too.</li>
+                <li>Click <strong>Start Extraction</strong>. If the drive is too small, Winhance tells you how much more space it needs.</li>
+                </ul>
+                <p>Already extracted an ISO before? Tick <strong>I have extracted ISO contents already</strong>, then click <strong>Select Folder</strong> and choose that folder. Winhance checks it has the <code>sources</code> and <code>boot</code> folders and skips the extraction.</p>
+                <p><strong>Convert the image format (optional)</strong></p>
+                <p>After extraction, WIMUtil reads the Windows image on the media and offers to convert it. <code>install.wim</code> is larger; <code>install.esd</code> is more compressed, so the finished media is smaller. The card shows the current size and an estimate after conversion. Most people can skip this. The one time you need it is writing an ESD image larger than 4 GB to a USB drive (see step 4).</p>
+                <p>If the folder has both <code>install.wim</code> and <code>install.esd</code>, Winhance asks you to delete one with <strong>Delete WIM</strong> or <strong>Delete ESD</strong> before you continue.</p>
+                </li>
 
-                        <div class="callout callout-warning">
-                            <div class="callout-title">SetupComplete.cmd Limitations</div>
-                            <p>On Windows 8 and later, <code>SetupComplete.cmd</code> is disabled when Windows detects an OEM product key (typically embedded in laptop UEFI firmware), except for Enterprise editions. This means:</p>
-                            <ul>
-                                <li><strong>Consumer editions (Home, Pro) with OEM keys:</strong> SetupComplete.cmd won't run, so drivers won't be installed automatically.</li>
-                                <li><strong>Windows 10 IoT Enterprise LTSC:</strong> SetupComplete.cmd is blocked even though it's an Enterprise edition. Use the standard Windows 10 Enterprise LTSC ISO instead and activate with your IoT LTSC key after installation.</li>
-                                <li><strong>Windows 11 IoT Enterprise LTSC:</strong> Works correctly by default.</li>
-                            </ul>
-                            <p>If your drivers weren't installed automatically, you can install them manually from Device Manager by browsing to <code>C:\Windows\Drivers</code>.</p>
-                        </div>
+                <li>
+                <h3>Add XML File</h3>
+                <p>An answer file (<code>autounattend.xml</code>) lets Windows Setup install without stopping to ask questions, and carries your settings onto the new PC. Pick one of three options. Whichever you choose, the file goes in the root of the media, where Setup looks for it.</p>
+                <ul>
+                <li><strong>Generate and add Winhance XML</strong>: click <strong>Set up the answer file</strong>. Winhance enters Builder mode with the Autounattend target, and the answer-file settings open inside this card. If the media carries a single Setup language, Winhance picks it for you, and it sets the target Windows to the build on your media. Go through the settings and the other pages you want to include, then click <strong>Generate and add XML to media</strong> at the end. See the <a href="autounattend.html">answer file guide</a> for what goes into the file.</li>
+                <li><strong>Download &amp; add UnattendedWinstall XML</strong>: click <strong>Download</strong> to fetch the latest ready-made file from the UnattendedWinstall project. Needs an internet connection.</li>
+                <li><strong>Select XML File</strong>: click <strong>Select XML</strong> to use an <code>autounattend.xml</code> you already have, from Winhance or another generator. The <strong>Schneegans XML</strong> button below the options opens one such generator in your browser.</li>
+                </ul>
+                <p>When you generate from Winhance, a confirmation window lists what is about to happen first: where the file is written, which installers are downloaded onto the media, and which of your own installers are copied. When it finishes, a summary shows which apps made it onto the media. An app that could not be put on the media downloads after setup instead.</p>
+                <p>After any of the three options, Winhance checks the answer file for problems Windows Setup would trip over and shows the result. The check never blocks you: if it finds something, you can read each finding and click <strong>Continue anyway</strong>.</p>
+                </li>
 
-                        <div class="callout callout-info">
-                            <div class="callout-title">ℹ️ Driver Location After Install</div>
-                            <p>After Windows is installed, you can find the extracted drivers at <code>C:\Windows\Drivers</code>. If any driver wasn't installed automatically, open Device Manager, right-click on the device with a missing driver, select "Update driver" → "Browse my computer for drivers" and point it to this folder.</p>
-                        </div>
-                    </div>
-                </div>
+                <li>
+                <h3>Extract and Add Drivers</h3>
+                <p>Adding drivers means your network, graphics and other hardware work from the first boot.</p>
+                <ul>
+                <li><strong>Extract and add drivers from current OS (Recommended)</strong>: click <strong>Extract &amp; Add</strong> to copy every third-party driver installed on this PC onto the media. Use this when you are reinstalling Windows on the same PC.</li>
+                <li><strong>Add other drivers</strong>: click <strong>Select &amp; Add</strong> and pick a folder that contains driver <code>.inf</code> files. These are added alongside any drivers already on the media.</li>
+                </ul>
+                <p>Winhance sorts the drivers as it copies them. Storage controller drivers go in the <code>$WinpeDriver$</code> folder at the root of the media, so Setup can see your disks. Everything else goes in <code>sources\$OEM$\$$\Drivers</code>, which Setup copies to <code>C:\Windows\Drivers</code>. The answer file then installs those drivers while Windows sets itself up, before the first setup screens appear, and deletes each driver folder once its driver is in.</p>
+                <p>The answer file needs one extra command for this. Winhance adds it to whichever answer file you chose in step 2. If you added drivers but no answer file, Winhance writes a small <code>autounattend.xml</code> that only installs the drivers.</p>
+                </li>
 
-                <div class="step-card">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h2>Create the Bootable ISO</h2>
-                        <p>The final step combines everything into a single bootable ISO file.</p>
-                        <ul>
-                            <li><strong>Download oscdimg (if needed):</strong> Winhance uses <code>oscdimg.exe</code> from the official Windows ADK (Assessment and Deployment Kit) to create bootable ISOs. If it's not detected on your system, click the <strong>Download</strong> button. Winhance will automatically download and install only the required ADK Deployment Tools component. This is a one-time installation and requires internet access.</li>
-                            <li>Once oscdimg is available, choose an <strong>Output Location</strong> for your new ISO file.</li>
-                            <li>Click <strong>Create ISO</strong>.</li>
-                        </ul>
-                        <p><strong>What happens:</strong> Winhance uses <code>oscdimg.exe</code> to create a dual-boot ISO that works with both <strong>UEFI</strong> and <strong>Legacy BIOS</strong> systems. The resulting ISO is a fully bootable Windows installer containing your XML file, drivers, and any other customizations.</p>
-                        <div class="callout callout-info">
-                            <div class="callout-title">ℹ️ ISO Size</div>
-                            <p>Your custom ISO will be larger than the original due to the added drivers and configurations. For example, a 7.5GB Windows 11 ISO might become 9-10GB with drivers included.</p>
-                        </div>
-                    </div>
-                </div>
+                <li>
+                <h3>Create New ISO</h3>
+                <p>Under <strong>Output destination</strong>, choose <strong>ISO file</strong> or <strong>USB drive</strong>.</p>
+                <p><strong>ISO file</strong></p>
+                <ul>
+                <li>Click <strong>Select Location</strong> and choose where to save the ISO.</li>
+                <li>Click <strong>Create ISO</strong>.</li>
+                </ul>
+                <p>The ISO boots on both UEFI and older BIOS PCs. Winhance builds it with Windows' own disc-image tools, so there is nothing extra to download. When it is done, you can open the folder that holds it.</p>
+                <p><strong>USB drive</strong></p>
+                <ul>
+                <li>Plug in a USB drive and pick it from the <strong>Select USB drive</strong> list. Click <strong>Refresh list</strong> if it is not there. Only USB drives are listed, never the disk Windows runs from.</li>
+                <li>Click <strong>Write to USB</strong>, then confirm with <strong>Erase and write</strong>.</li>
+                </ul>
+                <div class="callout callout-warning"><p class="callout-title">Writing erases the USB drive</p><p>The drive is formatted first, so everything saved on it is deleted.</p></div>
+                <p>The drive is formatted as FAT32 so every PC can boot it. FAT32 cannot hold a file over 4 GB, so Winhance splits a large <code>install.wim</code> into smaller pieces that Setup reads as one. It cannot split <code>install.esd</code>: if yours is over 4 GB, convert it to WIM in step 1 first. A FAT32 drive is limited to about 32 GB, so media larger than that cannot be written to one drive. Keep the working directory on a different drive from the USB you are writing to.</p>
+                </li>
+                </ol>
 
-                <div class="callout callout-info">
-                    <div class="callout-title">ℹ️ Post-Installation: Install Winhance Shortcut</div>
-                    <p>When you install Windows using an ISO created with a Winhance-generated XML, a shortcut titled <strong>"Install Winhance"</strong> will be placed on your new desktop. Running this shortcut will automatically download and install the latest version of Winhance from GitHub, allowing you to:</p>
-                    <ul>
-                        <li>Install additional software from the External Software section (browsers, utilities, etc.)</li>
-                        <li>Fine-tune any settings that weren't included in the XML</li>
-                        <li>Manage Windows apps and features</li>
-                    </ul>
-                    <p><strong>Note:</strong> This shortcut requires an internet connection. If you removed Microsoft Edge during installation, you won't have a browser until you install one via Winhance or WinGet.</p>
-                </div>
-
-                <div class="callout callout-success">
-                    <div class="callout-title">Creating Bootable USB Media</div>
-                    <p>Once your custom ISO is created, use one of these tools to create a bootable USB drive:</p>
-                    <ul>
-                        <li><strong><a href="https://github.com/ventoy/Ventoy/releases" target="_blank">Ventoy</a></strong> (Recommended): Install Ventoy to a USB drive once, then simply copy ISO files to it. You can store multiple ISOs and choose which one to boot. No need to reformat for each new ISO. <a href="https://youtu.be/4AGZQJTyCOs" target="_blank">Watch the Ventoy tutorial</a></li>
-                        <li><strong><a href="https://rufus.ie/" target="_blank">Rufus</a></strong>: Traditional tool that writes a single ISO to a USB drive. Simple and reliable, but requires reformatting for each new ISO.</li>
-                    </ul>
-                    <p>After creating your bootable USB, boot from it and follow the normal Windows installation process. Your autounattend.xml will automatically apply your customizations!</p>
-                </div>
-
-                <div class="page-nav">
-                    <a href="configuration-files.html" class="page-nav-btn prev">&larr; Configuration Files</a>
-                    <a href="autounattend.html" class="page-nav-btn next">Autounattend Guide &rarr;</a>
-                </div>
-            </section>
+                <h2 id="after-you-install">After you install</h2>
+                <p>Boot the PC from the ISO or USB drive and install Windows as usual. What happens next depends on the answer file. With a Winhance answer file, see <a href="autounattend.html#during-installation">what happens during installation</a>.</p>
+                <p>Drivers that failed to install stay in <code>C:\Windows\Drivers</code>, and the install log is at <code>C:\ProgramData\Winhance\Unattend\Logs\Winhance-DriverInstall.log</code>. To install one by hand, open Device Manager, right-click the device, choose <strong>Update driver</strong> &gt; <strong>Browse my computer for drivers</strong> and point it at that folder.</p>
+            </article>
+            <nav class="pager" aria-label="More pages"><a class="pager-prev" href="../guides/configuration-files.html"><span>Previous</span>Configuration files</a><a class="pager-next" href="../guides/autounattend.html"><span>Next</span>Answer file setup</a></nav>
         </main>
+
+        <aside class="docs-toc" aria-label="On this page">
+
+        </aside>
     </div>
 
-    <button class="sidebar-toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-    </button>
-
-    <script src="../js/docs-theme.js"></script>
-    <script src="../js/docs-navigation.js"></script>
-    <script src="../js/docs-search.js"></script>
-    <script src="../js/docs-config.js"></script>
-
-    <!-- Documentation Footer -->
-    <footer class="docs-footer">
-        <div class="docs-footer-container">
-            <div class="docs-footer-info">
-                &copy; 2026 Winhance.
+    <footer class="footer">
+        <div class="wrap footer-grid">
+            <div>
+                <a class="brand" href="../../index.html">
+                    <img class="brand-mark" src="../../images/winhance-rocket.png" alt="" width="24" height="24">
+                    <span>Winhance</span>
+                </a>
+                <p class="footer-version">These docs describe Winhance v26.10.01</p>
             </div>
-            <div class="docs-footer-meta">
-                <div class="docs-meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-                    <span class="docs-version">Docs v1.0.0</span>
-                </div>
-                <div class="docs-meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                    <span class="docs-last-updated">Last Updated: Jan 29, 2026</span>
-                </div>
-            </div>
+            <ul class="footer-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../index.html">Documentation</a></li>
+                <li><a href="https://github.com/memstechtips/Winhance/releases" target="_blank" rel="noopener">Releases</a></li>
+                <li><a href="https://github.com/memstechtips/Winhance" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://store.memstechtips.com/winhance/" target="_blank" rel="noopener">Support Winhance</a></li>
+            </ul>
+            <p class="footer-made">&copy; 2026 Winhance. Made by <a href="https://memstechtips.com/" target="_blank" rel="noopener">Memory</a>.</p>
         </div>
     </footer>
 
+    <script src="../../demo/app.js"></script>
+    <script src="../../demo/winhance-demo.js"></script>
+    <script src="../../demo/readout.js"></script>
+    <script src="../js/docs-search.js"></script>
+    <script src="../js/docs.js"></script>
+    <script src="../js/docs-metrics.js"></script>
 </body>
 
 </html>

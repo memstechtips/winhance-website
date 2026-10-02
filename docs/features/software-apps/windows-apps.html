@@ -4,371 +4,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Windows Apps & Features - Winhance Docs</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../../../styles.css">
+    <title>Windows Apps &amp;amp; Features - Winhance Docs</title>
+    <meta name="description" content="Remove the apps, capabilities and optional features that ship with Windows, stop them coming back, and restore them if you change your mind.">
+    <meta name="theme-color" content="#0b1422">
+    <link rel="icon" type="image/png" sizes="256x256" href="../../../images/winhance-rocket.png">
+    <link rel="preload" href="../../../fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="../../css/winui-tokens.css">
     <link rel="stylesheet" href="../../css/app-tokens.css">
-    <link rel="stylesheet" href="../../css/docs-main.css">
-    <link rel="stylesheet" href="../../css/docs-sidebar.css">
-    <link rel="stylesheet" href="../../css/docs-syntax.css">
+    <link rel="stylesheet" href="../../../base.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link rel="stylesheet" href="../../css/setting-card.css">
+    <link rel="stylesheet" href="../../../demo/winhance-demo.css">
     <script src="../../js/theme-load.js"></script>
 </head>
 
-<body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <a href="../../index.html" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="../../../images/winhance-rocket.png" alt="Winhance Logo"
-                        style="height: 32px; margin-right: 12px;">
-                    <h1 style="font-size: 1.5rem; margin: 0; color: var(--text-color);">Winhance <span
-                            style="font-weight: 300; opacity: 0.7;">Docs</span></h1>
-                </a>
+<body class="docs">
+    <!-- gen:icons --><svg class="sprite" aria-hidden="true"><symbol id="i-ChevronLeft" viewBox="0 0 20 20"><path fill="currentColor" d="M12.3534 15.8537C12.1585 16.0493 11.8419 16.0499 11.6463 15.855L6.16178 10.39C5.94607 10.1751 5.94607 9.82574 6.16178 9.6108L11.6463 4.14582C11.8419 3.9509 12.1585 3.95147 12.3534 4.14708C12.5483 4.34269 12.5477 4.65927 12.3521 4.85418L7.18753 10.0004L12.3521 15.1466C12.5477 15.3415 12.5483 15.6581 12.3534 15.8537Z"/></symbol><symbol id="i-HeartFilled" viewBox="0 0 20 20"><path fill="currentColor" d="M9.38843 4.28963C7.69278 2.57693 4.94954 2.5686 3.26122 4.2739C1.5729 5.9792 1.58114 8.75004 3.27679 10.4627L9.55368 16.8028C9.81404 17.0657 10.2362 17.0657 10.4965 16.8028L16.7408 10.4994C18.4252 8.78856 18.4199 6.02549 16.7239 4.31249C15.0252 2.59671 12.2807 2.58838 10.5894 4.29673L9.99299 4.90026L9.38843 4.28963Z"/></symbol><symbol id="i-Navigation" viewBox="0 0 20 20"><path fill="currentColor" d="M2 4.5C2 4.22386 2.22386 4 2.5 4H17.5C17.7761 4 18 4.22386 18 4.5C18 4.77614 17.7761 5 17.5 5H2.5C2.22386 5 2 4.77614 2 4.5ZM2 9.5C2 9.22386 2.22386 9 2.5 9H17.5C17.7761 9 18 9.22386 18 9.5C18 9.77614 17.7761 10 17.5 10H2.5C2.22386 10 2 9.77614 2 9.5ZM2.5 14C2.22386 14 2 14.2239 2 14.5C2 14.7761 2.22386 15 2.5 15H17.5C17.7761 15 18 14.7761 18 14.5C18 14.2239 17.7761 14 17.5 14H2.5Z"/></symbol><symbol id="i-Search" viewBox="0 0 20 20"><path fill="currentColor" d="M13.7291 14.4362C12.5924 15.411 11.115 16 9.5 16C5.91015 16 3 13.0899 3 9.5C3 5.91015 5.91015 3 9.5 3C13.0899 3 16 5.91015 16 9.5C16 11.115 15.411 12.5924 14.4361 13.7292L17.8535 17.1465C18.0487 17.3417 18.0487 17.6583 17.8535 17.8536C17.6799 18.0271 17.4105 18.0464 17.2156 17.9114L17.1464 17.8536L13.7291 14.4362ZM13.0196 13.7266C13.276 13.5128 13.5127 13.2761 13.7265 13.0197C14.5216 12.0659 15 10.8388 15 9.5C15 6.46243 12.5376 4 9.5 4C6.46243 4 4 6.46243 4 9.5C4 12.5376 6.46243 15 9.5 15C10.8388 15 12.0658 14.5217 13.0196 13.7266Z"/></symbol><symbol id="i-WeatherMoon" viewBox="0 0 20 20"><path fill="currentColor" d="M15.4932 13.4967C13.5653 16.8358 9.2957 17.9798 5.95663 16.052C5.20013 15.6152 4.54451 15.0515 4.01047 14.3887C6.8412 13.3015 8.56844 11.9681 9.60339 9.99249C10.651 7.99273 10.9395 5.83183 10.3628 3.08319C11.2605 3.20148 12.1328 3.49537 12.9378 3.96018C16.2769 5.88799 17.421 10.1576 15.4932 13.4967ZM5.45663 16.918C9.27399 19.122 14.1552 17.8141 16.3592 13.9967C18.5631 10.1793 17.2552 5.2981 13.4378 3.09415C12.3371 2.45863 11.1233 2.10173 9.88082 2.03507C9.4801 2.01357 9.17217 2.38477 9.26732 2.77462C9.95545 5.59395 9.70125 7.65076 8.71759 9.52844C7.78322 11.312 6.17301 12.559 3.16661 13.635C2.79667 13.7674 2.65251 14.2143 2.87537 14.538C3.54192 15.5059 4.41706 16.3178 5.45663 16.918Z"/></symbol><symbol id="i-WeatherSunny" viewBox="0 0 20 20"><path fill="currentColor" d="M10 2C10.2761 2 10.5 2.22386 10.5 2.5V3.5C10.5 3.77614 10.2761 4 10 4C9.72386 4 9.5 3.77614 9.5 3.5V2.5C9.5 2.22386 9.72386 2 10 2ZM10 14C12.2091 14 14 12.2091 14 10C14 7.79086 12.2091 6 10 6C7.79086 6 6 7.79086 6 10C6 12.2091 7.79086 14 10 14ZM10 13C8.34315 13 7 11.6569 7 10C7 8.34315 8.34315 7 10 7C11.6569 7 13 8.34315 13 10C13 11.6569 11.6569 13 10 13ZM17.5 10.5C17.7761 10.5 18 10.2761 18 10C18 9.72386 17.7761 9.5 17.5 9.5H16.5C16.2239 9.5 16 9.72386 16 10C16 10.2761 16.2239 10.5 16.5 10.5H17.5ZM10 16C10.2761 16 10.5 16.2239 10.5 16.5V17.5C10.5 17.7761 10.2761 18 10 18C9.72386 18 9.5 17.7761 9.5 17.5V16.5C9.5 16.2239 9.72386 16 10 16ZM3.5 10.5C3.77614 10.5 4 10.2761 4 10C4 9.72386 3.77614 9.5 3.5 9.5H2.46289C2.18675 9.5 1.96289 9.72386 1.96289 10C1.96289 10.2761 2.18675 10.5 2.46289 10.5H3.5ZM4.14645 4.14645C4.34171 3.95118 4.65829 3.95118 4.85355 4.14645L5.85355 5.14645C6.04882 5.34171 6.04882 5.65829 5.85355 5.85355C5.65829 6.04882 5.34171 6.04882 5.14645 5.85355L4.14645 4.85355C3.95118 4.65829 3.95118 4.34171 4.14645 4.14645ZM4.85355 15.8536C4.65829 16.0488 4.34171 16.0488 4.14645 15.8536C3.95118 15.6583 3.95118 15.3417 4.14645 15.1464L5.14645 14.1464C5.34171 13.9512 5.65829 13.9512 5.85355 14.1464C6.04882 14.3417 6.04882 14.6583 5.85355 14.8536L4.85355 15.8536ZM15.8536 4.14645C15.6583 3.95118 15.3417 3.95118 15.1464 4.14645L14.1464 5.14645C13.9512 5.34171 13.9512 5.65829 14.1464 5.85355C14.3417 6.04882 14.6583 6.04882 14.8536 5.85355L15.8536 4.85355C16.0488 4.65829 16.0488 4.34171 15.8536 4.14645ZM15.1464 15.8536C15.3417 16.0488 15.6583 16.0488 15.8536 15.8536C16.0488 15.6583 16.0488 15.3417 15.8536 15.1464L14.8536 14.1464C14.6583 13.9512 14.3417 13.9512 14.1464 14.1464C13.9512 14.3417 13.9512 14.6583 14.1464 14.8536L15.1464 15.8536Z"/></symbol></svg><!-- /gen:icons -->
+    <a class="skip" href="#content">Skip to content</a>
+
+    <header class="topbar">
+        <div class="docs-wrap topbar-row">
+            <button type="button" class="icon-btn docs-menu" aria-label="Show or hide the docs menu" aria-controls="docs-nav" aria-expanded="false">
+                <svg class="i"><use href="#i-Navigation"/></svg>
+            </button>
+            <a class="brand" href="../../../index.html" aria-label="Winhance home">
+                <img class="brand-mark" src="../../../images/winhance-rocket.png" alt="" width="28" height="28">
+                <span>Winhance</span>
+            </a>
+            <nav class="site-tabs" aria-label="Site">
+                <a href="../../../index.html">Home</a>
+                <a href="../../index.html" aria-current="true">Docs</a>
+            </nav>
+            <div class="search-container" role="search">
+                <svg class="i"><use href="#i-Search"/></svg>
+                <input type="search" id="docs-search" placeholder="Search the docs" autocomplete="off" aria-label="Search the docs">
+                <kbd class="search-key" aria-hidden="true">/</kbd>
             </div>
-            <div class="search-container">
-                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                <input type="text" id="docs-search" placeholder="Search documentation...">
-            </div>
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle theme">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
-                    </svg>
+            <div class="topbar-actions">
+                <button type="button" id="theme-toggle" class="icon-btn" aria-label="Switch between light and dark">
+                    <svg class="i i-sun"><use href="#i-WeatherSunny"/></svg>
+                    <svg class="i i-moon"><use href="#i-WeatherMoon"/></svg>
                 </button>
-                <a href="https://github.com/memstechtips/Winhance" target="_blank" class="icon-btn github-btn"
-                    title="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
+                <a class="icon-btn" href="https://github.com/memstechtips/Winhance" target="_blank" rel="noopener" aria-label="Winhance on GitHub">
+                    <svg class="i" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a class="icon-btn icon-btn-heart" href="https://store.memstechtips.com/winhance/" target="_blank" rel="noopener" aria-label="Support Winhance">
+                    <svg class="i"><use href="#i-HeartFilled"/></svg>
+                </a>
+                <a class="btn btn-primary btn-small" href="https://github.com/memstechtips/Winhance/releases/latest/download/Winhance.Installer.exe">
+                    <span class="dl-rocket" aria-hidden="true"><i></i></span>
+                    <span>Download</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <div class="docs-wip-banner">
-        <strong>Work in Progress:</strong> Documentation is a work in progress. Some pages may be incomplete.
-    </div>
-
-    <div class="docs-layout has-banner">
-                        <aside class="docs-sidebar">
-            <nav>
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Getting Started</div>
-                    <a href="../../getting-started/installation.html" class="sidebar-nav-item">Installation</a>
-                    <a href="../../getting-started/quick-start.html" class="sidebar-nav-item">Quick Start</a>
+    <div class="docs-wrap docs-layout">
+        <aside class="docs-sidebar" id="docs-nav">
+            <a class="nav-home" href="../../../index.html"><svg class="i"><use href="#i-ChevronLeft"/></svg>Back to Winhance home</a>
+            <nav aria-label="Documentation">
+                <div class="nav-group">
+                    <p class="nav-title">Get started</p>
+                    <a class="nav-item" href="../../index.html">Overview</a>
+                    <a class="nav-item" href="../../getting-started/installation.html">Installation</a>
+                    <a class="nav-item" href="../../getting-started/quick-start.html">Quick start</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Features</div>
-                    <a href="../../features/software-apps.html" class="sidebar-nav-item">Software & Apps</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../../features/software-apps/windows-apps.html" class="sidebar-nav-item sub-item">Windows Apps</a>
-                        <a href="../../features/software-apps/external-apps.html" class="sidebar-nav-item sub-item">External Apps</a>
-                    </div>
-                    <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
-                        <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
-                        <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
-                        <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
-                        <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
-                        <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
-                    </div>
-                    <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
-                        <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
-                        <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
-                        <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
-                        <a href="../../features/customizations/time-region-language.html" class="sidebar-nav-item sub-item">Time &amp; Region</a>
-                    </div>
-                    <a href="../../features/autounattend.html" class="sidebar-nav-item">Autounattend</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../../features/autounattend/answer-file.html" class="sidebar-nav-item sub-item">Answer file</a>
-                    </div>
-                    <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
-                    <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
+                <div class="nav-group">
+                    <p class="nav-title">Features</p>
+                    <a class="nav-item" href="../../features/software-apps.html">Software &amp; Apps</a>
+                    <a class="nav-item nav-sub" href="../../features/software-apps/windows-apps.html" aria-current="page">Windows apps</a>
+                    <a class="nav-item nav-sub" href="../../features/software-apps/external-apps.html">External apps</a>
+                    <a class="nav-item" href="../../features/optimize.html">Optimize</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/privacy-security.html">Privacy &amp; Security</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/power.html">Power</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/gaming-performance.html">Gaming &amp; Performance</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/update.html">Update</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/notifications.html">Notifications</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/sound.html">Sound</a>
+                    <a class="nav-item" href="../../features/customize.html">Customize</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/theme.html">Windows Theme</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/taskbar.html">Taskbar</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/start-menu.html">Start Menu</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/explorer.html">Explorer</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/time-region-language.html">Time &amp; Region</a>
+                    <a class="nav-item" href="../../features/autounattend.html">Autounattend</a>
+                    <a class="nav-item nav-sub" href="../../features/autounattend/answer-file.html">Answer file</a>
+                    <a class="nav-item" href="../../features/advanced-tools.html">Unattend &amp; WIMUtil</a>
+                    <a class="nav-item" href="../../features/settings.html">Settings</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">User Guides</div>
-                    <a href="../../guides/configuration-files.html" class="sidebar-nav-item">Configuration Files</a>
-                    <a href="../../guides/wimutil.html" class="sidebar-nav-item">WIMUtil Guide</a>
-                    <a href="../../guides/autounattend.html" class="sidebar-nav-item">Autounattend Guide</a>
+                <div class="nav-group">
+                    <p class="nav-title">Guides</p>
+                    <a class="nav-item" href="../../guides/configuration-files.html">Configuration files</a>
+                    <a class="nav-item" href="../../guides/wimutil.html">WIMUtil</a>
+                    <a class="nav-item" href="../../guides/autounattend.html">Answer file setup</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Reference</div>
-                    <a href="../../reference/cli-commands.html" class="sidebar-nav-item">CLI Commands</a>
-                    <a href="../../reference/changelog.html" class="sidebar-nav-item">Changelog</a>
-                    <a href="../../reference/troubleshooting.html" class="sidebar-nav-item">Troubleshooting</a>
-                    <a href="../../reference/contributing.html" class="sidebar-nav-item">How to Contribute</a>
+                <div class="nav-group">
+                    <p class="nav-title">Reference</p>
+                    <a class="nav-item" href="../../reference/troubleshooting.html">Troubleshooting</a>
+                    <a class="nav-item" href="../../reference/cli-commands.html">Command line</a>
+                    <a class="nav-item" href="../../reference/changelog.html">Releases</a>
+                    <a class="nav-item" href="../../reference/contributing.html">Contributing</a>
                 </div>
             </nav>
         </aside>
 
-        <main class="docs-content">
-            <section id="windows-apps">
-                <h1>Windows Apps & Features</h1>
-                <p>Winhance allows you to deeply customize your Windows experience by removing built-in apps, legacy
-                    capabilities, and optional features that are often difficult to uninstall through standard Windows
-                    settings.</p>
+        <main class="docs-main" id="content">
+            <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../../index.html">Docs</a><span class="sep" aria-hidden="true">/</span><span>Features</span><span class="sep" aria-hidden="true">/</span><a href="../../features/software-apps.html">Software &amp; Apps</a></nav>
+            <article class="docs-content">
+                <section id="windows-apps">
+                    <h1>Windows Apps &amp; Features</h1>
+                    <p class="lead">Remove the apps, capabilities and optional features that ship with Windows, stop them coming back, and restore them if you change your mind.</p>
 
-                <h2>Removing Built-in Apps</h2>
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/m4i9wroDOjA?start=689" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <p>To remove apps from your system:</p>
-                <ol>
-                    <li>Use the <strong>Search Bar</strong> at the top to quickly find specific applications.</li>
-                    <li>Select the checkboxes for the apps you want to remove.</li>
-                    <li>You can select apps that are "Not Installed" to ensure Windows doesn't try to reinstall them
-                        later.</li>
-                    <li>Click the <strong>Remove Apps</strong> button.</li>
-                </ol>
-
-                <div class="callout callout-info">
-                    <div class="callout-title">🛡️ Continuous Removal Mechanism</div>
-                    <p>Winhance features a <strong>Continuous Removal</strong> system. When you remove a Windows App,
-                        Capability, or Optional Feature, Winhance doesn't just uninstall it once; it ensures it
-                        <em>stays</em> uninstalled.
-                    </p>
-                    <p>To achieve this, Winhance creates PowerShell scripts and registers them as <strong>Windows
-                            Scheduled Tasks</strong> that run automatically at every system startup.</p>
-                </div>
-
-                <h3>Edge & OneDrive Removal</h3>
-                <p>In Winhance v25.11.03 and later, the Edge removal process has been significantly improved:</p>
-                <ul>
-                    <li><strong>Edge WebView:</strong> The script no longer removes the Edge WebView component, ensuring that third-party apps that depend on it continue to function correctly.</li>
-                    <li><strong>Web Search Redirect:</strong> Since Microsoft Edge is uninstalled, Winhance includes a redirect mechanism (based on OpenWebSearch) that ensures web links from the Start Menu open in your default browser instead of erroring out.</li>
-                </ul>
-
-                <h3>How it Works (Technical Details)</h3>
-                <p>Winhance uses official Windows features to maintain your preference:</p>
-                <ul>
-                    <li><strong>Task Scheduler:</strong> Management tasks are created in a dedicated
-                        <code>Winhance</code> subfolder within the Windows Task Scheduler.
-                    </li>
-                    <li><strong>SYSTEM Context:</strong> These tasks run under the <code>SYSTEM</code> account to ensure
-                        they have the necessary permissions to modify system-wide components.</li>
-                    <li><strong>Dual Targeting:</strong> Although running as SYSTEM, the scripts are intelligently
-                        designed to apply changes both system-wide (using <code>-AllUsers</code> flags for Appx
-                        packages) and to the currently logged-in user (by detecting active sessions and modifying
-                        user-specific registry hives).</li>
-                </ul>
-
-                <h3>Removal Scripts</h3>
-                <p>The persistent removal is handled by three primary scripts:</p>
-                <ul>
-                    <li><strong>EdgeRemoval.ps1:</strong> Specifically handles the persistent removal of Microsoft Edge
-                        (Legacy and Chromium).</li>
-                    <li><strong>OneDriveRemoval.ps1:</strong> Specifically handles the persistent removal of Microsoft
-                        OneDrive.</li>
-                    <li><strong>BloatRemoval.ps1:</strong> Handles all other selected apps, capabilities, and features.
-                    </li>
-                </ul>
-
-                <div class="callout callout-tip">
-                    <div class="callout-title">📂 Where are the scripts?</div>
-                    <p>You can find these scripts on your system at: <code>C:\ProgramData\Winhance\Scripts</code></p>
-                    <p>Alternatively, in the Winhance application, you can click the <strong>More</strong> button in the
-                        left navigation pane and select <strong>Winhance Scripts</strong> to open this folder directly.
-                    </p>
-                </div>
-
-                <h2>Status Indicators</h2>
-                <p>The <strong>Windows Apps & Features</strong> view uses several visual indicators to help you
-                    understand the current state of each component.</p>
-
-                <div class="status-group">
-                    <div class="status-item">
-                        <div class="status-indicator installed"></div>
-                        <span>Installed</span>
+                    <div class="app-demo desktop">
+                    <div id="winhance-demo" class="wd-host stage-window" data-page="SoftwareApps" data-tab="windows" data-focus="This demo shows the Software &amp; Apps page" role="region" aria-label="Interactive Winhance demo: Software &amp; Apps">
+                        <noscript><p class="stage-fallback">Turn on JavaScript to try this page of Winhance in your browser.</p></noscript>
                     </div>
-                    <div class="status-item">
-                        <div class="status-indicator not-installed"></div>
-                        <span>Not Installed</span>
-                    </div>
-                    <div class="status-item">
-                        <i class="mdi mdi-sync icon-sync" style="font-size: 20px;"></i>
-                        <span>Can Reinstall</span>
-                    </div>
-                    <div class="status-item">
-                        <i class="mdi mdi-sync-off icon-sync-off" style="font-size: 20px;"></i>
-                        <span>Cannot Reinstall</span>
+                    <div class="readout" id="readout" aria-live="polite">
+                        <p class="readout-idle">Tick some apps in the window above, then click a button above the list to see what Winhance would do.</p>
                     </div>
                 </div>
 
-                <!-- Green/Red/Blue below are Winhance's own status colours (installed/not-installed/
-                     can-reinstall), kept literal to match the real app — same exception as
-                     docs-main.css's .dot-installed/.dot-not-installed/.icon-sync; see the task report. -->
-                <p><strong>Installation Status:</strong> A <span style="color: #00FF3C; font-weight: bold;">Green</span>
-                    dot indicates the app is currently present on your system. A <span
-                        style="color: #FF2800; font-weight: bold;">Red</span> dot means it is uninstalled.</p>
-                <p><strong>Reinstallability:</strong> The <span style="color: #00A5FF; font-weight: bold;">Sync</span>
-                    icon indicates if the application can be restored via Winhance. Some system components or retired apps (Red Sync-Off
-                    icon, like <strong>Skype</strong>) cannot be reinstalled once removed because they are no longer available from Microsoft's servers.</p>
+                    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/m4i9wroDOjA?start=689" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
 
-                <div class="callout callout-note">
-                    <div class="callout-title">🔄 Reinstalling Apps</div>
-                    <p>If you decide you want an app back, you <strong>must</strong> reinstall it through Winhance. This is because Winhance will automatically detect the installation and update your persistent removal scripts (BloatRemoval.ps1) to ensure the app is no longer targeted for removal at startup.</p>
-                </div>
+                    <h2 id="what-you-can-remove">What you can remove</h2>
+                    <p>The <strong>Windows Apps &amp; Features</strong> tab of <a href="../software-apps.html">Software &amp; Apps</a> lists three kinds of items:</p>
+                    <ul>
+                        <li><strong>Windows Apps</strong>: the Store-style apps Windows installs for you, such as Clipchamp, Copilot, Microsoft Edge and OneDrive.</li>
+                        <li><strong>Windows Capabilities</strong>: smaller add-ons such as Internet Explorer, PowerShell ISE, Steps Recorder and WordPad.</li>
+                        <li><strong>Windows Optional Features</strong>: features such as Hyper-V, .NET Framework 3.5, Windows Sandbox and Recall.</li>
+                    </ul>
+                    <p>Each item shows whether it is installed. Two other labels are worth checking before you remove anything:</p>
+                    <ul>
+                        <li><strong>Permanent</strong> means the item cannot be reinstalled once it is gone. Cortana, Skype, Paint 3D and the Copilot+ PC AI packages are examples.</li>
+                        <li><strong>Warning</strong> means removing the item may cause system instability. Microsoft Edge and App Installer carry this label.</li>
+                    </ul>
 
-                <h3>Managing Persistence (Winhance Status)</h3>
-                <p>When you click the <strong>Help (?)</strong> button, you will see the <strong>Winhance
-                        Status</strong> indicators. These represent the active <strong>Continuous Removal</strong> tasks
-                    on your system.</p>
-
-                <div class="status-group" style="flex-direction: column; align-items: flex-start;">
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
-                        <i class="mdi mdi-delete-forever icon-sync" style="font-size: 24px;"></i>
-                        <span style="font-weight: 600; font-size: 1.1rem;">Winhance Removal Status</span>
+                    <h2 id="remove-items">Remove items</h2>
+                    <ol class="steps">
+                        <li>
+                            <h3>Check what you want gone</h3>
+                            <p>Check the items you want to remove. You can check items marked <strong>Not Installed</strong> too. Winhance adds them to its removal list, so they get removed if Windows installs them later.</p>
+                        </li>
+                        <li>
+                            <h3>Click Uninstall Selected Items</h3>
+                            <p>The <strong>Confirm Removal</strong> dialog lists everything you checked.</p>
+                        </li>
+                        <li>
+                            <h3>Keep continuous removal on</h3>
+                            <p>Leave <strong>Save removal scripts to ensure continuous removal</strong> checked (it is on by default), then click <strong>Continue</strong>. Winhance removes the items and sets up the scheduled tasks described below.</p>
+                            <div data-wd-dialog="remove" role="figure" aria-label="The Confirm Removal dialog, with Save removal scripts to ensure continuous removal checked"></div>
+                        </li>
+                    </ol>
+                    <div class="callout callout-warning">
+                        <p class="callout-title">Clearing the checkbox clears all saved removals</p>
+                        <p>If you clear <strong>Save removal scripts to ensure continuous removal</strong>, Winhance removes the items once and then deletes every removal script and task it saved before, not just the ones for this run.</p>
                     </div>
 
-                    <!-- 2-column layout for Active/Inactive states -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%;">
-                        <!-- Active State -->
-                        <div>
-                            <div
-                                style="font-weight: 600; margin-bottom: 8px; color: var(--text-color); font-size: 0.95rem;">
-                                ✅ Continuous Removal Active
-                                <br>(Scripts Exist and Run at Startup)
-                            </div>
+                    <h2 id="how-removal-works">How removal works</h2>
+                    <p>Winhance writes the removal as PowerShell scripts in <code>C:\ProgramData\Winhance\Scripts</code>, runs them straight away, and registers a scheduled task for each one so Windows cannot quietly bring the items back.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Script</th><th>What it removes</th><th>Task runs</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>BloatRemoval.ps1</code></td><td>Every app, capability and optional feature you removed, except Edge and OneDrive</td><td>At every sign-in</td></tr>
+                            <tr><td><code>EdgeRemoval.ps1</code></td><td>Microsoft Edge</td><td>At startup</td></tr>
+                            <tr><td><code>OneDriveRemoval.ps1</code></td><td>OneDrive</td><td>At every sign-in</td></tr>
+                        </tbody>
+                    </table>
+                    <p>The tasks live in a <strong>Winhance</strong> folder in Task Scheduler and run as SYSTEM. Each time you remove more items, Winhance adds them to the list in <code>BloatRemoval.ps1</code> instead of replacing it.</p>
+                    <p>For apps, <code>BloatRemoval.ps1</code> first removes the provisioned copy, so new user accounts do not get the app, then removes it for every existing user. It removes capabilities, and turns optional features off without forcing a restart. It keeps a log in <code>C:\ProgramData\Winhance\Logs\BloatRemovalLog.txt</code>.</p>
+                    <p>To see the scripts, open <strong>More</strong> in the sidebar and choose <strong>Winhance Scripts</strong>. <strong>More</strong> &gt; <strong>Change History</strong> lists what Winhance removed and installed.</p>
 
-                            <div class="removal-status-grid">
-                                <div class="removal-status-item">
-                                    <div class="removal-status-btn active bloat" title="Bloat Removal Active">
-                                        <i class="mdi mdi-delete-forever"></i>
-                                    </div>
-                                    <div style="font-size: 0.8rem; text-align: center; margin-top: 4px; opacity: 0.7;">
-                                        Bloat
-                                    </div>
-                                </div>
-                                <div class="removal-status-item">
-                                    <div class="removal-status-btn active edge" title="Edge Removal Active">
-                                        <i class="mdi mdi-microsoft-edge"></i>
-                                    </div>
-                                    <div style="font-size: 0.8rem; text-align: center; margin-top: 4px; opacity: 0.7;">
-                                        Edge
-                                    </div>
-                                </div>
-                                <div class="removal-status-item">
-                                    <div class="removal-status-btn active onedrive" title="OneDrive Removal Active">
-                                        <i class="mdi mdi-microsoft-onedrive"></i>
-                                    </div>
-                                    <div style="font-size: 0.8rem; text-align: center; margin-top: 4px; opacity: 0.7;">
-                                        OneDrive
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <h3 id="edge-and-onedrive">Microsoft Edge and OneDrive</h3>
+                    <p>Edge and OneDrive each get their own script because they need more than a package removal.</p>
+                    <ul>
+                        <li><code>EdgeRemoval.ps1</code> removes Edge (legacy and Chromium) and Edge Update. It leaves the <strong>Edge WebView2</strong> runtime alone, because other apps need it. It also sets up a redirect, based on AveYo's OpenWebSearch, so links Windows sends to Edge, such as web results in Start and Search, open in your default browser. A second task, <strong>OpenWebSearchRepair</strong>, puts the redirect back at sign-in if something overwrites it.</li>
+                        <li><code>OneDriveRemoval.ps1</code> uninstalls OneDrive, removes its scheduled tasks and Start menu shortcuts, and stops it installing itself for new users. Your files in <code>%USERPROFILE%\OneDrive</code> are kept.</li>
+                    </ul>
 
-                        <!-- Inactive State -->
-                        <div>
-                            <div
-                                style="font-weight: 600; margin-bottom: 8px; color: var(--text-color); font-size: 0.95rem;">
-                                ⚫ Continuous Removal Inactive
-                                <br>(Scripts Don't Exist and Don't Run at Startup)
-                            </div>
-                            <div class="removal-status-grid">
-                                <div class="removal-status-item">
-                                    <div class="removal-status-btn" title="Bloat Removal Inactive">
-                                        <i class="mdi mdi-delete-forever"></i>
-                                    </div>
-                                    <div style="font-size: 0.8rem; text-align: center; margin-top: 4px; opacity: 0.7;">
-                                        Bloat
-                                    </div>
-                                </div>
-                                <div class="removal-status-item">
-                                    <div class="removal-status-btn" title="Edge Removal Inactive">
-                                        <i class="mdi mdi-microsoft-edge"></i>
-                                    </div>
-                                    <div style="font-size: 0.8rem; text-align: center; margin-top: 4px; opacity: 0.7;">
-                                        Edge
-                                    </div>
-                                </div>
-                                <div class="removal-status-item">
-                                    <div class="removal-status-btn" title="OneDrive Removal Inactive">
-                                        <i class="mdi mdi-microsoft-onedrive"></i>
-                                    </div>
-                                    <div style="font-size: 0.8rem; text-align: center; margin-top: 4px; opacity: 0.7;">
-                                        OneDrive
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <h2 id="stop-continuous-removal">Stop continuous removal</h2>
+                    <p>Click <strong>Help</strong> on the Software &amp; Apps page. Under <strong>Winhance Status:</strong> you see three icons, one each for Bloat Removal, Microsoft Edge and OneDrive.</p>
+                    <ul>
+                        <li>A colored icon means the script or its task exists, so continuous removal is active.</li>
+                        <li>A grey icon means neither exists.</li>
+                    </ul>
+                    <p>Click a colored icon to delete that script and unregister its task. This only stops future removals. It does not reinstall anything.</p>
+
+                    <h2 id="restore">Restore an item</h2>
+                    <p>Check the item and click <strong>Install Selected Items</strong>. Items marked <strong>Permanent</strong> cannot be restored.</p>
+                    <ul>
+                        <li>Winhance first takes the item off the list in <code>BloatRemoval.ps1</code>, so the sign-in task leaves it alone. For Edge or OneDrive it deletes that app's script and task, and for Edge it also removes the browser redirect.</li>
+                        <li>Apps install through WinGet. If WinGet cannot get a package, which usually means a regional restriction, Winhance asks before downloading it from Microsoft's servers through store.rg-adguard.net.</li>
+                        <li>If Windows Update is disabled, Store installs cannot finish. Winhance offers to change the update policy to <strong>Paused for a long time</strong> and try again.</li>
+                        <li>Capabilities and optional features are turned back on in a separate PowerShell window. Winhance cannot see the result, so watch that window, then click <strong>Refresh</strong>.</li>
+                    </ul>
+                    <div class="callout callout-note">
+                        <p class="callout-title">Reinstall through Winhance</p>
+                        <p>If you reinstall an app from the Microsoft Store or anywhere else while it is still on the removal list, the BloatRemoval task removes it again at your next sign-in. Restore it from this tab, or stop continuous removal first.</p>
                     </div>
-                </div>
 
-                <p>These icons serve as both indicators and <strong>toggle switches</strong>:</p>
-                <ul>
-                    <li><strong>Lit Up Icon:</strong> The persistent removal script and scheduled task are
-                        <strong>active</strong>. Winhance will automatically re-remove this component if it reappears.
-                    </li>
-                    <li><strong>Grayed Out Icon:</strong> The script/task is <strong>disabled</strong> or has been
-                        removed.</li>
-                </ul>
-                <p>To stop the persistent removal, simply <strong>click the colored icon</strong> in the app. This will
-                    delete the removal script and unregister the scheduled task, allowing you to reinstall the
-                    application normally.</p>
-
-                <div class="callout callout-warning">
-                    <div class="callout-title">⚠️ Setting Persistence Note</div>
-                    <p>Please note that <strong>only</strong> the Windows Apps & Features section uses this persistent
-                        mechanism. Settings found in other sections like <strong>Power</strong> or
-                        <strong>Taskbar</strong> are applied once and do not use background scripts to re-apply
-                        themselves. This is to respect any manual changes you might make in the Windows Settings app
-                        later.
-                    </p>
-                </div>
-            </section>
+                    <h2 id="other-settings">Other settings are applied once</h2>
+                    <p>Only app removal runs again in the background. Settings on the <a href="../optimize.html">Optimize</a> and <a href="../customize.html">Customize</a> pages are applied once when you change them, and Winhance does not re-apply them if Windows or you change them later.</p>
+                </section>
+            </article>
+            <nav class="pager" aria-label="More pages"><a class="pager-prev" href="../../features/software-apps.html"><span>Previous</span>Software &amp; Apps</a><a class="pager-next" href="../../features/software-apps/external-apps.html"><span>Next</span>External apps</a></nav>
         </main>
+
+        <aside class="docs-toc" aria-label="On this page">
+            <p class="toc-title">On this page</p>
+            <ul>
+                <li><a href="#what-you-can-remove">What you can remove</a></li>
+                <li><a href="#remove-items">Remove items</a></li>
+                <li><a href="#how-removal-works">How removal works</a></li>
+                <li><a href="#stop-continuous-removal">Stop continuous removal</a></li>
+                <li><a href="#restore">Restore an item</a></li>
+                <li><a href="#other-settings">Other settings are applied once</a></li>
+            </ul>
+        </aside>
     </div>
 
-    <button class="sidebar-toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-    </button>
-
-    <script src="../../js/docs-theme.js"></script>
-    <script src="../../js/docs-navigation.js"></script>
-    <script src="../../js/docs-search.js"></script>
-    <script src="../../js/docs-config.js"></script>
-
-    <footer class="docs-footer">
-        <div class="docs-footer-container">
-            <div class="docs-footer-info">
-                &copy; 2026 Winhance.
+    <footer class="footer">
+        <div class="wrap footer-grid">
+            <div>
+                <a class="brand" href="../../../index.html">
+                    <img class="brand-mark" src="../../../images/winhance-rocket.png" alt="" width="24" height="24">
+                    <span>Winhance</span>
+                </a>
+                <p class="footer-version">These docs describe Winhance v26.10.01</p>
             </div>
-            <div class="docs-footer-meta">
-                <div class="docs-meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-                    <span class="docs-version">Docs v1.0.0</span>
-                </div>
-                <div class="docs-meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                    <span class="docs-last-updated">Last Updated: Jan 27, 2026</span>
-                </div>
-            </div>
+            <ul class="footer-links">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../index.html">Documentation</a></li>
+                <li><a href="https://github.com/memstechtips/Winhance/releases" target="_blank" rel="noopener">Releases</a></li>
+                <li><a href="https://github.com/memstechtips/Winhance" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://store.memstechtips.com/winhance/" target="_blank" rel="noopener">Support Winhance</a></li>
+            </ul>
+            <p class="footer-made">&copy; 2026 Winhance. Made by <a href="https://memstechtips.com/" target="_blank" rel="noopener">Memory</a>.</p>
         </div>
     </footer>
+
+    <script src="../../../demo/app.js"></script>
+    <script src="../../../demo/winhance-demo.js"></script>
+    <script src="../../../demo/readout.js"></script>
+    <script src="../../js/docs-search.js"></script>
+    <script src="../../js/docs.js"></script>
+    <script src="../../js/docs-metrics.js"></script>
 </body>
 
 </html>

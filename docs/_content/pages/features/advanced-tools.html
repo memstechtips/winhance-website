@@ -1,0 +1,55 @@
+<section id="advanced-tools">
+    <h1>Unattend and WIMUtil</h1>
+    <p class="lead">Two tools for setting up new PCs: Unattend builds an autounattend.xml answer file, and WIMUtil puts it on Windows installation media.</p>
+
+    <h2 id="where-to-find-them">Where to find them</h2>
+    <p>Both sit at the bottom of the sidebar, above <strong>Settings</strong>:</p>
+    <ul>
+        <li><strong>Unattend</strong> is locked until you switch to Builder mode with <strong>Autounattend</strong> as the target. Hover over it to see why it is locked.</li>
+        <li><strong>WIMUtil</strong> works in Normal and Builder mode, and is locked while you are in Config Review mode.</li>
+    </ul>
+    <p>You can use them together or on their own. Unattend writes a file you can copy to any installation USB drive. WIMUtil can also take an answer file you made somewhere else, or none at all.</p>
+
+    <h2 id="unattend">Unattend</h2>
+    <p>An answer file, <code>autounattend.xml</code>, tells Windows Setup what to do so you do not have to click through it. The <strong>Unattend</strong> page holds the settings that only make sense in an answer file, such as the Windows edition, the user accounts, which setup screens Windows shows, and what runs after setup. Everything else in the file comes from the rest of Winhance: the Windows apps you check are removed, the external apps you check are installed for everyone on the new PC, and the Optimize and Customize settings you include are applied.</p>
+    <ol class="steps">
+        <li>
+            <h3>Switch to Builder mode</h3>
+            <p>Pick <strong>Builder</strong> in the mode switcher in the title bar, choose where to start from, then choose <strong>Autounattend</strong> as the target in the Builder bar. Builder mode never changes this PC.</p>
+        </li>
+        <li>
+            <h3>Make your choices</h3>
+            <p>Fill in the <strong>Unattend</strong> page, then check apps and include settings on the other pages.</p>
+        </li>
+        <li>
+            <h3>Save the file</h3>
+            <p>Click <strong>Save autounattend.xml</strong> in the Builder bar.</p>
+        </li>
+    </ol>
+    <div class="link-grid">
+        <a class="link-card" href="autounattend.html"><span class="link-card-title">Autounattend settings</span><span>Every setting the answer file can hold, and what it writes.</span></a>
+        <a class="link-card" href="../guides/autounattend.html"><span class="link-card-title">Answer file setup</span><span>A walkthrough from Builder mode to a finished file.</span></a>
+    </div>
+
+    <h2 id="wimutil">WIMUtil</h2>
+    <p>WIMUtil, short for Windows Installation Media Utility, turns a Windows 10 or Windows 11 ISO into your own installation media. It works in four steps:</p>
+    <table>
+        <thead>
+            <tr><th>Step</th><th>What you do</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>Select Windows ISO</strong></td><td>Pick an ISO and a working folder, and Winhance extracts the ISO there. You can also convert the Windows image between WIM and ESD format.</td></tr>
+            <tr><td><strong>Add XML File</strong></td><td>Optional. Generate an answer file with Winhance, download the UnattendedWinstall answer file, or select one you already have. Winhance checks the file and lists anything that could make Windows Setup fail, but you can always continue.</td></tr>
+            <tr><td><strong>Extract and Add Drivers</strong></td><td>Optional. Copy the drivers from this PC, or from a folder, onto the media so Windows Setup installs them before the first startup screens.</td></tr>
+            <tr><td><strong>Create New ISO</strong></td><td>Save a new ISO file, or write the media straight to a USB drive. Writing to a USB drive erases it first.</td></tr>
+        </tbody>
+    </table>
+    <p>Step 1 has to finish before the others unlock.</p>
+    <div class="callout callout-tip">
+        <p class="callout-title">Reinstalling Windows on the same PC</p>
+        <p>Extracting this PC's drivers in step 3 means your network, storage and graphics drivers are in place as soon as Windows starts, with no hunting for downloads.</p>
+    </div>
+    <div class="link-grid">
+        <a class="link-card" href="../guides/wimutil.html"><span class="link-card-title">WIMUtil guide</span><span>Every step in detail, including image conversion and USB writing.</span></a>
+    </div>
+</section>

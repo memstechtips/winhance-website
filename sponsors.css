@@ -1,0 +1,135 @@
+/* ===== Sponsors showcase (landing page) =====
+   Cards are styled IDENTICALLY to the store wall (store.memstechtips.com/winhance/)
+   — same class names, same values (store theme style.css is the reference), so the
+   panel/line/faint tones below stay literal like the store's own copy. Tier colours
+   (--tier-*) are semantic (bronze/silver/gold/emerald) and stay literal too — see the
+   task report. Data: the Winhance repo's `sponsors` branch. Silver-and-up, top 5, one row.
+   Loaded by index.html only; the section's own spacing lives in site.css. */
+:root {
+    --tier-bronze: #CD7F32;
+    --tier-silver: #AEB6C2;
+    --tier-gold: #FFD700;
+    --tier-emerald: #50C878;
+    --sc-panel: #18181B;
+    --sc-line-2: rgba(255, 255, 255, .13);
+    --sc-faint: rgba(255, 255, 255, .40);
+    --sc-display: 'Archivo', system-ui, sans-serif;
+}
+
+.sponsors-sub {
+    color: var(--winui-text-fill-color-secondary);
+    margin-top: 12px;
+}
+
+/* one row, max 5 cards, centered; wraps only on small screens */
+.wall-wnet {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 18px;
+    margin: 36px auto 8px;
+    max-width: 1240px;
+}
+
+.wall-wnet .scard { flex: 0 1 228px; min-width: 0; }
+
+@media (max-width: 960px) {
+    .wall-wnet { flex-wrap: wrap; }
+    .wall-wnet .scard { flex: 0 1 228px; }
+}
+
+/* === store wall card, verbatim values === */
+.scard {
+    position: relative;
+    width: 228px;
+    background: var(--sc-panel);
+    border: 1px solid var(--sc-line-2);
+    border-radius: 15px;
+    padding: 26px 20px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.scard-logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid var(--sc-line-2);
+    font-family: var(--sc-display);
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: var(--accent-color);
+}
+
+/* Literal white (not --light-text) — this card's dark panel is a verbatim copy of the
+   store wall, independent of this page's own (now-light) palette. */
+.scard-name { font-family: var(--sc-display); font-weight: 800; font-size: 1.05rem; color: #FFFFFF; }
+.scard-meta { color: var(--sc-faint); font-size: .8rem; line-height: 1.5; }
+.scard-slogan { color: rgba(255, 255, 255, .62); font-size: .8rem; font-style: italic; line-height: 1.4; margin-bottom: 2px; }
+
+.scard-url {
+    color: var(--accent-color);
+    font-size: .84rem;
+    font-weight: 600;
+    margin-top: 5px;
+    word-break: break-all;
+    text-decoration: none;
+}
+.scard-url:hover { text-decoration: underline; }
+
+.scard-img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    margin-bottom: 8px;
+    border-radius: 13px;
+}
+
+.scard-tier {
+    font-size: .58rem;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+.scard-bronze { border-color: rgba(205, 127, 50, .55); }
+.scard-bronze .scard-tier { color: var(--tier-bronze); }
+.scard-silver { border-color: rgba(174, 182, 194, .55); }
+.scard-silver .scard-tier { color: var(--tier-silver); }
+.scard-gold { border-color: rgba(255, 215, 0, .5); }
+.scard-gold .scard-tier { color: var(--tier-gold); }
+.scard-emerald { border-color: rgba(80, 200, 120, .6); box-shadow: 0 0 22px rgba(80, 200, 120, .09); }
+.scard-emerald .scard-tier { color: var(--tier-emerald); }
+
+/* Same treatment as the in-app cards (Winhance SponsorsDialogBuilder): a tier-coloured wash fading down
+   from the top, and a filled diamond (emerald) or star (gold) before the tier name. */
+.scard-bronze { background: linear-gradient(180deg, rgba(205, 127, 50, .19) 0%, rgba(205, 127, 50, 0) 60%), var(--sc-panel); }
+.scard-silver { background: linear-gradient(180deg, rgba(174, 182, 194, .19) 0%, rgba(174, 182, 194, 0) 60%), var(--sc-panel); }
+.scard-gold { background: linear-gradient(180deg, rgba(255, 215, 0, .19) 0%, rgba(255, 215, 0, 0) 60%), var(--sc-panel); }
+.scard-emerald { background: linear-gradient(180deg, rgba(80, 200, 120, .19) 0%, rgba(80, 200, 120, 0) 60%), var(--sc-panel); }
+.scard-gold .scard-tier::before { content: '\2605\00a0'; }
+.scard-emerald .scard-tier::before { content: '\25C6\00a0'; }
+
+.sponsors-actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+}
+
+.sponsors-note {
+    text-align: center;
+    color: var(--winui-text-fill-color-tertiary);
+    font-size: var(--winui-font-size-caption);
+    margin-top: 18px;
+}

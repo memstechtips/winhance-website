@@ -1,10 +1,11 @@
 {
   "intro": [
-    "<p>Personalize the visual aesthetic of your Windows system. Switch between light and dark modes, adjust transparency effects, and choose the picture on the desktop.</p>",
-    "<div class=\"callout callout-warning\"> <div class=\"callout-title\">⚠️ Setting Persistence</div> <p>Settings found in the <strong>Customizations</strong> view are <strong>not persistent</strong>. Winhance applies these changes once, but it does not use background tasks to re-apply them if they are changed later by Windows or by you manually.</p> </div>"
+    "<p>Light or dark mode, transparency, and the desktop background.</p>"
   ],
   "groups": {
-    "Background": "The picture on the desktop and how it fits the screen. Winhance offers Windows' own pictures, keeps the one already set, or takes one you browse for; the Windows pictures and their file paths are listed below."
+    "Background": "The desktop background: a picture, a solid color, a slideshow or Windows spotlight, and how a picture fits the screen. For a picture you can pick one of Windows' own, keep the one this PC has, choose one Windows showed recently, or browse for your own. Windows' own pictures and their file paths are listed below.",
+    "Theme mode": "Light or dark for Windows and apps. Choose your mode sets both at once; the two toggles below it set apps, such as Settings and File Explorer, and the Windows shell, such as the taskbar and Start menu, separately.",
+    "Transparency": "Translucent effects on the Start menu, the taskbar and other parts of Windows."
   },
   "video": {
     "id": "lrq3ph3xi50",

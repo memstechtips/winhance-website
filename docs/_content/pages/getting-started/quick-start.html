@@ -1,0 +1,82 @@
+<h1>Quick start</h1>
+<p class="lead">Open Winhance for the first time, learn the layout and the three modes, apply recommended settings and save your choices to a config file.</p>
+
+<div class="app-demo" data-page="SoftwareApps" data-full></div>
+
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/sCd1TI6AbOI" title="DON'T Reinstall WINDOWS Without Watching This FIRST!" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+
+<h2 id="first-launch">First launch</h2>
+<p>Accept the User Account Control prompt. While the app loads, Winhance saves a <strong>backup config</strong>: a file with the current value of every setting it manages, so you can put them back later. It does this once, on the first launch.</p>
+<p>When loading finishes, a <strong>System Protection</strong> dialog offers to create a System Restore point as well. Click <strong>Create Restore Point</strong>. It captures Windows before Winhance changes anything, and Winhance turns System Restore on for drive C: if it was off. If you click <strong>Skip</strong>, you can create one later from <strong>Settings</strong>.</p>
+
+<h2 id="layout">Find your way around</h2>
+<p>The sidebar on the left holds the pages. Winhance opens on <strong>Software &amp; Apps</strong>.</p>
+<table>
+    <thead>
+        <tr><th>Page</th><th>What it does</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><a href="../features/software-apps.html"><strong>Software &amp; Apps</strong></a></td><td>Remove built-in Windows apps on the <strong>Windows Apps</strong> tab, and install other software on the <strong>External Apps</strong> tab.</td></tr>
+        <tr><td><a href="../features/optimize.html"><strong>Optimize</strong></a></td><td>Privacy &amp; Security, Power, Gaming &amp; Performance, Update, Notifications and Sound settings.</td></tr>
+        <tr><td><a href="../features/customize.html"><strong>Customize</strong></a></td><td>Windows Theme, Taskbar, Start Menu, Explorer, and Time &amp; Region settings.</td></tr>
+        <tr><td><a href="../features/autounattend.html"><strong>Unattend</strong></a></td><td>The answer file settings. It unlocks in Builder mode when you pick <strong>Autounattend</strong>.</td></tr>
+        <tr><td><a href="../features/advanced-tools.html"><strong>WIMUtil</strong></a></td><td>Builds Windows installation media with your answer file, drivers and installers.</td></tr>
+        <tr><td><a href="../features/settings.html"><strong>Settings</strong></a></td><td>Language, Winhance Theme, Backup &amp; Restore and System Restore Point.</td></tr>
+        <tr><td><strong>More</strong></td><td>Your Winhance version, Documentation, Report a Bug, Check for Updates, Winhance Logs, Change History, Winhance Scripts, Support Winhance and Close Winhance.</td></tr>
+    </tbody>
+</table>
+<p>On <strong>Optimize</strong> and <strong>Customize</strong>, each setting is a card with a toggle or a drop-down. The search box finds a setting by name. The <strong>View</strong> menu turns on <strong>Technical Details</strong>, which shows the registry values and scripts behind each setting.</p>
+
+<h2 id="modes">The three modes</h2>
+<p>The <strong>Winhance Mode</strong> switch sits in the title bar.</p>
+<ul>
+    <li><strong>Normal</strong> is where Winhance starts. A change applies to this PC as soon as you make it.</li>
+    <li><strong>Builder</strong> records your choices for a file instead of applying them. Start from this PC's current settings, the recommended settings, Windows defaults, or a saved file, then click <strong>Save Config</strong> or <strong>Save autounattend.xml</strong>. Nothing on this PC changes.</li>
+    <li><strong>Config Review</strong> loads a config file and compares it with this PC. You approve or skip each change, then click <strong>Apply Config</strong>. Nothing applies before that.</li>
+</ul>
+<p>When you leave Builder or Config Review with unsaved work, Winhance asks before it throws that work away.</p>
+
+<h2 id="first-change">Make your first change</h2>
+<p>The quickest start is Winhance's recommended value for every setting on a page.</p>
+<ol class="steps">
+    <li>
+        <h3>Open a page</h3>
+        <p>Click <strong>Optimize</strong> or <strong>Customize</strong> in the sidebar. To limit the change to one area, open a section such as <strong>Privacy &amp; Security</strong>.</p>
+    </li>
+    <li>
+        <h3>Apply recommended settings</h3>
+        <p>Open <strong>Quick Actions</strong> and choose <strong>Apply Recommended Settings</strong>. Winhance tells you how many settings it will change. Click <strong>OK</strong> to go ahead.</p>
+    </li>
+    <li>
+        <h3>Restart Explorer if asked</h3>
+        <p>Some taskbar and File Explorer settings only show up after Explorer restarts. When Winhance says so, click <strong>Restart Explorer</strong>. A few settings need a full restart of Windows.</p>
+    </li>
+</ol>
+<p>To change one setting instead, flip its toggle or pick a value from its drop-down. Cards marked <strong>Recommended</strong> or <strong>Default</strong> show which value is Winhance's suggestion and which is the Windows default. To go back, use <strong>Quick Actions</strong> &gt; <strong>Reset to Windows Defaults</strong>.</p>
+
+<div class="callout callout-warning">
+    <p class="callout-title">Read before you apply</p>
+    <p>The recommended settings suit most PCs, but not every PC. Turn on <strong>Technical Details</strong> to see exactly what each setting writes before you apply a whole page.</p>
+</div>
+
+<h2 id="save-config">Save your choices</h2>
+<p>A config file (<code>.winhance</code>) holds your settings and app choices so you can reapply them later or on another PC.</p>
+<ul>
+    <li>To save this PC as it is now, go to <strong>Settings</strong> &gt; <strong>Backup &amp; Restore</strong> and click <strong>Export</strong>.</li>
+    <li>To build a file without changing this PC, switch to <strong>Builder</strong>, make your choices, and click <strong>Save Config</strong>.</li>
+</ul>
+<p>To use a file, click <strong>Import</strong> under <strong>Backup &amp; Restore</strong>. You can import your own file, the recommended config, your backup config, or Windows defaults. Winhance opens it in Config Review unless you tick <strong>Skip review and apply immediately</strong>. The <a href="../guides/configuration-files.html">Configuration files</a> guide covers this in detail.</p>
+
+<h2 id="shortcuts">Keyboard shortcuts</h2>
+<table>
+    <thead>
+        <tr><th>Keys</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>1</kbd> to <kbd>Ctrl</kbd>+<kbd>6</kbd></td><td>Go to Software &amp; Apps, Optimize, Customize, Unattend, WIMUtil or Settings</td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>7</kbd></td><td>Open the More menu</td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd> to <kbd>4</kbd></td><td>The title bar buttons: Support, Windows Version Filter, Report a Bug, Documentation</td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>D</kbd></td><td>Show or hide Technical Details for the setting you're on</td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>Num +</kbd> / <kbd>Ctrl</kbd>+<kbd>Num -</kbd> / <kbd>Ctrl</kbd>+<kbd>0</kbd></td><td>Zoom in, zoom out, reset zoom. <kbd>Ctrl</kbd> + mouse wheel also zooms.</td></tr>
+    </tbody>
+</table>

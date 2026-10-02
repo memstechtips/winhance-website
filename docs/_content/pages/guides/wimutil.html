@@ -1,0 +1,70 @@
+<h1>WIMUtil</h1>
+<p class="lead">Build your own Windows installation media from a Windows ISO: add an answer file and drivers, then save a new ISO or write it straight to a USB drive.</p>
+
+<div class="app-demo" data-page="WimUtil"></div>
+
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/m4i9wroDOjA?start=3753" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+
+<p>WIMUtil (Windows Installation Media Utility) is the <strong>WIMUtil</strong> page in the left navigation. Use it when you want to install Windows with your settings already baked in, or reinstall Windows on a PC and have its drivers ready from the first boot. It works in four steps. Step 1 has to finish first; steps 2 to 4 unlock after it, and steps 2 and 3 are optional.</p>
+<p>WIMUtil is not available while you are in Config Review mode.</p>
+
+<ol class="steps">
+<li>
+<h3>Select Windows ISO</h3>
+<p>You need a Windows 10 or Windows 11 ISO. If you don't have one, the <strong>Windows 10</strong> and <strong>Windows 11</strong> buttons next to <strong>Download Windows ISO</strong> open Microsoft's download pages.</p>
+<ul>
+<li>Click <strong>Select ISO</strong> and choose the ISO file.</li>
+<li>Under <strong>Select working directory</strong>, keep the default folder (<code>%TEMP%\WinhanceWIM</code>) or click <strong>Select Folder</strong> to pick a drive with more space. Winhance creates a <code>WinhanceWIM</code> folder inside the one you pick. The ISO's contents are copied here, and everything you add in the next steps goes here too.</li>
+<li>Click <strong>Start Extraction</strong>. If the drive is too small, Winhance tells you how much more space it needs.</li>
+</ul>
+<p>Already extracted an ISO before? Tick <strong>I have extracted ISO contents already</strong>, then click <strong>Select Folder</strong> and choose that folder. Winhance checks it has the <code>sources</code> and <code>boot</code> folders and skips the extraction.</p>
+<p><strong>Convert the image format (optional)</strong></p>
+<p>After extraction, WIMUtil reads the Windows image on the media and offers to convert it. <code>install.wim</code> is larger; <code>install.esd</code> is more compressed, so the finished media is smaller. The card shows the current size and an estimate after conversion. Most people can skip this. The one time you need it is writing an ESD image larger than 4 GB to a USB drive (see step 4).</p>
+<p>If the folder has both <code>install.wim</code> and <code>install.esd</code>, Winhance asks you to delete one with <strong>Delete WIM</strong> or <strong>Delete ESD</strong> before you continue.</p>
+</li>
+
+<li>
+<h3>Add XML File</h3>
+<p>An answer file (<code>autounattend.xml</code>) lets Windows Setup install without stopping to ask questions, and carries your settings onto the new PC. Pick one of three options. Whichever you choose, the file goes in the root of the media, where Setup looks for it.</p>
+<ul>
+<li><strong>Generate and add Winhance XML</strong>: click <strong>Set up the answer file</strong>. Winhance enters Builder mode with the Autounattend target, and the answer-file settings open inside this card. If the media carries a single Setup language, Winhance picks it for you, and it sets the target Windows to the build on your media. Go through the settings and the other pages you want to include, then click <strong>Generate and add XML to media</strong> at the end. See the <a href="autounattend.html">answer file guide</a> for what goes into the file.</li>
+<li><strong>Download &amp; add UnattendedWinstall XML</strong>: click <strong>Download</strong> to fetch the latest ready-made file from the UnattendedWinstall project. Needs an internet connection.</li>
+<li><strong>Select XML File</strong>: click <strong>Select XML</strong> to use an <code>autounattend.xml</code> you already have, from Winhance or another generator. The <strong>Schneegans XML</strong> button below the options opens one such generator in your browser.</li>
+</ul>
+<p>When you generate from Winhance, a confirmation window lists what is about to happen first: where the file is written, which installers are downloaded onto the media, and which of your own installers are copied. When it finishes, a summary shows which apps made it onto the media. An app that could not be put on the media downloads after setup instead.</p>
+<p>After any of the three options, Winhance checks the answer file for problems Windows Setup would trip over and shows the result. The check never blocks you: if it finds something, you can read each finding and click <strong>Continue anyway</strong>.</p>
+</li>
+
+<li>
+<h3>Extract and Add Drivers</h3>
+<p>Adding drivers means your network, graphics and other hardware work from the first boot.</p>
+<ul>
+<li><strong>Extract and add drivers from current OS (Recommended)</strong>: click <strong>Extract &amp; Add</strong> to copy every third-party driver installed on this PC onto the media. Use this when you are reinstalling Windows on the same PC.</li>
+<li><strong>Add other drivers</strong>: click <strong>Select &amp; Add</strong> and pick a folder that contains driver <code>.inf</code> files. These are added alongside any drivers already on the media.</li>
+</ul>
+<p>Winhance sorts the drivers as it copies them. Storage controller drivers go in the <code>$WinpeDriver$</code> folder at the root of the media, so Setup can see your disks. Everything else goes in <code>sources\$OEM$\$$\Drivers</code>, which Setup copies to <code>C:\Windows\Drivers</code>. The answer file then installs those drivers while Windows sets itself up, before the first setup screens appear, and deletes each driver folder once its driver is in.</p>
+<p>The answer file needs one extra command for this. Winhance adds it to whichever answer file you chose in step 2. If you added drivers but no answer file, Winhance writes a small <code>autounattend.xml</code> that only installs the drivers.</p>
+</li>
+
+<li>
+<h3>Create New ISO</h3>
+<p>Under <strong>Output destination</strong>, choose <strong>ISO file</strong> or <strong>USB drive</strong>.</p>
+<p><strong>ISO file</strong></p>
+<ul>
+<li>Click <strong>Select Location</strong> and choose where to save the ISO.</li>
+<li>Click <strong>Create ISO</strong>.</li>
+</ul>
+<p>The ISO boots on both UEFI and older BIOS PCs. Winhance builds it with Windows' own disc-image tools, so there is nothing extra to download. When it is done, you can open the folder that holds it.</p>
+<p><strong>USB drive</strong></p>
+<ul>
+<li>Plug in a USB drive and pick it from the <strong>Select USB drive</strong> list. Click <strong>Refresh list</strong> if it is not there. Only USB drives are listed, never the disk Windows runs from.</li>
+<li>Click <strong>Write to USB</strong>, then confirm with <strong>Erase and write</strong>.</li>
+</ul>
+<div class="callout callout-warning"><p class="callout-title">Writing erases the USB drive</p><p>The drive is formatted first, so everything saved on it is deleted.</p></div>
+<p>The drive is formatted as FAT32 so every PC can boot it. FAT32 cannot hold a file over 4 GB, so Winhance splits a large <code>install.wim</code> into smaller pieces that Setup reads as one. It cannot split <code>install.esd</code>: if yours is over 4 GB, convert it to WIM in step 1 first. A FAT32 drive is limited to about 32 GB, so media larger than that cannot be written to one drive. Keep the working directory on a different drive from the USB you are writing to.</p>
+</li>
+</ol>
+
+<h2 id="after-you-install">After you install</h2>
+<p>Boot the PC from the ISO or USB drive and install Windows as usual. What happens next depends on the answer file. With a Winhance answer file, see <a href="autounattend.html#during-installation">what happens during installation</a>.</p>
+<p>Drivers that failed to install stay in <code>C:\Windows\Drivers</code>, and the install log is at <code>C:\ProgramData\Winhance\Unattend\Logs\Winhance-DriverInstall.log</code>. To install one by hand, open Device Manager, right-click the device, choose <strong>Update driver</strong> &gt; <strong>Browse my computer for drivers</strong> and point it at that folder.</p>

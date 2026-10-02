@@ -1,0 +1,65 @@
+<section id="settings">
+    <h1>Settings</h1>
+    <p class="lead">Winhance's own preferences: the display language, the app theme, importing and exporting configs, and creating a System Restore point.</p>
+
+    <div class="app-demo" data-page="Settings"></div>
+
+    <p>Open <strong>Settings</strong> from the bottom of the sidebar. The page is titled <strong>Winhance Settings</strong> and has three groups: <strong>General</strong>, <strong>Configuration</strong> and <strong>System Protection</strong>. These options change Winhance itself, not Windows.</p>
+
+    <h2 id="language">Language</h2>
+    <p>Choose the language for Winhance's interface from the <strong>Language</strong> list. The change applies straight away, with no restart, and Winhance remembers it next time. Winhance starts in English until you pick another language.</p>
+    <p>Winhance comes in 29 languages:</p>
+    <table>
+        <thead>
+            <tr><th>Language</th><th>Language</th><th>Language</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>English</td><td>Afrikaans</td><td>العربية (Arabic)</td></tr>
+            <tr><td>Čeština (Czech)</td><td>Deutsch (German)</td><td>Ελληνικά (Greek)</td></tr>
+            <tr><td>Español (Spanish)</td><td>فارسی (Persian)</td><td>Français (French)</td></tr>
+            <tr><td>עברית (Hebrew)</td><td>हिन्दी (Hindi)</td><td>Magyar (Hungarian)</td></tr>
+            <tr><td>Italiano (Italian)</td><td>日本語 (Japanese)</td><td>한국어 (Korean)</td></tr>
+            <tr><td>Lietuviškai (Lithuanian)</td><td>Latviešu (Latvian)</td><td>Nederlands (Dutch)</td></tr>
+            <tr><td>Nederlands (België) (Dutch - Belgium)</td><td>Polski (Polish)</td><td>Português (Portuguese)</td></tr>
+            <tr><td>Português (Portuguese Brazil)</td><td>Русский (Russian)</td><td>Svenska (Swedish)</td></tr>
+            <tr><td>Türkçe (Turkish)</td><td>Українська (Ukrainian)</td><td>Tiếng Việt (Vietnamese)</td></tr>
+            <tr><td>简体中文 (Chinese Simplified)</td><td>繁體中文 (Chinese Traditional)</td><td></td></tr>
+        </tbody>
+    </table>
+    <p>Arabic, Hebrew and Persian switch the window to a right-to-left layout. To help with a translation, see <a href="../reference/contributing.html">Contributing</a>.</p>
+
+    <h2 id="theme">Winhance Theme</h2>
+    <p>The <strong>Winhance Theme</strong> list sets how Winhance looks:</p>
+    <ul>
+        <li><strong>System</strong> matches whether Windows is in light or dark mode.</li>
+        <li><strong>Light</strong> and <strong>Dark</strong> keep Winhance in that mode whatever Windows uses.</li>
+    </ul>
+    <p>This only changes Winhance. To switch Windows itself between light and dark, use <a href="customizations/theme.html">Customize &gt; Windows Theme</a>.</p>
+
+    <h2 id="backup-restore">Backup &amp; Restore</h2>
+    <p>The <strong>Backup &amp; Restore</strong> card has two buttons. While Settings is open, <kbd>Ctrl</kbd>+<kbd>I</kbd> and <kbd>Ctrl</kbd>+<kbd>E</kbd> press them for you.</p>
+    <h3>Export</h3>
+    <p><strong>Export</strong> saves a <code>.winhance</code> config file with the current Optimize and Customize settings on this PC, plus the apps you have checked on both tabs of <a href="software-apps.html">Software &amp; Apps</a>.</p>
+    <h3>Import</h3>
+    <p><strong>Import</strong> opens the <strong>Import Config</strong> dialog, where you pick a source:</p>
+    <table>
+        <thead>
+            <tr><th>Option</th><th>What it loads</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>Import my own config</strong></td><td>A <code>.winhance</code> file you choose.</td></tr>
+            <tr><td><strong>Import recommended config</strong></td><td>Winhance's recommended settings.</td></tr>
+            <tr><td><strong>Import backup config</strong></td><td>The backup Winhance saved of your settings the first time it ran.</td></tr>
+            <tr><td><strong>Restore Windows defaults</strong></td><td>Windows' own default for every setting.</td></tr>
+        </tbody>
+    </table>
+    <p>Click <strong>Continue</strong> and Winhance opens the config in Config Review mode, so you can check every change before you apply it. To apply it straight away instead, tick <strong>Skip review and apply immediately</strong>. That turns on a few more choices: <strong>Install</strong>, <strong>Uninstall</strong> or <strong>Select Only</strong> for the Windows apps and external apps in the file, and whether to run <strong>Clean Taskbar</strong> and <strong>Clean Start Menu</strong>.</p>
+    <p>The <a href="../guides/configuration-files.html">Configuration files</a> guide covers the file format and sharing configs between PCs.</p>
+
+    <h2 id="restore-point">System Restore Point</h2>
+    <p>Click <strong>Create Restore Point</strong> to make a Windows System Restore point before you change anything. If System Restore is turned off for drive C:, Winhance turns it on first. You can roll back to the restore point from Windows' own System Restore if a change causes trouble.</p>
+    <p>Winhance also offers to create a restore point the first time it starts.</p>
+
+    <h2 id="updates">Updates</h2>
+    <p>Update checks are not on this page. Open <strong>More</strong> at the bottom of the sidebar and choose <strong>Check for Updates</strong>.</p>
+</section>

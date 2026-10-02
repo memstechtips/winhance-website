@@ -1,0 +1,101 @@
+<h1>Troubleshooting</h1>
+<p class="lead">Undo Winhance changes, fix the problems Winhance tells you about, find the log files and report a bug.</p>
+
+<h2 id="undo-changes">Undo changes</h2>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/1nsLKH5a5CQ" title="How to Reset Any Winhance Changes" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+<p>Pick the option that matches how far back you want to go.</p>
+
+<h3>Put back the settings you had before Winhance</h3>
+<p>On its first launch, Winhance saves a backup config with the value every setting had at that moment. It lives in <code>%LOCALAPPDATA%\Winhance\Backup</code> as <code>UserBackup_&lt;date&gt;.winhance</code>.</p>
+<ol class="steps">
+    <li>
+        <h3>Open the import window</h3>
+        <p>Go to <strong>Settings</strong> &gt; <strong>Backup &amp; Restore</strong> and click <strong>Import</strong>.</p>
+    </li>
+    <li>
+        <h3>Choose the backup</h3>
+        <p>Choose <strong>Import backup config</strong>.</p>
+    </li>
+    <li>
+        <h3>Review and apply</h3>
+        <p>Click <strong>Continue</strong>. Winhance opens the backup in Config Review. Check the changes, then click <strong>Apply Config</strong>. If you ticked <strong>Skip review and apply immediately</strong>, it applies straight away.</p>
+    </li>
+</ol>
+
+<h3>Reset to Windows defaults</h3>
+<p>To set one page back to how Windows ships, open it and choose <strong>Quick Actions</strong> &gt; <strong>Reset to Windows Defaults</strong>. To reset everything at once, click <strong>Import</strong> under <strong>Backup &amp; Restore</strong> and choose <strong>Restore Windows defaults</strong>.</p>
+
+<h3>Roll back with System Restore</h3>
+<p>If you created a restore point when Winhance offered one, or later from <strong>Settings</strong> &gt; <strong>System Restore Point</strong>, Windows can roll the whole system back to it. Search the Start menu for <strong>Create a restore point</strong>, click <strong>System Restore</strong>, and pick the point named <code>Winhance Restore Point</code> with the date you made it.</p>
+
+<h2 id="removed-apps">Removed apps and leftover scripts</h2>
+<p>When you remove some Windows apps, Winhance can save a removal script and a scheduled task that removes them again if Windows puts them back. To stop that, for example because you want an app back:</p>
+<ol class="steps">
+    <li>
+        <h3>Open the help</h3>
+        <p>Go to <strong>Software &amp; Apps</strong>, open the <strong>Windows Apps</strong> tab and click <strong>Help</strong>.</p>
+    </li>
+    <li>
+        <h3>Delete the script</h3>
+        <p>Under <strong>Winhance Status</strong>, click an active entry to delete its script and scheduled task.</p>
+    </li>
+</ol>
+<p>Then reinstall the app from the same tab, if it can be reinstalled. Each app card shows whether it can. To see the scripts themselves, choose <strong>More</strong> &gt; <strong>Winhance Scripts</strong>.</p>
+
+<h2 id="setting-states">A setting says "Not recognized", "Wrong format" or "Couldn't read"</h2>
+<ul>
+    <li><strong>Not recognized</strong>: the current value doesn't match any option Winhance knows. You can leave it as it is, or pick one of the listed options.</li>
+    <li><strong>Wrong format</strong>: the value is stored in the wrong format, so Winhance can't read its state. Pick an option and Winhance repairs the format at the same time.</li>
+    <li><strong>Couldn't read</strong>: Winhance couldn't read the setting at all. The reason is in the <a href="#logs">log file</a>.</li>
+</ul>
+
+<h2 id="changes-not-showing">A change doesn't show up</h2>
+<p>Some taskbar and File Explorer settings only take effect after Explorer restarts. When Winhance shows <strong>Some changes need Explorer restarted to take effect.</strong>, click <strong>Restart Explorer</strong>. Other settings need Windows to restart. After you apply a config, Winhance recommends a restart.</p>
+
+<h2 id="app-installs">An app won't install</h2>
+<ul>
+    <li><strong>Windows Updates Disabled</strong>: Microsoft Store apps can't finish installing while Windows Update is turned off. Winhance offers to set the update policy to <strong>Paused for a long time</strong> and try again.</li>
+    <li><strong>Package not found in WinGet</strong>: this is usually a regional restriction on a Windows app. Winhance offers to download the package directly from Microsoft's servers instead.</li>
+    <li><strong>Network error</strong>: installs from WinGet need an internet connection. Check it and try again.</li>
+    <li><strong>winget was terminated</strong>: Winhance stops WinGet if it stops responding or runs past its time limit. Try the install again. If it keeps happening, <a href="#report-a-bug">report it</a> with your log file.</li>
+</ul>
+
+<h2 id="different-user">"Running as a different user"</h2>
+<p>This bar appears when you started Winhance by typing another account's administrator password, for example on a standard account. It's for your information only. Winhance still applies settings to the account that is signed in.</p>
+
+<h2 id="old-config">An old config file won't import</h2>
+<p>Winhance shows <strong>Unsupported Configuration Version</strong> for config files from versions before the current format. Set your choices again in Winhance and save a new file. Files in the current format keep working in later versions.</p>
+
+<h2 id="wimutil">WIMUtil problems</h2>
+<ul>
+    <li><strong>Not enough space</strong>: Winhance shows how much space extracting or building the ISO needs, how much the drive has, and how much more to free. Free up space or pick another drive.</li>
+    <li><strong>Invalid directory</strong>: pick a folder that holds the extracted contents of a Windows ISO.</li>
+    <li><strong>File larger than 4 GB on USB</strong>: FAT32 can't hold files over 4 GB, and Winhance can only split <code>sources\install.wim</code>. Convert an ESD image to WIM in the earlier step, or remove the large file from the working folder.</li>
+</ul>
+<p>The <a href="../guides/wimutil.html">WIMUtil guide</a> walks through each step.</p>
+
+<h2 id="wrong-edition">Windows Setup installs the wrong edition</h2>
+<p>Many PCs carry a product key in their firmware, and Setup can use it to choose the edition by itself. In Builder mode with Autounattend selected, set <a href="../features/autounattend/answer-file.html#autounattend-edition"><strong>Windows edition</strong></a> to the edition you want, or to <strong>Use my own product key</strong>. The edition must be on the installation media.</p>
+
+<h2 id="logs">Log files and change history</h2>
+<table>
+    <thead>
+        <tr><th>File</th><th>Where</th><th>Open it from</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>App log, one per session</td><td><code>C:\ProgramData\Winhance\Logs\Winhance_Log_&lt;date&gt;_&lt;time&gt;.log</code></td><td><strong>More</strong> &gt; <strong>Winhance Logs</strong></td></tr>
+        <tr><td>Startup log, rewritten on each launch</td><td><code>C:\ProgramData\Winhance\Logs\WinhanceStartupLog.txt</code></td><td><strong>More</strong> &gt; <strong>Winhance Logs</strong></td></tr>
+        <tr><td>Change history</td><td><code>C:\ProgramData\Winhance\ChangeHistory.txt</code></td><td><strong>More</strong> &gt; <strong>Change History</strong></td></tr>
+    </tbody>
+</table>
+<p>The change history lists every setting change, app install and app removal Winhance made, newest at the bottom. If Winhance closes before its window appears, the startup log shows how far it got.</p>
+
+<h2 id="report-a-bug">Report a bug</h2>
+<p>Click the bug icon in the title bar, or choose <strong>More</strong> &gt; <strong>Report a Bug</strong>. Both open <a href="https://github.com/memstechtips/Winhance/issues">Winhance's GitHub Issues</a>. Choose <strong>Report a bug or an issue</strong> and fill in:</p>
+<ul>
+    <li>your Winhance version (the first line of the <strong>More</strong> menu),</li>
+    <li>your Windows version, edition and architecture,</li>
+    <li>the steps that cause the problem, and what you expected to happen,</li>
+    <li>your latest log file from <code>C:\ProgramData\Winhance\Logs</code>.</li>
+</ul>
+<p>Search the open and closed issues first, and check that the problem still happens in the latest release.</p>

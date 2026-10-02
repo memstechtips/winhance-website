@@ -176,15 +176,15 @@ test('generate() throws when no theme.json is found at the default path', () => 
 
 // render-card.mjs's widenForPaths/widenForChips do build-time px arithmetic against CHAR_W/CHAR_W_SM
 // (plain numbers -- Node has no DOM to read a computed CSS custom property from). Those two numbers
-// have to equal docs-main.css's --mx-char-w/--mx-char-w-sm exactly, or the deficit math sizes columns
+// have to equal setting-card.css's --mx-char-w/--mx-char-w-sm exactly, or the deficit math sizes columns
 // against a font measurement the browser isn't actually using -- silently reopening the fix round 2
 // overflow bug. This is the only thing standing between an edited CSS value and that regression.
-test("render-card.mjs's CHAR_W/CHAR_W_SM mirror docs-main.css's --mx-char-w/--mx-char-w-sm exactly", () => {
-  const css = readFileSync(join(repo, 'docs', 'css', 'docs-main.css'), 'utf8');
+test("render-card.mjs's CHAR_W/CHAR_W_SM mirror setting-card.css's --mx-char-w/--mx-char-w-sm exactly", () => {
+  const css = readFileSync(join(repo, 'docs', 'css', 'setting-card.css'), 'utf8');
   const charW = css.match(/--mx-char-w:\s*([\d.]+)px;/);
   const charWSm = css.match(/--mx-char-w-sm:\s*([\d.]+)px;/);
-  assert.ok(charW, '--mx-char-w must be declared in docs-main.css');
-  assert.ok(charWSm, '--mx-char-w-sm must be declared in docs-main.css');
+  assert.ok(charW, '--mx-char-w must be declared in setting-card.css');
+  assert.ok(charWSm, '--mx-char-w-sm must be declared in setting-card.css');
   assert.equal(CHAR_W, Number(charW[1]));
   assert.equal(CHAR_W_SM, Number(charWSm[1]));
 });

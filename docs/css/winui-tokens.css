@@ -12,6 +12,8 @@
  * Sources (fetched 2026-08-19):
  *   - microsoft/microsoft-ui-xaml, controls/dev/CommonStyles/Common_themeresources_any.xaml
  *     (fill/stroke system tokens, both ThemeDictionaries)
+ *     (control fill secondary/tertiary/input-active, strong stroke, neutral background and smoke
+ *     fills added 2026-10-01 from the same file for the landing page's app demo)
  *   - microsoft/microsoft-ui-xaml, controls/dev/CommonStyles/CornerRadius_themeresources.xaml
  *     (ControlCornerRadius, OverlayCornerRadius)
  *   - microsoft/microsoft-ui-xaml, controls/dev/CommonStyles/TextBlock_themeresources*.xaml
@@ -57,6 +59,12 @@
 
   /* Fill — controls */
   --winui-control-fill-color-default: #ffffffb3; /* #B3FFFFFF */
+  --winui-control-fill-color-secondary: #f9f9f980; /* #80F9F9F9 */
+  --winui-control-fill-color-tertiary: #f9f9f94d; /* #4DF9F9F9 */
+  --winui-control-fill-color-input-active: #FFFFFF; /* #FFFFFFFF */
+  --winui-control-strong-stroke-color-default: #00000072; /* #72000000 */
+  --winui-system-fill-color-neutral-background: #00000006; /* #06000000 */
+  --winui-smoke-fill-color-default: #0000004d; /* #4D000000 */
 
   /* Fill — system (status) */
   --winui-system-fill-color-attention-background: #f6f6f680; /* #80F6F6F6 */
@@ -161,6 +169,12 @@
 
   /* Fill — controls */
   --winui-control-fill-color-default: #ffffff0f; /* #0FFFFFFF */
+  --winui-control-fill-color-secondary: #ffffff15; /* #15FFFFFF */
+  --winui-control-fill-color-tertiary: #ffffff08; /* #08FFFFFF */
+  --winui-control-fill-color-input-active: #1e1e1eb3; /* #B31E1E1E */
+  --winui-control-strong-stroke-color-default: #ffffff8b; /* #8BFFFFFF */
+  --winui-system-fill-color-neutral-background: #ffffff08; /* #08FFFFFF */
+  --winui-smoke-fill-color-default: #0000004d; /* #4D000000 */
 
   /* Fill — system (status) */
   --winui-system-fill-color-attention-background: #ffffff08; /* #08FFFFFF */

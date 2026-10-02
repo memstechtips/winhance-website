@@ -1,0 +1,286 @@
+/* "What's in the app": each area pins while a scene of Windows turns from how it ships into how Winhance
+   leaves it. scenes.js sets --p (0 = as Windows ships, 1 = after Winhance) on the scene and --e (that
+   element's own eased progress) on each moving part; everything here is drawn from those two numbers, so
+   scrolling back plays it in reverse. Scenes are laid out at 800 by 500 and scaled to their column.
+   The Windows parts wear the app window's face (--winui-font-family) and Windows 11's dark palette. */
+
+/* ---- Chapters ---- */
+.area-list { list-style: none; margin: 0; padding: 0; }
+.area { border-top: 1px solid var(--line); }
+.area-stage { display: grid; grid-template-columns: minmax(260px, 340px) minmax(0, 1fr); gap: clamp(32px, 4vw, 64px); align-items: center; padding: 48px 0; }
+.area-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 28px; }
+.area-copy .area-icon { width: 40px; height: 40px; margin: 0 0 4px; }
+.area-copy h3 { font-size: clamp(28px, 3vw, 40px); font-weight: 750; font-stretch: 85%; letter-spacing: -.02em; line-height: 1.1; }
+.area-copy p { color: var(--ink-2); max-width: 44ch; }
+.area-copy .area-count { color: var(--ink-3); }
+.area-copy .area-open { margin-top: 8px; }
+
+/* Pinned, the chapters run wider than the page's column so the scene can be big. */
+.areas.is-pinned .area-list { width: min(1360px, calc(100vw - 2 * var(--gutter) - 16px)); margin-left: 50%; translate: -50% 0; }
+/* Pinned: each chapter is taller than the screen and its stage sticks below the top bar while you scroll it. */
+.areas.is-pinned .area { height: 260vh; border-top: 0; }
+.areas.is-pinned .area-stage { position: sticky; top: 64px; height: calc(100vh - 64px); padding: 24px 0; }
+/* The words fade, not the panel, so the flight line stays hidden behind it. */
+.areas.is-pinned .area-copy { transform: translateY(calc((1 - var(--in, 1)) * 24px)); }
+.areas.is-pinned .area-copy > * { opacity: calc(.35 + .65 * var(--in, 1)); }
+
+@media (max-width: 1080px) {
+    .area-stage { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 40px 0 56px; }
+}
+
+/* ---- The scene and its before/after rail ---- */
+.scene { margin: 0; --p: 0; }
+.scene-fit {
+    position: relative; width: 100%; aspect-ratio: 8 / 5; overflow: hidden; border-radius: 14px;
+    background:
+        radial-gradient(120% 90% at 85% 110%, var(--desk-3) 0%, transparent 45%),
+        radial-gradient(90% 80% at 10% 100%, var(--desk-2) 0%, transparent 55%),
+        linear-gradient(160deg, var(--desk-0), var(--desk-1));
+    box-shadow: 0 30px 80px -30px rgba(3, 10, 22, .65), 0 0 0 1px color-mix(in srgb, var(--line) 70%, transparent);
+}
+.scene-canvas {
+    position: absolute; left: 0; top: 0; width: 800px; height: 500px; transform: scale(var(--s, .5)); transform-origin: 0 0;
+    font-family: var(--winui-font-family); color: #fff; font-size: 14px; line-height: 1.35; letter-spacing: 0;
+}
+.scene-canvas .i { width: 16px; height: 16px; flex: none; }
+
+.scene-rail { display: grid; grid-template-columns: auto minmax(40px, 1fr) auto; align-items: center; gap: 16px; margin-top: 14px; padding: 12px 18px; font-size: 14px; }
+.scene-end { display: flex; flex-direction: column; color: var(--ink-3); line-height: 1.3; transition: color .3s; }
+.scene-end b { color: var(--ink-2); font-weight: 650; transition: color .3s; }
+.scene-end.is-after { text-align: right; align-items: flex-end; }
+.scene-end.is-lit, .scene-end.is-lit b { color: var(--ink); }
+.scene-end.is-after.is-lit b { color: var(--good); }
+.scene-track { position: relative; height: 4px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.scene-fill { position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--good)); transform-origin: 0 50%; transform: scaleX(var(--p)); }
+@media (max-width: 560px) {
+    .scene-rail { grid-template-columns: 1fr 1fr; row-gap: 10px; font-size: 13px; }
+    .scene-track { grid-column: 1 / -1; grid-row: 2; }
+}
+/* With reduced motion nothing scrubs: the two ends switch the scene between its states. */
+.scene.is-still .scene-end { cursor: pointer; }
+.scene.is-still .scene-end:hover b { text-decoration: underline; text-underline-offset: 3px; }
+
+.sx-skel { display: block; height: 7px; border-radius: 4px; background: rgba(255, 255, 255, .22); }
+
+/* ---- Software & Apps: a Start menu full of what ships, emptied and refilled ---- */
+.sx-start {
+    position: absolute; left: 92px; top: 26px; width: 616px; height: 448px; padding: 24px 28px 0;
+    background: rgba(36, 38, 44, .82); border: 1px solid rgba(255, 255, 255, .09); border-radius: 10px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .45); backdrop-filter: blur(24px) saturate(1.3);
+}
+.sx-search {
+    display: flex; align-items: center; gap: 10px; height: 34px; padding: 0 14px; border-radius: 17px;
+    background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .08); border-bottom-color: #60cdff; color: rgba(255, 255, 255, .62); font-size: 13px;
+}
+.sx-start-head { display: flex; align-items: center; justify-content: space-between; margin: 20px 4px 8px; font-weight: 600; font-size: 14px; }
+.sx-pill { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px 3px 10px; border-radius: 4px; background: rgba(255, 255, 255, .07); font-weight: 400; font-size: 12px; }
+.sx-pill .i { width: 12px; height: 12px; }
+.sx-grid { position: relative; height: 296px; }
+.sx-tile {
+    position: absolute; left: 0; top: 0; width: 70px; height: 72px; display: flex; flex-direction: column; align-items: center; gap: 7px; padding-top: 6px;
+    transform: translate(calc((var(--x0) + (var(--x1) - var(--x0)) * var(--e, 0)) * 70px), calc((var(--y0) + (var(--y1) - var(--y0)) * var(--e, 0)) * 74px));
+}
+.sx-tile > span:last-child { width: 66px; font-size: 11px; line-height: 1.25; text-align: center; color: rgba(255, 255, 255, .9); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx-tile-icon { position: relative; width: 32px; height: 32px; }
+.sx-tile-icon .wd-glyph { width: 32px; height: 32px; }
+.sx-tile.is-gone { opacity: calc(1 - var(--e, 0)); transform: translate(calc(var(--x0) * 70px), calc(var(--y0) * 74px + var(--e, 0) * 10px)) scale(calc(1 - var(--e, 0) * .45)); filter: grayscale(var(--e, 0)); }
+.sx-tile.is-new { opacity: var(--e, 0); transform: translate(calc(var(--x1) * 70px), calc(var(--y1) * 74px + (1 - var(--e, 0)) * 18px)) scale(calc(.7 + var(--e, 0) * .3)); }
+/* A new arrival glows once as it lands. */
+.sx-tile.is-new .sx-tile-icon::after {
+    content: ''; position: absolute; inset: -8px; border-radius: 12px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--good) 55%, transparent), transparent 70%);
+    opacity: calc(4 * var(--e, 0) * (1 - var(--e, 0)));
+}
+.sx-start-foot {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 58px; padding: 0 30px; display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, .07); background: rgba(0, 0, 0, .14); border-radius: 0 0 10px 10px; color: rgba(255, 255, 255, .85);
+}
+.sx-start-foot .i { width: 18px; height: 18px; }
+.sx-user { display: flex; align-items: center; gap: 10px; }
+.sx-user .i { width: 26px; height: 26px; }
+
+/* ---- Optimize: the Settings app, switches turned off one by one ---- */
+.sx-win {
+    position: absolute; left: 24px; top: 18px; width: 752px; height: 464px; overflow: hidden;
+    background: #202020; border: 1px solid rgba(255, 255, 255, .08); border-radius: 9px; box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+}
+.sx-titlebar { display: flex; align-items: center; gap: 12px; height: 36px; padding: 0 0 0 14px; font-size: 12px; color: rgba(255, 255, 255, .85); }
+.sx-titlebar .i { width: 14px; height: 14px; }
+.sx-caps { display: flex; margin-left: auto; }
+.sx-caps .i { width: 46px; height: 12px; padding: 0 17px; box-sizing: content-box; opacity: .85; }
+.sx-settings-body { display: grid; grid-template-columns: 220px minmax(0, 1fr); height: calc(100% - 36px); }
+.sx-snav { display: flex; flex-direction: column; gap: 1px; padding: 6px 8px 0 12px; font-size: 12.5px; color: rgba(255, 255, 255, .88); }
+.sx-snav > span { position: relative; display: flex; align-items: center; gap: 12px; height: 26px; padding: 0 10px; border-radius: 4px; white-space: nowrap; }
+.sx-snav > span.is-here { background: rgba(255, 255, 255, .07); }
+.sx-snav > span.is-here::before { content: ''; position: absolute; left: 0; top: 7px; bottom: 7px; width: 3px; border-radius: 2px; background: #60cdff; }
+.sx-suser { display: flex; align-items: center; gap: 10px; padding: 0 4px 10px; }
+.sx-suser .i { width: 40px; height: 40px; opacity: .9; }
+.sx-suser > span { display: flex; flex-direction: column; gap: 6px; }
+.sx-sfind { display: flex; align-items: center; justify-content: space-between; height: 28px; margin: 0 0 8px; padding: 0 10px; border-radius: 4px; background: rgba(255, 255, 255, .06); border-bottom: 1px solid rgba(255, 255, 255, .4); color: rgba(255, 255, 255, .55); font-size: 12px; }
+.sx-spage { padding: 4px 22px 0 14px; overflow: hidden; }
+.sx-crumb { font-family: var(--winui-font-family-display); font-size: 26px; font-weight: 600; margin: 0 0 14px; }
+.sx-rows { display: flex; flex-direction: column; gap: 4px; }
+.sx-row {
+    display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; align-items: center; gap: 14px; min-height: 56px; padding: 8px 16px;
+    background: color-mix(in srgb, #2b2b2b, var(--good) calc(4 * var(--e, 0) * (1 - var(--e, 0)) * 22%));
+    border: 1px solid #1d1d1d; border-radius: 5px;
+}
+.sx-row .wd-glyph { width: 20px; height: 20px; color: rgba(255, 255, 255, .9); }
+.sx-row-text { min-width: 0; display: flex; flex-direction: column; }
+.sx-row-text b { font-weight: 400; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx-row-text span { font-size: 11.5px; color: rgba(255, 255, 255, .62); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx-switch { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.sx-state { position: relative; width: 26px; text-align: right; }
+.sx-state > span { position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+.sx-state > span:first-child { opacity: calc(1 - var(--e, 0)); }
+.sx-state > span:last-child { opacity: var(--e, 0); }
+.sx-toggle {
+    position: relative; width: 40px; height: 20px; border-radius: 10px;
+    background: color-mix(in srgb, #60cdff calc((1 - var(--e, 0)) * 100%), transparent);
+    border: 1px solid color-mix(in srgb, #60cdff calc((1 - var(--e, 0)) * 100%), rgba(255, 255, 255, .62));
+}
+.sx-toggle::after {
+    content: ''; position: absolute; top: 50%; left: 4px; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%;
+    background: color-mix(in srgb, #000 calc((1 - var(--e, 0)) * 100%), rgba(255, 255, 255, .8));
+    transform: translateX(calc((1 - var(--e, 0)) * 20px));
+}
+
+/* ---- Customize: a light desktop that goes dark, and a taskbar that clears and moves left ---- */
+.sx-desk { position: absolute; inset: 0; overflow: hidden; --dk: 0; --al: 0; }
+.sx-wall { position: absolute; inset: 0; }
+.sx-wall::before, .sx-wall::after { content: ''; position: absolute; inset: 0; }
+.sx-wall::before {
+    background:
+        radial-gradient(60% 75% at 50% 62%, #6fb7ff 0%, #2f7de1 32%, transparent 62%),
+        radial-gradient(90% 80% at 50% 100%, #9fd0ff, transparent 60%),
+        linear-gradient(180deg, #dbe9f8, #b9d4f1);
+}
+.sx-wall::after {
+    background:
+        radial-gradient(60% 75% at 50% 62%, #1f6fd1 0%, #0d3f8c 32%, transparent 62%),
+        radial-gradient(90% 80% at 50% 100%, #123d73, transparent 60%),
+        linear-gradient(180deg, #050b17, #0a1830);
+    opacity: var(--dk);
+}
+.sx-menu {
+    position: absolute; bottom: 58px; width: 400px; padding: 18px 20px 14px; border-radius: 10px;
+    left: calc(200px - var(--al) * 192px);
+    background: color-mix(in srgb, rgba(36, 38, 44, .88) calc(var(--dk) * 100%), rgba(243, 246, 250, .86));
+    border: 1px solid color-mix(in srgb, rgba(255, 255, 255, .09) calc(var(--dk) * 100%), rgba(0, 0, 0, .08));
+    color: color-mix(in srgb, #fff calc(var(--dk) * 100%), #1b1b1b);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .3); backdrop-filter: blur(20px);
+}
+.sx-menu .sx-search {
+    height: 30px; font-size: 12px;
+    background: color-mix(in srgb, rgba(255, 255, 255, .07) calc(var(--dk) * 100%), rgba(255, 255, 255, .8));
+    border-color: color-mix(in srgb, rgba(255, 255, 255, .08) calc(var(--dk) * 100%), rgba(0, 0, 0, .06));
+    border-bottom-color: color-mix(in srgb, #60cdff calc(var(--dk) * 100%), #005fb8);
+    color: color-mix(in srgb, rgba(255, 255, 255, .6) calc(var(--dk) * 100%), rgba(0, 0, 0, .55));
+}
+.sx-menu .sx-start-head { margin: 14px 4px 8px; font-size: 13px; }
+.sx-pins { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
+.sx-pins > span { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 6px 0; font-size: 10px; }
+.sx-pins > span > span:last-child { max-width: 56px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx-pins .sx-tile-icon { width: 28px; height: 28px; }
+.sx-reco { overflow: hidden; max-height: calc((1 - var(--e, 0)) * 140px); opacity: calc(1 - var(--e, 0)); }
+.sx-reco-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; padding: 0 4px 4px; }
+.sx-reco-grid > span { display: grid; grid-template-columns: 28px 1fr; grid-template-rows: auto auto; gap: 5px 10px; align-items: center; padding: 6px 0; }
+.sx-reco-grid i { grid-row: span 2; width: 28px; height: 28px; border-radius: 6px; background: color-mix(in srgb, rgba(255, 255, 255, .14) calc(var(--dk) * 100%), rgba(0, 0, 0, .1)); }
+.sx-desk .sx-skel { background: color-mix(in srgb, rgba(255, 255, 255, .22) calc(var(--dk) * 100%), rgba(0, 0, 0, .14)); }
+.sx-taskbar {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 48px; display: flex; align-items: center; padding: 0 8px;
+    background: color-mix(in srgb, rgba(28, 30, 36, .9) calc(var(--dk) * 100%), rgba(238, 242, 248, .88));
+    border-top: 1px solid color-mix(in srgb, rgba(255, 255, 255, .08) calc(var(--dk) * 100%), rgba(0, 0, 0, .06));
+    color: color-mix(in srgb, #fff calc(var(--dk) * 100%), #1b1b1b); backdrop-filter: blur(20px);
+}
+.sx-widget { position: absolute; left: 12px; top: 0; bottom: 0; display: flex; align-items: center; gap: 8px; opacity: calc(1 - var(--e, 0)); transform: translateY(calc(var(--e, 0) * 14px)); }
+.sx-widget .i { width: 24px; height: 24px; color: #f5b335; }
+.sx-tb-space { flex: 1 1 0; }
+.sx-tb-space[data-align] { flex-grow: calc(1 - var(--al)); }
+.sx-tb-apps { display: flex; align-items: center; gap: 2px; }
+.sx-tb-btn { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 5px; overflow: hidden; }
+.sx-tb-btn .i, .sx-tb-btn .sx-tile-icon { width: 22px; height: 22px; }
+.sx-tb-btn.is-start .i { color: #0a84ff; }
+.sx-tb-btn.is-folder .i { color: #f2b832; }
+.sx-tb-search {
+    display: flex; align-items: center; gap: 8px; width: 150px; height: 32px; margin: 0 4px; padding: 0 12px; border-radius: 16px; font-size: 12px; overflow: hidden; white-space: nowrap;
+    background: color-mix(in srgb, rgba(255, 255, 255, .08) calc(var(--dk) * 100%), rgba(255, 255, 255, .85));
+    color: color-mix(in srgb, rgba(255, 255, 255, .7) calc(var(--dk) * 100%), rgba(0, 0, 0, .6));
+}
+/* Whatever the recommended set switches off folds away in place, so the rest close up. */
+.sx-tb-apps [data-off], .sx-tb-pins > .is-gone { opacity: calc(1 - var(--e, 0)); transform: scale(calc(1 - var(--e, 0) * .6)); }
+.sx-tb-btn[data-off], .sx-tb-pins > .is-gone { width: calc((1 - var(--e, 0)) * 40px); }
+.sx-tb-search[data-off] { width: calc((1 - var(--e, 0)) * 150px); margin: 0 calc((1 - var(--e, 0)) * 4px); padding: 0 calc((1 - var(--e, 0)) * 12px); }
+.sx-tb-pins { display: flex; gap: 2px; }
+.sx-tray { position: absolute; right: 10px; top: 0; bottom: 0; display: flex; align-items: center; gap: 10px; }
+.sx-tray .i { width: 14px; height: 14px; }
+.sx-clock { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; margin-left: 4px; }
+/* What changed, one line per setting, in the app's own words. */
+.sx-changes { position: absolute; right: 16px; top: 16px; width: 286px; display: flex; flex-direction: column; gap: 6px; z-index: 1; }
+.sx-change {
+    display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 2px 10px; align-items: center; padding: 8px 12px; border-radius: 8px;
+    background: rgba(18, 22, 30, .78); border: 1px solid rgba(255, 255, 255, .1); backdrop-filter: blur(16px); box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+    opacity: var(--e, 0); transform: translateX(calc((1 - var(--e, 0)) * 24px));
+}
+.sx-change .wd-glyph { width: 18px; height: 18px; grid-row: span 2; }
+.sx-change b { font-weight: 600; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx-change span { font-size: 11px; color: rgba(255, 255, 255, .7); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx-change em { font-style: normal; color: #6ccb5f; }
+
+/* ---- Unattend: the setup questions, answered by the file and dealt away ---- */
+.sx-oobe { position: absolute; inset: 0; }
+.sx-deck { position: absolute; left: 110px; top: 50px; width: 580px; height: 380px; }
+.sx-q {
+    position: absolute; inset: 0; display: grid; grid-template-columns: 210px minmax(0, 1fr); overflow: hidden;
+    background: #1f2430; border: 1px solid rgba(255, 255, 255, .1); border-radius: 12px; box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+    transform-origin: 50% 0;
+}
+.sx-q-art { display: grid; place-items: center; background: radial-gradient(circle at 50% 45%, rgba(96, 205, 255, .28), transparent 65%), #17202f; }
+.sx-q-art .i { width: 84px; height: 84px; color: #8fd8ff; }
+.sx-q-body { position: relative; display: flex; flex-direction: column; gap: 14px; padding: 46px 30px 24px; }
+.sx-q-body strong { font-family: var(--winui-font-family-display); font-size: 23px; font-weight: 600; line-height: 1.25; }
+.sx-q-opts { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+.sx-q-opts i { display: block; height: 30px; border-radius: 4px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .06); }
+.sx-q-opts i:first-child { background: rgba(96, 205, 255, .14); border-color: rgba(96, 205, 255, .35); }
+.sx-q-next { position: absolute; right: 30px; bottom: 24px; padding: 6px 26px; border-radius: 4px; background: #60cdff; color: #002642; font-size: 13px; font-weight: 600; }
+/* The answer stamp: which setting in the file answers this screen. */
+.sx-q-answer {
+    position: absolute; left: 30px; right: 30px; bottom: 70px; display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 8px;
+    background: #16301f; border: 1px solid rgba(108, 203, 95, .55); color: #e7f7e4; font-size: 12.5px;
+    opacity: var(--st, 0); transform: translateY(calc((1 - var(--st, 0)) * 12px));
+}
+.sx-q-answer .i { width: 18px; height: 18px; color: #6ccb5f; }
+.sx-q-answer b { font-weight: 600; }
+.sx-done {
+    position: absolute; left: 50%; top: 50%; width: 420px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;
+    opacity: var(--e, 0); transform: translate(-50%, calc(-50% + (1 - var(--e, 0)) * 20px)) scale(calc(.94 + var(--e, 0) * .06));
+}
+.sx-done .i { width: 64px; height: 64px; color: #6ccb5f; filter: drop-shadow(0 0 24px rgba(108, 203, 95, .5)); }
+.sx-done strong { font-family: var(--winui-font-family-display); font-size: 30px; font-weight: 600; }
+.sx-done span { color: rgba(255, 255, 255, .75); }
+
+/* ---- WIMUtil: the ISO, your answer file and your drivers, written to one drive ---- */
+.sx-media { position: absolute; inset: 0; }
+.sx-src {
+    position: absolute; left: 40px; width: 222px; height: 64px; display: flex; align-items: center; gap: 14px; padding: 0 16px;
+    background: rgba(24, 30, 42, .9); border: 1px solid color-mix(in srgb, #60cdff calc(var(--e, 0) * 100%), rgba(255, 255, 255, .12)); border-radius: 10px;
+    box-shadow: 0 0 calc(var(--e, 0) * 28px) color-mix(in srgb, #60cdff 40%, transparent); font-size: 13.5px; font-weight: 600;
+}
+.sx-src:nth-of-type(1) { top: 78px; }
+.sx-src:nth-of-type(2) { top: 218px; }
+.sx-src:nth-of-type(3) { top: 358px; }
+.sx-src .i { width: 28px; height: 28px; color: #8fd8ff; }
+.sx-wires { position: absolute; inset: 0; width: 800px; height: 500px; overflow: visible; }
+.sx-wires path { fill: none; stroke: rgba(255, 255, 255, .14); stroke-width: 2; stroke-dasharray: 4 6; }
+.sx-wires path.is-lit { stroke: #60cdff; stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--e, 0)); filter: drop-shadow(0 0 6px rgba(96, 205, 255, .7)); }
+.sx-usb {
+    position: absolute; left: 520px; top: 150px; width: 240px; height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+    background: rgba(24, 30, 42, .92); border: 1px solid color-mix(in srgb, #6ccb5f calc(var(--done, 0) * 100%), rgba(255, 255, 255, .14)); border-radius: 14px;
+    box-shadow: 0 0 calc(var(--done, 0) * 40px) rgba(108, 203, 95, .35), 0 24px 60px rgba(0, 0, 0, .45);
+}
+.sx-usb > .i { width: 54px; height: 54px; color: #fff; }
+.sx-usb strong { font-size: 15px; }
+.sx-usb-bar { width: 170px; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, .12); overflow: hidden; }
+.sx-usb-bar i { display: block; height: 100%; background: linear-gradient(90deg, #60cdff, #6ccb5f); transform-origin: 0 50%; transform: scaleX(var(--fill, 0)); }
+.sx-usb-ready { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: #b9ebb2; opacity: var(--done, 0); }
+.sx-usb-ready .i { width: 16px; height: 16px; color: #6ccb5f; }

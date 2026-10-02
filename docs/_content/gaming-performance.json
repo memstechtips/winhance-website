@@ -1,20 +1,28 @@
 {
   "intro": [
-    "<p>Maximize your system's hardware potential. This section contains optimizations designed to reduce input lag, improve frame rates, and eliminate system stutters during gaming or intensive workloads.</p>"
+    "<p>Settings that cut background work and latency so games and heavy apps get more of the PC: processor and GPU priority, network tweaks, Windows services and scheduled tasks, and visual effects.</p>"
   ],
   "groups": {
     "System Services": {
-      "blurb": "",
+      "blurb": "Windows services you can set to Disabled, Manual or Automatic.",
       "html": [
-        "<div class=\"callout callout-warning\"> <div class=\"callout-title\">Service Recommendations</div> <p>It is recommended to set non-essential services to <strong>Manual</strong> rather than Disabled. This ensures they don't consume resources at startup but can still be started by Windows if a specific application needs them.</p> </div>"
+        "<div class=\"callout callout-note\"><p class=\"callout-title\">Manual is usually enough</p><p>Most services here are recommended at Manual rather than Disabled. A Manual service doesn't start with Windows, but Windows can still start it when an app needs it.</p></div>"
       ]
     },
     "Visual Effects": {
-      "blurb": "",
+      "blurb": "Animations, shadows and the other effects from Windows Performance Options.",
       "html": [
-        "<div class=\"callout callout-info\"> <div class=\"callout-title\">Custom Mode Required</div> <p>The following individual visual effects settings require <strong>Visual Effects</strong> to be set to <strong>\"Custom\"</strong> mode (value 3) to take effect. <strong>Winhance automatically sets Custom mode</strong> when you toggle any of these individual settings, so you don't need to manually change it first.</p> </div>"
+        "<div class=\"callout callout-note\"><p class=\"callout-title\">Presets and single effects</p><p>The Visual Effects setting at the top sets every effect below to match the preset you pick. Change a single effect and Visual Effects follows: it shows the preset your choices match, or Custom.</p></div>"
       ]
-    }
+    },
+    "General": "Game Mode, mouse acceleration, menu and hover delays, the startup delay for apps, background app permissions, Storage Sense, search scope and System Protection.",
+    "Processor": "How Windows shares processor time between the app in front and background work, and the priority games get.",
+    "Graphics": "GPU scheduling and priority, optimizations for windowed and fullscreen games, VRR and Auto HDR, and the display overlay settings that can fix flicker or black screens.",
+    "Network": "Network throttling, Nagle's algorithm, and the DNS server every network adapter uses.",
+    "Security": "Virtualization-based security and Memory Integrity. Both protect Windows; turning them off can help game performance at the cost of that protection.",
+    "Xbox": "Game DVR recording, and the Game Bar's controller button and tips.",
+    "Scheduled Tasks": "Windows scheduled tasks that collect telemetry and diagnostics or do background upkeep. Turning one off stops it from running.",
+    "Accessibility": "Keyboard shortcuts that turn on Narrator, Sticky Keys, Filter Keys, Toggle Keys, Mouse Keys and High Contrast. Turn off the ones you don't use so a stray key press can't start them."
   },
   "video": {
     "id": "lrq3ph3xi50",

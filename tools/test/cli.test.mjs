@@ -26,10 +26,21 @@ test('generate renders every mapped page that has catalog data plus the side fil
   assert.ok(out.has('features/optimize.html'));
   assert.ok(out.has('features/customize.html'));
   assert.ok(out.has('js/docs-search.js'));
-  assert.ok(out.has('js/docs-config.js'));
   assert.ok(out.has('sitemap.xml'));
-  assert.match(out.get('js/docs-config.js'), /winhanceVersion: 'v\d\d\.\d\d\.\d\d'/);
+  assert.ok(!out.has('js/docs-config.js'));
   assert.match(out.get('js/docs-search.js'), /"url":"features\/optimizations\/sound\.html#sound-startup"/);
+});
+
+test('generate renders every hand-written page in the nav through the same shell', () => {
+  const out = generate({ catalogPath: fixture, siteDir: join(repo, 'docs'), themePath: themeFixture });
+  for (const path of ['index.html', 'getting-started/installation.html', 'guides/wimutil.html', 'reference/troubleshooting.html']) {
+    const html = out.get(path);
+    assert.ok(html, path);
+    assert.doesNotMatch(html, /\{\{\w+\}\}/, path);
+    assert.match(html, /<symbol id="i-Search"/, path); // the sprite carries the icons the shell uses
+    assert.match(html, /aria-current="page"/, path);
+  }
+  assert.match(out.get('js/docs-search.js'), /"url":"getting-started\/installation\.html"/);
 });
 
 test('generate is idempotent', () => {

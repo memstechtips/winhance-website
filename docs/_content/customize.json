@@ -1,9 +1,8 @@
 {
   "intro": [
-    "<p>Make Windows your own. Tailor the visual identity and functional behavior of your desktop environment to match your personal style and workflow.</p>",
-    "<img src=\"../../images/customize-view.png\" alt=\"Winhance Customize View\" class=\"screenshot\" style=\"width: 100%; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.3);\">"
+    "<p>Customize changes how Windows looks and behaves: the theme and desktop background, the taskbar, the Start menu, File Explorer, and time, region and language. Each setting shows which option Windows uses by default and which one Winhance recommends. In Normal mode, a change applies to this PC as soon as you make it.</p>"
   ],
   "outro": [
-    "<div class=\"callout callout-info\"> <div class=\"callout-title\">ℹ️ Visual Effects</div> <p>Winhance also provides quick toggles for individual visual effects like window shadows, menu animations, and font smoothing to improve responsiveness.</p> </div>"
+    "<p>Looking for animations, shadows and the other visual effects? They are on the <a href=\"optimizations/gaming-performance.html#visual-effects\">Gaming &amp; Performance</a> page, under Visual Effects.</p>"
   ]
 }

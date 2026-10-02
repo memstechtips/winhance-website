@@ -1,7 +1,7 @@
 // Mirrors OptionMatrixView.xaml.cs (Winhance.UI/Features/Common/Controls) row-for-row, cell-for-cell.
 // Every string comes verbatim off the matrix export, and every metric/colour the app's own THEME
 // DICTIONARIES decide (BadgeStyles.xaml, TechnicalDetailsStyles.xaml) is a var(--app-*) or
-// var(--winui-*) from the two generated/hand-written token sheets (see docs/css/docs-main.css) --
+// var(--winui-*) from the two generated/hand-written token sheets (see docs/css/setting-card.css) --
 // wrong there, the fix is in the app's export or the token sheet, not here. But the extractor only
 // parses those three XAML dictionaries: anything the panel's CODE-BEHIND decides instead (constants
 // and layout choices baked into OptionMatrixView.xaml.cs itself, not read from a Style setter) is
@@ -75,7 +75,7 @@ const CHIP_CHROME = 8 * 2 + 1 * 2;
 // two build-time numbers used ONLY to size the deficit passes below (a group's own path text, the
 // mechanism cell's own requirement chips) against the base per-column widths already computed --
 // the actual rendered pixels still come from the CSS vars themselves, these are never emitted as
-// literals. Keep both numbers equal to docs-main.css's `--mx-char-w`/`--mx-char-w-sm` -- the
+// literals. Keep both numbers equal to setting-card.css's `--mx-char-w`/`--mx-char-w-sm` -- the
 // `mirrors the CSS char-width tokens` test in theme-css.test.mjs fails loudly on drift.
 export const CHAR_W = 7.5;
 // TechDetail.Table.GroupPath/HeaderType are Consolas at 11px (not the 12px OptionLabel/HeaderText
@@ -565,7 +565,7 @@ function iconSvg(icon, icons) {
 // only settings a phantom Windows 10 table that contradicted their own badge. One surviving matrix
 // renders with no build heading -- the app shows exactly one panel there, never two headed sub-tables
 // for a setting that only runs on one build.
-function matrixBody(s, refBuilds, urlFor, geometries) {
+export function matrixBody(s, refBuilds, urlFor, geometries) {
   if (!s.matrixWin10) return renderMatrix(s.matrix, { urlFor, geometries });
   const candidates = [
     { matrix: s.matrix, build: refBuilds.win11, heading: BUILD_HEADING.win11 },
@@ -597,7 +597,7 @@ function hasPowerPlanGroup(s) {
 // banner not mirrored from the app. Placed above the panel rather than below it, which is where the app
 // puts it: in the app the Technical Details are COLLAPSED, so its banner sits right under the setting; on
 // the web they are always open, and a banner after a 40-row table is nowhere near the setting it is about.
-function optionWarnings(s) {
+export function optionWarnings(s) {
   if (!s.optionWarnings?.length) return '';
   // The catalog repeats one warning across every option it applies to (Connected Devices Platform
   // Service authors the same sentence on both Disabled and Manual). In the app only the selected

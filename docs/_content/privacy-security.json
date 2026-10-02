@@ -1,23 +1,26 @@
 {
   "intro": [
-    "<p>Windows 10 and 11 come with numerous telemetry and data collection features enabled by default. Winhance gives you back control over your data and improves your system's security posture.</p>"
+    "<p>What Windows collects and shares, the ads and suggestions it shows, which apps can use your camera, microphone and location, its AI features, and core security options such as User Account Control.</p>"
   ],
   "groups": {
-    "Security": "Core Windows security settings including User Account Control, remote access, and system maintenance.",
+    "Security": "User Account Control, Smart App Control, BitLocker automatic encryption, Remote Assistance, Developer Mode, the PowerShell execution policy, and other system protections.",
     "Content Delivery & Advertising": {
-      "blurb": "Control promotional content, suggested apps, and advertising throughout Windows.",
+      "blurb": "Ads, suggested apps, and apps Windows installs without asking.",
       "html": [
-        "<div class=\"callout callout-info\"> <div class=\"callout-title\">Master Control</div> <p>The \"Ads, Suggestions and Promotional Content\" setting is a master control. Set it to <strong>Deny</strong> to disable all advertising features at once, or <strong>Custom</strong> to configure individual settings below.</p> </div>"
+        "<div class=\"callout callout-note\"><p class=\"callout-title\">One setting for all of it</p><p>Ads, Suggestions and Promotional Content sets the settings below, plus related ones on the lock screen, in the Settings app, in notifications and in the Start menu. Allow turns them all on, Deny turns them all off, and Custom leaves each one to you.</p></div>"
       ]
     },
-    "Lock Screen": "Settings related to the Windows lock screen behavior and content.",
-    "General": "Core privacy settings for advertising ID, language tracking, and personalization.",
-    "Speech": "Settings for speech recognition and voice-based services.",
-    "Inking and typing personalization": "Settings for inking and typing personalization features.",
-    "Diagnostics & Feedback": "Settings for telemetry, diagnostic data collection, and feedback to Microsoft.",
-    "Activity History": "Settings for Windows activity history and timeline features.",
-    "Search permissions": "Settings for Windows Search behavior and cloud integration.",
-    "App Permissions": "Control which system features apps can access."
+    "Lock Screen": "Whether you can lock the PC, and Windows Spotlight pictures and fun facts on the lock screen.",
+    "General": "The advertising ID, website access to your language list, app launch tracking, and suggestions and notifications in the Settings app.",
+    "Speech": "Online speech recognition, and Narrator's online services and scripting.",
+    "Inking and typing personalization": "The personal dictionary Windows builds from your typing and handwriting.",
+    "Diagnostics & Feedback": "Diagnostic data sent to Microsoft, tailored experiences, and feedback requests.",
+    "Activity History": "The activity history Windows keeps so you can pick up where you left off, and Timeline suggestions on Windows 10.",
+    "Search permissions": "Search history, search highlights, results from your Microsoft or work account, and Cortana.",
+    "App Permissions": "Which apps can use your location, camera, microphone, account info and app diagnostics, and OneDrive's automatic folder backups.",
+    "Windows AI": "Copilot, Recall, Click to Do, AI agents, and the AI features in Paint and Notepad.",
+    "Microsoft Edge AI": "Copilot and the other AI features inside Microsoft Edge.",
+    "Microsoft Office AI": "Copilot in Word, Excel and OneNote, and Office's AI training data and connected services."
   },
   "video": {
     "id": "lrq3ph3xi50",

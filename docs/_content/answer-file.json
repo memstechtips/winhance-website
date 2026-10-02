@@ -1,13 +1,15 @@
 {
   "intro": [
-    "<p>Every setting below is written into <code>autounattend.xml</code> when you build the file. Nothing here is read from this PC, so the tables show the answer-file pass, component and path each value lands in instead of a registry key.</p>"
+    "<p>These are the settings on the <strong>Unattend</strong> page, which unlocks in Builder mode when you pick the Autounattend target. Each one is written into <code>autounattend.xml</code> when you save the file. Nothing is read from this PC, so the tables show where in the answer file each value goes.</p>"
   ],
   "groups": {
-    "Processor architecture": "Which processor architectures the file covers. Every component in the file is written once per architecture you tick, so one file can install on x64, ARM64 and x86 PCs.",
-    "Edition and product key": "The edition Setup installs, and the key it uses to pick it. The built-in keys select an edition without activating Windows; your own key selects and activates.",
-    "Windows 11 requirements": "Setup's checks for TPM 2.0, Secure Boot and the RAM, storage, CPU and disk minimums. Turning them off lets Setup install on a PC that fails them.",
-    "Accounts": "How the first account is created, and the local accounts Setup makes before the first sign-in. In Winhance each account you add also carries a display name, a group, a password and the sign-in options; the part that is the same on every PC, and so the part documented here, is the name rule below.",
-    "Setup screens": "The pages Setup shows while Windows installs, and the name this PC gets on the network. Turning a page off answers it in the file so Setup does not stop there.",
-    "General": "What Setup adds once Windows is installed: .NET Framework 3.5 from the installation media, and an Install Winhance shortcut on the desktop of every new account."
+    "Processor architecture": "The processor types the file installs on. Winhance writes each part of the file once for every architecture you tick, so one file can cover x64, ARM64 and x86 PCs.",
+    "Edition and product key": "The edition Setup installs and the key it uses to choose it. Let Setup ask, pick an edition, enter your own key, or use the key stored in the PC's firmware. The built-in keys choose an edition without activating Windows; your own key does both.",
+    "Windows 11 requirements": "Setup's checks for TPM 2.0, Secure Boot, and the minimum RAM, storage, CPU and disk. Turn them off to install Windows 11 on a PC that fails them. The POPCNT CPU requirement added in 24H2 cannot be skipped.",
+    "Accounts": "How the first account is created: a local account, a Microsoft account, or accounts the file makes before the first sign-in. Each account you add has a name, display name, group and password, and one administrator can sign in automatically once. When the file makes the accounts, you also choose whether Setup stays online while it works.",
+    "Setup screens": "The language Setup runs in, the pages it shows while Windows installs, and the name this PC gets on the network. Turning a page off answers it in the file, so Setup does not stop there.",
+    "General": "What Setup adds to the new PC: .NET Framework 3.5 from the installation media, and Winhance itself, either as an Install Winhance shortcut on every new account's desktop or installed automatically after setup. Winhance then installs the External Software apps you checked, and deletes their installers afterwards unless you turn that off.",
+    "Disk and partitions": "Whether Setup asks where to install Windows, or wipes a disk and partitions it for UEFI or BIOS by itself. The partition screen is the one Setup screen a file cannot simply hide, so a layout here is what makes the install run with nothing to click. Wiping erases the whole disk you name, with no undo.",
+    "Your own scripts": "Scripts of your own that run once on the new PC. System-wide scripts run as the system while Windows finishes setting up; per-user scripts run for each person at their first sign-in, as that person. Each one can be PowerShell, a command script, a batch file or a registry file, and Winhance carries it in the answer file exactly as you typed it."
   }
 }

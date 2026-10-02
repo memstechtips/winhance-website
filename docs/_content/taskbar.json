@@ -1,9 +1,12 @@
 {
   "intro": [
-    "<p>Tailor the Windows taskbar to your workflow. Winhance provides options to declutter, realign, and add functional improvements to your primary navigation bar.</p>",
-    "<div class=\"callout callout-warning\"> <div class=\"callout-title\">⚠️ Setting Persistence</div> <p>Settings found in the <strong>Customizations</strong> view are <strong>not persistent</strong>. Winhance applies these changes once, but it does not use background tasks to re-apply them if they are changed later by Windows or by you manually.</p> </div>"
+    "<p>What the taskbar shows and how it behaves: alignment, search, the buttons Windows adds, the system tray, and behavior across multiple displays.</p>"
   ],
-  "groups": {},
+  "groups": {
+    "Layout": "Clean Taskbar removes every app pinned to the taskbar.",
+    "Taskbar Icons": "The search box and the buttons Windows puts on the taskbar: Task View, Widgets, News and Interests, the Copilot buttons, Recall and Meet Now.",
+    "Taskbar Behavior": "Alignment, auto-hide, badges and flashing, combined buttons, system tray icons, seconds on the clock, transparency and size, multiple displays, and End Task on the right-click menu."
+  },
   "video": {
     "id": "lrq3ph3xi50",
     "start": 2524,

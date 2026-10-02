@@ -1,0 +1,753 @@
+/* The live Winhance window. Colours are WinUI system tokens (docs/css/winui-tokens.css) and the app's
+   own badge tokens (docs/css/app-tokens.css, generated from theme.json); the numbers the app keeps in
+   code (dim opacity, column width, card gap, title-bar icon size) arrive as --wd-* from demo/app.js, and
+   the window breakpoints (compact pane, short window) are applied as classes by winhance-demo.js. The rest
+   is control geometry hand-mirrored from the XAML (NavButton, PageHeader, SectionPageShell,
+   SoftwareAppsPage, WimUtilPage) and WinUI's stock controls; see tools/gen-demo.mjs for what that means
+   at release time. */
+
+.wd-host {
+    --wd-mica: var(--winui-solid-background-fill-color-base);
+    --wd-neutral: var(--winui-system-fill-color-neutral-background);
+    --wd-card: var(--winui-card-background-fill-color-default);
+    --wd-card-2: var(--winui-card-background-fill-color-secondary);
+    --wd-stroke: var(--winui-card-stroke-color-default);
+    --wd-control: var(--winui-control-fill-color-default);
+    --wd-control-2: var(--winui-control-fill-color-secondary);
+    --wd-control-3: var(--winui-control-fill-color-tertiary);
+    --wd-control-stroke: var(--winui-control-stroke-color-default);
+    --wd-control-stroke-2: var(--winui-control-stroke-color-secondary);
+    --wd-strong-stroke: var(--winui-control-strong-stroke-color-default);
+    --wd-subtle-2: var(--winui-subtle-fill-color-secondary);
+    --wd-subtle-3: var(--winui-subtle-fill-color-tertiary);
+    --wd-text: var(--winui-text-fill-color-primary);
+    --wd-text-2: var(--winui-text-fill-color-secondary);
+    --wd-text-3: var(--winui-text-fill-color-tertiary);
+    --wd-accent: var(--winui-accent-fill-default);
+    --wd-on-accent: var(--winui-text-on-accent-fill-color-primary);
+    --wd-flyout: var(--winui-solid-background-fill-color-quarternary);
+    --wd-info: var(--winui-system-fill-color-attention-background);
+    position: relative;
+    /* Inherited, so every scrolling area in the window (lists, flyouts, the help text) gets the thin
+       WinUI-like bar on a clear track. */
+    scrollbar-color: var(--winui-control-strong-stroke-color-default) transparent;
+    font-family: var(--winui-font-family);
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--wd-text);
+}
+
+.wd-host *,
+.wd-host *::before,
+.wd-host *::after { box-sizing: border-box; }
+
+.wd-window {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--wd-mica);
+    border: 1px solid var(--winui-surface-stroke-color-default);
+    border-radius: var(--winui-overlay-corner-radius);
+    overflow: clip;
+    box-shadow: 0 32px 64px rgba(0, 0, 0, .37), 0 2px 21px rgba(0, 0, 0, .22);
+}
+
+.wd-glyph { width: 16px; height: 16px; flex: none; display: inline-block; }
+.wd-glyph-img { background: currentColor; -webkit-mask: var(--img) center / contain no-repeat; mask: var(--img) center / contain no-repeat; }
+.wd-dd-chev { width: 12px; height: 12px; margin-left: 4px; opacity: .8; }
+
+:where(.wd-host button) { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: inherit; }
+:where(.wd-host button:disabled) { cursor: default; }
+.wd-host :focus-visible { outline: 2px solid var(--wd-text); outline-offset: 1px; border-radius: var(--winui-control-corner-radius); }
+:where(.wd-host p, .wd-host h3, .wd-host h4) { margin: 0; }
+[data-theme="dark"] .wd-on-light, :root:not([data-theme="dark"]) .wd-on-dark { display: none; }
+
+/* ---- Title bar (MainWindow.xaml AppTitleBar) ---- */
+.wd-titlebar { display: flex; align-items: center; flex: none; padding-left: 4px; user-select: none; }
+.wd-tb-btn {
+    color: inherit;
+    text-decoration: none;
+    height: 32px;
+    min-width: 40px;
+    padding: 0 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border-radius: 4px;
+}
+.wd-tb-btn:hover:not(:disabled) { background: var(--wd-subtle-2); }
+.wd-tb-btn:disabled { opacity: .4; }
+.wd-tb-btn .wd-glyph { width: var(--wd-tb-icon); height: var(--wd-tb-icon); }
+.wd-tb-filter .wd-glyph { width: 18px; height: 18px; }
+.wd-pane .wd-glyph { width: 16px; height: 16px; }
+.wd-tb-pill { padding: 0 12px 0 10px; background: var(--wd-subtle-2); margin-right: 6px; font-size: 13px; font-weight: 600; }
+.wd-tb-pill .wd-heart { width: 22px; height: 22px; display: block; }
+.wd-appicon { width: 20px; height: 20px; margin: 0 8px; }
+.wd-title { font-size: 12px; font-weight: 600; white-space: nowrap; }
+.wd-by { font-size: 11px; opacity: .6; margin-left: 6px; white-space: nowrap; }
+.wd-modes { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 0; }
+.wd-mode-label { font-size: 11px; opacity: .6; white-space: nowrap; }
+.wd-mode-group { display: flex; align-items: stretch; border: 1px solid var(--wd-control-stroke); border-radius: 4px; }
+.wd-mode { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; font-size: 12px; white-space: nowrap; }
+.wd-mode img { width: 20px; height: 20px; }
+.wd-mode:first-child { border-radius: 4px 0 0 4px; }
+.wd-mode:last-child { border-radius: 0 4px 4px 0; }
+.wd-mode:hover { background: var(--wd-subtle-2); }
+.wd-mode.is-on { background: var(--wd-accent); color: var(--wd-on-accent); }
+.wd-mode-sep { width: 1px; margin: 6px 0; background: var(--wd-control-stroke); }
+.wd-mode.is-nudge { animation: wd-nudge .9s ease-out 2; }
+@keyframes wd-nudge { 0%, 100% { box-shadow: none; } 40% { box-shadow: 0 0 0 3px var(--wd-accent); } }
+.wd-tb-buttons { display: flex; align-items: center; gap: 2px; margin-right: 8px; }
+.wd-caption { display: flex; align-self: flex-start; }
+.wd-caption span { width: 46px; height: 32px; display: grid; place-items: center; opacity: .7; }
+.wd-caption .wd-glyph { width: 10px; height: 10px; }
+
+/* Measured by fitTitleBar (MainWindow.FitTitleBar): the mode labels go first, then the title, then the
+   Support text. Phones also lose the caption buttons. */
+.wd-titlebar.is-tight :is(.wd-mode-text, .wd-mode-label) { display: none; }
+.wd-titlebar.is-tighter :is(.wd-title, .wd-by) { display: none; }
+.wd-titlebar.is-tightest .wd-tb-pill-text { display: none; }
+.wd-w-600 .wd-tb-pill-text, .wd-w-600 .wd-caption { display: none; }
+.wd-w-600 .wd-tb-pill { padding: 0 8px; }
+
+/* ---- Mode bars (BuilderModeBar / ReviewModeBar) ---- */
+.wd-modebar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 0;
+    padding: 10px 16px;
+    background: var(--wd-accent);
+    color: var(--wd-on-accent);
+    font-size: 12px;
+    line-height: 16px;
+}
+.wd-modebar > img { width: 24px; height: 24px; margin-right: 10px; }
+.wd-modebar strong { font-size: 13px; font-weight: 600; margin-right: 12px; }
+.wd-modebar-desc { flex: 1 1 200px; opacity: .85; margin-right: 16px; }
+.wd-modebar-status { opacity: .9; margin-right: 8px; }
+.wd-modebar-targets { display: flex; gap: 12px; margin-right: 12px; }
+.wd-modebar-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 32px;
+    padding: 5px 11px 6px;
+    margin-left: 4px;
+    border-radius: 4px;
+    background: #ffffff40;
+    font-size: 14px;
+}
+.wd-modebar-btn:hover:not(:disabled) { background: #ffffff55; }
+.wd-modebar-btn .wd-glyph { width: 14px; height: 14px; }
+.wd-modebar-save { min-width: 200px; }
+
+/* ---- Body: nav + page ---- */
+.wd-body { flex: 1; display: flex; min-height: 0; }
+
+/* NavSidebar: 80 wide with 70x60 buttons, or 48 wide with 40x40 when compact. */
+.wd-nav {
+    position: relative;
+    width: 80px;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px 5px;
+}
+.wd-nav-group { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+.wd-nav-btn { position: relative; width: 70px; height: 60px; border-radius: 10px; display: grid; place-items: center; }
+.wd-nav-content { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.wd-nav-btn .wd-glyph { width: 20px; height: 20px; }
+.wd-nav-label {
+    max-width: 60px;
+    font-size: 10px;
+    line-height: 13px;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.wd-nav-btn:hover { background: var(--wd-subtle-2); }
+.wd-nav-btn.is-on { background: var(--wd-subtle-3); }
+.wd-nav-btn.is-on::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 3px;
+    height: 16px;
+    margin-top: -8px;
+    border-radius: 2px;
+    background: var(--wd-accent);
+}
+.wd-nav-btn.is-locked .wd-nav-content { opacity: .4; }
+.wd-nav-lock { position: absolute; inset: 0; display: grid; place-items: center; color: #ffa500; }
+.wd-nav-lock .wd-glyph { width: 14px; height: 14px; }
+.is-compact .wd-nav { width: 48px; padding: 8px 4px; }
+.is-compact .wd-nav-btn { width: 40px; height: 40px; }
+.is-compact .wd-nav-btn .wd-glyph { width: 16px; height: 16px; }
+.is-compact .wd-nav-label { display: none; }
+
+.wd-page { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 0 12px 0 0; }
+
+/* ---- Flyouts and menus ---- */
+.wd-menu { position: relative; }
+.wd-flyout {
+    position: absolute;
+    z-index: 6;
+    top: calc(100% + 4px);
+    right: 0;
+    min-width: 200px;
+    padding: 4px;
+    background: var(--wd-flyout);
+    border: 1px solid var(--winui-surface-stroke-color-default);
+    border-radius: var(--winui-overlay-corner-radius);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, .26);
+}
+.wd-flyout-left { left: 0; right: auto; min-width: 180px; max-height: 360px; overflow: auto; scrollbar-width: thin; }
+.wd-flyout-more { top: auto; bottom: 8px; left: calc(100% - 4px); right: auto; min-width: 220px; }
+.wd-flyout-item {
+    color: inherit;
+    text-decoration: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 32px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    text-align: left;
+    white-space: nowrap;
+}
+.wd-flyout-item:hover:not(:disabled) { background: var(--wd-subtle-2); }
+.wd-flyout-item.is-disabled { opacity: .55; }
+.wd-flyout-icon { display: inline-flex; }
+.wd-flyout-icon .wd-glyph { width: 16px; height: 16px; }
+.wd-section-item { gap: 8px; padding: 5px 8px; }
+.wd-flyout-check { width: 16px; display: inline-flex; justify-content: center; }
+.wd-flyout-check .wd-glyph { width: 12px; height: 12px; }
+.wd-radio-mark { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.wd-flyout-sep { height: 1px; margin: 4px -4px; background: var(--winui-divider-stroke-color-default); }
+
+/* ---- Buttons and inputs (WinUI stock) ---- */
+.wd-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 32px;
+    padding: 5px 11px 6px;
+    border-radius: 4px;
+    background: var(--wd-control);
+    border: 1px solid var(--wd-control-stroke);
+    border-bottom-color: var(--wd-control-stroke-2);
+    font-size: 14px;
+    white-space: nowrap;
+}
+.wd-btn:hover:not(:disabled) { background: var(--wd-control-2); }
+.wd-btn:active:not(:disabled) { background: var(--wd-control-3); }
+.wd-btn:disabled { opacity: .45; }
+.wd-btn-accent { background: var(--wd-accent); color: var(--wd-on-accent); border-color: transparent; }
+.wd-btn-accent:hover:not(:disabled) { background: var(--wd-accent); filter: brightness(1.08); }
+.wd-btn-sm { min-height: 28px; padding: 3px 10px; gap: 6px; }
+.wd-btn-sm .wd-glyph { width: 14px; height: 14px; }
+
+.wd-search { position: relative; display: block; width: 220px; }
+.wd-search input {
+    width: 100%;
+    height: 32px;
+    padding: 0 36px 0 11px;
+    font: inherit;
+    color: inherit;
+    background: var(--wd-control);
+    border: 1px solid var(--wd-control-stroke);
+    border-bottom-color: var(--wd-strong-stroke);
+    border-radius: 4px;
+}
+.wd-search input::placeholder { color: var(--wd-text-2); }
+.wd-search input:focus { outline: none; border-bottom: 2px solid var(--wd-accent); background: var(--winui-control-fill-color-input-active); }
+.wd-search input::-webkit-search-cancel-button { display: none; }
+.wd-search-btn { position: absolute; right: 4px; top: 4px; width: 28px; height: 24px; display: grid; place-items: center; border-radius: 4px; }
+.wd-search-btn .wd-glyph { width: 14px; height: 14px; }
+
+.wd-checkbox { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; }
+/* Hidden inputs sit inside their own label. Without a positioned label they would anchor to the window,
+   outside the scrolling list, and focusing one on click would scroll the page to where it thinks it is. */
+.wd-checkbox, .wd-compact-row, .wd-radio, .wd-toggle { position: relative; }
+.wd-checkbox input, .wd-compact-row input, .wd-radio input { position: absolute; left: 0; top: 0; opacity: 0; width: 1px; height: 1px; }
+.wd-checkbox-box {
+    width: 20px;
+    height: 20px;
+    flex: none;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 4px;
+    border: 1px solid var(--wd-strong-stroke);
+    background: var(--wd-control-2);
+    color: transparent;
+}
+.wd-checkbox-box .wd-glyph { width: 12px; height: 12px; }
+input:checked + .wd-checkbox-box, .wd-checkbox-box.is-checked { background: var(--wd-accent); border-color: var(--wd-accent); color: var(--wd-on-accent); }
+input:focus-visible + .wd-checkbox-box { outline: 2px solid var(--wd-text); outline-offset: 2px; }
+
+.wd-radio { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.wd-radio-dot { width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--wd-strong-stroke); background: var(--wd-control-2); display: inline-grid; place-items: center; }
+.wd-radio input:checked + .wd-radio-dot { border: 0; background: var(--wd-accent); }
+.wd-radio input:checked + .wd-radio-dot::after { content: ''; width: 12px; height: 12px; border-radius: 50%; background: var(--wd-on-accent); }
+.wd-radio-on-accent .wd-radio-dot { border-color: currentColor; background: transparent; }
+.wd-radio-on-accent input:checked + .wd-radio-dot { background: var(--wd-on-accent); }
+.wd-radio-on-accent input:checked + .wd-radio-dot::after { background: var(--wd-accent); }
+
+/* ToggleSwitch: On/Off text left, 40x20 track right. */
+.wd-toggle { display: inline-flex; align-items: center; gap: 12px; cursor: pointer; min-width: 96px; justify-content: flex-end; }
+.wd-toggle input { position: absolute; right: 0; top: 0; opacity: 0; width: 1px; height: 1px; }
+.wd-toggle-track { position: relative; width: 40px; height: 20px; border-radius: 10px; border: 1px solid var(--wd-strong-stroke); background: var(--wd-control-2); transition: background-color .12s; }
+.wd-toggle-track::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--wd-text-2);
+    transition: transform .12s cubic-bezier(.2, .8, .2, 1), width .12s, height .12s, top .12s, left .12s;
+}
+.wd-toggle:hover .wd-toggle-track::after { width: 12px; height: 12px; top: 3px; left: 3px; }
+.wd-toggle input:checked + .wd-toggle-track { background: var(--wd-accent); border-color: var(--wd-accent); }
+.wd-toggle input:checked + .wd-toggle-track::after { background: var(--wd-on-accent); transform: translateX(20px); }
+.wd-toggle input:focus-visible + .wd-toggle-track { outline: 2px solid var(--wd-text); outline-offset: 2px; }
+
+.wd-combo { position: relative; display: inline-block; }
+.wd-combo select {
+    appearance: none;
+    min-width: 120px;
+    max-width: 260px;
+    height: 32px;
+    padding: 0 34px 0 11px;
+    font: inherit;
+    color: inherit;
+    background: var(--wd-control);
+    border: 1px solid var(--wd-control-stroke);
+    border-bottom-color: var(--wd-control-stroke-2);
+    border-radius: 4px;
+    cursor: pointer;
+}
+.wd-combo select:hover:not(:disabled) { background: var(--wd-control-2); }
+.wd-combo select:disabled { opacity: .45; cursor: default; }
+.wd-combo-wide select { min-width: 200px; }
+.wd-combo select option { background: var(--wd-flyout); color: var(--wd-text); }
+.wd-combo .wd-dd-chev { position: absolute; right: 12px; top: 10px; pointer-events: none; margin: 0; }
+.wd-textbox { width: 200px; height: 32px; padding: 0 11px; font: inherit; color: inherit; background: var(--wd-control); border: 1px solid var(--wd-control-stroke); border-bottom-color: var(--wd-strong-stroke); border-radius: 4px; }
+
+/* ---- Page header (PageHeader.xaml) ---- */
+.wd-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex: none; }
+.wd-header-main { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.wd-header-icon { width: 64px; height: 64px; }
+.wd-header-text { min-width: 0; }
+.wd-header-title { font-family: var(--winui-font-family-display); font-size: 30px; line-height: 38px; font-weight: 700; letter-spacing: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wd-header-sub { margin-top: 2px; font-size: 12px; line-height: 16px; color: var(--wd-text-3); }
+.wd-header-actions { flex: none; }
+.is-short .wd-header-icon { width: 32px; height: 32px; }
+.is-short .wd-header-main { gap: 10px; }
+.is-short .wd-header-title { font-size: 20px; line-height: 28px; }
+.is-short .wd-header-sub { display: none; }
+.wd-gap { height: 16px; flex: none; }
+
+/* ---- Breadcrumb row (SectionPageShell NavRow) ---- */
+.wd-navrow { display: flex; align-items: center; gap: 4px; margin: 12px 0 16px; flex: none; }
+.is-short .wd-navrow { margin: 8px 0; }
+.wd-crumbs { flex: 1; display: flex; align-items: center; gap: 4px; min-width: 0; }
+.wd-crumb, .wd-crumb-dd .wd-dd { padding: 4px 8px; }
+.wd-crumb-icon { width: 16px; height: 16px; margin-top: -2px; }
+.wd-crumb-sep { width: 12px; height: 12px; color: var(--wd-text-2); }
+.wd-crumb-dd { min-width: 0; }
+.wd-crumb-dd .wd-dd { max-width: 100%; }
+.wd-crumb-dd .wd-dd span { overflow: hidden; text-overflow: ellipsis; }
+.wd-dd { gap: 6px; }
+.wd-dd-icon { width: 14px; height: 14px; }
+.wd-quick-dd { margin-right: 0; }
+
+/* ---- Content area: SystemFillColorNeutralBackground, radius 8 ---- */
+.wd-content {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--wd-neutral);
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+.wd-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 12px 0;
+    scrollbar-width: thin;
+}
+.wd-column { max-width: var(--wd-column); margin: 0 auto; padding: 0 24px; }
+.wd-column > .wd-group:first-child { margin-top: 18px; }
+.is-settings .wd-scroll { padding: 12px 0 24px; }
+
+/* ---- SettingsCard (CommunityToolkit) ---- */
+.wd-scard {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 68px;
+    padding: 12px 16px;
+    background: var(--wd-card);
+    border: 1px solid var(--wd-stroke);
+    border-radius: 4px;
+    text-align: left;
+    margin-bottom: var(--wd-card-gap);
+}
+.wd-scard-icon { width: 20px; height: 20px; flex: none; }
+.wd-scard-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.wd-scard-header { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.wd-scard-desc { font-size: 12px; line-height: 16px; color: var(--wd-text-2); }
+.wd-scard-control { display: flex; align-items: center; gap: 4px; flex: none; }
+.wd-scard-control > .wd-btn + .wd-btn { margin-left: 4px; }
+
+.wd-new { padding: 1px 5px; border-radius: 3px; background: #e81123; color: #fff; font-size: 10px; line-height: 14px; font-weight: 600; white-space: nowrap; }
+
+/* Overview cards */
+.wd-sections { display: flex; flex-direction: column; gap: 8px; }
+.wd-section { margin-bottom: 0; }
+.wd-section:hover { background: var(--wd-card-2); }
+.wd-section-icon { width: 24px; height: 24px; }
+.wd-section .wd-scard-desc { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wd-section-chev { width: 12px; height: 12px; margin-left: 4px; }
+.wd-pills { display: flex; gap: 4px; flex: none; }
+
+/* Pills (BadgeStyles.xaml via app-tokens.css) */
+.wd-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: var(--app-badge-pill-base-height);
+    padding: var(--app-badge-pill-base-padding);
+    border-radius: var(--app-badge-pill-base-corner-radius);
+    border: var(--app-badge-pill-base-border-thickness) solid;
+    font-size: var(--app-badge-text-style-font-size);
+    font-weight: var(--app-badge-text-style-font-weight);
+    line-height: 1;
+    white-space: nowrap;
+}
+.wd-pill .wd-glyph { width: 12px; height: 12px; }
+.wd-pill.is-dim { opacity: var(--wd-dim); }
+.wd-pill.is-zero { opacity: .4; }
+.wd-pill-rec { background: var(--app-badge-recommended-background); border-color: var(--app-badge-recommended-border); color: var(--app-badge-recommended-foreground); }
+.wd-pill-def { background: var(--app-badge-default-background); border-color: var(--app-badge-default-border); color: var(--app-badge-default-foreground); }
+.wd-pill-pref { background: var(--app-badge-preference-background); border-color: var(--app-badge-preference-border); color: var(--app-badge-preference-foreground); }
+
+/* Setting cards */
+.wd-group { margin: 30px 0 6px 1px; font-size: 14px; line-height: 20px; font-weight: 600; }
+.wd-group-feature { font-size: 16px; }
+.wd-setting { margin-bottom: var(--wd-card-gap); }
+.wd-setting .wd-scard { margin-bottom: 0; }
+.wd-badges { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.wd-setting-card.is-attached { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.wd-setting-card.is-excluded .wd-scard-text, .wd-setting-card.is-excluded .wd-scard-icon { opacity: var(--wd-dim); }
+.wd-parent { background: var(--wd-card-2); cursor: pointer; }
+.wd-expand-chev { width: 20px; height: 20px; display: grid; place-items: center; margin-left: 12px; }
+.wd-child { border-top: 0; min-height: 68px; padding: 12px 52px 12px 54px; border-radius: 0; }
+.wd-setting > :last-child.wd-child, .wd-setting > :last-child .wd-child:last-child { border-radius: 0 0 4px 4px; }
+.wd-setting .wd-setting { margin-bottom: 0; }
+
+.wd-quickset { display: inline-flex; gap: 2px; margin-right: 8px; }
+.wd-quick { width: 28px; height: 28px; display: inline-grid; place-items: center; border-radius: 4px; }
+.wd-quick:hover:not(:disabled) { background: var(--wd-subtle-2); }
+.wd-quick .wd-glyph { width: 14px; height: 14px; }
+.wd-quick-rec { color: var(--app-badge-recommended-foreground); }
+.wd-quick-def { color: var(--app-badge-default-foreground); }
+.wd-quick-def .wd-glyph { width: 12px; height: 12px; }
+
+/* Technical Details bar (TechnicalDetailsPanel.xaml) */
+.wd-tech-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 4px 10px;
+    background: var(--wd-info);
+    border: 1px solid var(--wd-stroke);
+    border-top: 0;
+    border-radius: 0 0 4px 4px;
+    font-size: 11px;
+    line-height: 16px;
+    color: var(--wd-text-2);
+}
+.wd-tech-bar span { flex: 1; }
+.wd-tech-bar.is-open, .wd-setting-card.is-attached + .wd-tech-bar:not(:last-child) { border-radius: 0; }
+.wd-tech-info { width: 12px; height: 12px; margin-right: 6px; }
+.wd-tech-chev { width: 9px; height: 9px; }
+.wd-tech-bar:hover { color: var(--wd-text); }
+.wd-tech { background: var(--wd-info); border: 1px solid var(--wd-stroke); border-top: 0; border-radius: 0 0 4px 4px; padding: 6px 12px; min-height: 40px; }
+.wd-tech:not(:last-child) { border-radius: 0; }
+
+/* ---- Software & Apps ---- */
+.wd-actionbar { display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin: 12px 0 16px; flex: none; min-width: 0; }
+.is-short .wd-actionbar { margin: 8px 0; }
+.wd-ab-icon { width: 18px; height: 18px; }
+.wd-ab-sep { width: 1px; height: 20px; margin: 0 2px; background: var(--winui-divider-stroke-color-default); flex: none; }
+.wd-actionbar.is-tight .wd-ab-btn:not(.wd-ab-main) .wd-ab-text, .wd-actionbar.is-tight .wd-menu .wd-ab-text { display: none; }
+.wd-actionbar.is-tighter { flex-wrap: wrap; row-gap: 4px; }
+.wd-actionbar.is-tighter .wd-ab-text { display: none; }
+.wd-view-switch { display: inline-flex; border: 1px solid var(--wd-control-stroke); border-radius: 4px; flex: none; }
+.wd-view-btn { padding: 6px 10px; display: inline-grid; place-items: center; }
+.wd-view-btn .wd-glyph { width: 18px; height: 18px; }
+.wd-view-btn:first-child { border-radius: 4px 0 0 4px; }
+.wd-view-btn:last-child { border-radius: 0 4px 4px 0; }
+.wd-view-btn:hover { background: var(--wd-subtle-2); }
+.wd-view-btn.is-on { background: var(--wd-accent); color: var(--wd-on-accent); }
+
+.wd-help { width: 420px; max-width: 70vw; padding: 16px; white-space: normal; display: flex; flex-direction: column; gap: 16px; cursor: default; }
+.wd-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; font-size: 12px; line-height: 16px; }
+.wd-legend-item { display: inline-flex; align-items: center; gap: 8px; }
+.wd-legend-item .wd-glyph { width: 18px; height: 18px; }
+.wd-help-sep { height: 1px; background: var(--winui-divider-stroke-color-default); }
+.wd-help-status { display: flex; flex-direction: column; gap: 8px; }
+.wd-help-status strong { font-weight: 600; }
+.wd-help-removal { display: flex; gap: 8px; }
+.wd-help-removal-btn { padding: 8px; border: 1px solid var(--wd-control-stroke); border-radius: 4px; color: var(--winui-text-fill-color-disabled); }
+.wd-help-removal-btn .wd-glyph { width: 20px; height: 20px; }
+.wd-help-text { max-height: 200px; overflow: auto; scrollbar-width: thin; padding-right: 16px; white-space: pre-line; font-size: 12px; line-height: 16px; color: var(--wd-text-2); }
+.wd-help-link { margin-top: 4px; color: var(--winui-accent-text-primary); text-decoration: none; font-size: 14px; }
+.wd-help-link:hover { text-decoration: underline; }
+
+.wd-apps-content { margin-bottom: 4px; }
+.wd-tabs { display: flex; align-items: stretch; margin: 12px 12px 0; padding: 4px; background: var(--wd-card); border-radius: 6px; flex: none; }
+.wd-tab { position: relative; flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 12px; border-radius: 4px; border: 1px solid transparent; margin: 2px; min-width: 0; }
+.is-short .wd-tab { padding: 4px 12px; }
+.wd-tab .wd-glyph { width: 18px; height: 18px; }
+.wd-tab span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wd-tab:hover:not(.is-on) { background: var(--wd-subtle-2); }
+.wd-tab.is-on { background: var(--wd-control); border-color: var(--wd-control-stroke); }
+.wd-tab.is-on::before { content: ''; position: absolute; left: 4px; top: 50%; width: 3px; height: 18px; margin-top: -9px; border-radius: 1.5px; background: var(--wd-accent); }
+.wd-tabs-divider { width: 1px; margin: 8px 2px; background: var(--winui-divider-stroke-color-default); }
+.wd-tab-content { flex: 1; min-height: 0; display: flex; flex-direction: column; margin: 12px 12px 0 14px; }
+.wd-apps-scroll { padding: 0 0 12px; }
+.wd-apps-scroll.is-table { padding-bottom: 0; }
+
+.wd-infobar { display: flex; align-items: center; gap: 12px; padding: 12px 16px; margin-bottom: 8px; border: 1px solid var(--wd-stroke); border-radius: 4px; font-size: 14px; flex: none; }
+.wd-infobar-warning { background: var(--winui-system-fill-color-caution-background); }
+.wd-infobar-error { background: var(--winui-system-fill-color-critical-background); }
+
+.wd-apps-stack { margin: 0 auto; padding: 8px 0; display: flex; flex-direction: column; gap: 20px; }
+.wd-compact-stack { gap: 16px; }
+.wd-pickall-row { display: flex; flex-wrap: wrap; gap: 8px 12px; }
+.wd-apps-section { display: flex; flex-direction: column; gap: 8px; }
+.wd-apps-title { font-size: 20px; line-height: 28px; font-weight: 600; }
+.wd-app-grid { display: grid; grid-template-columns: repeat(var(--wd-cols, 2), minmax(0, 1fr)); gap: 16px; }
+
+/* The card is a ToggleButton: checkbox | 36px icon | name, link, description, pills. */
+.wd-app-card {
+    display: grid;
+    grid-template-columns: auto 36px minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    min-height: 108px;
+    padding: 10px 12px;
+    background: var(--wd-card);
+    border: 1px solid var(--wd-stroke);
+    border-radius: 8px;
+    cursor: pointer;
+    outline-offset: -2px;
+}
+.wd-app-card:hover { background: var(--wd-card-2); border-color: var(--wd-strong-stroke); }
+.wd-app-card.is-on { border: 2px solid var(--wd-accent); padding: 9px 11px; }
+.wd-app-icon { width: 36px; height: 36px; display: grid; place-items: center; }
+.wd-app-img { display: block; width: 100%; height: 100%; background: var(--wd-atlas) no-repeat; background-size: var(--wd-atlas-size); }
+.wd-app-icon .wd-app-fallback { width: 38px; height: 38px; }
+.wd-app-text { display: flex; flex-direction: column; min-width: 0; }
+.wd-app-name-row { display: flex; align-items: center; gap: 0; min-width: 0; }
+.wd-app-name { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-right: 6px; }
+.wd-link-btn { display: inline-grid; place-items: center; padding: 4px; border-radius: 4px; color: var(--wd-text-2); flex: none; }
+.wd-link-btn:hover { background: var(--wd-subtle-2); color: var(--wd-text); }
+.wd-app-desc { margin-top: 2px; font-size: 12px; line-height: 16px; color: var(--wd-text-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.wd-app-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.wd-app-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: var(--app-badge-installed-style-height);
+    padding: var(--app-badge-installed-style-padding);
+    border-radius: var(--app-badge-installed-style-corner-radius);
+    border: var(--app-badge-installed-style-border-thickness) solid;
+    font-size: var(--app-badge-text-style-font-size);
+    font-weight: var(--app-badge-text-style-font-weight);
+    white-space: nowrap;
+}
+.wd-app-pill .wd-glyph { width: 18px; height: 18px; margin-bottom: 2px; }
+.wd-app-pill-installed { background: var(--app-badge-installed-style-background); border-color: var(--app-badge-installed-style-border-brush); color: var(--app-badge-recommended-foreground); }
+.wd-app-pill-permanent { background: var(--app-badge-non-reinstallable-style-background); border-color: var(--app-badge-non-reinstallable-style-border-brush); color: var(--app-badge-danger-foreground); }
+.wd-app-pill-warning { background: var(--app-badge-warning-style-background); border-color: var(--app-badge-warning-style-border-brush); color: var(--app-badge-custom-foreground); }
+
+/* Compact view: 320-wide checkbox rows, status icons, app icon, name */
+.wd-compact-grid { display: grid; grid-template-columns: repeat(var(--wd-cols, 2), 320px); gap: 2px 8px; }
+.wd-compact-row { display: flex; align-items: center; gap: 4px; padding: 3px 4px; border-radius: 4px; cursor: pointer; font-size: 16px; line-height: 22px; min-width: 0; }
+.wd-compact-row:hover { background: var(--wd-subtle-2); }
+.wd-compact-row .wd-checkbox-box { margin-right: 8px; }
+.wd-row-icon { width: 20px; height: 20px; }
+.wd-status-icon { display: inline-flex; flex: none; }
+.wd-row-app { width: 20px; height: 20px; display: grid; place-items: center; margin-top: 2px; }
+.wd-row-app .wd-app-fallback { width: 22px; height: 22px; }
+.wd-compact-name { margin-left: 4px; max-width: 210px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wd-expander { border: 1px solid var(--wd-stroke); border-radius: 4px; background: var(--wd-card); }
+.wd-expander-head { width: 100%; display: flex; align-items: center; justify-content: space-between; min-height: 48px; padding: 8px 16px; font-weight: 600; border-radius: 4px; }
+.wd-expander-head:hover { background: var(--wd-card-2); }
+.wd-expander-chev { width: 12px; height: 12px; }
+.wd-expander-body { padding: 12px 16px; border-top: 1px solid var(--wd-stroke); background: var(--wd-card-2); border-radius: 0 0 4px 4px; }
+
+/* Table view (DataGrid) */
+.wd-table { min-width: 0; font-size: 14px; }
+.wd-tr { display: grid; align-items: center; min-height: 32px; border-radius: 4px; }
+.wd-table.is-windows .wd-tr { grid-template-columns: 40px minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); }
+.wd-table.is-external .wd-tr { grid-template-columns: 40px minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) 140px; }
+.wd-th-row { position: sticky; top: 0; z-index: 2; background: var(--wd-card); border-radius: 4px 4px 0 0; }
+.wd-th { display: flex; align-items: center; gap: 6px; padding: 8px 12px; font-weight: 600; text-align: left; min-width: 0; }
+.wd-th span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wd-th:hover:not(.wd-td-check) { background: var(--wd-subtle-2); }
+.wd-th-sort { width: 10px; height: 10px; }
+.wd-td { display: flex; align-items: center; gap: 8px; padding: 4px 12px; min-width: 0; }
+.wd-td.is-name { gap: 4px; padding-left: 8px; }
+.wd-td-check { justify-content: center; padding: 0; }
+.wd-td-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wd-td-icon { width: 20px; height: 20px; flex: none; }
+.wd-td .wd-app-fallback { width: 22px; height: 22px; }
+.wd-tr:not(.wd-th-row):hover { background: var(--wd-subtle-2); cursor: pointer; }
+.wd-tr.is-on { background: var(--wd-subtle-3); }
+
+/* ---- WIMUtil: expandable step containers ---- */
+.is-wim .wd-column { display: flex; flex-direction: column; gap: 8px; }
+.wd-wim-step { position: relative; background: var(--wd-card); border: 1px solid var(--wd-stroke); border-radius: 4px; }
+.wd-wim-head { width: 100%; display: flex; align-items: center; padding: 12px 16px; text-align: left; border-radius: 4px; }
+.wd-wim-head:hover:not(:disabled) { background: var(--wd-card-2); }
+.wd-wim-head-icon { width: 24px; height: 24px; margin-right: 16px; }
+.wd-wim-head-text { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.wd-wim-title { font-size: 16px; line-height: 22px; font-weight: 600; }
+.wd-wim-status { font-size: 12px; line-height: 16px; color: var(--wd-text-2); }
+.wd-wim-done { width: 20px; height: 20px; margin-right: 12px; }
+.wd-wim-chev { width: 12px; height: 12px; transition: transform .12s; }
+.wd-wim-step.is-open .wd-wim-chev { transform: rotate(180deg); }
+.wd-wim-body { padding: 0 16px 16px; }
+.wd-wim-lead { margin: 0 0 8px 4px; font-weight: 600; color: var(--wd-text-2); }
+.wd-wim-card {
+    padding: 16px;
+    margin-bottom: 8px;
+    background: var(--wd-card-2);
+    border: 1px solid var(--wd-stroke);
+    border-radius: 4px;
+}
+.wd-wim-card-row { display: flex; align-items: center; gap: 16px; min-height: 40px; }
+.wd-wim-card-icon { flex: none; display: grid; place-items: center; }
+.wd-wim-icon { width: 24px; height: 24px; }
+.wd-wim-rocket img { width: 36px; height: 36px; display: block; }
+.wd-wim-card-text { flex: 1; min-width: 0; }
+.wd-wim-card-title { font-weight: 600; }
+.wd-wim-card-desc { white-space: pre-line; margin-top: 2px; font-size: 12px; line-height: 16px; color: var(--wd-text-2); }
+.wd-wim-card-btn { min-width: 100px; }
+.wd-wim-card-done { flex: none; width: 20px; height: 20px; margin: 0 6px; }
+/* The Winhance XML session: the answer-file cards under the card's row, Generate centred at the end. */
+.wd-wim-session { margin-top: 4px; }
+.wd-wim-generate { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; margin-top: 16px; }
+.wd-wim-generate .wd-btn { grid-column: 2; min-width: 100px; }
+.wd-wim-generate .wd-wim-card-done { justify-self: start; margin-left: 14px; }
+.wd-wim-check { margin-top: 8px; font-size: 14px; }
+.wd-wim-radios { display: flex; gap: 16px; margin-top: 8px; }
+.wd-wim-combo { margin-top: 8px; }
+.wd-wim-start { display: flex; justify-content: center; margin: 8px 0; }
+.wd-wim-start .wd-btn { min-width: 160px; }
+.wd-wim-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 4px; font-size: 14px; color: var(--wd-text-2); }
+
+/* ---- ContentDialog ---- */
+.wd-smoke { position: absolute; inset: 0; z-index: 10; display: grid; place-items: center; padding: 16px; background: var(--winui-smoke-fill-color-default); }
+.wd-dialog {
+    width: min(480px, 100%);
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--winui-solid-background-fill-color-base);
+    border: 1px solid var(--winui-surface-stroke-color-default);
+    border-radius: 8px;
+    box-shadow: 0 32px 64px rgba(0, 0, 0, .37);
+    overflow: hidden;
+}
+.wd-dialog-body { padding: 24px; overflow: auto; display: flex; flex-direction: column; gap: 12px; background: var(--winui-layer-fill-color-alt); }
+.wd-dialog-title { font-size: 20px; line-height: 28px; font-weight: 600; }
+.wd-dialog-text { white-space: pre-line; }
+.wd-dialog-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 24px; border-top: 1px solid var(--wd-stroke); }
+/* DialogService's item list: a ListView (rows unpadded, wrapping, 300px tall at most) in a Border of 8px
+   padding, 4px corners and a 1px pure white (dark) or black (light) edge. */
+.wd-dialog-list { max-height: 300px; overflow-y: auto; padding: 8px; border: 1px solid #000; border-radius: 4px; }
+[data-theme="dark"] .wd-dialog-list { border-color: #fff; }
+/* The same dialog drawn on its own in the docs (data-wd-dialog), at ContentDialog's width, with no window. */
+.wd-dialog-still { max-width: 480px; margin-block: 8px 24px; }
+.wd-dialog-still .wd-dialog { width: 100%; }
+
+/* ---- Phones: narrower than the app's own 640px minimum window, so the page reflows ----
+   The app never draws this narrow. Here cards stack their controls under the text, the header search
+   takes its own row, and the title bar keeps only what fits. */
+.wd-w-600 .wd-appicon, .wd-w-600 [data-tb="BugReportButton"] { display: none; }
+.wd-w-600 .wd-modes { justify-content: flex-start; padding-left: 4px; }
+.wd-w-600 .wd-mode { padding: 6px 7px; }
+.wd-w-600 .wd-tb-btn { min-width: 32px; padding: 0 6px; }
+.wd-w-600 .wd-page { padding-right: 8px; }
+.wd-w-600 .wd-header { flex-wrap: wrap; gap: 8px; }
+.wd-w-600 .wd-header-icon { width: 32px; height: 32px; }
+.wd-w-600 .wd-header-main { gap: 10px; }
+.wd-w-600 .wd-header-title { font-size: 20px; line-height: 28px; }
+.wd-w-600 .wd-header-sub { display: none; }
+.wd-w-600 .wd-header-actions, .wd-w-600 .wd-search { width: 100%; }
+.wd-w-600 .wd-navrow { flex-wrap: wrap; margin: 8px 0; }
+.wd-w-600 .wd-crumbs { flex-basis: 100%; }
+.wd-w-600 .wd-dd-text { display: none; }
+.wd-w-600 .wd-column { padding: 0 10px; }
+.wd-w-600 .wd-scard { flex-wrap: wrap; gap: 8px 12px; padding: 12px; }
+.wd-w-600 .wd-scard-text { flex: 1 1 calc(100% - 40px); }
+.wd-w-600 .wd-scard-control { width: 100%; justify-content: flex-end; }
+.wd-w-600 .wd-section .wd-scard-text { flex-basis: calc(100% - 70px); }
+.wd-w-600 .wd-section .wd-pills { display: none; }
+.wd-w-600 .wd-child { padding: 12px; }
+.wd-w-600 .wd-combo { flex: 1; min-width: 0; }
+.wd-w-600 .wd-combo select { width: 100%; max-width: none; min-width: 0; }
+.wd-w-600 .wd-tabs { margin: 8px 8px 0; }
+.wd-w-600 .wd-tab-content { margin: 8px 8px 0; }
+.wd-w-600 .wd-wim-card-row { flex-wrap: wrap; }
+.wd-w-600 .wd-wim-card-text { flex-basis: calc(100% - 40px); }
+.wd-w-600 .wd-wim-card-btn { margin-left: auto; }
+.wd-w-600 .wd-wim-body { padding: 0 8px 8px; }
+.wd-w-600 .wd-wim-head { padding: 12px; }
+.wd-w-600 .wd-help { width: 300px; }
+
+@media (prefers-reduced-motion: reduce) {
+    .wd-host *, .wd-host *::before, .wd-host *::after { transition: none !important; animation: none !important; }
+}
+
+/* ---- Config Review ---- */
+/* InfoBadge: AttentionValueInfoBadgeStyle (the accent, with a count) and SuccessIconInfoBadgeStyle (a check). */
+.wd-infobadge { flex: none; display: inline-grid; place-items: center; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 8px;
+  background: var(--wd-accent); color: var(--wd-on-accent); font-size: 11px; font-weight: 600; line-height: 1; }
+.wd-infobadge-success { padding: 0; background: var(--winui-system-fill-color-success); }
+.wd-infobadge-success .wd-glyph { width: 10px; height: 10px; }
+.wd-crumb-dd .wd-dd .wd-infobadge { overflow: visible; }
+.wd-section-item .wd-infobadge { margin-left: auto; }
+/* NavButton's badge overlay: top right, Margin 0,2,-4,0. */
+.wd-nav-badge { position: absolute; top: 2px; right: -4px; }
+.wd-tab-badge { position: absolute; top: 2px; right: 8px; }
+/* The diff banner sits flush under its card: Margin 0,-1,0,0, CornerRadius 0,0,4,4. */
+.wd-diff { margin: -1px 0 0; border-radius: 0 0 4px 4px; flex-wrap: wrap; row-gap: 4px; }
+.wd-diff .wd-diff-text { flex: 1; min-width: 180px; }
+.wd-diff .wd-radio { margin-left: 8px; }
+.wd-setting-card.is-attached + .wd-tech-bar + .wd-diff, .wd-setting-card.is-attached + .wd-diff { border-top-color: transparent; }
+.wd-toggle.is-disabled, .wd-checkbox.is-disabled { opacity: .45; cursor: default; }
+.wd-quick:disabled { opacity: .45; }
+.wd-modebar-btn:disabled { opacity: .5; }
+/* InstallActionToggle / RemoveActionToggle: a checked ToggleButton takes the accent. */
+.wd-ab-toggle.is-on, .wd-ab-toggle.is-on:hover:not(:disabled) { background: var(--wd-accent); border-color: var(--wd-accent); color: var(--wd-on-accent); }

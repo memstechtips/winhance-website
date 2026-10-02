@@ -1,0 +1,89 @@
+<section id="windows-apps">
+    <h1>Windows Apps &amp; Features</h1>
+    <p class="lead">Remove the apps, capabilities and optional features that ship with Windows, stop them coming back, and restore them if you change your mind.</p>
+
+    <div class="app-demo" data-page="SoftwareApps" data-tab="windows"></div>
+
+    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/m4i9wroDOjA?start=689" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+
+    <h2 id="what-you-can-remove">What you can remove</h2>
+    <p>The <strong>Windows Apps &amp; Features</strong> tab of <a href="../software-apps.html">Software &amp; Apps</a> lists three kinds of items:</p>
+    <ul>
+        <li><strong>Windows Apps</strong>: the Store-style apps Windows installs for you, such as Clipchamp, Copilot, Microsoft Edge and OneDrive.</li>
+        <li><strong>Windows Capabilities</strong>: smaller add-ons such as Internet Explorer, PowerShell ISE, Steps Recorder and WordPad.</li>
+        <li><strong>Windows Optional Features</strong>: features such as Hyper-V, .NET Framework 3.5, Windows Sandbox and Recall.</li>
+    </ul>
+    <p>Each item shows whether it is installed. Two other labels are worth checking before you remove anything:</p>
+    <ul>
+        <li><strong>Permanent</strong> means the item cannot be reinstalled once it is gone. Cortana, Skype, Paint 3D and the Copilot+ PC AI packages are examples.</li>
+        <li><strong>Warning</strong> means removing the item may cause system instability. Microsoft Edge and App Installer carry this label.</li>
+    </ul>
+
+    <h2 id="remove-items">Remove items</h2>
+    <ol class="steps">
+        <li>
+            <h3>Check what you want gone</h3>
+            <p>Check the items you want to remove. You can check items marked <strong>Not Installed</strong> too. Winhance adds them to its removal list, so they get removed if Windows installs them later.</p>
+        </li>
+        <li>
+            <h3>Click Uninstall Selected Items</h3>
+            <p>The <strong>Confirm Removal</strong> dialog lists everything you checked.</p>
+        </li>
+        <li>
+            <h3>Keep continuous removal on</h3>
+            <p>Leave <strong>Save removal scripts to ensure continuous removal</strong> checked (it is on by default), then click <strong>Continue</strong>. Winhance removes the items and sets up the scheduled tasks described below.</p>
+            <div data-wd-dialog="remove" role="figure" aria-label="The Confirm Removal dialog, with Save removal scripts to ensure continuous removal checked"></div>
+        </li>
+    </ol>
+    <div class="callout callout-warning">
+        <p class="callout-title">Clearing the checkbox clears all saved removals</p>
+        <p>If you clear <strong>Save removal scripts to ensure continuous removal</strong>, Winhance removes the items once and then deletes every removal script and task it saved before, not just the ones for this run.</p>
+    </div>
+
+    <h2 id="how-removal-works">How removal works</h2>
+    <p>Winhance writes the removal as PowerShell scripts in <code>C:\ProgramData\Winhance\Scripts</code>, runs them straight away, and registers a scheduled task for each one so Windows cannot quietly bring the items back.</p>
+    <table>
+        <thead>
+            <tr><th>Script</th><th>What it removes</th><th>Task runs</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>BloatRemoval.ps1</code></td><td>Every app, capability and optional feature you removed, except Edge and OneDrive</td><td>At every sign-in</td></tr>
+            <tr><td><code>EdgeRemoval.ps1</code></td><td>Microsoft Edge</td><td>At startup</td></tr>
+            <tr><td><code>OneDriveRemoval.ps1</code></td><td>OneDrive</td><td>At every sign-in</td></tr>
+        </tbody>
+    </table>
+    <p>The tasks live in a <strong>Winhance</strong> folder in Task Scheduler and run as SYSTEM. Each time you remove more items, Winhance adds them to the list in <code>BloatRemoval.ps1</code> instead of replacing it.</p>
+    <p>For apps, <code>BloatRemoval.ps1</code> first removes the provisioned copy, so new user accounts do not get the app, then removes it for every existing user. It removes capabilities, and turns optional features off without forcing a restart. It keeps a log in <code>C:\ProgramData\Winhance\Logs\BloatRemovalLog.txt</code>.</p>
+    <p>To see the scripts, open <strong>More</strong> in the sidebar and choose <strong>Winhance Scripts</strong>. <strong>More</strong> &gt; <strong>Change History</strong> lists what Winhance removed and installed.</p>
+
+    <h3 id="edge-and-onedrive">Microsoft Edge and OneDrive</h3>
+    <p>Edge and OneDrive each get their own script because they need more than a package removal.</p>
+    <ul>
+        <li><code>EdgeRemoval.ps1</code> removes Edge (legacy and Chromium) and Edge Update. It leaves the <strong>Edge WebView2</strong> runtime alone, because other apps need it. It also sets up a redirect, based on AveYo's OpenWebSearch, so links Windows sends to Edge, such as web results in Start and Search, open in your default browser. A second task, <strong>OpenWebSearchRepair</strong>, puts the redirect back at sign-in if something overwrites it.</li>
+        <li><code>OneDriveRemoval.ps1</code> uninstalls OneDrive, removes its scheduled tasks and Start menu shortcuts, and stops it installing itself for new users. Your files in <code>%USERPROFILE%\OneDrive</code> are kept.</li>
+    </ul>
+
+    <h2 id="stop-continuous-removal">Stop continuous removal</h2>
+    <p>Click <strong>Help</strong> on the Software &amp; Apps page. Under <strong>Winhance Status:</strong> you see three icons, one each for Bloat Removal, Microsoft Edge and OneDrive.</p>
+    <ul>
+        <li>A colored icon means the script or its task exists, so continuous removal is active.</li>
+        <li>A grey icon means neither exists.</li>
+    </ul>
+    <p>Click a colored icon to delete that script and unregister its task. This only stops future removals. It does not reinstall anything.</p>
+
+    <h2 id="restore">Restore an item</h2>
+    <p>Check the item and click <strong>Install Selected Items</strong>. Items marked <strong>Permanent</strong> cannot be restored.</p>
+    <ul>
+        <li>Winhance first takes the item off the list in <code>BloatRemoval.ps1</code>, so the sign-in task leaves it alone. For Edge or OneDrive it deletes that app's script and task, and for Edge it also removes the browser redirect.</li>
+        <li>Apps install through WinGet. If WinGet cannot get a package, which usually means a regional restriction, Winhance asks before downloading it from Microsoft's servers through store.rg-adguard.net.</li>
+        <li>If Windows Update is disabled, Store installs cannot finish. Winhance offers to change the update policy to <strong>Paused for a long time</strong> and try again.</li>
+        <li>Capabilities and optional features are turned back on in a separate PowerShell window. Winhance cannot see the result, so watch that window, then click <strong>Refresh</strong>.</li>
+    </ul>
+    <div class="callout callout-note">
+        <p class="callout-title">Reinstall through Winhance</p>
+        <p>If you reinstall an app from the Microsoft Store or anywhere else while it is still on the removal list, the BloatRemoval task removes it again at your next sign-in. Restore it from this tab, or stop continuous removal first.</p>
+    </div>
+
+    <h2 id="other-settings">Other settings are applied once</h2>
+    <p>Only app removal runs again in the background. Settings on the <a href="../optimize.html">Optimize</a> and <a href="../customize.html">Customize</a> pages are applied once when you change them, and Winhance does not re-apply them if Windows or you change them later.</p>
+</section>

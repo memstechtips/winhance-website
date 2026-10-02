@@ -1,0 +1,88 @@
+<h1>Installation</h1>
+<p class="lead">Install Winhance with the installer, as a portable copy, or with one PowerShell command, and keep it up to date.</p>
+
+<p>Every method uses the same file, <code>Winhance.Installer.exe</code>, from the latest GitHub release. The installer asks whether you want a regular installation or a portable one.</p>
+
+<h2 id="requirements">System requirements</h2>
+<ul>
+    <li><strong>Windows 10 or Windows 11.</strong></li>
+    <li><strong>A 64-bit (x64) PC.</strong> The installer also runs on Windows 11 on Arm, where Windows runs Winhance through x64 emulation. There is no 32-bit version.</li>
+    <li><strong>Administrator rights.</strong> Winhance always starts elevated, so Windows shows a User Account Control prompt each time you open it.</li>
+</ul>
+<p>You don't need to install .NET or any other runtime first. Winhance ships with everything it needs. An internet connection is needed to download Winhance, to check for updates, and to install apps from the <strong>Software &amp; Apps</strong> page.</p>
+
+<h2 id="installer">Install with the installer</h2>
+<ol class="steps">
+    <li>
+        <h3>Download the installer</h3>
+        <p>Download <a href="https://github.com/memstechtips/Winhance/releases/latest/download/Winhance.Installer.exe">Winhance.Installer.exe</a> from the latest release, or use the download button on the Winhance home page.</p>
+    </li>
+    <li>
+        <h3>Choose the installation type</h3>
+        <p>Run the file and accept the license. Under <strong>Installation type</strong>, choose <strong>Perform a regular installation</strong> or <strong>Perform a portable installation</strong>. For a regular installation you can also pick <strong>Create a shortcut on the Desktop</strong> and <strong>Create a shortcut in the Start menu</strong>.</p>
+    </li>
+    <li>
+        <h3>Pick a folder</h3>
+        <p>By default, a regular installation goes to <code>C:\Program Files\Winhance</code> and a portable one to a <code>Winhance</code> folder on your desktop. You can change the folder before you continue.</p>
+    </li>
+    <li>
+        <h3>Finish and launch</h3>
+        <p>When setup finishes, leave the launch box ticked to open Winhance, then accept the User Account Control prompt.</p>
+    </li>
+</ol>
+
+<h3 id="regular-or-portable">Regular or portable?</h3>
+<table>
+    <thead>
+        <tr><th></th><th>Regular</th><th>Portable</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Default folder</td><td><code>C:\Program Files\Winhance</code></td><td><code>Desktop\Winhance</code></td></tr>
+        <tr><td>Shortcuts</td><td>Desktop and Start menu, if you tick them</td><td>None</td></tr>
+        <tr><td>Uninstaller</td><td>Yes, in Windows Settings under installed apps</td><td>No, delete the folder</td></tr>
+    </tbody>
+</table>
+<p>Both run the same app with the same features. You can move a portable folder anywhere, including to a USB drive. Either way, Winhance keeps its logs, scripts and change history in <code>C:\ProgramData\Winhance</code>, and the backup config it makes on first launch in <code>%LOCALAPPDATA%\Winhance\Backup</code>. Uninstalling, or deleting a portable folder, leaves those in place.</p>
+
+<h2 id="powershell">Install with PowerShell</h2>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/m4i9wroDOjA?start=284" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+<p>This one command downloads the installer and runs it for you, without the setup wizard.</p>
+<ol class="steps">
+    <li>
+        <h3>Open PowerShell as administrator</h3>
+        <p>Right-click the <strong>Start</strong> button and choose <strong>Terminal (Admin)</strong> or <strong>Windows PowerShell (Admin)</strong>.</p>
+    </li>
+    <li>
+        <h3>Run the command</h3>
+<pre><code class="language-powershell">irm "https://get.winhance.net" | iex</code></pre>
+    </li>
+    <li>
+        <h3>Pick normal or portable</h3>
+        <p>Type <kbd>1</kbd> for <strong>Normal Installation</strong> or <kbd>2</kbd> for <strong>Portable</strong>, then press <kbd>Enter</kbd>.</p>
+    </li>
+</ol>
+<p>What the script does next:</p>
+<ul>
+    <li>It downloads the latest <code>Winhance.Installer.exe</code> from GitHub to <code>C:\ProgramData\Winhance\Unattend\WinhanceInstaller.exe</code>.</li>
+    <li><strong>Normal</strong> installs Winhance silently to <code>C:\Program Files\Winhance</code> with Desktop and Start menu shortcuts, then opens it.</li>
+    <li><strong>Portable</strong> puts Winhance in a <code>Winhance</code> folder on your desktop, then opens it. You can move that folder anywhere.</li>
+</ul>
+<p>The downloaded installer stays in <code>C:\ProgramData\Winhance\Unattend</code>. You can delete it once Winhance is running. See <a href="../reference/cli-commands.html">Command line</a> for the installer switches the script uses.</p>
+
+<h2 id="updates">Updates</h2>
+<p>Each time Winhance starts, it checks GitHub for a newer release. If there is one, an <strong>Update Available</strong> bar shows your version and the latest one. If there isn't, Winhance says nothing.</p>
+<ol class="steps">
+    <li>
+        <h3>Download the update</h3>
+        <p>Click <strong>Install Now</strong> on the bar. To check yourself, open <strong>More</strong> at the bottom of the sidebar and choose <strong>Check for Updates</strong>.</p>
+    </li>
+    <li>
+        <h3>Relaunch</h3>
+        <p>When the download finishes, click <strong>Relaunch</strong>. Winhance closes, the installer updates it in the same folder, and Winhance opens again.</p>
+    </li>
+</ol>
+<p>A portable copy stays portable and a regular installation stays regular, so the update never moves your copy somewhere else. To see which version you have, open <strong>More</strong>: the version is the first line of the menu.</p>
+
+<h2 id="uninstall">Uninstall</h2>
+<p>For a regular installation, uninstall <strong>Winhance</strong> from installed apps in Windows Settings. For a portable copy, close Winhance and delete its folder.</p>
+<p>Uninstalling doesn't undo changes Winhance made to Windows. Undo those first if you want them gone, as described in <a href="../reference/troubleshooting.html#undo-changes">Troubleshooting</a>.</p>

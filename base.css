@@ -1,0 +1,260 @@
+/* winhance.net shared base: the type, colours, top bar, buttons and footer that the landing page
+   (site.css) and the docs (docs/css/docs.css) both wear, so the two read as one site.
+   One family (Bricolage Grotesque, variable opsz/wdth/wght) carries every word; JetBrains Mono is used
+   only for things that ARE code. Colour: WinUI's own accent for anything interactive (docs/css/winui-tokens.css),
+   the app's green for "recommended". */
+
+@font-face {
+    font-family: "Bricolage Grotesque";
+    src: url("fonts/bricolage-grotesque-latin.woff2") format("woff2");
+    font-weight: 200 800;
+    font-stretch: 75% 100%;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("fonts/jetbrains-mono-latin.woff2") format("woff2");
+    font-weight: 400 700;
+    font-display: swap;
+}
+
+:root {
+    --font: "Bricolage Grotesque", ui-sans-serif, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+
+    --page: #f4f6f9;
+    --panel: #ffffff;
+    --ink: #0f1a2a;
+    --ink-2: #435066;
+    --ink-3: #69758a;
+    --line: #d9e0ea;
+    --accent: var(--winui-accent-fill-default);
+    --accent-ink: var(--winui-accent-text-primary);
+    --on-accent: #ffffff;
+    --good: var(--app-badge-recommended-foreground);
+    --heart: #e74c3c;
+
+    --desk-0: #0b1422;
+    --desk-1: #123a67;
+    --desk-2: #1d6fb0;
+    --desk-3: #58c4f5;
+
+    --wrap: 1200px;
+    --gutter: clamp(16px, 4vw, 40px);
+    --section: clamp(72px, 10vw, 128px);
+    --radius: 12px;
+
+    /* sponsors.css is a verbatim copy of the store wall and names the accent this way */
+    --accent-color: var(--accent);
+}
+
+[data-theme="dark"] {
+    --page: #0b1422;
+    --panel: #111d2e;
+    --ink: #eef3f9;
+    --ink-2: #a9b6c8;
+    --ink-3: #7d8ba0;
+    --line: #1f2d42;
+    --on-accent: #06121f;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.6;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, p, ol, ul, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+img, svg { display: block; }
+a { color: inherit; }
+button { font: inherit; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.skip { position: absolute; left: -999px; top: 8px; z-index: 50; padding: 8px 14px; background: var(--panel); color: var(--ink); border-radius: 6px; }
+.skip:focus { left: 8px; }
+
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+
+.i { width: 20px; height: 20px; flex: none; }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* ---- Buttons ---- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color .15s, border-color .15s, color .15s;
+}
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { background: color-mix(in srgb, var(--accent) 86%, var(--ink)); }
+.btn-quiet { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-quiet:hover { border-color: var(--ink-3); }
+.btn-small { min-height: 38px; padding: 0 16px; font-size: 15px; gap: 8px; }
+.btn-small .i { width: 18px; height: 18px; }
+.icon-heart { color: var(--heart); }
+
+/* Download buttons: the rocket points down, so it reads as "download". It hovers on hover and
+   dives out of the button on click (scripts.js), drawn in the button's own text colour. */
+.dl-rocket { position: relative; width: 28px; height: 28px; flex: none; margin: -4px -2px -4px -4px; }
+.btn-small .dl-rocket { width: 24px; height: 24px; }
+.dl-rocket i {
+    position: absolute; inset: 0; rotate: 90deg;
+    --rocket: url("data:image/png;base64,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");
+    background: currentColor; -webkit-mask: var(--rocket) center / contain no-repeat; mask: var(--rocket) center / contain no-repeat;
+}
+.dl-rocket::before {
+    content: ''; position: absolute; left: -12%; top: -12%; width: 42%; height: 42%; border-radius: 50%;
+    background: radial-gradient(circle, #ffd27a, rgba(255, 140, 50, .6) 45%, transparent 72%); opacity: 0; transition: opacity .2s;
+}
+.btn:hover .dl-rocket i { animation: dl-hover 1.1s ease-in-out infinite; }
+.btn:hover .dl-rocket::before { opacity: 1; animation: dl-flame .16s steps(2) infinite alternate; }
+.dl-rocket.is-launching i { animation: dl-dive .9s cubic-bezier(.5, 0, .2, 1); }
+.dl-rocket.is-launching::before { opacity: 0; animation: none; }
+@keyframes dl-hover { 50% { translate: 0 -3px; } }
+@keyframes dl-flame { to { scale: .8 1.3; } }
+@keyframes dl-dive {
+    40% { translate: 10px 10px; opacity: 0; }
+    41% { translate: -10px -10px; opacity: 0; }
+    100% { translate: 0 0; opacity: 1; }
+}
+
+/* ---- Top bar ---- */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--page) 82%, transparent);
+    backdrop-filter: saturate(1.4) blur(14px);
+    -webkit-backdrop-filter: saturate(1.4) blur(14px);
+    border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+}
+.topbar-row { display: flex; align-items: center; gap: 28px; height: 64px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 19px; font-stretch: 90%; letter-spacing: -.01em; }
+[data-theme="light"] .brand-mark { filter: invert(1); }
+.topnav { display: flex; gap: 24px; }
+.topnav a { text-decoration: none; color: var(--ink-2); font-size: 15px; }
+.topnav a:hover { color: var(--ink); }
+.topbar-actions { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 0;
+    background: none;
+    color: var(--ink-2);
+    cursor: pointer;
+}
+.icon-btn:hover { background: color-mix(in srgb, var(--ink) 8%, transparent); color: var(--ink); }
+.icon-btn-heart { color: var(--heart); }
+.icon-btn-heart:hover { color: var(--heart); }
+.topbar-actions .btn { margin-left: 8px; }
+[data-theme="dark"] .i-moon, [data-theme="light"] .i-sun { display: none; }
+
+/* ---- The desktop a live demo window sits on (landing stage, finale, docs demos) ---- */
+/* The desktop the window sits on: a wallpaper of our own, so the window reads as a real app on a
+   real screen rather than a screenshot on a page. */
+:root { --wallpaper:
+        radial-gradient(60% 80% at 18% 100%, color-mix(in srgb, var(--desk-2) 55%, transparent), transparent 70%),
+        radial-gradient(50% 70% at 88% 8%, color-mix(in srgb, var(--desk-3) 38%, transparent), transparent 70%),
+        linear-gradient(160deg, var(--desk-1) 0%, var(--desk-0) 55%, color-mix(in srgb, var(--desk-1) 60%, var(--desk-0)) 100%),
+        var(--desk-0); }
+.desktop { position: relative; background: var(--wallpaper); color: #eef3f9; color-scheme: dark; }
+.desktop::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(115deg, rgba(255, 255, 255, .035) 0 1px, transparent 1px 140px);
+    pointer-events: none;
+}
+
+/* The demo's host element (demo/winhance-demo.js), which lives as long as the page: the window inside
+   is rebuilt on most clicks. Each page sets its height. */
+.stage-window:not(.is-ready) {
+    border-radius: 8px;
+    background: rgba(32, 32, 32, .6);
+    border: 1px solid rgba(255, 255, 255, .08);
+}
+/* On the host, which lives as long as the page: the window inside is rebuilt on most clicks. */
+.stage-window.is-ready { animation: rise .7s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(24px) scale(.985); } to { opacity: 1; transform: none; } }
+.stage-fallback { padding: 40px; }
+/* The strip under a demo window that says what the last click would change (demo/readout.js). */
+.readout {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    gap: 16px 28px;
+    flex-wrap: wrap;
+    padding: 14px 18px;
+    border-radius: 10px;
+    background: rgba(7, 14, 24, .55);
+    border: 1px solid rgba(255, 255, 255, .1);
+    backdrop-filter: blur(8px);
+    font-size: 15px;
+}
+.readout-idle { color: rgba(238, 243, 249, .72); }
+.readout-what { display: flex; flex-direction: column; min-width: 0; }
+.readout-what strong { font-weight: 600; }
+.readout-what span { color: rgba(238, 243, 249, .7); font-size: 14px; }
+.readout-writes { flex: 1; min-width: 260px; display: flex; flex-direction: column; gap: 4px; font-family: var(--mono); font-size: 13px; line-height: 1.45; }
+.readout-writes code { display: block; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; }
+.readout-path { color: rgba(238, 243, 249, .62); }
+.readout-value b { color: #7fd9ff; font-weight: 500; }
+.readout-type { color: rgba(238, 243, 249, .5); }
+.readout a { color: #9fe4ff; font-size: 14px; white-space: nowrap; }
+
+/* ---- Footer ---- */
+.footer { padding: 40px 0 48px; background: var(--desk-0); color: rgba(238, 243, 249, .72); border-top: 1px solid rgba(255, 255, 255, .08); }
+.footer-grid { display: grid; grid-template-columns: auto 1fr; gap: 20px 48px; align-items: start; }
+.footer .brand { color: #eef3f9; }
+.footer-version { font-size: 14px; margin-top: 8px; }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px 28px; font-size: 15px; }
+.footer-links a, .footer-made a { text-decoration: none; color: #eef3f9; }
+.footer-links a:hover, .footer-made a:hover { text-decoration: underline; }
+.footer-made { grid-column: 1 / -1; font-size: 14px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, .08); }
+.footer .brand-mark { filter: none; }
+
+@media (max-width: 860px) {
+    .topnav { display: none; }
+}
+
+@media (max-width: 560px) {
+    body { font-size: 16px; }
+    .topbar-actions .btn span:not(.dl-rocket) { display: none; }
+    .topbar-actions .btn { padding: 0 12px; }
+    .topbar-row { gap: 12px; }
+    .footer-grid { grid-template-columns: minmax(0, 1fr); }
+    .footer-links { justify-content: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .dl-rocket i, .dl-rocket::before { animation: none !important; }
+    .stage-window.is-ready { animation: none; }
+    * { transition: none !important; }
+}

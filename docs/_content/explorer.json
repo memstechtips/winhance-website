@@ -1,14 +1,17 @@
 {
   "intro": [
-    "<p>Enhance the Windows File Explorer with classic features, improved visibility, and powerful context menu additions. Winhance gives you complete control over how File Explorer looks and behaves.</p>"
+    "<p>How File Explorer looks and behaves: what it opens to, which files and folders it shows, what the navigation pane holds, and extra commands on the right-click menu. Desktop icons are here too.</p>"
   ],
   "groups": {
-    "Context Menu": "Customize the right-click context menu with classic features and useful additions.",
-    "Devices and Peripherals": "Settings for device lighting and printer management.",
-    "General": "General File Explorer behavior settings.",
-    "Files and Folders": "Settings for file and folder display, visibility, and behavior.",
-    "Navigation Pane": "Control what appears in the File Explorer navigation pane (left sidebar).",
-    "File Associations": "Configure default applications for file types."
+    "Context Menu": "The right-click menu. Switch to the full Windows 10-style menu, show or hide Open in Windows Terminal and Ask Copilot, and add commands such as Take Ownership, SFC /SCANNOW, Repair Windows Image, CHKDSK and Compress To.",
+    "Devices and Peripherals": "Dynamic Lighting for RGB devices, whether Windows picks your default printer for you, and AutoPlay for USB drives, discs and memory cards.",
+    "General": "What File Explorer opens to, whether folders open in the same window, single or double click, and what Quick Access shows.",
+    "Files and Folders": "How files and folders are shown: file extensions, hidden and system files, thumbnails and the icon cache, the status bar, check boxes, and support for paths longer than 260 characters.",
+    "Navigation Pane": "What the left pane of File Explorer shows: Home, Gallery, Libraries, your user folders, and removable drives.",
+    "File Associations": "Bring back Windows Photo Viewer and legacy Notepad as the apps that open images and text files.",
+    "Desktop": "Which system icons appear on the desktop, the arrow on shortcut icons, and the \"- Shortcut\" text Windows adds to new shortcut names.",
+    "This PC Folders": "Which of your folders, such as Desktop, Documents and Downloads, appear under This PC.",
+    "Network": "Shows the classic \"Users must enter a user name and password to use this computer\" check box in User Accounts."
   },
   "video": {
     "id": "lrq3ph3xi50",

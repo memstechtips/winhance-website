@@ -1,16 +1,32 @@
 {
   "intro": [
-    "<p>Winhance provides a comprehensive power management interface, allowing you to select from system-default plans or apply specialized optimizations.</p>",
-    "<div class=\"callout callout-info\"> <div class=\"callout-title\">ℹ️ Advanced Power Settings</div> <p>Winhance unlocks hidden \"Advanced Power Settings\" that are normally invisible in the Windows Control Panel. This includes settings like <strong>Processor Boost Mode</strong>, <strong>Core Parking</strong>, and <strong>Energy Performance Preference</strong>.</p> <p><strong>Warning:</strong> These settings are locked by default for safety. Unlocking and modifying them (especially numeric values) can cause system instability or increased heat generation if set incorrectly. Winhance will show a warning dialog before allowing you to unlock these controls.</p> </div>",
-    "<div class=\"callout callout-warning\"> <div class=\"callout-title\">⚠️ Setting Persistence</div> <p>Settings found in the <strong>Optimizations</strong> and <strong>Customizations</strong> views are <strong>not persistent</strong>. Winhance applies these changes once when you click \"Apply\", but it does not use background tasks to re-apply them if they are changed later by Windows or by you manually.</p> <p>This is a deliberate design choice to <strong>respect user choice</strong>. For example, if you set Dark Mode via Winhance but later decide to switch back to Light Mode using the official Windows Settings app, Winhance will not revert your change on the next reboot.</p> </div>"
+    "<p>The active power plan and the settings inside it: when the display and PC sleep, what the power button and lid do, and how the processor, USB, PCI Express and graphics save power. Winhance shows a power setting only when this PC's power plan has it, so your list may be shorter than this page.</p>",
+    "<div class=\"callout callout-warning\"><p class=\"callout-title\">Advanced processor settings</p><p>Some processor settings are hidden in Windows' own Power Options. Winhance keeps them locked until you click one and confirm a warning, because a wrong value can cause instability, slowdowns or heat problems. Tick <strong>Don't show this warning again for advanced power settings</strong> to unlock them all.</p></div>"
   ],
   "groups": {
     "General": {
-      "blurb": "",
+      "blurb": "The active power plan. The list holds the plans on this PC and the Winhance Power Plan.",
       "html": [
-        "<div class=\"callout callout-note\"> <div class=\"callout-title\">💻 Laptop vs Desktop View</div> <p>Winhance intelligently detects if your device has a battery. On a <strong>Desktop</strong>, you will see a single set of controls (AC Power). On a <strong>Laptop</strong>, you will see two sets of controls: one for <strong>Plugged In (AC)</strong> and one for <strong>On Battery (DC)</strong>, allowing for granular control over power consumption.</p> </div>"
+        "<div class=\"callout callout-note\"><p class=\"callout-title\">Laptops and desktops</p><p>On a PC with a battery, most power settings have two values: one for <strong>Plugged In</strong> and one for <strong>On Battery</strong>. On a desktop there is one.</p></div>"
       ]
-    }
+    },
+    "Display": "How long the PC sits idle before Windows turns off the display.",
+    "Hard Disk": "How long a hard disk sits idle before Windows turns it off.",
+    "Internet Explorer": "How often JavaScript timers run, a setting Windows power plans still carry.",
+    "Desktop Background Settings": "Whether a desktop slideshow keeps changing pictures or pauses.",
+    "Wireless Adapter Settings": "How much the Wi-Fi adapter saves power, traded against network performance.",
+    "Sleep": "Sleep and hibernate timeouts, wake timers, hybrid sleep, Fast Startup, and the Hibernate option in the Start menu.",
+    "USB settings": "Whether Windows powers down idle USB ports and hubs, and how deeply USB 3 links sleep.",
+    "Intel(R) Graphics Settings": "The power plan of Intel integrated graphics, from battery life to performance.",
+    "Power Buttons and Lid": "What pressing the power or sleep button, or closing the lid, does.",
+    "PCI Express": "Link State Power Management for graphics cards, SSDs and other PCIe devices.",
+    "Processor Power Management": "Minimum and maximum processor state, boost mode, core parking, the cooling policy and the energy performance preference. Several of these are advanced settings Winhance keeps locked until you unlock them.",
+    "Multimedia Settings": "Power use while you play video or share media with other devices.",
+    "Battery": "Low, critical and reserve battery levels, and what Windows does at each one. Shown only on PCs with a battery.",
+    "AMD Power Slider": "The performance and battery mode on AMD laptops.",
+    "ATI PowerPlay": "Power management for older AMD Radeon graphics cards.",
+    "Switchable Graphics": "Whether a laptop with two GPUs favors the integrated one for battery life or the dedicated one for performance.",
+    "Start Menu": "Whether Lock and Sleep appear in the Start menu's power menu."
   },
   "video": {
     "id": "lrq3ph3xi50",

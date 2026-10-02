@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { searchEntries, spliceBetweenMarkers, docsConfigBlock, versionToLongDate, versionToIsoDate, renderSitemap } from '../lib/site-meta.mjs';
+import { searchEntries, staticSearchEntry, spliceBetweenMarkers, versionToLongDate, versionToIsoDate, renderSitemap } from '../lib/site-meta.mjs';
 import { loadPages } from '../lib/render-page.mjs';
 
 const pages = loadPages(JSON.parse(readFileSync(new URL('../../docs/_pages.json', import.meta.url), 'utf8')));
@@ -37,12 +37,21 @@ test('search entries: one per generated page plus one per setting with page#id u
   assert.equal(entries.filter((e) => e.url.includes('#')).length, settingCount);
 });
 
-test('docsConfigBlock stamps version and dates', () => {
-  const block = docsConfigBlock('26.08.19');
-  assert.match(block, /version: 'Docs v26\.08\.19'/);
-  assert.match(block, /lastUpdated: 'Aug 19, 2026'/);
-  assert.match(block, /winhanceVersion: 'v26\.08\.19'/);
-  assert.match(block, /githubReleasesUrl/);
+test('a hand-written page is searchable by its own title, h2s and lead', () => {
+  const body = '<h1>Install &amp; update</h1>\n<p class="lead">Get it running.</p>\n<h2 id="a">First <code>step</code></h2>\n<pre><code>irm x | iex</code></pre>';
+  const e = staticSearchEntry({ path: 'getting-started/installation.html', label: 'Installation', group: 'Get started' }, body);
+  assert.equal(e.title, 'Install & update');
+  assert.equal(e.category, 'Get started');
+  assert.deepEqual(e.sections, ['First step']);
+  assert.match(e.content, /^Get it running\./);
+  assert.doesNotMatch(e.content, /iex/); // code blocks stay out of the snippet text
+});
+
+test('renderSitemap lists the docs home by its folder URL and stamps hand pages it is given', () => {
+  const xml = renderSitemap({ existing: '', pages, statics: ['index.html', 'guides/wimutil.html'], isoDate: '2026-08-19' });
+  assert.match(xml, /<loc>https:\/\/winhance\.net\/docs\/<\/loc>\s*<lastmod>2026-08-19<\/lastmod>/);
+  assert.doesNotMatch(xml, /docs\/index\.html/);
+  assert.match(xml, /<loc>https:\/\/winhance\.net\/docs\/guides\/wimutil\.html<\/loc>\s*<lastmod>2026-08-19<\/lastmod>/);
 });
 
 test('renderSitemap keeps hand-page lastmod and stamps generated pages', () => {

@@ -1,0 +1,47 @@
+<h1>Command line</h1>
+<p class="lead">The PowerShell install command, the installer's silent-install switches, and the two app-install flags Winhance accepts at startup.</p>
+
+<p>Winhance is a windowed app. It has no command-line mode for applying settings or configs. Use the app's Config Review or Builder modes for that. What you can script is installing Winhance, and telling it which apps to install when it opens.</p>
+
+<h2 id="install-command">Install command</h2>
+<pre><code class="language-powershell">irm "https://get.winhance.net" | iex</code></pre>
+<p><code>irm</code> (<code>Invoke-RestMethod</code>) downloads the Winhance install script and <code>iex</code> (<code>Invoke-Expression</code>) runs it. The script asks for a normal or portable installation, downloads the latest <code>Winhance.Installer.exe</code> from GitHub, installs Winhance with the switches below, and opens it. <a href="../getting-started/installation.html#powershell">Installation</a> walks through it step by step.</p>
+
+<h2 id="installer-switches">Installer switches</h2>
+<p><code>Winhance.Installer.exe</code> is an Inno Setup installer. Winhance's install script and in-app updater run it silently with <code>/SILENT /SUPPRESSMSGBOXES</code>, pick the installation type with <code>/TASKS</code> or <code>/MERGETASKS</code>, and the updater adds <code>/DIR="&lt;folder&gt;"</code> so the update lands in the same folder.</p>
+<p>The tasks are:</p>
+<table>
+    <thead>
+        <tr><th>Task</th><th>Meaning</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>regularinstall</code></td><td>Regular installation with an uninstaller. Picked by default.</td></tr>
+        <tr><td><code>regularinstall\desktopicon</code></td><td>Desktop shortcut (regular installation only).</td></tr>
+        <tr><td><code>regularinstall\startmenuicon</code></td><td>Start menu shortcut (regular installation only).</td></tr>
+        <tr><td><code>portableinstall</code></td><td>Portable copy, with no uninstaller or shortcuts.</td></tr>
+    </tbody>
+</table>
+<p>These are the two commands the install script uses. Regular installation with both shortcuts:</p>
+<pre><code class="language-powershell">Start-Process .\Winhance.Installer.exe -ArgumentList '/SILENT /SUPPRESSMSGBOXES /MERGETASKS="regularinstall\desktopicon,regularinstall\startmenuicon"' -Wait</code></pre>
+<p>Portable copy, which lands in a <code>Winhance</code> folder on the desktop:</p>
+<pre><code class="language-powershell">Start-Process .\Winhance.Installer.exe -ArgumentList '/SILENT /SUPPRESSMSGBOXES /TASKS="portableinstall"' -Wait</code></pre>
+
+<h2 id="app-flags">Winhance.exe flags</h2>
+<p>Winhance accepts two flags. Answer files made by Winhance use them to install your chosen apps on a new PC after Windows Setup. You can use them yourself too.</p>
+<table>
+    <thead>
+        <tr><th>Flag</th><th>What it does</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>--install-apps &lt;ids&gt;</code></td><td>Installs these External Apps once Winhance has loaded. Separate the IDs with commas.</td></tr>
+        <tr><td><code>--install-folder &lt;folder&gt;</code></td><td>Also runs the installers staged in this folder. Winhance's answer files point it at <code>C:\ProgramData\Winhance\Unattend\Apps\Custom</code>, where your own installers from the installation media end up on the new PC.</td></tr>
+    </tbody>
+</table>
+<p>The IDs are the ones Winhance writes into config files, for example <code>external-app-brave</code>. Open a saved <code>.winhance</code> file in a text editor and look under <code>ExternalApps</code> to find them.</p>
+<pre><code class="language-powershell">&amp; "$env:ProgramFiles\Winhance\Winhance.exe" --install-apps external-app-brave,external-app-onlyoffice</code></pre>
+<p>Winhance opens on the <strong>External Apps</strong> tab, ticks those apps, and installs them one after another. When it's done, it lists anything that didn't install, including IDs it doesn't know. Apps that failed stay ticked, so <strong>Install Selected Items</strong> tries them again.</p>
+
+<div class="callout callout-note">
+    <p class="callout-title">Only the first window reads flags</p>
+    <p>Winhance runs one copy at a time. If it's already open, starting it again just brings the open window to the front, and the flags are ignored. If Winhance can't read the flags, it writes the error to the startup log and opens without installing anything.</p>
+</div>

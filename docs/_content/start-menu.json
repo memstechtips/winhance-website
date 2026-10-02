@@ -1,8 +1,11 @@
 {
   "intro": [
-    "<p>Declutter your workspace by removing unwanted pins and bloatware from the Windows Start Menu.</p>",
-    "<div class=\"callout callout-warning\"> <div class=\"callout-title\">⚠️ Setting Persistence</div> <p>Settings found in the <strong>Customizations</strong> view are <strong>not persistent</strong>. Winhance applies these changes once, but it does not use background tasks to re-apply them if they are changed later by Windows or by you manually.</p> </div>"
+    "<p>The Start menu layout and what it recommends, suggests and searches.</p>"
   ],
+  "groups": {
+    "Layout": "Clean Start Menu removes every pinned app. The other settings here choose between more pins and more recommendations, how All apps is shown, and whether the Recommended section appears.",
+    "Start Menu Settings": "Recently added and most used apps, suggestions and recommendations, account notifications, and Bing web results when you search."
+  },
   "video": {
     "id": "lrq3ph3xi50",
     "start": 2610,
