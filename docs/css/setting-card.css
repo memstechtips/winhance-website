@@ -720,3 +720,74 @@
     font-size: var(--app-techdetail-codetext-font-size);
     color: var(--app-techdetail-codetext-foreground);
 }
+
+/* The attached rows panel under a card with typed boxes (SettingTemplates.xaml FieldRowTemplate): greyed, as a
+   locked card shows them. The app's boxes are a fixed 220px; here they shrink to 160px before the panel scrolls,
+   since a docs card is narrower than the app window. */
+.setting-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-x: auto;
+    margin: 0 -1px 0.75rem;
+    padding: 8px 16px 8px 40px;
+    border: 1px solid var(--winui-card-stroke-color-default);
+    border-top: 0;
+    background-color: var(--winui-card-background-fill-color-default);
+}
+
+.setting-field-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.setting-field {
+    flex: 0 1 220px;
+    min-width: 160px;
+    color: var(--winui-text-fill-color-disabled);
+    font-size: var(--winui-font-size-body);
+    line-height: var(--winui-line-height-body);
+}
+
+.setting-field-label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.setting-field-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 32px;
+    padding: 0 11px;
+    border: 1px solid var(--winui-control-stroke-color-default);
+    border-radius: var(--winui-control-corner-radius);
+    background-color: var(--winui-control-fill-color-default);
+}
+
+.setting-field-chevron::after {
+    content: "\2304";
+}
+
+.setting-field-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 32px;
+}
+
+.setting-field-checkbox {
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    border: 1px solid var(--winui-control-stroke-color-secondary);
+    border-radius: var(--winui-control-corner-radius);
+}
+
+.setting-field-only {
+    display: block;
+    font-size: var(--winui-font-size-caption);
+    color: var(--winui-text-fill-color-tertiary);
+}

@@ -989,6 +989,178 @@
                 </div>
                 </div>
 
+                <h2 id="multitasking">Multitasking</h2>
+                <div class="setting-card" id="explorer-snap-windows">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M18 18V20H4A2 2 0 0 1 2 18V8H4V18M22 6V14A2 2 0 0 1 20 16H8A2 2 0 0 1 6 14V6A2 2 0 0 1 8 4H20A2 2 0 0 1 22 6M20 6H8V14H20Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Snap windows</span>
+                <p class="setting-desc">Snap windows to automatically resize and arrange them into layouts</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.10.02</span></div>
+                <span class="setting-id">explorer-snap-windows</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(138.5px + 47 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(90.5px + 7 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Reboot for the change to fully take effect">Requires a system restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\Desktop">HKCU\Control Panel\Desktop</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">WindowArrangementActive</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                <div class="setting-children">
+                <div class="setting-card setting-card-child" id="explorer-snap-suggestions">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M13,3V9H21V3M13,21H21V11H13M3,21H11V15H3M3,13H11V3H3V13Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Snap suggestions</span>
+                <p class="setting-desc">When you snap a window, suggest what you can snap next to it</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.10.02</span></div>
+                <span class="setting-id">explorer-snap-suggestions</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(417.7px + 34 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">SnapAssist</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+                <div class="setting-card setting-card-child" id="explorer-snap-layouts-maximize-button">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4,8H8V4H20V16H16V20H4V8M16,8V14H18V6H10V8H16M6,12V18H14V12H6Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Snap layouts on the maximize button</span>
+                <p class="setting-desc">Show snap layouts when you hover over a window&#39;s maximize button</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.10.02</span></div>
+                <span class="setting-id">explorer-snap-layouts-maximize-button</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(327.7px + 46 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">EnableSnapAssistFlyout</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+                <div class="setting-card setting-card-child" id="explorer-snap-layouts-top-of-screen">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 4H4A2 2 0 0 0 2 6V18A2 2 0 0 0 4 20H20A2 2 0 0 0 22 18V6A2 2 0 0 0 20 4M20 13H4V6H20Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Snap layouts at the top of the screen</span>
+                <p class="setting-desc">Show snap layouts when you drag a window to the top of the screen</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.10.02</span></div>
+                <span class="setting-id">explorer-snap-layouts-top-of-screen</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(395.2px + 37 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">EnableSnapBar</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+                <div class="setting-card setting-card-child" id="explorer-snap-groups-in-switchers">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21,3H3A2,2 0 0,0 1,5V19A2,2 0 0,0 3,21H21A2,2 0 0,0 23,19V5A2,2 0 0,0 21,3M21,19H3V5H13V9H21V19Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Snapped windows in task switching</span>
+                <p class="setting-desc">Show your snapped windows when you hover over taskbar apps, in Task View, and when you press Alt+Tab</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.10.02</span></div>
+                <span class="setting-id">explorer-snap-groups-in-switchers</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(372.7px + 40 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">EnableTaskGroups</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+                <div class="setting-card setting-card-child" id="explorer-snap-without-edge">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 4H4A2 2 0 0 0 2 6V18A2 2 0 0 0 4 20H20A2 2 0 0 0 22 18V6A2 2 0 0 0 20 4M15 18H4V6H15Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Snap without reaching the edge</span>
+                <p class="setting-desc">When you drag a window, let you snap it without dragging it all the way to the screen edge</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="setting-badge win11" title="This setting applies to Windows 11 only">Windows 11 only</span><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.10.02</span></div>
+                <span class="setting-id">explorer-snap-without-edge</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(447.7px + 30 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">DITest</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+
                 <h2 id="general">General</h2>
                 <p>What File Explorer opens to, whether folders open in the same window, single or double click, and what Quick Access shows.</p>
                 <div class="setting-card" id="explorer-customization-launch-to">
@@ -1333,6 +1505,35 @@
                 </thead>
                 <tbody>
                 <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556ZM6.00086 2.35152L5.02194 4.33502C4.90541 4.57114 4.68016 4.73479 4.41959 4.77265L2.23067 5.09072L3.81459 6.63466C4.00313 6.81845 4.08917 7.08325 4.04466 7.34277L3.67075 9.52285L5.62858 8.49355C5.86164 8.37103 6.14007 8.37103 6.37313 8.49355L8.33096 9.52285L7.95705 7.34277C7.91254 7.08325 7.99858 6.81845 8.18713 6.63466L9.77105 5.09072L7.58212 4.77265C7.32156 4.73479 7.0963 4.57114 6.97977 4.33502L6.00086 2.35152Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>3</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+
+                <div class="setting-card" id="explorer-customization-folder-type-discovery">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 4C2.89 4 2 4.89 2 6V18A2 2 0 0 0 4 20H20A2 2 0 0 0 22 18V8C22 6.89 21.1 6 20 6H12L10 4H4M12 9H15V11H12V9M16 9H19V11H16V9M12 12H15V14H12V12M16 12H19V14H16V12M12 15H15V17H12V15M16 15H19V17H16V15Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Automatic folder views</span>
+                <p class="setting-desc">Windows picks each folder&#39;s view from what is in it, so a folder of pictures or videos opens as large icons. Turn this off and folders open as General items in Details view, unless you already set a view for that folder.</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.10.02</span></div>
+                <span class="setting-id">explorer-customization-folder-type-discovery</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(601.3px + 34 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Explorer has to restart for this to take effect. Winhance offers that in a bar at the bottom of the window once you have applied it, so you choose when.">Explorer restart</span></div></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell">HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">FolderType</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>deletes key</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"></td><td class="mx-value"><code>NotSpecified</code></td></tr>
                 </tbody>
                 </table>
                 </div>
@@ -2821,6 +3022,7 @@
                 <li><a href="#desktop">Desktop</a></li>
                 <li><a href="#context-menu">Context Menu</a></li>
                 <li><a href="#devices-and-peripherals">Devices and Peripherals</a></li>
+                <li><a href="#multitasking">Multitasking</a></li>
                 <li><a href="#general">General</a></li>
                 <li><a href="#files-and-folders">Files and Folders</a></li>
                 <li><a href="#file-associations">File Associations</a></li>
@@ -2838,7 +3040,7 @@
                     <img class="brand-mark" src="../../../images/winhance-rocket.png" alt="" width="24" height="24">
                     <span>Winhance</span>
                 </a>
-                <p class="footer-version">These docs describe Winhance v26.10.01</p>
+                <p class="footer-version">These docs describe Winhance v26.10.03</p>
             </div>
             <ul class="footer-links">
                 <li><a href="../../../index.html">Home</a></li>

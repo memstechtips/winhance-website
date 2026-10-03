@@ -618,6 +618,27 @@ function joinOptions(options) {
   return `${options.slice(0, -1).join(', ')} or ${options[options.length - 1]}`;
 }
 
+// Mirrors the attached rows panel in SettingTemplates.xaml (the DNS boxes): one row per server, each box 220px
+// wide with 12px between, rows 8px apart, every box greyed the way a locked card shows them. The docs hold no
+// machine values, so a box shows what a fresh card would: empty text, the first option, no tick. A box a
+// reference build lacks (encryption on Windows 10) says which Windows has it, on the first row only.
+export function fieldRows(s, refBuilds = DEFAULT_REFERENCE_BUILDS) {
+  if (!s.fields?.length) return '';
+  const box = (f, row) => {
+    const only = row === 0 && f.builds.length && !buildAllowed({ builds: f.builds }, refBuilds.win10)
+      ? ` <span class="setting-field-only">${esc(BUILD_HEADING.win11)}</span>` : '';
+    if (f.kind === 'CheckBox') {
+      return `<div class="setting-field"><span class="setting-field-check"><span class="setting-field-checkbox"></span>${esc(f.label)}</span>${only}</div>`;
+    }
+    const value = f.kind === 'Selection' ? esc(f.options[0] ?? '') : '';
+    const chevron = f.kind === 'Selection' ? '<span class="setting-field-chevron" aria-hidden="true"></span>' : '';
+    return `<div class="setting-field"><span class="setting-field-label">${esc(f.label)}${only}</span>`
+      + `<span class="setting-field-box">${value}${chevron}</span></div>`;
+  };
+  const rowsHtml = s.fields.map((row, i) => `<div class="setting-field-row">${row.map((f) => box(f, i)).join('')}</div>`).join('\n');
+  return `\n<div class="setting-fields">\n${rowsHtml}\n</div>`;
+}
+
 export function renderCard(s, ctx, { child = false } = {}) {
   const urlFor = ctx.urlFor ?? (() => null);
   const icons = ctx.icons ?? {};
@@ -642,7 +663,7 @@ export function renderCard(s, ctx, { child = false } = {}) {
 <div class="setting-pills">
 ${badges ? `<div class="setting-badges">${badges}</div>\n` : ''}<span class="setting-id">${esc(s.id)}</span>
 </div>
-</div>${optionWarnings(s)}
+</div>${fieldRows(s, refBuilds)}${optionWarnings(s)}
 ${body}
 ${kids ? `<div class="setting-children">\n${kids}\n</div>\n` : ''}</div>`;
 }

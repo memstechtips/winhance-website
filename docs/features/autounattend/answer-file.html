@@ -469,7 +469,7 @@
                 <span class="setting-id">autounattend-accounts</span>
                 </div>
                 </div>
-                <div class="mx-box" style="--mx-option-w: calc(24px + 32 * var(--mx-char-w)); --mx-table-w: calc(429.7px + 141 * var(--mx-char-w))">
+                <div class="mx-box" style="--mx-option-w: calc(24px + 33 * var(--mx-char-w)); --mx-table-w: calc(429.7px + 142 * var(--mx-char-w))">
                 <div class="mx-scroll">
                 <table class="mx-grid">
                 <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24px + 4 * var(--mx-char-w))"><col style="width: calc(24px + 52 * var(--mx-char-w))"><col style="width: calc(85.5px + 19 * var(--mx-char-w))"><col></colgroup>
@@ -479,7 +479,7 @@
                 <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-answerfile" scope="col"><span class="mx-line"><code class="mx-name">LocalAccounts</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">USERNAME</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">LastLoggedOnDisplayName</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span></span></th></tr>
                 </thead>
                 <tbody>
-                <tr><th class="mx-option" scope="row"><code>Account name</code></th><td class="mx-role"></td><td class="mx-value"><code>name (Text): ^(?![. ]+$)[^&quot;/\\\[\]:;|=,+*?&lt;&gt;]{1,20}$</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Display name</code></th><td class="mx-role"></td><td class="mx-value"><code>display-name (Text)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Group</code></th><td class="mx-role"></td><td class="mx-value"><code>group (Selection)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Password</code></th><td class="mx-role"></td><td class="mx-value"><code>password (Password)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Obscure the password in the file</code></th><td class="mx-role"></td><td class="mx-value"><code>obscure (CheckBox)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Sign in automatically once</code></th><td class="mx-role"></td><td class="mx-value"><code>auto-logon (CheckBox)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr>
+                <tr><th class="mx-option" scope="row"><code>Account name</code></th><td class="mx-role"></td><td class="mx-value"><code>name (Text): ^(?![. ]+$)[^&quot;/\\\[\]:;|=,+*?&lt;&gt;]{1,20}$</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Display name</code></th><td class="mx-role"></td><td class="mx-value"><code>display-name (Text)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Group</code></th><td class="mx-role"></td><td class="mx-value"><code>group (Selection)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Password</code></th><td class="mx-role"></td><td class="mx-value"><code>password (Password)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Obscure the password in the file</code></th><td class="mx-role"></td><td class="mx-value"><code>obscure (CheckBox)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Sign in automatically once</code></th><td class="mx-role"></td><td class="mx-value"><code>auto-logon (CheckBox)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Ask for a new password at sign-in</code></th><td class="mx-role"></td><td class="mx-value"><code>change-password (CheckBox)</code></td><td class="mx-value"></td><td class="mx-value"></td></tr>
                 </tbody>
                 </table>
                 </div>
@@ -514,6 +514,52 @@
                 <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">Windows Setup commands</span><span class="mx-group-desc">Windows Setup runs this command during installation when the matching option is chosen.</span></div><div class="mx-code-label">When set to Disconnect until Setup finishes</div><pre class="mx-code-body mx-code-powershell"><code>powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -Command &quot;Get-NetAdapter | Disable-NetAdapter -Confirm:$false&quot;</code></pre></div></div>
                 </div>
                 </div>
+                </div>
+
+                <div class="setting-card" id="autounattend-user-folders">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M19,17H11V16C11,14.67 13.67,14 15,14C16.33,14 19,14.67 19,16M15,9A2,2 0 0,1 17,11A2,2 0 0,1 15,13A2,2 0 0,1 13,11C13,9.89 13.9,9 15,9M20,6H12L10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">User folders location</span>
+                <p class="setting-desc">Where each account&#39;s Desktop, Documents, Downloads, Music, Pictures and Videos folders go, for example D:\Users. Every account gets its own folder inside it, such as D:\Users\Name\Documents, the first time it signs in. Leave it empty to keep them in C:\Users. If the new PC has no such drive, the folders stay where they are.</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="setting-badge added">Added in v26.10.02</span></div>
+                <span class="setting-id">autounattend-user-folders</span>
+                </div>
+                </div>
+                <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 12 * var(--mx-char-w)); --mx-table-w: calc(48px + 16 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role"></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span></th></tr>
+                <tr class="mx-row-paths"></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>Allowed form</code></th><td class="mx-role"></td></tr><tr><th class="mx-option" scope="row"><code>Default</code></th><td class="mx-role"></td></tr>
+                </tbody>
+                </table>
+                </div>
+                <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">PowerShell Scripts</span><span class="mx-group-desc">Winhance runs this script when you apply the matching option.</span></div><div class="mx-code-label">On Apply</div><pre class="mx-code-body mx-code-powershell"><code>$base = &#39;{{value}}&#39;
+                $root = [System.IO.Path]::Combine($base.TrimEnd(&#39;\&#39;) + &#39;\&#39;, $env:USERNAME)
+                $drive = [System.IO.Path]::GetPathRoot($root)
+                if ($drive -and (Test-Path -LiteralPath $drive)) {
+                    $key = &#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders&#39;
+                    $folders = [ordered]@{ &#39;Desktop&#39; = &#39;Desktop&#39;; &#39;Personal&#39; = &#39;Documents&#39;; &#39;{374DE290-123F-4565-9164-39C4925E467B}&#39; = &#39;Downloads&#39;; &#39;My Music&#39; = &#39;Music&#39;; &#39;My Pictures&#39; = &#39;Pictures&#39;; &#39;My Video&#39; = &#39;Videos&#39; }
+                    foreach ($name in $folders.Keys) {
+                        $target = Join-Path $root $folders[$name]
+                        $current = [Environment]::ExpandEnvironmentVariables([string](Get-ItemProperty -Path $key -Name $name -ErrorAction SilentlyContinue).$name)
+                        New-Item -Path $target -ItemType Directory -Force | Out-Null
+                        if ($current -and $current -ne $target -and (Test-Path -LiteralPath $current)) {
+                            Get-ChildItem -LiteralPath $current -Force | Move-Item -Destination $target -Force -ErrorAction SilentlyContinue
+                        }
+                        Set-ItemProperty -Path $key -Name $name -Value $target -Type ExpandString
+                    }
+                } else {
+                    Write-Log &quot;User folders left in place: $base is not on a drive this PC has&quot; &quot;WARNING&quot;
+                }</code></pre></div></div>
                 </div>
 
                 <h2 id="setup-screens">Setup screens</h2>
@@ -946,7 +992,7 @@
                     <img class="brand-mark" src="../../../images/winhance-rocket.png" alt="" width="24" height="24">
                     <span>Winhance</span>
                 </a>
-                <p class="footer-version">These docs describe Winhance v26.10.01</p>
+                <p class="footer-version">These docs describe Winhance v26.10.03</p>
             </div>
             <ul class="footer-links">
                 <li><a href="../../../index.html">Home</a></li>

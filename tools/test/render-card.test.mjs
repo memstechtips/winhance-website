@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { renderMatrix, renderCard, cardBadges, CHAR_W, CHAR_W_SM } from '../lib/render-card.mjs';
+import { renderMatrix, renderCard, cardBadges, fieldRows, CHAR_W, CHAR_W_SM } from '../lib/render-card.mjs';
 import { geometries } from '../lib/theme-css.mjs';
 import { esc } from '../lib/html.mjs';
 
@@ -659,3 +659,29 @@ test('a keyed card whose options Windows supplies renders its column header over
   assert.match(html, /<span class="mx-chip" title="[^"]*">options come from Windows<\/span>/);
   assert.match(html, /<tbody>\s*<\/tbody>/);
 });
+
+test('typed boxes render one row per server, greyed, and name the Windows a box needs', () => {
+  const s = { fields: [
+    [
+      { key: 'primary', kind: 'Text', label: 'Preferred DNS (IPv4)', options: [], builds: [] },
+      { key: 'primaryDoh', kind: 'Selection', label: 'DNS over HTTPS', options: ['Off', 'On (automatic template)'], builds: [{ min: '22000.0', max: '*' }] },
+      { key: 'primaryFallback', kind: 'CheckBox', label: 'Fallback to plaintext', options: [], builds: [{ min: '22000.0', max: '*' }] },
+    ],
+    [
+      { key: 'secondary', kind: 'Text', label: 'Alternate DNS (IPv4)', options: [], builds: [] },
+      { key: 'secondaryDoh', kind: 'Selection', label: 'DNS over HTTPS', options: ['Off'], builds: [{ min: '22000.0', max: '*' }] },
+    ],
+  ] };
+  const html = fieldRows(s);
+  assert.equal((html.match(/class="setting-field-row"/g) ?? []).length, 2);
+  assert.equal((html.match(/class="setting-field"/g) ?? []).length, 5);
+  assert.equal((html.match(/DNS over HTTPS <span class="setting-field-only">Windows 11<\/span>/g) ?? []).length, 1);
+  assert.match(html, /<span class="setting-field-box">Off</);
+  assert.doesNotMatch(html, /Preferred DNS \(IPv4\) <span class="setting-field-only">/);
+});
+
+test('a card without typed boxes renders no field panel', () => {
+  assert.equal(fieldRows({}), '');
+  assert.doesNotMatch(renderCard(byId['sound-startup'], ctx), /setting-fields/);
+});
+

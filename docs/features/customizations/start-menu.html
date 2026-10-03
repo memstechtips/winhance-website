@@ -557,6 +557,35 @@
                 </div>
                 </div>
                 </div>
+
+                <div class="setting-card" id="start-shut-down-dialog-default">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15,24H17V22H15M16.56,4.44L15.11,5.89C16.84,6.94 18,8.83 18,11A6,6 0 0,1 12,17A6,6 0 0,1 6,11C6,8.83 7.16,6.94 8.88,5.88L7.44,4.44C5.36,5.88 4,8.28 4,11A8,8 0 0,0 12,19A8,8 0 0,0 20,11C20,8.28 18.64,5.88 16.56,4.44M13,2H11V12H13M11,24H13V22H11M7,24H9V22H7V24Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Alt+F4 shut down dialog default</span>
+                <p class="setting-desc">Choose which option is already selected in the Shut Down Windows dialog when you press Alt+F4 on the desktop</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M6 1C4.89543 1 4 1.89543 4 3C4 4.10457 4.89543 5 6 5C7.10457 5 8 4.10457 8 3C8 1.89543 7.10457 1 6 1ZM5 3C5 2.44772 5.44772 2 6 2C6.55228 2 7 2.44772 7 3C7 3.55228 6.55228 4 6 4C5.44772 4 5 3.55228 5 3ZM8.5 6L3.49998 6C2.67156 6 2 6.67161 2 7.5C2 8.61608 2.45897 9.51027 3.21215 10.1148C3.95342 10.7098 4.94692 11 6 11C7.05308 11 8.04658 10.7098 8.78785 10.1148C9.54103 9.51027 10 8.61608 10 7.5C10 6.67157 9.32843 6 8.5 6ZM3.49998 7L8.5 7C8.77614 7 9 7.22386 9 7.5C9 8.31691 8.67547 8.92273 8.1619 9.33495C7.63642 9.75673 6.87992 10 6 10C5.12008 10 4.36358 9.75673 3.8381 9.33495C3.32453 8.92273 3 8.31691 3 7.5C3 7.22387 3.22387 7 3.49998 7Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.10.02</span></div>
+                <span class="setting-id">start-shut-down-dialog-default</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 11 * var(--mx-char-w)); --mx-table-w: calc(320.2px + 52 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">Start_PowerButtonAction</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>Shut down</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><g transform="translate(0.5 0.5)"><path d="M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z M0,6 H5 V11 H0 Z M6,6 H11 V11 H6 Z" fill="currentColor"/></g></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>2 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Restart</code></th><td class="mx-role"></td><td class="mx-value"><code>4</code></td></tr><tr><th class="mx-option" scope="row"><code>Sleep</code></th><td class="mx-role"></td><td class="mx-value"><code>16</code></td></tr><tr><th class="mx-option" scope="row"><code>Sign out</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Switch user</code></th><td class="mx-role"></td><td class="mx-value"><code>256</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
                 </section>
             </article>
             <nav class="pager" aria-label="More pages"><a class="pager-prev" href="../../features/customizations/taskbar.html"><span>Previous</span>Taskbar</a><a class="pager-next" href="../../features/customizations/explorer.html"><span>Next</span>Explorer</a></nav>
@@ -578,7 +607,7 @@
                     <img class="brand-mark" src="../../../images/winhance-rocket.png" alt="" width="24" height="24">
                     <span>Winhance</span>
                 </a>
-                <p class="footer-version">These docs describe Winhance v26.10.01</p>
+                <p class="footer-version">These docs describe Winhance v26.10.03</p>
             </div>
             <ul class="footer-links">
                 <li><a href="../../../index.html">Home</a></li>
