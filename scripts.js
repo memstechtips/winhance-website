@@ -270,9 +270,11 @@ document.querySelectorAll('.dl-rocket').forEach(function (rocket) {
     fetch(RAW_BASE + 'sponsors.json', { cache: 'no-cache' })
         .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
         .then(function (data) {
+            // A card leaves the day after its `ends` date, even before the data drops it.
+            var today = new Date().toISOString().slice(0, 10);
             var sponsors = (data && Array.isArray(data.sponsors) ? data.sponsors : [])
                 .filter(function (s) {
-                    return s && TIER_RANK[s.tier] !== undefined && !s.until;
+                    return s && TIER_RANK[s.tier] !== undefined && !s.until && !(s.ends && s.ends < today);
                 })
                 .sort(function (a, b) { return TIER_RANK[a.tier] - TIER_RANK[b.tier]; })
                 .slice(0, 5);
