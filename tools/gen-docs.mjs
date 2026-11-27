@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 import { loadPages, navList, renderFeaturePage, renderHubPage, renderStaticPage } from './lib/render-page.mjs';
 import { searchEntries, staticSearchEntry, searchEntriesJs, spliceBetweenMarkers, versionToIsoDate, renderSitemap } from './lib/site-meta.mjs';
 import { spliceSprite } from './gen-demo.mjs';
-import { themeCss, geometries } from './lib/theme-css.mjs';
+import { themeCss, pillIcons } from './lib/theme-css.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const DEFAULT_CATALOG = resolve(here, '..', '..', 'winhance', 'extras', 'docs-export', 'catalog.json');
@@ -52,6 +52,8 @@ export function generate({ catalogPath, siteDir, warn = () => {}, themePath = jo
   const iconsPath = join(siteDir, '_assets', 'icons.json');
   if (!existsSync(iconsPath)) throw new Error(`icons.json not found at ${iconsPath} -- run tools/vendor-icons.mjs first`);
   const icons = JSON.parse(readFileSync(iconsPath, 'utf8')).icons;
+  const siteIcons = JSON.parse(readFileSync(join(here, 'icon-sources', 'site-icons.json'), 'utf8')).icons;
+  const pills = pillIcons(theme, siteIcons);
 
   const out = new Map();
   const counts = {};
@@ -65,7 +67,7 @@ export function generate({ catalogPath, siteDir, warn = () => {}, themePath = jo
     const ctx = {
       childrenOf,
       icons,
-      geometries: geometries(theme),
+      pillIcons: pills,
       referenceBuilds: catalog.referenceBuilds,
       version: catalog.winhanceVersion,
       urlFor: (id) => {
@@ -91,7 +93,6 @@ export function generate({ catalogPath, siteDir, warn = () => {}, themePath = jo
     statics.push(staticSearchEntry(item, body));
   }
   // Each page carries only the icons it uses, from the same vendored set as the landing page.
-  const siteIcons = JSON.parse(readFileSync(join(here, 'icon-sources', 'site-icons.json'), 'utf8')).icons;
   for (const [path, html] of out) out.set(path, spliceSprite(html, siteIcons));
 
   const searchPath = join(siteDir, 'js', 'docs-search.js');

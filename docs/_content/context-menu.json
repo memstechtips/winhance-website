@@ -1,0 +1,11 @@
+{
+  "intro": [
+    "<p>What you see when you right-click in File Explorer and on the desktop: the full Windows 10-style menu or the Windows 11 one, the entries Windows and its apps add, and extra commands Winhance can add, including two menus of repair and troubleshooting tools.</p>"
+  ],
+  "groups": {
+    "General": "Switch to the classic right-click menu with every option visible, show or hide Ask Copilot and Open in Windows Terminal, and add Compress To for ZIP, 7z and TAR archives.",
+    "Files and Folders": "Commands for the files and folders you right-click: Take Ownership, a Windows Firewall menu for .exe files, a quick switch for file extensions, and a run or edit menu for PowerShell scripts.",
+    "Repair and Maintenance": "A Repair and Maintenance menu on the desktop and folder background, holding Repair Windows, SFC /SCANNOW, DISM, CHKDSK, Create Restore Point, Disk Cleanup, Optimize Drives, Windows Memory Diagnostic and Rebuild Icon Cache. Turn on the menu, then pick which tools it shows.",
+    "Troubleshooting": "A Troubleshooting menu on the desktop and folder background: Restart Explorer, Restart Into (Advanced startup and firmware settings), network fixes, End Apps Not Responding, Reset Microsoft Store Cache, Reliability Monitor and Battery Report."
+  }
+}

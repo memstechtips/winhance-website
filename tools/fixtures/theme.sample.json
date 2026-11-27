@@ -20,6 +20,9 @@
       "TechDetail.Table.StrokeBrush": "ControlStrokeColorDefaultBrush"
     }
   },
+  "sizes": {
+    "CaptionIconFontSize": "12"
+  },
   "styles": {
     "BadgePillBase": {
       "target": "Border",
@@ -107,20 +110,36 @@
         "VerticalAlignment": "Center",
         "IsTextSelectionEnabled": "True"
       }
-    }
-  },
-  "geometries": {
-    "BadgeRecommendedIconPath": {
-      "data": "M5.28347 1.54556C5.57692 0.950 M6.5 6.5 L7 7Z",
-      "viewBox": 12
     },
-    "BadgeDefaultIconPath": {
-      "data": "M0,0 H5 V5 H0 Z M6,0 H11 V5 H6 Z",
-      "viewBox": 11
+    "BadgeRecommendedIcon": {
+      "target": "fluentIcons:FluentIcon",
+      "basedOn": null,
+      "setters": {
+        "Icon": "Star",
+        "FontSize": "{StaticResource CaptionIconFontSize}",
+        "VerticalAlignment": "Center",
+        "Foreground": "{ThemeResource BadgeRecommendedForeground}"
+      }
     },
-    "BadgePreferenceIconPath": {
-      "data": "M6 1C4.89543 1 4 1.89543 4 3C4 4 5 5 6 6Z",
-      "viewBox": 12
+    "BadgeDefaultIcon": {
+      "target": "fluentIcons:FluentIcon",
+      "basedOn": null,
+      "setters": {
+        "Icon": "Apps",
+        "FontSize": "{StaticResource CaptionIconFontSize}",
+        "VerticalAlignment": "Center",
+        "Foreground": "{ThemeResource BadgeDefaultForeground}"
+      }
+    },
+    "BadgePreferenceIcon": {
+      "target": "fluentIcons:FluentIcon",
+      "basedOn": null,
+      "setters": {
+        "Icon": "Person",
+        "FontSize": "{StaticResource CaptionIconFontSize}",
+        "VerticalAlignment": "Center",
+        "Foreground": "{ThemeResource BadgePreferenceForeground}"
+      }
     }
   }
 }

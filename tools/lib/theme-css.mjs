@@ -12,7 +12,7 @@
 // system-token passthrough, is prefixed '--app-'.
 
 // WinUI system-token names this module recognises as belonging in docs/css/winui-tokens.css
-// rather than app-tokens.css. The 30 mechanical entries decamel() to exactly the var names in
+// rather than app-tokens.css. The 33 mechanical entries decamel() to exactly the var names in
 // that file (keep the two in sync if the verified token table changes); the two accent entries
 // are WinUI's role mapping onto the OS accent, not mechanical names, so they're spelled out.
 const WINUI_MECHANICAL = [
@@ -27,6 +27,7 @@ const WINUI_MECHANICAL = [
   'ControlFillColorDefault',
   'SystemFillColorAttentionBackground', 'SystemFillColorSuccessBackground', 'SystemFillColorCautionBackground', 'SystemFillColorCriticalBackground',
   'SystemFillColorSuccess', 'SystemFillColorCaution', 'SystemFillColorCritical',
+  'SystemFillColorNeutral', 'SystemFillColorNeutralBackground', 'SystemFillColorAttention',
   'TextOnAccentFillColorPrimary', 'ControlStrokeColorOnAccentDefault',
 ];
 
@@ -34,6 +35,8 @@ const WINUI_TOKENS = new Map([
   ...WINUI_MECHANICAL.map((name) => [name, `--winui-${decamel(name)}`]),
   ['AccentFillColorDefault', '--winui-accent-fill-default'],
   ['AccentTextFillColorPrimary', '--winui-accent-text-primary'],
+  ['ControlCornerRadius', '--winui-control-corner-radius'],
+  ['OverlayCornerRadius', '--winui-overlay-corner-radius'],
 ]);
 
 function decamel(word) {
@@ -92,18 +95,16 @@ function convertThickness(parts) {
 // when K, with any trailing 'Brush' stripped (WinUI pairs a Color resource with a Brush resource
 // of the same name plus 'Brush'), names a known system token; otherwise it's one of the app's
 // own tokens — a colour, a style, or an alias key — so it resolves to that key's own app var.
-function resolveRef(kind, key) {
-  if (kind === 'ThemeResource') {
-    const bare = key.replace(/Brush$/, '');
-    if (WINUI_TOKENS.has(bare)) return `var(${WINUI_TOKENS.get(bare)})`;
-  }
+function resolveRef(key) {
+  const bare = key.replace(/Brush$/, '');
+  if (WINUI_TOKENS.has(bare)) return `var(${WINUI_TOKENS.get(bare)})`;
   return `var(${cssVarName(key)})`;
 }
 
 function convertValue(raw, prop) {
   if (prop === 'FontWeight') return FONT_WEIGHTS[raw] ?? raw; // numeric weights pass through as-is (no px)
   const ref = REF.exec(raw);
-  if (ref) return resolveRef(ref[1], ref[2]);
+  if (ref) return resolveRef(ref[2]);
   if (HEX_COLOR.test(raw)) return convertColor(raw);
   if (NUMBER.test(raw)) return px(raw);
   const parts = raw.split(',').map((p) => p.trim());
@@ -128,7 +129,7 @@ function resolveSetters(styles, key, memo) {
 function themeBlock(theme, colors, aliases) {
   const lines = [];
   for (const [key, value] of Object.entries(colors)) lines.push(`  ${cssVarName(key)}: ${convertValue(value)};`);
-  for (const [key, value] of Object.entries(aliases)) lines.push(`  ${cssVarName(key)}: ${resolveRef('ThemeResource', value)};`);
+  for (const [key, value] of Object.entries(aliases)) lines.push(`  ${cssVarName(key)}: ${resolveRef(value)};`);
   return lines;
 }
 
@@ -141,7 +142,8 @@ export function themeCss(theme) {
     }
   }
 
-  const lightLines = [...themeBlock(theme, theme.themes.light, theme.aliases.light), ...styleLines];
+  const sizeLines = Object.entries(theme.sizes).map(([key, value]) => `  ${cssVarName(key)}: ${px(value)};`);
+  const lightLines = [...themeBlock(theme, theme.themes.light, theme.aliases.light), ...sizeLines, ...styleLines];
   const darkLines = themeBlock(theme, theme.themes.dark, theme.aliases.dark);
 
   return `/*
@@ -160,8 +162,16 @@ ${darkLines.join('\n')}
 `;
 }
 
-// The three pill-badge icon geometries, as {key: {data, viewBox}}. Kept out of the CSS (path
-// data isn't a style) and exported here so the card renderer doesn't need to re-read theme.json.
-export function geometries(theme) {
-  return theme.geometries;
+// The three pill icons as {recommended, default, preference: {viewBox, path}}: the Fluent icon each
+// Badge*Icon style names, drawn from the vendored site icons.
+export function pillIcons(theme, siteIcons) {
+  const out = {};
+  for (const kind of ['Recommended', 'Default', 'Preference']) {
+    const name = theme.styles[`Badge${kind}Icon`]?.setters.Icon;
+    if (!name) throw new Error(`theme.json has no Badge${kind}Icon style with an Icon setter`);
+    const entry = siteIcons[`Fluent/${name}`];
+    if (!entry) throw new Error(`Fluent/${name} (the ${kind} pill) is not vendored in tools/icon-sources/site-icons.json`);
+    out[kind.toLowerCase()] = { viewBox: entry.viewBox, path: entry.path };
+  }
+  return out;
 }

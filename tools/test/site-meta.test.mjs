@@ -61,7 +61,8 @@ test('renderSitemap keeps hand-page lastmod and stamps generated pages', () => {
   assert.match(xml, /<loc>https:\/\/winhance\.net\/docs\/features\/optimizations\/sound\.html<\/loc>\s*<lastmod>2026-08-19<\/lastmod>/);
   assert.match(xml, /<loc>https:\/\/winhance\.net\/docs\/features\/customizations\/explorer\.html<\/loc>/);
   assert.match(xml, /<loc>https:\/\/winhance\.net\/docs\/features\/autounattend\/answer-file\.html<\/loc>/);
-  // 15 generated pages (12 feature pages and 3 area hubs), plus the one hand page the existing sitemap
+  // Every generated page (feature pages and area hubs), plus the one hand page the existing sitemap
   // carried that _pages.json knows nothing about.
-  assert.equal((xml.match(/<url>/g) ?? []).length, 1 + 15);
+  const generated = pages.features.length + Object.keys(pages.areas).length;
+  assert.equal((xml.match(/<url>/g) ?? []).length, 1 + generated);
 });

@@ -76,7 +76,7 @@
 .scard-slogan { color: rgba(255, 255, 255, .62); font-size: .8rem; font-style: italic; line-height: 1.4; margin-bottom: 2px; }
 
 .scard-url {
-    color: var(--accent-color);
+    color: #58C4F5; /* the card stays dark in both themes, as on the store */
     font-size: .84rem;
     font-weight: 600;
     margin-top: 5px;
@@ -132,4 +132,22 @@
     color: var(--winui-text-fill-color-tertiary);
     font-size: var(--winui-font-size-caption);
     margin-top: 18px;
+}
+
+/* Supporters: the store page's rolling list, newest first. */
+.supporters { width: min(520px, 100%); margin: 32px auto 0; }
+.supporters h3 { font-size: 1rem; font-weight: 600; color: var(--ink-2); margin-bottom: 10px; }
+.supporters .roll { height: 178px; overflow: hidden; mask-image: linear-gradient(transparent, #000 18%, #000 82%, transparent); border-radius: 6px; }
+.supporters ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 22px; animation: supporters-roll 46s linear infinite; }
+.supporters .roll:hover ul, .supporters .roll:focus-visible ul { animation-play-state: paused; }
+.supporters li { display: flex; align-items: baseline; gap: 8px; min-width: 0; padding: 4px 0; color: var(--ink-2); }
+.supporters li span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.supporters li.m { color: var(--ink); }
+.supporters li svg, .supporters-key svg { flex: none; width: 14px; height: 14px; margin-right: -4px; fill: var(--accent-color); align-self: center; }
+.supporters li small { flex: none; font-size: .78rem; font-weight: 600; color: var(--accent-color); }
+.supporters-key { display: flex; align-items: center; gap: 8px; color: var(--ink-3); font-size: .82rem; margin-top: 10px; }
+@keyframes supporters-roll { to { transform: translateY(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+    .supporters ul { animation: none; }
+    .supporters .roll { overflow-y: auto; }
 }

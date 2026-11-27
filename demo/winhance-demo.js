@@ -37,6 +37,7 @@
     appsTab: start.tab || 'windows',
     appsView: 'card',
     appsSort: 'installedFirst',
+    appsFilter: { windows: 'all', external: 'all' },
     tableSort: null,
     picked: {},
     groupsClosed: {},
@@ -48,8 +49,8 @@
     narrow: null,
     paneForWidth: false,
     short: false,
-    // WIMUtil opens mid-use: an ISO extracted, steps 2-4 open, and on the first visit the Winhance XML session.
-    wim: { open: { 1: false, 2: true, 3: true, 4: true }, dest: 'iso', visited: false, generated: false },
+    // WIMUtil opens mid-use: an ISO extracted, steps 2-5 open, and on the first visit the Winhance XML session.
+    wim: { open: { 1: false, 2: true, 3: true, 4: true }, servicing: 'setup', choice: 'none', dest: 'iso', format: 'wim', system: false, visited: false },
     // Config Review: what the visitor decided for each change, the apps action per tab, and the picks to
     // restore on cancel.
     review: null,
@@ -76,9 +77,7 @@
     if (!g) return '<span class="' + c + '"></span>';
     if (g.image) return '<span class="' + c + ' wd-glyph-img" style="--img:url(' + g.image + ')"></span>';
     if (g.svg) return '<svg class="' + c + '" viewBox="' + g.viewBox + '" aria-hidden="true" focusable="false">' + g.svg + '</svg>';
-    var box = g.fit ? '' : ' viewBox="' + g.viewBox + '"';
-    return '<svg class="' + c + '"' + box + (g.fit ? ' data-fit="' + esc(key) + '"' : '') +
-      ' aria-hidden="true" focusable="false"><path fill="currentColor" d="' + g.path + '"/></svg>';
+    return '<svg class="' + c + '" viewBox="' + g.viewBox + '" aria-hidden="true" focusable="false"><path fill="currentColor" d="' + g.path + '"/></svg>';
   }
 
   // The rocket, white on dark and black on light, swapped by theme as MainWindowViewModel does.
@@ -86,24 +85,6 @@
     var c = cls ? cls + ' ' : '';
     return '<img class="' + c + 'wd-on-dark" src="' + asset('demo/assets/app-icon-dark.png') + '" alt="">' +
       '<img class="' + c + 'wd-on-light" src="' + asset('demo/assets/app-icon-light.png') + '" alt="">';
-  }
-
-  // XAML PathIcon draws a geometry scaled to its own bounds; an SVG needs that box spelled out.
-  var fitted = {};
-  function fitGlyphs(scope) {
-    scope.querySelectorAll('svg[data-fit]').forEach(function (svg) {
-      var key = svg.getAttribute('data-fit');
-      if (!fitted[key]) {
-        try {
-          var b = svg.firstChild.getBBox();
-          if (!b.width || !b.height) return;
-          var side = Math.max(b.width, b.height);
-          fitted[key] = [b.x - (side - b.width) / 2, b.y - (side - b.height) / 2, side, side].join(' ');
-        } catch (e) { return; }
-      }
-      svg.setAttribute('viewBox', fitted[key]);
-      svg.removeAttribute('data-fit');
-    });
   }
 
   function chevron() { return glyph('Fluent/ChevronDown', 'wd-dd-chev'); }
@@ -230,8 +211,6 @@
 
   function locked(tag) {
     if (focus && tag !== focus && tag !== 'More') return start.focus || 'Not part of this demo';
-    if (tag === 'Autounattend') return !(state.mode === 'Builder' && state.target === 'Autounattend') && S.Builder.locked;
-    if (tag === 'WimUtil') return state.mode === 'ConfigReview' && S.Builder.wimLocked;
     return false;
   }
 
@@ -301,7 +280,7 @@
     return '<button type="button" class="wd-nav-btn' + (on ? ' is-on' : '') + (lock ? ' is-locked' : '') +
       '" data-nav="' + b.tag + '" title="' + esc(lock || b.label) + '"' + (lock ? ' aria-disabled="true"' : '') +
       (on ? ' aria-current="page"' : '') + '><span class="wd-nav-content">' + glyph(b.icon) + '<span class="wd-nav-label">' + esc(b.label) + '</span></span>' +
-      (lock ? '<span class="wd-nav-lock">' + glyph(app.shell.lockIcon) + '</span>' : '') + navBadge(b.tag).replace('wd-infobadge', 'wd-infobadge wd-nav-badge') + '</button>';
+      navBadge(b.tag).replace('wd-infobadge', 'wd-infobadge wd-nav-badge') + '</button>';
   }
 
   function moreMenu() {
@@ -357,8 +336,8 @@
       '<span class="wd-flyout-check">' + (on ? glyph('Fluent/Checkmark') : '') + '</span><span class="wd-flyout-icon">' + icon + '</span><span>' + esc(text) + '</span></button>';
   }
 
-  function radioItem(attrs, on, text) {
-    return '<button type="button" class="wd-flyout-item wd-flyout-toggle" role="menuitemradio" aria-checked="' + on + '" ' + attrs + '>' +
+  function radioItem(attrs, on, text, disabled) {
+    return '<button type="button" class="wd-flyout-item wd-flyout-toggle' + (disabled ? ' is-disabled' : '') + '" role="menuitemradio" aria-checked="' + on + '" ' + attrs + (disabled ? ' disabled' : '') + '>' +
       '<span class="wd-flyout-check">' + (on ? '<span class="wd-radio-mark"></span>' : '') + '</span><span>' + esc(text) + '</span></button>';
   }
 
@@ -376,7 +355,9 @@
   function navRow(area) {
     var C = S.common, P = S[area], mi = app.shell.menuIcons;
     var crumbs = '<button type="button" class="wd-btn wd-crumb" data-act="up">' + glyph(app.shell.pageIcons[area].small, 'wd-crumb-icon') + '<span>' + esc(P.title) + '</span></button>';
-    if (state.feature) {
+    // SectionPage.NavigateToSection: a page with one section (Autounattend) draws it in place of the section
+    // cards and never opens a detail page, so it has no section crumb.
+    if (state.feature && areaFeatures(area).length > 1) {
       var f = featureById(state.feature);
       var list = areaFeatures(area).map(function (x) {
         return '<button type="button" class="wd-flyout-item wd-section-item" role="menuitem" data-feature="' + x.id + '"><span class="wd-flyout-icon">' + glyph(x.icon) + '</span><span>' + esc(x.name) + '</span>' + featuresBadge([x]) + '</button>';
@@ -388,12 +369,13 @@
     var quick = inReview()
       ? menuItem('data-quick="accept"', glyph('Fluent/Checkmark'), S.Builder.acceptAll) + menuItem('data-quick="reject"', glyph('Fluent/Dismiss'), S.Builder.rejectAll)
       : menuItem('data-quick="recommended"', glyph('Fluent/StarFilled'), C.applyRecommended) + menuItem('data-quick="default"', glyph(mi.windowsDefaults), C.resetDefaults);
-    if (state.mode === 'Builder') {
+    // SectionPage.UpdateIncludeActionsForAuthoring: an answer-file setting is always in the file.
+    if (state.mode === 'Builder' && area !== 'Autounattend') {
       quick += '<div class="wd-flyout-sep" role="separator"></div>' +
         menuItem('data-quick="include"', glyph('Fluent/Checkmark'), C.includeAll) +
         menuItem('data-quick="exclude"', glyph('Fluent/Dismiss'), C.excludeAll);
     }
-    var view = toggleItem('tech', state.techOn, glyph('Fluent/Info'), C.technicalDetails, C.technicalDetailsTip) +
+    var view = toggleItem('tech', state.techOn, glyph('Fluent/Code'), C.technicalDetails, C.technicalDetailsTip) +
       toggleItem('badges', state.badgesOn, glyph(mi.infoBadges), C.infoBadges, C.infoBadgesTip) +
       toggleItem('new', state.newOn, glyph(mi.newBadges), C.newBadges, C.newBadgesTip);
     if (inReview()) view += '<div class="wd-flyout-sep" role="separator"></div>' + toggleItem('only', state.review.only, glyph(mi.onlyChanges), S.Builder.onlyChanges, S.Builder.onlyChangesTip);
@@ -459,7 +441,7 @@
   function techPanel(s) {
     if (!state.techOn) return '';
     var open = !!state.techOpen[s.id];
-    return '<button type="button" class="wd-tech-bar' + (open ? ' is-open' : '') + '" data-tech="' + s.id + '" aria-expanded="' + open + '">' + glyph('Fluent/Info', 'wd-tech-info') +
+    return '<button type="button" class="wd-tech-bar' + (open ? ' is-open' : '') + '" data-tech="' + s.id + '" aria-expanded="' + open + '">' + glyph('Fluent/Code', 'wd-tech-info') +
       '<span>' + esc(S.common.technicalDetails) + '</span>' + glyph(open ? 'Fluent/ChevronUp' : 'Fluent/ChevronDown', 'wd-tech-chev') + '</button>' +
       (open ? '<div class="wd-tech" data-tech-body="' + s.id + '"></div>' : '');
   }
@@ -533,12 +515,13 @@
     return pageHeader(area, P.title, P.subtitle, searchBox()) + navRow(area) + content(body, state.feature || state.query.trim() ? 'is-list' : '');
   }
 
-  // The Unattend page: its header, then the answer-file settings straight under it (AutounattendPage.xaml).
+  // The Unattend page: the same shell, its one section's settings where the other pages draw their section
+  // cards (AutounattendPage.xaml).
   function unattendPage() {
     var P = S.Autounattend, f = featureById('Autounattend');
     state.feature = 'Autounattend';
     var body = state.query.trim() ? searchHits([f]) : settingsList(f.settings);
-    return pageHeader('Autounattend', P.title, '', searchBox()) + '<div class="wd-gap"></div>' + content(body, 'is-list');
+    return pageHeader('Autounattend', P.title, P.subtitle, searchBox()) + navRow('Autounattend') + content(body, 'is-list');
   }
 
   // ---- Software & Apps (SoftwareAppsPage.xaml) ----
@@ -547,9 +530,13 @@
 
   function keyOf(kind, a) { return kind + ':' + a.name; }
 
+  // WindowsAppsViewModel / ExternalAppsViewModel.FilterItem: the View menu's filter, then the search text.
+  // The demo's PC is a fresh install, so no app in it has an update.
   function searchApps(list) {
-    var q = state.query.trim().toLowerCase();
-    return q ? list.filter(function (a) { return (a.name + ' ' + a.description).toLowerCase().indexOf(q) >= 0; }) : list;
+    var q = state.query.trim().toLowerCase(), f = state.appsFilter[state.appsTab];
+    return list.filter(function (a) {
+      return (f === 'all' || (f === 'installed' ? !!a.installed : !!a.hasUpdate)) && (!q || (a.name + ' ' + a.description).toLowerCase().indexOf(q) >= 0);
+    });
   }
 
   function sorted(list) {
@@ -593,18 +580,60 @@
     return a.website ? '<a class="wd-link-btn" href="' + esc(a.website) + '" target="_blank" rel="noopener" title="' + esc(a.website) + '" data-stop="1">' + glyph('Fluent/Open') + '</a>' : '';
   }
 
+  // What each radio item of the View menu sets, keyed by the SoftwareAppsViewModel flag it checks
+  // (SoftwareAppsPage.xaml.cs's *_Click handlers). The items themselves are app.shell.appsViewMenu.
+  var appsChoices = {
+    IsCardView: ['view', 'card'], IsTableView: ['view', 'table'], IsCompactView: ['view', 'compact'],
+    IsSortInstalledFirst: ['sort', 'installedFirst'], IsSortNameAsc: ['sort', 'az'], IsSortNameDesc: ['sort', 'za'],
+    IsFilterAll: ['filter', 'all'], IsFilterInstalled: ['filter', 'installed'], IsFilterUpdates: ['filter', 'updates'],
+  };
+
+  function appsFlag(name) {
+    if (name === 'IsSortEnabled') return state.appsView !== 'table';
+    if (name === 'IsExternalAppsTabSelected') return state.appsTab === 'external';
+    var c = appsChoices[name];
+    return (c[0] === 'view' ? state.appsView : c[0] === 'sort' ? state.appsSort : state.appsFilter[state.appsTab]) === c[1];
+  }
+
+  function chooseApps(name) {
+    var c = appsChoices[name];
+    if (c[0] === 'view') state.appsView = c[1];
+    else if (c[0] === 'sort') state.appsSort = c[1];
+    else {
+      // SoftwareAppsViewModel.SetFilter: updates exist on External Software only, so Windows Apps keeps its filter.
+      state.appsFilter.external = c[1];
+      if (c[1] !== 'updates') state.appsFilter.windows = c[1];
+    }
+  }
+
+  function appsViewMenu() {
+    var vm = app.shell.appsViewMenu;
+    var items = vm.items.map(function (m) {
+      if (m.separator) return '<div class="wd-flyout-sep" role="separator"></div>';
+      if (m.visible && !appsFlag(m.visible)) return '';
+      if (m.command) return '<button type="button" class="wd-flyout-item wd-flyout-toggle" role="menuitem" data-command="' + m.command + '"><span class="wd-flyout-check"></span><span>' + esc(m.label) + '</span></button>';
+      if (m.checked) return radioItem('data-apps-choice="' + m.checked + '"', appsFlag(m.checked), m.label, m.enabled && !appsFlag(m.enabled));
+      return '<button type="button" class="wd-flyout-item wd-flyout-toggle is-disabled" role="menuitem" disabled><span class="wd-flyout-check"></span><span>' + esc(m.label) + '</span></button>';
+    }).join('');
+    return dropDown('appsView', glyph(vm.icon, 'wd-ab-icon') + '<span class="wd-ab-text">' + esc(vm.label) + '</span>', items, { tip: vm.label });
+  }
+
+  // SoftwareAppsViewModel.PrimaryActionText: on External Software the Install button also updates, so its label
+  // names what it will do with the ticked apps. Builder only chooses apps to install.
+  function primaryActionText() {
+    var P = S.SoftwareApps;
+    if (state.appsTab !== 'external' || state.mode === 'Builder') return P.install;
+    var ticked = app.apps.external.filter(function (a) { return state.picked[keyOf('external', a)]; });
+    var updates = ticked.filter(function (a) { return a.hasUpdate; }).length;
+    return !updates ? P.install : updates === ticked.length ? P.update : P.installOrUpdate;
+  }
+
   function actionBar() {
     // SoftwareAppsViewModel.UpdateButtonStates: both buttons need something ticked on the open tab.
     var P = S.SoftwareApps, n = pickedIn(state.appsTab);
     var btn = function (act, icon, text, enabled, cls) {
       return '<button type="button" class="wd-btn wd-ab-btn' + (cls ? ' ' + cls : '') + '" data-act="' + act + '" title="' + esc(text) + '"' + (enabled ? '' : ' disabled') + '>' + glyph(icon, 'wd-ab-icon') + '<span class="wd-ab-text">' + esc(text) + '</span></button>';
     };
-    var view = function (id, icon, tip) {
-      return '<button type="button" class="wd-view-btn' + (state.appsView === id ? ' is-on' : '') + '" data-view="' + id + '" title="' + esc(tip) + '" aria-pressed="' + (state.appsView === id) + '">' + glyph(icon) + '</button>';
-    };
-    var sort = radioItem('data-sort="installedFirst"', state.appsSort === 'installedFirst', P.sortInstalledFirst) +
-      radioItem('data-sort="az"', state.appsSort === 'az', P.sortAZ) + radioItem('data-sort="za"', state.appsSort === 'za', P.sortZA);
-    var tableView = state.appsView === 'table';
     // In review the two buttons become toggles that pick what happens to the ticked apps on this tab.
     var action = function (act, icon, text) {
       var on = state.review.action[state.appsTab] === act;
@@ -613,31 +642,11 @@
     };
     var main = inReview()
       ? action('install', 'Fluent/ArrowDownload', P.install) + action('remove', 'Fluent/Delete', P.uninstall)
-      : btn('install', 'Fluent/ArrowDownload', P.install, n > 0, 'wd-ab-main') + btn('uninstall', 'Fluent/Delete', P.uninstall, n > 0, 'wd-ab-main');
+      : btn('install', 'Fluent/ArrowDownload', primaryActionText(), n > 0, 'wd-ab-main') + btn('uninstall', 'Fluent/Delete', P.uninstall, n > 0, 'wd-ab-main');
     return '<div class="wd-actionbar">' + main +
       '<span class="wd-ab-sep"></span>' +
       btn('refresh', 'Fluent/ArrowSync', P.refresh, true) +
-      '<div class="wd-menu">' + btn('help', 'Fluent/QuestionCircle', P.help, true) + (state.menu === 'help' ? helpFlyout() : '') + '</div>' +
-      '<span class="wd-view-switch" role="group">' + view('card', 'Fluent/Grid', P.viewCard) + view('table', 'Fluent/LineHorizontal3', P.viewTable) + view('compact', 'Fluent/TableSimple', P.viewCompact) + '</span>' +
-      dropDown('sort', glyph('Fluent/ArrowSort', 'wd-ab-icon') + '<span class="wd-ab-text">' + esc(P.sort) + '</span>', sort, { disabled: tableView, title: tableView ? P.sortTableHint : '', tip: P.sort }) +
-      '</div>';
-  }
-
-  // WindowsAppsHelpContent / ExternalAppsHelpContent.
-  function helpFlyout() {
-    var P = S.SoftwareApps, sh = app.shell;
-    var legendItem = function (icon, text) { return '<span class="wd-legend-item">' + glyph(icon) + '<span>' + esc(text) + '</span></span>'; };
-    var body;
-    if (state.appsTab === 'windows') {
-      body = '<div class="wd-legend">' + legendItem('Fluent/CheckmarkCircleColor', P.installed) + legendItem('Fluent/ApprovalsAppColor', P.installable) +
-        legendItem('Fluent/DismissCircleColor', P.notInstalled) + legendItem('Fluent/FlagColor', P.permanent) + legendItem('Fluent/ErrorCircleColor', P.warning) + '</div>' +
-        '<div class="wd-help-sep"></div><div class="wd-help-status"><strong>' + esc(P.helpStatus) + '</strong><span class="wd-help-removal">' +
-        sh.removal.map(function (r) { return '<button type="button" class="wd-help-removal-btn" disabled title="' + esc(r.name) + '">' + glyph(r.icon) + '</button>'; }).join('') + '</span></div>' +
-        '<div class="wd-help-sep"></div><p class="wd-help-text">' + esc(P.helpWindows) + '</p><a class="wd-help-link" href="' + sh.helpLinks.windows + '">' + esc(P.helpWindowsMore) + '</a>';
-    } else {
-      body = '<p class="wd-help-text">' + esc(P.helpExternal) + '</p><a class="wd-help-link" href="' + sh.helpLinks.external + '">' + esc(P.helpExternalMore) + '</a>';
-    }
-    return '<div class="wd-flyout wd-help" role="dialog" aria-label="' + esc(P.help) + '">' + body + '</div>';
+      appsViewMenu() + '</div>';
   }
 
   function tabs() {
@@ -789,78 +798,114 @@
 
   // ---- WIMUtil (WimUtilPage.xaml) ----
 
-  // WizardActionCardTemplate: icon, title and description, a status icon, then the button. A card can carry
-  // more under its row (the Winhance XML card's session).
-  function wimCard(icon, title, text, button, opts) {
-    opts = opts || {};
-    return '<div class="wd-wim-card' + (opts.after ? ' has-after' : '') + '"><div class="wd-wim-card-row">' + '<span class="wd-wim-card-icon">' + icon + '</span>' +
-      '<div class="wd-wim-card-text"><div class="wd-wim-card-title">' + esc(title) + '</div>' + (text ? '<div class="wd-wim-card-desc">' + esc(text) + '</div>' : '') + (opts.extra || '') + '</div>' +
-      (opts.status || '') +
-      (button ? '<button type="button" class="wd-btn wd-wim-card-btn" data-wim="' + (opts.act || 'card') + '">' + esc(button) + '</button>' : '') + '</div>' + (opts.after || '') + '</div>';
+  // The media a visitor finds loaded: a Windows 11 ISO extracted into C:\WinhanceWIM, its install.wim
+  // sized like a 25H2 image.
+  var WIM_SAMPLE = { workDir: 'C:\\WinhanceWIM', freeGb: 182, wimGb: 6.12, esdGb: 3.98 };
+
+  // A WizardActionCardView on the settings-card shape: icon, title and description, then the control.
+  function wimCard(icon, title, text, control, o) {
+    o = o || {};
+    return '<div class="wd-scard' + (o.cls ? ' ' + o.cls : '') + '"' + (o.attrs ? ' ' + o.attrs : '') + '>' +
+      (icon ? glyph(icon, 'wd-scard-icon') : '') +
+      '<div class="wd-scard-text"><div class="wd-scard-header"><span>' + esc(title) + '</span>' + (o.tag || '') + '</div>' +
+      (text ? '<div class="wd-scard-desc">' + esc(text) + '</div>' : '') + (o.extra || '') + '</div>' +
+      '<div class="wd-scard-control">' + (control || '') + '</div></div>';
   }
 
-  function wimStep(n, icon, title, status, body, opts) {
+  function wimBtn(label, act, accent) {
+    return '<button type="button" class="wd-btn' + (accent ? ' wd-btn-accent' : '') + '" data-wim="' + act + '">' + esc(label) + '</button>';
+  }
+
+  function wimRadio(name, id, label, on) {
+    return '<label class="wd-radio"><input type="radio" name="wd-' + name + '" data-wim-' + name + '="' + id + '"' + (on ? ' checked' : '') + '><span class="wd-radio-dot"></span><span>' + esc(label) + '</span></label>';
+  }
+
+  // The ModeTag: where a choice lands.
+  function wimTag(image) {
+    var W = S.WimUtil;
+    return '<span class="wd-pill wd-pill-def wd-wim-tag">' + esc(image ? W.tagImage : W.tagSetup) + '</span>';
+  }
+
+  // Step header: 36px icon, "Step N: Title" name, status line, check or chevron.
+  function wimStep(n, iconKey, title, status, body, done) {
     var open = !!state.wim.open[n];
     return '<section class="wd-wim-step' + (open ? ' is-open' : '') + '">' +
-      '<button type="button" class="wd-wim-head" data-step="' + n + '" aria-expanded="' + open + '">' + icon +
+      '<button type="button" class="wd-wim-head" data-step="' + n + '" aria-expanded="' + open + '" aria-label="' + esc(fmt(S.WimUtil.stepHeader, n, title)) + '">' + glyph(iconKey, 'wd-wim-head-icon') +
       '<span class="wd-wim-head-text"><span class="wd-wim-title">' + esc(title) + '</span><span class="wd-wim-status">' + esc(status) + '</span></span>' +
-      (opts.done ? glyph('Fluent/CheckmarkCircleColor', 'wd-wim-done') : '') + glyph('Fluent/ChevronDown', 'wd-wim-chev') + '</button>' +
+      (done ? glyph('Fluent/CheckmarkCircleColor', 'wd-wim-done') : '') + glyph('Fluent/ChevronDown', 'wd-wim-chev') + '</button>' +
       (open ? '<div class="wd-wim-body">' + body + '</div>' : '') + '</section>';
   }
 
-  // The media a visitor finds loaded: a Windows 11 ISO extracted into C:\WinhanceWIM, its install.wim
-  // sized like a 25H2 image. The convert card's sums are WimImageFormatViewModel's.
-  var WIM_SAMPLE = { workDir: 'C:\\WinhanceWIM', wimGb: 6.12 };
-
-  function isWimSession() { return state.mode === 'Builder' && state.target === 'Autounattend'; }
+  // WizardStepRail: a marker per step, joined by a line that turns green once the step is done.
+  function wimRail(titles, done) {
+    var W = S.WimUtil;
+    return '<nav class="wd-wim-rail" aria-label="' + esc(W.railName) + '">' + titles.map(function (t, i) {
+      return '<div class="wd-wim-rail-item' + (done[i] ? ' is-done' : '') + '"><span class="wd-wim-rail-mark">' + (done[i] ? glyph('Fluent/Checkmark') : i + 1) + '</span><span>' + esc(t) + '</span></div>';
+    }).join('') + '</nav>';
+  }
 
   function wimPage() {
-    var W = S.WimUtil, wi = app.shell.wimIcons, session = isWimSession(), done = state.wim.generated;
-    var big = function (key) { return glyph(key, 'wd-wim-head-icon'); };
-    var cardIcon = function (key) { return glyph(key, 'wd-wim-icon'); };
-    var check = glyph('Fluent/CheckmarkCircleColor', 'wd-wim-card-done');
-    var after = WIM_SAMPLE.wimGb * 0.65;
-    var step1 = wimCard(cardIcon(wi.iso), W.selectIso, W.isoDone, W.selectIsoButton, { status: check }) +
-      wimCard(cardIcon(wi.folder), W.workDir, W.using + ': ' + WIM_SAMPLE.workDir, W.selectFolder, {
-        extra: checkbox('data-wim-check="1"', false, W.extractedAlready, 'wd-wim-check'),
-      }) +
-      '<p class="wd-wim-lead">' + esc(W.optionalConvert) + '</p>' +
-      wimCard(cardIcon(wi.convert), fmt(W.convertTitle, 'WIM', 'ESD'),
-        W.current + ': install.wim (' + WIM_SAMPLE.wimGb.toFixed(2) + ' GB)\n' + W.afterConversion + ': ~' + after.toFixed(2) + ' GB (' + W.save + ' ~' + (WIM_SAMPLE.wimGb - after).toFixed(2) + ' GB)',
-        fmt(W.convertButton, 'ESD')) +
-      '<div class="wd-wim-row"><span>' + esc(W.downloadIso) + '</span><button type="button" class="wd-btn wd-btn-sm" data-wim="card" title="' + esc(W.win10Tip) + '">' + glyph('Fluent/ArrowDownload') + esc(W.win10) + '</button>' +
-      '<button type="button" class="wd-btn wd-btn-sm" data-wim="card" title="' + esc(W.win11Tip) + '">' + glyph('Fluent/ArrowDownload') + esc(W.win11) + '</button></div>';
-    var rocket = '<span class="wd-wim-rocket">' + appIcon() + '</span>';
-    // In a session (Builder, Autounattend target) the card holds the Autounattend settings and its own Generate.
-    var sessionBody = session
-      ? '<div class="wd-wim-session">' + settingsList(featureById('Autounattend').settings) +
-        '<div class="wd-wim-generate"><button type="button" class="wd-btn" data-wim="generate">' + esc(W.generateNow) + '</button>' + (done ? check : '') + '</div></div>'
-      : '';
-    var step2 = '<p class="wd-wim-lead">' + esc(W.pickOne) + '</p>' +
-      wimCard(rocket, W.generate, session ? W.generateSession : W.generateText, session ? '' : W.generateButton,
-        { act: 'session', status: !session && done ? check : '', after: sessionBody }) +
-      wimCard(cardIcon(wi.download), W.download, W.downloadText, W.downloadButton) +
-      wimCard(cardIcon(wi.select), W.selectXml, W.selectXmlText, W.selectXmlButton) +
-      '<div class="wd-wim-row"><span>' + esc(W.generateFiles) + '</span><button type="button" class="wd-btn wd-btn-sm" data-wim="card" title="' + esc(W.schneegansTip) + '">' + glyph('Fluent/Open') + esc(W.schneegans) + '</button></div>';
-    var step3 = wimCard(cardIcon(wi.drivers), W.extractDrivers, W.extractDriversText, W.extractDriversButton) +
-      wimCard(cardIcon(wi.folder), W.customDrivers, W.customDriversText, W.customDriversButton);
-    var radio = function (id, label) {
-      return '<label class="wd-radio"><input type="radio" name="wd-dest" data-dest="' + id + '"' + (state.wim.dest === id ? ' checked' : '') + '><span class="wd-radio-dot"></span><span>' + esc(label) + '</span></label>';
+    var W = S.WimUtil, wi = app.shell.wimIcons, w = state.wim, image = w.servicing === 'image', usb = w.dest === 'usb';
+    var group = function (t) { return '<div class="wd-group wd-wim-group">' + esc(t) + '</div>'; };
+
+    var step1 = '<div class="wd-wim-row"><span>' + esc(W.downloadIso) + '</span>' +
+      '<button type="button" class="wd-btn wd-btn-sm" data-wim="card" title="' + esc(W.win10Tip) + '">' + glyph(wi.download) + esc(W.win10) + '</button>' +
+      '<button type="button" class="wd-btn wd-btn-sm" data-wim="card" title="' + esc(W.win11Tip) + '">' + glyph(wi.download) + esc(W.win11) + '</button></div>' +
+      wimCard(wi.iso, W.selectIso, W.isoDone, wimBtn(W.selectIsoButton, 'card') + glyph('Fluent/CheckmarkCircleColor', 'wd-wim-card-done')) +
+      wimCard(wi.folder, W.workDir, fmt(W.workDirDefault, WIM_SAMPLE.workDir) + ' (' + fmt(W.freeSpace, WIM_SAMPLE.freeGb) + ')', wimBtn(W.selectFolder, 'card'),
+        { extra: checkbox('data-wim-check="1"', false, W.extractedAlready, 'wd-wim-check') });
+
+    var radioCard = function (id, icon, title, text) {
+      return wimCard(icon, title, text, '<span class="wd-radio-dot-wrap">' + wimRadio('serv', id, '', w.servicing === id) + '</span>',
+        { cls: 'wd-wim-pick' + (w.servicing === id ? ' is-picked' : ''), attrs: 'data-wim-serv-card="' + id + '"' });
     };
-    var usb = state.wim.dest === 'usb';
-    var step4 = wimCard(cardIcon(wi.destination), W.destination, W.destinationText, '', { extra: '<div class="wd-wim-radios">' + radio('iso', W.destIso) + radio('usb', W.destUsb) + '</div>' }) +
+    var ownChoice = function (id, title, text) {
+      return wimCard(null, title, text, wimRadio('choice', id, '', w.choice === id), { cls: 'wd-child wd-wim-pick', attrs: 'data-wim-choice-card="' + id + '"' });
+    };
+    var step2 = group(W.servicingTitle) +
+      radioCard('setup', wi.plug, W.duringSetup, W.duringSetupText) +
+      radioCard('image', wi.wrench, W.builtIn, W.builtInText) +
+      (image ? group(W.yourImage) + wimCard(wi.edition, W.edition, W.editionText,
+        '<span class="wd-combo"><select data-wim-edition><option>Windows 11 Pro</option><option>Windows 11 Home</option><option>Windows 11 Enterprise</option></select>' + chevron() + '</span>') : '') +
+      group(W.answerFile) +
+      '<div class="wd-setting">' + wimCard(wi.answerFile, W.answerFile, W.answerFileText, '', { cls: 'wd-parent is-attached' }) +
+      ownChoice('builder', W.answerFileBuilderTitle, W.answerFileBuilderText) +
+      ownChoice('own', W.answerFileOwn, W.answerFileOwnText) + '</div>' +
+      '<div class="wd-wim-row"><span>' + esc(W.generateFiles) + '</span><button type="button" class="wd-btn wd-btn-sm" data-wim="card" title="' + esc(W.schneegansTip) + '">' + glyph(wi.open) + esc(W.schneegans) + '</button></div>';
+
+    var chosen = w.choice !== 'none';
+    var step3 = (chosen ? wimCard(wi.answerSummary, W.answerCard, W.answerCardText,
+        '<button type="button" class="wd-wim-link" data-wim="session">' + esc(fmt(W.changeIn, W.navAutounattend)) + '</button>', { tag: wimTag(false) }) : '') +
+      group(W.driversHeading) +
+      wimCard(wi.system, W.systemDrivers, image ? W.systemDriversImage : W.systemDriversText, checkbox('data-wim-opt="system"', w.system, ''), { tag: wimTag(image) }) +
+      wimCard(wi.folderAdd, W.folderDrivers, image ? W.folderDriversImage : W.folderDriversText, wimBtn(W.chooseFolder, 'card'), { tag: wimTag(image) }) +
+      wimCard(wi.update, W.addUpdate, W.addUpdateText, checkbox('disabled', false, ''), { tag: wimTag(image) });
+    if (image) {
+      var kids = [['resetBase', W.resetBase, W.resetBaseWarning], ['dl', W.cleanupDownloads], ['logs', W.cleanupLogs], ['temp', W.cleanupTemp], ['crash', W.cleanupCrash]];
+      step3 += '<div class="wd-setting">' + wimCard(wi.cleanup, W.cleanup, W.cleanupText, '', { cls: 'wd-parent is-attached' }) +
+        kids.map(function (k) { return wimCard(null, k[1], k[2], checkbox('data-wim-opt="' + k[0] + '"', !!w[k[0]], ''), { cls: 'wd-child' }); }).join('') + '</div>';
+    }
+
+    var esd = w.format === 'esd';
+    var step4 = wimCard(wi.format, W.formatTitle, fmt(W.formatCurrent, 'WIM', WIM_SAMPLE.wimGb.toFixed(2) + ' GB') + ' ' + W.formatText,
+        '<span class="wd-wim-radios">' + wimRadio('format', 'wim', W.formatWim, !esd) + wimRadio('format', 'esd', W.formatEsd, esd) + '</span>') +
+      wimCard(wi.destination, W.destination, W.destinationText,
+        '<span class="wd-wim-radios">' + wimRadio('dest', 'iso', W.destIso, !usb) + wimRadio('dest', 'usb', W.destUsb, usb) + '</span>') +
       (usb
-        ? wimCard(cardIcon(wi.usb), W.usb, W.usbText, W.usbButton, { extra: '<span class="wd-combo wd-wim-combo"><select disabled><option>' + esc(W.noUsb) + '</option></select>' + chevron() + '</span>' }) +
+        ? wimCard(wi.usb, W.usb, W.usbText, wimBtn(W.usbButton, 'card') + '<span class="wd-combo"><select disabled><option>' + esc(W.noUsb) + '</option></select>' + chevron() + '</span>',
+            { extra: checkbox('data-wim-opt="usbAll"', !!w.usbAll, W.showUsbDrives, 'wd-wim-check') + '<div class="wd-scard-desc">' + esc(W.showUsbDrivesWarning) + '</div>' }) +
           '<div class="wd-infobar wd-infobar-error">' + glyph('Fluent/ErrorCircleColor') + '<span>' + esc(W.usbWarning) + '</span></div>'
-        : wimCard(cardIcon(wi.output), W.output, W.outputText, W.outputButton)) +
-      '<div class="wd-wim-start"><button type="button" class="wd-btn wd-btn-accent" data-wim="create">' + esc(usb ? W.writeUsb : W.createIso) + '</button></div>';
+        : wimCard(wi.output, W.output, W.outputText, wimBtn(W.outputButton, 'card'))) +
+      '<div class="wd-wim-start">' + checkbox('data-wim-opt="deleteWork"', true, W.deleteWorkingFolder) + wimBtn(usb ? W.writeUsb : W.createIso, 'create', true) + '</div>';
+
+    var s3status = w.system ? (image ? W.driversForImage : W.driversAdded) : W.noChanges;
+    var titles = [W.step1, W.step2, W.step3, usb ? W.writeUsb : W.step4];
+    var body = wimStep(1, wi.steps[0], W.step1, W.isoExtracted, step1, true) +
+      wimStep(2, wi.steps[1], W.step2, chosen ? (w.choice === 'builder' ? W.answerFileBuilder : W.answerFileOwn) : W.noXml, step2, chosen) +
+      wimStep(3, wi.steps[2], W.step3, s3status, step3, w.system) +
+      wimStep(4, usb ? wi.step4Usb : wi.steps[3], titles[3], usb ? W.usbReady : W.readyToCreate, step4, false);
     return pageHeader('WimUtil', W.title, W.subtitle, '') + '<div class="wd-gap"></div>' +
-      content(
-        wimStep(1, big(wi.step1), W.step1, W.isoExtracted, step1, { done: true }) +
-        wimStep(2, big(wi.step2), W.step2, done ? W.xmlAdded : W.noXml, step2, { done: done }) +
-        wimStep(3, big(wi.step3), W.step3, W.noDrivers, step3, {}) +
-        wimStep(4, big(wi.step4), W.step4, W.readyToCreate, step4, {}),
-        'is-wim');
+      content('<div class="wd-wim-layout">' + wimRail(titles, [true, chosen, w.system, false]) + '<div class="wd-wim-steps">' + body + '</div></div>', 'is-wim');
   }
 
   // ---- Settings (SettingsPage.xaml) ----
@@ -896,9 +941,8 @@
   // ---- Dialogs (ContentDialog) ----
 
   // AppOperationConfirmation.Build, shown by DialogService.ShowConfirmationAsync: the tab's ticked items in list
-  // order (SoftwareAppsViewModel acts on the open tab only), and on Windows Apps the removal-scripts checkbox,
-  // ticked to start. External uninstall passes "uninstall" through Dialog_ConfirmOperation untranslated, as
-  // the app does.
+  // order (SoftwareAppsViewModel acts on the open tab only), and on Windows Apps the keep-removed checkbox
+  // and its hint line, ticked to start. An External Software uninstall is the same removal dialog without the checkbox.
   function appsDialog(op, names) {
     if (!names) {
       names = [];
@@ -912,11 +956,11 @@
   function dialogBox(d) {
     var C = S.common, P = S.SoftwareApps, body, buttons;
     if (d.kind === 'apps') {
-      var title = d.op === 'install' ? P.confirmInstall : d.op === 'remove' ? P.confirmRemoval : fmt(P.confirmOperation, d.op);
-      var text = d.op === 'install' ? P.willInstall : d.op === 'remove' ? P.willRemove : fmt(P.willProcess, d.op.toLowerCase());
+      var title = d.op === 'install' ? P.confirmInstall : P.confirmRemoval;
+      var text = d.op === 'install' ? P.willInstall : P.willRemove;
       body = '<h4 class="wd-dialog-title">' + esc(title) + '</h4><p class="wd-dialog-text">' + esc(text) + '</p>' +
         '<ul class="wd-dialog-list">' + d.names.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>' +
-        (d.save ? checkbox('data-dialog-check="save"', true, P.saveScripts) : '');
+        (d.save ? checkbox('data-dialog-check="save"', true, P.saveScripts) + '<p class="wd-dialog-hint">' + esc(P.saveScriptsHint) + '</p>' : '');
       buttons = '<button type="button" class="wd-btn wd-btn-accent" data-dialog="ok">' + esc(P.continue) + '</button><button type="button" class="wd-btn" data-dialog="cancel">' + esc(C.cancel) + '</button>';
     } else if (d.kind === 'confirm') {
       var message = d.action === 'accept' ? S.Builder.acceptConfirm : d.action === 'reject' ? S.Builder.rejectConfirm : C.confirmMessage;
@@ -996,11 +1040,9 @@
     if (smoke) smoke.remove();
     if (state.dialog) win.insertAdjacentHTML('beforeend', dialogHtml());
     afterRender(pageEl);
-    if (state.dialog) fitGlyphs(win);
   }
 
   function afterRender(scope) {
-    fitGlyphs(scope);
     scope.querySelectorAll('[data-tech-body]').forEach(loadTech);
     layout();
   }
@@ -1029,7 +1071,7 @@
     for (var i = 0; i < steps.length && tooWide(); i++) bar.classList.add(steps[i]);
   }
 
-  // SoftwareAppsPage.FitActionBar: labels drop to icons when the row doesn't fit, Refresh/Help/Sort first.
+  // SoftwareAppsPage.FitActionBar: labels drop to icons when the row doesn't fit, Refresh/View first.
   function fitActionBar(scope) {
     var bar = scope.querySelector('.wd-actionbar');
     if (!bar) return;
@@ -1101,7 +1143,6 @@
     wrap.innerHTML = card(root, kids.length ? 'parent' : 'single', kids);
     var fresh = wrap.firstChild;
     top.replaceWith(fresh);
-    fitGlyphs(fresh);
     fresh.querySelectorAll('[data-tech-body]').forEach(loadTech);
   }
 
@@ -1214,16 +1255,10 @@
     if (inReview()) renderReview(); else renderPage(true);
   }
 
-  function nudgeBuilder() {
-    var b = win.querySelector('[data-mode="Builder"]');
-    if (b) { b.classList.remove('is-nudge'); void b.offsetWidth; b.classList.add('is-nudge'); }
-  }
-
   function go(page) {
     if (page === 'More') { state.menu = state.menu === 'more' ? null : 'more'; renderAll(); return; }
     if (locked(page)) {
       emit({ type: 'locked', page: page });
-      if (page === 'Autounattend') nudgeBuilder();
       return;
     }
     state.page = page;
@@ -1239,6 +1274,14 @@
   }
 
   // StartAutounattendSession: Builder mode with the Autounattend target, the answer-file settings in the card.
+  // The Winhance XML card: choosing it opens Builder mode on the Autounattend target, where the answer file is made.
+  function wimChoose(id) {
+    state.wim.choice = id;
+    if (id === 'builder') return startWimSession();
+    renderPage(true);
+    emit({ type: 'wim', step: 'own' });
+  }
+
   function startWimSession() {
     state.mode = 'Builder';
     state.target = 'Autounattend';
@@ -1310,10 +1353,9 @@
       return;
     }
     if (state.dialog) return;
-    var t = e.target.closest('button, [data-pick], [data-row]');
+    var t = e.target.closest('button, [data-pick], [data-row], [data-wim-serv-card], [data-wim-choice-card]');
     if (!t || !host.contains(t)) { closeMenu(); return; }
     var dd = t.dataset;
-    if (t.closest('.wd-help') && !dd.act) return;
     if (dd.nav) return go(dd.nav);
     if (dd.mode) return setMode(dd.mode);
     if (dd.act === 'mode-cancel') return setMode('Normal');
@@ -1328,7 +1370,6 @@
     if (dd.feature) { state.feature = dd.feature; state.query = ''; state.menu = null; renderPage(); return; }
     if (dd.act === 'up') { state.feature = null; state.query = ''; state.menu = null; renderPage(); return; }
     if (dd.menu) { state.menu = state.menu === dd.menu ? null : dd.menu; renderPage(true); return; }
-    if (dd.act === 'help') { state.menu = state.menu === 'help' ? null : 'help'; renderPage(true); return; }
     if (dd.quick) return quickAction(dd.quick);
     if (dd.act === 'tech') { state.techOn = !state.techOn; state.menu = null; renderPage(true); return; }
     if (dd.act === 'badges') { state.badgesOn = !state.badgesOn; state.menu = null; renderPage(true); return; }
@@ -1344,8 +1385,9 @@
     if (dd.tech) { state.techOpen[dd.tech] = !state.techOpen[dd.tech]; refreshCard(settingById(dd.tech)); return; }
     if (dd.set) return setValue(settingById(dd.set), Number(dd.to), 'quickset');
     if (dd.tab) { state.appsTab = dd.tab; state.menu = null; state.tableSort = null; renderPage(); return; }
-    if (dd.view) { state.appsView = dd.view; state.menu = null; renderPage(); return; }
-    if (dd.sort) { state.appsSort = dd.sort; state.menu = null; renderPage(true); return; }
+    // ExportListCommand opens a save dialog, which a web page can't; the demo closes the menu and stops there.
+    if (dd.command) { state.menu = null; renderPage(true); return; }
+    if (dd.appsChoice) { chooseApps(dd.appsChoice); state.menu = null; renderPage(appsChoices[dd.appsChoice][0] === 'sort'); return; }
     if (dd.col) {
       var ts = state.tableSort;
       state.tableSort = { col: dd.col, dir: ts && ts.col === dd.col && ts.dir === 'asc' ? 'desc' : 'asc' };
@@ -1363,9 +1405,13 @@
       picked();
       return;
     }
+    if (dd.wimServCard || dd.wimChoiceCard) {
+      if (e.target.closest('input, label')) return;
+      if (dd.wimServCard) { state.wim.servicing = dd.wimServCard; renderPage(true); } else wimChoose(dd.wimChoiceCard);
+      return;
+    }
     if (dd.step) { state.wim.open[dd.step] = !state.wim.open[dd.step]; renderPage(true); return; }
     if (dd.wim === 'session') return startWimSession();
-    if (dd.wim === 'generate') { state.wim.generated = true; renderPage(true); emit({ type: 'wim', step: 'generated' }); return; }
     if (dd.wim) { emit({ type: 'wim', step: dd.wim }); return; }
     if (dd.act === 'install' || dd.act === 'uninstall') {
       // InstallSelectedItemsAsync / RemoveSelectedItemsAsync do nothing unless the mode applies to this PC.
@@ -1418,7 +1464,11 @@
       emit({ type: 'target', target: state.target });
       return;
     }
-    if (t.dataset.dest) { state.wim.dest = t.dataset.dest; renderPage(true); return; }
+    if (t.dataset.wimDest) { state.wim.dest = t.dataset.wimDest; renderPage(true); return; }
+    if (t.dataset.wimFormat) { state.wim.format = t.dataset.wimFormat; renderPage(true); return; }
+    if (t.dataset.wimServ) { state.wim.servicing = t.dataset.wimServ; renderPage(true); return; }
+    if (t.dataset.wimChoice) return wimChoose(t.dataset.wimChoice);
+    if (t.dataset.wimOpt) { state.wim[t.dataset.wimOpt] = t.checked; renderPage(true); return; }
     if (t.dataset.act === 'theme') {
       var next = t.value === 'system' ? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t.value;
       emit({ type: 'theme', theme: next });
@@ -1471,7 +1521,6 @@
       el.innerHTML = '<div class="' + windowClasses() + '" data-page="' + page + '">' + titleBar() + modeBar() +
         '<div class="wd-body">' + nav() + '<main class="wd-page">' + pageHtml() + '</main></div></div>';
       Object.keys(saved).forEach(function (k) { state[k] = saved[k]; });
-      fitGlyphs(el);
       fitActionBar(el);
       fitCardGrid(el);
     },

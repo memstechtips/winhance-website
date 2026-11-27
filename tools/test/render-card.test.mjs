@@ -1,27 +1,28 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { renderMatrix, renderCard, cardBadges, fieldRows, CHAR_W, CHAR_W_SM } from '../lib/render-card.mjs';
-import { geometries } from '../lib/theme-css.mjs';
+import { renderMatrix, renderCard, cardBadges, fieldRows, optionWarnings, CHAR_W, CHAR_W_SM } from '../lib/render-card.mjs';
+import { pillIcons } from '../lib/theme-css.mjs';
 import { esc } from '../lib/html.mjs';
 
 const fixture = JSON.parse(readFileSync(new URL('../fixtures/catalog.sample.json', import.meta.url), 'utf8'));
 const theme = JSON.parse(readFileSync(new URL('../fixtures/theme.sample.json', import.meta.url), 'utf8'));
 const icons = JSON.parse(readFileSync(new URL('../../docs/_assets/icons.json', import.meta.url), 'utf8')).icons;
-const geo = geometries(theme);
+const siteIcons = JSON.parse(readFileSync(new URL('../icon-sources/site-icons.json', import.meta.url), 'utf8')).icons;
+const pills = pillIcons(theme, siteIcons);
 
 const all = fixture.features.flatMap((f) => f.settings);
 const byId = Object.fromEntries(all.map((s) => [s.id, s]));
 const childrenOf = new Map();
 for (const s of all) if (s.uiParentId) childrenOf.set(s.uiParentId, [...(childrenOf.get(s.uiParentId) ?? []), s]);
-const ctx = { childrenOf, icons, geometries: geo, urlFor: (id) => (byId[id] ? `#${id}` : null) };
+const ctx = { childrenOf, icons, pillIcons: pills, urlFor: (id) => (byId[id] ? `#${id}` : null) };
 
 function rows(html, cls) {
   return [...html.matchAll(new RegExp(`<tr class="${cls}"[^>]*>`, 'g'))];
 }
 
 test('thead has exactly the three app header rows, in order', () => {
-  const html = renderMatrix(byId['sound-startup'].matrix, { geometries: geo });
+  const html = renderMatrix(byId['sound-startup'].matrix, { pillIcons: pills });
   assert.equal((html.match(/<tr class="mx-row-mechanism">/g) ?? []).length, 1);
   assert.equal((html.match(/<tr class="mx-row-paths">/g) ?? []).length, 1);
   assert.equal((html.match(/<tr class="mx-row-columns">/g) ?? []).length, 1);
@@ -38,7 +39,7 @@ test('a matrix with no columns and no options renders no mx-row-columns row at a
   const m = byId['start-menu-clean-10'].matrix;
   assert.equal(m.columns.length, 0);
   assert.equal(m.options.length, 0);
-  const html = renderMatrix(m, { geometries: geo });
+  const html = renderMatrix(m, { pillIcons: pills });
   assert.doesNotMatch(html, /<tr class="mx-row-columns">/);
   assert.doesNotMatch(html, /class="mx-h-option"/);
   assert.doesNotMatch(html, /class="mx-h-role"/);
@@ -47,14 +48,14 @@ test('a matrix with no columns and no options renders no mx-row-columns row at a
 });
 
 test('the setting cell spans both frozen columns over both header rows', () => {
-  const html = renderMatrix(byId['sound-startup'].matrix, { geometries: geo });
+  const html = renderMatrix(byId['sound-startup'].matrix, { pillIcons: pills });
   assert.match(html, /<th class="mx-setting" colspan="2" rowspan="2">/);
   assert.match(html, /<span class="mx-group-label">Options<\/span>/);
 });
 
 test('column-header row leads with the Option/Role captions from the export', () => {
   const m = byId['sound-startup'].matrix;
-  const html = renderMatrix(m, { geometries: geo });
+  const html = renderMatrix(m, { pillIcons: pills });
   const columnsRow = html.match(/<tr class="mx-row-columns">([\s\S]*?)<\/tr>/)[1];
   assert.match(columnsRow, new RegExp(`^<th class="mx-h-option" scope="col">${esc(m.optionHeader)}</th><th class="mx-h-role" scope="col">${esc(m.roleHeader)}</th>`));
 });
@@ -63,7 +64,7 @@ test('two adjacent same-kind groups share one mechanism-row band but keep separa
   // sound-startup: two Registry groups, adjacent, same kind -> ConsecutiveByKind merges them into
   // ONE mx-group header (colspan 2), but AddGroupHeaders' path loop is per-group, not per-run, so the
   // path row still shows each group's own (different) registry hive separately.
-  const html = renderMatrix(byId['sound-startup'].matrix, { geometries: geo });
+  const html = renderMatrix(byId['sound-startup'].matrix, { pillIcons: pills });
   assert.equal((html.match(/<th class="mx-group" colspan="2" rowspan="1">/g) ?? []).length, 1);
   assert.equal((html.match(/<th class="mx-paths" colspan="1">/g) ?? []).length, 2);
   assert.match(html, /<span class="mx-caption">Path<\/span><code class="mx-path" title="HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\BootAnimation">HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\BootAnimation<\/code>/);
@@ -73,7 +74,7 @@ test('two adjacent same-kind groups share one mechanism-row band but keep separa
 
 test('a both-roles option carries exactly two pills in the role cell and none in the option cell', () => {
   const m = byId['security-uac-level'].matrix;
-  const html = renderMatrix(m, { geometries: geo });
+  const html = renderMatrix(m, { pillIcons: pills });
   const rowMatch = html.match(/<tr><th class="mx-option"[^]*?Notify when apps try to make changes<\/code><\/th>([^]*?)<\/tr>/);
   assert.ok(rowMatch, 'security-uac-level must carry the both-roles option row');
   const [optionCellHtml] = html.match(/<th class="mx-option"[^]*?<\/th>/g).filter((c) => c.includes('Notify when apps try to make changes<'));
@@ -84,18 +85,14 @@ test('a both-roles option carries exactly two pills in the role cell and none in
   assert.match(roleCellHtml, /mx-pill-default/);
 });
 
-test('pills carry the app icon geometry at native size, centred in a 12x12 box, with the qualified label', () => {
-  // M8: the outer <svg>/viewBox stay 12x12 for EVERY pill -- stretching BadgeDefaultIconPath's 11x11
-  // geometry to fill a 12x12 viewBox scaled it 9% and re-blurred the 1px pane gaps it exists to keep
-  // crisp. A geometry already on a 12x12 canvas (Recommended) renders unwrapped; an 11x11 one
-  // (Default, the Windows logo) is centred with a (12-11)/2 = 0.5 translate, like WinUI's PathIcon.
+test('pills draw the Fluent icon their app style names, with the qualified label', () => {
   const m = byId['security-uac-level'].matrix;
-  const html = renderMatrix(m, { geometries: geo });
-  assert.equal(geo.BadgeRecommendedIconPath.viewBox, 12);
-  assert.equal(geo.BadgeDefaultIconPath.viewBox, 11);
-  assert.match(html, new RegExp(`<svg viewBox="0 0 12 12" width="12" height="12"[^>]*><path d="${geo.BadgeRecommendedIconPath.data.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}" fill="currentColor"/></svg>`));
-  assert.match(html, new RegExp(`<svg viewBox="0 0 12 12" width="12" height="12"[^>]*><g transform="translate\\(0\\.5 0\\.5\\)"><path d="${geo.BadgeDefaultIconPath.data.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}" fill="currentColor"/></g></svg>`));
-  assert.doesNotMatch(html, /viewBox="0 0 11 11"/);
+  const html = renderMatrix(m, { pillIcons: pills });
+  const reEsc = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  for (const [kind, name] of [['recommended', 'Star'], ['default', 'Apps']]) {
+    assert.equal(pills[kind].path, siteIcons[`Fluent/${name}`].path);
+    assert.match(html, new RegExp(`<svg viewBox="0 0 20 20" aria-hidden="true"><path d="${reEsc(pills[kind].path)}" fill="currentColor"/></svg>`));
+  }
   assert.match(html, /<span class="mx-pill-label">Recommended<\/span>/);
   assert.match(html, /<span class="mx-pill-label">Default<\/span>/);
 });
@@ -121,7 +118,7 @@ test('notes render as rows inside tbody, after the option rows, split label/deta
   const s = byId['taskbar-clean'];
   const m = s.matrix;
   assert.ok(m.hasNotes && m.notes.length > 0, 'fixture must carry taskbar-clean notes');
-  const html = renderMatrix(m, { geometries: geo });
+  const html = renderMatrix(m, { pillIcons: pills });
   const tbody = html.match(/<tbody>([\s\S]*?)<\/tbody>/)[1];
   assert.match(tbody, /<tr class="mx-notes-head">/);
   assert.equal((tbody.match(/<tr class="mx-note">/g) ?? []).length, m.notes.length);
@@ -140,7 +137,7 @@ test('a scoped note stacks its label above its scope, not side by side (AddNotes
   const m = byId['theme-mode-windows'].matrix;
   const scoped = m.notes.find((n) => n.hasScope);
   assert.ok(scoped, 'fixture must carry a scoped theme-mode-windows note');
-  const html = renderMatrix(m, { geometries: geo });
+  const html = renderMatrix(m, { pillIcons: pills });
   const reEscape = (s) => esc(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   assert.match(html, new RegExp(`<span class="mx-note-name"><span class="mx-note-label">${reEscape(scoped.label)}</span><span class="mx-caption">${reEscape(scoped.scope)}</span></span>`));
 });
@@ -148,7 +145,7 @@ test('a scoped note stacks its label above its scope, not side by side (AddNotes
 test('code blocks render inside .mx-box but after .mx-scroll closes, one heading band per distinct heading', () => {
   const s = byId['system-restore-protection'];
   assert.ok(s.matrix.codeBlocks.length > 1, 'fixture must carry more than one system-restore-protection code block');
-  const html = renderMatrix(s.matrix, { geometries: geo });
+  const html = renderMatrix(s.matrix, { pillIcons: pills });
   const boxOpen = html.indexOf('<div class="mx-box mx-has-below"');
   const scrollClose = html.indexOf('</div>\n</div>'); // .mx-scroll then its own wrapper close, immediately before the code host
   const codeHostIndex = html.indexOf('<div class="mx-code-host">');
@@ -169,8 +166,9 @@ test('null matrix renders the power-plan note instead of a table', () => {
 
 test('the setting icon renders as an inline svg with the app icon geometry', () => {
   const html = renderCard(byId['sound-startup'], ctx);
-  const art = icons['Material/MonitorSpeaker'];
-  assert.ok(art, 'icons.json must carry Material/MonitorSpeaker');
+  const { pack, name } = byId['sound-startup'].icon;
+  const art = icons[`${pack}/${name}`];
+  assert.ok(art, `icons.json must carry ${pack}/${name}`);
   assert.match(html, new RegExp(`<span class="setting-icon"><svg viewBox="${art.viewBox}" width="20" height="20"[^>]*><path d="${art.path.slice(0, 20).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
 });
 
@@ -188,7 +186,7 @@ test('--mx-option-w is set inline on .mx-box from the longest option label, in v
   // pixel widths. A literal var(--mx-char-w) multiplier resolves identically everywhere.
   const m = byId['sound-communication-ducking'].matrix;
   const longest = Math.max(...m.options.map((o) => o.label.length));
-  const html = renderMatrix(m, { geometries: geo });
+  const html = renderMatrix(m, { pillIcons: pills });
   assert.match(html, new RegExp(`<div class="mx-box" style="--mx-option-w: calc\\(24px \\+ ${longest} \\* var\\(--mx-char-w\\)\\);`));
   assert.doesNotMatch(html, /--mx-option-w:[^;]*ch\)/);
 });
@@ -201,7 +199,7 @@ test('--mx-table-w is set inline on .mx-box as the sum of every column, so table
   // narrower than its natural content: Chromium proportionally stretches every column, including the
   // option column, past --mx-option-w. An explicit width equal to the exact sum leaves nothing over.
   const m = byId['security-uac-level'].matrix;
-  const html = renderMatrix(m, { geometries: geo });
+  const html = renderMatrix(m, { pillIcons: pills });
   assert.match(html, /--mx-table-w: calc\([\d.]+px \+ \d+ \* var\(--mx-char-w\)\)"/);
   // Role and every data column but the last carry their own explicit width -- only the option column
   // uses the CSS-rule-driven var(--mx-option-w); the frozen role column still needs its own <col>
@@ -217,7 +215,7 @@ test("the last column is left auto so it absorbs the slack, mirroring TableLayou
   // On the web that is .mx-grid's max(--mx-table-w, 100%) plus exactly one auto <col> to take the
   // remainder -- giving every column a width instead made Chromium share the slack proportionally and
   // pushed the option column past --mx-option-w (fix round 1's sticky-column bug).
-  const html = renderMatrix(byId['security-uac-level'].matrix, { geometries: geo });
+  const html = renderMatrix(byId['security-uac-level'].matrix, { pillIcons: pills });
   const colgroup = html.match(/<colgroup>(.*?)<\/colgroup>/s)[1];
   const cols = [...colgroup.matchAll(/<col[^>]*>/g)].map(([c]) => c);
   assert.ok(cols.length > 2);
@@ -233,7 +231,7 @@ test("the last column is left auto so it absorbs the slack, mirroring TableLayou
 });
 
 test('twin win10/win11 matrices each render their own box under a build heading', () => {
-  const soloCtx = { childrenOf: new Map(), icons, geometries: geo, urlFor: ctx.urlFor };
+  const soloCtx = { childrenOf: new Map(), icons, pillIcons: pills, urlFor: ctx.urlFor };
   const html = renderCard(byId['theme-mode-windows'], soloCtx);
   assert.match(html, /<h4 class="mx-build">Windows 11<\/h4>/);
   assert.match(html, /<h4 class="mx-build">Windows 10<\/h4>/);
@@ -266,9 +264,9 @@ test('card badges: win11-only, laptops-only, added-in, and the preference pill w
   assert.match(cardBadges(byId['lid-close-action']), /<span class="setting-badge laptops"[^>]*>Laptops only<\/span>/);
   assert.match(cardBadges(byId['power-hybrid-sleep']), /<span class="setting-badge hardware"[^>]*>Hybrid sleep capable PCs<\/span>/);
   assert.match(cardBadges(byId['theme-mode-apps']), /<span class="setting-badge added"[^>]*>Added in v26\.07\.22<\/span>/);
-  const pref = cardBadges(byId['sound-startup'], () => null, geo);
+  const pref = cardBadges(byId['sound-startup'], () => null, pills);
   assert.match(pref, /<span class="mx-pill mx-pill-preference"/);
-  assert.match(pref, new RegExp(`<svg viewBox="0 0 ${geo.BadgePreferenceIconPath.viewBox} ${geo.BadgePreferenceIconPath.viewBox}"`));
+  assert.match(pref, new RegExp(`<svg viewBox="0 0 20 20" aria-hidden="true"><path d="${pills.preference.path.slice(0, 12)}`));
   assert.doesNotMatch(pref, /setting-badge preference/);
 });
 
@@ -283,7 +281,7 @@ test('children render nested inside the parent card', () => {
 test('chips whose linkSettingId resolves become links on the setting name only', () => {
   const linked = all.find((s) => s.matrix && s.matrix.columns.some((c) => c.chips.some((ch) => ch.linkSettingId && byId[ch.linkSettingId])));
   if (!linked) return;
-  const html = renderMatrix(linked.matrix, { urlFor: (id) => `#${id}`, geometries: geo });
+  const html = renderMatrix(linked.matrix, { urlFor: (id) => `#${id}`, pillIcons: pills });
   const chip = linked.matrix.columns.flatMap((c) => c.chips).find((ch) => ch.linkSettingId && byId[ch.linkSettingId]);
   assert.match(html, new RegExp(`<a href="#${chip.linkSettingId}" class="mx-chip-link">${chip.linkText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</a>`));
 });
@@ -310,7 +308,7 @@ test('a narrow-column group with a long path widens exactly enough to fit it, ea
   const m = byId['gaming-xbox-game-dvr'].matrix;
   assert.equal(m.groups.length, 3, 'fixture must carry three single-column registry groups');
   assert.ok(m.groups.every((g) => g.columnSpan === 1), 'this case only proves per-group isolation if every group is its own column');
-  const html = renderMatrix(m, { geometries: geo });
+  const html = renderMatrix(m, { pillIcons: pills });
   const colWidths = dataColWidths(html);
   assert.equal(colWidths.length, 3);
   m.groups.forEach((g, i) => {
@@ -333,7 +331,7 @@ test('a group whose path already fits comfortably across its wide span is left a
   // this test's fixture -- into genuinely needing a few px of widening; security-uac-level's shorter
   // path still has comfortable margin.)
   const m = byId['security-uac-level'].matrix;
-  const html = renderMatrix(m, { geometries: geo });
+  const html = renderMatrix(m, { pillIcons: pills });
   const g = m.groups.find((g) => g.hasPaths);
   assert.equal(g.columnSpan, 2, 'this case only proves the no-op path if the group spans more than one column');
   const path = g.paths[0];
@@ -374,12 +372,12 @@ test('"Also sets" is a band per option, outside the table\'s scroller', () => {
 test('a matrix with an "Also sets" band keeps the grid\'s bottom hairline', () => {
   // Same rule as code blocks: something follows the grid inside the box, so its last row draws the
   // line rather than leaning on the box border.
-  const html = renderMatrix(byId['privacy-ads-promotional-master'].matrix, { geometries: geo });
+  const html = renderMatrix(byId['privacy-ads-promotional-master'].matrix, { pillIcons: pills });
   assert.match(html, /<div class="mx-box mx-has-below"/);
 });
 
 test('a setting whose options set nothing renders no band', () => {
-  assert.doesNotMatch(renderMatrix(byId['sound-startup'].matrix, { geometries: geo }), /mx-links-host/);
+  assert.doesNotMatch(renderMatrix(byId['sound-startup'].matrix, { pillIcons: pills }), /mx-links-host/);
 });
 
 test("a per-option warning renders as a banner naming the option that raises it", () => {
@@ -401,6 +399,19 @@ test('one warning authored on several options becomes one banner naming them all
   assert.match(html, /When set to Disabled or Manual \(Recommended\)/);
 });
 
+test('an Always warning prints without "When set to" and a repeated one prints once', () => {
+  const warnings = [
+    { option: 'On', text: 'Applies to everything.', always: true },
+    { option: 'Off', text: 'Applies to everything.', always: true },
+    { option: 'Off', text: 'Only when off.', always: false },
+  ];
+  const html = optionWarnings({ optionWarnings: warnings });
+  assert.equal((html.match(/Applies to everything\./g) ?? []).length, 1);
+  assert.equal((html.match(/setting-banner-when/g) ?? []).length, 1);
+  assert.match(html, /When set to Off<\/span><p class="setting-banner-text">Only when off\./);
+  assert.doesNotMatch(html, /When set to On/);
+});
+
 test('a setting with no option warnings renders no banner', () => {
   assert.doesNotMatch(renderCard(byId['sound-startup'], ctx), /setting-banner/);
 });
@@ -411,7 +422,7 @@ test('the option column is never narrower than its own "Option" heading', () => 
   const m = byId['gaming-memory-integrity'].matrix;
   const longestLabel = Math.max(...m.options.map((o) => o.label.length));
   assert.ok(longestLabel < m.optionHeader.length, 'fixture must have labels shorter than the heading');
-  const html = renderMatrix(m, { geometries: geo });
+  const html = renderMatrix(m, { pillIcons: pills });
   assert.match(html, new RegExp(`--mx-option-w: calc\\(24px \\+ ${m.optionHeader.length} \\* var\\(--mx-char-w\\)\\);`));
 });
 
@@ -422,7 +433,7 @@ test("a long requirement chip widens the role column only -- the option column's
   const m = byId['theme-mode-windows'].matrix;
   const longestChip = m.requirements.reduce((max, c) => (c.text.length > max.length ? c.text : max), '');
   assert.ok(longestChip.length > 30, 'fixture must carry a genuinely long requirement chip');
-  const html = renderMatrix(m, { geometries: geo });
+  const html = renderMatrix(m, { pillIcons: pills });
   // --mx-option-w is untouched: still exactly optionColumnWidth's own formula (24px fixed + the
   // longest of the option labels and the "Option" heading), never widened by widenForChips.
   const longestOption = Math.max(m.optionHeader.length, ...m.options.map((o) => o.label.length));
@@ -445,7 +456,7 @@ test('a row carrying BOTH pills sizes the role column for the pair side by side,
   const both = m.options.filter((o) => o.isRecommended && o.isWindowsDefault);
   assert.equal(both.length, 1, 'fixture must carry exactly one row that is both Recommended and the Windows default');
   const labels = [m.recommendedLabel, m.defaultLabel];
-  const html = renderMatrix(m, { geometries: geo });
+  const html = renderMatrix(m, { pillIcons: pills });
   // 24px cell padding + a pill's 34px of chrome each + the 4px StackPanel spacing between them.
   const expected = 24 + 34 * 2 + 4;
   const chars = labels.reduce((sum, l) => sum + l.length, 0);
@@ -455,7 +466,7 @@ test('a row carrying BOTH pills sizes the role column for the pair side by side,
 test('a matrix with no requirement chips leaves the role column at its base width (no spurious widening)', () => {
   const m = byId['sound-communication-ducking'].matrix;
   assert.equal(m.requirements.length, 0);
-  const html = renderMatrix(m, { geometries: geo });
+  const html = renderMatrix(m, { pillIcons: pills });
   const labels = ['Role'];
   for (const o of m.options) {
     if (o.isRecommended) labels.push(o.recommendedContext ? `${m.recommendedLabel} (${o.recommendedContext})` : m.recommendedLabel);
@@ -477,7 +488,7 @@ test('a note label/heading longer than the bare option floor widens the option c
   assert.ok(m.hasNotes && m.notes.length > 1, 'fixture must carry several start-menu-clean-10 notes');
   const longest = Math.max(m.notesHeading.length, ...m.notes.map((n) => n.label.length));
   assert.ok(longest > 20, 'fixture must carry a note label/heading long enough to prove the widening');
-  const html = renderMatrix(m, { geometries: geo });
+  const html = renderMatrix(m, { pillIcons: pills });
   const optionMatch = html.match(/--mx-option-w: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)/);
   assert.ok(optionMatch, '--mx-option-w must be set inline');
   const optionPx = Number(optionMatch[1]) + Number(optionMatch[2]) * CHAR_W;
@@ -492,7 +503,7 @@ test('a note label longer than the base role floor widens role only when option 
   assert.ok(m.columns.length > 0 && m.options.length > 0, 'fixture must carry both columns and options');
   assert.ok(m.hasNotes && m.notes.length > 1, 'fixture must carry several taskbar-clean notes');
   const longest = Math.max(m.notesHeading.length, ...m.notes.map((n) => n.label.length));
-  const html = renderMatrix(m, { geometries: geo });
+  const html = renderMatrix(m, { pillIcons: pills });
   const longestOption = Math.max(m.optionHeader.length, ...m.options.map((o) => o.label.length));
   assert.match(html, new RegExp(`--mx-option-w: calc\\(24px \\+ ${longestOption} \\* var\\(--mx-char-w\\)\\);`), 'optionW must stay untouched');
   const optionMatch = html.match(/--mx-option-w: calc\(([\d.]+)px \+ (\d+) \* var\(--mx-char-w\)\)/);
@@ -535,7 +546,7 @@ test('a twin whose availability excludes neither reference build still renders b
   assert.deepEqual(s.availability.builds, [], 'fixture must carry an ungated (both-builds) twin');
   // theme-mode-windows has a UI child (theme-mode-apps) with its own single table -- render solo so
   // the count below is exactly this card's own two.
-  const soloCtx = { childrenOf: new Map(), icons, geometries: geo, urlFor: ctx.urlFor };
+  const soloCtx = { childrenOf: new Map(), icons, pillIcons: pills, urlFor: ctx.urlFor };
   const html = renderCard(s, soloCtx);
   assert.equal((html.match(/<table class="mx-grid">/g) ?? []).length, 2);
   assert.match(html, /<h4 class="mx-build">Windows 11<\/h4>/);
@@ -556,7 +567,7 @@ test('C2 build gating threads through renderCard via ctx.referenceBuilds, defaul
 test('pathsRow throws if a hasPaths group is not at its own declared startColumn (M9)', () => {
   const base = byId['gaming-xbox-game-dvr'].matrix;
   const tampered = { ...base, groups: base.groups.map((g, i) => (i === 1 ? { ...g, startColumn: g.startColumn + 1 } : g)) };
-  assert.throws(() => renderMatrix(tampered, { geometries: geo }), /pathsRow:.*expected at column/);
+  assert.throws(() => renderMatrix(tampered, { pillIcons: pills }), /pathsRow:.*expected at column/);
 });
 
 // --- the control kinds the Autounattend page and the desktop background brought in ---

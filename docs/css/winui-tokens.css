@@ -74,6 +74,8 @@
   --winui-system-fill-color-success: #0F7B0F; /* #FF0F7B0F */
   --winui-system-fill-color-caution: #9D5D00; /* #FF9D5D00 */
   --winui-system-fill-color-critical: #C42B1C; /* #FFC42B1C */
+  --winui-system-fill-color-neutral: #00000072; /* #72000000 */
+  --winui-system-fill-color-attention: #0078D4; /* unverified: WinUI maps this to SystemAccentColor itself; #0078D4 is the widely-reported Windows 11 default. */
 
   /* Fill/stroke — on accent */
   --winui-text-on-accent-fill-color-primary: #FFFFFF; /* #FFFFFFFF */
@@ -184,6 +186,8 @@
   --winui-system-fill-color-success: #6CCB5F; /* #FF6CCB5F */
   --winui-system-fill-color-caution: #FCE100; /* #FFFCE100 */
   --winui-system-fill-color-critical: #FF99A4; /* #FFFF99A4 */
+  --winui-system-fill-color-neutral: #ffffff8b; /* #8BFFFFFF */
+  --winui-system-fill-color-attention: #60CDFF; /* unverified: WinUI maps this to SystemAccentColorLight2, the same role as --winui-accent-fill-default. */
 
   /* Fill/stroke — on accent */
   --winui-text-on-accent-fill-color-primary: #000000; /* #FF000000 */

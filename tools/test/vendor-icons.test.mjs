@@ -24,9 +24,9 @@ function stubCatalog() {
       {
         id: 'Stub',
         settings: [
-          { id: 'a', icon: { pack: 'Material', name: 'AccountCog' } },
+          { id: 'a', icon: { pack: 'Fluent', name: 'Alert' } },
           { id: 'b', icon: { pack: 'Fluent', name: 'Apps' } },
-          { id: 'c', icon: { pack: 'Material', name: 'NotAnIcon' } },
+          { id: 'c', icon: { pack: 'Fluent', name: 'NotAnIcon' } },
         ],
       },
     ],
@@ -37,19 +37,19 @@ test('vendorIcons resolves catalog icon identities from the source', () => {
   const catalog = stubCatalog();
   const { icons, meta, missing, unused } = vendorIcons({ catalog, source });
 
-  assert.deepEqual(Object.keys(icons).sort(), ['Fluent/Apps', 'Material/AccountCog']);
+  assert.deepEqual(Object.keys(icons).sort(), ['Fluent/Alert', 'Fluent/Apps']);
   for (const key of Object.keys(icons)) {
     assert.match(icons[key].path, /^M/);
     assert.match(icons[key].viewBox, /^0 0 \d+ \d+$/);
   }
-  assert.deepEqual(icons['Material/AccountCog'], source.icons['Material/AccountCog']);
+  assert.deepEqual(icons['Fluent/Alert'], source.icons['Fluent/Alert']);
   assert.deepEqual(icons['Fluent/Apps'], source.icons['Fluent/Apps']);
 
-  assert.deepEqual(missing, ['Material/NotAnIcon']);
+  assert.deepEqual(missing, ['Fluent/NotAnIcon']);
 
   assert.equal(unused.length, Object.keys(source.icons).length - 2);
   assert.ok(!unused.includes('Fluent/Apps'));
-  assert.ok(!unused.includes('Material/AccountCog'));
+  assert.ok(!unused.includes('Fluent/Alert'));
 
   assert.deepEqual(meta, source._meta);
 });
@@ -66,14 +66,14 @@ test('vendorIcons dedupes repeated icon identities across settings', () => {
       {
         id: 'Stub',
         settings: [
-          { id: 'a', icon: { pack: 'Material', name: 'AccountCog' } },
-          { id: 'b', icon: { pack: 'Material', name: 'AccountCog' } },
+          { id: 'a', icon: { pack: 'Fluent', name: 'Alert' } },
+          { id: 'b', icon: { pack: 'Fluent', name: 'Alert' } },
         ],
       },
     ],
   };
   const { icons, missing } = vendorIcons({ catalog, source });
-  assert.deepEqual(Object.keys(icons), ['Material/AccountCog']);
+  assert.deepEqual(Object.keys(icons), ['Fluent/Alert']);
   assert.deepEqual(missing, []);
 });
 
@@ -134,7 +134,7 @@ test('CLI writes a deterministic, sorted icons.json and reports counts', () => {
   const written = readFileSync(outPath, 'utf8');
   assert.ok(written.endsWith('\n'));
   const parsed = JSON.parse(written);
-  assert.deepEqual(Object.keys(parsed.icons), ['Fluent/Apps', 'Material/AccountCog']);
+  assert.deepEqual(Object.keys(parsed.icons), ['Fluent/Alert', 'Fluent/Apps']);
   assert.deepEqual(parsed._meta, source._meta);
 
   const again = execFileSync('node', [cli, '--catalog', catalogPath, '--source', sourcePath, '--out', outPath], { encoding: 'utf8' });
@@ -160,6 +160,6 @@ test('CLI exits 1 and prints missing names without writing when an icon is unres
     stderr = e.stderr;
   }
   assert.equal(code, 1);
-  assert.match(stderr, /Material\/NotAnIcon/);
+  assert.match(stderr, /Fluent\/NotAnIcon/);
   assert.throws(() => readFileSync(outPath, 'utf8'));
 });

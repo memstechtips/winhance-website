@@ -4,11 +4,11 @@
 
     <div class="app-demo" data-page="Settings"></div>
 
-    <p>Open <strong>Settings</strong> from the bottom of the sidebar. The page is titled <strong>Winhance Settings</strong> and has three groups: <strong>General</strong>, <strong>Configuration</strong> and <strong>System Protection</strong>. These options change Winhance itself, not Windows.</p>
+    <p>Open <strong>Settings</strong> from the bottom of the sidebar. The page includes Winhance's appearance, configs and profiles, background and update preferences, background tasks and system protection.</p>
 
     <h2 id="language">Language</h2>
     <p>Choose the language for Winhance's interface from the <strong>Language</strong> list. The change applies straight away, with no restart, and Winhance remembers it next time. Winhance starts in English until you pick another language.</p>
-    <p>Winhance comes in 29 languages:</p>
+    <p>Winhance comes in 30 languages:</p>
     <table>
         <thead>
             <tr><th>Language</th><th>Language</th><th>Language</th></tr>
@@ -23,7 +23,7 @@
             <tr><td>Nederlands (België) (Dutch - Belgium)</td><td>Polski (Polish)</td><td>Português (Portuguese)</td></tr>
             <tr><td>Português (Portuguese Brazil)</td><td>Русский (Russian)</td><td>Svenska (Swedish)</td></tr>
             <tr><td>Türkçe (Turkish)</td><td>Українська (Ukrainian)</td><td>Tiếng Việt (Vietnamese)</td></tr>
-            <tr><td>简体中文 (Chinese Simplified)</td><td>繁體中文 (Chinese Traditional)</td><td></td></tr>
+            <tr><td>简体中文 (Chinese Simplified)</td><td>繁體中文 (Chinese Traditional)</td><td>Dansk (Danish)</td></tr>
         </tbody>
     </table>
     <p>Arabic, Hebrew and Persian switch the window to a right-to-left layout. To help with a translation, see <a href="../reference/contributing.html">Contributing</a>.</p>
@@ -36,8 +36,8 @@
     </ul>
     <p>This only changes Winhance. To switch Windows itself between light and dark, use <a href="customizations/theme.html">Customize &gt; Windows Theme</a>.</p>
 
-    <h2 id="backup-restore">Backup &amp; Restore</h2>
-    <p>The <strong>Backup &amp; Restore</strong> card has two buttons. While Settings is open, <kbd>Ctrl</kbd>+<kbd>I</kbd> and <kbd>Ctrl</kbd>+<kbd>E</kbd> press them for you.</p>
+    <h2 id="backup-restore">Config file</h2>
+    <p>Under <strong>Configs &amp; profiles</strong>, the <strong>Config file</strong> card has two buttons. While Settings is open, <kbd>Ctrl</kbd>+<kbd>I</kbd> and <kbd>Ctrl</kbd>+<kbd>E</kbd> press them for you.</p>
     <h3>Export</h3>
     <p><strong>Export</strong> saves a <code>.winhance</code> config file with the current Optimize and Customize settings on this PC, plus the apps you have checked on both tabs of <a href="software-apps.html">Software &amp; Apps</a>.</p>
     <h3>Import</h3>
@@ -56,10 +56,23 @@
     <p>Click <strong>Continue</strong> and Winhance opens the config in Config Review mode, so you can check every change before you apply it. To apply it straight away instead, tick <strong>Skip review and apply immediately</strong>. That turns on a few more choices: <strong>Install</strong>, <strong>Uninstall</strong> or <strong>Select Only</strong> for the Windows apps and external apps in the file, and whether to run <strong>Clean Taskbar</strong> and <strong>Clean Start Menu</strong>.</p>
     <p>The <a href="../guides/configuration-files.html">Configuration files</a> guide covers the file format and sharing configs between PCs.</p>
 
+    <h2 id="profiles">Settings profiles</h2>
+    <p>Use profiles to switch Optimize and Customize settings together. Unlike importing a config, switching profiles never installs or removes apps, and Winhance changes only settings that differ.</p>
+    <p>Winhance includes <strong>Winhance Focus</strong> for gaming or recording and <strong>Winhance Everyday</strong> to restore Windows defaults for the settings Focus changes, without touching other settings. <strong>Before Winhance</strong> restores the Optimize and Customize settings saved before Winhance first made changes. To keep your own everyday choices, save them as a custom profile.</p>
+    <p>To create your own, use <strong>Save the current settings as a profile</strong>, give it a name and click <strong>Save</strong>. You can also choose <strong>Add from file</strong> to load a Winhance config as a settings-only profile. Use <strong>Edit in Builder</strong> to change a profile without applying it. Deleting a profile removes its file, not the settings currently applied to Windows.</p>
+    <p>Some changes require a restart. Settings that a profile does not include stay as they are; Winhance can remind you about them so you can add them in Builder. Turn on <strong>Re-apply the active profile when I sign in</strong> if you want Winhance to restore the profile's settings at sign-in. Turn it off if Windows settings keep changing back after a restart. The sign-in option requires a regular installation.</p>
+
+    <h2 id="tray">Background and updates</h2>
+    <p>Under <strong>Run Winhance in the system tray</strong>, choose whether closing or minimizing the window hides it in the system tray instead. Click the tray icon to bring Winhance back, or use its menu to switch profiles, check for app updates or exit the app. <strong>Start in the system tray when I sign in</strong> requires a regular installation in a protected folder and is not available when running with another user's administrator rights.</p>
+    <p><strong>Check for software updates</strong> sets the frequency to Never, Every day or Every week. Under <strong>When software updates are found</strong>, choose whether to receive a notification or install them automatically. Winhance also checks for its own updates on startup and daily; the separate Winhance update preference lets you receive a notification or install them automatically.</p>
+
+    <h2 id="background-tasks">Background tasks</h2>
+    <p><strong>Keep removed apps removed</strong> controls how Winhance handles Windows apps that return after an update. Winhance can do this itself or use Task Scheduler and scripts. You can check now, see the last check and stop keeping individual apps removed. See <a href="software-apps/windows-apps.html">Windows apps</a> for details.</p>
+
     <h2 id="restore-point">System Restore Point</h2>
     <p>Click <strong>Create Restore Point</strong> to make a Windows System Restore point before you change anything. If System Restore is turned off for drive C:, Winhance turns it on first. You can roll back to the restore point from Windows' own System Restore if a change causes trouble.</p>
     <p>Winhance also offers to create a restore point the first time it starts.</p>
 
     <h2 id="updates">Updates</h2>
-    <p>Update checks are not on this page. Open <strong>More</strong> at the bottom of the sidebar and choose <strong>Check for Updates</strong>.</p>
+    <p>To check for a new Winhance release immediately, open <strong>More</strong> at the bottom of the sidebar and choose <strong>Check for Updates</strong>. The automatic update preferences are under <a href="#tray">Background and updates</a>.</p>
 </section>

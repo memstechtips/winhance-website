@@ -10,7 +10,7 @@
 <ol class="steps">
     <li>
         <h3>Open the import window</h3>
-        <p>Go to <strong>Settings</strong> &gt; <strong>Backup &amp; Restore</strong> and click <strong>Import</strong>.</p>
+        <p>Go to <strong>Settings</strong> &gt; <strong>Config file</strong> and click <strong>Import</strong>.</p>
     </li>
     <li>
         <h3>Choose the backup</h3>
@@ -23,24 +23,24 @@
 </ol>
 
 <h3>Reset to Windows defaults</h3>
-<p>To set one page back to how Windows ships, open it and choose <strong>Quick Actions</strong> &gt; <strong>Reset to Windows Defaults</strong>. To reset everything at once, click <strong>Import</strong> under <strong>Backup &amp; Restore</strong> and choose <strong>Restore Windows defaults</strong>.</p>
+<p>To set one page back to how Windows ships, open it and choose <strong>Quick Actions</strong> &gt; <strong>Reset to Windows Defaults</strong>. To reset everything at once, click <strong>Import</strong> under <strong>Config file</strong> and choose <strong>Restore Windows defaults</strong>.</p>
 
 <h3>Roll back with System Restore</h3>
 <p>If you created a restore point when Winhance offered one, or later from <strong>Settings</strong> &gt; <strong>System Restore Point</strong>, Windows can roll the whole system back to it. Search the Start menu for <strong>Create a restore point</strong>, click <strong>System Restore</strong>, and pick the point named <code>Winhance Restore Point</code> with the date you made it.</p>
 
-<h2 id="removed-apps">Removed apps and leftover scripts</h2>
-<p>When you remove some Windows apps, Winhance can save a removal script and a scheduled task that removes them again if Windows puts them back. To stop that, for example because you want an app back:</p>
+<h2 id="removed-apps">Removed apps keep coming off</h2>
+<p>When you remove Windows apps, Winhance keeps them removed by checking every time it opens, and removes them again if Windows put them back. To stop that for an app you want back:</p>
 <ol class="steps">
     <li>
-        <h3>Open the help</h3>
-        <p>Go to <strong>Software &amp; Apps</strong>, open the <strong>Windows Apps</strong> tab and click <strong>Help</strong>.</p>
+        <h3>Open Background tasks</h3>
+        <p>Go to <strong>Settings</strong> &gt; <strong>Background tasks</strong>.</p>
     </li>
     <li>
-        <h3>Delete the script</h3>
-        <p>Under <strong>Winhance Status</strong>, click an active entry to delete its script and scheduled task.</p>
+        <h3>Stop keeping it removed</h3>
+        <p>Under <strong>Keep removed apps removed</strong>, click <strong>Stop keeping removed</strong> next to the app. Turn the switch off to stop all of them.</p>
     </li>
 </ol>
-<p>Then reinstall the app from the same tab, if it can be reinstalled. Each app card shows whether it can. To see the scripts themselves, choose <strong>More</strong> &gt; <strong>Winhance Scripts</strong>.</p>
+<p>Then reinstall the app from <strong>Software &amp; Apps</strong>, if it can be reinstalled. Each app card shows whether it can.</p>
 
 <h2 id="setting-states">A setting says "Not recognized", "Wrong format" or "Couldn't read"</h2>
 <ul>
@@ -70,7 +70,10 @@
 <ul>
     <li><strong>Not enough space</strong>: Winhance shows how much space extracting or building the ISO needs, how much the drive has, and how much more to free. Free up space or pick another drive.</li>
     <li><strong>Invalid directory</strong>: pick a folder that holds the extracted contents of a Windows ISO.</li>
-    <li><strong>File larger than 4 GB on USB</strong>: FAT32 can't hold files over 4 GB, and Winhance can only split <code>sources\install.wim</code>. Convert an ESD image to WIM in the earlier step, or remove the large file from the working folder.</li>
+    <li><strong>Boot files too large</strong>: Winhance creates separate FAT32 boot and NTFS installation partitions, so a large WIM or ESD is fine if the drive has enough space. If the boot files themselves exceed the boot partition capacity, start again with an unmodified Windows ISO.</li>
+    <li><strong>Can't build changes into the image</strong>: use a working folder on a local NTFS drive, and select an edition to keep if the image has several. If drivers or updates fall back to installation during Setup, check the Winhance log for the reason.</li>
+    <li><strong>Secure Boot error</strong>: use an up-to-date Windows ISO. If the media offers the <strong>Secure Boot compatibility</strong> option, select the 2023 certificate for a PC that rejects the 2011 certificate.</li>
+    <li><strong>Answer file check</strong>: open the findings to see errors and warnings. Correct malformed XML before adding it. Other findings can be reviewed before continuing, but a clean report does not guarantee that Setup will succeed.</li>
 </ul>
 <p>The <a href="../guides/wimutil.html">WIMUtil guide</a> walks through each step.</p>
 

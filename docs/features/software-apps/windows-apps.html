@@ -86,6 +86,7 @@
                     <a class="nav-item nav-sub" href="../../features/customizations/taskbar.html">Taskbar</a>
                     <a class="nav-item nav-sub" href="../../features/customizations/start-menu.html">Start Menu</a>
                     <a class="nav-item nav-sub" href="../../features/customizations/explorer.html">Explorer</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/context-menu.html">Context Menu</a>
                     <a class="nav-item nav-sub" href="../../features/customizations/time-region-language.html">Time &amp; Region</a>
                     <a class="nav-item" href="../../features/autounattend.html">Autounattend</a>
                     <a class="nav-item nav-sub" href="../../features/autounattend/answer-file.html">Answer file</a>
@@ -150,62 +151,48 @@
                             <p>The <strong>Confirm Removal</strong> dialog lists everything you checked.</p>
                         </li>
                         <li>
-                            <h3>Keep continuous removal on</h3>
-                            <p>Leave <strong>Save removal scripts to ensure continuous removal</strong> checked (it is on by default), then click <strong>Continue</strong>. Winhance removes the items and sets up the scheduled tasks described below.</p>
-                            <div data-wd-dialog="remove" role="figure" aria-label="The Confirm Removal dialog, with Save removal scripts to ensure continuous removal checked"></div>
+                            <h3>Keep the apps removed</h3>
+                            <p>Leave <strong>Keep these apps removed after Windows updates</strong> checked (it is on by default), then click <strong>Continue</strong>. Winhance removes the items and adds them to the list of apps it keeps removed.</p>
+                            <div data-wd-dialog="remove" role="figure" aria-label="The Confirm Removal dialog, with Keep these apps removed after Windows updates checked"></div>
                         </li>
                     </ol>
-                    <div class="callout callout-warning">
-                        <p class="callout-title">Clearing the checkbox clears all saved removals</p>
-                        <p>If you clear <strong>Save removal scripts to ensure continuous removal</strong>, Winhance removes the items once and then deletes every removal script and task it saved before, not just the ones for this run.</p>
+                    <div class="callout callout-note">
+                        <p class="callout-title">Installed or portable</p>
+                        <p>Keeping apps removed works on an installed copy and on a portable copy. By default Winhance does the checking itself, with no scripts and no SYSTEM task. If you prefer Windows Task Scheduler and script files, choose that under <strong>Settings</strong> &gt; <strong>Background tasks</strong>.</p>
                     </div>
 
                     <h2 id="how-removal-works">How removal works</h2>
-                    <p>Winhance writes the removal as PowerShell scripts in <code>C:\ProgramData\Winhance\Scripts</code>, runs them straight away, and registers a scheduled task for each one so Windows cannot quietly bring the items back.</p>
-                    <table>
-                        <thead>
-                            <tr><th>Script</th><th>What it removes</th><th>Task runs</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><code>BloatRemoval.ps1</code></td><td>Every app, capability and optional feature you removed, except Edge and OneDrive</td><td>At every sign-in</td></tr>
-                            <tr><td><code>EdgeRemoval.ps1</code></td><td>Microsoft Edge</td><td>At startup</td></tr>
-                            <tr><td><code>OneDriveRemoval.ps1</code></td><td>OneDrive</td><td>At every sign-in</td></tr>
-                        </tbody>
-                    </table>
-                    <p>The tasks live in a <strong>Winhance</strong> folder in Task Scheduler and run as SYSTEM. Each time you remove more items, Winhance adds them to the list in <code>BloatRemoval.ps1</code> instead of replacing it.</p>
-                    <p>For apps, <code>BloatRemoval.ps1</code> first removes the provisioned copy, so new user accounts do not get the app, then removes it for every existing user. It removes capabilities, and turns optional features off without forcing a restart. It keeps a log in <code>C:\ProgramData\Winhance\Logs\BloatRemovalLog.txt</code>.</p>
-                    <p>To see the scripts, open <strong>More</strong> in the sidebar and choose <strong>Winhance Scripts</strong>. <strong>More</strong> &gt; <strong>Change History</strong> lists what Winhance removed and installed.</p>
+                    <p>Winhance removes the items straight away and adds them to a list. Winhance checks that list every time you open it, and removes anything Windows has brought back. The check runs quietly in the background and never holds up the window. If you turned on <strong>Start in the system tray when I sign in</strong> or <strong>Re-apply the active profile when I sign in</strong>, it also checks at sign-in through the one sign-in task those options use. Each time you remove more items, Winhance adds them to the list instead of replacing it.</p>
+                    <p>The setting <strong>How Winhance keeps your system this way</strong> has two choices. <strong>Winhance does it</strong> is the recommended one: no scripts are saved and no SYSTEM task exists. <strong>Task Scheduler and scripts</strong> saves a script for each removal in <code>C:\ProgramData\Winhance\Scripts</code> and runs it from a scheduled task as SYSTEM. That folder cannot be moved, because Windows runs those scripts with full rights, so they must sit in a folder only administrators can change. Switching modes asks you first and moves your list across.</p>
+                    <p>For apps, Winhance first removes the provisioned copy, so new user accounts do not get the app, then removes it for every existing user. It removes capabilities, and turns optional features off without forcing a restart. The check writes a log in <code>C:\ProgramData\Winhance\Logs</code>. The <code>C:\ProgramData\Winhance</code> folder is locked to administrators, so a normal user cannot change what the task runs.</p>
+                    <p>Open <strong>Settings</strong> &gt; <strong>Background tasks</strong> to see when the last check ran and what it found. <strong>Check now</strong> runs it straight away and <strong>Open log</strong> opens the log folder. In Task Scheduler mode each script has its own card that shows whether it will really run: a script without its task, a task without its script, or a disabled task removes nothing, and the card says so. <strong>Items being removed</strong> lists what each one removes. <strong>More</strong> &gt; <strong>Change History</strong> lists what Winhance removed and installed.</p>
 
                     <h3 id="edge-and-onedrive">Microsoft Edge and OneDrive</h3>
-                    <p>Edge and OneDrive each get their own script because they need more than a package removal.</p>
+                    <p>Edge and OneDrive go on the same list as any other app, and removing them does more than a package removal.</p>
                     <ul>
-                        <li><code>EdgeRemoval.ps1</code> removes Edge (legacy and Chromium) and Edge Update. It leaves the <strong>Edge WebView2</strong> runtime alone, because other apps need it. It also sets up a redirect, based on AveYo's OpenWebSearch, so links Windows sends to Edge, such as web results in Start and Search, open in your default browser. A second task, <strong>OpenWebSearchRepair</strong>, puts the redirect back at sign-in if something overwrites it.</li>
-                        <li><code>OneDriveRemoval.ps1</code> uninstalls OneDrive, removes its scheduled tasks and Start menu shortcuts, and stops it installing itself for new users. Your files in <code>%USERPROFILE%\OneDrive</code> are kept.</li>
+                        <li>Removing Edge removes Edge (legacy and Chromium) and Edge Update. It leaves the <strong>Edge WebView2</strong> runtime alone, because other apps need it, unless you remove WebView2 too. It also sets up a redirect, based on AveYo's OpenWebSearch, so links Windows sends to Edge, such as web results in Start and Search, open in your default browser. A second task, <strong>OpenWebSearchRepair</strong>, puts the redirect back at sign-in if something overwrites it.</li>
+                        <li>Removing OneDrive uninstalls it, removes its scheduled tasks and Start menu shortcuts, and stops it installing itself for new users. Your files in <code>%USERPROFILE%\OneDrive</code> are kept.</li>
                     </ul>
 
-                    <h2 id="stop-continuous-removal">Stop continuous removal</h2>
-                    <p>Click <strong>Help</strong> on the Software &amp; Apps page. Under <strong>Winhance Status:</strong> you see three icons, one each for Bloat Removal, Microsoft Edge and OneDrive.</p>
-                    <ul>
-                        <li>A colored icon means the script or its task exists, so continuous removal is active.</li>
-                        <li>A grey icon means neither exists.</li>
-                    </ul>
-                    <p>Click a colored icon to delete that script and unregister its task. This only stops future removals. It does not reinstall anything.</p>
+                    <h2 id="stop-continuous-removal">Stop keeping apps removed</h2>
+                    <p>Open <strong>Settings</strong> &gt; <strong>Background tasks</strong>. Under <strong>Keep removed apps removed</strong>, each app on the list has a <strong>Stop keeping removed</strong> button. Turn the switch off to stop all checks. In Task Scheduler mode, turning it off asks first, then removes the tasks and their scripts.</p>
+                    <p>This only stops future removals. It does not reinstall anything.</p>
 
                     <h2 id="restore">Restore an item</h2>
                     <p>Check the item and click <strong>Install Selected Items</strong>. Items marked <strong>Permanent</strong> cannot be restored.</p>
                     <ul>
-                        <li>Winhance first takes the item off the list in <code>BloatRemoval.ps1</code>, so the sign-in task leaves it alone. For Edge or OneDrive it deletes that app's script and task, and for Edge it also removes the browser redirect.</li>
+                        <li>Winhance first takes the item off the keep-removed list, so the background task leaves it alone. For Edge it also removes the browser redirect.</li>
                         <li>Apps install through WinGet. If WinGet cannot get a package, which usually means a regional restriction, Winhance asks before downloading it from Microsoft's servers through store.rg-adguard.net.</li>
                         <li>If Windows Update is disabled, Store installs cannot finish. Winhance offers to change the update policy to <strong>Paused for a long time</strong> and try again.</li>
                         <li>Capabilities and optional features are turned back on in a separate PowerShell window. Winhance cannot see the result, so watch that window, then click <strong>Refresh</strong>.</li>
                     </ul>
                     <div class="callout callout-note">
                         <p class="callout-title">Reinstall through Winhance</p>
-                        <p>If you reinstall an app from the Microsoft Store or anywhere else while it is still on the removal list, the BloatRemoval task removes it again at your next sign-in. Restore it from this tab, or stop continuous removal first.</p>
+                        <p>If you reinstall an app from the Microsoft Store or anywhere else while it is still on the removal list, Winhance removes it again the next time it checks, which is when you open it or, if you use a sign-in option, at sign-in. Restore it from this tab, or stop keeping it removed first in <strong>Settings</strong> &gt; <strong>Background tasks</strong>.</p>
                     </div>
 
                     <h2 id="other-settings">Other settings are applied once</h2>
-                    <p>Only app removal runs again in the background. Settings on the <a href="../optimize.html">Optimize</a> and <a href="../customize.html">Customize</a> pages are applied once when you change them, and Winhance does not re-apply them if Windows or you change them later.</p>
+                    <p>Settings on the <a href="../optimize.html">Optimize</a> and <a href="../customize.html">Customize</a> pages normally apply once when you change them. If you have enabled <a href="../settings.html#profiles">Re-apply the active profile when I sign in</a>, Winhance also restores settings covered by your active profile at sign-in.</p>
                 </section>
             </article>
             <nav class="pager" aria-label="More pages"><a class="pager-prev" href="../../features/software-apps.html"><span>Previous</span>Software &amp; Apps</a><a class="pager-next" href="../../features/software-apps/external-apps.html"><span>Next</span>External apps</a></nav>
@@ -217,7 +204,7 @@
                 <li><a href="#what-you-can-remove">What you can remove</a></li>
                 <li><a href="#remove-items">Remove items</a></li>
                 <li><a href="#how-removal-works">How removal works</a></li>
-                <li><a href="#stop-continuous-removal">Stop continuous removal</a></li>
+                <li><a href="#stop-continuous-removal">Stop keeping apps removed</a></li>
                 <li><a href="#restore">Restore an item</a></li>
                 <li><a href="#other-settings">Other settings are applied once</a></li>
             </ul>
@@ -231,7 +218,7 @@
                     <img class="brand-mark" src="../../../images/winhance-rocket.png" alt="" width="24" height="24">
                     <span>Winhance</span>
                 </a>
-                <p class="footer-version">These docs describe Winhance v26.10.03</p>
+                <p class="footer-version">These docs describe Winhance v26.11.27</p>
             </div>
             <ul class="footer-links">
                 <li><a href="../../../index.html">Home</a></li>

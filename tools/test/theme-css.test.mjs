@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { cssVarName, themeCss, geometries } from '../lib/theme-css.mjs';
+import { cssVarName, themeCss, pillIcons } from '../lib/theme-css.mjs';
 import { generate } from '../gen-docs.mjs';
 import { CHAR_W, CHAR_W_SM } from '../lib/render-card.mjs';
 
@@ -12,6 +12,16 @@ const fixturePath = join(here, '..', 'fixtures', 'theme.sample.json');
 const theme = JSON.parse(readFileSync(fixturePath, 'utf8'));
 
 // --- cssVarName naming rule ---
+
+// An app token naming a WinUI resource the generator does not know falls through to an
+// undefined --app- var, and the browser drops the declaration without a word.
+test('every var() in the generated app-tokens.css is defined in app-tokens.css or winui-tokens.css', () => {
+  const css = ['app-tokens.css', 'winui-tokens.css'].map((f) => readFileSync(join(import.meta.dirname, '../../docs/css', f), 'utf8')).join('\n');
+  const defined = new Set([...css.matchAll(/(--[\w-]+)\s*:/g)].map((m) => m[1]));
+  const appTokens = readFileSync(join(import.meta.dirname, '../../docs/css/app-tokens.css'), 'utf8');
+  const missing = [...new Set([...appTokens.matchAll(/var\((--[\w-]+)/g)].map((m) => m[1]))].filter((v) => !defined.has(v));
+  assert.deepEqual(missing, []);
+});
 
 test('cssVarName splits a plain PascalCase key at word boundaries', () => {
   assert.equal(cssVarName('BadgeRecommendedBackground'), '--app-badge-recommended-background');
@@ -115,6 +125,12 @@ test('a numeric FontWeight passes through unitless (no px, unlike other numeric 
   assert.match(css, /--app-test-numericweight-font-weight:\s*450;/);
 });
 
+test('an exported icon size becomes a px var that a {StaticResource} FontSize setter resolves to', () => {
+  const css = themeCss(theme);
+  assert.match(css, /--app-caption-icon-font-size:\s*12px;/);
+  assert.match(css, /--app-badge-recommended-icon-font-size:\s*var\(--app-caption-icon-font-size\);/);
+});
+
 test('CornerRadius "10" converts to "10px"', () => {
   const css = themeCss(theme);
   assert.match(css, /--app-badge-pill-base-corner-radius:\s*10px;/);
@@ -148,13 +164,20 @@ test('themeCss is byte-stable across repeated calls', () => {
   assert.equal(themeCss(theme), themeCss(theme));
 });
 
-// --- geometries() ---
+// --- pillIcons() ---
 
-test('geometries returns the three pill geometries with their viewBox', () => {
-  const g = geometries(theme);
-  assert.equal(g.BadgeRecommendedIconPath.viewBox, 12);
-  assert.equal(g.BadgeDefaultIconPath.viewBox, 11);
-  assert.match(g.BadgeRecommendedIconPath.data, /^M/);
+test('pillIcons resolves each Badge*Icon style to its vendored Fluent icon', () => {
+  const box = '0 0 20 20';
+  const site = { 'Fluent/Star': { viewBox: box, path: 'M1Z' }, 'Fluent/Apps': { viewBox: box, path: 'M2Z' }, 'Fluent/Person': { viewBox: box, path: 'M3Z' } };
+  assert.deepEqual(pillIcons(theme, site), {
+    recommended: { viewBox: box, path: 'M1Z' },
+    default: { viewBox: box, path: 'M2Z' },
+    preference: { viewBox: box, path: 'M3Z' },
+  });
+});
+
+test('pillIcons throws when a pill icon is not vendored', () => {
+  assert.throws(() => pillIcons(theme, {}), /Fluent\/Star \(the Recommended pill\) is not vendored/);
 });
 
 // --- CLI wiring ---

@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import {
   parseFeatureIds, parseFeatureDefinitions, parseFeatureIcons, parseViewModelStringKeys,
   parseNavSidebar, parseTitleBar, parseAppItems, parseMetrics, parseMoreMenu,
-  parseIconVariant, parsePageIcon, repoIconKey, repoIconKeyGuard, parseItemTypes, parseRemovalItems, parseHelpLink, parseBreakpoints,
-  launchedUrl, parseSupportUrl, parseConfig,
+  parseIconVariant, parsePageIcon, repoIconKey, repoIconKeyGuard, parseItemTypes, parseBreakpoints,
+  launchedUrl, parseHelpLinks, parseSupportUrl, parseConfig, parseAppsViewMenu, parseColors,
 } from '../lib/app-source.mjs';
 import { spliceCounts, spliceSprite, spliceAreaIcons } from '../gen-demo.mjs';
 
@@ -15,14 +15,14 @@ const FEATURE_IDS = `public static class FeatureIds
     public const string Explorer = "Explorer";
 }`;
 
-const FEATURE_DEFS = `new(FeatureIds.Explorer, "Explorer", "Customize", "ExplorerIconPath"),
-        new(FeatureIds.Privacy, "Privacy & Security", "Optimize", "PrivacyIconPath"),`;
+const FEATURE_DEFS = `new(FeatureIds.Explorer, "Explorer", "Customize", "ExplorerIconSymbol"),
+        new(FeatureIds.Privacy, "Privacy & Security", "Optimize", "PrivacyIconSymbol"),`;
 
 const ICONS = `<x:String x:Key="OptimizeIconSymbol">Gauge</x:String>
-    <x:String x:Key="PrivacyIconPath">M12,17A2,2 0 0,0 14,15Z</x:String>
-    <x:String x:Key="FilterCheckIconPath">M12 12V19.88Z</x:String>`;
+    <x:String x:Key="PrivacyIconSymbol">Shield</x:String>`;
 
-const VM = `    public string NavOptimizeText =>
+const VM = `    public Icon WindowsFilterIcon => IsWindowsVersionFilterEnabled ? Icon.Filter : Icon.FilterDismiss;
+    public string NavOptimizeText =>
         _localizationService.GetStringOrDefault("Nav_Optimize", "Optimize");
     public string NavMoreText =>
         _localizationService.GetStringOrDefault("Nav_More", "More");
@@ -79,9 +79,7 @@ ${modeButton('ConfigReviewModeButton', 'ConfigReview')}
                     </StackPanel>
                 </Button>
                 <Button x:Name="WindowsFilterButton">
-                    <Viewbox Width="18" Height="18">
-                        <PathIcon x:Name="WindowsFilterIcon" Data="{StaticResource FilterCheckIconPath}"/>
-                    </Viewbox>
+                    <fluentIcons:FluentIcon Icon="{x:Bind ViewModel.WindowsFilterIcon, Mode=OneWay}" IconVariant="Regular"/>
                 </Button>
             </StackPanel>
         </Grid>`;
@@ -90,7 +88,7 @@ test('feature definitions resolve FeatureIds constants, in the order the app dec
   const ids = parseFeatureIds(FEATURE_IDS);
   assert.deepEqual(ids, { Privacy: 'Privacy', Explorer: 'Explorer' });
   const defs = parseFeatureDefinitions(FEATURE_DEFS, ids);
-  assert.deepEqual(defs.map((d) => [d.id, d.category, d.iconKey]), [['Explorer', 'Customize', 'ExplorerIconPath'], ['Privacy', 'Optimize', 'PrivacyIconPath']]);
+  assert.deepEqual(defs.map((d) => [d.id, d.category, d.iconKey]), [['Explorer', 'Customize', 'ExplorerIconSymbol'], ['Privacy', 'Optimize', 'PrivacyIconSymbol']]);
   assert.throws(() => parseFeatureDefinitions('new(FeatureIds.Gone, "x", "y", "z"),', ids), /FeatureIds\.Gone/);
 });
 
@@ -110,13 +108,13 @@ test('a nav label with no string in en.json fails instead of shipping blank', ()
   assert.throws(() => parseNavSidebar(NAV, { icons, vmKeys, strings: { Nav_More: 'More' } }), /Nav_Optimize/);
 });
 
-test('title bar: height, three modes, and buttons with Fluent or geometry icons', () => {
-  const tb = parseTitleBar(MAIN, { vmKeys: parseViewModelStringKeys(VM), strings: STRINGS, icons: parseFeatureIcons(ICONS) });
+test('title bar: height, three modes, and buttons with Fluent icons', () => {
+  const tb = parseTitleBar(MAIN, { vmKeys: parseViewModelStringKeys(VM), strings: STRINGS, vm: VM });
   assert.equal(tb.height, 48);
   assert.deepEqual(tb.modes.map((m) => m.id), ['Normal', 'Builder', 'ConfigReview']);
   assert.equal(tb.modes[0].image, 'winhance-monitor.png');
   assert.deepEqual(tb.buttons[0], { name: 'DonateButton', icon: 'HeartFilled', color: '#E74C3CFF', tooltip: 'Support Winhance', label: 'Support' });
-  assert.equal(tb.buttons[1].path, 'M12 12V19.88Z');
+  assert.equal(tb.buttons[1].icon, 'Filter');
 });
 
 test('app items: every ItemDefinition block, escaped quotes kept, flags and detection identity read', () => {
@@ -173,27 +171,20 @@ test('repo icon keys follow RepoIconKey.cs: winget, then choco, then the id for 
   assert.throws(() => repoIconKeyGuard('"external-app-" WinGetPackageId'), /re-port repoIconKey/);
 });
 
-test('icon variant, page icon, item types, removal items, help link and breakpoints read from source, fail when gone', () => {
+test('icon variant, page icon, item types and breakpoints read from source, fail when gone', () => {
   assert.equal(parseIconVariant('<fluentIcons:FluentIcon x:Name="I" IconVariant="Color" FontSize="20"/>', 'NavButton.xaml'), 'Color');
   assert.throws(() => parseIconVariant('<FontIcon/>', 'NavButton.xaml'), /IconVariant/);
   assert.equal(parsePageIcon('<local:SectionPageShell PageIcon="Gauge"/>', 'x'), 'Gauge');
   assert.equal(parsePageIcon('<c:PageHeader\n    Grid.Row="0"\n    Icon="Settings"\n    Title="t"/>', 'x'), 'Settings');
   assert.throws(() => parsePageIcon('<Grid/>', 'x'), /page header icon/);
-  const types = parseItemTypes(`public string ItemTypeDescription
+  const types = parseItemTypes(`public string ItemTypeDescription => Definition.Kind switch
     {
-        get
-        {
-            if (!string.IsNullOrEmpty(Definition.CapabilityName))
-                return "Legacy Capability";
-            if (!string.IsNullOrEmpty(Definition.OptionalFeatureName))
-                return "Optional Feature";
-            if (Definition.AppxPackageName?.Length > 0)
-                return "AppX Package";
-            return string.Empty;`);
-  assert.deepEqual(types, { capability: 'Legacy Capability', feature: 'Optional Feature', appx: 'AppX Package' });
+        WindowsAppKind.AppxPackage => _localizationService.GetString("SoftwareApps_Type_AppxPackage"),
+        WindowsAppKind.Capability => _localizationService.GetString("SoftwareApps_Type_LegacyCapability"),
+        _ => string.Empty,
+    };`);
+  assert.deepEqual(types, { AppxPackage: 'SoftwareApps_Type_AppxPackage', Capability: 'SoftwareApps_Type_LegacyCapability' });
   assert.throws(() => parseItemTypes('nothing'), /ItemTypeDescription/);
-  assert.deepEqual(parseRemovalItems('new RemovalStatusViewModel(\n "Bloat Removal",\n "DeleteSweepIconPath", "#00FF3C")'), [{ name: 'Bloat Removal', icon: 'DeleteSweepIconPath' }]);
-  assert.equal(parseHelpLink('LearnMoreLink.NavigateUri = new System.Uri("https://winhance.net/docs/a.html");', 'x'), 'https://winhance.net/docs/a.html');
   assert.deepEqual(parseBreakpoints('private const double CompactPaneBelowWidth = 1008;', '<x:Double x:Key="ShortWindowHeight">800</x:Double>'),
     { compactPaneBelowWidth: 1008, shortWindowHeight: 800 });
   assert.throws(() => parseBreakpoints('', ''), /CompactPaneBelowWidth/);
@@ -263,6 +254,24 @@ test('More menu: XAML order, separators kept, labels via Tag -> view-model prope
   assert.throws(() => parseMoreMenu(xaml, '', vm, STRINGS), /SupportWinhance/);
 });
 
+test('parseMoreMenu: an icon colour named by StaticResource resolves through parseColors', () => {
+  const styles = `<Color x:Key="SupportHeartColor">#FFE74C3C</Color>
+    <SolidColorBrush x:Key="SupportHeartBrush" Color="{StaticResource SupportHeartColor}"/>`;
+  const xaml = `<MenuFlyout x:Name="MoreMenuFlyout">
+                        <MenuFlyoutItem x:Name="SupportWinhanceMenuItem" Click="MoreMenuItem_Click" Tag="SupportWinhance">
+                            <MenuFlyoutItem.Icon>
+                                <fluentIcons:FluentIcon Icon="Heart" IconVariant="Filled" FontSize="20" Foreground="{StaticResource SupportHeartBrush}"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuFlyout>`;
+  const code = '"SupportWinhance" => _moreMenuViewModel.MenuSupportWinhance,';
+  const vm = `VersionInfo = $"Winhance {versionInfo.Version}";
+    public string MenuSupportWinhance =>
+        _localizationService.GetStringOrDefault("Menu_SupportWinhance", "Support Winhance");`;
+  assert.equal(parseMoreMenu(xaml, code, vm, STRINGS, parseColors(styles))[0].color, '#E74C3CFF');
+  assert.throws(() => parseMoreMenu(xaml, code, vm, STRINGS), /not a colour this generator can read/);
+});
+
 test('links: a view model method\'s launched URL, and the store URL without its ?ref= source', () => {
   const vm = `[RelayCommand]
     private async Task DocsAsync()
@@ -273,6 +282,24 @@ test('links: a view model method\'s launched URL, and the store URL without its 
   assert.equal(launchedUrl(vm, 'DocsAsync', 'vm.cs'), 'https://winhance.net/docs/index.html');
   assert.equal(launchedUrl(vm, 'BugReportAsync', 'vm.cs'), 'https://github.com/memstechtips/Winhance/issues');
   assert.throws(() => launchedUrl(vm, 'OpenDocsAsync', 'vm.cs'), /vm\.cs: could not read OpenDocsAsync URL/);
+  const helpCs = `private const string DocsRoot = "https://winhance.net/docs/";
+    public static readonly Uri BugReport =
+        new("https://github.com/memstechtips/Winhance/issues/new");
+    internal static readonly IReadOnlyDictionary<string, string> DocsPageByTag = new Dictionary<string, string>
+    {
+        ["Optimize"] = "features/optimize.html",
+    };
+    public static Uri DocsFor(string? pageTag) =>
+        new(DocsRoot + (pageTag is not null && DocsPageByTag.TryGetValue(pageTag, out var page) ? page : "index.html"));`;
+  const help = parseHelpLinks(helpCs);
+  assert.equal(help.bugReport, 'https://github.com/memstechtips/Winhance/issues/new');
+  assert.equal(help.docsFor('Optimize'), 'https://winhance.net/docs/features/optimize.html');
+  assert.equal(help.docsFor(null), 'https://winhance.net/docs/index.html');
+  const helpVm = `private async Task BugReportAsync() { await Launcher.LaunchUriAsync(HelpLinks.BugReport); }
+    private async Task DocsAsync(string? pageTag) { await Launcher.LaunchUriAsync(HelpLinks.DocsFor(pageTag)); }`;
+  assert.equal(launchedUrl(helpVm, 'BugReportAsync', 'vm.cs', help), 'https://github.com/memstechtips/Winhance/issues/new');
+  assert.equal(launchedUrl(helpVm, 'DocsAsync', 'vm.cs', help), 'https://winhance.net/docs/index.html');
+  assert.throws(() => parseHelpLinks('class X {}'), /HelpLinks\.cs: could not read DocsRoot/);
   assert.equal(parseSupportUrl('private const string SupportUrl = "https://store.memstechtips.com/winhance/?ref=app";'), 'https://store.memstechtips.com/winhance/');
   assert.throws(() => parseSupportUrl('const string StoreUrl = "x";'), /SupportUrl/);
 });
@@ -291,4 +318,65 @@ test('config: setting items from every Optimize and Customize feature, and the t
   });
   assert.throws(() => parseConfig('{', 'rec.winhance'), /rec\.winhance: not JSON/);
   assert.throws(() => parseConfig(JSON.stringify({ Optimize: { Features: {} } }), 'rec.winhance'), /Customize\.Features/);
+});
+
+test('Software & Apps View menu: icon, label, and items in order with the flags they bind', () => {
+  const vm = `    public string ViewMenuText => _localizationService.GetString("View_Menu");
+    public string ViewModeCardTooltip => _localizationService.GetString("ViewMode_Card");
+    public string SortNameAscText => _localizationService.GetStringOrDefault("SoftwareApps_Sort_NameAZ", "Name A-Z");
+    public string SortTableHintText => _localizationService.GetStringOrDefault("SoftwareApps_Sort_TableHint", "Sort with the column headers");
+    public string FilterUpdatesText => _localizationService.GetString("SoftwareApps_ShowUpdatesOnly");
+    public string ExportListText => _localizationService.GetString("SoftwareApps_ExportList");`;
+  const strings = { View_Menu: 'View', ViewMode_Card: 'Card View', SoftwareApps_Sort_NameAZ: 'Name A-Z',
+    SoftwareApps_Sort_TableHint: 'Sort with the column headers', SoftwareApps_ShowUpdatesOnly: 'Show apps with updates only',
+    SoftwareApps_ExportList: 'Export list as CSV' };
+  const xaml = (items) => `<DropDownButton x:Name="ViewMenuButton"
+                            ToolTipService.ToolTip="{x:Bind ViewModel.ViewMenuText, Mode=OneWay}">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <fluentIcons:FluentIcon Icon="Eye" IconVariant="Regular" FontSize="{StaticResource ActionBarIconFontSize}"/>
+                    <TextBlock x:Name="ViewMenuLabel" Text="{x:Bind ViewModel.ViewMenuText, Mode=OneWay}"/>
+                </StackPanel>
+                <DropDownButton.Flyout>
+                    <MenuFlyout Placement="BottomEdgeAlignedRight">${items}
+                    </MenuFlyout>
+                </DropDownButton.Flyout>
+            </DropDownButton>`;
+  const items = `
+                        <RadioMenuFlyoutItem GroupName="AppsViewMode"
+                                             Text="{x:Bind ViewModel.ViewModeCardTooltip, Mode=OneWay}"
+                                             IsChecked="{x:Bind ViewModel.IsCardView, Mode=OneWay}"
+                                             Click="ViewCard_Click"/>
+                        <MenuFlyoutSeparator/>
+                        <RadioMenuFlyoutItem GroupName="AppsSortMode"
+                                             Text="{x:Bind ViewModel.SortNameAscText, Mode=OneWay}"
+                                             IsChecked="{x:Bind ViewModel.IsSortNameAsc, Mode=OneWay}"
+                                             IsEnabled="{x:Bind ViewModel.IsSortEnabled, Mode=OneWay}"
+                                             Click="SortNameAsc_Click"/>
+                        <MenuFlyoutItem Text="{x:Bind ViewModel.SortTableHintText, Mode=OneWay}"
+                                        IsEnabled="False"
+                                        Visibility="{x:Bind ViewModel.IsTableView, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        <RadioMenuFlyoutItem GroupName="AppsFilter"
+                                             Text="{x:Bind ViewModel.FilterUpdatesText, Mode=OneWay}"
+                                             IsChecked="{x:Bind ViewModel.IsFilterUpdates, Mode=OneWay}"
+                                             Visibility="{x:Bind ViewModel.IsExternalAppsTabSelected, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                             Click="FilterUpdates_Click"/>
+                        <MenuFlyoutItem Text="{x:Bind ViewModel.ExportListText, Mode=OneWay}"
+                                        Command="{x:Bind ViewModel.ExportListCommand}"/>`;
+  assert.deepEqual(parseAppsViewMenu(xaml(items), vm, strings), {
+    icon: 'Eye',
+    label: 'View',
+    items: [
+      { label: 'Card View', group: 'AppsViewMode', checked: 'IsCardView' },
+      { separator: true },
+      { label: 'Name A-Z', group: 'AppsSortMode', checked: 'IsSortNameAsc', enabled: 'IsSortEnabled' },
+      { label: 'Sort with the column headers', visible: 'IsTableView', disabled: true },
+      { label: 'Show apps with updates only', visible: 'IsExternalAppsTabSelected', group: 'AppsFilter', checked: 'IsFilterUpdates' },
+      { label: 'Export list as CSV', command: 'ExportListCommand' },
+    ],
+  });
+  assert.throws(() => parseAppsViewMenu('<StackPanel/>', vm, strings), /no ViewMenuButton/);
+  assert.throws(() => parseAppsViewMenu(xaml(items.replace('Command="{x:Bind ViewModel.ExportListCommand}"', 'Click="Export_Click"')), vm, strings), /not a view-model command/);
+  assert.throws(() => parseAppsViewMenu(xaml(items + '<ToggleMenuFlyoutItem Text="x"/>'), vm, strings), /ToggleMenuFlyoutItem/);
+  assert.throws(() => parseAppsViewMenu(xaml(items.replace('ViewModel.IsCardView', 'ViewModel.WindowsAppsViewModel.IsCardView')), vm, strings), /not a plain view-model flag/);
+  assert.throws(() => parseAppsViewMenu(xaml(items), vm, { ...strings, ViewMode_Card: undefined }), /ViewMode_Card/);
 });

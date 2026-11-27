@@ -81,24 +81,22 @@
                 var count = e.names.length + (e.names.length === 1 ? ' item ' : ' items ');
                 if (e.action === 'remove') say(count + (e.save ? 'removed, and kept removed' : 'removed once'),
                     list + (e.save
-                        ? 'Winhance saves a removal script and a scheduled task, so Windows can\'t quietly bring them back.'
-                        : 'Winhance also deletes every removal script and task it saved before, not just ones for these.'),
+                        ? 'Winhance adds them to its kept list and removes them again if Windows brings them back.'
+                        : 'Winhance stops keeping these removed, so Windows can bring them back.'),
                     null, { text: 'How removal works', href: demo.asset('docs/features/software-apps/windows-apps.html#how-removal-works') });
                 else say(count + (e.action === 'install' ? 'ready to install' : 'ready to uninstall'),
                     list + (e.action === 'install' ? 'In the app, Winhance installs them one after another and shows the progress of each.' : 'In the app, Continue starts the uninstall.'), null,
                     { text: 'How it works', href: demo.asset('docs/features/software-apps/external-apps.html') });
             } else if (e.type === 'locked') {
                 if (stage.dataset.focus != null && e.page !== stage.dataset.page) say(stage.dataset.focus, 'The full demo on the home page opens every page.', null, { text: 'Open the full demo', href: demo.asset('index.html#top') });
-                else if (e.page === 'Autounattend') say('Unattend lives in Builder mode', 'Pick Builder in the title bar, then Autounattend in the bar under it, to build an answer file. Nothing you choose there touches the PC you are on.');
-                else say(demo.data.strings.Builder.wimLocked, 'Finish or cancel the config review to use WIMUtil again.');
             } else if (e.type === 'target') {
                 if (e.target === 'Autounattend') say('Unattend is open', 'The Unattend page in the sidebar now builds an autounattend.xml answer file for a clean Windows install.');
             } else if (e.type === 'filter') {
                 var C = demo.data.strings.common;
                 say(e.on ? C.filterOn : C.filterOff, e.on ? C.filterOnText : C.filterOffText);
             } else if (e.type === 'wim') {
-                if (e.step === 'session') say('Building an answer file for this media', 'WIMUtil has a Windows 11 ISO extracted and ready. Generate and add Winhance XML switches Winhance to Builder mode, and the Unattend settings appear right in the card. Pick what the new install should do, then click Generate.');
-                else if (e.step === 'generated') say('autounattend.xml added to the media', 'In the app, Winhance writes the answer file into the working folder and checks it. Add drivers next, or go straight to step 4 and build the ISO or USB.');
+                if (e.step === 'session') say('Building an answer file for this media', 'WIMUtil has a Windows 11 ISO extracted and ready. Choosing Winhance XML switches Winhance to Builder mode, and the Unattend page is where you pick what the new install should do. The answer file is made from those choices when you create the media.');
+                else if (e.step === 'own') say('Your own answer file', 'In the app, you pick an autounattend.xml you made yourself. Its settings apply during Windows Setup.');
                 else say('In the app, this opens a file picker or runs the step', 'The demo stops here. Nothing is downloaded or written.');
             } else if (e.type === 'refresh') {
                 say('Refresh', 'In the app, this checks again what is installed on your PC.');

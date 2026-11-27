@@ -97,8 +97,6 @@
 .wd-mode:hover { background: var(--wd-subtle-2); }
 .wd-mode.is-on { background: var(--wd-accent); color: var(--wd-on-accent); }
 .wd-mode-sep { width: 1px; margin: 6px 0; background: var(--wd-control-stroke); }
-.wd-mode.is-nudge { animation: wd-nudge .9s ease-out 2; }
-@keyframes wd-nudge { 0%, 100% { box-shadow: none; } 40% { box-shadow: 0 0 0 3px var(--wd-accent); } }
 .wd-tb-buttons { display: flex; align-items: center; gap: 2px; margin-right: 8px; }
 .wd-caption { display: flex; align-self: flex-start; }
 .wd-caption span { width: 46px; height: 32px; display: grid; place-items: center; opacity: .7; }
@@ -186,8 +184,6 @@
     background: var(--wd-accent);
 }
 .wd-nav-btn.is-locked .wd-nav-content { opacity: .4; }
-.wd-nav-lock { position: absolute; inset: 0; display: grid; place-items: center; color: #ffa500; }
-.wd-nav-lock .wd-glyph { width: 14px; height: 14px; }
 .is-compact .wd-nav { width: 48px; padding: 8px 4px; }
 .is-compact .wd-nav-btn { width: 40px; height: 40px; }
 .is-compact .wd-nav-btn .wd-glyph { width: 16px; height: 16px; }
@@ -499,27 +495,7 @@ input:focus-visible + .wd-checkbox-box { outline: 2px solid var(--wd-text); outl
 .wd-actionbar.is-tight .wd-ab-btn:not(.wd-ab-main) .wd-ab-text, .wd-actionbar.is-tight .wd-menu .wd-ab-text { display: none; }
 .wd-actionbar.is-tighter { flex-wrap: wrap; row-gap: 4px; }
 .wd-actionbar.is-tighter .wd-ab-text { display: none; }
-.wd-view-switch { display: inline-flex; border: 1px solid var(--wd-control-stroke); border-radius: 4px; flex: none; }
-.wd-view-btn { padding: 6px 10px; display: inline-grid; place-items: center; }
-.wd-view-btn .wd-glyph { width: 18px; height: 18px; }
-.wd-view-btn:first-child { border-radius: 4px 0 0 4px; }
-.wd-view-btn:last-child { border-radius: 0 4px 4px 0; }
-.wd-view-btn:hover { background: var(--wd-subtle-2); }
-.wd-view-btn.is-on { background: var(--wd-accent); color: var(--wd-on-accent); }
 
-.wd-help { width: 420px; max-width: 70vw; padding: 16px; white-space: normal; display: flex; flex-direction: column; gap: 16px; cursor: default; }
-.wd-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; font-size: 12px; line-height: 16px; }
-.wd-legend-item { display: inline-flex; align-items: center; gap: 8px; }
-.wd-legend-item .wd-glyph { width: 18px; height: 18px; }
-.wd-help-sep { height: 1px; background: var(--winui-divider-stroke-color-default); }
-.wd-help-status { display: flex; flex-direction: column; gap: 8px; }
-.wd-help-status strong { font-weight: 600; }
-.wd-help-removal { display: flex; gap: 8px; }
-.wd-help-removal-btn { padding: 8px; border: 1px solid var(--wd-control-stroke); border-radius: 4px; color: var(--winui-text-fill-color-disabled); }
-.wd-help-removal-btn .wd-glyph { width: 20px; height: 20px; }
-.wd-help-text { max-height: 200px; overflow: auto; scrollbar-width: thin; padding-right: 16px; white-space: pre-line; font-size: 12px; line-height: 16px; color: var(--wd-text-2); }
-.wd-help-link { margin-top: 4px; color: var(--winui-accent-text-primary); text-decoration: none; font-size: 14px; }
-.wd-help-link:hover { text-decoration: underline; }
 
 .wd-apps-content { margin-bottom: 4px; }
 .wd-tabs { display: flex; align-items: stretch; margin: 12px 12px 0; padding: 4px; background: var(--wd-card); border-radius: 6px; flex: none; }
@@ -627,44 +603,42 @@ input:focus-visible + .wd-checkbox-box { outline: 2px solid var(--wd-text); outl
 /* ---- WIMUtil: expandable step containers ---- */
 .is-wim .wd-column { display: flex; flex-direction: column; gap: 8px; }
 .wd-wim-step { position: relative; background: var(--wd-card); border: 1px solid var(--wd-stroke); border-radius: 4px; }
-.wd-wim-head { width: 100%; display: flex; align-items: center; padding: 12px 16px; text-align: left; border-radius: 4px; }
+.wd-wim-head { width: 100%; min-height: 72px; display: flex; align-items: center; padding: 12px 16px; text-align: left; border-radius: 4px; }
 .wd-wim-head:hover:not(:disabled) { background: var(--wd-card-2); }
-.wd-wim-head-icon { width: 24px; height: 24px; margin-right: 16px; }
+.wd-wim-head-icon { width: 36px; height: 36px; margin-right: 16px; flex: none; }
 .wd-wim-head-text { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 .wd-wim-title { font-size: 16px; line-height: 22px; font-weight: 600; }
 .wd-wim-status { font-size: 12px; line-height: 16px; color: var(--wd-text-2); }
 .wd-wim-done { width: 20px; height: 20px; margin-right: 12px; }
 .wd-wim-chev { width: 12px; height: 12px; transition: transform .12s; }
 .wd-wim-step.is-open .wd-wim-chev { transform: rotate(180deg); }
-.wd-wim-body { padding: 0 16px 16px; }
+.wd-wim-body { padding: 0 16px 16px 60px; }
 .wd-wim-lead { margin: 0 0 8px 4px; font-weight: 600; color: var(--wd-text-2); }
-.wd-wim-card {
-    padding: 16px;
-    margin-bottom: 8px;
-    background: var(--wd-card-2);
-    border: 1px solid var(--wd-stroke);
-    border-radius: 4px;
-}
-.wd-wim-card-row { display: flex; align-items: center; gap: 16px; min-height: 40px; }
-.wd-wim-card-icon { flex: none; display: grid; place-items: center; }
-.wd-wim-icon { width: 24px; height: 24px; }
-.wd-wim-rocket img { width: 36px; height: 36px; display: block; }
-.wd-wim-card-text { flex: 1; min-width: 0; }
-.wd-wim-card-title { font-weight: 600; }
-.wd-wim-card-desc { white-space: pre-line; margin-top: 2px; font-size: 12px; line-height: 16px; color: var(--wd-text-2); }
-.wd-wim-card-btn { min-width: 100px; }
-.wd-wim-card-done { flex: none; width: 20px; height: 20px; margin: 0 6px; }
-/* The Winhance XML session: the answer-file cards under the card's row, Generate centred at the end. */
-.wd-wim-session { margin-top: 4px; }
-.wd-wim-generate { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; margin-top: 16px; }
-.wd-wim-generate .wd-btn { grid-column: 2; min-width: 100px; }
-.wd-wim-generate .wd-wim-card-done { justify-self: start; margin-left: 14px; }
+.wd-wim-layout { display: flex; gap: 24px; align-items: flex-start; }
+.wd-wim-steps { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.wd-wim-rail { display: none; flex: none; width: 232px; flex-direction: column; padding: 16px; background: var(--wd-card); border: 1px solid var(--wd-stroke); border-radius: 4px; position: sticky; top: 0; }
+.wd-wim-rail-item { position: relative; display: flex; align-items: center; gap: 12px; min-height: 40px; }
+.wd-wim-rail-item:not(:last-child)::after { content: ''; position: absolute; left: 11px; top: 32px; bottom: -8px; width: 2px; background: var(--wd-stroke); }
+.wd-wim-rail-item.is-done:not(:last-child)::after { background: var(--winui-system-fill-color-success, #6ccb5f); }
+.wd-wim-rail-mark { flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 600; border: 1px solid var(--wd-stroke); background: var(--wd-card-2); }
+.wd-wim-rail-item.is-done .wd-wim-rail-mark { background: var(--winui-system-fill-color-success, #6ccb5f); border-color: transparent; color: #000; }
+.wd-wim-rail-mark svg { width: 12px; height: 12px; }
+@container (min-width: 1016px) { .wd-wim-rail { display: flex; } }
+.is-wim { container-type: inline-size; }
+.wd-wim-group { margin: 16px 0 6px 1px; }
+.wd-wim-group:first-child { margin-top: 0; }
+.wd-wim-body .wd-scard, .wd-wim-body .wd-setting { margin-bottom: 8px; }
+.wd-wim-body .wd-setting .wd-scard { margin-bottom: 0; }
+.wd-wim-pick { cursor: pointer; }
+.wd-wim-pick.is-picked { border-color: var(--wd-accent, currentColor); }
+.wd-wim-tag { margin-left: 8px; }
+.wd-wim-link { color: var(--wd-accent-text, var(--wd-accent)); text-decoration: underline; padding: 0 4px; }
+.wd-wim-card-done { flex: none; width: 20px; height: 20px; margin-left: 8px; }
 .wd-wim-check { margin-top: 8px; font-size: 14px; }
-.wd-wim-radios { display: flex; gap: 16px; margin-top: 8px; }
-.wd-wim-combo { margin-top: 8px; }
-.wd-wim-start { display: flex; justify-content: center; margin: 8px 0; }
+.wd-wim-radios { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.wd-wim-start { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 8px 0; flex-wrap: wrap; }
 .wd-wim-start .wd-btn { min-width: 160px; }
-.wd-wim-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 4px; font-size: 14px; color: var(--wd-text-2); }
+.wd-wim-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; font-size: 14px; color: var(--wd-text-2); }
 
 /* ---- ContentDialog ---- */
 .wd-smoke { position: absolute; inset: 0; z-index: 10; display: grid; place-items: center; padding: 16px; background: var(--winui-smoke-fill-color-default); }
@@ -682,6 +656,7 @@ input:focus-visible + .wd-checkbox-box { outline: 2px solid var(--wd-text); outl
 .wd-dialog-body { padding: 24px; overflow: auto; display: flex; flex-direction: column; gap: 12px; background: var(--winui-layer-fill-color-alt); }
 .wd-dialog-title { font-size: 20px; line-height: 28px; font-weight: 600; }
 .wd-dialog-text { white-space: pre-line; }
+.wd-dialog-hint { margin: -4px 0 0 28px; font-size: 12px; line-height: 16px; opacity: .7; }
 .wd-dialog-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 24px; border-top: 1px solid var(--wd-stroke); }
 /* DialogService's item list: a ListView (rows unpadded, wrapping, 300px tall at most) in a Border of 8px
    padding, 4px corners and a 1px pure white (dark) or black (light) edge. */
@@ -719,12 +694,8 @@ input:focus-visible + .wd-checkbox-box { outline: 2px solid var(--wd-text); outl
 .wd-w-600 .wd-combo select { width: 100%; max-width: none; min-width: 0; }
 .wd-w-600 .wd-tabs { margin: 8px 8px 0; }
 .wd-w-600 .wd-tab-content { margin: 8px 8px 0; }
-.wd-w-600 .wd-wim-card-row { flex-wrap: wrap; }
-.wd-w-600 .wd-wim-card-text { flex-basis: calc(100% - 40px); }
-.wd-w-600 .wd-wim-card-btn { margin-left: auto; }
 .wd-w-600 .wd-wim-body { padding: 0 8px 8px; }
 .wd-w-600 .wd-wim-head { padding: 12px; }
-.wd-w-600 .wd-help { width: 300px; }
 
 @media (prefers-reduced-motion: reduce) {
     .wd-host *, .wd-host *::before, .wd-host *::after { transition: none !important; animation: none !important; }

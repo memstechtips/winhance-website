@@ -217,7 +217,7 @@
 
 /* ---- Pills: Recommended / Windows default (matrix rows) / Preference (card header) ----
    BadgeStyles.xaml: height 20, radius 10, padding 7,0,9,0, 1px border, 4px icon gap, 11px
-   SemiBold label. The icon is the app's own geometry (theme.json) with fill="currentColor",
+   SemiBold label. The icon is the Fluent icon the app's Badge*Icon style names (theme.json), with fill="currentColor",
    so it always matches the pill's own foreground -- no separate icon-colour token needed. */
 .mx-pill {
     display: inline-flex;
@@ -233,7 +233,10 @@
     white-space: nowrap;
 }
 
-.mx-pill svg { flex-shrink: 0; }
+.mx-pill svg { flex-shrink: 0; width: var(--pill-icon-size); height: var(--pill-icon-size); }
+.mx-pill-recommended { --pill-icon-size: var(--app-badge-recommended-icon-font-size); }
+.mx-pill-default { --pill-icon-size: var(--app-badge-default-icon-font-size); }
+.mx-pill-preference { --pill-icon-size: var(--app-badge-preference-icon-font-size); }
 
 .mx-pill-recommended {
     background: var(--app-badge-recommended-background);

@@ -86,6 +86,7 @@
                     <a class="nav-item nav-sub" href="../features/customizations/taskbar.html">Taskbar</a>
                     <a class="nav-item nav-sub" href="../features/customizations/start-menu.html">Start Menu</a>
                     <a class="nav-item nav-sub" href="../features/customizations/explorer.html">Explorer</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/context-menu.html">Context Menu</a>
                     <a class="nav-item nav-sub" href="../features/customizations/time-region-language.html">Time &amp; Region</a>
                     <a class="nav-item" href="../features/autounattend.html">Autounattend</a>
                     <a class="nav-item nav-sub" href="../features/autounattend/answer-file.html">Answer file</a>
@@ -155,7 +156,7 @@
                         <tr><td>Uninstaller</td><td>Yes, in Windows Settings under installed apps</td><td>No, delete the folder</td></tr>
                     </tbody>
                 </table>
-                <p>Both run the same app with the same features. You can move a portable folder anywhere, including to a USB drive. Either way, Winhance keeps its logs, scripts and change history in <code>C:\ProgramData\Winhance</code>, and the backup config it makes on first launch in <code>%LOCALAPPDATA%\Winhance\Backup</code>. Uninstalling, or deleting a portable folder, leaves those in place.</p>
+                <p>Both run the same Windows customization tools. You can move a portable folder anywhere, including to a USB drive, but the sign-in options for the system tray and automatic profile reapplication require a regular installation. Either way, Winhance keeps its logs, scripts and change history in <code>C:\ProgramData\Winhance</code>, and the backup config it makes on first launch in <code>%LOCALAPPDATA%\Winhance\Backup</code>. Uninstalling, or deleting a portable folder, leaves those in place.</p>
 
                 <h2 id="powershell">Install with PowerShell</h2>
                 <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/m4i9wroDOjA?start=284" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
@@ -183,7 +184,7 @@
                 <p>The downloaded installer stays in <code>C:\ProgramData\Winhance\Unattend</code>. You can delete it once Winhance is running. See <a href="../reference/cli-commands.html">Command line</a> for the installer switches the script uses.</p>
 
                 <h2 id="updates">Updates</h2>
-                <p>Each time Winhance starts, it checks GitHub for a newer release. If there is one, an <strong>Update Available</strong> bar shows your version and the latest one. If there isn't, Winhance says nothing.</p>
+                <p>Winhance checks GitHub for a newer release at startup and once a day while running. Choose notifications or automatic updates under <a href="../features/settings.html#tray">Settings &gt; Background and updates</a>. If there is one, an <strong>Update Available</strong> bar shows your version and the latest one. If there isn't, Winhance says nothing.</p>
                 <ol class="steps">
                     <li>
                         <h3>Download the update</h3>
@@ -222,7 +223,7 @@
                     <img class="brand-mark" src="../../images/winhance-rocket.png" alt="" width="24" height="24">
                     <span>Winhance</span>
                 </a>
-                <p class="footer-version">These docs describe Winhance v26.10.03</p>
+                <p class="footer-version">These docs describe Winhance v26.11.27</p>
             </div>
             <ul class="footer-links">
                 <li><a href="../../index.html">Home</a></li>

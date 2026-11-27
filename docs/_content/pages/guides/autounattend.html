@@ -29,7 +29,7 @@
 <li><h3>Save</h3><p>Click <strong>Save autounattend.xml</strong> on the Builder bar. The file must be named <code>autounattend.xml</code>, because that is the only name Setup looks for. Winhance checks that the generated script and XML are valid before it writes the file.</p></li>
 </ol>
 <p>You can save both kinds of file in one session: save a config with the <strong>Config</strong> target, then switch to <strong>Autounattend</strong> and save the answer file. <strong>Cancel</strong> on the Builder bar leaves Builder mode and discards your choices.</p>
-<div class="callout callout-tip"><p class="callout-title">Building media? Start from WIMUtil instead</p><p>The <strong>Set up the answer file</strong> button in <a href="wimutil.html">WIMUtil</a> opens the same Builder session, sets the target Windows to the build on your ISO, and writes the file straight onto the media. It also adds two options this page does not have on its own: putting the External Software installers on the ISO so they install offline, and adding <strong>Your own installers</strong>.</p></div>
+<div class="callout callout-tip"><p class="callout-title">Building media? Start from WIMUtil instead</p><p>Choose <strong>Winhance XML</strong> in step 2 of <a href="wimutil.html">WIMUtil</a> to open Builder for the Windows build on your ISO. Winhance writes the answer file when you create the media. You can include offline External Software installers, your own installers and wallpaper slideshows on the media, and choose to build supported changes into the image using DISM.</p></div>
 
 <h2 id="what-the-file-covers">What the answer file covers</h2>
 <p>The <strong>Unattend</strong> page groups its settings like this. Each one is documented on the <a href="../features/autounattend/answer-file.html">Autounattend.xml settings</a> page.</p>
@@ -48,13 +48,17 @@
 
 <h2 id="put-it-on-media">Put it on installation media</h2>
 <ul>
-<li><strong>With WIMUtil (recommended).</strong> Generate the file in step 2 of <a href="wimutil.html">WIMUtil</a>, add drivers if you want them, then create an ISO or write a USB drive. This is the only way to include drivers and offline installers.</li>
+<li><strong>With WIMUtil (recommended).</strong> Choose <strong>Winhance XML</strong> in step 2 of <a href="wimutil.html">WIMUtil</a>, make your choices, add drivers if you want them, then create an ISO or write a USB drive. Winhance writes the answer file and any staged installers and pictures onto the media when you create it.</li>
 <li><strong>On an existing Windows USB drive.</strong> Copy your saved <code>autounattend.xml</code> to the root of a USB drive that already holds Windows installation files. Setup picks it up from there.</li>
 </ul>
 <p>Ventoy users can attach the file to a Windows ISO with Ventoy's auto install plugin instead. This video walks through it:</p>
 <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/4AGZQJTyCOs" title="How to Use Ventoy with Autounattend.xml" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
 
+<h2 id="wallpapers">Desktop backgrounds</h2>
+<p>A standalone <code>autounattend.xml</code> or <code>.winhance</code> config can embed one selected picture. It does not embed slideshow pictures, so the selected slideshow folder must already exist on the destination PC. To carry a slideshow onto a fresh Windows installation, build the media with WIMUtil. It copies the pictures into <code>sources\$OEM$\$1\Wallpapers\Winhance</code>, which Windows Setup copies to <code>C:\Wallpapers\Winhance</code>.</p>
+
 <h2 id="during-installation">What happens during installation</h2>
+<p>If you chose to build changes into the image in WIMUtil, some apps, settings, drivers and updates have already been applied before Setup starts. The steps below describe the work that remains for the answer file.</p>
 <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/JnaUDCsb8AY" title="How the Winhance/UnattendedWinstall autounattend.xml File Works" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
 <ol class="steps">
 <li><h3>Setup starts</h3><p>Setup reads the file and applies what you chose for the setup language, edition, hardware checks and disk. Any screen the file does not answer still appears.</p></li>
@@ -70,8 +74,7 @@
 <tbody>
 <tr><td>Winhance scripts from the answer file</td><td><code>C:\ProgramData\Winhance\Unattend\Scripts</code></td></tr>
 <tr><td>Log of what the script did</td><td><code>C:\ProgramData\Winhance\Unattend\Logs\Winhancements.txt</code></td></tr>
-<tr><td>App removal scripts</td><td><code>C:\ProgramData\Winhance\Scripts</code></td></tr>
-<tr><td>Scheduled tasks</td><td>The <code>Winhance</code> folder in Task Scheduler. The removal tasks run the removal scripts again at sign-in or startup, so removed apps stay removed after Windows updates.</td></tr>
+<tr><td>Scheduled tasks</td><td>The <code>Winhance</code> folder in Task Scheduler. Winhance itself keeps removed apps removed after Windows updates by checking its list when it opens. If you use a sign-in option, one task, <strong>Winhance at sign-in</strong>, starts it at sign-in.</td></tr>
 <tr><td>Setup's copy of the answer file</td><td><code>C:\Windows\Panther\unattend.xml</code></td></tr>
 </tbody>
 </table>

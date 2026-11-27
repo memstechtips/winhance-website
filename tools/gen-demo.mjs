@@ -24,6 +24,8 @@
 //                                 small by tools/app-icons.py; --check compares that bundle to the repo
 //   nav, header and toolbar icons the IconVariant NavButton.xaml and PageHeader.xaml draw with, and each
 //                                 page's own header icon
+//   Software & Apps View menu     SoftwareAppsPage.xaml's ViewMenuButton (glyph, items, groups, separators and
+//                                 the flags each item binds) -> SoftwareAppsViewModel.cs keys -> en.json
 //   which Windows apps are installed  tools/app-defaults/windows-11-pro.json (a fresh install, read
 //                                 from the Windows image by tools/image-apps.py), matched with each
 //                                 item's own AppxPackageName / CapabilityName, as the app matches them
@@ -36,11 +38,13 @@ import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { matrixBody, optionWarnings } from './lib/render-card.mjs';
 import { loadPages } from './lib/render-page.mjs';
+import { pillIcons } from './lib/theme-css.mjs';
 import { esc } from './lib/html.mjs';
 import {
   APP_PATHS, readAppFile, stringTable, str, parseFeatureIds, parseFeatureDefinitions,
-  parseFeatureIcons, parseViewModelStringKeys, parseNavSidebar, parseTitleBar, parseAppItems, parseMetrics, parseMoreMenu,
-  parseIconVariant, parsePageIcon, repoIconKey, repoIconKeyGuard, parseItemTypes, parseRemovalItems, parseHelpLink, parseBreakpoints, launchedUrl, parseSupportUrl, parseConfig,
+  parseFeatureIcons, parseViewModelStringKeys, parseNavSidebar, parseTitleBar, parseAppItems, parseMetrics, parseMoreMenu, parseColors,
+  parseIconVariant, parsePageIcon, repoIconKey, repoIconKeyGuard, parseItemTypes, parseBreakpoints, launchedUrl, parseHelpLinks, parseSupportUrl, parseConfig,
+  parseAppsViewMenu,
 } from './lib/app-source.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -66,11 +70,11 @@ const PAGE_KEYS = {
     filterDialogToggle: 'Filter_Dialog_Button_Toggle',
   },
   Builder: {
-    title: 'Builder_Mode_Title', saveConfig: 'Builder_Mode_Save_Config', saveAutounattend: 'Builder_Mode_Save_Autounattend',
+    title: 'Builder_Mode_Title', saveConfig: 'Builder_Mode_Save', saveAutounattend: 'Builder_Mode_Save_Autounattend',
     description: 'Builder_Mode_Description', targetConfig: 'Builder_Mode_Target_Config', targetAutounattend: 'Builder_Mode_Target_Autounattend',
-    locked: 'Nav_Autounattend_Locked_Tooltip', reviewTitle: 'Review_Mode_Title', reviewApply: 'Review_Mode_Apply_Button',
+    reviewTitle: 'Review_Mode_Title', reviewApply: 'Review_Mode_Apply_Button',
     reviewDescription: 'Review_Mode_Description', reviewStatus: 'Review_Mode_Status_Format', reviewAllMatch: 'Review_Mode_Status_AllMatch',
-    wimLocked: 'Nav_AdvancedTools_Locked_Tooltip', diff: 'Review_Mode_Diff_Toggle', apply: 'Button_Apply', dontApply: 'Review_Mode_DontApply',
+    diff: 'Review_Mode_Diff_Toggle', apply: 'Button_Apply', dontApply: 'Review_Mode_DontApply',
     acceptAll: 'QuickActions_AcceptAll', rejectAll: 'QuickActions_RejectAll', acceptConfirm: 'QuickActions_AcceptConfirmMessage',
     rejectConfirm: 'QuickActions_RejectConfirmMessage', onlyChanges: 'View_ShowOnlyChanges', onlyChangesTip: 'View_ShowOnlyChanges_Tooltip',
     checked: 'Common_Checked', unchecked: 'Common_Unchecked', selectAction: 'Review_Mode_Select_Action', actionInstall: 'Review_Mode_Action_Install', actionRemove: 'Review_Mode_Action_Remove',
@@ -79,10 +83,8 @@ const PAGE_KEYS = {
     title: 'Category_SoftwareApps_Title', subtitle: 'Category_SoftwareApps_StatusText',
     tabWindows: 'SoftwareApps_Tab_WindowsApps', tabExternal: 'SoftwareApps_Tab_ExternalApps',
     install: 'SoftwareApps_Button_InstallSelected', uninstall: 'SoftwareApps_Button_UninstallSelected',
-    refresh: 'Button_Refresh', help: 'Button_Help',
-    viewCard: 'ViewMode_Card', viewTable: 'ViewMode_Table', viewCompact: 'ViewMode_Compact',
-    sort: 'SoftwareApps_Sort_Button', sortInstalledFirst: 'SoftwareApps_Sort_NameAZInstalledFirst', sortAZ: 'SoftwareApps_Sort_NameAZ',
-    sortZA: 'SoftwareApps_Sort_NameZA', sortTableHint: 'SoftwareApps_Sort_TableHint',
+    update: 'SoftwareApps_Button_UpdateSelected', installOrUpdate: 'SoftwareApps_Button_InstallOrUpdateSelected',
+    refresh: 'Button_Refresh',
     colName: 'SoftwareApps_Column_Name', colDescription: 'SoftwareApps_Column_Description', colType: 'SoftwareApps_Column_Type',
     colStatus: 'SoftwareApps_Column_Status', colInstallable: 'SoftwareApps_Column_Installable', colGroup: 'SoftwareApps_Column_Group',
     selectAll: 'Common_SelectAll',
@@ -91,70 +93,83 @@ const PAGE_KEYS = {
     sectionFeatures: 'WindowsApps_Section_OptionalFeatures',
     installed: 'Status_Installed', notInstalled: 'Status_NotInstalled', installable: 'Status_CanReinstall', permanent: 'Status_CannotReinstall',
     installedTip: 'Card_Pill_Installed_Tooltip', notInstalledTip: 'Card_Pill_NotInstalled_Tooltip',
-    installableTip: 'Card_Pill_Reinstallable_Tooltip', permanentTip: 'Card_Pill_NonReinstallable_Tooltip',
+    installableTip: 'Status_CanReinstall', permanentTip: 'Status_CannotReinstall',
     warning: 'Card_Pill_Warning', warningTip: 'Card_Pill_InstabilityWarning_Tooltip',
-    helpWindows: 'Help_WindowsApps_Content', helpWindowsMore: 'Help_LearnMore_WindowsApps',
-    helpExternal: 'Help_ExternalApps_Content', helpExternalMore: 'Help_LearnMore_ExternalApps', helpStatus: 'Help_WinhanceStatus',
     builderConfig: 'SoftwareApps_Builder_Banner_Config', builderWindows: 'SoftwareApps_Builder_Banner_Autounattend_WindowsApps',
     builderExternal: 'SoftwareApps_Builder_Banner_Autounattend_ExternalApps',
-    confirmInstall: 'Dialog_ConfirmInstallation', confirmRemoval: 'Dialog_ConfirmRemoval', confirmOperation: 'Dialog_ConfirmOperation',
-    willInstall: 'Dialog_ItemsWillBeInstalled', willRemove: 'Dialog_ItemsWillBeRemoved', willProcess: 'Dialog_ItemsWillBeProcessed',
-    saveScripts: 'Dialog_SaveRemovalScripts', continue: 'Button_Continue',
+    confirmInstall: 'Dialog_ConfirmInstallation', confirmRemoval: 'Dialog_ConfirmRemoval',
+    willInstall: 'Dialog_ItemsWillBeInstalled', willRemove: 'Dialog_ItemsWillBeRemoved',
+    saveScripts: 'Dialog_SaveRemovalScripts', saveScriptsHint: 'Dialog_SaveRemovalScripts_Description', continue: 'Button_Continue',
   },
   Optimize: { title: 'Category_Optimize_Title', subtitle: 'Category_Optimize_StatusText' },
   Customize: { title: 'Category_Customize_Title', subtitle: 'Category_Customize_StatusText' },
-  Autounattend: { title: 'Autounattend_Page_Title' },
+  Autounattend: { title: 'Autounattend_Page_Title', subtitle: 'Autounattend_Page_Description' },
+  // WimUtilPage.xaml and the WimUtilViewModel strings it binds: a four-step wizard.
   WimUtil: {
     title: 'WIMUtil_Title', subtitle: 'WIMUtil_Subtitle',
     step1: 'WIMUtil_Step1_Title', step2: 'WIMUtil_Step2_Title', step3: 'WIMUtil_Step3_Title', step4: 'WIMUtil_Step4_Title',
-    isoExtracted: 'WIMUtil_Status_IsoExtracted', noXml: 'WIMUtil_Status_NoXmlAdded',
-    noDrivers: 'WIMUtil_Status_NoDriversAdded', readyToCreate: 'WIMUtil_Status_ReadyToCreateIso',
-    selectIso: 'WIMUtil_Card_SelectISO_Title', selectIsoButton: 'WIMUtil_Card_SelectISO_Button', isoDone: 'WIMUtil_Status_IsoExtractionSuccess',
-    workDir: 'WIMUtil_Card_SelectDirectory_Title', using: 'WIMUtil_Label_Using',
-    extractedAlready: 'WIMUtil_CheckboxExtractedAlready', selectFolder: 'WIMUtil_ButtonSelectFolder', downloadIso: 'WIMUtil_DownloadISO',
-    optionalConvert: 'WIMUtil_OptionalConvert', convertTitle: 'WIMUtil_Card_ConvertImage_Title_Dynamic',
-    convertButton: 'WIMUtil_Card_ConvertImage_Button_Dynamic', current: 'WIMUtil_Label_Current',
-    afterConversion: 'WIMUtil_Label_AfterConversion', save: 'WIMUtil_Label_Save',
-    win10: 'WIMUtil_ButtonWindows10', win11: 'WIMUtil_ButtonWindows11',
+    railName: 'WIMUtil_Rail_Name', stepHeader: 'WIMUtil_Step_Header',
+    stepsLocked: 'WIMUtil_Status_CompleteStep1',
+    isoExtracted: 'WIMUtil_Status_IsoExtracted', noXml: 'WIMUtil_Status_NoXmlAdded', answerFileBuilder: 'WIMUtil_Status_AnswerFileBuilder',
+    noChanges: 'WIMUtil_Status_NoChangesAdded', driversAdded: 'WIMUtil_Status_DriversAdded', driversForImage: 'WIMUtil_Status_DriversReadyForImage',
+    readyToCreate: 'WIMUtil_Status_ReadyToCreateIso',
+    downloadIso: 'WIMUtil_DownloadISO', win10: 'WIMUtil_ButtonWindows10', win11: 'WIMUtil_ButtonWindows11',
     win10Tip: 'WIMUtil_Tooltip_DownloadWindows10', win11Tip: 'WIMUtil_Tooltip_DownloadWindows11',
-    pickOne: 'WIMUtil_SelectOneOption',
-    generate: 'WIMUtil_Card_GenerateWinhanceXML_Title', generateText: 'WIMUtil_Card_GenerateWinhanceXML_Snapshot_Description',
-    generateSession: 'WIMUtil_Card_GenerateWinhanceXML_Session_Description', generateButton: 'WIMUtil_Card_GenerateWinhanceXML_Start',
-    generateNow: 'WIMUtil_ButtonGenerate', xmlAdded: 'WIMUtil_Status_XmlGenSuccess',
-    download: 'WIMUtil_Card_DownloadXML_Title', downloadText: 'WIMUtil_Card_DownloadXML_Description', downloadButton: 'WIMUtil_Card_DownloadXML_Button',
-    selectXml: 'WIMUtil_Card_SelectXML_Title', selectXmlText: 'WIMUtil_Card_SelectXML_Description', selectXmlButton: 'WIMUtil_Card_SelectXML_Button',
+    selectIso: 'WIMUtil_Card_SelectISO_Title', selectIsoButton: 'WIMUtil_Card_SelectISO_Button', isoDone: 'WIMUtil_Status_IsoExtractionSuccess',
+    workDir: 'WIMUtil_Card_SelectDirectory_Title', workDirDefault: 'WIMUtil_Card_SelectDirectory_Description_Default', freeSpace: 'WIMUtil_Label_FreeSpace',
+    extractedAlready: 'WIMUtil_CheckboxExtractedAlready', selectFolder: 'WIMUtil_ButtonSelectFolder',
+    servicingTitle: 'WIMUtil_Card_Servicing_Title',
+    duringSetup: 'WIMUtil_Servicing_DuringSetup', duringSetupText: 'WIMUtil_Servicing_DuringSetup_Detail',
+    builtIn: 'WIMUtil_Servicing_BuiltIn', builtInText: 'WIMUtil_Servicing_BuiltIn_Detail',
+    yourImage: 'WIMUtil_Heading_YourImage', edition: 'WIMUtil_Card_Edition_Title', editionText: 'WIMUtil_Card_Edition_Description',
+    answerFile: 'WIMUtil_AnswerFile_Title', answerFileText: 'WIMUtil_AnswerFile_Description',
+    answerFileBuilderTitle: 'WIMUtil_AnswerFile_Builder', answerFileBuilderText: 'WIMUtil_AnswerFile_Builder_Description',
+    answerFileOwn: 'WIMUtil_AnswerFile_OwnXml', answerFileOwnText: 'WIMUtil_AnswerFile_OwnXml_Description',
     generateFiles: 'WIMUtil_GenerateXMLFiles', schneegans: 'WIMUtil_ButtonSchneegans', schneegansTip: 'WIMUtil_Tooltip_Schneegans',
-    extractDrivers: 'WIMUtil_Card_ExtractDrivers_Title', extractDriversText: 'WIMUtil_Card_ExtractDrivers_Description', extractDriversButton: 'WIMUtil_Card_ExtractDrivers_Button',
-    customDrivers: 'WIMUtil_Card_CustomDrivers_Title', customDriversText: 'WIMUtil_Card_CustomDrivers_Description', customDriversButton: 'WIMUtil_Card_CustomDrivers_Button',
+    answerCard: 'WIMUtil_Step3_AnswerFile_Title', answerCardText: 'WIMUtil_Step3_AnswerFile_Description',
+    tagSetup: 'WIMUtil_Tag_DuringSetup', tagImage: 'WIMUtil_Tag_InImage', changeIn: 'Autounattend_Included_Change', navAutounattend: 'Nav_Autounattend',
+    driversHeading: 'WIMUtil_Heading_DriversAndUpdates',
+    systemDrivers: 'WIMUtil_Drivers_System', systemDriversText: 'WIMUtil_Card_ExtractDrivers_Description', systemDriversImage: 'WIMUtil_Card_ExtractDrivers_Description_Image',
+    folderDrivers: 'WIMUtil_Drivers_Folder', folderDriversText: 'WIMUtil_Card_CustomDrivers_Description', folderDriversImage: 'WIMUtil_Card_CustomDrivers_Description_Image',
+    chooseFolder: 'WIMUtil_Drivers_ChooseFolder',
+    addUpdate: 'WIMUtil_Update_Add', addUpdateText: 'WIMUtil_Card_AddUpdate_Description_None',
+    cleanup: 'WIMUtil_Cleanup_Title', cleanupText: 'WIMUtil_Cleanup_Description', resetBase: 'WIMUtil_Cleanup_ResetBase', resetBaseWarning: 'WIMUtil_Cleanup_ResetBase_Warning',
+    cleanupDownloads: 'WIMUtil_Cleanup_DownloadedUpdates', cleanupLogs: 'WIMUtil_Cleanup_ServicingLogs', cleanupTemp: 'WIMUtil_Cleanup_TempFiles', cleanupCrash: 'WIMUtil_Cleanup_CrashReports',
+    formatTitle: 'WIMUtil_Format_Title', formatText: 'WIMUtil_Format_Description', formatCurrent: 'WIMUtil_Format_Current', formatWim: 'WIMUtil_Format_Wim', formatEsd: 'WIMUtil_Format_Esd',
     destination: 'WIMUtil_Card_Destination_Title', destinationText: 'WIMUtil_Card_Destination_Description',
     destIso: 'WIMUtil_Destination_Iso', destUsb: 'WIMUtil_Destination_Usb',
     output: 'WIMUtil_Card_SelectOutput_Title', outputText: 'WIMUtil_Label_NoLocation', outputButton: 'WIMUtil_Card_SelectOutput_Button',
     usb: 'WIMUtil_Card_SelectUsb_Title', usbText: 'WIMUtil_Card_SelectUsb_Description', usbButton: 'WIMUtil_Card_SelectUsb_Button',
-    noUsb: 'WIMUtil_Label_NoUsbFound', usbWarning: 'WIMUtil_Msg_UsbEraseWarning',
+    noUsb: 'WIMUtil_Label_NoUsbSelected', showUsbDrives: 'WIMUtil_CheckboxShowUsbHardDrives', showUsbDrivesWarning: 'WIMUtil_Msg_ShowUsbHardDrivesWarning',
+    usbWarning: 'WIMUtil_Msg_UsbEraseWarning', usbReady: 'WIMUtil_Status_ReadyToWriteUsb',
+    deleteWorkingFolder: 'WIMUtil_Build_DeleteWorkingFolder', needsEdition: 'WIMUtil_Msg_PickEditionToBuild',
     createIso: 'WIMUtil_ButtonCreateISO', writeUsb: 'WIMUtil_ButtonWriteUsb',
   },
   // SettingsPage.xaml: three groups, four cards, in this order.
   Settings: {
     title: 'Settings_Title', subtitle: 'Settings_Description',
     general: 'Category_General', language: 'Settings_Menu_Language', languageText: 'Settings_Language_Description',
-    theme: 'Settings_Theme_Title', themeText: 'Tooltip_ToggleTheme',
+    theme: 'Settings_Theme_Title', themeText: 'Settings_Theme_Description',
     themeSystem: 'Theme_System', themeLight: 'Theme_LightNative', themeDark: 'Theme_DarkNative',
-    configuration: 'Category_Configuration', backup: 'Settings_BackupRestore_Title', backupText: 'Settings_BackupRestore_Snapshot_Description',
+    configuration: 'Settings_ConfigsProfiles_Label', backup: 'Settings_ConfigFile_Title', backupText: 'Settings_ConfigFile_Description',
     import: 'Button_Import', export: 'Button_Export',
     protection: 'Category_SystemProtection', restorePoint: 'Settings_SystemProtection_Title', restorePointText: 'Settings_SystemProtection_Description',
     restorePointButton: 'Settings_CreateRestorePoint_Button',
   },
 };
 
-// Segoe Fluent Icons glyphs the app draws with FontIcon, and the Fluent System icon drawn for each here
-// (the site can't ship the Segoe font). Hand-picked by meaning; keyed by code point so a new glyph in the
-// XAML fails the build until it is mapped.
-const SEGOE = {
-  E945: 'Flash', E7B3: 'Eye', E946: 'Info', E735: 'StarFilled', E73E: 'Checkmark', E711: 'Dismiss', E8CB: 'ArrowSort',
-};
-
 // Sidebar pages the app draws from FeatureDefinitions (one card per feature) versus its own layouts.
 const FEATURE_PAGES = ['Optimize', 'Customize'];
+// Pages on SectionPageShell (search, breadcrumb, Quick Actions, View): the demo draws its navRow on these.
+const SHELL_PAGES = [...FEATURE_PAGES, 'Autounattend'];
+
+// The SoftwareAppsViewModel flags the Software & Apps View menu may bind. demo/winhance-demo.js mirrors each
+// by name (appsChoices, appsFlag), so a flag that is not listed fails the build until it is mirrored there.
+const APPS_VIEW_FLAGS = ['IsCardView', 'IsTableView', 'IsCompactView', 'IsSortInstalledFirst', 'IsSortNameAsc', 'IsSortNameDesc',
+  'IsSortEnabled', 'IsFilterAll', 'IsFilterInstalled', 'IsFilterUpdates', 'IsExternalAppsTabSelected'];
+// The commands a plain item of that menu may run. The demo's click handler closes the menu and does nothing
+// else (data-command), as the app's does when the save dialog it opens is cancelled.
+const APPS_VIEW_COMMANDS = ['ExportListCommand'];
 
 function strings(table, keys) {
   return Object.fromEntries(Object.entries(keys).map(([k, key]) => [k, str(table, key)]));
@@ -166,20 +181,15 @@ function loadIcons(siteDir) {
   return { site, settings };
 }
 
-// A glyph is either a Fluent name (vendored path data with its viewBox), a raw XAML geometry
-// (drawn fitted to its own bounds, as PathIcon does), or an embedded app PNG.
+class MissingIcon extends Error {
+  constructor(name, where) { super(`${where}: Fluent icon "${name}" is not vendored`); this.name = name; }
+}
+
 function glyphFor(ref, { site, settings }, where) {
-  if (/^Material\/\w+$/.test(ref)) {
-    const entry = site[ref];
-    if (!entry) throw new Error(`${where}: ${ref} is not vendored in tools/icon-sources/site-icons.json`);
-    return { viewBox: entry.viewBox, path: entry.path };
-  }
-  if (/^[A-Z][A-Za-z0-9]*$/.test(ref)) {
-    const entry = site[`Fluent/${ref}`] ?? settings[`Fluent/${ref}`];
-    if (!entry) throw new Error(`${where}: Fluent icon "${ref}" is not vendored in tools/icon-sources/site-icons.json`);
-    return entry.svg ? { viewBox: entry.viewBox, svg: entry.svg } : { viewBox: entry.viewBox ?? '0 0 20 20', path: entry.path };
-  }
-  return { path: ref, fit: true };
+  if (!/^[A-Z][A-Za-z0-9]*$/.test(ref)) throw new Error(`${where}: "${ref}" is not a Fluent icon name`);
+  const entry = site[`Fluent/${ref}`] ?? settings[`Fluent/${ref}`];
+  if (!entry) throw new MissingIcon(ref, where);
+  return entry.svg ? { viewBox: entry.viewBox, svg: entry.svg } : { viewBox: entry.viewBox ?? '0 0 20 20', path: entry.path };
 }
 
 // BaseSettingsFeatureViewModel.GroupDescriptionText: the first four group names, then ", ..." if more.
@@ -257,7 +267,8 @@ export function generate({ appRoot, siteDir, iconsRepo }) {
   const featureIcons = parseFeatureIcons(read('featureIcons'));
   const definitions = parseFeatureDefinitions(read('featureDefinitions'), parseFeatureIds(read('featureIds')));
   const nav = parseNavSidebar(read('navSidebar'), { icons: featureIcons, vmKeys, strings: table });
-  const titleBar = parseTitleBar(read('mainWindow'), { vmKeys, strings: table, icons: featureIcons });
+  const colors = parseColors(read('codeBuiltStyles'));
+  const titleBar = parseTitleBar(read('mainWindow'), { vmKeys, strings: table, colors, vm: read('mainWindowViewModel') });
   const icons = loadIcons(siteDir);
   const metrics = parseMetrics({ dimConverter: read('dimConverter'), settingTemplates: read('settingTemplates'), iconSizes: read('iconSizes') });
 
@@ -279,11 +290,18 @@ export function generate({ appRoot, siteDir, iconsRepo }) {
   const urlFor = (id) => (settingPage.has(id) ? `docs/${settingPage.get(id)}#${id}` : null);
 
   const glyphs = {};
+  // Every unvendored Fluent icon is collected and reported in one error, so one sandbox fetch covers them all.
+  const missingIcons = new Set();
   const useGlyph = (ref, where) => {
-    const key = /^Material\/\w+$/.test(ref) ? ref : /^[A-Z][A-Za-z0-9]*$/.test(ref) ? `Fluent/${ref}` : `Path/${Object.keys(glyphs).length}`;
-    const existing = Object.entries(glyphs).find(([, g]) => g.path === ref);
-    if (existing) return existing[0];
-    if (!glyphs[key]) glyphs[key] = glyphFor(ref, icons, where);
+    const key = `Fluent/${ref}`;
+    if (!glyphs[key]) {
+      try {
+        glyphs[key] = glyphFor(ref, icons, where);
+      } catch (e) {
+        if (!(e instanceof MissingIcon)) throw e;
+        missingIcons.add(e.name);
+      }
+    }
     return key;
   };
 
@@ -297,27 +315,25 @@ export function generate({ appRoot, siteDir, iconsRepo }) {
   // Links open in a new tab: docs on this site's own copy, bug reports on GitHub, Support at the store.
   const local = (url) => url.replace(/^https:\/\/winhance\.net\//, '');
   const support = parseSupportUrl(read('sponsorsDialog'));
-  const mainVm = read('mainWindowViewModel'), moreVm = read('moreMenuViewModel');
+  const mainVm = read('mainWindowViewModel'), moreVm = read('moreMenuViewModel'), helpLinksCs = parseHelpLinks(read('helpLinks'));
   const links = {
-    BugReportButton: launchedUrl(mainVm, 'BugReportAsync', APP_PATHS.mainWindowViewModel),
-    DocsButton: local(launchedUrl(mainVm, 'DocsAsync', APP_PATHS.mainWindowViewModel)),
+    BugReportButton: launchedUrl(mainVm, 'BugReportAsync', APP_PATHS.mainWindowViewModel, helpLinksCs),
+    DocsButton: local(launchedUrl(mainVm, 'DocsAsync', APP_PATHS.mainWindowViewModel, helpLinksCs)),
     DonateButton: support,
   };
   const moreLinks = {
-    OpenDocs: local(launchedUrl(moreVm, 'OpenDocsAsync', APP_PATHS.moreMenuViewModel)),
-    ReportBug: launchedUrl(moreVm, 'ReportBugAsync', APP_PATHS.moreMenuViewModel),
+    OpenDocs: local(launchedUrl(moreVm, 'OpenDocsAsync', APP_PATHS.moreMenuViewModel, helpLinksCs)),
+    ReportBug: launchedUrl(moreVm, 'ReportBugAsync', APP_PATHS.moreMenuViewModel, helpLinksCs),
     SupportWinhance: support,
   };
-  const buttons = titleBar.buttons.map((b) => ({ ...b, icon: useGlyph(b.icon ?? b.path, `title bar ${b.name}`), path: undefined, href: links[b.name] }));
+  const buttons = titleBar.buttons.map((b) => ({ ...b, icon: useGlyph(b.icon, `title bar ${b.name}`), href: links[b.name] }));
   for (const name of Object.keys(links)) if (!buttons.some((b) => b.name === name)) throw new Error(`MainWindow.xaml has no ${name} any more -- update gen-demo.mjs`);
-  // The filter button swaps its path by state (MainWindow.xaml.cs): FilterCheck while on, FilterOff while off.
-  if (!featureIcons.FilterOffIconPath) throw new Error('FeatureIcons.xaml has no FilterOffIconPath');
-  const filterOffIcon = useGlyph(featureIcons.FilterOffIconPath, 'title bar filter off');
-  // NavButton's locked overlay: PrivacyIconPath, centred over the dimmed button.
-  if (!featureIcons.PrivacyIconPath) throw new Error('FeatureIcons.xaml has no PrivacyIconPath');
-  const lockIcon = useGlyph(featureIcons.PrivacyIconPath, 'nav lock');
+  // The filter button's icon is bound to MainWindowViewModel.WindowsFilterIcon: `on ? Icon.A : Icon.B`.
+  const filterOff = mainVm.match(/public Icon WindowsFilterIcon =>[^;]*:\s*Icon\.(\w+)\s*;/)?.[1];
+  if (!filterOff) throw new Error('MainWindowViewModel has no WindowsFilterIcon this generator can read');
+  const filterOffIcon = useGlyph(filterOff, 'title bar filter off');
   const navGlyph = useGlyph('Navigation', 'title bar pane toggle');
-  const moreMenu = parseMoreMenu(read('navSidebar'), read('navSidebarCode'), read('moreMenuViewModel'), table)
+  const moreMenu = parseMoreMenu(read('navSidebar'), read('navSidebarCode'), read('moreMenuViewModel'), table, colors)
     .map((m) => (m.separator ? m : { ...m, icon: useGlyph(m.icon, 'More menu'), href: moreLinks[m.tag], tag: undefined }));
   for (const tag of Object.keys(moreLinks)) if (!moreMenu.some((m) => m.href === moreLinks[tag])) throw new Error(`NavSidebar.xaml's More menu has no ${tag} item any more -- update gen-demo.mjs`);
 
@@ -366,8 +382,11 @@ export function generate({ appRoot, siteDir, iconsRepo }) {
       const key = repoIconKey(a);
       if (key && bundled.cells.has(key)) a.icon = bundled.cells.get(key);
       else a.glyph = useGlyph(fallback[kind], `app fallback ${kind}`);
-      if (kind !== 'external') a.type = a.capability ? types.capability : a.feature ? types.feature : a.appx ? types.appx : '';
-      else {
+      if (kind !== 'external') {
+        if (!types[a.kind]) throw new Error(`${a.id}: Kind ${a.kind ?? '(none)'} has no ItemTypeDescription string`);
+        a.type = str(table, types[a.kind]);
+        delete a.kind;
+      } else {
         // AppItemViewModel.CategoryDisplayName: the group's ExternalApps_Category_* string, else the raw name.
         const groupKey = 'ExternalApps_Category_' + a.group.replace(/[ &,()]/g, '');
         a.groupName = table[groupKey] ?? a.group;
@@ -401,30 +420,48 @@ export function generate({ appRoot, siteDir, iconsRepo }) {
     pageIcons[page] = { small: useGlyph(name + headerVariant, `page ${page}`), large: useGlyph(`${name}${headerVariant}Large`, `page ${page}`) };
   }
   const badgeIcons = {};
-  for (const [k, key] of [['recommended', 'BadgeRecommendedIconPath'], ['default', 'BadgeDefaultIconPath'], ['preference', 'BadgePreferenceIconPath']]) {
-    if (!featureIcons[key]) throw new Error(`FeatureIcons.xaml has no ${key}`);
-    badgeIcons[k] = useGlyph(featureIcons[key], `badge ${k}`);
+  for (const kind of ['Recommended', 'Default', 'Preference']) {
+    const name = theme.styles[`Badge${kind}Icon`]?.setters.Icon;
+    if (!name) throw new Error(`theme.json has no Badge${kind}Icon style with an Icon setter`);
+    badgeIcons[kind.toLowerCase()] = useGlyph(name, `badge ${kind}`);
   }
   for (const name of ['CheckmarkCircleColor', 'DismissCircleColor', 'ApprovalsAppColor', 'FlagColor', 'ErrorCircleColor',
     'ChevronRight', 'ChevronDown', 'ChevronUp', 'Search', 'ArrowDownload', 'Delete', 'ArrowSync', 'QuestionCircle', 'Open',
-    'Grid', 'TableSimple', 'LineHorizontal3', 'Subtract', 'Maximize', 'Dismiss', 'DocumentSave', ...Object.values(SEGOE)]) useGlyph(name, 'demo chrome');
-  const menuIcons = {};
-  for (const [k, key] of [['infoBadges', 'BookInformationVariantIconPath'], ['newBadges', 'NewBoxIconPath'], ['windowsDefaults', 'WindowsLogoIconPath'], ['onlyChanges', 'CogTransferIconPath']]) {
-    if (!featureIcons[key]) throw new Error(`FeatureIcons.xaml has no ${key}`);
-    menuIcons[k] = useGlyph(featureIcons[key], `menu ${k}`);
+    'Subtract', 'Maximize', 'Dismiss', 'DocumentSave', 'Code', 'Flash', 'Eye', 'StarFilled', 'Checkmark']) useGlyph(name, 'demo chrome');
+  // TechnicalDetailsPanel's bar and the View menu's Technical Details item both draw Fluent Code (winhance-demo.js).
+  for (const rel of ['src/Winhance.UI/Features/Common/Controls/TechnicalDetailsPanel.xaml', APP_PATHS.shell ?? 'src/Winhance.UI/Features/Common/Controls/SectionPageShell.xaml']) {
+    if (!/FluentIcon\b[^>]*Icon="Code"/.test(readAppFile(appRoot, rel))) throw new Error(`${rel} no longer draws the Technical Details Code icon -- update winhance-demo.js`);
   }
-  const removal = parseRemovalItems(read('removalStatus')).map((r) => {
-    if (!featureIcons[r.icon]) throw new Error(`FeatureIcons.xaml has no ${r.icon} (Windows Apps help)`);
-    return { name: r.name, icon: useGlyph(featureIcons[r.icon], `help ${r.name}`) };
-  });
-  // The help flyouts link to the docs on winhance.net; the demo opens the same page on this site.
-  const helpLinks = Object.fromEntries([['windows', 'windowsAppsHelp'], ['external', 'externalAppsHelp']].map(([k, file]) => {
-    const url = parseHelpLink(read(file), APP_PATHS[file]);
-    if (!url.startsWith('https://winhance.net/')) throw new Error(`${APP_PATHS[file]}: Learn more no longer points at winhance.net (${url})`);
-    return [k, url.slice('https://winhance.net/'.length)];
-  }));
-  if (!featureIcons.ExternalAppsIconPath || !featureIcons.WindowsLogoIconPath) throw new Error('FeatureIcons.xaml lost the Software & Apps tab icons');
-  const tabIcons = { windows: useGlyph(featureIcons.WindowsLogoIconPath, 'tab windows'), external: useGlyph(featureIcons.ExternalAppsIconPath, 'tab external') };
+  for (const page of SHELL_PAGES) {
+    if (!/<\w+:SectionPageShell\b/.test(readAppFile(appRoot, APP_PATHS.pages[page]))) throw new Error(`${APP_PATHS.pages[page]} is no longer drawn on SectionPageShell -- update gen-demo.mjs`);
+  }
+  const viewMenu = parseAppsViewMenu(readAppFile(appRoot, APP_PATHS.pages.SoftwareApps), read('softwareAppsViewModel'), table);
+  for (const item of viewMenu.items) {
+    for (const name of [item.checked, item.enabled, item.visible]) {
+      if (name && !APPS_VIEW_FLAGS.includes(name)) throw new Error(`${APP_PATHS.pages.SoftwareApps}: View menu binds ${name}, which the demo does not mirror -- update gen-demo.mjs`);
+    }
+  }
+  for (const item of viewMenu.items) {
+    if (item.command && !APPS_VIEW_COMMANDS.includes(item.command)) throw new Error(`${APP_PATHS.pages.SoftwareApps}: View menu runs ${item.command}, which the demo does not mirror -- update gen-demo.mjs`);
+  }
+  const appsViewMenu = { icon: useGlyph(viewMenu.icon, 'Software & Apps View menu'), label: viewMenu.label, items: viewMenu.items };
+  // SectionPageShell's Quick Actions and View menu items, and the Software & Apps tabs, each draw a Regular Fluent icon.
+  const shellXaml = readAppFile(appRoot, 'src/Winhance.UI/Features/Common/Controls/SectionPageShell.xaml');
+  const appsXaml = readAppFile(appRoot, APP_PATHS.pages.SoftwareApps);
+  const namedIcon = (xaml, name, where) => {
+    const m = xaml.match(new RegExp(`x:Name="${name}"[^]*?<fluentIcons:FluentIcon\\b[^>]*?\\sIcon="(\\w+)" IconVariant="Regular"`));
+    if (!m) throw new Error(`${where}: ${name} has no Regular FluentIcon this generator can read`);
+    return useGlyph(m[1], `${where} ${name}`);
+  };
+  const menuIcons = {
+    infoBadges: namedIcon(shellXaml, 'InfoBadgesToggleItem', 'SectionPageShell'),
+    newBadges: namedIcon(shellXaml, 'NewBadgesToggleItem', 'SectionPageShell'),
+    windowsDefaults: namedIcon(shellXaml, 'ResetDefaultsItem', 'SectionPageShell'),
+  };
+  const tabIcons = {
+    windows: namedIcon(appsXaml, 'WindowsAppsTab', 'SoftwareAppsPage'),
+    external: namedIcon(appsXaml, 'ExternalAppsTab', 'SoftwareAppsPage'),
+  };
 
   const localizationDir = join(appRoot, dirname(APP_PATHS.strings));
   const localeFiles = readdirSync(localizationDir).filter((f) => /^[a-z]{2}(-[A-Za-z]+)?\.json$/.test(f)).sort();
@@ -435,18 +472,25 @@ export function generate({ appRoot, siteDir, iconsRepo }) {
     if (!name) throw new Error(`${f} has no _Meta_LanguageDisplayName`);
     return { code: f.replace('.json', ''), name };
   });
-  // WIMUtil: each step header's icon (WimUtilPage.xaml) and each action card's (the Wim*ViewModel cards).
-  // Cards drawn with a Segoe glyph get the Fluent icon of the same meaning; Fluent has no optical disc, so
-  // E958 (StorageOptical) is Material's Disc, and the convert card's E740 (FullScreen, shown for a WIM) is
-  // FullScreenMaximize.
-  const wimIcons = {};
-  for (const [k, ref] of [['step1', 'HardDrive'], ['step2', featureIcons.AutounattendXmlIconPath], ['step3', 'PlugConnected'],
-    ['step4', featureIcons.WrenchClockIconPath], ['iso', 'Material/Disc'], ['folder', featureIcons.ExplorerIconPath],
-    ['download', featureIcons.FileDownloadIconPath], ['select', featureIcons.AutounattendXmlIconPath],
-    ['drivers', featureIcons.MemoryArrowDownIconPath], ['destination', 'DocumentSave'], ['output', 'Save'], ['usb', 'Usb'],
-    ['convert', 'FullScreenMaximize']]) {
-    if (!ref) throw new Error(`FeatureIcons.xaml lost the WIMUtil ${k} icon`);
-    wimIcons[k] = useGlyph(ref, `WIMUtil ${k}`);
+  // WIMUtil: each step's icon as WimUtilViewModel.InitializeStepStates names it (step 4 swaps to its USB icon
+  // for the USB destination), then each card's Fluent icon as WimUtilPage.xaml names it.
+  const wimPage = readFileSync(join(appRoot, 'src/Winhance.UI/Features/WimUtil/WimUtilPage.xaml'), 'utf8');
+  const wimVm = readFileSync(join(appRoot, 'src/Winhance.UI/Features/WimUtil/ViewModels/WimUtilViewModel.cs'), 'utf8');
+  const wimSteps = [];
+  for (const m of wimVm.matchAll(/Step(\d)State = new WizardStepState\s*\{([^}]*)\}/g)) {
+    const icon = m[2].match(/Icon = FluentIcons\.Common\.Icon\.(\w+)/)?.[1];
+    if (!icon) throw new Error(`WimUtilViewModel step ${m[1]} has no FluentIcons Icon this generator can read`);
+    wimSteps[Number(m[1]) - 1] = useGlyph(icon, `WIMUtil step ${m[1]}`);
+  }
+  const usbStep = wimVm.match(/Step4State\.Icon = \w+ \? FluentIcons\.Common\.Icon\.(\w+) : FluentIcons\.Common\.Icon\.(\w+)/);
+  if (wimSteps.length !== 4 || wimSteps.includes(undefined) || !usbStep) throw new Error('WimUtilViewModel.InitializeStepStates no longer defines four steps with a USB icon on step 4 -- update gen-demo.mjs');
+  const wimIcons = { steps: wimSteps, step4Usb: useGlyph(usbStep[1], 'WIMUtil step 4 USB') };
+  for (const [k, name, color] of [['iso', 'DocumentSearch'], ['folder', 'FolderOpen'], ['plug', 'PlugConnected'], ['wrench', 'WrenchScrewdriver'],
+    ['edition', 'HardDrive'], ['answerFile', 'DocumentSettings'], ['answerSummary', 'TextBulletListSquareSparkle', 'Color'], ['system', 'Desktop'],
+    ['folderAdd', 'FolderAdd'], ['update', 'ArrowSync'], ['cleanup', 'Delete'], ['format', 'ArrowSwap'], ['destination', 'Storage'],
+    ['output', 'DocumentSave'], ['usb', 'UsbStick'], ['download', 'ArrowDownload'], ['open', 'Open'], ['dismiss', 'Dismiss']]) {
+    if (!wimPage.includes(`Icon="${name}"`)) throw new Error(`WimUtilPage.xaml no longer draws the WIMUtil ${k} icon ${name}`);
+    wimIcons[k] = useGlyph(name + (color ?? ''), `WIMUtil ${k}`);
   }
   const settingsIcons = {};
   for (const [k, name] of [['language', 'LocalLanguage'], ['theme', 'PaintBrushSparkle'], ['backup', 'ArrowSync'], ['restorePoint', 'ShieldTask']]) {
@@ -470,13 +514,11 @@ export function generate({ appRoot, siteDir, iconsRepo }) {
       pageIcons,
       badgeIcons,
       tabIcons,
+      appsViewMenu,
       settingsIcons,
       wimIcons,
       menuIcons,
       filterOffIcon,
-      lockIcon,
-      removal,
-      helpLinks,
       iconAtlas: bundled.atlas,
       languages: languageNames,
     },
@@ -513,7 +555,7 @@ export function generate({ appRoot, siteDir, iconsRepo }) {
   // Technical Details: the docs' own OptionMatrixView mirror, one file per feature, loaded on first expand.
   for (const f of catalog.features) {
     const html = Object.fromEntries(f.settings.map((s) => [s.id,
-      optionWarnings(s) + matrixBody(s, catalog.referenceBuilds, urlFor, theme.geometries)]));
+      optionWarnings(s) + matrixBody(s, catalog.referenceBuilds, urlFor, pillIcons(theme, icons.site))]));
     out.set(`demo/tech/${f.id}.js`, `WinhanceDemoTech(${JSON.stringify(f.id)}, ${JSON.stringify(html)});\n`);
   }
   out.set('demo/tech-css.js', `WinhanceDemoTechCss(${JSON.stringify(techCss(siteDir))});\n`);
@@ -524,6 +566,9 @@ export function generate({ appRoot, siteDir, iconsRepo }) {
   const indexPath = join(siteDir, 'index.html');
   const navIcons = Object.fromEntries([...nav.top, ...nav.bottom].map((b) => [b.tag, b.icon.replace(/^Fluent\//, '')]));
   out.set('index.html', spliceSprite(spliceAreaIcons(spliceCounts(readFileSync(indexPath, 'utf8'), counts), navIcons), icons.site));
+  if (missingIcons.size) {
+    throw new Error(`Fluent icons not vendored in tools/icon-sources/site-icons.json (fetch them through the sandbox):\n  ${[...missingIcons].sort().join('\n  ')}`);
+  }
   return { out, counts };
 }
 
@@ -563,7 +608,7 @@ function techCss(siteDir) {
 
 export function spriteSvg(siteIcons, ids) {
   const symbols = ids.map((id) => {
-    const g = siteIcons[`Fluent/${id}`] ?? siteIcons[`Material/${id}`];
+    const g = siteIcons[`Fluent/${id}`];
     if (!g) throw new Error(`the page uses #i-${id}, which is not vendored in tools/icon-sources/site-icons.json`);
     // A Color icon carries its own body and gradients (ids already unique per key); the rest take currentColor.
     return g.svg ? `<symbol id="i-${id}" viewBox="${g.viewBox}">${g.svg}</symbol>`

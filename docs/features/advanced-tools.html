@@ -86,6 +86,7 @@
                     <a class="nav-item nav-sub" href="../features/customizations/taskbar.html">Taskbar</a>
                     <a class="nav-item nav-sub" href="../features/customizations/start-menu.html">Start Menu</a>
                     <a class="nav-item nav-sub" href="../features/customizations/explorer.html">Explorer</a>
+                    <a class="nav-item nav-sub" href="../features/customizations/context-menu.html">Context Menu</a>
                     <a class="nav-item nav-sub" href="../features/customizations/time-region-language.html">Time &amp; Region</a>
                     <a class="nav-item" href="../features/autounattend.html">Autounattend</a>
                     <a class="nav-item nav-sub" href="../features/autounattend/answer-file.html">Answer file</a>
@@ -151,10 +152,10 @@
                             <tr><th>Step</th><th>What you do</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td><strong>Select Windows ISO</strong></td><td>Pick an ISO and a working folder, and Winhance extracts the ISO there. You can also convert the Windows image between WIM and ESD format.</td></tr>
-                            <tr><td><strong>Add XML File</strong></td><td>Optional. Generate an answer file with Winhance, download the UnattendedWinstall answer file, or select one you already have. Winhance checks the file and lists anything that could make Windows Setup fail, but you can always continue.</td></tr>
-                            <tr><td><strong>Extract and Add Drivers</strong></td><td>Optional. Copy the drivers from this PC, or from a folder, onto the media so Windows Setup installs them before the first startup screens.</td></tr>
-                            <tr><td><strong>Create New ISO</strong></td><td>Save a new ISO file, or write the media straight to a USB drive. Writing to a USB drive erases it first.</td></tr>
+                            <tr><td><strong>Your ISO</strong></td><td>Extract a Windows ISO into a working folder, or select a folder containing an ISO you have already extracted.</td></tr>
+                            <tr><td><strong>How it's built</strong></td><td>Choose whether your changes apply during Setup or whether Winhance builds supported changes into the image using DISM. Pick the edition to keep when required, and choose whether to use a Winhance answer file or your own.</td></tr>
+                            <tr><td><strong>What changes</strong></td><td>Choose apps, settings, drivers and the latest cumulative Windows update. The tags show which changes are applied to the image and which run during Setup. Image cleanup options are available when building into the image.</td></tr>
+                            <tr><td><strong>Create</strong></td><td>Choose WIM or ESD and save an ISO file or write straight to a USB drive. USB writing erases the selected drive and creates separate FAT32 boot and NTFS installation partitions.</td></tr>
                         </tbody>
                     </table>
                     <p>Step 1 has to finish before the others unlock.</p>
@@ -187,7 +188,7 @@
                     <img class="brand-mark" src="../../images/winhance-rocket.png" alt="" width="24" height="24">
                     <span>Winhance</span>
                 </a>
-                <p class="footer-version">These docs describe Winhance v26.10.03</p>
+                <p class="footer-version">These docs describe Winhance v26.11.27</p>
             </div>
             <ul class="footer-links">
                 <li><a href="../../index.html">Home</a></li>

@@ -1,7 +1,7 @@
 {
   "areas": {
     "optimize": { "path": "features/optimize.html", "title": "Optimizations", "navLabel": "Optimize", "category": "Optimizations", "blurb": "The Optimize page: privacy, power, performance, updates, notifications and sound, every setting with what it changes in Windows." },
-    "customize": { "path": "features/customize.html", "title": "Customizations", "navLabel": "Customize", "category": "Customizations", "blurb": "The Customize page: theme, taskbar, Start menu, File Explorer, and time, region and language, every setting with what it changes in Windows." },
+    "customize": { "path": "features/customize.html", "title": "Customizations", "navLabel": "Customize", "category": "Customizations", "blurb": "The Customize page: theme, taskbar, Start menu, File Explorer, the right-click menu, and time, region and language, every setting with what it changes in Windows." },
     "autounattend": { "path": "features/autounattend.html", "title": "Autounattend", "navLabel": "Autounattend", "category": "Autounattend", "blurb": "The answer file Winhance builds for a new Windows install, and every choice that goes into it." }
   },
   "features": [
@@ -14,7 +14,8 @@
     { "id": "WindowsTheme", "area": "customize", "path": "features/customizations/theme.html", "title": "Windows Theme", "navLabel": "Windows Theme", "blurb": "Light or dark mode for Windows and apps, transparency effects and the desktop background." },
     { "id": "Taskbar", "area": "customize", "path": "features/customizations/taskbar.html", "title": "Taskbar Customization", "navLabel": "Taskbar", "blurb": "Taskbar alignment, the search box, Task View, widgets and the other taskbar buttons, and how the taskbar behaves." },
     { "id": "StartMenu", "area": "customize", "path": "features/customizations/start-menu.html", "title": "Start Menu Customization", "navLabel": "Start Menu", "blurb": "The Start menu layout and what it recommends and shows." },
-    { "id": "Explorer", "area": "customize", "path": "features/customizations/explorer.html", "title": "File Explorer Customization", "navLabel": "Explorer", "blurb": "File Explorer, the desktop, the right-click menu, This PC folders, the navigation pane and file associations." },
+    { "id": "Explorer", "area": "customize", "path": "features/customizations/explorer.html", "title": "File Explorer Customization", "navLabel": "Explorer", "blurb": "File Explorer, the desktop, This PC folders, the navigation pane and file associations." },
+    { "id": "ContextMenu", "area": "customize", "path": "features/customizations/context-menu.html", "title": "Context Menu Customization", "navLabel": "Context Menu", "blurb": "The right-click menu: the classic menu, the entries Windows adds, and extra entries like Take Ownership plus the Repair and Troubleshooting menus." },
     { "id": "TimeRegionLanguage", "area": "customize", "path": "features/customizations/time-region-language.html", "title": "Time, Region and Language", "navLabel": "Time & Region", "blurb": "Time zone, region, display language, keyboard layout, and the date, time, number and currency formats." },
     { "id": "Autounattend", "area": "autounattend", "path": "features/autounattend/answer-file.html", "title": "Autounattend.xml Settings", "navLabel": "Answer file", "blurb": "What Winhance writes into autounattend.xml: architecture, edition and key, Windows 11 checks, disk layout, accounts, setup screens and your own scripts." }
   ],

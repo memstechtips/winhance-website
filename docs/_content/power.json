@@ -10,6 +10,7 @@
         "<div class=\"callout callout-note\"><p class=\"callout-title\">Laptops and desktops</p><p>On a PC with a battery, most power settings have two values: one for <strong>Plugged In</strong> and one for <strong>On Battery</strong>. On a desktop there is one.</p></div>"
       ]
     },
+    "Energy Saver": "When Energy Saver starts, whether it stays on, and whether it dims the display.",
     "Display": "How long the PC sits idle before Windows turns off the display.",
     "Hard Disk": "How long a hard disk sits idle before Windows turns it off.",
     "Internet Explorer": "How often JavaScript timers run, a setting Windows power plans still carry.",

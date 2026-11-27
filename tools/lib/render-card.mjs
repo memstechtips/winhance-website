@@ -115,24 +115,14 @@ function qualified(label, context) {
   return context ? `${label} (${context})` : label;
 }
 
-// The three pill-badge icon geometries are the app's own BadgeRecommendedIconPath / BadgeDefaultIconPath /
-// BadgePreferenceIconPath (FeatureIcons.xaml, via theme.json). fill="currentColor" so the icon always
-// matches the pill's own foreground -- no separate icon-colour var needed.
-// M8: the Windows-logo geometry (BadgeDefaultIconPath) is drawn on an 11x11 canvas, unlike the other
-// two pills' 12x12 ones -- stretching its viewBox to fill a 12x12 <svg> scaled it 9% and re-blurred the
-// 1px pane gaps the 11x11 geometry exists to keep crisp. The outer <svg> and its viewBox now always
-// stay 12x12 (never scaling anything), and a native-size geometry is centred inside it with a translate
-// -- WinUI's own PathIcon centres a smaller Data geometry inside its own box the same way.
-function pillIcon(geometry) {
-  if (!geometry) return '';
-  const offset = round2((12 - geometry.viewBox) / 2);
-  const path = `<path d="${esc(geometry.data)}" fill="currentColor"/>`;
-  const body = offset ? `<g transform="translate(${offset} ${offset})">${path}</g>` : path;
-  return `<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">${body}</svg>`;
+// setting-card.css sizes it from the Badge*Icon style's FontSize; fill="currentColor" takes the pill's own foreground.
+function pillIcon(icon) {
+  if (!icon) return '';
+  return `<svg viewBox="${esc(icon.viewBox)}" aria-hidden="true"><path d="${esc(icon.path)}" fill="currentColor"/></svg>`;
 }
 
-function pill(kind, label, tooltip, geometry) {
-  return `<span class="mx-pill mx-pill-${kind}" title="${esc(tooltip)}">${pillIcon(geometry)}<span class="mx-pill-label">${esc(label)}</span></span>`;
+function pill(kind, label, tooltip, icon) {
+  return `<span class="mx-pill mx-pill-${kind}" title="${esc(tooltip)}">${pillIcon(icon)}<span class="mx-pill-label">${esc(label)}</span></span>`;
 }
 
 function groupLabelBlock(label, description) {
@@ -242,10 +232,10 @@ function columnHeaderRow(matrix, urlFor) {
 // One option row: col 0 the label behind its 21px marker gutter (kept empty -- isCurrent is never read,
 // Controller ruling 2), col 1 the Recommended/Windows-default pills, then one value cell per column
 // (OptionMatrixView.AddOptionRow).
-function optionRow(matrix, option, geometries) {
+function optionRow(matrix, option, pillIcons) {
   const pills = [];
-  if (option.isRecommended) pills.push(pill('recommended', qualified(matrix.recommendedLabel, option.recommendedContext), matrix.recommendedTooltip, geometries.BadgeRecommendedIconPath));
-  if (option.isWindowsDefault) pills.push(pill('default', qualified(matrix.defaultLabel, option.defaultContext), matrix.defaultTooltip, geometries.BadgeDefaultIconPath));
+  if (option.isRecommended) pills.push(pill('recommended', qualified(matrix.recommendedLabel, option.recommendedContext), matrix.recommendedTooltip, pillIcons.recommended));
+  if (option.isWindowsDefault) pills.push(pill('default', qualified(matrix.defaultLabel, option.defaultContext), matrix.defaultTooltip, pillIcons.default));
   const cells = matrix.columns.map((_, i) => valueCell(option.cells[i])).join('');
   return `<tr><th class="mx-option" scope="row"><code>${esc(option.label)}</code></th><td class="mx-role">${pills.join('')}</td>${cells}</tr>`;
 }
@@ -465,7 +455,7 @@ function widenForNotes(matrix, optionW, roleW) {
   return deficit > 0 ? { optionW, roleW: { fixed: roleW.fixed + deficit, chars: roleW.chars } } : { optionW, roleW };
 }
 
-export function renderMatrix(matrix, { heading = '', urlFor = () => null, geometries = {} } = {}) {
+export function renderMatrix(matrix, { heading = '', urlFor = () => null, pillIcons = {} } = {}) {
   if (!matrix) {
     return `<p class="mx-empty">Winhance has nothing to document for this setting.</p>`;
   }
@@ -496,7 +486,7 @@ export function renderMatrix(matrix, { heading = '', urlFor = () => null, geomet
   const cols = `<col class="mx-col-option">${sized
     .map(({ w, cls }, i) => (i === sized.length - 1 ? `<col${cls}>` : `<col${cls} style="width: ${widthCalc(w)}">`))
     .join('')}`;
-  const body = matrix.options.map((o) => optionRow(matrix, o, geometries)).join('') + notesRows(matrix);
+  const body = matrix.options.map((o) => optionRow(matrix, o, pillIcons)).join('') + notesRows(matrix);
   // Marks that SOMETHING follows the grid inside the box, so the grid's last row keeps its bottom
   // hairline instead of leaning on the box border. Either band qualifies.
   const boxClass = matrix.hasCode || matrix.hasOptionLinks ? 'mx-box mx-has-below' : 'mx-box';
@@ -524,7 +514,7 @@ ${optionLinksHost(matrix, urlFor)}${codeHost(matrix)}</div>`;
 // text is verbatim from en.json). Requirement chips are NOT here: they belong to the matrix's own
 // mechanism cell (Controller: spec table row 0), so they render once, inside the panel, not duplicated
 // at the card header.
-export function cardBadges(s, urlFor = () => null, geometries = {}) {
+export function cardBadges(s, urlFor = () => null, pillIcons = {}) {
   const out = [];
   const msg = s.availability.message;
   if (msg.win10 && !msg.win11) out.push(badge('win11', 'Windows 11 only', msg.win10));
@@ -537,7 +527,7 @@ export function cardBadges(s, urlFor = () => null, geometries = {}) {
   }
   if (s.availability.requiresAdvancedUnlock) out.push(badge('advanced', 'Advanced', 'Hidden until Advanced mode is unlocked in Winhance'));
   if (s.isSubjectivePreference) {
-    out.push(pill('preference', 'Preference', "Personal preference — Winhance may suggest a value, but there's no objectively correct answer. Choose whatever fits you.", geometries.BadgePreferenceIconPath));
+    out.push(pill('preference', 'Preference', "Personal preference — Winhance may suggest a value, but there's no objectively correct answer. Choose whatever fits you.", pillIcons.preference));
   }
   if (s.addedInVersion) out.push(badge('added', `Added in v${s.addedInVersion}`, ''));
   return out.join('');
@@ -565,8 +555,8 @@ function iconSvg(icon, icons) {
 // only settings a phantom Windows 10 table that contradicted their own badge. One surviving matrix
 // renders with no build heading -- the app shows exactly one panel there, never two headed sub-tables
 // for a setting that only runs on one build.
-export function matrixBody(s, refBuilds, urlFor, geometries) {
-  if (!s.matrixWin10) return renderMatrix(s.matrix, { urlFor, geometries });
+export function matrixBody(s, refBuilds, urlFor, pillIcons) {
+  if (!s.matrixWin10) return renderMatrix(s.matrix, { urlFor, pillIcons });
   const candidates = [
     { matrix: s.matrix, build: refBuilds.win11, heading: BUILD_HEADING.win11 },
     { matrix: s.matrixWin10, build: refBuilds.win10, heading: BUILD_HEADING.win10 },
@@ -574,9 +564,9 @@ export function matrixBody(s, refBuilds, urlFor, geometries) {
   const shown = candidates.filter((c) => buildAllowed(s.availability, c.build));
   // Availability never actually excludes both reference builds at once in the real catalog -- fail
   // open onto the win11 export rather than blank a card if it ever did.
-  if (shown.length === 0) return renderMatrix(s.matrix, { urlFor, geometries });
-  if (shown.length === 1) return renderMatrix(shown[0].matrix, { urlFor, geometries });
-  return shown.map((c) => renderMatrix(c.matrix, { heading: c.heading, urlFor, geometries })).join('\n');
+  if (shown.length === 0) return renderMatrix(s.matrix, { urlFor, pillIcons });
+  if (shown.length === 1) return renderMatrix(shown[0].matrix, { urlFor, pillIcons });
+  return shown.map((c) => renderMatrix(c.matrix, { heading: c.heading, urlFor, pillIcons })).join('\n');
 }
 
 // The one line on a docs page that is NOT mirrored from the app -- it exists to say what the page
@@ -594,7 +584,7 @@ function hasPowerPlanGroup(s) {
 // SettingItemViewModel raises a per-option warning as an InfoBar under the card, at Error severity, and
 // only while that option is selected. A docs page has no selection, so every warning the setting can raise
 // is shown at once and each names the option that raises it -- "When set to X" is the only part of the
-// banner not mirrored from the app. Placed above the panel rather than below it, which is where the app
+// banner not mirrored from the app, and an Always warning (it shows whatever is selected) leaves it out. Placed above the panel rather than below it, which is where the app
 // puts it: in the app the Technical Details are COLLAPSED, so its banner sits right under the setting; on
 // the web they are always open, and a banner after a 40-row table is nowhere near the setting it is about.
 export function optionWarnings(s) {
@@ -604,11 +594,13 @@ export function optionWarnings(s) {
   // option's copy is ever on screen; printing all of them here would just look like a stutter.
   const byText = new Map();
   for (const w of s.optionWarnings) {
-    if (!byText.has(w.text)) byText.set(w.text, []);
-    byText.get(w.text).push(w.option);
+    const key = `${w.always ? 'always' : 'option'}:${w.text}`;
+    if (!byText.has(key)) byText.set(key, { text: w.text, always: !!w.always, options: [] });
+    byText.get(key).options.push(w.option);
   }
-  const rows = [...byText].map(([text, options]) => `<div class="setting-banner">`
-    + `<span class="setting-banner-when">When set to ${esc(joinOptions(options))}</span>`
+  // An Always warning applies whatever the option, so it is a general caution with no "When set to" line.
+  const rows = [...byText.values()].map(({ text, always, options }) => `<div class="setting-banner">`
+    + (always ? '' : `<span class="setting-banner-when">When set to ${esc(joinOptions(options))}</span>`)
     + `<p class="setting-banner-text">${esc(text)}</p></div>`).join('\n');
   return `\n${rows}`;
 }
@@ -642,14 +634,14 @@ export function fieldRows(s, refBuilds = DEFAULT_REFERENCE_BUILDS) {
 export function renderCard(s, ctx, { child = false } = {}) {
   const urlFor = ctx.urlFor ?? (() => null);
   const icons = ctx.icons ?? {};
-  const geometries = ctx.geometries ?? {};
+  const pillIcons = ctx.pillIcons ?? {};
   const refBuilds = ctx.referenceBuilds ?? DEFAULT_REFERENCE_BUILDS;
-  const badges = cardBadges(s, urlFor, geometries);
+  const badges = cardBadges(s, urlFor, pillIcons);
   // Triggered off the matrix's own group kind, not the control kind: the PowerPlan control was folded
   // into KeyedSelection, which the five region dropdowns also use -- and the note's wording is about
   // power schemes, so it would be wrong on those. MatrixGroupKind.PowerPlan is the reference group the
   // builder adds for exactly this one card.
-  const body = matrixBody(s, refBuilds, urlFor, geometries)
+  const body = matrixBody(s, refBuilds, urlFor, pillIcons)
     + (hasPowerPlanGroup(s) ? `\n<p class="mx-note-live">${esc(POWER_PLAN_NOTE)}</p>` : '');
   const kids = (ctx.childrenOf.get(s.id) ?? []).map((k) => renderCard(k, ctx, { child: true })).join('\n');
 

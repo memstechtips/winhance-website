@@ -14,6 +14,7 @@ export const APP_PATHS = {
   moreMenuViewModel: 'src/Winhance.UI/Features/Common/ViewModels/MoreMenuViewModel.cs',
   mainWindow: 'src/Winhance.UI/MainWindow.xaml',
   mainWindowViewModel: 'src/Winhance.UI/ViewModels/MainWindowViewModel.cs',
+  helpLinks: 'src/Winhance.UI/Helpers/HelpLinks.cs',
   appCatalogs: 'src/Winhance.Core/Features/SoftwareApps/Catalogs',
   appIconDark: 'src/Winhance.UI/Assets/AppIcons/winhance-rocket-white-transparent-bg.png',
   appIconLight: 'src/Winhance.UI/Assets/AppIcons/winhance-rocket-black-transparent-bg.png',
@@ -27,11 +28,10 @@ export const APP_PATHS = {
   mainWindowCode: 'src/Winhance.UI/MainWindow.xaml.cs',
   appXaml: 'src/Winhance.UI/App.xaml',
   sponsorsDialog: 'src/Winhance.UI/Features/Common/Dialogs/SponsorsDialogBuilder.cs',
+  codeBuiltStyles: 'src/Winhance.UI/Features/Common/Resources/CodeBuiltStyles.xaml',
   recommendedConfig: 'src/Winhance.UI/Features/Common/Resources/Configs/Winhance_Recommended_Config.winhance',
   appItemViewModel: 'src/Winhance.UI/Features/SoftwareApps/ViewModels/AppItemViewModel.cs',
-  removalStatus: 'src/Winhance.UI/Features/SoftwareApps/ViewModels/RemovalStatusContainerViewModel.cs',
-  windowsAppsHelp: 'src/Winhance.UI/Features/SoftwareApps/Views/WindowsAppsHelpContent.xaml.cs',
-  externalAppsHelp: 'src/Winhance.UI/Features/SoftwareApps/Views/ExternalAppsHelpContent.xaml.cs',
+  softwareAppsViewModel: 'src/Winhance.UI/Features/SoftwareApps/ViewModels/SoftwareAppsViewModel.cs',
   pages: {
     SoftwareApps: 'src/Winhance.UI/Features/SoftwareApps/SoftwareAppsPage.xaml',
     Optimize: 'src/Winhance.UI/Features/Optimize/OptimizePage.xaml',
@@ -83,7 +83,6 @@ export function parseFeatureDefinitions(text, featureIds) {
   return need(defs.length ? defs : null, 'FeatureDefinitions.All', APP_PATHS.featureDefinitions);
 }
 
-// <x:String x:Key="PrivacyIconPath">M12,17...</x:String>  (a Path geometry, 24x24 unless noted)
 // <x:String x:Key="UpdateIconSymbol">ArrowSync</x:String>  (a Fluent icon name)
 export function parseFeatureIcons(text) {
   const out = {};
@@ -93,15 +92,44 @@ export function parseFeatureIcons(text) {
 
 // public string NavOptimizeText =>
 //     _localizationService.GetStringOrDefault("Nav_Optimize", "Optimize");
-export function parseViewModelStringKeys(text) {
+// Theme-independent colours by key: <Color x:Key> values and the SolidColorBrushes built on them, as #AARRGGBB.
+export function parseColors(text) {
+  const colors = {};
+  for (const [, key, argb] of text.matchAll(/<Color x:Key="([\w.]+)">#(\w{8})<\/Color>/g)) colors[key] = argb;
+  for (const [, key, ref] of text.matchAll(/<SolidColorBrush x:Key="([\w.]+)" Color="\{StaticResource ([\w.]+)\}"\/>/g)) {
+    if (colors[ref]) colors[key] = colors[ref];
+  }
+  return colors;
+}
+
+// A Fluent icon's Foreground as CSS #RRGGBBAA: a literal #AARRGGBB, or a StaticResource looked up in colors.
+function iconColor(tag, colors, rel) {
+  const value = tag.match(/Foreground="([^"]+)"/)?.[1];
+  if (!value) return undefined;
+  const argb = value.match(/^#(\w{8})$/)?.[1] ?? colors[value.match(/^\{StaticResource ([\w.]+)\}$/)?.[1]];
+  if (!argb) throw new Error(`${rel}: icon Foreground ${value} is not a colour this generator can read`);
+  return `#${argb.slice(2)}${argb.slice(0, 2)}`;
+}
+
+export function parseViewModelStringKeys(text, rel = APP_PATHS.mainWindowViewModel) {
   const out = {};
-  for (const [, prop, key] of text.matchAll(/public string (\w+)\s*=>\s*_localizationService\.GetStringOrDefault\("([^"]+)"/g)) out[prop] = key;
-  return need(Object.keys(out).length ? out : null, 'localized string properties', APP_PATHS.mainWindowViewModel);
+  for (const [, prop, key] of text.matchAll(/public string (\w+)\s*=>\s*_localizationService\.GetString(?:OrDefault)?\("([^"]+)"/g)) out[prop] = key;
+  return need(Object.keys(out).length ? out : null, 'localized string properties', rel);
 }
 
 function attr(tag, name) {
   const m = tag.match(new RegExp(`\\s${name}="([^"]*)"`));
   return m ? m[1] : undefined;
+}
+
+// A FluentIcon's Icon is a literal name, or bound to a view model `Icon X => cond ? Icon.A : Icon.B`, whose
+// first branch is the state a fresh install shows.
+function boundIcon(value, vm, rel) {
+  const prop = bindingPath(value);
+  if (!prop) return value;
+  const m = vm.match(new RegExp(`public Icon ${prop} =>[^;]*?\\?\\s*Icon\\.(\\w+)`));
+  if (!m) throw new Error(`${rel}: icon binding ${prop} has no Icon property this generator can read`);
+  return m[1];
 }
 
 function bindingPath(value) {
@@ -140,7 +168,7 @@ export function parseNavSidebar(text, { icons, vmKeys, strings }) {
 }
 
 // Title bar: row height, the three mode buttons (label + icon file) and the right-hand buttons in order.
-export function parseTitleBar(text, { vmKeys, strings, icons }) {
+export function parseTitleBar(text, { vmKeys, strings, colors = {}, vm = '' }) {
   const rel = APP_PATHS.mainWindow;
   const height = Number(need(text.match(/<Grid x:Name="AppTitleBar" Height="(\d+)"/)?.[1], 'AppTitleBar height', rel));
 
@@ -165,16 +193,14 @@ export function parseTitleBar(text, { vmKeys, strings, icons }) {
   const body = text.slice(start, text.indexOf('</Grid>', start));
   const buttons = [...body.matchAll(/<Button x:Name="(\w+)"([\s\S]*?)<\/Button>/g)].map(([, name, inner]) => {
     const tipProp = bindingPath(inner.match(/ToolTipService\.ToolTip="([^"]+)"/)?.[1]);
-    const fluent = inner.match(/<fluentIcons:FluentIcon Icon="(\w+)" IconVariant="(\w+)"(?:[^>]*Foreground="#(\w{8})")?/);
-    const path = inner.match(/Data="\{StaticResource (\w+)\}"/)?.[1];
+    const fluent = inner.match(/<fluentIcons:FluentIcon\b[^>]*?\sIcon="([^"]+)"[^>]*?\sIconVariant="(\w+)"[^>]*>/);
     const labelProp = bindingPath(inner.match(/<TextBlock[^>]*Text="([^"]+)"/)?.[1]);
     const button = { name };
     if (fluent) {
-      button.icon = fluent[2] === 'Filled' ? `${fluent[1]}Filled` : fluent[1];
-      if (fluent[3]) button.color = `#${fluent[3].slice(2)}${fluent[3].slice(0, 2)}`;
-    } else if (path) {
-      if (!icons[path]) throw new Error(`${rel}: ${name} uses ${path}, not in FeatureIcons.xaml`);
-      button.path = icons[path];
+      const name = boundIcon(fluent[1], vm, rel);
+      button.icon = fluent[2] === 'Filled' ? `${name}Filled` : name;
+      const color = iconColor(fluent[0], colors, rel);
+      if (color) button.color = color;
     } else {
       throw new Error(`${rel}: title bar button ${name} has no icon this generator can read`);
     }
@@ -199,11 +225,14 @@ export function parseAppItems(text) {
     if (winget) item.winget = winget;
     if (get('ChocoPackageId')) item.choco = get('ChocoPackageId');
     if (/\bCanBeReinstalled\s*=\s*false/.test(body)) item.permanent = true;
+    if (get('RemovalScriptName')) item.removalScript = get('RemovalScriptName');
     if (/\bHasInstabilityWarning\s*=\s*true/.test(body)) item.warning = true;
     // How the app detects it: AppX package names, or a capability / optional feature name.
     const appx = body.match(/\bAppxPackageName\s*=\s*\[([^\]]*)\]/)?.[1];
     if (appx) item.appx = [...appx.matchAll(/"([^"]+)"/g)].map((m) => m[1]);
     for (const [field, key] of [['CapabilityName', 'capability'], ['OptionalFeatureName', 'feature']]) if (get(field)) item[key] = get(field);
+    const kind = body.match(/\bKind\s*=\s*WindowsAppKind\.(\w+)/)?.[1];
+    if (kind) item.kind = kind;
     items.push(item);
   }
   return items;
@@ -246,25 +275,38 @@ export function parseBreakpoints(mainWindowCode, appXaml) {
   };
 }
 
-// AppItemViewModel.ItemTypeDescription: the Type column's text for each kind of Windows item.
+// AppItemViewModel.ItemTypeDescription: the Type column's string key for each WindowsAppKind of Windows item.
 export function parseItemTypes(text) {
   const rel = APP_PATHS.appItemViewModel;
-  const body = need(text.match(/string ItemTypeDescription\s*\{([\s\S]*?)return string\.Empty;/)?.[1], 'ItemTypeDescription', rel);
-  const pick = (field) => need(body.match(new RegExp(`Definition\\.${field}[^)]*\\)\\)?\\s*return "([^"]+)"`))?.[1], `${field} type text`, rel);
-  return { capability: pick('CapabilityName'), feature: pick('OptionalFeatureName'), appx: pick('AppxPackageName') };
+  const body = need(text.match(/string ItemTypeDescription => Definition\.Kind switch\s*\{([\s\S]*?)\};/)?.[1], 'ItemTypeDescription', rel);
+  const keys = Object.fromEntries([...body.matchAll(/WindowsAppKind\.(\w+) => _localizationService\.GetString\("(\w+)"\)/g)].map((m) => [m[1], m[2]]));
+  if (!Object.keys(keys).length) throw new Error(`${rel}: ItemTypeDescription maps no WindowsAppKind to a string`);
+  return keys;
 }
 
-// The Windows Apps help flyout's "Winhance Status" row: one button per removal script, name and icon key.
-export function parseRemovalItems(text) {
-  const items = [...text.matchAll(/new RemovalStatusViewModel\(\s*"([^"]+)",\s*"(\w+)"/g)].map(([, name, icon]) => ({ name, icon }));
-  return need(items, 'RemovalStatusViewModel items', APP_PATHS.removalStatus);
+// HelpLinks.cs: the bug report URL, and the docs URL per page tag. DocsFor(tag) falls back to the docs index
+// for a tag the map lacks (or none), which is what a demo link with no current page opens.
+export function parseHelpLinks(text) {
+  const rel = APP_PATHS.helpLinks;
+  const docsRoot = need(text.match(/const string DocsRoot = "([^"]+)"/)?.[1], 'DocsRoot', rel);
+  const bugReport = need(text.match(/BugReport\s*=\s*new\("([^"]+)"\)/)?.[1], 'BugReport URL', rel);
+  const map = need(text.match(/DocsPageByTag[^{]*\{\s*([\s\S]*?)\n\s*\};/)?.[1], 'DocsPageByTag', rel);
+  const pages = Object.fromEntries([...map.matchAll(/\["(\w+)"\]\s*=\s*"([^"]+)"/g)].map(([, tag, page]) => [tag, docsRoot + page]));
+  const fallback = need(text.match(/DocsFor\([^)]*\)\s*=>[\s\S]*?:\s*"([^"]+)"\)\);/)?.[1], 'DocsFor fallback page', rel);
+  return { bugReport, docsFor: (tag) => pages[tag] ?? docsRoot + fallback };
 }
 
 // Where the links in the title bar and the More menu go. Report a Bug and Docs launch a URL from their view
-// model (MainWindowViewModel, MoreMenuViewModel); Support opens the sponsors dialog, whose Support button goes
-// to the store (SupportUrl, before its ?ref= source).
-export function launchedUrl(text, method, rel) {
-  return need(text.match(new RegExp(`Task ${method}\\(\\)[\\s\\S]*?new Uri\\("([^"]+)"\\)`))?.[1], `${method} URL`, rel);
+// model (MainWindowViewModel, MoreMenuViewModel), either `new Uri("...")` or through HelpLinks (pass the
+// parsed helpLinks; docs have no page here, so they resolve to the docs index); Support opens the sponsors
+// dialog, whose Support button goes to the store (SupportUrl, before its ?ref= source).
+export function launchedUrl(text, method, rel, helpLinks) {
+  const body = need(text.match(new RegExp(`Task ${method}\\([^)]*\\)[\\s\\S]*?LaunchUriAsync\\(([^;]*)\\);`))?.[1], `${method} URL`, rel);
+  const literal = body.match(/new Uri\("([^"]+)"\)/)?.[1];
+  if (literal) return literal;
+  if (/HelpLinks\.BugReport\b/.test(body)) return need(helpLinks?.bugReport, `${method} HelpLinks.BugReport`, rel);
+  if (/HelpLinks\.DocsFor\(/.test(body)) return need(helpLinks?.docsFor(null), `${method} HelpLinks.DocsFor`, rel);
+  throw new Error(`${rel}: could not read ${method} URL`);
 }
 
 export function parseSupportUrl(sponsorsDialog) {
@@ -285,11 +327,6 @@ export function parseConfig(text, rel) {
   return { items, windows: apps('WindowsApps'), external: apps('ExternalApps') };
 }
 
-// A help flyout's Learn more link.
-export function parseHelpLink(text, rel) {
-  return need(text.match(/NavigateUri = new System\.Uri\("([^"]+)"\)/)?.[1], 'Learn more link', rel);
-}
-
 // Layout numbers the demo copies rather than guesses: the dimmed-pill opacity, the settings column's
 // max width and card spacing, and the title bar's icon size.
 export function parseMetrics({ dimConverter, settingTemplates, iconSizes }) {
@@ -306,7 +343,7 @@ export function parseMetrics({ dimConverter, settingTemplates, iconSizes }) {
 // The More button's flyout: items and separators in XAML order. Each item's text is set in NavSidebar's
 // code-behind by Tag -> a MoreMenuViewModel property -> en.json; the disabled, untagged item is the
 // version line, whose format MoreMenuViewModel builds around the version tag.
-export function parseMoreMenu(xaml, code, viewModel, strings) {
+export function parseMoreMenu(xaml, code, viewModel, strings, colors = {}) {
   const rel = APP_PATHS.navSidebar;
   const start = xaml.indexOf('x:Name="MoreMenuFlyout"');
   if (start < 0) throw new Error(`${rel}: no MoreMenuFlyout`);
@@ -318,10 +355,11 @@ export function parseMoreMenu(xaml, code, viewModel, strings) {
 
   const items = [...body.matchAll(/<MenuFlyoutSeparator\/>|<MenuFlyoutItem\b([^>]*)>([\s\S]*?)<\/MenuFlyoutItem>/g)].map(([whole, attrs, inner]) => {
     if (whole.startsWith('<MenuFlyoutSeparator')) return { separator: true };
-    const icon = inner.match(/<fluentIcons:FluentIcon Icon="(\w+)" IconVariant="(\w+)"(?:[^>]*Foreground="#(\w{8})")?/);
+    const icon = inner.match(/<fluentIcons:FluentIcon Icon="(\w+)" IconVariant="(\w+)"[^>]*>/);
     if (!icon) throw new Error(`${rel}: More menu item without a Fluent icon`);
     const item = { icon: icon[2] === 'Filled' ? `${icon[1]}Filled` : icon[1] };
-    if (icon[3]) item.color = `#${icon[3].slice(2)}${icon[3].slice(0, 2)}`;
+    const color = iconColor(icon[0], colors, rel);
+    if (color) item.color = color;
     const tag = attr(`<x ${attrs}>`, 'Tag');
     if (!tag && /IsEnabled="False"/.test(attrs)) {
       item.version = versionFormat;
@@ -335,4 +373,56 @@ export function parseMoreMenu(xaml, code, viewModel, strings) {
     return item;
   });
   return need(items, 'More menu items', rel);
+}
+
+// SoftwareAppsPage.xaml's View menu: the button's Fluent icon and label, then the flyout's items in order,
+// each with the view-model flags it binds (checked, enabled, visible) or, for a plain item, the command it runs.
+// The demo mirrors those flags and commands by name.
+export function parseAppsViewMenu(xaml, viewModel, strings) {
+  const rel = APP_PATHS.pages.SoftwareApps, vmRel = APP_PATHS.softwareAppsViewModel;
+  const start = xaml.indexOf('x:Name="ViewMenuButton"');
+  if (start < 0) throw new Error(`${rel}: no ViewMenuButton`);
+  const button = xaml.slice(start, xaml.indexOf('</DropDownButton>', start));
+  const flyoutAt = button.indexOf('<MenuFlyout');
+  if (flyoutAt < 0) throw new Error(`${rel}: ViewMenuButton has no MenuFlyout`);
+  const keys = parseViewModelStringKeys(viewModel, vmRel);
+  const flag = (tag, name) => {
+    const value = attr(tag, name);
+    if (value === undefined) return undefined;
+    const m = value.match(/^\{x:Bind ViewModel\.(\w+), Mode=OneWay(, Converter=\{StaticResource BooleanToVisibilityConverter\})?\}$/);
+    if (!m || (m[2] && name !== 'Visibility')) throw new Error(`${rel}: View menu ${name}="${value}" is not a plain view-model flag`);
+    return m[1];
+  };
+  const text = (tag, what) => {
+    const prop = need(flag(tag, 'Text'), `${what} text binding`, rel);
+    return str(strings, need(keys[prop], `${prop} key`, vmRel));
+  };
+  const head = button.slice(0, flyoutAt);
+  const icon = need(head.match(/<fluentIcons:FluentIcon Icon="(\w+)" IconVariant="Regular"/)?.[1], 'View menu icon', rel);
+  const label = text(need(head.match(/<TextBlock\b[^>]*>/)?.[0], 'View menu label', rel), 'View menu label');
+
+  const body = button.slice(button.indexOf('>', flyoutAt) + 1, button.indexOf('</MenuFlyout>'));
+  const each = /<MenuFlyoutSeparator\/>|<(RadioMenuFlyoutItem|MenuFlyoutItem)\b[^>]*\/>/g;
+  const other = body.replace(each, '').replace(/<!--[\s\S]*?-->/g, '').match(/<\/?[\w:.]+/);
+  if (other) throw new Error(`${rel}: View menu holds ${other[0]}>, which gen-demo does not draw`);
+  const items = [...body.matchAll(each)].map(([tag, kind]) => {
+    if (!kind) return { separator: true };
+    const item = { label: text(tag, 'View menu item') };
+    const visible = flag(tag, 'Visibility');
+    if (visible) item.visible = visible;
+    if (kind === 'RadioMenuFlyoutItem') {
+      item.group = need(attr(tag, 'GroupName'), 'View menu GroupName', rel);
+      item.checked = need(flag(tag, 'IsChecked'), 'View menu IsChecked', rel);
+      const enabled = flag(tag, 'IsEnabled');
+      if (enabled) item.enabled = enabled;
+    } else if (attr(tag, 'IsEnabled') === 'False') {
+      item.disabled = true;
+    } else {
+      const command = attr(tag, 'Command')?.match(/^\{x:Bind ViewModel\.(\w+Command)\}$/)?.[1];
+      if (!command) throw new Error(`${rel}: View menu has a plain item that can be clicked and is not a view-model command, which gen-demo does not draw`);
+      item.command = command;
+    }
+    return item;
+  });
+  return { icon, label, items: need(items, 'View menu items', rel) };
 }
