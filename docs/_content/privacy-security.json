@@ -1,0 +1,30 @@
+{
+  "intro": [
+    "<p>What Windows collects and shares, the ads and suggestions it shows, which apps can use your camera, microphone and location, its AI features, and core security options such as User Account Control.</p>"
+  ],
+  "groups": {
+    "Security": "User Account Control, Smart App Control, BitLocker automatic encryption, Remote Assistance, Developer Mode, the PowerShell execution policy, and other system protections.",
+    "Content Delivery & Advertising": {
+      "blurb": "Ads, suggested apps, and apps Windows installs without asking.",
+      "html": [
+        "<div class=\"callout callout-note\"><p class=\"callout-title\">One setting for all of it</p><p>Ads, Suggestions and Promotional Content sets the settings below, plus related ones on the lock screen, in the Settings app, in notifications and in the Start menu. Allow turns them all on, Deny turns them all off, and Custom leaves each one to you.</p></div>"
+      ]
+    },
+    "Lock Screen": "Whether you can lock the PC, and Windows Spotlight pictures and fun facts on the lock screen.",
+    "General": "The advertising ID, website access to your language list, app launch tracking, and suggestions and notifications in the Settings app.",
+    "Speech": "Online speech recognition, and Narrator's online services and scripting.",
+    "Inking and typing personalization": "The personal dictionary Windows builds from your typing and handwriting.",
+    "Diagnostics & Feedback": "Diagnostic data sent to Microsoft, tailored experiences, and feedback requests.",
+    "Activity History": "The activity history Windows keeps so you can pick up where you left off, and Timeline suggestions on Windows 10.",
+    "Search permissions": "Search history, search highlights, results from your Microsoft or work account, and Cortana.",
+    "App Permissions": "Which apps can use your location, camera, microphone, account info and app diagnostics, and OneDrive's automatic folder backups.",
+    "Windows AI": "Copilot, Recall, Click to Do, AI agents, and the AI features in Paint and Notepad.",
+    "Microsoft Edge AI": "Copilot and the other AI features inside Microsoft Edge.",
+    "Microsoft Office AI": "Copilot in Word, Excel and OneNote, and Office's AI training data and connected services."
+  },
+  "video": {
+    "id": "lrq3ph3xi50",
+    "start": 1212,
+    "title": "I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)"
+  }
+}

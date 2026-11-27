@@ -1,0 +1,13 @@
+{
+  "intro": [
+    "<p>The startup sound, what Windows does to other audio during calls, voice activation for apps, and the sounds accessibility shortcuts make.</p>"
+  ],
+  "groups": {
+    "System Sounds": "The startup sound, how much Windows lowers other audio during calls and while Narrator speaks, voice activation for apps, and accessibility sounds."
+  },
+  "video": {
+    "id": "lrq3ph3xi50",
+    "start": 2445,
+    "title": "I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)"
+  }
+}

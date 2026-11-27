@@ -1,0 +1,8 @@
+{
+  "intro": [
+    "<p>Optimize holds the settings that change how Windows performs and what it shares: privacy and security, power, gaming and performance, Windows Update, notifications and sound. Each setting shows which option Windows uses by default and which one Winhance recommends. In Normal mode, a change applies to this PC as soon as you make it.</p>"
+  ],
+  "outro": [
+    "<div class=\"callout callout-note\"><p class=\"callout-title\">Winhance does not keep watch</p><p>Winhance applies a setting once, when you change it. It runs nothing in the background afterwards, so if Windows, another app or you change the setting later, Winhance leaves it alone. Change it again in Winhance to put it back.</p></div>"
+  ]
+}

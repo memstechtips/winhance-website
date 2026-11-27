@@ -5,480 +5,525 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Windows Update - Winhance Docs</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-    <link rel="stylesheet" href="../../../styles.css">
-    <link rel="stylesheet" href="../../css/docs-main.css">
-    <link rel="stylesheet" href="../../css/docs-sidebar.css">
-    <link rel="stylesheet" href="../../css/docs-syntax.css">
+    <meta name="description" content="When Windows Update installs updates, whether it includes drivers, and how updates are delivered.">
+    <meta name="theme-color" content="#0b1422">
+    <link rel="icon" type="image/png" sizes="256x256" href="../../../images/winhance-rocket.png">
+    <link rel="preload" href="../../../fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../../css/winui-tokens.css">
+    <link rel="stylesheet" href="../../css/app-tokens.css">
+    <link rel="stylesheet" href="../../../base.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link rel="stylesheet" href="../../css/setting-card.css">
+    <link rel="stylesheet" href="../../../demo/winhance-demo.css">
     <script src="../../js/theme-load.js"></script>
 </head>
 
-<body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <a href="../../index.html" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="../../../images/winhance-rocket.png" alt="Winhance Logo"
-                        style="height: 32px; margin-right: 12px;">
-                    <h1 style="font-size: 1.5rem; margin: 0; color: var(--text-color);">Winhance <span
-                            style="font-weight: 300; opacity: 0.7;">Docs</span></h1>
-                </a>
+<body class="docs">
+    <!-- gen:icons --><svg class="sprite" aria-hidden="true"><symbol id="i-ChevronLeft" viewBox="0 0 20 20"><path fill="currentColor" d="M12.3534 15.8537C12.1585 16.0493 11.8419 16.0499 11.6463 15.855L6.16178 10.39C5.94607 10.1751 5.94607 9.82574 6.16178 9.6108L11.6463 4.14582C11.8419 3.9509 12.1585 3.95147 12.3534 4.14708C12.5483 4.34269 12.5477 4.65927 12.3521 4.85418L7.18753 10.0004L12.3521 15.1466C12.5477 15.3415 12.5483 15.6581 12.3534 15.8537Z"/></symbol><symbol id="i-HeartFilled" viewBox="0 0 20 20"><path fill="currentColor" d="M9.38843 4.28963C7.69278 2.57693 4.94954 2.5686 3.26122 4.2739C1.5729 5.9792 1.58114 8.75004 3.27679 10.4627L9.55368 16.8028C9.81404 17.0657 10.2362 17.0657 10.4965 16.8028L16.7408 10.4994C18.4252 8.78856 18.4199 6.02549 16.7239 4.31249C15.0252 2.59671 12.2807 2.58838 10.5894 4.29673L9.99299 4.90026L9.38843 4.28963Z"/></symbol><symbol id="i-Navigation" viewBox="0 0 20 20"><path fill="currentColor" d="M2 4.5C2 4.22386 2.22386 4 2.5 4H17.5C17.7761 4 18 4.22386 18 4.5C18 4.77614 17.7761 5 17.5 5H2.5C2.22386 5 2 4.77614 2 4.5ZM2 9.5C2 9.22386 2.22386 9 2.5 9H17.5C17.7761 9 18 9.22386 18 9.5C18 9.77614 17.7761 10 17.5 10H2.5C2.22386 10 2 9.77614 2 9.5ZM2.5 14C2.22386 14 2 14.2239 2 14.5C2 14.7761 2.22386 15 2.5 15H17.5C17.7761 15 18 14.7761 18 14.5C18 14.2239 17.7761 14 17.5 14H2.5Z"/></symbol><symbol id="i-Search" viewBox="0 0 20 20"><path fill="currentColor" d="M13.7291 14.4362C12.5924 15.411 11.115 16 9.5 16C5.91015 16 3 13.0899 3 9.5C3 5.91015 5.91015 3 9.5 3C13.0899 3 16 5.91015 16 9.5C16 11.115 15.411 12.5924 14.4361 13.7292L17.8535 17.1465C18.0487 17.3417 18.0487 17.6583 17.8535 17.8536C17.6799 18.0271 17.4105 18.0464 17.2156 17.9114L17.1464 17.8536L13.7291 14.4362ZM13.0196 13.7266C13.276 13.5128 13.5127 13.2761 13.7265 13.0197C14.5216 12.0659 15 10.8388 15 9.5C15 6.46243 12.5376 4 9.5 4C6.46243 4 4 6.46243 4 9.5C4 12.5376 6.46243 15 9.5 15C10.8388 15 12.0658 14.5217 13.0196 13.7266Z"/></symbol><symbol id="i-WeatherMoon" viewBox="0 0 20 20"><path fill="currentColor" d="M15.4932 13.4967C13.5653 16.8358 9.2957 17.9798 5.95663 16.052C5.20013 15.6152 4.54451 15.0515 4.01047 14.3887C6.8412 13.3015 8.56844 11.9681 9.60339 9.99249C10.651 7.99273 10.9395 5.83183 10.3628 3.08319C11.2605 3.20148 12.1328 3.49537 12.9378 3.96018C16.2769 5.88799 17.421 10.1576 15.4932 13.4967ZM5.45663 16.918C9.27399 19.122 14.1552 17.8141 16.3592 13.9967C18.5631 10.1793 17.2552 5.2981 13.4378 3.09415C12.3371 2.45863 11.1233 2.10173 9.88082 2.03507C9.4801 2.01357 9.17217 2.38477 9.26732 2.77462C9.95545 5.59395 9.70125 7.65076 8.71759 9.52844C7.78322 11.312 6.17301 12.559 3.16661 13.635C2.79667 13.7674 2.65251 14.2143 2.87537 14.538C3.54192 15.5059 4.41706 16.3178 5.45663 16.918Z"/></symbol><symbol id="i-WeatherSunny" viewBox="0 0 20 20"><path fill="currentColor" d="M10 2C10.2761 2 10.5 2.22386 10.5 2.5V3.5C10.5 3.77614 10.2761 4 10 4C9.72386 4 9.5 3.77614 9.5 3.5V2.5C9.5 2.22386 9.72386 2 10 2ZM10 14C12.2091 14 14 12.2091 14 10C14 7.79086 12.2091 6 10 6C7.79086 6 6 7.79086 6 10C6 12.2091 7.79086 14 10 14ZM10 13C8.34315 13 7 11.6569 7 10C7 8.34315 8.34315 7 10 7C11.6569 7 13 8.34315 13 10C13 11.6569 11.6569 13 10 13ZM17.5 10.5C17.7761 10.5 18 10.2761 18 10C18 9.72386 17.7761 9.5 17.5 9.5H16.5C16.2239 9.5 16 9.72386 16 10C16 10.2761 16.2239 10.5 16.5 10.5H17.5ZM10 16C10.2761 16 10.5 16.2239 10.5 16.5V17.5C10.5 17.7761 10.2761 18 10 18C9.72386 18 9.5 17.7761 9.5 17.5V16.5C9.5 16.2239 9.72386 16 10 16ZM3.5 10.5C3.77614 10.5 4 10.2761 4 10C4 9.72386 3.77614 9.5 3.5 9.5H2.46289C2.18675 9.5 1.96289 9.72386 1.96289 10C1.96289 10.2761 2.18675 10.5 2.46289 10.5H3.5ZM4.14645 4.14645C4.34171 3.95118 4.65829 3.95118 4.85355 4.14645L5.85355 5.14645C6.04882 5.34171 6.04882 5.65829 5.85355 5.85355C5.65829 6.04882 5.34171 6.04882 5.14645 5.85355L4.14645 4.85355C3.95118 4.65829 3.95118 4.34171 4.14645 4.14645ZM4.85355 15.8536C4.65829 16.0488 4.34171 16.0488 4.14645 15.8536C3.95118 15.6583 3.95118 15.3417 4.14645 15.1464L5.14645 14.1464C5.34171 13.9512 5.65829 13.9512 5.85355 14.1464C6.04882 14.3417 6.04882 14.6583 5.85355 14.8536L4.85355 15.8536ZM15.8536 4.14645C15.6583 3.95118 15.3417 3.95118 15.1464 4.14645L14.1464 5.14645C13.9512 5.34171 13.9512 5.65829 14.1464 5.85355C14.3417 6.04882 14.6583 6.04882 14.8536 5.85355L15.8536 4.85355C16.0488 4.65829 16.0488 4.34171 15.8536 4.14645ZM15.1464 15.8536C15.3417 16.0488 15.6583 16.0488 15.8536 15.8536C16.0488 15.6583 16.0488 15.3417 15.8536 15.1464L14.8536 14.1464C14.6583 13.9512 14.3417 13.9512 14.1464 14.1464C13.9512 14.3417 13.9512 14.6583 14.1464 14.8536L15.1464 15.8536Z"/></symbol></svg><!-- /gen:icons -->
+    <a class="skip" href="#content">Skip to content</a>
+
+    <header class="topbar">
+        <div class="docs-wrap topbar-row">
+            <button type="button" class="icon-btn docs-menu" aria-label="Show or hide the docs menu" aria-controls="docs-nav" aria-expanded="false">
+                <svg class="i"><use href="#i-Navigation"/></svg>
+            </button>
+            <a class="brand" href="../../../index.html" aria-label="Winhance home">
+                <img class="brand-mark" src="../../../images/winhance-rocket.png" alt="" width="28" height="28">
+                <span>Winhance</span>
+            </a>
+            <nav class="site-tabs" aria-label="Site">
+                <a href="../../../index.html">Home</a>
+                <a href="../../index.html" aria-current="true">Docs</a>
+            </nav>
+            <div class="search-container" role="search">
+                <svg class="i"><use href="#i-Search"/></svg>
+                <input type="search" id="docs-search" placeholder="Search the docs" autocomplete="off" aria-label="Search the docs">
+                <kbd class="search-key" aria-hidden="true">/</kbd>
             </div>
-            <div class="search-container">
-                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                <input type="text" id="docs-search" placeholder="Search documentation...">
-            </div>
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle theme">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
-                    </svg>
+            <div class="topbar-actions">
+                <button type="button" id="theme-toggle" class="icon-btn" aria-label="Switch between light and dark">
+                    <svg class="i i-sun"><use href="#i-WeatherSunny"/></svg>
+                    <svg class="i i-moon"><use href="#i-WeatherMoon"/></svg>
                 </button>
-                <a href="https://github.com/memstechtips/Winhance" target="_blank" class="icon-btn github-btn"
-                    title="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
+                <a class="icon-btn" href="https://github.com/memstechtips/Winhance" target="_blank" rel="noopener" aria-label="Winhance on GitHub">
+                    <svg class="i" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a class="icon-btn icon-btn-heart" href="https://store.memstechtips.com/winhance/" target="_blank" rel="noopener" aria-label="Support Winhance">
+                    <svg class="i"><use href="#i-HeartFilled"/></svg>
+                </a>
+                <a class="btn btn-primary btn-small" href="https://github.com/memstechtips/Winhance/releases/latest/download/Winhance.Installer.exe">
+                    <span class="dl-rocket" aria-hidden="true"><i></i></span>
+                    <span>Download</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <div class="docs-wip-banner">
-        <strong>Work in Progress:</strong> Documentation is a work in progress. Some pages may be incomplete.
-    </div>
-
-    <div class="docs-layout has-banner">
-                        <aside class="docs-sidebar">
-            <nav>
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Getting Started</div>
-                    <a href="../../getting-started/installation.html" class="sidebar-nav-item">Installation</a>
-                    <a href="../../getting-started/quick-start.html" class="sidebar-nav-item">Quick Start</a>
+    <div class="docs-wrap docs-layout">
+        <aside class="docs-sidebar" id="docs-nav">
+            <a class="nav-home" href="../../../index.html"><svg class="i"><use href="#i-ChevronLeft"/></svg>Back to Winhance home</a>
+            <nav aria-label="Documentation">
+                <div class="nav-group">
+                    <p class="nav-title">Get started</p>
+                    <a class="nav-item" href="../../index.html">Overview</a>
+                    <a class="nav-item" href="../../getting-started/installation.html">Installation</a>
+                    <a class="nav-item" href="../../getting-started/quick-start.html">Quick start</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Features</div>
-                    <a href="../../features/software-apps.html" class="sidebar-nav-item">Software & Apps</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../../features/software-apps/windows-apps.html" class="sidebar-nav-item sub-item">Windows Apps</a>
-                        <a href="../../features/software-apps/external-apps.html" class="sidebar-nav-item sub-item">External Apps</a>
-                    </div>
-                    <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
-                        <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
-                        <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
-                        <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item active">Update</a>
-                        <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
-                        <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
-                    </div>
-                    <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
-                        <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
-                        <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
-                        <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
-                    </div>
-                    <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
-                    <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
+                <div class="nav-group">
+                    <p class="nav-title">Features</p>
+                    <a class="nav-item" href="../../features/software-apps.html">Software &amp; Apps</a>
+                    <a class="nav-item nav-sub" href="../../features/software-apps/windows-apps.html">Windows apps</a>
+                    <a class="nav-item nav-sub" href="../../features/software-apps/external-apps.html">External apps</a>
+                    <a class="nav-item" href="../../features/optimize.html">Optimize</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/privacy-security.html">Privacy &amp; Security</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/power.html">Power</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/gaming-performance.html">Gaming &amp; Performance</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/update.html" aria-current="page">Update</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/notifications.html">Notifications</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/sound.html">Sound</a>
+                    <a class="nav-item" href="../../features/customize.html">Customize</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/theme.html">Windows Theme</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/taskbar.html">Taskbar</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/start-menu.html">Start Menu</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/explorer.html">Explorer</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/context-menu.html">Context Menu</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/time-region-language.html">Time &amp; Region</a>
+                    <a class="nav-item" href="../../features/autounattend.html">Autounattend</a>
+                    <a class="nav-item nav-sub" href="../../features/autounattend/answer-file.html">Answer file</a>
+                    <a class="nav-item" href="../../features/advanced-tools.html">Unattend &amp; WIMUtil</a>
+                    <a class="nav-item" href="../../features/settings.html">Settings</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">User Guides</div>
-                    <a href="../../guides/configuration-files.html" class="sidebar-nav-item">Configuration Files</a>
-                    <a href="../../guides/wimutil.html" class="sidebar-nav-item">WIMUtil Guide</a>
-                    <a href="../../guides/autounattend.html" class="sidebar-nav-item">Autounattend Guide</a>
+                <div class="nav-group">
+                    <p class="nav-title">Guides</p>
+                    <a class="nav-item" href="../../guides/configuration-files.html">Configuration files</a>
+                    <a class="nav-item" href="../../guides/wimutil.html">WIMUtil</a>
+                    <a class="nav-item" href="../../guides/autounattend.html">Answer file setup</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Reference</div>
-                    <a href="../../reference/cli-commands.html" class="sidebar-nav-item">CLI Commands</a>
-                    <a href="../../reference/changelog.html" class="sidebar-nav-item">Changelog</a>
-                    <a href="../../reference/troubleshooting.html" class="sidebar-nav-item">Troubleshooting</a>
-                    <a href="../../reference/contributing.html" class="sidebar-nav-item">How to Contribute</a>
+                <div class="nav-group">
+                    <p class="nav-title">Reference</p>
+                    <a class="nav-item" href="../../reference/troubleshooting.html">Troubleshooting</a>
+                    <a class="nav-item" href="../../reference/cli-commands.html">Command line</a>
+                    <a class="nav-item" href="../../reference/changelog.html">Releases</a>
+                    <a class="nav-item" href="../../reference/contributing.html">Contributing</a>
                 </div>
             </nav>
         </aside>
 
-        <main class="docs-content">
-            <section id="update">
+        <main class="docs-main" id="content">
+            <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../../index.html">Docs</a><span class="sep" aria-hidden="true">/</span><span>Features</span><span class="sep" aria-hidden="true">/</span><a href="../../features/optimize.html">Optimize</a></nav>
+            <article class="docs-content">
+                <section id="windows-update">
                 <h1>Windows Update</h1>
-                <div class="video-container">
-                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2094" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p class="lead">When Windows Update installs updates, whether it includes drivers, and how updates are delivered.</p>
+                <div class="app-demo desktop">
+                    <div id="winhance-demo" class="wd-host stage-window" data-page="Optimize" data-feature="Update" data-focus="This demo shows the Optimize page" role="region" aria-label="Interactive Winhance demo: Optimize">
+                        <noscript><p class="stage-fallback">Turn on JavaScript to try this page of Winhance in your browser.</p></noscript>
+                    </div>
+                    <div class="readout" id="readout" aria-live="polite">
+                        <p class="readout-idle">Flip any switch in the window above to see what Winhance would write to Windows.</p>
+                    </div>
                 </div>
-                <p>Take control of Windows Update behavior. Winhance lets you configure update policies, control automatic restarts, manage delivery optimization, and fine-tune how updates are installed on your system.</p>
-
-                <div class="callout callout-warning">
-                    <div class="callout-title">Security Warning</div>
-                    <p>Disabling or delaying Windows updates can leave your system vulnerable to security threats. The recommended option is "Security Updates Only" which provides essential security patches while deferring feature updates.</p>
+                <div class="video">
+                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2094" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <p>How Windows Update installs updates, when it restarts, what it downloads and over which connections, and whether it brings driver updates.</p>
+                <div class="callout callout-warning"><p class="callout-title">Keep security updates on</p><p>Pausing or turning off updates leaves the PC without security fixes. <strong>Security Updates Only (Recommended)</strong> keeps security updates coming and defers feature updates by a year.</p></div>
+                <div class="callout callout-note">
+                    <p class="callout-title">Technical Details</p>
+                    <p>Each setting below lists exactly what Winhance reads and writes: registry values, scheduled tasks, power settings and scripts, with the recommended value and the Windows default marked. It is the same table the app shows when you turn on <strong>Technical Details</strong> in the <strong>View</strong> menu.</p>
                 </div>
 
-                <div class="callout callout-info">
-                    <div class="callout-title">Registry Details</div>
-                    <p>Each setting below includes expandable registry details for power users. Click "Registry Details" to see the exact registry keys and values that are modified.</p>
-                </div>
-
-                <!-- ==================== UPDATE POLICY ==================== -->
                 <h2 id="update-policy">Update Policy</h2>
-                <p>Master control for Windows Update behavior.</p>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Windows Update Policy</span>
-                        <span class="setting-id">updates-policy-mode</span>
-                    </div>
-                    <p class="setting-desc">Control how Windows updates are installed on your system. Choose from four modes based on your needs and risk tolerance.</p>
-
-                    <div style="margin: 1rem 0; padding: 1rem; background: var(--code-bg); border-radius: 8px;">
-                        <h4 style="margin: 0 0 0.75rem 0; font-size: 0.9rem;">Available Options:</h4>
-                        <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem;">
-                            <li><strong>Normal (Windows Default)</strong> - Automatic updates enabled with standard Windows behavior</li>
-                            <li><strong>Security Updates Only (Recommended)</strong> - Only install critical security updates, defer feature updates by 1 year</li>
-                            <li><strong>Paused for a long time</strong> - Pause all updates until 2051; manually unpause in Windows Settings when needed</li>
-                            <li><strong>Disabled (NOT Recommended)</strong> - Completely disable Windows Update services and block all updates</li>
-                        </ul>
-                    </div>
-
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <p style="margin-bottom: 0.5rem; font-size: 0.85rem;">This setting modifies multiple registry values across HKCU and HKLM:</p>
-
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code></td></tr>
-                            <tr><th>Values</th><td><code>NoAutoUpdate</code>, <code>AUOptions</code>, <code>NoAUShutdownOption</code>, <code>AlwaysAutoRebootAtScheduledTime</code>, <code>AutoInstallMinorUpdates</code>, <code>UseWUServer</code></td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code></td></tr>
-                            <tr><th>Values</th><td><code>NoAutoUpdate</code>, <code>AUOptions</code>, <code>NoAUShutdownOption</code>, <code>AlwaysAutoRebootAtScheduledTime</code>, <code>AutoInstallMinorUpdates</code>, <code>UseWUServer</code></td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings</code></td></tr>
-                            <tr><th>Values</th><td><code>BranchReadinessLevel</code>, <code>DeferFeatureUpdates</code>, <code>DeferFeatureUpdatesPeriodInDays</code>, <code>DeferQualityUpdates</code>, <code>DeferQualityUpdatesPeriodInDays</code>, <code>PauseFeatureUpdatesStartTime</code>, <code>PauseFeatureUpdatesEndTime</code>, <code>PauseQualityUpdatesStartTime</code>, <code>PauseQualityUpdatesEndTime</code>, <code>PauseUpdatesStartTime</code>, <code>PauseUpdatesExpiryTime</code>, <code>PausedQualityDate</code>, <code>PausedFeatureDate</code>, <code>FlightSettingsMaxPauseDays</code>, <code>PausedFeatureStatus</code>, <code>PausedQualityStatus</code></td></tr>
-                        </table>
-
-                        <h4 style="margin: 1rem 0 0.5rem 0; font-size: 0.85rem;">Option Value Mappings:</h4>
-                        <table class="registry-table">
-                            <tr>
-                                <th>Normal</th>
-                                <td>All values deleted (Windows default behavior)</td>
-                            </tr>
-                            <tr>
-                                <th>Security Only</th>
-                                <td><code>AUOptions=2</code>, <code>BranchReadinessLevel=20</code>, <code>DeferFeatureUpdates=1</code>, <code>DeferFeatureUpdatesPeriodInDays=365</code>, <code>DeferQualityUpdates=1</code>, <code>DeferQualityUpdatesPeriodInDays=7</code></td>
-                            </tr>
-                            <tr>
-                                <th>Paused</th>
-                                <td><code>NoAutoUpdate=1</code>, <code>AUOptions=1</code>, pause dates set to 2025-2051, <code>FlightSettingsMaxPauseDays=10023</code></td>
-                            </tr>
-                            <tr>
-                                <th>Disabled</th>
-                                <td><code>NoAutoUpdate=1</code>, <code>AUOptions=1</code>, <code>UseWUServer=0</code></td>
-                            </tr>
-                        </table>
-                    </details>
+                <p>The overall update policy: normal, security updates only, paused for a long time, or turned off.</p>
+                <div class="setting-card" id="updates-policy-mode">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M4 4C4 2.89543 4.89543 2 6 2H9.58579C9.98361 2 10.3651 2.15804 10.6464 2.43934L14.5607 6.35355C14.842 6.63486 15 7.01639 15 7.41421V14C15 15.1046 14.1046 16 13 16H10.793C10.8841 15.6777 10.9466 15.3434 10.9776 15H13C13.5523 15 14 14.5523 14 14V8H10.5C9.67157 8 9 7.32843 9 6.5V3H6C5.44772 3 5 3.44772 5 4V9.02242C4.65659 9.05337 4.32228 9.11588 4 9.20703V4ZM10 3.20711V6.5C10 6.77614 10.2239 7 10.5 7H13.7929L10 3.20711ZM10.4003 17C10.2174 17.3578 9.99647 17.6929 9.74284 18H13.0606C15.2363 18 17 16.2363 17 14.0606V9C17 8.44771 16.5523 8 16 8V14C16 15.6569 14.6569 17 13 17H10.4003ZM1 14.5C1 16.9853 3.01472 19 5.5 19C7.98528 19 10 16.9853 10 14.5C10 12.0147 7.98528 10 5.5 10C3.01472 10 1 12.0147 1 14.5ZM7.5 11.5C7.77614 11.5 8 11.7239 8 12V13.5C8 13.7761 7.77614 14 7.5 14H6C5.72386 14 5.5 13.7761 5.5 13.5C5.5 13.2239 5.72386 13 6 13H6.46821C6.41787 12.9722 6.36628 12.9464 6.31355 12.923C6.06824 12.8137 5.80344 12.755 5.53495 12.7503C5.26646 12.7456 4.99977 12.795 4.75079 12.8956C4.5018 12.9962 4.27563 13.1459 4.08575 13.3358C3.89048 13.531 3.5739 13.531 3.37864 13.3358C3.18338 13.1405 3.18338 12.8239 3.37864 12.6287C3.66346 12.3439 4.00273 12.1193 4.3762 11.9684C4.74967 11.8175 5.14971 11.7434 5.55245 11.7505C5.95518 11.7575 6.35238 11.8456 6.72034 12.0094C6.81617 12.0521 6.90951 12.0997 7 12.1519V12C7 11.7239 7.22386 11.5 7.5 11.5ZM6.6238 17.0316C6.25033 17.1825 5.85029 17.2566 5.44755 17.2495C5.04482 17.2425 4.64762 17.1544 4.27966 16.9906C4.18383 16.9479 4.09049 16.9003 4 16.8481V17C4 17.2761 3.77614 17.5 3.5 17.5C3.22386 17.5 3 17.2761 3 17V15.5C3 15.2239 3.22386 15 3.5 15H5C5.27614 15 5.5 15.2239 5.5 15.5C5.5 15.7761 5.27614 16 5 16H4.53179C4.58213 16.0278 4.63372 16.0536 4.68645 16.077C4.93176 16.1863 5.19656 16.245 5.46505 16.2497C5.73354 16.2544 6.00023 16.205 6.24921 16.1044C6.4982 16.0038 6.72437 15.8541 6.91425 15.6642C7.10951 15.469 7.4261 15.469 7.62136 15.6642C7.81662 15.8595 7.81662 16.1761 7.62136 16.3713C7.33654 16.6561 6.99727 16.8807 6.6238 17.0316Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Windows Update Policy</span>
+                <p class="setting-desc">Control how Windows updates are installed on your system</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span></div>
+                <span class="setting-id">updates-policy-mode</span>
+                </div>
+                </div>
+                <div class="setting-banner"><p class="setting-banner-text">WARNING: Pausing updates for a long time leaves your system vulnerable to security threats. Use at your own risk.</p></div>
+                <div class="setting-banner"><p class="setting-banner-text">WARNING: Disabling updates leaves your system vulnerable to security threats and will prevent app installations from the Microsoft Store from completing until updates are enabled. Use at your own risk.</p></div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 50 * var(--mx-char-w)); --mx-table-w: calc(610px + 776 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col style="width: calc(24px + 23 * var(--mx-char-w))"><col style="width: calc(24px + 20 * var(--mx-char-w))"><col style="width: calc(24px + 29 * var(--mx-char-w))"><col style="width: calc(24px + 42 * var(--mx-char-w))"><col style="width: calc(24px + 34 * var(--mx-char-w))"><col style="width: calc(24px + 22 * var(--mx-char-w))"><col style="width: calc(24px + 31 * var(--mx-char-w))"><col style="width: calc(24px + 30 * var(--mx-char-w))"><col style="width: calc(24px + 42 * var(--mx-char-w))"><col style="width: calc(24px + 30 * var(--mx-char-w))"><col style="width: calc(24px + 42 * var(--mx-char-w))"><col style="width: calc(24px + 39 * var(--mx-char-w))"><col style="width: calc(24px + 37 * var(--mx-char-w))"><col style="width: calc(24px + 39 * var(--mx-char-w))"><col style="width: calc(24px + 37 * var(--mx-char-w))"><col style="width: calc(24px + 32 * var(--mx-char-w))"><col style="width: calc(24px + 33 * var(--mx-char-w))"><col style="width: calc(24px + 28 * var(--mx-char-w))"><col style="width: calc(24px + 28 * var(--mx-char-w))"><col style="width: calc(24px + 37 * var(--mx-char-w))"><col style="width: calc(24px + 30 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="22" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="6"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU">HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU">HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code></span></th><th class="mx-paths" colspan="16"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings">HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">NoAutoUpdate</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">AUOptions</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">NoAUShutdownOption</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">AlwaysAutoRebootAtScheduledTime</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">AutoInstallMinorUpdates</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">UseWUServer</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">BranchReadinessLevel</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">DeferFeatureUpdates</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">DeferFeatureUpdatesPeriodInDays</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">DeferQualityUpdates</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">DeferQualityUpdatesPeriodInDays</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">PauseFeatureUpdatesStartTime</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">PauseFeatureUpdatesEndTime</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">PauseQualityUpdatesStartTime</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">PauseQualityUpdatesEndTime</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">PauseUpdatesStartTime</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">PauseUpdatesExpiryTime</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">PausedQualityDate</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">PausedFeatureDate</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">FlightSettingsMaxPauseDays</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">PausedFeatureStatus</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">PausedQualityStatus</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>Normal (Windows Default)</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td></tr><tr><th class="mx-option" scope="row"><code>Security Updates Only (Recommended)</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>2</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>20</code></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>365</code></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>7</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td></tr><tr><th class="mx-option" scope="row"><code>Paused for a long time (Unpause in Settings)</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>0</code></td><td class="mx-value"><code>0</code></td><td class="mx-value"><code>0</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>2025-01-01T00:00:00Z</code></td><td class="mx-value"><code>2051-12-31T00:00:00Z</code></td><td class="mx-value"><code>2025-01-01T00:00:00Z</code></td><td class="mx-value"><code>2051-12-31T00:00:00Z</code></td><td class="mx-value"><code>2025-01-01T00:00:00Z</code></td><td class="mx-value"><code>2051-12-31T00:00:00Z</code></td><td class="mx-value"><code>2025-01-01T00:00:00Z</code></td><td class="mx-value"><code>2025-01-01T00:00:00Z</code></td><td class="mx-value"><code>10023</code></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Disabled (NOT Recommended, Security Risk)</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>0</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td></tr><tr><th class="mx-option" scope="row"><code>Notify only (download and install when you choose)</code></th><td class="mx-role"></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>2</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <!-- ==================== DELIVERY & STORE ==================== -->
-                <h2 id="delivery-store">Delivery & Store</h2>
-                <p>Control how updates are downloaded and shared.</p>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Delivery Optimization</span>
-                        <span class="setting-id">updates-delivery-optimization</span>
-                    </div>
-                    <p class="setting-desc">Share downloaded updates with other PCs on your network or the internet to reduce bandwidth usage.</p>
-
-                    <div style="margin: 1rem 0; padding: 1rem; background: var(--code-bg); border-radius: 8px;">
-                        <h4 style="margin: 0 0 0.75rem 0; font-size: 0.9rem;">Available Options:</h4>
-                        <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem;">
-                            <li><strong>Windows Default</strong> - Use default Windows delivery optimization settings</li>
-                            <li><strong>Devices on LAN Only</strong> - Share updates only with devices on your local network</li>
-                            <li><strong>Devices on LAN and Internet</strong> - Share updates with local devices and over the internet</li>
-                            <li><strong>Disabled</strong> - Don't share or receive updates from other devices</li>
-                        </ul>
-                    </div>
-
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization</code></td></tr>
-                            <tr><th>Value</th><td><code>DODownloadMode</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Options</th><td>
-                                null = Windows Default<br>
-                                1 = LAN Only<br>
-                                3 = LAN and Internet<br>
-                                99 = Disabled
-                            </td></tr>
-                            <tr><th>Recommended</th><td>99 (Disabled)</td></tr>
-                            <tr><th>Default</th><td>Key absent</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization</code></td></tr>
-                            <tr><th>Value</th><td><code>DODownloadMode</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                        </table>
-                    </details>
+                <h2 id="delivery-and-store">Delivery &amp; Store</h2>
+                <p>Delivery Optimization, which shares update downloads between PCs, and automatic updates for Microsoft Store apps.</p>
+                <div class="setting-card" id="updates-delivery-optimization">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M12 5.50151C12 4.11996 13.12 3 14.5015 3C15.8831 3 17.003 4.11996 17.003 5.50151C17.003 6.88305 15.8831 8.00302 14.5015 8.00302C13.7015 8.00302 12.9892 7.62749 12.5313 7.0431L7.91501 9.35127C7.97044 9.55816 8 9.77563 8 10C8 10.2243 7.97047 10.4417 7.91508 10.6485L12.5327 12.9573C12.9903 12.3744 13.7014 12 14.5 12C15.8807 12 17 13.1193 17 14.5C17 15.8807 15.8807 17 14.5 17C13.1193 17 12 15.8807 12 14.5C12 14.2757 12.0295 14.0583 12.0849 13.8514L7.46742 11.5427C7.00973 12.1256 6.29859 12.5 5.5 12.5C4.11929 12.5 3 11.3807 3 10C3 8.61929 4.11929 7.5 5.5 7.5C6.29849 7.5 7.00955 7.87435 7.46725 8.45712L12.0845 6.1485C12.0294 5.94213 12 5.72525 12 5.50151ZM14.5015 4C13.6722 4 13 4.67225 13 5.50151C13 6.33077 13.6722 7.00302 14.5015 7.00302C15.3308 7.00302 16.003 6.33077 16.003 5.50151C16.003 4.67225 15.3308 4 14.5015 4ZM14.5 13C13.6716 13 13 13.6716 13 14.5C13 15.3284 13.6716 16 14.5 16C15.3284 16 16 15.3284 16 14.5C16 13.6716 15.3284 13 14.5 13ZM4 10C4 10.8284 4.67157 11.5 5.5 11.5C6.32843 11.5 7 10.8284 7 10C7 9.17157 6.32843 8.5 5.5 8.5C4.67157 8.5 4 9.17157 4 10Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Delivery Optimization</span>
+                <p class="setting-desc">Share downloaded updates with other PCs on your network or the internet to reduce bandwidth usage</p>
+                </div>
+                <div class="setting-pills">
+                <span class="setting-id">updates-delivery-optimization</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 27 * var(--mx-char-w)); --mx-table-w: calc(367.3px + 63 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization">HKCU\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization">HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">DODownloadMode</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>Windows Default</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>deletes value</code></td></tr><tr><th class="mx-option" scope="row"><code>Devices on LAN Only</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Devices on LAN and Internet</code></th><td class="mx-role"></td><td class="mx-value"><code>3</code></td></tr><tr><th class="mx-option" scope="row"><code>Disabled</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>99</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Auto Update Microsoft Store Apps</span>
-                        <span class="setting-id">updates-store-auto-download</span>
-                    </div>
-                    <p class="setting-desc">Automatically download and install updates for apps from the Microsoft Store.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\WindowsStore</code></td></tr>
-                            <tr><th>Value</th><td><code>AutoDownload</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>4</td></tr>
-                            <tr><th>Disabled</th><td>2</td></tr>
-                            <tr><th>Default</th><td>2 (Absence = Enabled)</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\WindowsStore</code></td></tr>
-                            <tr><th>Value</th><td><code>AutoDownload</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>4</td></tr>
-                            <tr><th>Disabled</th><td>2</td></tr>
-                            <tr><th>Default</th><td>2 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
+                <div class="setting-card" id="updates-store-auto-download">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M9.5 7V10H6.5V7H9.5ZM9.5 14V11H6.5V14H9.5ZM13.5 7V10H10.5V7H13.5ZM13.5 14V11H10.5V14H13.5ZM7 4V2.5C7 1.67157 7.67157 1 8.5 1H11.5C12.3284 1 13 1.67157 13 2.5V4H17.5C17.7761 4 18 4.22386 18 4.5V14.5C18 15.8807 16.8807 17 15.5 17H4.5C3.11929 17 2 15.8807 2 14.5V4.5C2 4.22386 2.22386 4 2.5 4H7ZM8 2.5V4H12V2.5C12 2.22386 11.7761 2 11.5 2H8.5C8.22386 2 8 2.22386 8 2.5ZM3 14.5C3 15.3284 3.67157 16 4.5 16H15.5C16.3284 16 17 15.3284 17 14.5V5H3V14.5Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Auto Update Microsoft Store Apps</span>
+                <p class="setting-desc">Automatically download and install updates for apps from the Microsoft Store</p>
+                </div>
+                <div class="setting-pills">
+                <span class="setting-id">updates-store-auto-download</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(273.5px + 40 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\WindowsStore">HKCU\SOFTWARE\Policies\Microsoft\WindowsStore</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore">HKLM\SOFTWARE\Policies\Microsoft\WindowsStore</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">AutoDownload</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>4 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>2</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <!-- ==================== UPDATE BEHAVIOR ==================== -->
                 <h2 id="update-behavior">Update Behavior</h2>
-                <p>Fine-tune how updates are installed and when restarts occur.</p>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Get the latest updates as soon as they're available</span>
-                        <span class="setting-id">updates-latest-updates</span>
-                    </div>
-                    <p class="setting-desc">Be among the first to get the latest non-security updates, fixes, and improvements as they roll out.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>IsContinuousInnovationOptedIn</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>Key absent (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
+                <p>Early non-security updates, updates for other Microsoft products, restarts and update notifications, metered connections, and driver updates.</p>
+                <div class="setting-card" id="updates-latest-updates">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M18 4.8016C18 3.81605 17.0658 3.09831 16.1135 3.35225L3.11351 6.81891C2.45688 6.99402 2 7.58869 2 8.26827V10.7792C2 11.4249 2.41315 11.9981 3.02566 12.2023L5 12.8604V13.75C5 15.5449 6.45507 17 8.25 17C9.62112 17 10.7932 16.1513 11.2709 14.9507L16.0257 16.5356C16.997 16.8594 18 16.1364 18 15.1126V4.8016ZM10.32 14.6337C9.97657 15.437 9.17866 16 8.25 16C7.00736 16 6 14.9926 6 13.75V13.1937L10.32 14.6337ZM16.3712 4.31848C16.6886 4.23384 17 4.47309 17 4.8016V15.1126C17 15.4538 16.6657 15.6948 16.3419 15.5869L3.34189 11.2536C3.13771 11.1855 3 10.9944 3 10.7792V8.26827C3 8.04174 3.15229 7.84352 3.37117 7.78515L16.3712 4.31848Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Get the latest updates as soon as they&#39;re available</span>
+                <p class="setting-desc">Windows installs optional non-security updates and new features as Microsoft rolls them out, before the monthly update brings them to everyone</p>
+                </div>
+                <div class="setting-pills">
+                <span class="setting-id">updates-latest-updates</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(173.2px + 57 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings">HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">IsContinuousInnovationOptedIn</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Receive updates for other Microsoft products</span>
-                        <span class="setting-id">updates-other-products</span>
-                    </div>
-                    <p class="setting-desc">Get Microsoft Office and other updates together with Windows updates.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\WindowsUpdate\UX\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>AllowMUUpdateService</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                    </details>
+                <div class="setting-card" id="updates-other-products">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M11.4142 3.63503C11.6095 3.43977 11.6095 3.12319 11.4142 2.92792L9.29289 0.806603C9.09763 0.611341 8.78104 0.611341 8.58578 0.806603C8.39052 1.00186 8.39052 1.31845 8.58578 1.51371L9.58264 2.51056C7.80518 2.60911 6.05488 3.33754 4.69671 4.6957C1.76776 7.62463 1.76776 12.3734 4.69671 15.3023C4.95359 15.5592 5.2247 15.7937 5.50757 16.0058C5.72852 16.1714 6.04191 16.1266 6.20756 15.9057C6.3732 15.6847 6.32838 15.3713 6.10743 15.2057C5.86235 15.0219 5.6271 14.8185 5.40382 14.5952C2.8654 12.0568 2.8654 7.94121 5.40382 5.40281C6.68997 4.11666 8.38002 3.48223 10.0664 3.49934C10.0915 3.49959 10.1162 3.49799 10.1404 3.49466L8.58578 5.04924C8.39052 5.24451 8.39052 5.56109 8.58578 5.75635C8.78104 5.95161 9.09763 5.95161 9.29289 5.75635L11.4142 3.63503ZM8.58578 16.363C8.39052 16.5582 8.39052 16.8748 8.58578 17.0701L10.7071 19.1914C10.9024 19.3866 11.219 19.3866 11.4142 19.1914C11.6095 18.9961 11.6095 18.6795 11.4142 18.4843L10.4174 17.4874C12.1948 17.3889 13.9451 16.6605 15.3033 15.3023C18.2322 12.3734 18.2322 7.62462 15.3033 4.69569C15.0464 4.43881 14.7753 4.20428 14.4924 3.99221C14.2715 3.82656 13.9581 3.87139 13.7924 4.09233C13.6268 4.31327 13.6716 4.62667 13.8926 4.79231C14.1377 4.97606 14.3729 5.17952 14.5962 5.40279C17.1346 7.9412 17.1346 12.0568 14.5962 14.5952C13.31 15.8813 11.62 16.5158 9.9336 16.4987C9.90849 16.4984 9.88379 16.5 9.85963 16.5033L11.4142 14.9487C11.6095 14.7535 11.6095 14.4369 11.4142 14.2416C11.219 14.0464 10.9024 14.0464 10.7071 14.2416L8.58578 16.363Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Receive updates for other Microsoft products</span>
+                <p class="setting-desc">Windows Update also installs updates for Microsoft Office and other Microsoft products</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span></div>
+                <span class="setting-id">updates-other-products</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(278.7px + 55 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\WindowsUpdate\UX\Settings">HKLM\Software\Microsoft\WindowsUpdate\UX\Settings</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">AllowMUUpdateService</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>0 (or not set)</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Get me up to date</span>
-                        <span class="setting-id">updates-restart-asap</span>
-                    </div>
-                    <p class="setting-desc">Restart as soon as possible (even during active hours) to finish updating.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\WindowsUpdate\UX\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>IsExpedited</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                    </details>
+                <div class="setting-card" id="updates-restart-asap">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M4 10C4 6.68629 6.68629 4 10 4C11.7766 4 13.3732 4.77191 14.4723 6H12.5C12.2239 6 12 6.22386 12 6.5C12 6.77614 12.2239 7 12.5 7H15.5C15.7761 7 16 6.77614 16 6.5V3.5C16 3.22386 15.7761 3 15.5 3C15.2239 3 15 3.22386 15 3.5V5.10109C13.7299 3.80499 11.9591 3 10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17C13.866 17 17 13.866 17 10C17 9.8191 16.9931 9.6397 16.9796 9.46207C16.9587 9.18673 16.7185 8.98049 16.4431 9.00144C16.1678 9.02239 15.9615 9.26258 15.9825 9.53793C15.9941 9.69034 16 9.84443 16 10C16 13.3137 13.3137 16 10 16C6.68629 16 4 13.3137 4 10Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Get me up to date</span>
+                <p class="setting-desc">Restart as soon as possible (even during active hours) to finish updating</p>
+                </div>
+                <div class="setting-pills">
+                <span class="setting-id">updates-restart-asap</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(346.2px + 46 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\WindowsUpdate\UX\Settings">HKLM\Software\Microsoft\WindowsUpdate\UX\Settings</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">IsExpedited</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>0 (or not set)</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Prevent Automatic Restarts</span>
-                        <span class="setting-id">updates-restart-options</span>
-                    </div>
-                    <p class="setting-desc">Prevents automatic restarts after installing updates when users are logged on.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code></td></tr>
-                            <tr><th>Value</th><td><code>NoAutoRebootWithLoggedOnUsers</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (no auto restart)</th><td>1</td></tr>
-                            <tr><th>Disabled (allow auto restart)</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code></td></tr>
-                            <tr><th>Value</th><td><code>NoAutoRebootWithLoggedOnUsers</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (no auto restart)</th><td>1</td></tr>
-                            <tr><th>Disabled (allow auto restart)</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                    </details>
+                <div class="setting-card" id="updates-restart-options">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M11.4142 3.63503C11.6095 3.43977 11.6095 3.12319 11.4142 2.92792L9.29289 0.806603C9.09763 0.611341 8.78104 0.611341 8.58578 0.806603C8.39052 1.00186 8.39052 1.31845 8.58578 1.51371L9.58264 2.51056C8.28052 2.58275 6.99298 2.99298 5.8635 3.74118L6.5874 4.46508C7.64915 3.80898 8.85872 3.48709 10.0664 3.49934C10.0915 3.49959 10.1162 3.49799 10.1404 3.49466L8.58578 5.04924C8.39052 5.24451 8.39052 5.56109 8.58578 5.75635C8.78104 5.95161 9.09763 5.95161 9.29289 5.75635L11.4142 3.63503ZM4.35474 5.06087C1.77258 8.00689 1.88657 12.4922 4.69671 15.3023C4.95359 15.5592 5.2247 15.7937 5.50757 16.0058C5.72852 16.1714 6.04191 16.1266 6.20756 15.9057C6.3732 15.6847 6.32838 15.3713 6.10743 15.2057C5.86235 15.0219 5.6271 14.8185 5.40382 14.5952C2.98437 12.1758 2.87098 8.32352 5.06364 5.76977L14.2292 14.9354C12.9974 15.9931 11.464 16.5142 9.9336 16.4987C9.90849 16.4984 9.88379 16.5 9.85963 16.5033L11.4142 14.9487C11.6095 14.7535 11.6095 14.4369 11.4142 14.2416C11.219 14.0464 10.9024 14.0464 10.7071 14.2416L8.58578 16.363C8.39052 16.5582 8.39052 16.8748 8.58578 17.0701L10.7071 19.1914C10.9024 19.3866 11.219 19.3866 11.4142 19.1914C11.6095 18.9961 11.6095 18.6795 11.4142 18.4843L10.4174 17.4874C12.0393 17.3975 13.6387 16.7831 14.9381 15.6442L17.1464 17.8526C17.3417 18.0478 17.6583 18.0478 17.8536 17.8526C18.0488 17.6573 18.0488 17.3407 17.8536 17.1455L2.85355 2.14547C2.65829 1.95021 2.34171 1.95021 2.14645 2.14547C1.95118 2.34073 1.95118 2.65731 2.14645 2.85258L4.35474 5.06087ZM15.3033 4.69569C17.869 7.26138 18.1872 11.2235 16.2579 14.1356L15.5339 13.4115C17.0821 10.9056 16.7695 7.57615 14.5962 5.40279C14.3729 5.17952 14.1377 4.97606 13.8926 4.79231C13.6716 4.62667 13.6268 4.31327 13.7924 4.09233C13.9581 3.87139 14.2715 3.82656 14.4924 3.99221C14.7753 4.20428 15.0464 4.43881 15.3033 4.69569Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Automatic Restart After Updates</span>
+                <p class="setting-desc">Allow Windows to automatically restart your PC after installing updates when you are logged in</p>
+                </div>
+                <div class="setting-pills">
+                <span class="setting-id">updates-restart-options</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(227.6px + 57 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU">HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU">HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">NoAutoRebootWithLoggedOnUsers</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>deletes value</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>1</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Update Notifications</span>
-                        <span class="setting-id">updates-notification-level</span>
-                    </div>
-                    <p class="setting-desc">Show or hide notifications about available updates and update progress.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></td></tr>
-                            <tr><th>Value</th><td><code>SetUpdateNotificationLevel</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (show notifications)</th><td>2</td></tr>
-                            <tr><th>Disabled (hide notifications)</th><td>1</td></tr>
-                            <tr><th>Default</th><td>2</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></td></tr>
-                            <tr><th>Value</th><td><code>SetUpdateNotificationLevel</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (show notifications)</th><td>2</td></tr>
-                            <tr><th>Disabled (hide notifications)</th><td>1</td></tr>
-                            <tr><th>Default</th><td>2</td></tr>
-                        </table>
-                    </details>
+                <div class="setting-card" id="updates-notification-level">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M9.99766 2C13.1466 2 15.7416 4.33488 15.9821 7.3554L15.9955 7.57762L16 7.80214L15.999 11.398L16.9244 13.6202C16.947 13.6743 16.9647 13.7302 16.9774 13.7871L16.9926 13.8733L17.0013 14.0046C17.0013 14.4526 16.7048 14.8387 16.2521 14.9677L16.1358 14.9945L16.0013 15.0046L12.4996 15.004L12.4946 15.1653C12.4095 16.469 11.3252 17.5 10 17.5C8.67453 17.5 7.58998 16.4685 7.50533 15.1644L7.49962 15.004L3.99891 15.0046C3.91096 15.0046 3.82358 14.993 3.73902 14.9702L3.61456 14.9277C3.20378 14.7567 2.96181 14.3392 3.01221 13.8757L3.0333 13.7483L3.07572 13.6202L3.99902 11.401L4.0001 7.79281L4.0044 7.56824C4.12702 4.45115 6.77104 2 9.99766 2ZM11.4996 15.004H8.49962L8.50697 15.1454C8.57552 15.8581 9.14275 16.425 9.85556 16.4931L10 16.5C10.7797 16.5 11.4205 15.9051 11.4931 15.1445L11.4996 15.004ZM9.99766 3C7.37511 3 5.22717 4.92372 5.01715 7.38498L5.00393 7.59723L5.00002 7.80214V11.5L4.96161 11.6922L3.9989 14.0046L15.9566 14.0066L16.0019 14.0045L15.0384 11.6922L15 11.5L15.0001 7.81241L14.996 7.60831C14.8909 5.0349 12.6947 3 9.99766 3Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Update Notifications</span>
+                <p class="setting-desc">Choose how much Windows tells you about available updates and update progress. Hiding all notifications also hides restart warnings.</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span></div>
+                <span class="setting-id">updates-notification-level</span>
+                </div>
+                </div>
+                <div class="setting-banner"><p class="setting-banner-text">Hide all notifications also hides restart warnings, so Windows will not tell you when it needs to restart to finish installing an update.</p></div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 32 * var(--mx-char-w)); --mx-table-w: calc(339.7px + 207 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col style="width: calc(24px + 37 * var(--mx-char-w))"><col style="width: calc(24px + 34 * var(--mx-char-w))"><col style="width: calc(24px + 49 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="4" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="3"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate">HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate">HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">SetUpdateNotificationLevel</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">UpdateNotificationLevel</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">NoUpdateNotificationsDuringActiveHours</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">SetUpdateNotificationLevel</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>Show all update notifications</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td><td class="mx-value"><code>deletes value</code></td></tr><tr><th class="mx-option" scope="row"><code>Hide all except restart warnings</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>0 (or not set)</code></td><td class="mx-value"><code>deletes value</code></td></tr><tr><th class="mx-option" scope="row"><code>Hide all notifications</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>2</code></td><td class="mx-value"><code>0 (or not set)</code></td><td class="mx-value"><code>deletes value</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Notify me when a restart is required to finish updating</span>
-                        <span class="setting-id">updates-restart-notification</span>
-                    </div>
-                    <p class="setting-desc">Show notification when your device requires a restart to finish updating.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\WindowsUpdate\UX\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>RestartNotificationsAllowed2</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                    </details>
+                <div class="setting-card" id="updates-restart-notification">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M16.9884 9.5938C16.6587 9.42626 16.3099 9.29096 15.9461 9.19208C15.5515 6.26044 13.0397 4 10 4C8.2234 4 6.62683 4.77191 5.52772 6H7.5C7.77614 6 8 6.22386 8 6.5C8 6.77614 7.77614 7 7.5 7H4.5C4.22386 7 4 6.77614 4 6.5V3.5C4 3.22386 4.22386 3 4.5 3C4.77614 3 5 3.22386 5 3.5V5.10109C6.27012 3.80499 8.04094 3 10 3C13.7296 3 16.778 5.91685 16.9884 9.5938ZM3 10C3 13.7296 5.91685 16.778 9.5938 16.9884C9.42626 16.6587 9.29096 16.3099 9.19208 15.9461C6.26044 15.5515 4 13.0397 4 10C4 9.84443 4.00591 9.69034 4.0175 9.53793C4.03845 9.26258 3.83222 9.02239 3.55687 9.00144C3.28152 8.98049 3.04133 9.18673 3.02038 9.46207C3.00687 9.6397 3 9.8191 3 10ZM10 14.5C10 12.0147 12.0147 10 14.5 10C16.9853 10 19 12.0147 19 14.5C19 16.9853 16.9853 19 14.5 19C12.0147 19 10 16.9853 10 14.5ZM14.5 17C14.7761 17 15 16.7761 15 16.5V14.5C15 14.2239 14.7761 14 14.5 14C14.2239 14 14 14.2239 14 14.5V16.5C14 16.7761 14.2239 17 14.5 17ZM14.5 11.875C14.1548 11.875 13.875 12.1548 13.875 12.5C13.875 12.8452 14.1548 13.125 14.5 13.125C14.8452 13.125 15.125 12.8452 15.125 12.5C15.125 12.1548 14.8452 11.875 14.5 11.875Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Notify me when a restart is required to finish updating</span>
+                <p class="setting-desc">Windows tells you when an installed update needs a restart to finish</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span></div>
+                <span class="setting-id">updates-restart-notification</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(218.7px + 63 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\WindowsUpdate\UX\Settings">HKLM\Software\Microsoft\WindowsUpdate\UX\Settings</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">RestartNotificationsAllowed2</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>0 (or not set)</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Download updates over metered connections</span>
-                        <span class="setting-id">updates-metered-connection</span>
-                    </div>
-                    <p class="setting-desc">Allow Windows to download updates when using mobile hotspots or data-limited connections.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>AllowAutoWindowsUpdateDownloadOverMeteredNetwork</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                    </details>
+                <div class="setting-card" id="updates-metered-connection">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M10 10C9.72386 10 9.5 10.2239 9.5 10.5V13.5C9.5 13.7761 9.72386 14 10 14C10.2761 14 10.5 13.7761 10.5 13.5V10.5C10.5 10.2239 10.2761 10 10 10ZM6 8.5C6 8.22386 6.22386 8 6.5 8C6.77614 8 7 8.22386 7 8.5V13.5C7 13.7761 6.77614 14 6.5 14C6.22386 14 6 13.7761 6 13.5V8.5ZM13.5 6C13.2239 6 13 6.22386 13 6.5V13.5C13 13.7761 13.2239 14 13.5 14C13.7761 14 14 13.7761 14 13.5V6.5C14 6.22386 13.7761 6 13.5 6ZM3 5C3 3.89543 3.89543 3 5 3H15C16.1046 3 17 3.89543 17 5V15C17 16.1046 16.1046 17 15 17H5C3.89543 17 3 16.1046 3 15V5ZM4 5V15C4 15.5523 4.44772 16 5 16H15C15.5523 16 16 15.5523 16 15V5C16 4.44772 15.5523 4 15 4H5C4.44772 4 4 4.44772 4 5Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Download updates over metered connections</span>
+                <p class="setting-desc">Allow Windows to download updates when using mobile hotspots or data-limited connections</p>
+                </div>
+                <div class="setting-pills">
+                <span class="setting-id">updates-metered-connection</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(144px + 83 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings">HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">AllowAutoWindowsUpdateDownloadOverMeteredNetwork</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>0 (or not set)</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <!-- ==================== UPDATE CONTENT ==================== -->
-                <h2 id="update-content">Update Content</h2>
-                <p>Control what types of content are included in updates.</p>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Do Not Include Drivers with Updates</span>
-                        <span class="setting-id">updates-driver-controls</span>
-                    </div>
-                    <p class="setting-desc">Prevent Windows from automatically downloading and installing hardware driver updates. Useful if you prefer to manage drivers manually or through manufacturer tools.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></td></tr>
-                            <tr><th>Value</th><td><code>ExcludeWUDriversInQualityUpdate</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (exclude drivers)</th><td>1</td></tr>
-                            <tr><th>Disabled (include drivers)</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></td></tr>
-                            <tr><th>Value</th><td><code>ExcludeWUDriversInQualityUpdate</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (exclude drivers)</th><td>1</td></tr>
-                            <tr><th>Disabled (include drivers)</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0</td></tr>
-                        </table>
-                    </details>
+                <div class="setting-card" id="updates-driver-controls">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M11.2999 2.4808C10.4654 2.14702 9.53457 2.14702 8.70013 2.4808L2.94291 4.78369C2.37343 5.01148 2 5.56305 2 6.1764V13.8223C2 14.4357 2.37343 14.9873 2.94291 15.2151L8.70013 17.5179C9.1411 17.6943 9.60899 17.7775 10.0753 17.7675C9.83365 17.4407 9.62728 17.0862 9.46189 16.7097C9.32952 16.6805 9.19895 16.6404 9.07152 16.5895L3.3143 14.2866C3.12448 14.2106 3 14.0268 3 13.8223V6.23785L9.50015 8.83791V12.2052C9.75203 11.6573 10.0913 11.1579 10.5001 10.7249V8.83791L17 6.23797V9.59971C17.3578 9.78261 17.6929 10.0035 18 10.2572V6.1764C18 5.56305 17.6266 5.01148 17.0571 4.78369L11.2999 2.4808ZM9.07152 3.40928C9.66755 3.17087 10.3324 3.17087 10.9285 3.40928L16.1538 5.49941L13.8751 6.41088L7.72133 3.94935L9.07152 3.40928ZM6.37504 4.48787L12.5289 6.94939L10.0001 7.96088L3.84633 5.49935L6.37504 4.48787ZM19 14.5C19 16.9853 16.9853 19 14.5 19C12.0147 19 10 16.9853 10 14.5C10 12.0147 12.0147 10 14.5 10C16.9853 10 19 12.0147 19 14.5ZM16.3536 13.3536C16.5488 13.1583 16.5488 12.8417 16.3536 12.6464C16.1583 12.4512 15.8417 12.4512 15.6464 12.6464L14.5 13.7929L13.3536 12.6464C13.1583 12.4512 12.8417 12.4512 12.6464 12.6464C12.4512 12.8417 12.4512 13.1583 12.6464 13.3536L13.7929 14.5L12.6464 15.6464C12.4512 15.8417 12.4512 16.1583 12.6464 16.3536C12.8417 16.5488 13.1583 16.5488 13.3536 16.3536L14.5 15.2071L15.6464 16.3536C15.8417 16.5488 16.1583 16.5488 16.3536 16.3536C16.5488 16.1583 16.5488 15.8417 16.3536 15.6464L15.2071 14.5L16.3536 13.3536Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Driver Updates via Windows Update</span>
+                <p class="setting-desc">Include hardware driver updates when downloading and installing Windows Updates</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span></div>
+                <span class="setting-id">updates-driver-controls</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(192.2px + 59 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate">HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></span><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate">HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">ExcludeWUDriversInQualityUpdate</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="A Group Policy value. Windows treats these as managed settings, so the matching option in Windows Settings may appear greyed out or say it is managed by your organisation. That is expected. On a work-managed device, your organisation&#39;s policy can also override it.">Group Policy</span></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>deletes value</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>1</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-            </section>
+                <div class="setting-card" id="updates-driver-coinstallers">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M11.2999 2.4808C10.4654 2.14702 9.53457 2.14702 8.70013 2.4808L2.94291 4.78369C2.37343 5.01148 2 5.56305 2 6.1764V13.8223C2 14.4357 2.37343 14.9873 2.94291 15.2151L8.70013 17.5179C9.1411 17.6943 9.60899 17.7775 10.0753 17.7675C9.83365 17.4407 9.62728 17.0862 9.46189 16.7097C9.32952 16.6805 9.19895 16.6404 9.07152 16.5895L3.3143 14.2866C3.12448 14.2106 3 14.0268 3 13.8223V6.23785L9.50015 8.83791V12.2052C9.75203 11.6573 10.0913 11.1579 10.5001 10.7249V8.83791L17 6.23797V9.59971C17.3578 9.78261 17.6929 10.0035 18 10.2572V6.1764C18 5.56305 17.6266 5.01148 17.0571 4.78369L11.2999 2.4808ZM9.07152 3.40928C9.66755 3.17087 10.3324 3.17087 10.9285 3.40928L16.1538 5.49941L13.8751 6.41088L7.72133 3.94935L9.07152 3.40928ZM6.37504 4.48787L12.5289 6.94939L10.0001 7.96088L3.84633 5.49935L6.37504 4.48787ZM19 14.5C19 16.9853 16.9853 19 14.5 19C12.0147 19 10 16.9853 10 14.5C10 12.0147 12.0147 10 14.5 10C16.9853 10 19 12.0147 19 14.5ZM16.3536 13.3536C16.5488 13.1583 16.5488 12.8417 16.3536 12.6464C16.1583 12.4512 15.8417 12.4512 15.6464 12.6464L14.5 13.7929L13.3536 12.6464C13.1583 12.4512 12.8417 12.4512 12.6464 12.6464C12.4512 12.8417 12.4512 13.1583 12.6464 13.3536L13.7929 14.5L12.6464 15.6464C12.4512 15.8417 12.4512 16.1583 12.6464 16.3536C12.8417 16.5488 13.1583 16.5488 13.3536 16.3536L14.5 15.2071L15.6464 16.3536C15.8417 16.5488 16.1583 16.5488 16.3536 16.3536C16.5488 16.1583 16.5488 15.8417 16.3536 15.6464L15.2071 14.5L16.3536 13.3536Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Driver Co-Installers</span>
+                <p class="setting-desc">Allows hardware vendors to install companion software alongside device drivers. Disabling this prevents bloatware like Razer Synapse, printer utilities, and other vendor software from being automatically installed when you plug in devices. Your hardware will still work normally with standard drivers.</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v25.04.08</span></div>
+                <span class="setting-id">updates-driver-coinstallers</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(343.4px + 47 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Installer">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Installer</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">DisableCoInstallers</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>deletes value</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>1</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+                </section>
+            </article>
+            <nav class="pager" aria-label="More pages"><a class="pager-prev" href="../../features/optimizations/gaming-performance.html"><span>Previous</span>Gaming &amp; Performance</a><a class="pager-next" href="../../features/optimizations/notifications.html"><span>Next</span>Notifications</a></nav>
         </main>
+
+        <aside class="docs-toc" aria-label="On this page">
+            <p class="toc-title">On this page</p>
+            <ul>
+                <li><a href="#update-policy">Update Policy</a></li>
+                <li><a href="#delivery-and-store">Delivery &amp; Store</a></li>
+                <li><a href="#update-behavior">Update Behavior</a></li>
+            </ul>
+        </aside>
     </div>
 
-    <button class="sidebar-toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-    </button>
-
-    <script src="../../js/docs-theme.js"></script>
-    <script src="../../js/docs-navigation.js"></script>
-    <script src="../../js/docs-search.js"></script>
-    <script src="../../js/docs-config.js"></script>
-
-    <footer class="docs-footer">
-        <div class="docs-footer-container">
-            <div class="docs-footer-info">
-                &copy; 2026 Winhance.
+    <footer class="footer">
+        <div class="wrap footer-grid">
+            <div>
+                <a class="brand" href="../../../index.html">
+                    <img class="brand-mark" src="../../../images/winhance-rocket.png" alt="" width="24" height="24">
+                    <span>Winhance</span>
+                </a>
+                <p class="footer-version">These docs describe Winhance v26.11.27</p>
             </div>
-            <div class="docs-footer-meta">
-                <div class="docs-meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-                    <span class="docs-version">Docs v1.0.0</span>
-                </div>
-                <div class="docs-meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                    <span class="docs-last-updated">Last Updated: Jan 28, 2026</span>
-                </div>
-            </div>
+            <ul class="footer-links">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../index.html">Documentation</a></li>
+                <li><a href="https://github.com/memstechtips/Winhance/releases" target="_blank" rel="noopener">Releases</a></li>
+                <li><a href="https://github.com/memstechtips/Winhance" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://store.memstechtips.com/winhance/" target="_blank" rel="noopener">Support Winhance</a></li>
+            </ul>
+            <p class="footer-made">&copy; 2026 Winhance. Made by <a href="https://memstechtips.com/" target="_blank" rel="noopener">Memory</a>.</p>
         </div>
     </footer>
+
+    <script src="../../../demo/app.js"></script>
+    <script src="../../../demo/winhance-demo.js"></script>
+    <script src="../../../demo/readout.js"></script>
+    <script src="../../js/docs-search.js"></script>
+    <script src="../../js/docs.js"></script>
+    <script src="../../js/docs-metrics.js"></script>
 </body>
 
 </html>

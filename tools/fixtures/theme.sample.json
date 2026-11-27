@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "themes": {
+    "light": {
+      "BadgeRecommendedBackground": "#221A7F37",
+      "BadgeRecommendedBorder": "#401A7F37",
+      "BadgeRecommendedForeground": "#FF1A7F37"
+    },
+    "dark": {
+      "BadgeRecommendedBackground": "#223FB950",
+      "BadgeRecommendedBorder": "#403FB950",
+      "BadgeRecommendedForeground": "#FF3FB950"
+    }
+  },
+  "aliases": {
+    "light": {
+      "TechDetail.Table.StrokeBrush": "CardStrokeColorDefaultBrush"
+    },
+    "dark": {
+      "TechDetail.Table.StrokeBrush": "ControlStrokeColorDefaultBrush"
+    }
+  },
+  "sizes": {
+    "CaptionIconFontSize": "12"
+  },
+  "styles": {
+    "BadgePillBase": {
+      "target": "Border",
+      "basedOn": null,
+      "setters": {
+        "Height": "20",
+        "CornerRadius": "10",
+        "Padding": "7,0,9,0",
+        "VerticalAlignment": "Center",
+        "BorderThickness": "1"
+      }
+    },
+    "BadgeRecommendedStyle": {
+      "target": "Border",
+      "basedOn": "BadgePillBase",
+      "setters": {
+        "Background": "{ThemeResource BadgeRecommendedBackground}",
+        "BorderBrush": "{ThemeResource BadgeRecommendedBorder}"
+      }
+    },
+    "TechDetail.Table.HeaderBand": {
+      "target": "Border",
+      "basedOn": null,
+      "setters": {
+        "Background": "{ThemeResource SubtleFillColorSecondaryBrush}",
+        "BorderBrush": "{ThemeResource TechDetail.Table.StrokeBrush}",
+        "MinHeight": "32",
+        "Padding": "12,4"
+      }
+    },
+    "TechDetail.Table.Cell": {
+      "target": "Border",
+      "basedOn": null,
+      "setters": {
+        "BorderBrush": "{ThemeResource TechDetail.Table.StrokeBrush}",
+        "MinHeight": "40",
+        "Padding": "12,0"
+      }
+    },
+    "TechDetail.CodeBlock.PowerShell": {
+      "target": "Border",
+      "basedOn": null,
+      "setters": {
+        "Background": "#FF0D1117",
+        "BorderBrush": "#FF58A6FF",
+        "BorderThickness": "3,0,0,0",
+        "Padding": "10,8",
+        "CornerRadius": "2"
+      }
+    },
+    "TechDetail.CodeText": {
+      "target": "TextBlock",
+      "basedOn": null,
+      "setters": {
+        "FontFamily": "Consolas,Cascadia Code,Courier New",
+        "FontSize": "12",
+        "Foreground": "#FFDDDDDD",
+        "IsTextSelectionEnabled": "True",
+        "TextWrapping": "Wrap"
+      }
+    },
+    "TechDetail.ChipText": {
+      "target": "TextBlock",
+      "basedOn": null,
+      "setters": {
+        "FontSize": "10",
+        "Foreground": "{ThemeResource TextFillColorSecondaryBrush}"
+      }
+    },
+    "TechDetail.ChipLinkText": {
+      "target": "TextBlock",
+      "basedOn": "TechDetail.ChipText",
+      "setters": {
+        "Foreground": "{ThemeResource AccentTextFillColorPrimaryBrush}",
+        "TextDecorations": "Underline"
+      }
+    },
+    "TechDetail.Table.OptionLabel": {
+      "target": "TextBlock",
+      "basedOn": null,
+      "setters": {
+        "FontFamily": "Consolas",
+        "FontSize": "12",
+        "FontWeight": "SemiBold",
+        "VerticalAlignment": "Center",
+        "IsTextSelectionEnabled": "True"
+      }
+    },
+    "BadgeRecommendedIcon": {
+      "target": "fluentIcons:FluentIcon",
+      "basedOn": null,
+      "setters": {
+        "Icon": "Star",
+        "FontSize": "{StaticResource CaptionIconFontSize}",
+        "VerticalAlignment": "Center",
+        "Foreground": "{ThemeResource BadgeRecommendedForeground}"
+      }
+    },
+    "BadgeDefaultIcon": {
+      "target": "fluentIcons:FluentIcon",
+      "basedOn": null,
+      "setters": {
+        "Icon": "Apps",
+        "FontSize": "{StaticResource CaptionIconFontSize}",
+        "VerticalAlignment": "Center",
+        "Foreground": "{ThemeResource BadgeDefaultForeground}"
+      }
+    },
+    "BadgePreferenceIcon": {
+      "target": "fluentIcons:FluentIcon",
+      "basedOn": null,
+      "setters": {
+        "Icon": "Person",
+        "FontSize": "{StaticResource CaptionIconFontSize}",
+        "VerticalAlignment": "Center",
+        "Foreground": "{ThemeResource BadgePreferenceForeground}"
+      }
+    }
+  }
+}

@@ -5,236 +5,617 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Windows Theme - Winhance Docs</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-    <link rel="stylesheet" href="../../../styles.css">
-    <link rel="stylesheet" href="../../css/docs-main.css">
-    <link rel="stylesheet" href="../../css/docs-sidebar.css">
-    <link rel="stylesheet" href="../../css/docs-syntax.css">
+    <meta name="description" content="Light or dark mode for Windows and apps, transparency effects and the desktop background.">
+    <meta name="theme-color" content="#0b1422">
+    <link rel="icon" type="image/png" sizes="256x256" href="../../../images/winhance-rocket.png">
+    <link rel="preload" href="../../../fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../../css/winui-tokens.css">
+    <link rel="stylesheet" href="../../css/app-tokens.css">
+    <link rel="stylesheet" href="../../../base.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link rel="stylesheet" href="../../css/setting-card.css">
+    <link rel="stylesheet" href="../../../demo/winhance-demo.css">
     <script src="../../js/theme-load.js"></script>
 </head>
 
-<body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <a href="../../index.html" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="../../../images/winhance-rocket.png" alt="Winhance Logo"
-                        style="height: 32px; margin-right: 12px;">
-                    <h1 style="font-size: 1.5rem; margin: 0; color: var(--text-color);">Winhance <span
-                            style="font-weight: 300; opacity: 0.7;">Docs</span></h1>
-                </a>
+<body class="docs">
+    <!-- gen:icons --><svg class="sprite" aria-hidden="true"><symbol id="i-ChevronLeft" viewBox="0 0 20 20"><path fill="currentColor" d="M12.3534 15.8537C12.1585 16.0493 11.8419 16.0499 11.6463 15.855L6.16178 10.39C5.94607 10.1751 5.94607 9.82574 6.16178 9.6108L11.6463 4.14582C11.8419 3.9509 12.1585 3.95147 12.3534 4.14708C12.5483 4.34269 12.5477 4.65927 12.3521 4.85418L7.18753 10.0004L12.3521 15.1466C12.5477 15.3415 12.5483 15.6581 12.3534 15.8537Z"/></symbol><symbol id="i-HeartFilled" viewBox="0 0 20 20"><path fill="currentColor" d="M9.38843 4.28963C7.69278 2.57693 4.94954 2.5686 3.26122 4.2739C1.5729 5.9792 1.58114 8.75004 3.27679 10.4627L9.55368 16.8028C9.81404 17.0657 10.2362 17.0657 10.4965 16.8028L16.7408 10.4994C18.4252 8.78856 18.4199 6.02549 16.7239 4.31249C15.0252 2.59671 12.2807 2.58838 10.5894 4.29673L9.99299 4.90026L9.38843 4.28963Z"/></symbol><symbol id="i-Navigation" viewBox="0 0 20 20"><path fill="currentColor" d="M2 4.5C2 4.22386 2.22386 4 2.5 4H17.5C17.7761 4 18 4.22386 18 4.5C18 4.77614 17.7761 5 17.5 5H2.5C2.22386 5 2 4.77614 2 4.5ZM2 9.5C2 9.22386 2.22386 9 2.5 9H17.5C17.7761 9 18 9.22386 18 9.5C18 9.77614 17.7761 10 17.5 10H2.5C2.22386 10 2 9.77614 2 9.5ZM2.5 14C2.22386 14 2 14.2239 2 14.5C2 14.7761 2.22386 15 2.5 15H17.5C17.7761 15 18 14.7761 18 14.5C18 14.2239 17.7761 14 17.5 14H2.5Z"/></symbol><symbol id="i-Search" viewBox="0 0 20 20"><path fill="currentColor" d="M13.7291 14.4362C12.5924 15.411 11.115 16 9.5 16C5.91015 16 3 13.0899 3 9.5C3 5.91015 5.91015 3 9.5 3C13.0899 3 16 5.91015 16 9.5C16 11.115 15.411 12.5924 14.4361 13.7292L17.8535 17.1465C18.0487 17.3417 18.0487 17.6583 17.8535 17.8536C17.6799 18.0271 17.4105 18.0464 17.2156 17.9114L17.1464 17.8536L13.7291 14.4362ZM13.0196 13.7266C13.276 13.5128 13.5127 13.2761 13.7265 13.0197C14.5216 12.0659 15 10.8388 15 9.5C15 6.46243 12.5376 4 9.5 4C6.46243 4 4 6.46243 4 9.5C4 12.5376 6.46243 15 9.5 15C10.8388 15 12.0658 14.5217 13.0196 13.7266Z"/></symbol><symbol id="i-WeatherMoon" viewBox="0 0 20 20"><path fill="currentColor" d="M15.4932 13.4967C13.5653 16.8358 9.2957 17.9798 5.95663 16.052C5.20013 15.6152 4.54451 15.0515 4.01047 14.3887C6.8412 13.3015 8.56844 11.9681 9.60339 9.99249C10.651 7.99273 10.9395 5.83183 10.3628 3.08319C11.2605 3.20148 12.1328 3.49537 12.9378 3.96018C16.2769 5.88799 17.421 10.1576 15.4932 13.4967ZM5.45663 16.918C9.27399 19.122 14.1552 17.8141 16.3592 13.9967C18.5631 10.1793 17.2552 5.2981 13.4378 3.09415C12.3371 2.45863 11.1233 2.10173 9.88082 2.03507C9.4801 2.01357 9.17217 2.38477 9.26732 2.77462C9.95545 5.59395 9.70125 7.65076 8.71759 9.52844C7.78322 11.312 6.17301 12.559 3.16661 13.635C2.79667 13.7674 2.65251 14.2143 2.87537 14.538C3.54192 15.5059 4.41706 16.3178 5.45663 16.918Z"/></symbol><symbol id="i-WeatherSunny" viewBox="0 0 20 20"><path fill="currentColor" d="M10 2C10.2761 2 10.5 2.22386 10.5 2.5V3.5C10.5 3.77614 10.2761 4 10 4C9.72386 4 9.5 3.77614 9.5 3.5V2.5C9.5 2.22386 9.72386 2 10 2ZM10 14C12.2091 14 14 12.2091 14 10C14 7.79086 12.2091 6 10 6C7.79086 6 6 7.79086 6 10C6 12.2091 7.79086 14 10 14ZM10 13C8.34315 13 7 11.6569 7 10C7 8.34315 8.34315 7 10 7C11.6569 7 13 8.34315 13 10C13 11.6569 11.6569 13 10 13ZM17.5 10.5C17.7761 10.5 18 10.2761 18 10C18 9.72386 17.7761 9.5 17.5 9.5H16.5C16.2239 9.5 16 9.72386 16 10C16 10.2761 16.2239 10.5 16.5 10.5H17.5ZM10 16C10.2761 16 10.5 16.2239 10.5 16.5V17.5C10.5 17.7761 10.2761 18 10 18C9.72386 18 9.5 17.7761 9.5 17.5V16.5C9.5 16.2239 9.72386 16 10 16ZM3.5 10.5C3.77614 10.5 4 10.2761 4 10C4 9.72386 3.77614 9.5 3.5 9.5H2.46289C2.18675 9.5 1.96289 9.72386 1.96289 10C1.96289 10.2761 2.18675 10.5 2.46289 10.5H3.5ZM4.14645 4.14645C4.34171 3.95118 4.65829 3.95118 4.85355 4.14645L5.85355 5.14645C6.04882 5.34171 6.04882 5.65829 5.85355 5.85355C5.65829 6.04882 5.34171 6.04882 5.14645 5.85355L4.14645 4.85355C3.95118 4.65829 3.95118 4.34171 4.14645 4.14645ZM4.85355 15.8536C4.65829 16.0488 4.34171 16.0488 4.14645 15.8536C3.95118 15.6583 3.95118 15.3417 4.14645 15.1464L5.14645 14.1464C5.34171 13.9512 5.65829 13.9512 5.85355 14.1464C6.04882 14.3417 6.04882 14.6583 5.85355 14.8536L4.85355 15.8536ZM15.8536 4.14645C15.6583 3.95118 15.3417 3.95118 15.1464 4.14645L14.1464 5.14645C13.9512 5.34171 13.9512 5.65829 14.1464 5.85355C14.3417 6.04882 14.6583 6.04882 14.8536 5.85355L15.8536 4.85355C16.0488 4.65829 16.0488 4.34171 15.8536 4.14645ZM15.1464 15.8536C15.3417 16.0488 15.6583 16.0488 15.8536 15.8536C16.0488 15.6583 16.0488 15.3417 15.8536 15.1464L14.8536 14.1464C14.6583 13.9512 14.3417 13.9512 14.1464 14.1464C13.9512 14.3417 13.9512 14.6583 14.1464 14.8536L15.1464 15.8536Z"/></symbol></svg><!-- /gen:icons -->
+    <a class="skip" href="#content">Skip to content</a>
+
+    <header class="topbar">
+        <div class="docs-wrap topbar-row">
+            <button type="button" class="icon-btn docs-menu" aria-label="Show or hide the docs menu" aria-controls="docs-nav" aria-expanded="false">
+                <svg class="i"><use href="#i-Navigation"/></svg>
+            </button>
+            <a class="brand" href="../../../index.html" aria-label="Winhance home">
+                <img class="brand-mark" src="../../../images/winhance-rocket.png" alt="" width="28" height="28">
+                <span>Winhance</span>
+            </a>
+            <nav class="site-tabs" aria-label="Site">
+                <a href="../../../index.html">Home</a>
+                <a href="../../index.html" aria-current="true">Docs</a>
+            </nav>
+            <div class="search-container" role="search">
+                <svg class="i"><use href="#i-Search"/></svg>
+                <input type="search" id="docs-search" placeholder="Search the docs" autocomplete="off" aria-label="Search the docs">
+                <kbd class="search-key" aria-hidden="true">/</kbd>
             </div>
-            <div class="search-container">
-                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                <input type="text" id="docs-search" placeholder="Search documentation...">
-            </div>
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle theme">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
-                    </svg>
+            <div class="topbar-actions">
+                <button type="button" id="theme-toggle" class="icon-btn" aria-label="Switch between light and dark">
+                    <svg class="i i-sun"><use href="#i-WeatherSunny"/></svg>
+                    <svg class="i i-moon"><use href="#i-WeatherMoon"/></svg>
                 </button>
-                <a href="https://github.com/memstechtips/Winhance" target="_blank" class="icon-btn github-btn"
-                    title="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
+                <a class="icon-btn" href="https://github.com/memstechtips/Winhance" target="_blank" rel="noopener" aria-label="Winhance on GitHub">
+                    <svg class="i" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a class="icon-btn icon-btn-heart" href="https://store.memstechtips.com/winhance/" target="_blank" rel="noopener" aria-label="Support Winhance">
+                    <svg class="i"><use href="#i-HeartFilled"/></svg>
+                </a>
+                <a class="btn btn-primary btn-small" href="https://github.com/memstechtips/Winhance/releases/latest/download/Winhance.Installer.exe">
+                    <span class="dl-rocket" aria-hidden="true"><i></i></span>
+                    <span>Download</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <div class="docs-wip-banner">
-        <strong>Work in Progress:</strong> Documentation is a work in progress. Some pages may be incomplete.
-    </div>
-
-    <div class="docs-layout has-banner">
-                        <aside class="docs-sidebar">
-            <nav>
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Getting Started</div>
-                    <a href="../../getting-started/installation.html" class="sidebar-nav-item">Installation</a>
-                    <a href="../../getting-started/quick-start.html" class="sidebar-nav-item">Quick Start</a>
+    <div class="docs-wrap docs-layout">
+        <aside class="docs-sidebar" id="docs-nav">
+            <a class="nav-home" href="../../../index.html"><svg class="i"><use href="#i-ChevronLeft"/></svg>Back to Winhance home</a>
+            <nav aria-label="Documentation">
+                <div class="nav-group">
+                    <p class="nav-title">Get started</p>
+                    <a class="nav-item" href="../../index.html">Overview</a>
+                    <a class="nav-item" href="../../getting-started/installation.html">Installation</a>
+                    <a class="nav-item" href="../../getting-started/quick-start.html">Quick start</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Features</div>
-                    <a href="../../features/software-apps.html" class="sidebar-nav-item">Software & Apps</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../../features/software-apps/windows-apps.html" class="sidebar-nav-item sub-item">Windows Apps</a>
-                        <a href="../../features/software-apps/external-apps.html" class="sidebar-nav-item sub-item">External Apps</a>
-                    </div>
-                    <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
-                        <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
-                        <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
-                        <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
-                        <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
-                        <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item">Sound</a>
-                    </div>
-                    <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
-                        <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
-                        <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
-                        <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
-                    </div>
-                    <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
-                    <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
+                <div class="nav-group">
+                    <p class="nav-title">Features</p>
+                    <a class="nav-item" href="../../features/software-apps.html">Software &amp; Apps</a>
+                    <a class="nav-item nav-sub" href="../../features/software-apps/windows-apps.html">Windows apps</a>
+                    <a class="nav-item nav-sub" href="../../features/software-apps/external-apps.html">External apps</a>
+                    <a class="nav-item" href="../../features/optimize.html">Optimize</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/privacy-security.html">Privacy &amp; Security</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/power.html">Power</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/gaming-performance.html">Gaming &amp; Performance</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/update.html">Update</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/notifications.html">Notifications</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/sound.html">Sound</a>
+                    <a class="nav-item" href="../../features/customize.html">Customize</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/theme.html" aria-current="page">Windows Theme</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/taskbar.html">Taskbar</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/start-menu.html">Start Menu</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/explorer.html">Explorer</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/context-menu.html">Context Menu</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/time-region-language.html">Time &amp; Region</a>
+                    <a class="nav-item" href="../../features/autounattend.html">Autounattend</a>
+                    <a class="nav-item nav-sub" href="../../features/autounattend/answer-file.html">Answer file</a>
+                    <a class="nav-item" href="../../features/advanced-tools.html">Unattend &amp; WIMUtil</a>
+                    <a class="nav-item" href="../../features/settings.html">Settings</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">User Guides</div>
-                    <a href="../../guides/configuration-files.html" class="sidebar-nav-item">Configuration Files</a>
-                    <a href="../../guides/wimutil.html" class="sidebar-nav-item">WIMUtil Guide</a>
-                    <a href="../../guides/autounattend.html" class="sidebar-nav-item">Autounattend Guide</a>
+                <div class="nav-group">
+                    <p class="nav-title">Guides</p>
+                    <a class="nav-item" href="../../guides/configuration-files.html">Configuration files</a>
+                    <a class="nav-item" href="../../guides/wimutil.html">WIMUtil</a>
+                    <a class="nav-item" href="../../guides/autounattend.html">Answer file setup</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Reference</div>
-                    <a href="../../reference/cli-commands.html" class="sidebar-nav-item">CLI Commands</a>
-                    <a href="../../reference/changelog.html" class="sidebar-nav-item">Changelog</a>
-                    <a href="../../reference/troubleshooting.html" class="sidebar-nav-item">Troubleshooting</a>
-                    <a href="../../reference/contributing.html" class="sidebar-nav-item">How to Contribute</a>
+                <div class="nav-group">
+                    <p class="nav-title">Reference</p>
+                    <a class="nav-item" href="../../reference/troubleshooting.html">Troubleshooting</a>
+                    <a class="nav-item" href="../../reference/cli-commands.html">Command line</a>
+                    <a class="nav-item" href="../../reference/changelog.html">Releases</a>
+                    <a class="nav-item" href="../../reference/contributing.html">Contributing</a>
                 </div>
             </nav>
         </aside>
 
-        <main class="docs-content">
-            <section id="theme">
+        <main class="docs-main" id="content">
+            <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../../index.html">Docs</a><span class="sep" aria-hidden="true">/</span><span>Features</span><span class="sep" aria-hidden="true">/</span><a href="../../features/customize.html">Customize</a></nav>
+            <article class="docs-content">
+                <section id="windows-theme">
                 <h1>Windows Theme</h1>
-                <div class="video-container">
-                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2488" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <p>Personalize the visual aesthetic of your Windows system. Quickly switch between light and dark modes,
-                    adjust transparency effects, and synchronize your wallpaper for a cohesive look.</p>
-
-                <h2>Key Features</h2>
-                <ul>
-                    <li><strong>Light/Dark Mode:</strong> Instantly switch the entire system and supported apps between
-                        light and dark themes.</li>
-                    <li><strong>Transparency Effects:</strong> Toggle the acrylic and mica effects on windows and the
-                        taskbar.</li>
-                    <li><strong>Wallpaper Sync:</strong> When switching themes, Winhance can automatically apply a matching Windows default wallpaper for a cohesive look.</li>
-                </ul>
-
-                <div class="callout callout-info">
-                    <div class="callout-title">ℹ️ Theme Consistency</div>
-                    <p>When switching themes in Winhance, you can choose to automatically apply a matching wallpaper for
-                        a perfectly cohesive look.</p>
-                    <p><strong>Windows 11 Wallpapers:</strong></p>
-                    <ul>
-                        <li>Light Mode: <code>C:\Windows\Web\Wallpaper\Windows\img0.jpg</code></li>
-                        <li>Dark Mode: <code>C:\Windows\Web\Wallpaper\Windows\img19.jpg</code></li>
-                    </ul>
-                    <p><strong>Windows 10 Wallpaper:</strong></p>
-                    <ul>
-                        <li>Default: <code>C:\Windows\Web\4K\Wallpaper\Windows\img0_3840x2160.jpg</code></li>
-                    </ul>
-                </div>
-
-                <div class="callout callout-warning">
-                    <div class="callout-title">⚠️ Setting Persistence</div>
-                    <p>Settings found in the <strong>Customizations</strong> view are <strong>not persistent</strong>.
-                        Winhance applies these changes once, but it does not use background tasks to re-apply them if
-                        they are changed later by Windows or by you manually.</p>
-                </div>
-
-                <!-- Windows Theme Section -->
-                <h2>Windows Theme</h2>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Choose your mode</span>
-                        <span class="setting-id">theme-mode-windows</span>
+                <p class="lead">Light or dark mode for Windows and apps, transparency effects and the desktop background.</p>
+                <div class="app-demo desktop">
+                    <div id="winhance-demo" class="wd-host stage-window" data-page="Customize" data-feature="WindowsTheme" data-focus="This demo shows the Customize page" role="region" aria-label="Interactive Winhance demo: Customize">
+                        <noscript><p class="stage-fallback">Turn on JavaScript to try this page of Winhance in your browser.</p></noscript>
                     </div>
-                    <p class="setting-desc">Choose between Light and Dark mode for Windows and apps. This setting affects both the Windows shell (taskbar, Start Menu) and supported applications.</p>
-                    <p class="setting-desc"><strong>Options:</strong> Light Mode, Dark Mode</p>
-                    <p class="setting-desc"><em>Note: Winhance also supports detecting a "Custom" state where apps and system use different themes.</em></p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></td></tr>
-                            <tr><th>Values</th><td><code>AppsUseLightTheme</code>, <code>SystemUsesLightTheme</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Light Mode</th><td>AppsUseLightTheme = 1, SystemUsesLightTheme = 1</td></tr>
-                            <tr><th>Dark Mode</th><td>AppsUseLightTheme = 0, SystemUsesLightTheme = 0</td></tr>
-                            <tr><th>Default</th><td>1 (Light Mode)</td></tr>
-                        </table>
-                        <p><strong>Registry Values Explained:</strong></p>
-                        <ul>
-                            <li><strong>AppsUseLightTheme:</strong> Controls the theme for Windows apps (UWP apps, Settings, etc.)</li>
-                            <li><strong>SystemUsesLightTheme:</strong> Controls the theme for Windows shell (taskbar, Start Menu, notification center)</li>
-                        </ul>
-                    </details>
-                </div>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Transparency effects</span>
-                        <span class="setting-id">theme-transparency</span>
+                    <div class="readout" id="readout" aria-live="polite">
+                        <p class="readout-idle">Flip any switch in the window above to see what Winhance would write to Windows.</p>
                     </div>
-                    <p class="setting-desc">Enable translucent effects for the Start Menu, taskbar, and other Windows interface elements. This includes acrylic blur effects on Windows 10 and mica effects on Windows 11.</p>
-                    <p class="setting-desc"><em>Note: Disabling transparency can improve performance on lower-end hardware.</em></p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></td></tr>
-                            <tr><th>Value</th><td><code>EnableTransparency</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1</td></tr>
-                        </table>
-                    </details>
+                </div>
+                <div class="video">
+                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2488" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <p>Light or dark mode, transparency, and the desktop background.</p>
+                <div class="callout callout-note">
+                    <p class="callout-title">Technical Details</p>
+                    <p>Each setting below lists exactly what Winhance reads and writes: registry values, scheduled tasks, power settings and scripts, with the recommended value and the Windows default marked. It is the same table the app shows when you turn on <strong>Technical Details</strong> in the <strong>View</strong> menu.</p>
                 </div>
 
-            </section>
+                <h2 id="theme-mode">Theme mode</h2>
+                <p>Light or dark for Windows and apps. Choose your mode sets both at once; the two toggles below it set apps, such as Settings and File Explorer, and the Windows shell, such as the taskbar and Start menu, separately.</p>
+                <div class="setting-card" id="theme-mode-windows">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M5.5 1.99902C5.22386 1.99902 5 2.22288 5 2.49902L5.00002 11.0034C5.00002 12.1079 5.89545 13.0034 7.00002 13.0034H8.00411V16.0007C8.00411 17.1053 8.89954 18.0007 10.0041 18.0007C11.1087 18.0007 12.0041 17.1053 12.0041 16.0007V13.0034H13C14.1046 13.0034 15 12.1079 15 11.0034V9.50339L15 9.49897V2.49902C15 2.22288 14.7761 1.99902 14.5 1.99902H5.5ZM6.00002 10.0034H14V11.0034C14 11.5557 13.5523 12.0034 13 12.0034H11.5041C11.228 12.0034 11.0041 12.2272 11.0041 12.5034V16.0007C11.0041 16.553 10.5564 17.0007 10.0041 17.0007C9.45183 17.0007 9.00411 16.553 9.00411 16.0007V12.5034C9.00411 12.2272 8.78026 12.0034 8.50411 12.0034H7.00002C6.44773 12.0034 6.00002 11.5557 6.00002 11.0034V10.0034ZM14 9.00339H6V2.99902H10V4.49902C10 4.77517 10.2239 4.99902 10.5 4.99902C10.7761 4.99902 11 4.77517 11 4.49902V2.99902H12V5.50122C12 5.77736 12.2239 6.00122 12.5 6.00122C12.7761 6.00122 13 5.77736 13 5.50122V2.99902H14V9.00339Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Choose your mode</span>
+                <p class="setting-desc">Choose between Light and Dark mode for Windows and apps</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span></div>
+                <span class="setting-id">theme-mode-windows</span>
+                </div>
+                </div>
+                <h4 class="mx-build">Windows 11</h4>
+                <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 10 * var(--mx-char-w)); --mx-table-w: calc(173.2px + 80 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(91.7px + 11 * var(--mx-char-w))"><col style="width: calc(28.75px + 28 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Prompts before applying this setting">Asks you to confirm before it runs</span></div></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="2"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">AppsUseLightTheme</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">SystemUsesLightTheme</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>Light Mode</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Dark Mode</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td><td class="mx-value"><code>0</code></td></tr><tr><th class="mx-option" scope="row"><code>Mixed</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td></tr>
+                </tbody>
+                </table>
+                </div>
+                <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">Light Mode</span><span class="mx-links-chips"><span class="mx-chip" title="Apps Use Light Theme = Enabled">Sets: <a href="#theme-mode-apps" class="mx-chip-link">Apps Use Light Theme</a> (Enabled)</span><span class="mx-chip" title="Windows Uses Light Theme = Enabled">Sets: <a href="#theme-mode-system" class="mx-chip-link">Windows Uses Light Theme</a> (Enabled)</span></span></div><div class="mx-links-row"><span class="mx-links-option">Dark Mode</span><span class="mx-links-chips"><span class="mx-chip" title="Apps Use Light Theme = Disabled">Sets: <a href="#theme-mode-apps" class="mx-chip-link">Apps Use Light Theme</a> (Disabled)</span><span class="mx-chip" title="Windows Uses Light Theme = Disabled">Sets: <a href="#theme-mode-system" class="mx-chip-link">Windows Uses Light Theme</a> (Disabled)</span></span></div></div></div>
+                <h4 class="mx-build">Windows 10</h4>
+                <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 10 * var(--mx-char-w)); --mx-table-w: calc(173.2px + 80 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(91.7px + 11 * var(--mx-char-w))"><col style="width: calc(28.75px + 28 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span><div class="mx-chips mx-setting-chips"><span class="mx-chip" title="Prompts before applying this setting">Asks you to confirm before it runs</span></div></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="2"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">AppsUseLightTheme</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">SystemUsesLightTheme</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>Light Mode</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Dark Mode</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td><td class="mx-value"><code>0</code></td></tr><tr><th class="mx-option" scope="row"><code>Mixed</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td></tr>
+                </tbody>
+                </table>
+                </div>
+                <div class="mx-links-host"><div class="mx-links-head"><span class="mx-group-label">Also sets</span></div><div class="mx-links-row"><span class="mx-links-option">Light Mode</span><span class="mx-links-chips"><span class="mx-chip" title="Apps Use Light Theme = Enabled">Sets: <a href="#theme-mode-apps" class="mx-chip-link">Apps Use Light Theme</a> (Enabled)</span><span class="mx-chip" title="Windows Uses Light Theme = Enabled">Sets: <a href="#theme-mode-system" class="mx-chip-link">Windows Uses Light Theme</a> (Enabled)</span></span></div><div class="mx-links-row"><span class="mx-links-option">Dark Mode</span><span class="mx-links-chips"><span class="mx-chip" title="Apps Use Light Theme = Disabled">Sets: <a href="#theme-mode-apps" class="mx-chip-link">Apps Use Light Theme</a> (Disabled)</span><span class="mx-chip" title="Windows Uses Light Theme = Disabled">Sets: <a href="#theme-mode-system" class="mx-chip-link">Windows Uses Light Theme</a> (Disabled)</span></span></div></div></div>
+                <div class="setting-children">
+                <div class="setting-card setting-card-child" id="theme-mode-apps">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Apps Use Light Theme</span>
+                <p class="setting-desc">Use the light theme for apps such as Settings and File Explorer</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.07.22</span></div>
+                <span class="setting-id">theme-mode-apps</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(372px + 45 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">AppsUseLightTheme</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+                <div class="setting-card setting-card-child" id="theme-mode-system">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M4 2C2.89543 2 2 2.89543 2 4V13C2 14.1046 2.89543 15 4 15H7V17H5.5C5.22386 17 5 17.2239 5 17.5C5 17.7761 5.22386 18 5.5 18H14.5C14.7761 18 15 17.7761 15 17.5C15 17.2239 14.7761 17 14.5 17H13V15H16C17.1046 15 18 14.1046 18 13V4C18 2.89543 17.1046 2 16 2H4ZM12 15V17H8V15H12ZM3 4C3 3.44772 3.44772 3 4 3H16C16.5523 3 17 3.44772 17 4V13C17 13.5523 16.5523 14 16 14H4C3.44772 14 3 13.5523 3 13V4Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Windows Uses Light Theme</span>
+                <p class="setting-desc">Use the light theme for the Windows shell, including the taskbar, Start menu, and notification center</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.07.22</span></div>
+                <span class="setting-id">theme-mode-system</span>
+                </div>
+                </div>
+                <h4 class="mx-build">Windows 11</h4>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(349.5px + 48 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">SystemUsesLightTheme</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                <h4 class="mx-build">Windows 10</h4>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(387.5px + 55 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">SystemUsesLightTheme</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+
+                <div class="setting-card" id="theme-accent-color-start-taskbar">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M5.5 1.99902C5.22386 1.99902 5 2.22288 5 2.49902L5.00002 11.0034C5.00002 12.1079 5.89545 13.0034 7.00002 13.0034H8.00411V16.0007C8.00411 17.1053 8.89954 18.0007 10.0041 18.0007C11.1087 18.0007 12.0041 17.1053 12.0041 16.0007V13.0034H13C14.1046 13.0034 15 12.1079 15 11.0034V9.50339L15 9.49897V2.49902C15 2.22288 14.7761 1.99902 14.5 1.99902H5.5ZM6.00002 10.0034H14V11.0034C14 11.5557 13.5523 12.0034 13 12.0034H11.5041C11.228 12.0034 11.0041 12.2272 11.0041 12.5034V16.0007C11.0041 16.553 10.5564 17.0007 10.0041 17.0007C9.45183 17.0007 9.00411 16.553 9.00411 16.0007V12.5034C9.00411 12.2272 8.78026 12.0034 8.50411 12.0034H7.00002C6.44773 12.0034 6.00002 11.5557 6.00002 11.0034V10.0034ZM14 9.00339H6V2.99902H10V4.49902C10 4.77517 10.2239 4.99902 10.5 4.99902C10.7761 4.99902 11 4.77517 11 4.49902V2.99902H12V5.50122C12 5.77736 12.2239 6.00122 12.5 6.00122C12.7761 6.00122 13 5.77736 13 5.50122V2.99902H14V9.00339Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Show accent color on Start and taskbar</span>
+                <p class="setting-desc">Color the Start menu and taskbar with your accent color. Works only when Windows uses dark mode</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.11.17</span></div>
+                <span class="setting-id">theme-accent-color-start-taskbar</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(387px + 39 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">ColorPrevalence</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>0 (or not set)</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+
+                <div class="setting-card" id="theme-accent-color-title-bars">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M6 3C4.34315 3 3 4.34315 3 6V14C3 15.6569 4.34315 17 6 17H14C15.6569 17 17 15.6569 17 14V6C17 4.34315 15.6569 3 14 3H6ZM4 6C4 4.89543 4.89543 4 6 4H14C15.1046 4 16 4.89543 16 6L4 6ZM4 7H16V14C16 15.1046 15.1046 16 14 16H6C4.89543 16 4 15.1046 4 14V7Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Show accent color on title bars and window borders</span>
+                <p class="setting-desc">Color the title bars and borders of windows with your accent color</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.11.17</span></div>
+                <span class="setting-id">theme-accent-color-title-bars</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(183px + 39 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM">HKCU\Software\Microsoft\Windows\DWM</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">ColorPrevalence</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>0 (or not set)</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+
+                <h2 id="transparency">Transparency</h2>
+                <p>Translucent effects on the Start menu, the taskbar and other parts of Windows.</p>
+                <div class="setting-card" id="theme-transparency">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M6 3C4.34315 3 3 4.34315 3 6V14C3 15.6569 4.34315 17 6 17H14C15.6569 17 17 15.6569 17 14V6C17 4.34315 15.6569 3 14 3H6ZM4 6C4 4.89543 4.89543 4 6 4H7V7H4V6ZM4 10H7V7H10V4H13V7H16V10H13V13H16V14C16 15.1046 15.1046 16 14 16H13V13H10V16H7V13H4V10ZM10 10V7H13V10H10ZM10 10H7V13H10V10Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Transparency effects</span>
+                <p class="setting-desc">Enable translucent effects for the Start Menu, taskbar, and other Windows interface elements</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span></div>
+                <span class="setting-id">theme-transparency</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(364.5px + 46 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize">HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">EnableTransparency</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+
+                <h2 id="background">Background</h2>
+                <p>The desktop background: a picture, a solid color, a slideshow or Windows spotlight, and how a picture fits the screen. For a picture you can pick one of Windows' own, keep the one this PC has, choose one Windows showed recently, or browse for your own. Windows' own pictures and their file paths are listed below. Standalone config and answer files embed only one picture. A slideshow folder must already exist on the destination PC unless you build installation media with WIMUtil, which carries the slideshow pictures to C:\Wallpapers\Winhance.</p>
+                <div class="setting-card" id="theme-wallpaper">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M14 7.5C14 8.32843 13.3284 9 12.5 9C11.6716 9 11 8.32843 11 7.5C11 6.67157 11.6716 6 12.5 6C13.3284 6 14 6.67157 14 7.5ZM13 7.5C13 7.22386 12.7761 7 12.5 7C12.2239 7 12 7.22386 12 7.5C12 7.77614 12.2239 8 12.5 8C12.7761 8 13 7.77614 13 7.5ZM3 6C3 4.34315 4.34315 3 6 3H14C15.6569 3 17 4.34315 17 6V14C17 15.6569 15.6569 17 14 17H6C4.34315 17 3 15.6569 3 14V6ZM6 4C4.89543 4 4 4.89543 4 6V14C4 14.3726 4.10191 14.7215 4.27937 15.0201L8.94868 10.432C9.53227 9.85859 10.4677 9.85859 11.0513 10.432L15.7206 15.0201C15.8981 14.7215 16 14.3726 16 14V6C16 4.89543 15.1046 4 14 4H6ZM6 16H14C14.3692 16 14.7149 15.9 15.0118 15.7256L10.3504 11.1453C10.1559 10.9542 9.84409 10.9542 9.64956 11.1453L4.98824 15.7256C5.28505 15.9 5.63085 16 6 16Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Desktop background</span>
+                <p class="setting-desc">A picture, a solid color or a slideshow, and how it fits the screen. Choose one of Windows&#39; own pictures, keep this PC&#39;s, or browse for your own.</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.09.10</span></div>
+                <span class="setting-id">theme-wallpaper</span>
+                </div>
+                </div>
+                <div class="setting-banner"><p class="setting-banner-text">Winhance can detect Windows Spotlight but cannot turn it on: Windows offers it only in its own Settings and gives apps no supported way to select it. That is a Windows limitation, not a Winhance one. Choosing another background here is one-way - to return to Spotlight, use Windows Settings &gt; Personalization &gt; Background. Spotlight also leaves Windows&#39; own list while Content Delivery or Subscribed Content are off on the Privacy page. A saved config records Spotlight but cannot restore it either.</p></div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 17 * var(--mx-char-w)); --mx-table-w: calc(861.2px + 92 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col style="width: calc(319.3px + 25 * var(--mx-char-w))"><col style="width: calc(84.8px + 20 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="3" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\Desktop">HKCU\Control Panel\Desktop</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DesktopSpotlight\Settings">HKCU\Software\Microsoft\Windows\CurrentVersion\DesktopSpotlight\Settings</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">BackgroundType</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">WallPaper</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">EnabledState</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>Picture</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>0 (or not set)</code></td><td class="mx-value"></td><td class="mx-value"><code>0 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Solid color</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>&quot;&quot; (or not set)</code></td><td class="mx-value"><code>0 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Slideshow</code></th><td class="mx-role"></td><td class="mx-value"><code>2</code></td><td class="mx-value"></td><td class="mx-value"><code>0 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows spotlight</code></th><td class="mx-role"></td><td class="mx-value"><code>3</code></td><td class="mx-value"></td><td class="mx-value"><code>1</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                <div class="setting-children">
+                <div class="setting-card setting-card-child" id="theme-wallpaper-picture">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M14 7.5C14 8.32843 13.3284 9 12.5 9C11.6716 9 11 8.32843 11 7.5C11 6.67157 11.6716 6 12.5 6C13.3284 6 14 6.67157 14 7.5ZM13 7.5C13 7.22386 12.7761 7 12.5 7C12.2239 7 12 7.22386 12 7.5C12 7.77614 12.2239 8 12.5 8C12.7761 8 13 7.77614 13 7.5ZM3 6C3 4.34315 4.34315 3 6 3H14C15.6569 3 17 4.34315 17 6V14C17 15.6569 15.6569 17 14 17H6C4.34315 17 3 15.6569 3 14V6ZM6 4C4.89543 4 4 4.89543 4 6V14C4 14.3726 4.10191 14.7215 4.27937 15.0201L8.94868 10.432C9.53227 9.85859 10.4677 9.85859 11.0513 10.432L15.7206 15.0201C15.8981 14.7215 16 14.3726 16 14V6C16 4.89543 15.1046 4 14 4H6ZM6 16H14C14.3692 16 14.7149 15.9 15.0118 15.7256L10.3504 11.1453C10.1559 10.9542 9.84409 10.9542 9.64956 11.1453L4.98824 15.7256C5.28505 15.9 5.63085 16 6 16Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Choose a photo</span>
+                <p class="setting-desc">One of Windows&#39; own pictures, this PC&#39;s, one it showed lately, or a picture you browse for.</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.09.14</span></div>
+                <span class="setting-id">theme-wallpaper-picture</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 16 * var(--mx-char-w)); --mx-table-w: calc(336px + 412 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24px + 4 * var(--mx-char-w))"><col style="width: calc(24px + 20 * var(--mx-char-w))"><col style="width: calc(24px + 31 * var(--mx-char-w))"><col style="width: calc(24px + 31 * var(--mx-char-w))"><col style="width: calc(24px + 35 * var(--mx-char-w))"><col style="width: calc(24px + 31 * var(--mx-char-w))"><col style="width: calc(24px + 25 * var(--mx-char-w))"><col style="width: calc(24px + 33 * var(--mx-char-w))"><col style="width: calc(24px + 33 * var(--mx-char-w))"><col style="width: calc(24px + 33 * var(--mx-char-w))"><col style="width: calc(24px + 33 * var(--mx-char-w))"><col style="width: calc(24px + 33 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="11" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Choose a photo</span><span class="mx-group-desc">One of Windows&#39; own pictures, this PC&#39;s, one it showed lately, or a picture you browse for.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="4"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\Desktop">HKCU\Control Panel\Desktop</code></span></th><th class="mx-paths" colspan="7"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">WallPaper</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">TranscodedImageCount</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">TranscodedImageCache</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">Binary</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">TranscodedImageCache_000</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">Binary</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">CurrentWallpaperPath</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance writes this value when you apply, but does not read it back to decide the current state.">written, not read</span><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">BackgroundType</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">BackgroundHistoryPath0</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">BackgroundHistoryPath1</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">BackgroundHistoryPath2</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">BackgroundHistoryPath3</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">BackgroundHistoryPath4</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-reference" scope="col"><span class="mx-line"><code class="mx-name">Path</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>Windows 11 light</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>C:\Windows\Web\Wallpaper\Windows\img0.jpg</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows 11 dark</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>C:\Windows\Web\Wallpaper\Windows\img19.jpg</code></td></tr><tr><th class="mx-option" scope="row"><code>Windows 10</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>C:\Windows\Web\4K\Wallpaper\Windows\img0_3840x2160.jpg</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+                <div class="setting-card setting-card-child" id="theme-wallpaper-fit">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M14 7.5C14 8.32843 13.3284 9 12.5 9C11.6716 9 11 8.32843 11 7.5C11 6.67157 11.6716 6 12.5 6C13.3284 6 14 6.67157 14 7.5ZM13 7.5C13 7.22386 12.7761 7 12.5 7C12.2239 7 12 7.22386 12 7.5C12 7.77614 12.2239 8 12.5 8C12.7761 8 13 7.77614 13 7.5ZM3 6C3 4.34315 4.34315 3 6 3H14C15.6569 3 17 4.34315 17 6V14C17 15.6569 15.6569 17 14 17H6C4.34315 17 3 15.6569 3 14V6ZM6 4C4.89543 4 4 4.89543 4 6V14C4 14.3726 4.10191 14.7215 4.27937 15.0201L8.94868 10.432C9.53227 9.85859 10.4677 9.85859 11.0513 10.432L15.7206 15.0201C15.8981 14.7215 16 14.3726 16 14V6C16 4.89543 15.1046 4 14 4H6ZM6 16H14C14.3692 16 14.7149 15.9 15.0118 15.7256L10.3504 11.1453C10.1559 10.9542 9.84409 10.9542 9.64956 11.1453L4.98824 15.7256C5.28505 15.9 5.63085 16 6 16Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Fit</span>
+                <p class="setting-desc">How the picture fills the screen.</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.09.14</span></div>
+                <span class="setting-id">theme-wallpaper-fit</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 7 * var(--mx-char-w)); --mx-table-w: calc(130px + 63 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col style="width: calc(24px + 25 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="2"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\Desktop">HKCU\Control Panel\Desktop</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">WallpaperStyle</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">TileWallpaper</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>Fill</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>10</code></td><td class="mx-value"><code>0 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Fit</code></th><td class="mx-role"></td><td class="mx-value"><code>6</code></td><td class="mx-value"><code>0</code></td></tr><tr><th class="mx-option" scope="row"><code>Stretch</code></th><td class="mx-role"></td><td class="mx-value"><code>2</code></td><td class="mx-value"><code>0</code></td></tr><tr><th class="mx-option" scope="row"><code>Tile</code></th><td class="mx-role"></td><td class="mx-value"><code>0</code></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Center</code></th><td class="mx-role"></td><td class="mx-value"><code>0</code></td><td class="mx-value"><code>0</code></td></tr><tr><th class="mx-option" scope="row"><code>Span</code></th><td class="mx-role"></td><td class="mx-value"><code>22</code></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+                <div class="setting-card setting-card-child" id="theme-wallpaper-color">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M14 7.5C14 8.32843 13.3284 9 12.5 9C11.6716 9 11 8.32843 11 7.5C11 6.67157 11.6716 6 12.5 6C13.3284 6 14 6.67157 14 7.5ZM13 7.5C13 7.22386 12.7761 7 12.5 7C12.2239 7 12 7.22386 12 7.5C12 7.77614 12.2239 8 12.5 8C12.7761 8 13 7.77614 13 7.5ZM3 6C3 4.34315 4.34315 3 6 3H14C15.6569 3 17 4.34315 17 6V14C17 15.6569 15.6569 17 14 17H6C4.34315 17 3 15.6569 3 14V6ZM6 4C4.89543 4 4 4.89543 4 6V14C4 14.3726 4.10191 14.7215 4.27937 15.0201L8.94868 10.432C9.53227 9.85859 10.4677 9.85859 11.0513 10.432L15.7206 15.0201C15.8981 14.7215 16 14.3726 16 14V6C16 4.89543 15.1046 4 14 4H6ZM6 16H14C14.3692 16 14.7149 15.9 15.0118 15.7256L10.3504 11.1453C10.1559 10.9542 9.84409 10.9542 9.64956 11.1453L4.98824 15.7256C5.28505 15.9 5.63085 16 6 16Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Choose your background color</span>
+                <p class="setting-desc">One of Windows&#39; own colors, or any color you pick.</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.09.14</span></div>
+                <span class="setting-id">theme-wallpaper-color</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 7 * var(--mx-char-w)); --mx-table-w: calc(461.8px + 64 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24px + 4 * var(--mx-char-w))"><col style="width: calc(70.5px + 21 * var(--mx-char-w))"><col style="width: calc(319.3px + 25 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read from this PC to work out the current state; never written.</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Choose your background color</span><span class="mx-group-desc">One of Windows&#39; own colors, or any color you pick.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\Colors">HKCU\Control Panel\Colors</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">Background</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">BackgroundType</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span><span class="mx-chip" title="Windows supplies this list, so the choices and their names differ from one PC to another.">options come from Windows</span></span></th><th class="mx-col mx-col-reference" scope="col"><span class="mx-line"><code class="mx-name">Value</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>#FF8C00</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#FF8C00</code></td></tr><tr><th class="mx-option" scope="row"><code>#E81123</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#E81123</code></td></tr><tr><th class="mx-option" scope="row"><code>#D13438</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#D13438</code></td></tr><tr><th class="mx-option" scope="row"><code>#C30052</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#C30052</code></td></tr><tr><th class="mx-option" scope="row"><code>#BF0077</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#BF0077</code></td></tr><tr><th class="mx-option" scope="row"><code>#9A0089</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#9A0089</code></td></tr><tr><th class="mx-option" scope="row"><code>#881798</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#881798</code></td></tr><tr><th class="mx-option" scope="row"><code>#744DA9</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#744DA9</code></td></tr><tr><th class="mx-option" scope="row"><code>#10893E</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#10893E</code></td></tr><tr><th class="mx-option" scope="row"><code>#107C10</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#107C10</code></td></tr><tr><th class="mx-option" scope="row"><code>#018574</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#018574</code></td></tr><tr><th class="mx-option" scope="row"><code>#2D7D9A</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#2D7D9A</code></td></tr><tr><th class="mx-option" scope="row"><code>#0063B1</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#0063B1</code></td></tr><tr><th class="mx-option" scope="row"><code>#6B69D6</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#6B69D6</code></td></tr><tr><th class="mx-option" scope="row"><code>#8E8CD8</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#8E8CD8</code></td></tr><tr><th class="mx-option" scope="row"><code>#8764B8</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#8764B8</code></td></tr><tr><th class="mx-option" scope="row"><code>#038387</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#038387</code></td></tr><tr><th class="mx-option" scope="row"><code>#486860</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#486860</code></td></tr><tr><th class="mx-option" scope="row"><code>#525E54</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#525E54</code></td></tr><tr><th class="mx-option" scope="row"><code>#7E735F</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#7E735F</code></td></tr><tr><th class="mx-option" scope="row"><code>#4C4A48</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#4C4A48</code></td></tr><tr><th class="mx-option" scope="row"><code>#515C6B</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#515C6B</code></td></tr><tr><th class="mx-option" scope="row"><code>#4A5459</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#4A5459</code></td></tr><tr><th class="mx-option" scope="row"><code>#000000</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"><code>#000000</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+                <div class="setting-card setting-card-child" id="theme-wallpaper-album">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M14 7.5C14 8.32843 13.3284 9 12.5 9C11.6716 9 11 8.32843 11 7.5C11 6.67157 11.6716 6 12.5 6C13.3284 6 14 6.67157 14 7.5ZM13 7.5C13 7.22386 12.7761 7 12.5 7C12.2239 7 12 7.22386 12 7.5C12 7.77614 12.2239 8 12.5 8C12.7761 8 13 7.77614 13 7.5ZM3 6C3 4.34315 4.34315 3 6 3H14C15.6569 3 17 4.34315 17 6V14C17 15.6569 15.6569 17 14 17H6C4.34315 17 3 15.6569 3 14V6ZM6 4C4.89543 4 4 4.89543 4 6V14C4 14.3726 4.10191 14.7215 4.27937 15.0201L8.94868 10.432C9.53227 9.85859 10.4677 9.85859 11.0513 10.432L15.7206 15.0201C15.8981 14.7215 16 14.3726 16 14V6C16 4.89543 15.1046 4 14 4H6ZM6 16H14C14.3692 16 14.7149 15.9 15.0118 15.7256L10.3504 11.1453C10.1559 10.9542 9.84409 10.9542 9.64956 11.1453L4.98824 15.7256C5.28505 15.9 5.63085 16 6 16Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Choose a picture album for a slideshow</span>
+                <p class="setting-desc">The folder whose pictures the desktop cycles through.</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.09.14</span></div>
+                <span class="setting-id">theme-wallpaper-album</span>
+                </div>
+                </div>
+                <div class="mx-box mx-has-below" style="--mx-option-w: calc(24px + 12 * var(--mx-char-w)); --mx-table-w: calc(136.3px + 82 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(24px + 4 * var(--mx-char-w))"><col style="width: calc(24px + 7 * var(--mx-char-w))"><col style="width: calc(32.15px + 25 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span></th><th class="mx-group" colspan="1" rowspan="2"><span class="mx-group-label">Also runs</span></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read from this PC to work out the current state; never written.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="2"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers">HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-script" scope="col"><span class="mx-line"><code class="mx-name">album</code></span><span class="mx-chips"><span class="mx-chip" title="Windows records the folder as an id only the shell can build, so Winhance hands it to the desktop slideshow instead of writing a value.">applied through the desktop slideshow</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">BackgroundType</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">SlideshowDirectoryPath1</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">String</code></span><span class="mx-chips"><span class="mx-chip" title="Winhance reads this value to work out the current state or to fill in this card, and never writes it.">read, not written</span></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>Allowed form</code></th><td class="mx-role"></td><td class="mx-value"><code>^.{1,}$</code></td><td class="mx-value"></td><td class="mx-value"></td></tr><tr><th class="mx-option" scope="row"><code>Default</code></th><td class="mx-role"></td><td class="mx-value"></td><td class="mx-value"></td><td class="mx-value"></td></tr>
+                </tbody>
+                </table>
+                </div>
+                <div class="mx-code-host"><div class="mx-code-heading"><span class="mx-group-label">PowerShell Scripts</span><span class="mx-group-desc">Winhance runs this script when you apply the matching option.</span></div><div class="mx-code-label">On Apply</div><pre class="mx-code-body mx-code-powershell"><code>$album = &#39;{{value}}&#39;
+                $slideshowKey = Get-ItemProperty -Path &#39;HKCU:\Control Panel\Personalization\Desktop Slideshow&#39; -ErrorAction SilentlyContinue
+                $desktopKey = Get-ItemProperty -Path &#39;HKCU:\Control Panel\Desktop&#39; -ErrorAction SilentlyContinue
+                $interval = if ($slideshowKey.Interval) { [int]$slideshowKey.Interval } else { 1800000 }
+                $shuffle = $slideshowKey.Shuffle -eq 1
+                Add-WinhanceDesktopType
+                $position = [Winhance.Desktop.DesktopBackground]::Position(&quot;$($desktopKey.WallpaperStyle)&quot;, &quot;$($desktopKey.TileWallpaper)&quot;)
+                try {
+                    [Winhance.Desktop.DesktopBackground]::Slideshow($album, $position, $interval, $shuffle)
+                    Write-Log &quot;Desktop background set: slideshow of $album&quot; &quot;SUCCESS&quot;
+                } catch {
+                    Write-Log &quot;Desktop background slideshow failed: $($_.Exception.Message)&quot; &quot;ERROR&quot;
+                    # One picture rather than none: the album&#39;s first, or the Windows picture matching the theme this file
+                    # just applied, so a failure here cannot leave a light desktop under a dark shell.
+                    $first = Get-ChildItem -LiteralPath $album -File -ErrorAction SilentlyContinue | Sort-Object Name | Select-Object -First 1
+                    if ($first) {
+                        $path = $first.FullName
+                    } else {
+                        $personalize = Get-ItemProperty -Path &#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize&#39; -ErrorAction SilentlyContinue
+                        if ($personalize.SystemUsesLightTheme -eq 0) { $path = &#39;C:\Windows\Web\Wallpaper\Windows\img19.jpg&#39; }
+                        else { $path = &#39;C:\Windows\Web\Wallpaper\Windows\img0.jpg&#39; }
+                    }
+                    try {
+                        [Winhance.Desktop.DesktopBackground]::Picture($path, $position)
+                        Write-Log &quot;Desktop background set to $path instead&quot; &quot;SUCCESS&quot;
+                    } catch {
+                        Set-RegistryValue -Path &#39;HKCU:\Control Panel\Desktop&#39; -Name &#39;WallPaper&#39; -Type &#39;String&#39; -Value $path -Description &#39;The desktop background picture&#39;
+                        Set-RegistryValue -Path &#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers&#39; -Name &#39;BackgroundType&#39; -Type &#39;DWord&#39; -Value 0 -Description &#39;The desktop background picture&#39;
+                        Write-Log &quot;Desktop background recorded as $path; it shows at the next sign-in&quot; &quot;WARNING&quot;
+                    }
+                }</code></pre></div></div>
+                </div>
+                <div class="setting-card setting-card-child" id="theme-wallpaper-interval">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M14 7.5C14 8.32843 13.3284 9 12.5 9C11.6716 9 11 8.32843 11 7.5C11 6.67157 11.6716 6 12.5 6C13.3284 6 14 6.67157 14 7.5ZM13 7.5C13 7.22386 12.7761 7 12.5 7C12.2239 7 12 7.22386 12 7.5C12 7.77614 12.2239 8 12.5 8C12.7761 8 13 7.77614 13 7.5ZM3 6C3 4.34315 4.34315 3 6 3H14C15.6569 3 17 4.34315 17 6V14C17 15.6569 15.6569 17 14 17H6C4.34315 17 3 15.6569 3 14V6ZM6 4C4.89543 4 4 4.89543 4 6V14C4 14.3726 4.10191 14.7215 4.27937 15.0201L8.94868 10.432C9.53227 9.85859 10.4677 9.85859 11.0513 10.432L15.7206 15.0201C15.8981 14.7215 16 14.3726 16 14V6C16 4.89543 15.1046 4 14 4H6ZM6 16H14C14.3692 16 14.7149 15.9 15.0118 15.7256L10.3504 11.1453C10.1559 10.9542 9.84409 10.9542 9.64956 11.1453L4.98824 15.7256C5.28505 15.9 5.63085 16 6 16Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Change picture every</span>
+                <p class="setting-desc">How long each picture stays before the next.</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.09.14</span></div>
+                <span class="setting-id">theme-wallpaper-interval</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 10 * var(--mx-char-w)); --mx-table-w: calc(343.6px + 37 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\Personalization\Desktop Slideshow">HKCU\Control Panel\Personalization\Desktop Slideshow</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">Interval</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>1 minute</code></th><td class="mx-role"></td><td class="mx-value"><code>60000</code></td></tr><tr><th class="mx-option" scope="row"><code>10 minutes</code></th><td class="mx-role"></td><td class="mx-value"><code>600000</code></td></tr><tr><th class="mx-option" scope="row"><code>30 minutes</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1800000 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>1 hour</code></th><td class="mx-role"></td><td class="mx-value"><code>3600000</code></td></tr><tr><th class="mx-option" scope="row"><code>6 hours</code></th><td class="mx-role"></td><td class="mx-value"><code>21600000</code></td></tr><tr><th class="mx-option" scope="row"><code>1 day</code></th><td class="mx-role"></td><td class="mx-value"><code>86400000</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+                <div class="setting-card setting-card-child" id="theme-wallpaper-shuffle">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M14 7.5C14 8.32843 13.3284 9 12.5 9C11.6716 9 11 8.32843 11 7.5C11 6.67157 11.6716 6 12.5 6C13.3284 6 14 6.67157 14 7.5ZM13 7.5C13 7.22386 12.7761 7 12.5 7C12.2239 7 12 7.22386 12 7.5C12 7.77614 12.2239 8 12.5 8C12.7761 8 13 7.77614 13 7.5ZM3 6C3 4.34315 4.34315 3 6 3H14C15.6569 3 17 4.34315 17 6V14C17 15.6569 15.6569 17 14 17H6C4.34315 17 3 15.6569 3 14V6ZM6 4C4.89543 4 4 4.89543 4 6V14C4 14.3726 4.10191 14.7215 4.27937 15.0201L8.94868 10.432C9.53227 9.85859 10.4677 9.85859 11.0513 10.432L15.7206 15.0201C15.8981 14.7215 16 14.3726 16 14V6C16 4.89543 15.1046 4 14 4H6ZM6 16H14C14.3692 16 14.7149 15.9 15.0118 15.7256L10.3504 11.1453C10.1559 10.9542 9.84409 10.9542 9.64956 11.1453L4.98824 15.7256C5.28505 15.9 5.63085 16 6 16Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Shuffle the picture order</span>
+                <p class="setting-desc">Show the pictures in random order instead of by name.</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span><span class="setting-badge added">Added in v26.09.14</span></div>
+                <span class="setting-id">theme-wallpaper-shuffle</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(358.6px + 31 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 7 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\Personalization\Desktop Slideshow">HKCU\Control Panel\Personalization\Desktop Slideshow</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">Shuffle</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"></td><td class="mx-value"><code>1</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>0 (or not set)</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </section>
+            </article>
+            <nav class="pager" aria-label="More pages"><a class="pager-prev" href="../../features/customize.html"><span>Previous</span>Customize</a><a class="pager-next" href="../../features/customizations/taskbar.html"><span>Next</span>Taskbar</a></nav>
         </main>
+
+        <aside class="docs-toc" aria-label="On this page">
+            <p class="toc-title">On this page</p>
+            <ul>
+                <li><a href="#theme-mode">Theme mode</a></li>
+                <li><a href="#transparency">Transparency</a></li>
+                <li><a href="#background">Background</a></li>
+            </ul>
+        </aside>
     </div>
 
-    <button class="sidebar-toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-    </button>
-
-    <script src="../../js/docs-theme.js"></script>
-    <script src="../../js/docs-navigation.js"></script>
-    <script src="../../js/docs-search.js"></script>
-    <script src="../../js/docs-config.js"></script>
-
-    <footer class="docs-footer">
-        <div class="docs-footer-container">
-            <div class="docs-footer-info">
-                &copy; 2026 Winhance.
+    <footer class="footer">
+        <div class="wrap footer-grid">
+            <div>
+                <a class="brand" href="../../../index.html">
+                    <img class="brand-mark" src="../../../images/winhance-rocket.png" alt="" width="24" height="24">
+                    <span>Winhance</span>
+                </a>
+                <p class="footer-version">These docs describe Winhance v26.11.27</p>
             </div>
-            <div class="docs-footer-meta">
-                <div class="docs-meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-                    <span class="docs-version">Docs v1.0.0</span>
-                </div>
-                <div class="docs-meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                    <span class="docs-last-updated">Last Updated: Jan 28, 2026</span>
-                </div>
-            </div>
+            <ul class="footer-links">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../index.html">Documentation</a></li>
+                <li><a href="https://github.com/memstechtips/Winhance/releases" target="_blank" rel="noopener">Releases</a></li>
+                <li><a href="https://github.com/memstechtips/Winhance" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://store.memstechtips.com/winhance/" target="_blank" rel="noopener">Support Winhance</a></li>
+            </ul>
+            <p class="footer-made">&copy; 2026 Winhance. Made by <a href="https://memstechtips.com/" target="_blank" rel="noopener">Memory</a>.</p>
         </div>
     </footer>
+
+    <script src="../../../demo/app.js"></script>
+    <script src="../../../demo/winhance-demo.js"></script>
+    <script src="../../../demo/readout.js"></script>
+    <script src="../../js/docs-search.js"></script>
+    <script src="../../js/docs.js"></script>
+    <script src="../../js/docs-metrics.js"></script>
 </body>
 
 </html>

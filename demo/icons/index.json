@@ -1,0 +1,1088 @@
+{
+ "cell": 72,
+ "columns": 17,
+ "icons": {
+  "external/7zip.7zip.png": {
+   "cell": 0,
+   "sha256": "67c2420e6eb5d001b3699f4c884d6a15d7ee0cefac129adf61f8d16e9e98a583"
+  },
+  "external/ablaze.floorp.png": {
+   "cell": 1,
+   "sha256": "ebce6769226309a0cd909276dadab6bea1ff669fd4d5c68487598fcb1a3d9a01"
+  },
+  "external/adobereader.png": {
+   "cell": 2,
+   "sha256": "a5740b36db71c5d04e8e98a110983fc8566156cc5008aed8574511c2e56d99d0"
+  },
+  "external/adrienallard.fileconverter.png": {
+   "cell": 3,
+   "sha256": "657efb9f231babc4e72d6c11d0bf591fb263e034b787a88720b286cd1dfa8aa4"
+  },
+  "external/aimp.aimp.png": {
+   "cell": 4,
+   "sha256": "af5e77ef5afb4889e218eae6b3758228aa3849eb2b17d5d4759a047cd4f41be6"
+  },
+  "external/alex313031.mercury.png": {
+   "cell": 5,
+   "sha256": "3b41f19bf5b02afd2d174fdc643e661d73e42270bfc265da1bcc73158e2d57a4"
+  },
+  "external/alex313031.thorium.png": {
+   "cell": 6,
+   "sha256": "7ba649115dc76fd333ddec0575e3e33318e942d14ca1e99ec9a0b54f13895392"
+  },
+  "external/antibodysoftware.wiztree.png": {
+   "cell": 7,
+   "sha256": "d9cf52691b26e7d0e72e6fe3535b6b1098377db85da48cebd2204309a89b4c85"
+  },
+  "external/anydesk.anydesk.png": {
+   "cell": 8,
+   "sha256": "1bb96d6934f786fa7a0df30a7ef1eb0dfaed3ecc561f095c99d08ecfb2e34c88"
+  },
+  "external/apache.openoffice.png": {
+   "cell": 9,
+   "sha256": "fe2e3216a860a34ca725e28cc03461e85f98a3d04ed6026eb23bb1912003fc05"
+  },
+  "external/apple.itunes.png": {
+   "cell": 10,
+   "sha256": "c09152d8ab36b6415a6968be50a428f2cb2024702108e497f29ffa000708c62d"
+  },
+  "external/audacity.audacity.png": {
+   "cell": 11,
+   "sha256": "cbbfd31147be36508eac8cfe777f23b628b63956314404200b930448041ce1f8"
+  },
+  "external/autohotkey-v1.png": {
+   "cell": 12,
+   "sha256": "d06ea7c77bf4f4ff50d114704de0eaf9923be41fb928c98de3508ce52a3c6a98"
+  },
+  "external/autohotkey.autohotkey.png": {
+   "cell": 13,
+   "sha256": "d06ea7c77bf4f4ff50d114704de0eaf9923be41fb928c98de3508ce52a3c6a98"
+  },
+  "external/binisoft.windowsfirewallcontrol.png": {
+   "cell": 14,
+   "sha256": "54d8ed6604a9730fd0991d6c70cfa339269fa5981adc644939f4277cb1e72d49"
+  },
+  "external/blenderfoundation.blender.png": {
+   "cell": 15,
+   "sha256": "1659fbc6ea1b97e0a35c27e5cb1f30e943608e8f8036af6f1441b431307ca3a5"
+  },
+  "external/blizzard.battlenet.png": {
+   "cell": 16,
+   "sha256": "0416d9a6c0cd0ce36696e8fa33d84c92da3cb7206d36d5bad4b7fbd0c01a6839"
+  },
+  "external/brave.brave.png": {
+   "cell": 17,
+   "sha256": "640d4190623f62930c33b6672626511b3c97d708f50a20ace653220ea89f0171"
+  },
+  "external/bytedance.capcut.png": {
+   "cell": 18,
+   "sha256": "ba6a4c7c1d065db3e49ab4f968bf692ce09912dcbc2c1d23b08a765867219f25"
+  },
+  "external/cdburnerxp.png": {
+   "cell": 19,
+   "sha256": "cdddc6f707efb1fc5166f37e78c450a625178496415221b52dd7ecf02747fe7f"
+  },
+  "external/ceruleanstudios.trillian.png": {
+   "cell": 20,
+   "sha256": "215d37e5461270ffcf79d9b58b08b0d527b95a1ff9926e88d5ebad18f4f494a1"
+  },
+  "external/ch.losslesscut.png": {
+   "cell": 21,
+   "sha256": "6409ce2b99f1b5f194091769e02b2aff677a1b7cd0989f82309bb7411797aa2d"
+  },
+  "external/clsid2.mpc-hc.png": {
+   "cell": 22,
+   "sha256": "0c66e8f016cfe2ae2462554cf3d044b78e6b3a798ed417cc7269a29866940c85"
+  },
+  "external/codecguide.k-litecodecpack.mega.png": {
+   "cell": 23,
+   "sha256": "7f718296f04d372ea2edbbca798cc50ea714db3b26384f89eae4c8db51061fb5"
+  },
+  "external/codesector.teracopy.png": {
+   "cell": 24,
+   "sha256": "fbeb78e77b287305797cf1a74410b82756f4a4619b48fb2e2e3a772d847a7534"
+  },
+  "external/crystaldewworld.crystaldiskinfo.png": {
+   "cell": 25,
+   "sha256": "2c115835b54ae19b18677b53547d1b9c88462db3178a44b9f4009832ce4db036"
+  },
+  "external/cyanfish.naps2.png": {
+   "cell": 26,
+   "sha256": "229a7d502f9140338565de08a50e35c8796726c2e4b724912483838e71bfb663"
+  },
+  "external/daum.potplayer.png": {
+   "cell": 27,
+   "sha256": "63eef3de38b3021b79425476fa9ace498a5090923e717551d572f2fd5502a58a"
+  },
+  "external/deskflow.deskflow.png": {
+   "cell": 28,
+   "sha256": "9ebd39d703f8467a69b715c090cad9b742795ac8d9cee9d8e09acc18b2d21162"
+  },
+  "external/devolutions.unigetui.png": {
+   "cell": 29,
+   "sha256": "281a2046258ed66286483b7d882ec8e66586eda3547d5775701444490cc3f968"
+  },
+  "external/discord.discord.png": {
+   "cell": 30,
+   "sha256": "86da8fbbca63190c1f8df30e890499ae72995a54525ee0239685d87a8ddd3b67"
+  },
+  "external/dotpdn.paintdotnet.png": {
+   "cell": 31,
+   "sha256": "8cd8c8c17333cc151693efa49ad2f491d71bbafa019aff8bbcdcd99dd98d0000"
+  },
+  "external/dropbox.dropbox.png": {
+   "cell": 32,
+   "sha256": "cb196c28a10d89b79d18677ba974696160c6d24fd8ab0e3bb45e167d343ca600"
+  },
+  "external/ducfabulous.ultraviewer.png": {
+   "cell": 33,
+   "sha256": "8a52bf34158ab2a2c13efee50a861a84909214c6bfe7fd5bf5f8164a7fdc16f6"
+  },
+  "external/duckduckgo.desktopbrowser.png": {
+   "cell": 34,
+   "sha256": "57025ca7b8177f85bc014bdabf4305eb03f639e338eb9b0d0bcee018898481a4"
+  },
+  "external/duongdieuphap.imageglass.png": {
+   "cell": 35,
+   "sha256": "7e633530b8f3e9037283f2041e77de6fe137b401bb1dd69f6f9a12a9cc50eccd"
+  },
+  "external/eclipsefoundation.eclipse.java.png": {
+   "cell": 36,
+   "sha256": "fe1a45a912ed53e0aa00c4f39c9735c7941248c6f18602188d17d8df752708f9"
+  },
+  "external/edde746.plezy.png": {
+   "cell": 37,
+   "sha256": "f25a0d5221ac477116a50c032445d767ff399d41cbbe7a085147d7081966f213"
+  },
+  "external/electronicarts.eadesktop.png": {
+   "cell": 38,
+   "sha256": "bc8f4854eaa58ec8d0cabc3cd8a261348e8e009106aa2426ca87087fe0b2f60f"
+  },
+  "external/element.element.png": {
+   "cell": 39,
+   "sha256": "c0a65b4d2a9f5b7b92276a6f50ec5ffb4934a18a4366b1f04cdb99e8ea9e2282"
+  },
+  "external/eloston.ungoogled-chromium.png": {
+   "cell": 40,
+   "sha256": "5b0c985bab3a0fedb91c658217246b50cedf9e2b99bc22a94ff07be18f3aea42"
+  },
+  "external/emclient.emclient.png": {
+   "cell": 41,
+   "sha256": "930b2df051016732d576dd743e74605c7e44ecfddda00d2544828cd9ed0c1347"
+  },
+  "external/epicgames.epicgameslauncher.png": {
+   "cell": 42,
+   "sha256": "a31c5a8c99525a2ce76960b96dca8e24adb8644702aada9f279691c8d9b41ad0"
+  },
+  "external/evernote.evernote.png": {
+   "cell": 43,
+   "sha256": "5aae5544de61bc0e151f92f99dec349205f90006708d84795ecef65a64f13407"
+  },
+  "external/faststone.viewer.png": {
+   "cell": 44,
+   "sha256": "031bcc0e40304548f44e4ce8263044dfde0f6263f3bae9c8c06164e8fcd5169d"
+  },
+  "external/file-new-project.eartrumpet.png": {
+   "cell": 45,
+   "sha256": "0e7a9395c37c34d516e7f2afc6a0dd04152c54421e57e6909a2b2b8ea3966443"
+  },
+  "external/flameshot.flameshot.png": {
+   "cell": 46,
+   "sha256": "49b0dfdcd2d14007d567c8604cfd26bf11fc032d356f6b9b3e11887f5dde269a"
+  },
+  "external/foxitreader.png": {
+   "cell": 47,
+   "sha256": "a4b4e3321549b6377c10fcf3affc149df4a1afab87b9967329aebdb17a267b38"
+  },
+  "external/freac.png": {
+   "cell": 48,
+   "sha256": "b163f4f52e079150570154cef6b36838a7fde1daef64e4af22c6e91a3c4054fc"
+  },
+  "external/freefilesync.png": {
+   "cell": 49,
+   "sha256": "c8d198323587383d75db6013465a2821ecc7eaca3bc337ad234d10e58d1bc5d6"
+  },
+  "external/fxsound.fxsound.png": {
+   "cell": 50,
+   "sha256": "f439876d0838c7bd864926ca0c1ad008775cb4668158db922499e5f4e9d4fd50"
+  },
+  "external/geeksoftwaregmbh.pdf24creator.png": {
+   "cell": 51,
+   "sha256": "ea04c8ee295fabcb9a90c3a889cde4fe7fb5808f27cd58634cba3f87ce110142"
+  },
+  "external/gimp.gimp.3.png": {
+   "cell": 52,
+   "sha256": "4581378a6068e07193917c72cfe51c5356d9017a988d3b75ac0175f78eaa9b3a"
+  },
+  "external/giorgiotani.peazip.png": {
+   "cell": 53,
+   "sha256": "0dfe0739f5960f28d3069b3d1ce804046e58dece1282e441937f47c19724e1ea"
+  },
+  "external/git.git.png": {
+   "cell": 54,
+   "sha256": "f72204601848f609cd557309a12a123d5a8c8fec4ae7f6c33a97ea61024e776c"
+  },
+  "external/github.githubdesktop.png": {
+   "cell": 55,
+   "sha256": "488cd3d2175493e52e58f7352e2957298435d18c7250fd4af3fb6a23d34545f8"
+  },
+  "external/giuspen.cherrytree.png": {
+   "cell": 56,
+   "sha256": "d7efc5b0f9992a68ceba9c64dce583e1c5172fae113d4302ae0715c9a7d2160c"
+  },
+  "external/glenndelahoy.snappydriverinstallerorigin.png": {
+   "cell": 57,
+   "sha256": "24b4cf381e6a2a1d3b943dc0a19f80ece1476147ff9071aa1345404943683891"
+  },
+  "external/gog.galaxy.png": {
+   "cell": 58,
+   "sha256": "ca9d0bf7ad0bfc8c06e21e0cd5e0d0cb98411a5ded9978e85a325db4cbe1839d"
+  },
+  "external/gomlab.gomplayer.png": {
+   "cell": 59,
+   "sha256": "6b746948f6a98f0c749ee365705f30770d6f31b27f0c254deddc8e6b9b706a94"
+  },
+  "external/google.chrome.png": {
+   "cell": 60,
+   "sha256": "58886e7f7aa9fda72963556999f1e65306c6a968a78c304359548b1a70285db8"
+  },
+  "external/google.chromeremotedesktophost.png": {
+   "cell": 61,
+   "sha256": "947e4e46693861d575b5ffbf40fa9b068e9d4c7a30a6495ad66de00e90da6e12"
+  },
+  "external/google.googledrive.png": {
+   "cell": 62,
+   "sha256": "2e0ae09675f2a22ec3904a43bf61c600a391a94dc28042f01e6582a786fbffca"
+  },
+  "external/greenshot.greenshot.png": {
+   "cell": 63,
+   "sha256": "95d08b405085ceffbc60a05b628ffc9b0fd046c6ba93997c446ba32293613aef"
+  },
+  "external/guinpinsoft.makemkv.png": {
+   "cell": 64,
+   "sha256": "ad968eca0c789ba8e288d14c843a04d0b8d7d1a3bed5b8544b498d27fc63eb49"
+  },
+  "external/guru3d.afterburner.png": {
+   "cell": 65,
+   "sha256": "29770e31e026db9f485d3d86262d1f09c474d0613f443e89fb0ff7fb533f6363"
+  },
+  "external/handbrake.handbrake.png": {
+   "cell": 66,
+   "sha256": "5e0740786027fa5fabd51d64c643c46ce7bff0e46d95ba40ca9766e518b223fb"
+  },
+  "external/hekasoft.backup-restore.png": {
+   "cell": 67,
+   "sha256": "e324d0763159f5e7a66e397f02ea5891a6f551af7c29da34bb185428109b768b"
+  },
+  "external/hulubulusoftware.advancedrenamer.png": {
+   "cell": 68,
+   "sha256": "095b0cada2ed34ad428b6e3389f18b6ae3cf87a1b051a9d88a923fabd91505ae"
+  },
+  "external/imputnet.helium.png": {
+   "cell": 69,
+   "sha256": "56c06370f421eaa2158d2b45daae5dd702269b67eeb72c7d80c19af477b86dee"
+  },
+  "external/inkscape.inkscape.png": {
+   "cell": 70,
+   "sha256": "bba81740498ef18496ee181c2de0306bceab072e603477c3a0cf4089057f14dd"
+  },
+  "external/input-leap.input-leap.png": {
+   "cell": 71,
+   "sha256": "d00f5c503b932a567e99da31419fb2f61b82bde1cc912d8e21eaee37017dd413"
+  },
+  "external/iobit.iobitunlocker.png": {
+   "cell": 72,
+   "sha256": "4fa41d22ffa1c571279af803d216ecc14f88404a64869c234242cd566e478c3d"
+  },
+  "external/iobit.uninstaller.png": {
+   "cell": 73,
+   "sha256": "3ef1d33bdc904d4a82096d408507e20fade96911b908bac385a71894bf596da2"
+  },
+  "external/ipvanish.sugarsync.png": {
+   "cell": 74,
+   "sha256": "d4af97e4455aa58d82d5ee26a9365bbe62768e4a1174a3d8764489d8a3dd9ff5"
+  },
+  "external/irfanskiljan.irfanview.png": {
+   "cell": 75,
+   "sha256": "720714d2c700783fea37c43ea877f0873379a63b08e1ff08922418ad33fb358f"
+  },
+  "external/irzyxa.volume2portable.png": {
+   "cell": 76,
+   "sha256": "af87cfcafa7bdd4854d82a635442884d1c7a7e97a79fca9773760c79ca383d97"
+  },
+  "external/jamsoftware.treesize.free.png": {
+   "cell": 77,
+   "sha256": "9a78f1b05f99b7e9fa936fb59a811aff818cefc739d1985d3932a790f0927ca2"
+  },
+  "external/johnsadventures.johnsbackgroundswitcher.png": {
+   "cell": 78,
+   "sha256": "7bf89bf71b25a473f04ec541e549dfe8f8e315db96f5d2c3cdd84c74b99d5af9"
+  },
+  "external/kde.kdenlive.png": {
+   "cell": 79,
+   "sha256": "c1cd29fd177ecf7d936ac6b0e21f03d5a1aa9aefc49bdecd38df08d2cbba7813"
+  },
+  "external/kde.krita.png": {
+   "cell": 80,
+   "sha256": "83bb931f3228d998e04e927d76f9eeee81666f066d983f9f07e6108a6f34e2fb"
+  },
+  "external/kde.okular.png": {
+   "cell": 81,
+   "sha256": "af8afcf4c89c825066b2cae9c0d2e73163bcf434d11203fe6a15011f9c51708d"
+  },
+  "external/librewolf.librewolf.png": {
+   "cell": 82,
+   "sha256": "f08b5cb65904be330eb9917bcc281cae80a64a7279f8b69501a41b1768b13e2b"
+  },
+  "external/lightninguk.imgburn.png": {
+   "cell": 83,
+   "sha256": "69c5783d44da05d157f8458ce230fccb2d7031ca6df76d1979e10c8e30f4e017"
+  },
+  "external/m2team.nanazip.png": {
+   "cell": 84,
+   "sha256": "fc068b1e31606c26840401069684e04186986a15174816d28b723f91392f9330"
+  },
+  "external/malwarebytes.adwcleaner.png": {
+   "cell": 85,
+   "sha256": "54d8ed6604a9730fd0991d6c70cfa339269fa5981adc644939f4277cb1e72d49"
+  },
+  "external/malwarebytes.malwarebytes.png": {
+   "cell": 86,
+   "sha256": "54d8ed6604a9730fd0991d6c70cfa339269fa5981adc644939f4277cb1e72d49"
+  },
+  "external/marticliment.unigetui.png": {
+   "cell": 87,
+   "sha256": "281a2046258ed66286483b7d882ec8e66586eda3547d5775701444490cc3f968"
+  },
+  "external/maxthon.maxthon.png": {
+   "cell": 88,
+   "sha256": "ec5a0ba89c77eb4882f5ee2a50c47145758d7c296b4480541e4e54f5e23e00f1"
+  },
+  "external/mediaarea.mediainfo.gui.png": {
+   "cell": 89,
+   "sha256": "1a6ea5e40c80db1636a9dbb51ee42386ae005eae473669eed827bbc0ad19f48c"
+  },
+  "external/meld.meld.png": {
+   "cell": 90,
+   "sha256": "777dc69c24bb7485e3deaaa5e67a341e66fae8084674603e48d0437c9dda246e"
+  },
+  "external/meltytech.shotcut.png": {
+   "cell": 91,
+   "sha256": "a6f3995548cb9d0a7f563c1d179afdba2a0c526d086210d73e98e0d8ae570ad8"
+  },
+  "external/microsoft.directx.png": {
+   "cell": 92,
+   "sha256": "38b5f864f2304a6179168bdd8d09e966f7f038e40e51e51ce65e6e4107beeea7"
+  },
+  "external/microsoft.dotnet.framework.developerpack_4.png": {
+   "cell": 93,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.dotnet.runtime.10.png": {
+   "cell": 94,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.dotnet.runtime.3_1.png": {
+   "cell": 95,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.dotnet.runtime.5.png": {
+   "cell": 96,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.dotnet.runtime.6.png": {
+   "cell": 97,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.dotnet.runtime.7.png": {
+   "cell": 98,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.dotnet.runtime.8.png": {
+   "cell": 99,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.dotnet.runtime.9.png": {
+   "cell": 100,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.edgewebview2runtime.png": {
+   "cell": 101,
+   "sha256": "00b8cfc38c292372de40e68c06e7646bbc18efad0b35a2acc24cfb6ab0405ab0"
+  },
+  "external/microsoft.office.png": {
+   "cell": 102,
+   "sha256": "134fb082347b10f5b6ab420cb9305ba095aabb3f3871d7cf9c8e2cfec3f24589"
+  },
+  "external/microsoft.powershell.png": {
+   "cell": 103,
+   "sha256": "3add67313c6a4a0660723c72e8e060403404cbfe24feb3a543096eb112410aaa"
+  },
+  "external/microsoft.powertoys.png": {
+   "cell": 104,
+   "sha256": "57972f937e8cc07d5f52e8a9c3a5dac4aaafcffa78bfae20c4ac419e8065ea7c"
+  },
+  "external/microsoft.vcredist.2005.x64.png": {
+   "cell": 105,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.vcredist.2005.x86.png": {
+   "cell": 106,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.vcredist.2008.x64.png": {
+   "cell": 107,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.vcredist.2008.x86.png": {
+   "cell": 108,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.vcredist.2010.x64.png": {
+   "cell": 109,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.vcredist.2010.x86.png": {
+   "cell": 110,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.vcredist.2012.x64.png": {
+   "cell": 111,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.vcredist.2012.x86.png": {
+   "cell": 112,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.vcredist.2013.x64.png": {
+   "cell": 113,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.vcredist.2013.x86.png": {
+   "cell": 114,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.vcredist.2015+.arm64.png": {
+   "cell": 115,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.vcredist.2015+.x64.png": {
+   "cell": 116,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.vcredist.2015+.x86.png": {
+   "cell": 117,
+   "sha256": "2962abb351166b1e16628cfa52f7acb56496ac2961d746119bc1a9c32686d8e5"
+  },
+  "external/microsoft.visualstudiocode.png": {
+   "cell": 118,
+   "sha256": "55981e611154e832460ea0bf33a721927bd2cfd4ea6817d0db263e726d09a996"
+  },
+  "external/moonchildproductions.palemoon.png": {
+   "cell": 119,
+   "sha256": "a476c72b9ba73b1794ef1b23e78f3ed6311acb57dca5f352eaf3c530cfbd32df"
+  },
+  "external/mozilla.firefox.png": {
+   "cell": 120,
+   "sha256": "72cdc4d70b9af67ccac3c0ca02575556388b4608d89fce4880afe20cfd07d0c4"
+  },
+  "external/mozilla.thunderbird.png": {
+   "cell": 121,
+   "sha256": "853ebac814b6d19d7a0ce38c87d0fb2ddb10476051da5750ee41cd368601a066"
+  },
+  "external/mpc-be.mpc-be.png": {
+   "cell": 122,
+   "sha256": "d3ef7ffeb55744e023b7efa673850bb28cb649b29f36514e6124a857178cf478"
+  },
+  "external/mullvadvpn.mullvadbrowser.png": {
+   "cell": 123,
+   "sha256": "22ea35b575853e057d15288e7b1c595fa7004d6854a4e3f02163ab0084ccc217"
+  },
+  "external/musicbee.png": {
+   "cell": 124,
+   "sha256": "c0b5b4846aea60c17a68560327cae84c0b88767cb1ec986106e99142a4cf528b"
+  },
+  "external/nextcloud.nextclouddesktop.png": {
+   "cell": 125,
+   "sha256": "6f7d5b5d6484f59ddc815d8ea32f5ac4a8ebc2f7dd2eac34437580785613adac"
+  },
+  "external/nilesoft.shell.png": {
+   "cell": 126,
+   "sha256": "1b11c26ce31ecbc9efa71da3908f8bbc2ccdf1c2a7db1ce116f3f2ef6c7861a0"
+  },
+  "external/notepad++.notepad++.png": {
+   "cell": 127,
+   "sha256": "648f5ed976017df72b7ab503939e309ccda1d098b723f55ba5b0f62d9ec1b1ba"
+  },
+  "external/nvidia-control-panel.png": {
+   "cell": 128,
+   "sha256": "959c8d47beeb8c776255d729b31bc101bf2b8159cff62ce8407dcb816d3a5af8"
+  },
+  "external/obsproject.obsstudio.png": {
+   "cell": 129,
+   "sha256": "3714e61502ec9f6a4fc0b37f6066493517328a0140adb244dc90b3c4a3590185"
+  },
+  "external/onionshare.onionshare.png": {
+   "cell": 130,
+   "sha256": "8dc79f74f18533d29b1a16884d74a258d1d567add074c013648a72517306d4fe"
+  },
+  "external/onlyoffice.desktopeditors.png": {
+   "cell": 131,
+   "sha256": "732df6b4250c02471c1d98e34543bc9b0fcb5509ed62cc73654546951007b72c"
+  },
+  "external/oo-software.shutup10.png": {
+   "cell": 132,
+   "sha256": "9db7d1d3e344b0f506f6af36055253a5356fe3ee223b59cf40ef00574b1d72ed"
+  },
+  "external/open-shell.open-shell-menu.png": {
+   "cell": 133,
+   "sha256": "acb192107cab421b88fe9b12fed0b809d5c9cd11da1fd92f5932ab4701154b21"
+  },
+  "external/openaudible.openaudible.png": {
+   "cell": 134,
+   "sha256": "cc73e50cc104b77a9de76cb90484de245cecdd893a395443b6c71d0047b48cd6"
+  },
+  "external/openrgb.openrgb.png": {
+   "cell": 135,
+   "sha256": "16d6acf44a005c361858465c65ff151b9dcebc0fe0d570c69f900dfe4aa38155"
+  },
+  "external/opera.opera.png": {
+   "cell": 136,
+   "sha256": "eb107135146709d47fb4e8112fd5de045ed763a75303a1bde48e06b50f1a6fe0"
+  },
+  "external/opera.operagx.png": {
+   "cell": 137,
+   "sha256": "1a85676ee4da89fd84db1980b1f4d0e1dc04dc6f5c440cea01084ab68d634079"
+  },
+  "external/oracle.javaruntimeenvironment.png": {
+   "cell": 138,
+   "sha256": "fdaf77257070603997ff34fa5d2cd7686a359c7509f1570981ac0502a4aeb9c9"
+  },
+  "external/oracle.virtualbox.png": {
+   "cell": 139,
+   "sha256": "a07f43b1f7f0f64e1e5f029558150234eefb430625f82fd30998597ee6b2acb9"
+  },
+  "external/parsec.parsec.png": {
+   "cell": 140,
+   "sha256": "f8a7034d2b5ba895d2d88866be903e2e2f644bfe9ba631c97ae7337a726cf536"
+  },
+  "external/parsec.parsecvdd.png": {
+   "cell": 141,
+   "sha256": "f8a7034d2b5ba895d2d88866be903e2e2f644bfe9ba631c97ae7337a726cf536"
+  },
+  "external/parsec.parsecvud.png": {
+   "cell": 142,
+   "sha256": "f8a7034d2b5ba895d2d88866be903e2e2f644bfe9ba631c97ae7337a726cf536"
+  },
+  "external/pdfgear.pdfgear.png": {
+   "cell": 143,
+   "sha256": "9b44b9ecb4cb7a54099a7847beebaf0c69392f7ba47a4ccd39db1751df06323f"
+  },
+  "external/peterpawlowski.foobar2000.png": {
+   "cell": 144,
+   "sha256": "6787eaa89a5dd8dbf9d31e013320016f90ef6f648d8a803d005dd782c84f260f"
+  },
+  "external/pidgin.pidgin.png": {
+   "cell": 145,
+   "sha256": "80ed0a39420e9ae5b138b9c288387ee6bcfb206cfd72369b8d0b0bc56b47f6c9"
+  },
+  "external/piriform.ccleaner.png": {
+   "cell": 146,
+   "sha256": "e8706d642690b005178d9c5705fe69cad371193aa8b94e49e7339988cb47b9b1"
+  },
+  "external/playnite.playnite.png": {
+   "cell": 147,
+   "sha256": "bcce92e3120d534c11874f9638ea03deff0c78ee53376c2cc2afd4785486264c"
+  },
+  "external/plex.plex.png": {
+   "cell": 148,
+   "sha256": "69ec2ee7ae657e19486370c6e18fafb5d21e8cba356f62fa71dfc507f5ac38d6"
+  },
+  "external/plex.plexmediaserver.png": {
+   "cell": 149,
+   "sha256": "ae483915a7a6c53f1c7a6fa2841eb7dd3ec0a2b96496eb6a962c058f56854fae"
+  },
+  "external/powersoftware.anyburn.png": {
+   "cell": 150,
+   "sha256": "8b6feb02133c5db792cf5b4e6d854bc6eb1aac8610f0f8fb658cd4dd82a1785f"
+  },
+  "external/proton.protondrive.png": {
+   "cell": 151,
+   "sha256": "2146b90035b69ba4240da3b60ec4b8d47750c36e2ca063c45439d4db4865da66"
+  },
+  "external/proton.protonmail.png": {
+   "cell": 152,
+   "sha256": "d9a4a675d5f6092c24f570a0b291dd1dab40932191ae8adde304a787e19b9165"
+  },
+  "external/proton.protonvpn.png": {
+   "cell": 153,
+   "sha256": "3fe32ac4f2711a0caf1379e7cbbac27d0abbc6f20be1b9a325219a81d367d6c3"
+  },
+  "external/putty.putty.png": {
+   "cell": 154,
+   "sha256": "bb11d5973bd8c45e085f07c3ba8a79e6e4c539952c1fb624fb7dc10ac1891a0a"
+  },
+  "external/python.python.3.13.png": {
+   "cell": 155,
+   "sha256": "53d3282e134e941bf8b3d95d9fe7a9b9d05b552bc091cbb7c2e96c3c10d8d29f"
+  },
+  "external/qbittorrent.qbittorrent.png": {
+   "cell": 156,
+   "sha256": "b4b2034606fa0ece07a895bd8c5c5e823709f364badde041c35bfb139eb25e87"
+  },
+  "external/rainmeter.rainmeter.png": {
+   "cell": 157,
+   "sha256": "b77afb67ca314979880b8ed013c7d6d09a5fcb6a38f237c30fbc64f90dc0c571"
+  },
+  "external/ramensoftware.windhawk.png": {
+   "cell": 158,
+   "sha256": "8dff4d6bee6144e744a19d1985272996fe12de43ffb7b2739c3583e79ff0cc43"
+  },
+  "external/rarlab.winrar.png": {
+   "cell": 159,
+   "sha256": "a3f6855688d2333406afeaa1b0447859e42bb3aa52327ad8203cff10b1776364"
+  },
+  "external/realvnc.vncserver.png": {
+   "cell": 160,
+   "sha256": "cff9c0f4e70c3340cd53192956078e0784ece49cb9ff0a1f993e2b0200371fef"
+  },
+  "external/realvnc.vncviewer.png": {
+   "cell": 161,
+   "sha256": "e122fb334b334f73c8520831059deb12c96db056543c3e770a98fe88fc20acd7"
+  },
+  "external/rem0o.fancontrol.png": {
+   "cell": 162,
+   "sha256": "05a677d28f8bf20bd9d1dd29a39150a6b1c4a4dfc5e3b38310d64ad98e83b5ea"
+  },
+  "external/revouninstaller.revouninstaller.png": {
+   "cell": 163,
+   "sha256": "45d668f3e48a76d103539cbc792f1a5e88279384e84152f1fd5e314167197577"
+  },
+  "external/rocksdanister.livelywallpaper.png": {
+   "cell": 164,
+   "sha256": "6f3441f0e4651047bee9e8e83337d36110dc0c70502924cc4de7c3be2337c268"
+  },
+  "external/rockstargames.launcher.png": {
+   "cell": 165,
+   "sha256": "4439efb03b4cca3f35fd68ae1933cc36d0062848e470ada32a59d3030b83225b"
+  },
+  "external/rufus.rufus.png": {
+   "cell": 166,
+   "sha256": "22364397289794b2d1aa42c9fdf0fe84dba9514f3c85b910160ec78ef2837e5e"
+  },
+  "external/rustdesk.png": {
+   "cell": 167,
+   "sha256": "4718d4bce435f1630a532bbb116ccc255b0f2bbb74ce812d214d89ad06edc0c6"
+  },
+  "external/rustdesk.rustdesk.png": {
+   "cell": 168,
+   "sha256": "4718d4bce435f1630a532bbb116ccc255b0f2bbb74ce812d214d89ad06edc0c6"
+  },
+  "external/samsung-magician.png": {
+   "cell": 169,
+   "sha256": "90952c091b9afa46530db416178b85716336984a46102a0c564aefb10ad49c4b"
+  },
+  "external/sandisk.dashboard.png": {
+   "cell": 170,
+   "sha256": "42d2ec13cd626310c73f27b09335b698b2e4a4312482162bcc0f0dfc5be06db5"
+  },
+  "external/sharex.sharex.png": {
+   "cell": 171,
+   "sha256": "9564ec1351004a77d0d496b1580082ad6778d3ee1da43e7779a7baaeebfdaff8"
+  },
+  "external/smplayer.smplayer.png": {
+   "cell": 172,
+   "sha256": "28bfff7f619d65b4398afe1a8785fba0a17fe4983426f7f11db3dce68b2eaed6"
+  },
+  "external/sniffnet.png": {
+   "cell": 173,
+   "sha256": "6924809e9b937b0d99e7554a82d8c2cd11b5c55d87744d0b0d66abe0d5ff7948"
+  },
+  "external/spotify.spotify.png": {
+   "cell": 174,
+   "sha256": "42da1d2a44b9ef1ddcb29d35af801ea23b73c85cc1ed8b867f8b773709681d2f"
+  },
+  "external/startisback.startallback.png": {
+   "cell": 175,
+   "sha256": "6fb48402c4ff92a3865a9ec58c8ce65e53fa18fd82f17544beae5bbe155b3612"
+  },
+  "external/startisback.startisback.png": {
+   "cell": 176,
+   "sha256": "e6c504ab77057d9e0bea40b6a50083a4ed1a119e02a913a485ab3eb592a98f53"
+  },
+  "external/streamlabs-obs.png": {
+   "cell": 177,
+   "sha256": "258bcb97fb00caf7ca7519f38a4678311eba87d1bb4a1ad3f65932f84811f728"
+  },
+  "external/sumatrapdf.sumatrapdf.png": {
+   "cell": 178,
+   "sha256": "25872a19b7be2fe308c03778b632197d814bb277e025ed74c78038291f6b14fb"
+  },
+  "external/taiizor.sucrosewallpaperengine.png": {
+   "cell": 179,
+   "sha256": "6500570f581d2f31da0207139629b49fbd0644e4c2758ff336d738da42e26e51"
+  },
+  "external/teamviewer.teamviewer.png": {
+   "cell": 180,
+   "sha256": "2915e0e69b5cef9c332ba765f109bdecf3000a4ac35b9fafeb2124cfcb93f350"
+  },
+  "external/telegram.telegramdesktop.png": {
+   "cell": 181,
+   "sha256": "5a8a034fb5359e2f76dd98e7077030082408943b3ea8bf652136427a59635d30"
+  },
+  "external/teleguard.png": {
+   "cell": 182,
+   "sha256": "7e43ae6db6cee3fcc0d1ea4e0fc413cf5ae0c7a1469e443d9db11538b9671ce1"
+  },
+  "external/tgrmnsoftware.bulkrenameutility.png": {
+   "cell": 183,
+   "sha256": "93a56cb653325a4ed0dc6ecc02c6ba6ab9b3e6eec82db7c9ba4e9fd63f93a347"
+  },
+  "external/thebrowsercompany.arc.png": {
+   "cell": 184,
+   "sha256": "5796f4d7350d6dc7ccb0b04d5ea868423b688ddd69727c52d1bccba0b18c7b28"
+  },
+  "external/thedocumentfoundation.libreoffice.png": {
+   "cell": 185,
+   "sha256": "a1eb7827bc6d79e0b84848d2a72d1765323d2dfab21093b3318f8de7c1a26697"
+  },
+  "external/tonec.internetdownloadmanager.png": {
+   "cell": 186,
+   "sha256": "19f3ede9006b4fe90b50b31abb2943183c5623f8c8ec8b8642ae0e77cb63ecf8"
+  },
+  "external/torproject.torbrowser.png": {
+   "cell": 187,
+   "sha256": "1e89283277b68f5c5dd60ac4d59b11ebbee7cbd33e4335df2f94afa74ba7809c"
+  },
+  "external/ubisoft.connect.png": {
+   "cell": 188,
+   "sha256": "f5fc42ea32f0fe66b4c3058a47e01ad7c1ed555adc1c6c494a77f43f29a204fb"
+  },
+  "external/valinet.explorerpatcher.png": {
+   "cell": 189,
+   "sha256": "d44e7b5b27341b7450f8a23eb6eb0c562c6bcfed2f6958d29caacdfb4ef8473b"
+  },
+  "external/valve.steam.png": {
+   "cell": 190,
+   "sha256": "ca9f204477619b7d930fa251de54512734791f90e6ad5f45767337ae75d55b50"
+  },
+  "external/ventismedia.mediamonkey.5.png": {
+   "cell": 191,
+   "sha256": "209548c5322acb9bac03d3566c2e9c8cfee69d8da873f641c057b3d7937dff51"
+  },
+  "external/ventoy.ventoy.png": {
+   "cell": 192,
+   "sha256": "03ca4d8b90929fae145b60789eb497a1d3e4e02c1bd9d580141097da1359ee57"
+  },
+  "external/videolan.vlc.png": {
+   "cell": 193,
+   "sha256": "6d9c42a5788efb69bb7c3b71af211e01097f15b4afa569d3ad9f28240533f244"
+  },
+  "external/vivaldi.vivaldi.png": {
+   "cell": 194,
+   "sha256": "30db88d1b9cd5faeb8fd02a2a475925a2103df0d8c0c4061fbeb3ccaf3909ec0"
+  },
+  "external/voidtools.everything.png": {
+   "cell": 195,
+   "sha256": "400afb92b9c7be1fda0d07f77b831ba9b1778d9ddb6580b01d0d61b0de920db7"
+  },
+  "external/waterfox.waterfox.png": {
+   "cell": 196,
+   "sha256": "c6a51c4d08fee14a7040567eebf08fbab408ea3bdf61d3ef0b22d45451e05665"
+  },
+  "external/whatsapp.png": {
+   "cell": 197,
+   "sha256": "def8c17d8cf9e04b4819eb7b58852417c44bb06c337b3430593b019a4e537146"
+  },
+  "external/windirstat.windirstat.png": {
+   "cell": 198,
+   "sha256": "ba4ded6b2e250685a408e0d0eba3c2a775b6975cdba0d88d18a415163bc9b5e9"
+  },
+  "external/winmerge.winmerge.png": {
+   "cell": 199,
+   "sha256": "ce9c31e74a8edd0acc573968aba51ebaba3052e9343cb46dcaa1769d7f148f3b"
+  },
+  "external/winscp.winscp.png": {
+   "cell": 200,
+   "sha256": "11a3a5caba67ca5a63d819cf882d99b548b7d0aeddd3ded387af8cbef24a3b34"
+  },
+  "external/winstep.nexus.png": {
+   "cell": 201,
+   "sha256": "c27beff32ad6de68181c18cf222e03912ee683de75873548544e914dae110f4a"
+  },
+  "external/wisecleaner.wisediskcleaner.png": {
+   "cell": 202,
+   "sha256": "aaa97e9613006ba332951c2883356182400c4b068648b3ed0ea1fd99cb40ac1b"
+  },
+  "external/wisecleaner.wiseregistrycleaner.png": {
+   "cell": 203,
+   "sha256": "e66cf9b63eb8eb5fcbbdb4f9749a77d1f2d4012ed9a316a29f8751ec40e56318"
+  },
+  "external/wssolinfor.crystaldiskinfo.png": {
+   "cell": 204,
+   "sha256": "2c115835b54ae19b18677b53547d1b9c88462db3178a44b9f4009832ce4db036"
+  },
+  "external/xnsoft.xnview.classic.png": {
+   "cell": 205,
+   "sha256": "56cdffebf266d99ca0cfc6089237b507e4b6a9b0756d0b79d5b27f72ebf6d38b"
+  },
+  "external/xnsoft.xnviewmp.png": {
+   "cell": 206,
+   "sha256": "cbdf53c39e43177f6986761e5ce4a28c82b44db58f98d8bab5eb5d91f37acafe"
+  },
+  "external/zen-team.zen-browser.png": {
+   "cell": 207,
+   "sha256": "518278cad07b851e0725b30fb1bcf420f5d49962aead4c833d232d82eb39b83c"
+  },
+  "external/zoom.zoom.png": {
+   "cell": 208,
+   "sha256": "4c1dd4dc46d1b7c6aee2f25d8977733670f80920180c220ac04440958120ceb0"
+  },
+  "windows/app.stepsrecorder.png": {
+   "cell": 209,
+   "sha256": "e5746dc796f57e3dcdbf84292b0df874db0274eb8a006b447de482d36b3b9dfd"
+  },
+  "windows/app.support.quickassist.png": {
+   "cell": 210,
+   "sha256": "9bfa6d72d8b61d97d038d840e5d15cc267c97a0f6bdcee8f5640b7552061abbe"
+  },
+  "windows/browser.internetexplorer.png": {
+   "cell": 211,
+   "sha256": "762257498015e0ad634be6387a3f750cf5fc7375317078a9cb297641510fdda9"
+  },
+  "windows/clipchamp.clipchamp.png": {
+   "cell": 212,
+   "sha256": "4ec96d8beb24ed0cdddfa030a10e0fd9d508da5b0898f0d30eac93be1a22f838"
+  },
+  "windows/containers-disposableclientvm.png": {
+   "cell": 213,
+   "sha256": "d1730b62ce81cb984303555bcbd9e26c4b244b744f606d0fedb23ba264bc3696"
+  },
+  "windows/media.windowsmediaplayer.png": {
+   "cell": 214,
+   "sha256": "6d59e7ef592908c16867b75323b22a7e5f4a11891ca806d4b7e7a69584e3f82c"
+  },
+  "windows/microsoft-hyper-v-all.png": {
+   "cell": 215,
+   "sha256": "ac28e3690ee99b6a4f69c8e5b866f17aff1aaf0879b0ec085ca2571b5e13ebb0"
+  },
+  "windows/microsoft-windows-subsystem-linux.png": {
+   "cell": 216,
+   "sha256": "62d017d0212dacb6a678703fae913d994969681d2e2d2bfd58445b33fa8db65c"
+  },
+  "windows/microsoft.549981c3f5f10.png": {
+   "cell": 217,
+   "sha256": "d6e4a082578da677c618abbf2cc43225723462e7389c3125de9c1d5e2756bde1"
+  },
+  "windows/microsoft.bingnews.png": {
+   "cell": 218,
+   "sha256": "9a6fdd7c7add931e955cb52a6a5a9fd1776f3b79b8e12d3e09235ae8a7789857"
+  },
+  "windows/microsoft.bingsearch.png": {
+   "cell": 219,
+   "sha256": "2fa23260216da4911fe674caf6f92429cbf400ecb97e939f676775f165f059c5"
+  },
+  "windows/microsoft.bingweather.png": {
+   "cell": 220,
+   "sha256": "f2af31c75a59351f608d3a7fbcec48693c9f48845dd197d6b6d0826b0b3223d2"
+  },
+  "windows/microsoft.copilot.png": {
+   "cell": 221,
+   "sha256": "a3aa69e8c7c3b022d7a8e8b62392a1710d70c040b4d05c608e9b8abe3f8516f8"
+  },
+  "windows/microsoft.desktopappinstaller.png": {
+   "cell": 222,
+   "sha256": "b053d0ce7044b45642f22e4173be0e835a5c63f6ad44f6817ffa9bd9ef2f2f6f"
+  },
+  "windows/microsoft.edge.gameassist.png": {
+   "cell": 223,
+   "sha256": "3c52891b0d26747ede679c2c310aeb075b8b605092bcee42b39ec4acb2645a04"
+  },
+  "windows/microsoft.gamingapp.png": {
+   "cell": 224,
+   "sha256": "8dedb628009bcc433edfd355bbf1f5f131b58db6744293879430c50f7bddae2d"
+  },
+  "windows/microsoft.gethelp.png": {
+   "cell": 225,
+   "sha256": "c1dbf8c1a77c4030606cfcecf652413d26e55601b20e08a567c89f7035706f8a"
+  },
+  "windows/microsoft.getstarted.png": {
+   "cell": 226,
+   "sha256": "199e0d2ebc361a831f195cca3cb0681afe7135618c71b5fc7b210c11f7826cbb"
+  },
+  "windows/microsoft.microsoft3dviewer.png": {
+   "cell": 227,
+   "sha256": "8c17a3d5285682c567a42245844af0edde19fe83f7b34e2ec834fff1162f11a4"
+  },
+  "windows/microsoft.microsoftedge.stable.png": {
+   "cell": 228,
+   "sha256": "708bf26fdcfca7e44b9e2fbf4b40a5c7d58a2f889f2bded07ac29c8b43fae095"
+  },
+  "windows/microsoft.microsoftofficehub.png": {
+   "cell": 229,
+   "sha256": "edb16d7b16b9722a13c587762b9e7cfde7204fe48bd4452804528d22d25954cd"
+  },
+  "windows/microsoft.microsoftsolitairecollection.png": {
+   "cell": 230,
+   "sha256": "9c4115212af85d2e3983f5591789996831fe0e763d29a2ca4e342acdf30619d1"
+  },
+  "windows/microsoft.microsoftstickynotes.png": {
+   "cell": 231,
+   "sha256": "8ab4256ce0f2b45831e0b3eaada0e0be5d835b9b7dddb1888016774f8499ccb3"
+  },
+  "windows/microsoft.mixedreality.portal.png": {
+   "cell": 232,
+   "sha256": "637206e9765e4902dd5d6d048b00f0c6def86a33a9380c5767b7de523ff03b4b"
+  },
+  "windows/microsoft.mspaint.png": {
+   "cell": 233,
+   "sha256": "0bd1ef9bc81f0e5a39a31bfd34aa5e91d4618be7d0b6971c85fe228718e57ce6"
+  },
+  "windows/microsoft.office.onenote.png": {
+   "cell": 234,
+   "sha256": "3117bc6114dca68612a806dff59cb300d605899a1dc08e8c66e672522449f510"
+  },
+  "windows/microsoft.onedrivesync.png": {
+   "cell": 235,
+   "sha256": "88ef2669891eb1635ede838e22d24d7c0fd08aeabf6129fd442b2203fd474eb8"
+  },
+  "windows/microsoft.outlookforwindows.png": {
+   "cell": 236,
+   "sha256": "aca0b20e767cdad523e49a072c01dea31db7196bce85382c2a09c1a9e73a8d40"
+  },
+  "windows/microsoft.paint.png": {
+   "cell": 237,
+   "sha256": "b5b07e8082ba96e861d58093c1cf7d5f67c1d332c0ab9dfea2d61dc2fa8b4e45"
+  },
+  "windows/microsoft.people.png": {
+   "cell": 238,
+   "sha256": "e8f9297952bf51ac51bc237155b2c6c7033ac1e96997d6e5964744089e878cfa"
+  },
+  "windows/microsoft.powerautomatedesktop.png": {
+   "cell": 239,
+   "sha256": "816d96e7ff0a318fae2aa45f94fb896da76ce9a48ef97875c99ff7e71325544e"
+  },
+  "windows/microsoft.screensketch.png": {
+   "cell": 240,
+   "sha256": "33c416f01c3e0611f125501550e5a785991c3e839056c92592fe751b068e9c7e"
+  },
+  "windows/microsoft.skypeapp.png": {
+   "cell": 241,
+   "sha256": "3d1e7774b1fe10924d640769266026c3f592e47854952f3c3cce2633a19b4933"
+  },
+  "windows/microsoft.todos.png": {
+   "cell": 242,
+   "sha256": "1bfe246bca72535016875615885595513ff8d66f51279f33493bbea1cf31119b"
+  },
+  "windows/microsoft.windows.devhome.png": {
+   "cell": 243,
+   "sha256": "b252dbe6d19198f856df5051a8a219f192b1cfb333fdf2d9a328fa25e20a3aea"
+  },
+  "windows/microsoft.windows.mspaint.png": {
+   "cell": 244,
+   "sha256": "c6044d25a08d91ed90cc06c37803a23d394a9375fd3d4e300abf26ceaaed384c"
+  },
+  "windows/microsoft.windows.notepad.png": {
+   "cell": 245,
+   "sha256": "39daaeba5de088fe4caa0164772499f4fd84d6c4e382c9a6d17208c7ac725fcf"
+  },
+  "windows/microsoft.windows.photos.png": {
+   "cell": 246,
+   "sha256": "1ea7718b23f015c2df322ea709785cf3465842eb0330ce794c05235a3b3904b5"
+  },
+  "windows/microsoft.windows.powershell.ise.png": {
+   "cell": 247,
+   "sha256": "d6600d1c9129d02bdfd0a044fa3dbb2693a49888dc92b93af3aa37b527d3b381"
+  },
+  "windows/microsoft.windows.wordpad.png": {
+   "cell": 248,
+   "sha256": "bbfd19e689a3849bda78f150eb0ea096628ce74a3aae9b2df09f375c232a2e52"
+  },
+  "windows/microsoft.windowsalarms.png": {
+   "cell": 249,
+   "sha256": "1526d338d7fcb5b72fbee1c7e936660d5f3b68ae67822cb90c4cf5f548f4fcc1"
+  },
+  "windows/microsoft.windowscalculator.png": {
+   "cell": 250,
+   "sha256": "e5007ae36f3399a8a57199749d60ef2fe0475ac0b4daa553f31f32c66f5b163e"
+  },
+  "windows/microsoft.windowscamera.png": {
+   "cell": 251,
+   "sha256": "35a4d43cf71d5b3074cb89acce13e4500bc0e268257db31b08980c869f07e548"
+  },
+  "windows/microsoft.windowscommunicationsapps.png": {
+   "cell": 252,
+   "sha256": "9aa1158f133eeeae7d3fb9760f5fc50a178173a783ef0e26c512780537238b6b"
+  },
+  "windows/microsoft.windowsfeedbackhub.png": {
+   "cell": 253,
+   "sha256": "bed0b268c99dcc9886482b2e8fdeb76c581744a60d6c4b47dea7df16809faf0c"
+  },
+  "windows/microsoft.windowsmaps.png": {
+   "cell": 254,
+   "sha256": "954c9ef09a3e548b2fd9d489e4f1727ecb0b0a750ec14853409b41852cecb541"
+  },
+  "windows/microsoft.windowsnotepad.png": {
+   "cell": 255,
+   "sha256": "175336941f2e82f929a1e05f1a8eaa53b33624f2f883d10c7d7b82c1b0283f55"
+  },
+  "windows/microsoft.windowssoundrecorder.png": {
+   "cell": 256,
+   "sha256": "7f3b2c4474b7459b1fad95e9ad23dd212d9a9c2e794837926b7037fdac42d979"
+  },
+  "windows/microsoft.windowsstore.png": {
+   "cell": 257,
+   "sha256": "8864fd8b35738388fe0b766fa150da1022ac75f443484a79d4194b93bc4719b8"
+  },
+  "windows/microsoft.windowsterminal.png": {
+   "cell": 258,
+   "sha256": "bd7d0978e61108571b0505d1706c972fa0c3143f4b6ef7013f7f63e8a5b36c1e"
+  },
+  "windows/microsoft.xbox.tcui.png": {
+   "cell": 259,
+   "sha256": "f6fd95aa1a4cf2e6ba744d713b4fbe3820f2d8079c0043b60f28831b8f6847b6"
+  },
+  "windows/microsoft.xboxgameoverlay.png": {
+   "cell": 260,
+   "sha256": "a0e059a560a275779b8e9e104cc97f450809e27a73aa994304d13d7eb1c9b121"
+  },
+  "windows/microsoft.xboxgamingoverlay.png": {
+   "cell": 261,
+   "sha256": "56df3def6886350e7f406f8b963f2c432a60c14c7468a1efd6b6f190146922ab"
+  },
+  "windows/microsoft.xboxidentityprovider.png": {
+   "cell": 262,
+   "sha256": "f6fd95aa1a4cf2e6ba744d713b4fbe3820f2d8079c0043b60f28831b8f6847b6"
+  },
+  "windows/microsoft.yourphone.png": {
+   "cell": 263,
+   "sha256": "4433857fe926ea087b1864a6e6af749ab6a99cd76de106176c22dd242cb56c69"
+  },
+  "windows/microsoft.zunemusic.png": {
+   "cell": 264,
+   "sha256": "528579636ca86165c7c4f3c9ac4c0c7c9f6e58cfc2e5327710549fb37cfe0bd9"
+  },
+  "windows/microsoft.zunevideo.png": {
+   "cell": 265,
+   "sha256": "0933fceef4be1da070ccf8d6b9e35f1349bbefe712f64760271971a7af230afb"
+  },
+  "windows/microsoftcorporationii.microsoftfamily.png": {
+   "cell": 266,
+   "sha256": "0b4f51c4a8e7435171cf2473a9be015c7300c0cd8665232bd07e30b300844960"
+  },
+  "windows/microsoftcorporationii.quickassist.png": {
+   "cell": 267,
+   "sha256": "b17f81baeb9d47beb8db034cd7bfaa093ebad3aa213f7808580d88535685b7a4"
+  },
+  "windows/msteams.png": {
+   "cell": 268,
+   "sha256": "5e8d2bbde9ee6c58265e4c62b837855a8e3b634d8498bc0c539e82195e584ea0"
+  },
+  "windows/recall.png": {
+   "cell": 269,
+   "sha256": "97d0afa0c26e1263dc5b60518c8e27c37dc2c28709c1c130919c3ec727186b71"
+  }
+ },
+ "rows": 16,
+ "source": "memstechtips/package-icons@073e44564dd6222e9d1716f623fc3177bda9e534"
+}

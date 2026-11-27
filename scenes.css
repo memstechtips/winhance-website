@@ -1,0 +1,466 @@
+/* "What's in the app": each area pins while a scene of Windows turns from how it ships into how Winhance
+   leaves it. scenes.js sets --p (0 = as Windows ships, 1 = after Winhance) on the scene and --e (that
+   element's own eased progress) on each moving part; everything here is drawn from those two numbers, so
+   scrolling back plays it in reverse. Scenes are laid out at 800 by 640 and scaled to their column.
+   The Windows parts wear the app window's face (--winui-font-family) and Windows 11's dark palette. */
+
+/* ---- Chapters ---- */
+.area-list { list-style: none; margin: 0; padding: 0; }
+.area { border-top: 1px solid var(--line); }
+.area-stage { display: grid; grid-template-columns: minmax(260px, 340px) minmax(0, 1fr); gap: clamp(32px, 4vw, 64px); align-items: center; padding: 48px 0; }
+.area-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 28px; }
+.area-copy .area-icon { width: 40px; height: 40px; margin: 0 0 4px; }
+.area-copy h3 { font-size: clamp(28px, 3vw, 40px); font-weight: 750; font-stretch: 85%; letter-spacing: -.02em; line-height: 1.1; }
+.area-copy p { color: var(--ink-2); max-width: 44ch; }
+.area-copy .area-count { color: var(--ink-3); }
+.area-copy .area-open { margin-top: 8px; }
+
+/* Pinned, the chapters run wider than the page's column so the scene can be big. */
+.areas.is-pinned .area-list { width: min(1360px, calc(100vw - 2 * var(--gutter) - 16px)); margin-left: 50%; translate: -50% 0; }
+/* Pinned: each chapter is taller than the screen and its stage sticks below the top bar while you scroll it. */
+.areas.is-pinned .area { height: 260vh; border-top: 0; }
+.areas.is-pinned .area-stage { position: sticky; top: 64px; height: calc(100vh - 64px); padding: 24px 0; }
+/* As tall as the screen allows below the top bar, with room left for the rail. */
+.areas.is-pinned .scene { width: min(100%, calc((100vh - 200px) * 1.25)); justify-self: center; }
+/* The words fade, not the panel, so the flight line stays hidden behind it. */
+.areas.is-pinned .area-copy { transform: translateY(calc((1 - var(--in, 1)) * 24px)); }
+.areas.is-pinned .area-copy > * { opacity: calc(.35 + .65 * var(--in, 1)); }
+
+@media (max-width: 1080px) {
+    .area-stage { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 40px 0 56px; }
+}
+
+/* ---- The scene and its before/after rail ---- */
+.scene { margin: 0; --p: 0; }
+.scene-fit {
+    position: relative; width: 100%; aspect-ratio: 5 / 4; overflow: hidden; border-radius: 14px;
+    background:
+        radial-gradient(120% 90% at 85% 110%, var(--desk-3) 0%, transparent 45%),
+        radial-gradient(90% 80% at 10% 100%, var(--desk-2) 0%, transparent 55%),
+        linear-gradient(160deg, var(--desk-0), var(--desk-1));
+    box-shadow: 0 30px 80px -30px rgba(3, 10, 22, .65), 0 0 0 1px color-mix(in srgb, var(--line) 70%, transparent);
+}
+.scene-canvas {
+    position: absolute; left: 0; top: 0; width: 800px; height: 640px; transform: scale(var(--s, .5)); transform-origin: 0 0;
+    font-family: var(--winui-font-family); color: #fff; font-size: 14px; line-height: 1.35; letter-spacing: 0;
+}
+.scene-canvas .i { width: 16px; height: 16px; flex: none; }
+
+.scene-rail { display: grid; grid-template-columns: auto minmax(40px, 1fr) auto; align-items: center; gap: 16px; margin-top: 14px; padding: 12px 18px; font-size: 14px; }
+.scene-end { display: flex; flex-direction: column; color: var(--ink-3); line-height: 1.3; transition: color .3s; }
+.scene-end b { color: var(--ink-2); font-weight: 650; transition: color .3s; }
+.scene-end.is-after { text-align: right; align-items: flex-end; }
+.scene-end.is-lit, .scene-end.is-lit b { color: var(--ink); }
+.scene-end.is-after.is-lit b { color: var(--good); }
+.scene-track { position: relative; height: 4px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.scene-fill { position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--good)); transform-origin: 0 50%; transform: scaleX(var(--p)); }
+@media (max-width: 560px) {
+    .scene-rail { grid-template-columns: 1fr 1fr; row-gap: 10px; font-size: 13px; }
+    .scene-track { grid-column: 1 / -1; grid-row: 2; }
+}
+/* With reduced motion nothing scrubs: the two ends switch the scene between its states. */
+.scene.is-still .scene-end { cursor: pointer; }
+.scene.is-still .scene-end:hover b { text-decoration: underline; text-underline-offset: 3px; }
+
+.sx-skel { display: block; height: 7px; border-radius: 4px; background: rgba(255, 255, 255, .22); }
+
+/* ---- Software & Apps: a Start menu full of what ships, emptied; then the programs on offer ---- */
+/* Windows 11 26H2's Start menu, drawn from screenshots of a fresh install: a search band, then one scrolling page of
+   Pinned (eight across), Recommended and All with its View menu, and the account and power buttons at the foot.
+   Colours are variables so the Customize desktop can turn it from light to dark. */
+.sm {
+    --sm-fg: #fff; --sm-fg2: rgba(255, 255, 255, .72); --sm-line: rgba(255, 255, 255, .08); --sm-field: rgba(255, 255, 255, .06);
+    --sm-tile: rgba(255, 255, 255, .06); --col: 72px;
+    position: absolute; display: flex; flex-direction: column; overflow: hidden; color: var(--sm-fg); border-radius: 10px;
+    background: linear-gradient(165deg, rgba(34, 46, 52, .96), rgba(36, 38, 40, .96) 55%, rgba(50, 42, 33, .96));
+    border: 1px solid rgba(255, 255, 255, .1); box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+}
+.sm-search {
+    flex: none; display: flex; align-items: center; gap: 10px; height: 30px; margin: 12px 14px; padding: 0 14px; border-radius: 15px;
+    background: var(--sm-field); border: 1px solid var(--sm-line); color: var(--sm-fg2); font-size: 12px;
+}
+.sm-search .i { width: 14px; height: 14px; }
+.sm-body { position: relative; flex: 1 1 auto; overflow: hidden; border-top: 1px solid var(--sm-line); }
+.sm-scroll { position: relative; padding: 0 0 12px; }
+.sm-h { display: flex; align-items: center; justify-content: space-between; height: 22px; padding: 0 44px 0 30px; font-size: 13px; font-weight: 600; }
+.sm-view { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 400; }
+.sm-view .wd-glyph { width: 10px; height: 10px; }
+.sm-app { display: flex; flex-direction: column; align-items: center; gap: 7px; width: var(--col); padding-top: 6px; }
+.sm-icon { position: relative; width: 30px; height: 30px; display: grid; place-items: center; }
+.sm-icon .wd-glyph, .sm-icon .wd-app-img, .sm-icon .i { width: 30px; height: 30px; }
+.sm-icon .sm-folder { color: #f4bf3a; }
+.sm-name { width: calc(var(--col) - 4px); font-size: 10.5px; line-height: 1.25; text-align: center; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.sm-reco { display: grid; grid-template-columns: 30px 1fr; gap: 0 12px; align-items: center; padding: 10px 30px 0; font-size: 11.5px; }
+.sm-reco > .sm-icon { grid-row: span 2; }
+.sm-reco > span:last-child { color: var(--sm-fg2); }
+.sm-letter { padding-left: 30px; font-size: 12px; height: 28px; display: flex; align-items: center; }
+.sm-foot {
+    flex: none; display: flex; align-items: center; justify-content: space-between; height: 50px; padding: 0 30px;
+    border-top: 1px solid var(--sm-line); background: rgba(0, 0, 0, .14); color: var(--sm-fg);
+}
+.sm-foot .i { width: 16px; height: 16px; }
+.sm-user { display: flex; align-items: center; gap: 10px; }
+.sm-user .i { width: 26px; height: 26px; }
+/* Placed by scenes.js: --x0/--y0 as Windows ships, --x1/--y1 once the removed apps are gone, moved by the menu's --m. */
+.sm-at { position: absolute; left: 0; top: 0; transform: translate(calc((var(--x0) + (var(--x1) - var(--x0)) * var(--m, 0)) * 1px), calc((var(--y0) + (var(--y1) - var(--y0)) * var(--m, 0)) * 1px)); }
+.sm-at.is-gone { opacity: calc(1 - var(--e, 0)); transform: translate(calc(var(--x0) * 1px), calc(var(--y0) * 1px + var(--e, 0) * 8px)) scale(calc(1 - var(--e, 0) * .4)); filter: grayscale(var(--e, 0)); }
+.sm-h.sm-at, .sm-letter.sm-at, .sm-reco.sm-at { right: 0; }
+
+/* Software & Apps: the menu as Windows ships it, All in Grid view; it steps back once the removals are done. */
+.sx-start {
+    left: 80px; top: 20px; width: 640px; height: 600px;
+    transform: translateX(calc(var(--e, 0) * -40px)) scale(calc(1 - var(--e, 0) * .06)); filter: brightness(calc(1 - var(--e, 0) * .45));
+}
+.sx-tile-icon { position: relative; width: 36px; height: 36px; }
+.sx-tile-icon .wd-glyph { width: 36px; height: 36px; }
+/* The recommended config's programs, as the app lists them: a choice, with nothing ticked until you tick it. */
+.sx-picks {
+    position: absolute; left: 330px; top: 52px; width: 440px; display: flex; flex-direction: column; gap: 14px; padding: 20px 20px 18px;
+    background: var(--wd-mica); border: 1px solid var(--wd-stroke); border-radius: 10px; box-shadow: 0 30px 70px rgba(0, 0, 0, .55);
+    opacity: var(--e, 0); transform: translateX(calc((1 - var(--e, 0)) * 60px));
+}
+.sx-picks-head { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 12px; align-items: center; }
+.sx-picks-head .i { width: 32px; height: 32px; }
+.sx-picks-head strong { display: block; font-size: 17px; font-weight: 600; line-height: 1.3; }
+.sx-picks-head span span { display: block; font-size: 12px; line-height: 1.4; color: var(--wd-text-2); }
+.sx-picks-list { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 8px; padding: 10px 6px; border-radius: 8px; background: var(--wd-card); border: 1px solid var(--wd-stroke); }
+.sx-picks-list .wd-compact-row { font-size: 13px; line-height: 20px; padding: 4px; opacity: var(--e, 0); transform: translateY(calc((1 - var(--e, 0)) * 8px)); }
+.sx-picks-list .wd-compact-name { max-width: 150px; }
+/* A tick is drawn from --t, so it can come and go with the scroll. */
+.sx-picks-list .wd-checkbox-box { background: color-mix(in srgb, var(--wd-accent) calc(var(--t, 0) * 100%), var(--wd-control-2)); border-color: color-mix(in srgb, var(--wd-accent) calc(var(--t, 0) * 100%), var(--wd-strong-stroke)); color: var(--wd-on-accent); }
+.sx-picks-list .wd-checkbox-box .wd-glyph { opacity: var(--t, 0); transform: scale(calc(.4 + var(--t, 0) * .6)); }
+.sx-picks-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--wd-text-2); }
+.sx-picks-btn {
+    display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 4px; font-size: 13px; white-space: nowrap;
+    background: color-mix(in srgb, var(--wd-accent) calc(var(--t, 0) * 100%), var(--wd-control)); color: color-mix(in srgb, var(--wd-on-accent) calc(var(--t, 0) * 100%), var(--wd-text-3));
+    border: 1px solid var(--wd-control-stroke);
+}
+.sx-picks-btn .i { width: 16px; height: 16px; }
+
+/* ---- Optimize: the Settings app, switches turned off one by one ---- */
+.sx-win {
+    position: absolute; left: 20px; top: 20px; width: 760px; height: 600px; overflow: hidden;
+    background: #202020; border: 1px solid rgba(255, 255, 255, .08); border-radius: 9px; box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+}
+.sx-titlebar { display: flex; align-items: center; gap: 12px; height: 36px; padding: 0 0 0 14px; font-size: 12px; color: rgba(255, 255, 255, .85); }
+.sx-titlebar .i { width: 14px; height: 14px; }
+.sx-caps { display: flex; margin-left: auto; }
+.sx-caps .i { width: 46px; height: 12px; padding: 0 17px; box-sizing: content-box; opacity: .85; }
+.sx-settings-body { display: grid; grid-template-columns: 220px minmax(0, 1fr); height: calc(100% - 36px); }
+.sx-snav { display: flex; flex-direction: column; gap: 2px; padding: 8px 8px 0 12px; font-size: 13px; color: rgba(255, 255, 255, .88); }
+.sx-snav > span { position: relative; display: flex; align-items: center; gap: 12px; height: 32px; padding: 0 10px; border-radius: 4px; white-space: nowrap; }
+.sx-snav > span.is-here { background: rgba(255, 255, 255, .07); }
+.sx-snav > span.is-here::before { content: ''; position: absolute; left: 0; top: 9px; bottom: 9px; width: 3px; border-radius: 2px; background: #60cdff; }
+.sx-suser { display: flex; align-items: center; gap: 10px; padding: 4px 4px 14px; }
+.sx-suser .i { width: 40px; height: 40px; opacity: .9; }
+.sx-suser > span { display: flex; flex-direction: column; gap: 6px; }
+.sx-sfind { display: flex; align-items: center; justify-content: space-between; height: 30px; margin: 0 0 10px; padding: 0 10px; border-radius: 4px; background: rgba(255, 255, 255, .06); border-bottom: 1px solid rgba(255, 255, 255, .4); color: rgba(255, 255, 255, .55); font-size: 12px; }
+/* Three pages, one after another: each slides in (--in) and out (--out) as its turn comes. */
+.sx-pages { position: relative; overflow: hidden; }
+.sx-spage {
+    position: absolute; inset: 0; padding: 6px 22px 0 14px;
+    opacity: calc(var(--in, 0) * (1 - var(--out, 0))); transform: translateY(calc((1 - var(--in, 0)) * 28px - var(--out, 0) * 28px));
+}
+.sx-spage:first-child { --in: 1; }
+.sx-crumb { display: flex; align-items: center; gap: 10px; font-family: var(--winui-font-family-display); font-size: 28px; font-weight: 600; margin: 0 0 18px; }
+.sx-crumb span { color: rgba(255, 255, 255, .6); }
+.sx-crumb .i { width: 16px; height: 16px; color: rgba(255, 255, 255, .6); }
+.sx-rows { display: flex; flex-direction: column; gap: 4px; }
+.sx-row {
+    --on: calc(1 - var(--e, 0));
+    display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; align-items: center; gap: 14px; min-height: 66px; padding: 10px 16px;
+    background: color-mix(in srgb, #2b2b2b, var(--good) calc(4 * var(--e, 0) * (1 - var(--e, 0)) * 22%));
+    border: 1px solid #1d1d1d; border-radius: 5px;
+}
+.sx-row .wd-glyph { width: 20px; height: 20px; color: rgba(255, 255, 255, .9); }
+.sx-row-text { min-width: 0; display: flex; flex-direction: column; }
+.sx-row-text b { font-weight: 400; font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx-row-text span { font-size: 12px; color: rgba(255, 255, 255, .62); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx-switch { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.sx-state { position: relative; width: 26px; text-align: right; }
+.sx-state > span { position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+.sx-state > span:first-child { opacity: calc(1 - var(--e, 0)); }
+.sx-state > span:last-child { opacity: var(--e, 0); }
+.sx-row.is-up { --on: var(--e, 0); }
+.sx-toggle {
+    position: relative; width: 40px; height: 20px; border-radius: 10px;
+    background: color-mix(in srgb, #60cdff calc(var(--on) * 100%), transparent);
+    border: 1px solid color-mix(in srgb, #60cdff calc(var(--on) * 100%), rgba(255, 255, 255, .62));
+}
+.sx-toggle::after {
+    content: ''; position: absolute; top: 50%; left: 4px; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%;
+    background: color-mix(in srgb, #000 calc(var(--on) * 100%), rgba(255, 255, 255, .8));
+    transform: translateX(calc(var(--on) * 20px));
+}
+/* A choice that isn't on or off: a drop-down whose value changes over. */
+.sx-drop {
+    position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 12px; align-items: center; gap: 10px; width: 190px; height: 32px; padding: 0 12px;
+    border-radius: 4px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .07); border-bottom-color: rgba(255, 255, 255, .2); font-size: 13px;
+}
+.sx-drop .wd-glyph { width: 12px; height: 12px; }
+.sx-drop > span { position: relative; height: 18px; }
+.sx-drop > span > span { position: absolute; left: 0; right: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx-drop > span > span:first-child { opacity: calc(1 - var(--e, 0)); transform: translateY(calc(var(--e, 0) * -8px)); }
+.sx-drop > span > span:last-child { opacity: var(--e, 0); transform: translateY(calc((1 - var(--e, 0)) * 8px)); }
+
+/* ---- Customize: a light desktop that goes dark, and a taskbar that clears and moves left ---- */
+.sx-desk { position: absolute; inset: 0; overflow: hidden; --dk: 0; --al: 0; }
+.sx-wall { position: absolute; inset: 0; }
+.sx-wall::before, .sx-wall::after { content: ''; position: absolute; inset: 0; }
+.sx-wall::before {
+    background:
+        radial-gradient(60% 75% at 50% 62%, #6fb7ff 0%, #2f7de1 32%, transparent 62%),
+        radial-gradient(90% 80% at 50% 100%, #9fd0ff, transparent 60%),
+        linear-gradient(180deg, #dbe9f8, #b9d4f1);
+}
+.sx-wall::after {
+    background:
+        radial-gradient(60% 75% at 50% 62%, #1f6fd1 0%, #0d3f8c 32%, transparent 62%),
+        radial-gradient(90% 80% at 50% 100%, #123d73, transparent 60%),
+        linear-gradient(180deg, #050b17, #0a1830);
+    opacity: var(--dk);
+}
+/* Customize: the same menu, opening (--open) from wherever the Start button now sits, light until dark mode lands. */
+.sx-menu {
+    --col: 60px; left: calc(150px - var(--al) * 142px); bottom: 56px; width: 540px; height: 552px;
+    --sm-fg: color-mix(in srgb, #fff calc(var(--dk) * 100%), #1b1b1b);
+    --sm-fg2: color-mix(in srgb, rgba(255, 255, 255, .72) calc(var(--dk) * 100%), rgba(0, 0, 0, .6));
+    --sm-line: color-mix(in srgb, rgba(255, 255, 255, .08) calc(var(--dk) * 100%), rgba(0, 0, 0, .08));
+    --sm-field: color-mix(in srgb, rgba(255, 255, 255, .06) calc(var(--dk) * 100%), rgba(255, 255, 255, .7));
+    --sm-tile: color-mix(in srgb, rgba(255, 255, 255, .06) calc(var(--dk) * 100%), rgba(0, 0, 0, .05));
+    background: color-mix(in srgb, rgba(36, 40, 44, .96) calc(var(--dk) * 100%), rgba(242, 245, 249, .95));
+    opacity: var(--open, 0); transform: translateY(calc((1 - var(--open, 0)) * 40px));
+}
+.sx-menu .sm-pins { display: grid; grid-template-columns: repeat(8, var(--col)); padding: 8px 0 0 24px; row-gap: 6px; }
+.sx-menu .sm-h { margin-top: 18px; padding-left: 26px; padding-right: 30px; }
+.sx-menu .sm-reco { padding-left: 26px; }
+.sx-menu .sm-reco-box { overflow: hidden; max-height: calc((1 - var(--e, 0)) * 90px); opacity: calc(1 - var(--e, 0)); }
+/* All: Category view hands over to List view (--e on the All block). */
+.sx-menu .sm-view > span { display: inline-grid; justify-items: end; }
+.sx-menu .sm-view > span > span { grid-area: 1 / 1; text-align: right; }
+.sx-menu .sm-view > span > span:first-child { opacity: calc(1 - var(--e, 0)); }
+.sx-menu .sm-view > span > span:last-child { opacity: var(--e, 0); }
+.sm-all { position: relative; margin-top: 10px; }
+.sm-cats { display: flex; gap: 22px; padding-left: 26px; opacity: calc(1 - var(--e, 0)); transform: translateY(calc(var(--e, 0) * -10px)); }
+.sm-cat { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 11px; }
+.sm-cat > span:first-child { display: grid; grid-template-columns: 1fr 1fr; place-items: center; width: 108px; height: 108px; padding: 12px; border-radius: 8px; background: var(--sm-tile); border: 1px solid var(--sm-line); }
+.sm-cat > span:first-child.is-one { grid-template-columns: 1fr; }
+.sm-cat .sm-icon, .sm-cat .sm-icon > * { width: 28px; height: 28px; }
+.sm-list { position: absolute; left: 0; right: 0; top: 0; opacity: var(--e, 0); transform: translateY(calc((1 - var(--e, 0)) * 12px)); }
+.sm-list .sm-letter { padding-left: 26px; }
+.sm-row { display: flex; align-items: center; gap: 14px; height: 36px; padding-left: 26px; font-size: 12px; }
+.sm-row .sm-icon, .sm-row .sm-icon > * { width: 24px; height: 24px; }
+.sx-desk .sx-skel { background: color-mix(in srgb, rgba(255, 255, 255, .22) calc(var(--dk) * 100%), rgba(0, 0, 0, .14)); }
+.sx-taskbar {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 48px; display: flex; align-items: center; padding: 0 8px;
+    background: color-mix(in srgb, rgba(28, 30, 36, .9) calc(var(--dk) * 100%), rgba(238, 242, 248, .88));
+    border-top: 1px solid color-mix(in srgb, rgba(255, 255, 255, .08) calc(var(--dk) * 100%), rgba(0, 0, 0, .06));
+    color: color-mix(in srgb, #fff calc(var(--dk) * 100%), #1b1b1b); backdrop-filter: blur(20px);
+}
+.sx-widget { position: absolute; left: 12px; top: 0; bottom: 0; display: flex; align-items: center; gap: 8px; opacity: calc(1 - var(--e, 0)); transform: translateY(calc(var(--e, 0) * 14px)); }
+.sx-widget .i { width: 24px; height: 24px; color: #f5b335; }
+.sx-tb-space { flex: 1 1 0; }
+.sx-tb-space[data-align] { flex-grow: calc(1 - var(--al)); }
+.sx-tb-apps { display: flex; align-items: center; gap: 2px; }
+.sx-tb-btn { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 5px; overflow: hidden; }
+.sx-tb-btn .i, .sx-tb-btn .sx-tile-icon { width: 22px; height: 22px; }
+.sx-tb-btn.is-start .i { color: #0a84ff; }
+.sx-tb-btn.is-folder .i { color: #f4bf3a; }
+.sx-tb-search {
+    display: flex; align-items: center; gap: 8px; width: 150px; height: 32px; margin: 0 4px; padding: 0 12px; border-radius: 16px; font-size: 12px; overflow: hidden; white-space: nowrap;
+    background: color-mix(in srgb, rgba(255, 255, 255, .08) calc(var(--dk) * 100%), rgba(255, 255, 255, .85));
+    color: color-mix(in srgb, rgba(255, 255, 255, .7) calc(var(--dk) * 100%), rgba(0, 0, 0, .6));
+}
+/* Whatever the recommended set switches off folds away in place, so the rest close up. */
+.sx-tb-apps [data-off], .sx-tb-pins > .is-gone { opacity: calc(1 - var(--e, 0)); transform: scale(calc(1 - var(--e, 0) * .6)); }
+.sx-tb-btn[data-off], .sx-tb-pins > .is-gone { width: calc((1 - var(--e, 0)) * 40px); }
+.sx-tb-search[data-off] { width: calc((1 - var(--e, 0)) * 150px); margin: 0 calc((1 - var(--e, 0)) * 4px); padding: 0 calc((1 - var(--e, 0)) * 12px); }
+.sx-tb-pins { display: flex; gap: 2px; }
+.sx-tray { position: absolute; right: 10px; top: 0; bottom: 0; display: flex; align-items: center; gap: 10px; }
+.sx-tray .i { width: 14px; height: 14px; }
+.sx-clock { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; margin-left: 4px; }
+/* What changed, one line per setting, in the app's own words. */
+.sx-changes { position: absolute; right: 12px; top: 16px; width: 228px; display: flex; flex-direction: column; gap: 6px; z-index: 1; }
+.sx-change {
+    display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 2px 10px; align-items: center; padding: 8px 12px; border-radius: 8px;
+    background: rgba(18, 22, 30, .78); border: 1px solid rgba(255, 255, 255, .1); backdrop-filter: blur(16px); box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+    opacity: var(--e, 0); transform: translateX(calc((1 - var(--e, 0)) * 24px));
+}
+.sx-change .wd-glyph { width: 18px; height: 18px; grid-row: span 2; }
+.sx-change b { font-weight: 600; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx-change span { font-size: 11px; color: rgba(255, 255, 255, .7); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx-change em { font-style: normal; color: #6ccb5f; }
+
+/* ---- Unattend: Windows Setup's screens, then the first-run screens after the restart, each answered by the file
+   and dealt away. Drawn from screenshots of a 25H2 install: Setup's purple backdrop and classic window, then the
+   light first-run card. --ph runs 0 to 1 as Setup hands over to the first run, --end as the desktop arrives. */
+.sx-oobe { position: absolute; inset: 0; --ph: 0; --end: 0; }
+.sx-pe-bg, .sx-ob-bg { position: absolute; inset: 0; }
+.sx-pe-bg { background: #170052; opacity: calc(1 - var(--ph)); }
+.sx-ob-bg {
+    background:
+        radial-gradient(60% 40% at 50% 0%, rgba(160, 196, 245, .55), transparent 70%),
+        radial-gradient(45% 50% at 0% 100%, rgba(120, 160, 230, .5), transparent 70%),
+        radial-gradient(45% 50% at 100% 100%, rgba(150, 175, 235, .45), transparent 70%),
+        #dfe9f3;
+    opacity: calc(var(--ph) * (1 - var(--end)));
+}
+.sx-phase {
+    position: absolute; left: 20px; top: 16px; padding: 4px 10px; border-radius: 12px; font-size: 11.5px; font-weight: 600;
+    background: rgba(0, 0, 0, .35); color: #fff;
+}
+.sx-phase[data-phase="pe"] { opacity: calc(1 - var(--ph)); }
+.sx-phase[data-phase="ob"] { opacity: calc(var(--ph) * (1 - var(--end))); background: rgba(0, 40, 90, .55); }
+.sx-deck { position: absolute; }
+.sx-deck.is-pe { left: 95px; top: 104px; width: 610px; height: 470px; }
+.sx-deck.is-ob { left: 40px; top: 72px; width: 720px; height: 520px; opacity: var(--ph); }
+.sx-q { position: absolute; inset: 0; overflow: hidden; transform-origin: 50% 0; color: #1b1b1b; }
+
+/* Setup's window: a light-blue frame, a white page, a big light heading, Back and Next at the foot. */
+.sx-pe { background: #fff; border: 1px solid #8fb0d3; box-shadow: 0 0 0 5px #b8d1ea, 0 18px 50px rgba(0, 0, 0, .5); border-radius: 3px; }
+.sx-pe-title { display: flex; align-items: center; gap: 8px; height: 24px; padding: 0 0 0 10px; font-size: 11px; background: linear-gradient(#a8c3e0, #b9d1ea); }
+.sx-pe-title .wd-glyph { width: 13px; height: 13px; color: #2a7a3a; }
+.sx-pe-caps { display: flex; gap: 3px; margin-left: auto; padding-right: 6px; }
+.sx-pe-caps span { display: grid; place-items: center; width: 26px; height: 16px; border: 1px solid #6d8bb0; border-radius: 3px; background: linear-gradient(#e7eef7, #c7d6e8); }
+.sx-pe-caps span:last-child { width: 38px; background: linear-gradient(#e8a08f, #c9452f); border-color: #8d3020; color: #fff; }
+.sx-pe-caps .wd-glyph { width: 9px; height: 9px; }
+.sx-pe-page { position: absolute; left: 0; right: 0; top: 24px; bottom: 0; padding: 34px 40px 0; font-size: 12px; }
+.sx-pe-page h4 { margin: 0 0 6px; font-size: 28px; font-weight: 300; color: #2a7ad0; letter-spacing: -.01em; }
+.sx-pe-page p { margin: 0; line-height: 1.45; }
+.sx-pe-field { display: grid; grid-template-columns: 170px 236px; align-items: center; gap: 14px; margin-top: 20px; font-size: 13px; }
+.sx-pe-drop { display: flex; align-items: center; justify-content: space-between; height: 22px; padding: 0 4px 0 4px; border: 1px solid #c8c8c8; background: #fbfbfb; font-size: 11.5px; }
+.sx-pe-drop .wd-glyph { width: 10px; height: 10px; }
+.sx-pe-input { width: 290px; height: 20px; margin-top: 4px; padding: 0 5px; border: 1px solid #d0d0d0; border-bottom: 2px solid #1f6fb5; color: #6b6b6b; font-size: 11px; line-height: 18px; }
+.sx-pe-list { margin-top: 30px; border: 1px solid #a9a9a9; padding: 8px 6px; font-size: 11.5px; line-height: 15px; }
+.sx-pe-list span { display: block; padding: 0 2px; }
+.sx-pe-list .is-sel { background: #0078d7; color: #fff; }
+.sx-pe-legal { margin-top: 26px; font-size: 13px; font-weight: 700; line-height: 1.45; }
+.sx-pe-legal span { display: block; margin-bottom: 12px; }
+.sx-pe-tools { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 12px 32px; margin-top: 22px; font-size: 11.5px; color: #1f6fb5; text-decoration: underline; }
+.sx-pe-tools .is-off { color: #8a8a8a; }
+.sx-pe-table { margin-top: 24px; border: 1px solid #a9a9a9; height: 140px; font-size: 11.5px; }
+.sx-pe-table > span { display: grid; grid-template-columns: 1fr 76px 76px 112px; padding: 4px 6px; }
+.sx-pe-table > span:first-child { border-bottom: 1px solid #e0e0e0; }
+.sx-pe-table .is-sel { background: #0078d7; color: #fff; }
+.sx-pe-link { position: absolute; left: 40px; bottom: 60px; font-size: 12px; color: #1f6fb5; }
+.sx-pe-foot { position: absolute; left: 40px; right: 40px; bottom: 18px; display: flex; align-items: center; gap: 20px; font-size: 11px; color: #555; }
+.sx-pe-foot u { text-underline-offset: 2px; }
+.sx-pe-foot b { margin-left: auto; }
+.sx-pe-foot b, .sx-pe-foot i { display: grid; place-items: center; width: 80px; height: 22px; border: 1px solid #c4c4c4; border-radius: 3px; background: #fdfdfd; font: inherit; font-size: 11.5px; color: #1b1b1b; }
+.sx-pe-foot i { border-color: #1f6fb5; box-shadow: inset 0 0 0 1px #1f6fb5; }
+.sx-pe-foot .is-off { color: #a0a0a0; border-color: #dadada; box-shadow: none; background: #f4f4f4; }
+
+/* The first-run card: art on the left, the question on the right, the answer buttons bottom right. */
+.sx-ob { background: linear-gradient(160deg, #fbfcfe, #f3f6fb); border-radius: 10px; box-shadow: 0 14px 40px rgba(30, 60, 110, .2); }
+.sx-ob-art { position: absolute; left: 0; top: 0; bottom: 0; width: 50%; display: grid; place-items: center; }
+.sx-ob-art span { display: grid; place-items: center; width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(140deg, #1f8ae6, #4f46d6); box-shadow: 0 10px 30px rgba(60, 70, 200, .3); }
+.sx-ob-art .wd-glyph { width: 76px; height: 76px; color: #fff; }
+.sx-ob-back { position: absolute; left: 18px; top: 16px; width: 18px; height: 18px; color: #333; }
+.sx-ob-page { position: absolute; left: 50%; right: 34px; top: 52px; bottom: 0; font-size: 12px; color: #555; }
+.sx-ob-page h4 { margin: 0 0 12px; font-size: 21px; font-weight: 600; line-height: 1.25; color: #1b1b1b; letter-spacing: -.01em; }
+.sx-ob-page p { margin: 0 0 10px; line-height: 1.5; }
+.sx-ob-page p b { color: #333; }
+.sx-ob-list { display: flex; flex-direction: column; margin-top: 18px; font-size: 14px; color: #222; }
+.sx-ob-list span { height: 46px; display: flex; align-items: center; padding: 0 14px; }
+.sx-ob-list .is-sel { background: #0067c0; color: #fff; border-radius: 3px; }
+.sx-ob-input { width: 232px; height: 34px; margin: 18px 0 10px; padding: 0 16px; display: flex; align-items: center; background: #fff; border: 1px solid #e3e3e3; border-bottom: 2px solid #0067c0; color: #777; font-size: 12px; }
+.sx-ob-net { display: flex; align-items: center; gap: 12px; margin: 16px 0 0 16px; color: #333; }
+.sx-ob-net .wd-glyph { width: 22px; height: 22px; }
+.sx-ob-net span { display: flex; flex-direction: column; font-size: 11.5px; }
+.sx-ob-btn { display: inline-grid; place-items: center; height: 26px; padding: 0 22px; margin-top: 18px; border-radius: 4px; background: #0067c0; color: #fff; font-size: 11.5px; }
+.sx-ob-row { margin-top: 12px; font-size: 11.5px; color: #555; }
+.sx-ob-row b { display: block; margin-bottom: 4px; font-size: 12.5px; font-weight: 400; color: #222; }
+.sx-ob-row i { display: flex; align-items: center; gap: 8px; margin-top: 6px; font-style: normal; color: #222; }
+.sx-ob-sw { position: relative; width: 34px; height: 16px; border-radius: 8px; background: #0078d6; }
+.sx-ob-sw::after { content: ''; position: absolute; right: 4px; top: 4px; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+.sx-ob-ms { margin: 22px 0 8px; font-size: 17px; font-weight: 600; color: #737373; }
+.sx-ob-foot { position: absolute; right: 34px; bottom: 30px; display: flex; align-items: center; gap: 22px; font-size: 13px; }
+.sx-ob-foot u { text-decoration: none; color: #003e92; }
+.sx-ob-foot b { display: grid; place-items: center; width: 112px; height: 36px; border-radius: 4px; background: #0067c0; color: #fff; font-weight: 400; }
+.sx-ob-foot b.is-off { background: #c5c5c5; }
+
+/* The answer stamp: which setting in the file answers this screen. */
+.sx-q-answer {
+    position: absolute; left: 40px; right: 40px; bottom: 58px; display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 8px;
+    background: #16301f; border: 1px solid rgba(108, 203, 95, .55); color: #e7f7e4; font-size: 12.5px; box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    opacity: var(--st, 0); transform: translateY(calc((1 - var(--st, 0)) * 12px));
+}
+.sx-ob .sx-q-answer { left: 30px; right: auto; width: 300px; bottom: 34px; }
+.sx-q-answer .i { width: 18px; height: 18px; color: #6ccb5f; }
+.sx-q-answer b { font-weight: 600; }
+.sx-done {
+    position: absolute; left: 50%; top: 50%; width: 460px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;
+    opacity: var(--e, 0); transform: translate(-50%, calc(-50% + (1 - var(--e, 0)) * 20px)) scale(calc(.94 + var(--e, 0) * .06));
+}
+.sx-done .i { width: 64px; height: 64px; color: #6ccb5f; filter: drop-shadow(0 0 24px rgba(108, 203, 95, .5)); }
+.sx-done strong { font-family: var(--winui-font-family-display); font-size: 30px; font-weight: 600; }
+.sx-done span { color: rgba(255, 255, 255, .75); }
+
+/* ---- WIMUtil: a stock ISO, your answer file and your drivers, built into media for every PC you set up ---- */
+.sx-media { position: absolute; inset: 0; }
+.sx-media .wd-glyph, .sx-media .i { flex: none; }
+.sx-src {
+    position: absolute; left: 24px; width: 232px; height: 96px; display: flex; align-items: center; gap: 14px; padding: 0 16px;
+    background: rgba(24, 30, 42, .9); border: 1px solid color-mix(in srgb, #60cdff calc(var(--e, 0) * 100%), rgba(255, 255, 255, .12)); border-radius: 10px;
+    box-shadow: 0 0 calc(var(--e, 0) * 28px) color-mix(in srgb, #60cdff 40%, transparent);
+}
+.sx-src[data-src="iso"] { top: 44px; }
+.sx-src[data-src="xml"] { top: 200px; }
+.sx-src[data-src="drivers"] { top: 356px; }
+.sx-src .i { width: 30px; height: 30px; color: #8fd8ff; }
+.sx-src > span { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.sx-src b { font-size: 14px; font-weight: 600; }
+.sx-src > span > span { font-size: 11.5px; color: rgba(255, 255, 255, .62); }
+/* The working folder: what the ISO brings, and what Winhance adds to it, each lit as it lands. */
+.sx-tree {
+    position: absolute; left: 300px; top: 34px; width: 266px; display: flex; flex-direction: column; gap: 2px; padding: 16px 14px;
+    background: rgba(18, 23, 33, .94); border: 1px solid rgba(255, 255, 255, .12); border-radius: 12px; box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+}
+.sx-tree-head { display: flex; align-items: center; gap: 12px; padding: 0 4px 14px; margin-bottom: 8px; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+.sx-tree-head .i { width: 28px; height: 28px; color: #c9d6e8; }
+.sx-tree-head > span { display: flex; flex-direction: column; gap: 2px; }
+.sx-tree-head b { font-size: 14px; font-weight: 600; }
+.sx-tree-head span span { font-size: 11.5px; color: rgba(255, 255, 255, .55); }
+.sx-tree > [data-from] {
+    position: relative; display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 10px; border-radius: 6px; font-size: 13px; white-space: nowrap;
+    opacity: var(--e, 0); transform: translateX(calc((1 - var(--e, 0)) * -36px));
+}
+.sx-tree > .is-sub { margin-left: 22px; }
+.sx-tree > [data-from] .i { width: 18px; height: 18px; color: #f4bf3a; }
+.sx-tree > [data-from] .is-file { color: #c9d6e8; }
+.sx-tree em { margin-left: auto; padding-left: 8px; font-style: normal; font-size: 10.5px; color: #8fe3a0; opacity: var(--e, 0); }
+/* What Winhance adds glows green once as it lands. */
+.sx-tree > [data-from]:not([data-from="iso"]) {
+    background: color-mix(in srgb, transparent, #6ccb5f calc(var(--e, 0) * 14%));
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, transparent, #6ccb5f calc(var(--e, 0) * 45%));
+}
+.sx-wires { position: absolute; inset: 0; width: 800px; height: 640px; overflow: visible; pointer-events: none; }
+.sx-wires path { fill: none; stroke: rgba(255, 255, 255, .16); stroke-width: 2; stroke-dasharray: 4 6; }
+.sx-wires path.is-lit { stroke: #60cdff; stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--e, 0)); filter: drop-shadow(0 0 6px rgba(96, 205, 255, .7)); }
+/* Two ways out: save an ISO, or write a USB drive. */
+.sx-out {
+    position: absolute; left: 596px; width: 184px; height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    background: rgba(24, 30, 42, .92); border: 1px solid color-mix(in srgb, #6ccb5f calc(var(--done, 0) * 100%), rgba(255, 255, 255, .14)); border-radius: 12px;
+    box-shadow: 0 0 calc(var(--done, 0) * 36px) rgba(108, 203, 95, .3), 0 20px 50px rgba(0, 0, 0, .4);
+}
+.sx-out[data-out="iso"] { top: 80px; }
+.sx-out[data-out="usb"] { top: 270px; }
+.sx-out > .i { width: 40px; height: 40px; color: #fff; margin-bottom: 4px; }
+.sx-out b { font-size: 14px; }
+.sx-out > span:not(.sx-usb-bar) { font-size: 11.5px; color: rgba(255, 255, 255, .62); }
+.sx-or { position: absolute; left: 596px; width: 184px; top: 228px; text-align: center; font-size: 12px; color: rgba(255, 255, 255, .55); }
+.sx-usb-bar { width: 130px; height: 5px; margin-top: 6px; border-radius: 3px; background: rgba(255, 255, 255, .12); overflow: hidden; }
+.sx-usb-bar i { display: block; height: 100%; background: linear-gradient(90deg, #60cdff, #6ccb5f); transform-origin: 0 50%; transform: scaleX(var(--fill, 0)); }
+/* Then the same media sets up PC after PC. */
+.sx-fleet {
+    position: absolute; left: 24px; right: 20px; top: 516px; height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 24px;
+    background: rgba(18, 23, 33, .9); border: 1px solid rgba(255, 255, 255, .1); border-radius: 12px;
+    opacity: var(--e, 0); transform: translateY(calc((1 - var(--e, 0)) * 20px));
+}
+.sx-fleet-text { display: flex; flex-direction: column; gap: 4px; }
+.sx-fleet-text b { font-size: 15px; font-weight: 600; }
+.sx-fleet-text span { font-size: 12px; color: rgba(255, 255, 255, .62); }
+.sx-pcs { display: flex; gap: 14px; }
+.sx-pcs i { position: relative; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 10px; background: rgba(255, 255, 255, .05); border: 1px solid color-mix(in srgb, #6ccb5f calc(var(--e, 0) * 80%), rgba(255, 255, 255, .1)); }
+.sx-pcs .i:first-child { width: 28px; height: 28px; color: color-mix(in srgb, #fff calc(40% + var(--e, 0) * 60%), transparent); }
+.sx-pcs .sx-ok { position: absolute; right: -6px; bottom: -6px; width: 20px; height: 20px; color: #6ccb5f; opacity: var(--e, 0); transform: scale(calc(.5 + var(--e, 0) * .5)); }

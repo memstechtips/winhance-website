@@ -1,0 +1,71 @@
+<h1>WIMUtil</h1>
+<p class="lead">Build your own Windows installation media from a Windows ISO. Choose what to build into the Windows image and what to run during Setup, then save a new ISO or write it straight to a USB drive.</p>
+
+<div class="app-demo" data-page="WimUtil"></div>
+
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/m4i9wroDOjA?start=3753" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+
+<p>WIMUtil (Windows Installation Media Utility) is the <strong>WIMUtil</strong> page in the left navigation. It has four steps. Extract or select the media first, then decide how Windows is built, which changes to include and where to save the result. You can leave the optional changes blank to create media without an answer file, drivers or updates.</p>
+<p>WIMUtil is not available while you are in Config Review mode.</p>
+
+<ol class="steps">
+<li>
+<h3>Your ISO</h3>
+<p>You need a Windows 10 or Windows 11 ISO. The <strong>Windows 10</strong> and <strong>Windows 11</strong> buttons next to <strong>Download Windows ISO</strong> open Microsoft's download pages.</p>
+<ul>
+<li>Click <strong>Select ISO</strong> and choose the ISO file.</li>
+<li>Under <strong>Select working directory</strong>, keep the default folder (<code>%TEMP%\WinhanceWIM</code>) or click <strong>Select Directory</strong> to pick a drive with more space. Winhance creates a <code>WinhanceWIM</code> folder inside the one you pick. Choose a local NTFS drive if you want to build changes into the image.</li>
+<li>Click <strong>Start Extraction</strong>. If the drive is too small, Winhance tells you how much more space it needs.</li>
+</ul>
+<p>Already extracted an ISO before? Tick <strong>I have extracted ISO contents already</strong>, then click <strong>Select Folder</strong> and choose a writable folder containing the extracted media, including the <code>sources</code> and <code>boot</code> folders.</p>
+</li>
+
+<li>
+<h3>How it's built</h3>
+<p>Under <strong>How should your changes reach Windows?</strong>, choose one of two methods:</p>
+<ul>
+<li><strong>During setup (Autounattend only)</strong> leaves the Windows image unchanged. Your changes apply while Windows Setup runs.</li>
+<li><strong>Built into the image (DISM + Autounattend)</strong> uses Windows offline servicing to build supported app removals, settings, drivers and updates into the image when you create the media. Choices that need Windows Setup still use an answer file.</li>
+</ul>
+<p>For the second method, choose an edition under <strong>Edition to keep</strong> if the image contains more than one. Winhance keeps that edition and removes the others during creation. If the working folder is not on a local NTFS drive, drivers and the update install during Setup instead. If both <code>install.wim</code> and <code>install.esd</code> exist, delete one using <strong>Delete WIM</strong> or <strong>Delete ESD</strong>.</p>
+<p>Under <strong>Answer file</strong>, pick <strong>Winhance XML</strong> to build an answer file from your choices, or <strong>Your own XML</strong> to use a file you already have. The latter can be an UnattendedWinstall file or one you made with another tool. The <strong>Schneegans XML</strong> button opens an answer file generator. An answer file already on the media is flagged, with an option to delete it. Winhance can also reopen choices from an answer file it generated in a version that stores those choices.</p>
+<p>Winhance checks answer files for problems. A malformed XML file cannot be added. The detailed check reports errors and warnings, and you can choose to continue despite its findings. A clean result is not a guarantee that every script or Windows Setup action will succeed.</p>
+</li>
+
+<li>
+<h3>What changes</h3>
+<p>If you chose <strong>Winhance XML</strong>, use Builder mode to select the Windows apps to remove, external apps to install, and the Optimize and Customize settings to apply. The <strong>In the image</strong> and <strong>During setup</strong> tags show how the changes reach Windows. Open the <strong>Unattend</strong> page for Setup-specific choices, such as accounts and setup screens. See the <a href="autounattend.html">answer file guide</a>.</p>
+<p>Under <strong>Drivers and updates</strong>, select what to include:</p>
+<ul>
+<li><strong>Add this PC's drivers</strong> copies third-party drivers from the current PC. Use this when reinstalling Windows on the same PC.</li>
+<li><strong>Add drivers from a folder</strong> adds drivers from a folder containing <code>.inf</code> files.</li>
+<li><strong>Add the latest Windows update</strong> adds the cumulative update Winhance finds for the media's Windows build. The card shows its KB number, release date and download size. Winhance checks the Microsoft download against Microsoft's published hash and signature. If the media is already up to date or no update is available, the option stays off.</li>
+</ul>
+<p>With the During setup method, Windows Setup installs the drivers before the first startup screens and installs the staged update at first sign-in, then restarts. With the Built into the image method, Winhance tries to install them into the image first. If that fails, a message tells you which changes fall back to Setup. Storage drivers are available on the media for Setup to find your disks.</p>
+<p>With the Built into the image method, <strong>Clean up the image</strong> also offers options to remove old component versions, downloaded update files, archived servicing logs, temporary files and crash reports. Removing old component versions means you cannot uninstall updates built into the image afterwards.</p>
+</li>
+
+<li>
+<h3>Create</h3>
+<p>Under <strong>Image format</strong>, choose WIM for quicker creation or ESD for smaller media. Winhance converts the image when needed during creation. Unlike a FAT32-only USB drive, the USB layout Winhance creates can hold large WIM and ESD files without splitting them.</p>
+<p>Under <strong>Output destination</strong>, choose <strong>ISO file</strong> or <strong>USB drive</strong>. If the media offers both Secure Boot certificates, <strong>Secure Boot compatibility</strong> lets you choose the 2011 certificate accepted by most PCs or the 2023 certificate for updated PCs.</p>
+<p><strong>ISO file</strong></p>
+<ul>
+<li>Click <strong>Select Location</strong> and choose where to save the ISO.</li>
+<li>Click <strong>Create ISO</strong>.</li>
+</ul>
+<p>The ISO boots on both UEFI and older BIOS PCs. When it is done, you can open the folder that holds it.</p>
+<p><strong>USB drive</strong></p>
+<ul>
+<li>Plug in a USB drive and choose it under <strong>Select USB drive</strong>. Use <strong>Refresh list</strong> if needed. USB hard drives and SSDs only appear if you tick <strong>Show USB hard drives</strong>.</li>
+<li>Click <strong>Write to USB</strong> and confirm with <strong>Erase and write</strong>.</li>
+</ul>
+<div class="callout callout-warning"><p class="callout-title">Writing erases the USB drive</p><p>Everything on the selected drive is deleted. Keep the working directory on a different drive from the USB you are writing to.</p></div>
+<p>Winhance creates a small FAT32 boot partition and an NTFS installation partition. The FAT32 partition holds the files needed to start Windows Setup; the NTFS partition holds the installation files, including large Windows images. This layout boots on UEFI and legacy BIOS without requiring image splitting.</p>
+<p>When you build with Winhance XML, review the creation plan before confirming. Winhance prepares the answer file and any chosen offline installers, builds the media, and shows the results. External apps that could not be staged download after Setup instead. <strong>Delete the working folder after a successful build</strong> is available only for the folder Winhance extracted the ISO into, and only if the output ISO is not inside it.</p>
+</li>
+</ol>
+
+<h2 id="after-you-install">After you install</h2>
+<p>Boot the PC from the ISO or USB drive and install Windows. What happens next depends on your choices. With a Winhance answer file, see <a href="autounattend.html#during-installation">what happens during installation</a>.</p>
+<p>If drivers were staged for Setup, drivers that failed to install stay in <code>C:\Windows\Drivers</code>, and the install log is at <code>C:\ProgramData\Winhance\Unattend\Logs\Winhance-DriverInstall.log</code>. To install one by hand, open Device Manager, right-click the device, choose <strong>Update driver</strong> &gt; <strong>Browse my computer for drivers</strong> and point it at that folder.</p>

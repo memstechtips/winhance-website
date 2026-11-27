@@ -1,0 +1,15 @@
+{
+  "intro": [
+    "<p>Light or dark mode, transparency, and the desktop background.</p>"
+  ],
+  "groups": {
+    "Background": "The desktop background: a picture, a solid color, a slideshow or Windows spotlight, and how a picture fits the screen. For a picture you can pick one of Windows' own, keep the one this PC has, choose one Windows showed recently, or browse for your own. Windows' own pictures and their file paths are listed below. Standalone config and answer files embed only one picture. A slideshow folder must already exist on the destination PC unless you build installation media with WIMUtil, which carries the slideshow pictures to C:\\Wallpapers\\Winhance.",
+    "Theme mode": "Light or dark for Windows and apps. Choose your mode sets both at once; the two toggles below it set apps, such as Settings and File Explorer, and the Windows shell, such as the taskbar and Start menu, separately.",
+    "Transparency": "Translucent effects on the Start menu, the taskbar and other parts of Windows."
+  },
+  "video": {
+    "id": "lrq3ph3xi50",
+    "start": 2488,
+    "title": "I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)"
+  }
+}

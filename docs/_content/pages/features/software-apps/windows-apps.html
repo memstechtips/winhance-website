@@ -1,0 +1,75 @@
+<section id="windows-apps">
+    <h1>Windows Apps &amp; Features</h1>
+    <p class="lead">Remove the apps, capabilities and optional features that ship with Windows, stop them coming back, and restore them if you change your mind.</p>
+
+    <div class="app-demo" data-page="SoftwareApps" data-tab="windows"></div>
+
+    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/m4i9wroDOjA?start=689" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+
+    <h2 id="what-you-can-remove">What you can remove</h2>
+    <p>The <strong>Windows Apps &amp; Features</strong> tab of <a href="../software-apps.html">Software &amp; Apps</a> lists three kinds of items:</p>
+    <ul>
+        <li><strong>Windows Apps</strong>: the Store-style apps Windows installs for you, such as Clipchamp, Copilot, Microsoft Edge and OneDrive.</li>
+        <li><strong>Windows Capabilities</strong>: smaller add-ons such as Internet Explorer, PowerShell ISE, Steps Recorder and WordPad.</li>
+        <li><strong>Windows Optional Features</strong>: features such as Hyper-V, .NET Framework 3.5, Windows Sandbox and Recall.</li>
+    </ul>
+    <p>Each item shows whether it is installed. Two other labels are worth checking before you remove anything:</p>
+    <ul>
+        <li><strong>Permanent</strong> means the item cannot be reinstalled once it is gone. Cortana, Skype, Paint 3D and the Copilot+ PC AI packages are examples.</li>
+        <li><strong>Warning</strong> means removing the item may cause system instability. Microsoft Edge and App Installer carry this label.</li>
+    </ul>
+
+    <h2 id="remove-items">Remove items</h2>
+    <ol class="steps">
+        <li>
+            <h3>Check what you want gone</h3>
+            <p>Check the items you want to remove. You can check items marked <strong>Not Installed</strong> too. Winhance adds them to its removal list, so they get removed if Windows installs them later.</p>
+        </li>
+        <li>
+            <h3>Click Uninstall Selected Items</h3>
+            <p>The <strong>Confirm Removal</strong> dialog lists everything you checked.</p>
+        </li>
+        <li>
+            <h3>Keep the apps removed</h3>
+            <p>Leave <strong>Keep these apps removed after Windows updates</strong> checked (it is on by default), then click <strong>Continue</strong>. Winhance removes the items and adds them to the list of apps it keeps removed.</p>
+            <div data-wd-dialog="remove" role="figure" aria-label="The Confirm Removal dialog, with Keep these apps removed after Windows updates checked"></div>
+        </li>
+    </ol>
+    <div class="callout callout-note">
+        <p class="callout-title">Installed or portable</p>
+        <p>Keeping apps removed works on an installed copy and on a portable copy. By default Winhance does the checking itself, with no scripts and no SYSTEM task. If you prefer Windows Task Scheduler and script files, choose that under <strong>Settings</strong> &gt; <strong>Background tasks</strong>.</p>
+    </div>
+
+    <h2 id="how-removal-works">How removal works</h2>
+    <p>Winhance removes the items straight away and adds them to a list. Winhance checks that list every time you open it, and removes anything Windows has brought back. The check runs quietly in the background and never holds up the window. If you turned on <strong>Start in the system tray when I sign in</strong> or <strong>Re-apply the active profile when I sign in</strong>, it also checks at sign-in through the one sign-in task those options use. Each time you remove more items, Winhance adds them to the list instead of replacing it.</p>
+    <p>The setting <strong>How Winhance keeps your system this way</strong> has two choices. <strong>Winhance does it</strong> is the recommended one: no scripts are saved and no SYSTEM task exists. <strong>Task Scheduler and scripts</strong> saves a script for each removal in <code>C:\ProgramData\Winhance\Scripts</code> and runs it from a scheduled task as SYSTEM. That folder cannot be moved, because Windows runs those scripts with full rights, so they must sit in a folder only administrators can change. Switching modes asks you first and moves your list across.</p>
+    <p>For apps, Winhance first removes the provisioned copy, so new user accounts do not get the app, then removes it for every existing user. It removes capabilities, and turns optional features off without forcing a restart. The check writes a log in <code>C:\ProgramData\Winhance\Logs</code>. The <code>C:\ProgramData\Winhance</code> folder is locked to administrators, so a normal user cannot change what the task runs.</p>
+    <p>Open <strong>Settings</strong> &gt; <strong>Background tasks</strong> to see when the last check ran and what it found. <strong>Check now</strong> runs it straight away and <strong>Open log</strong> opens the log folder. In Task Scheduler mode each script has its own card that shows whether it will really run: a script without its task, a task without its script, or a disabled task removes nothing, and the card says so. <strong>Items being removed</strong> lists what each one removes. <strong>More</strong> &gt; <strong>Change History</strong> lists what Winhance removed and installed.</p>
+
+    <h3 id="edge-and-onedrive">Microsoft Edge and OneDrive</h3>
+    <p>Edge and OneDrive go on the same list as any other app, and removing them does more than a package removal.</p>
+    <ul>
+        <li>Removing Edge removes Edge (legacy and Chromium) and Edge Update. It leaves the <strong>Edge WebView2</strong> runtime alone, because other apps need it, unless you remove WebView2 too. It also sets up a redirect, based on AveYo's OpenWebSearch, so links Windows sends to Edge, such as web results in Start and Search, open in your default browser. A second task, <strong>OpenWebSearchRepair</strong>, puts the redirect back at sign-in if something overwrites it.</li>
+        <li>Removing OneDrive uninstalls it, removes its scheduled tasks and Start menu shortcuts, and stops it installing itself for new users. Your files in <code>%USERPROFILE%\OneDrive</code> are kept.</li>
+    </ul>
+
+    <h2 id="stop-continuous-removal">Stop keeping apps removed</h2>
+    <p>Open <strong>Settings</strong> &gt; <strong>Background tasks</strong>. Under <strong>Keep removed apps removed</strong>, each app on the list has a <strong>Stop keeping removed</strong> button. Turn the switch off to stop all checks. In Task Scheduler mode, turning it off asks first, then removes the tasks and their scripts.</p>
+    <p>This only stops future removals. It does not reinstall anything.</p>
+
+    <h2 id="restore">Restore an item</h2>
+    <p>Check the item and click <strong>Install Selected Items</strong>. Items marked <strong>Permanent</strong> cannot be restored.</p>
+    <ul>
+        <li>Winhance first takes the item off the keep-removed list, so the background task leaves it alone. For Edge it also removes the browser redirect.</li>
+        <li>Apps install through WinGet. If WinGet cannot get a package, which usually means a regional restriction, Winhance asks before downloading it from Microsoft's servers through store.rg-adguard.net.</li>
+        <li>If Windows Update is disabled, Store installs cannot finish. Winhance offers to change the update policy to <strong>Paused for a long time</strong> and try again.</li>
+        <li>Capabilities and optional features are turned back on in a separate PowerShell window. Winhance cannot see the result, so watch that window, then click <strong>Refresh</strong>.</li>
+    </ul>
+    <div class="callout callout-note">
+        <p class="callout-title">Reinstall through Winhance</p>
+        <p>If you reinstall an app from the Microsoft Store or anywhere else while it is still on the removal list, Winhance removes it again the next time it checks, which is when you open it or, if you use a sign-in option, at sign-in. Restore it from this tab, or stop keeping it removed first in <strong>Settings</strong> &gt; <strong>Background tasks</strong>.</p>
+    </div>
+
+    <h2 id="other-settings">Other settings are applied once</h2>
+    <p>Settings on the <a href="../optimize.html">Optimize</a> and <a href="../customize.html">Customize</a> pages normally apply once when you change them. If you have enabled <a href="../settings.html#profiles">Re-apply the active profile when I sign in</a>, Winhance also restores settings covered by your active profile at sign-in.</p>
+</section>

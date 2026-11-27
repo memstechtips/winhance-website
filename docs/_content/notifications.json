@@ -1,0 +1,22 @@
+{
+  "intro": [
+    "<p>Which notifications Windows shows, where it shows them, and the tips and suggestions it mixes in with them.</p>"
+  ],
+  "groups": {
+    "Additional Settings": {
+      "blurb": "The welcome experience after updates, setup suggestions, and tips while you use Windows.",
+      "html": [
+        "<div class=\"callout callout-note\"><p class=\"callout-title\">Also set from Privacy &amp; Security</p><p>Three of these are linked to <a href=\"privacy-security.html#content-delivery-and-advertising\">Ads, Suggestions and Promotional Content</a>. Choosing Allow or Deny there turns them on or off along with the other promotional settings.</p></div>"
+      ]
+    },
+    "System Notifications": "Notifications when apps ask for access, when an app is added to startup, and when the clock changes for daylight saving time.",
+    "Privacy Notifications": "A notification when an app asks for your location.",
+    "Security Notifications": "Notifications from Windows Security and from Security and Maintenance.",
+    "General": "Notifications as a whole. The sound and lock screen settings can only be changed while Show Notifications is on."
+  },
+  "video": {
+    "id": "lrq3ph3xi50",
+    "start": 2402,
+    "title": "I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)"
+  }
+}

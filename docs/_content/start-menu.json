@@ -1,0 +1,14 @@
+{
+  "intro": [
+    "<p>The Start menu layout and what it recommends, suggests and searches.</p>"
+  ],
+  "groups": {
+    "Layout": "Clean Start Menu removes every pinned app. The other settings here choose between more pins and more recommendations, how All apps is shown, and whether the Recommended section appears.",
+    "Start Menu Settings": "Recently added and most used apps, suggestions and recommendations, account notifications, and Bing web results when you search."
+  },
+  "video": {
+    "id": "lrq3ph3xi50",
+    "start": 2610,
+    "title": "I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)"
+  }
+}

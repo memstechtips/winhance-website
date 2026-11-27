@@ -4,311 +4,369 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sound - Winhance Docs</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-    <link rel="stylesheet" href="../../../styles.css">
-    <link rel="stylesheet" href="../../css/docs-main.css">
-    <link rel="stylesheet" href="../../css/docs-sidebar.css">
-    <link rel="stylesheet" href="../../css/docs-syntax.css">
+    <title>Sound Optimizations - Winhance Docs</title>
+    <meta name="description" content="The startup sound and what Windows does to other audio while you are on a call.">
+    <meta name="theme-color" content="#0b1422">
+    <link rel="icon" type="image/png" sizes="256x256" href="../../../images/winhance-rocket.png">
+    <link rel="preload" href="../../../fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../../css/winui-tokens.css">
+    <link rel="stylesheet" href="../../css/app-tokens.css">
+    <link rel="stylesheet" href="../../../base.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link rel="stylesheet" href="../../css/setting-card.css">
+    <link rel="stylesheet" href="../../../demo/winhance-demo.css">
     <script src="../../js/theme-load.js"></script>
 </head>
 
-<body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <a href="../../index.html" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="../../../images/winhance-rocket.png" alt="Winhance Logo"
-                        style="height: 32px; margin-right: 12px;">
-                    <h1 style="font-size: 1.5rem; margin: 0; color: var(--text-color);">Winhance <span
-                            style="font-weight: 300; opacity: 0.7;">Docs</span></h1>
-                </a>
+<body class="docs">
+    <!-- gen:icons --><svg class="sprite" aria-hidden="true"><symbol id="i-ChevronLeft" viewBox="0 0 20 20"><path fill="currentColor" d="M12.3534 15.8537C12.1585 16.0493 11.8419 16.0499 11.6463 15.855L6.16178 10.39C5.94607 10.1751 5.94607 9.82574 6.16178 9.6108L11.6463 4.14582C11.8419 3.9509 12.1585 3.95147 12.3534 4.14708C12.5483 4.34269 12.5477 4.65927 12.3521 4.85418L7.18753 10.0004L12.3521 15.1466C12.5477 15.3415 12.5483 15.6581 12.3534 15.8537Z"/></symbol><symbol id="i-HeartFilled" viewBox="0 0 20 20"><path fill="currentColor" d="M9.38843 4.28963C7.69278 2.57693 4.94954 2.5686 3.26122 4.2739C1.5729 5.9792 1.58114 8.75004 3.27679 10.4627L9.55368 16.8028C9.81404 17.0657 10.2362 17.0657 10.4965 16.8028L16.7408 10.4994C18.4252 8.78856 18.4199 6.02549 16.7239 4.31249C15.0252 2.59671 12.2807 2.58838 10.5894 4.29673L9.99299 4.90026L9.38843 4.28963Z"/></symbol><symbol id="i-Navigation" viewBox="0 0 20 20"><path fill="currentColor" d="M2 4.5C2 4.22386 2.22386 4 2.5 4H17.5C17.7761 4 18 4.22386 18 4.5C18 4.77614 17.7761 5 17.5 5H2.5C2.22386 5 2 4.77614 2 4.5ZM2 9.5C2 9.22386 2.22386 9 2.5 9H17.5C17.7761 9 18 9.22386 18 9.5C18 9.77614 17.7761 10 17.5 10H2.5C2.22386 10 2 9.77614 2 9.5ZM2.5 14C2.22386 14 2 14.2239 2 14.5C2 14.7761 2.22386 15 2.5 15H17.5C17.7761 15 18 14.7761 18 14.5C18 14.2239 17.7761 14 17.5 14H2.5Z"/></symbol><symbol id="i-Search" viewBox="0 0 20 20"><path fill="currentColor" d="M13.7291 14.4362C12.5924 15.411 11.115 16 9.5 16C5.91015 16 3 13.0899 3 9.5C3 5.91015 5.91015 3 9.5 3C13.0899 3 16 5.91015 16 9.5C16 11.115 15.411 12.5924 14.4361 13.7292L17.8535 17.1465C18.0487 17.3417 18.0487 17.6583 17.8535 17.8536C17.6799 18.0271 17.4105 18.0464 17.2156 17.9114L17.1464 17.8536L13.7291 14.4362ZM13.0196 13.7266C13.276 13.5128 13.5127 13.2761 13.7265 13.0197C14.5216 12.0659 15 10.8388 15 9.5C15 6.46243 12.5376 4 9.5 4C6.46243 4 4 6.46243 4 9.5C4 12.5376 6.46243 15 9.5 15C10.8388 15 12.0658 14.5217 13.0196 13.7266Z"/></symbol><symbol id="i-WeatherMoon" viewBox="0 0 20 20"><path fill="currentColor" d="M15.4932 13.4967C13.5653 16.8358 9.2957 17.9798 5.95663 16.052C5.20013 15.6152 4.54451 15.0515 4.01047 14.3887C6.8412 13.3015 8.56844 11.9681 9.60339 9.99249C10.651 7.99273 10.9395 5.83183 10.3628 3.08319C11.2605 3.20148 12.1328 3.49537 12.9378 3.96018C16.2769 5.88799 17.421 10.1576 15.4932 13.4967ZM5.45663 16.918C9.27399 19.122 14.1552 17.8141 16.3592 13.9967C18.5631 10.1793 17.2552 5.2981 13.4378 3.09415C12.3371 2.45863 11.1233 2.10173 9.88082 2.03507C9.4801 2.01357 9.17217 2.38477 9.26732 2.77462C9.95545 5.59395 9.70125 7.65076 8.71759 9.52844C7.78322 11.312 6.17301 12.559 3.16661 13.635C2.79667 13.7674 2.65251 14.2143 2.87537 14.538C3.54192 15.5059 4.41706 16.3178 5.45663 16.918Z"/></symbol><symbol id="i-WeatherSunny" viewBox="0 0 20 20"><path fill="currentColor" d="M10 2C10.2761 2 10.5 2.22386 10.5 2.5V3.5C10.5 3.77614 10.2761 4 10 4C9.72386 4 9.5 3.77614 9.5 3.5V2.5C9.5 2.22386 9.72386 2 10 2ZM10 14C12.2091 14 14 12.2091 14 10C14 7.79086 12.2091 6 10 6C7.79086 6 6 7.79086 6 10C6 12.2091 7.79086 14 10 14ZM10 13C8.34315 13 7 11.6569 7 10C7 8.34315 8.34315 7 10 7C11.6569 7 13 8.34315 13 10C13 11.6569 11.6569 13 10 13ZM17.5 10.5C17.7761 10.5 18 10.2761 18 10C18 9.72386 17.7761 9.5 17.5 9.5H16.5C16.2239 9.5 16 9.72386 16 10C16 10.2761 16.2239 10.5 16.5 10.5H17.5ZM10 16C10.2761 16 10.5 16.2239 10.5 16.5V17.5C10.5 17.7761 10.2761 18 10 18C9.72386 18 9.5 17.7761 9.5 17.5V16.5C9.5 16.2239 9.72386 16 10 16ZM3.5 10.5C3.77614 10.5 4 10.2761 4 10C4 9.72386 3.77614 9.5 3.5 9.5H2.46289C2.18675 9.5 1.96289 9.72386 1.96289 10C1.96289 10.2761 2.18675 10.5 2.46289 10.5H3.5ZM4.14645 4.14645C4.34171 3.95118 4.65829 3.95118 4.85355 4.14645L5.85355 5.14645C6.04882 5.34171 6.04882 5.65829 5.85355 5.85355C5.65829 6.04882 5.34171 6.04882 5.14645 5.85355L4.14645 4.85355C3.95118 4.65829 3.95118 4.34171 4.14645 4.14645ZM4.85355 15.8536C4.65829 16.0488 4.34171 16.0488 4.14645 15.8536C3.95118 15.6583 3.95118 15.3417 4.14645 15.1464L5.14645 14.1464C5.34171 13.9512 5.65829 13.9512 5.85355 14.1464C6.04882 14.3417 6.04882 14.6583 5.85355 14.8536L4.85355 15.8536ZM15.8536 4.14645C15.6583 3.95118 15.3417 3.95118 15.1464 4.14645L14.1464 5.14645C13.9512 5.34171 13.9512 5.65829 14.1464 5.85355C14.3417 6.04882 14.6583 6.04882 14.8536 5.85355L15.8536 4.85355C16.0488 4.65829 16.0488 4.34171 15.8536 4.14645ZM15.1464 15.8536C15.3417 16.0488 15.6583 16.0488 15.8536 15.8536C16.0488 15.6583 16.0488 15.3417 15.8536 15.1464L14.8536 14.1464C14.6583 13.9512 14.3417 13.9512 14.1464 14.1464C13.9512 14.3417 13.9512 14.6583 14.1464 14.8536L15.1464 15.8536Z"/></symbol></svg><!-- /gen:icons -->
+    <a class="skip" href="#content">Skip to content</a>
+
+    <header class="topbar">
+        <div class="docs-wrap topbar-row">
+            <button type="button" class="icon-btn docs-menu" aria-label="Show or hide the docs menu" aria-controls="docs-nav" aria-expanded="false">
+                <svg class="i"><use href="#i-Navigation"/></svg>
+            </button>
+            <a class="brand" href="../../../index.html" aria-label="Winhance home">
+                <img class="brand-mark" src="../../../images/winhance-rocket.png" alt="" width="28" height="28">
+                <span>Winhance</span>
+            </a>
+            <nav class="site-tabs" aria-label="Site">
+                <a href="../../../index.html">Home</a>
+                <a href="../../index.html" aria-current="true">Docs</a>
+            </nav>
+            <div class="search-container" role="search">
+                <svg class="i"><use href="#i-Search"/></svg>
+                <input type="search" id="docs-search" placeholder="Search the docs" autocomplete="off" aria-label="Search the docs">
+                <kbd class="search-key" aria-hidden="true">/</kbd>
             </div>
-            <div class="search-container">
-                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                <input type="text" id="docs-search" placeholder="Search documentation...">
-            </div>
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle theme">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
-                    </svg>
+            <div class="topbar-actions">
+                <button type="button" id="theme-toggle" class="icon-btn" aria-label="Switch between light and dark">
+                    <svg class="i i-sun"><use href="#i-WeatherSunny"/></svg>
+                    <svg class="i i-moon"><use href="#i-WeatherMoon"/></svg>
                 </button>
-                <a href="https://github.com/memstechtips/Winhance" target="_blank" class="icon-btn github-btn"
-                    title="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
+                <a class="icon-btn" href="https://github.com/memstechtips/Winhance" target="_blank" rel="noopener" aria-label="Winhance on GitHub">
+                    <svg class="i" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a class="icon-btn icon-btn-heart" href="https://store.memstechtips.com/winhance/" target="_blank" rel="noopener" aria-label="Support Winhance">
+                    <svg class="i"><use href="#i-HeartFilled"/></svg>
+                </a>
+                <a class="btn btn-primary btn-small" href="https://github.com/memstechtips/Winhance/releases/latest/download/Winhance.Installer.exe">
+                    <span class="dl-rocket" aria-hidden="true"><i></i></span>
+                    <span>Download</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <div class="docs-wip-banner">
-        <strong>Work in Progress:</strong> Documentation is a work in progress. Some pages may be incomplete.
-    </div>
-
-    <div class="docs-layout has-banner">
-                        <aside class="docs-sidebar">
-            <nav>
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Getting Started</div>
-                    <a href="../../getting-started/installation.html" class="sidebar-nav-item">Installation</a>
-                    <a href="../../getting-started/quick-start.html" class="sidebar-nav-item">Quick Start</a>
+    <div class="docs-wrap docs-layout">
+        <aside class="docs-sidebar" id="docs-nav">
+            <a class="nav-home" href="../../../index.html"><svg class="i"><use href="#i-ChevronLeft"/></svg>Back to Winhance home</a>
+            <nav aria-label="Documentation">
+                <div class="nav-group">
+                    <p class="nav-title">Get started</p>
+                    <a class="nav-item" href="../../index.html">Overview</a>
+                    <a class="nav-item" href="../../getting-started/installation.html">Installation</a>
+                    <a class="nav-item" href="../../getting-started/quick-start.html">Quick start</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Features</div>
-                    <a href="../../features/software-apps.html" class="sidebar-nav-item">Software & Apps</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../../features/software-apps/windows-apps.html" class="sidebar-nav-item sub-item">Windows Apps</a>
-                        <a href="../../features/software-apps/external-apps.html" class="sidebar-nav-item sub-item">External Apps</a>
-                    </div>
-                    <a href="../../features/optimize.html" class="sidebar-nav-item">Optimize</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../../features/optimizations/privacy-security.html" class="sidebar-nav-item sub-item">Privacy & Security</a>
-                        <a href="../../features/optimizations/power.html" class="sidebar-nav-item sub-item">Power</a>
-                        <a href="../../features/optimizations/gaming-performance.html" class="sidebar-nav-item sub-item">Gaming & Performance</a>
-                        <a href="../../features/optimizations/update.html" class="sidebar-nav-item sub-item">Update</a>
-                        <a href="../../features/optimizations/notifications.html" class="sidebar-nav-item sub-item">Notifications</a>
-                        <a href="../../features/optimizations/sound.html" class="sidebar-nav-item sub-item active">Sound</a>
-                    </div>
-                    <a href="../../features/customize.html" class="sidebar-nav-item">Customize</a>
-                    <div class="sidebar-sub-nav">
-                        <a href="../../features/customizations/theme.html" class="sidebar-nav-item sub-item">Windows Theme</a>
-                        <a href="../../features/customizations/taskbar.html" class="sidebar-nav-item sub-item">Taskbar</a>
-                        <a href="../../features/customizations/start-menu.html" class="sidebar-nav-item sub-item">Start Menu</a>
-                        <a href="../../features/customizations/explorer.html" class="sidebar-nav-item sub-item">Explorer</a>
-                    </div>
-                    <a href="../../features/advanced-tools.html" class="sidebar-nav-item">Advanced Tools</a>
-                    <a href="../../features/settings.html" class="sidebar-nav-item">Settings</a>
+                <div class="nav-group">
+                    <p class="nav-title">Features</p>
+                    <a class="nav-item" href="../../features/software-apps.html">Software &amp; Apps</a>
+                    <a class="nav-item nav-sub" href="../../features/software-apps/windows-apps.html">Windows apps</a>
+                    <a class="nav-item nav-sub" href="../../features/software-apps/external-apps.html">External apps</a>
+                    <a class="nav-item" href="../../features/optimize.html">Optimize</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/privacy-security.html">Privacy &amp; Security</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/power.html">Power</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/gaming-performance.html">Gaming &amp; Performance</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/update.html">Update</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/notifications.html">Notifications</a>
+                    <a class="nav-item nav-sub" href="../../features/optimizations/sound.html" aria-current="page">Sound</a>
+                    <a class="nav-item" href="../../features/customize.html">Customize</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/theme.html">Windows Theme</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/taskbar.html">Taskbar</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/start-menu.html">Start Menu</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/explorer.html">Explorer</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/context-menu.html">Context Menu</a>
+                    <a class="nav-item nav-sub" href="../../features/customizations/time-region-language.html">Time &amp; Region</a>
+                    <a class="nav-item" href="../../features/autounattend.html">Autounattend</a>
+                    <a class="nav-item nav-sub" href="../../features/autounattend/answer-file.html">Answer file</a>
+                    <a class="nav-item" href="../../features/advanced-tools.html">Unattend &amp; WIMUtil</a>
+                    <a class="nav-item" href="../../features/settings.html">Settings</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">User Guides</div>
-                    <a href="../../guides/configuration-files.html" class="sidebar-nav-item">Configuration Files</a>
-                    <a href="../../guides/wimutil.html" class="sidebar-nav-item">WIMUtil Guide</a>
-                    <a href="../../guides/autounattend.html" class="sidebar-nav-item">Autounattend Guide</a>
+                <div class="nav-group">
+                    <p class="nav-title">Guides</p>
+                    <a class="nav-item" href="../../guides/configuration-files.html">Configuration files</a>
+                    <a class="nav-item" href="../../guides/wimutil.html">WIMUtil</a>
+                    <a class="nav-item" href="../../guides/autounattend.html">Answer file setup</a>
                 </div>
-
-                <div class="sidebar-nav-group">
-                    <div class="sidebar-nav-title">Reference</div>
-                    <a href="../../reference/cli-commands.html" class="sidebar-nav-item">CLI Commands</a>
-                    <a href="../../reference/changelog.html" class="sidebar-nav-item">Changelog</a>
-                    <a href="../../reference/troubleshooting.html" class="sidebar-nav-item">Troubleshooting</a>
-                    <a href="../../reference/contributing.html" class="sidebar-nav-item">How to Contribute</a>
+                <div class="nav-group">
+                    <p class="nav-title">Reference</p>
+                    <a class="nav-item" href="../../reference/troubleshooting.html">Troubleshooting</a>
+                    <a class="nav-item" href="../../reference/cli-commands.html">Command line</a>
+                    <a class="nav-item" href="../../reference/changelog.html">Releases</a>
+                    <a class="nav-item" href="../../reference/contributing.html">Contributing</a>
                 </div>
             </nav>
         </aside>
 
-        <main class="docs-content">
-            <section id="sound">
+        <main class="docs-main" id="content">
+            <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../../index.html">Docs</a><span class="sep" aria-hidden="true">/</span><span>Features</span><span class="sep" aria-hidden="true">/</span><a href="../../features/optimize.html">Optimize</a></nav>
+            <article class="docs-content">
+                <section id="sound-optimizations">
                 <h1>Sound Optimizations</h1>
-                <div class="video-container">
-                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2445" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p class="lead">The startup sound and what Windows does to other audio while you are on a call.</p>
+                <div class="app-demo desktop">
+                    <div id="winhance-demo" class="wd-host stage-window" data-page="Optimize" data-feature="Sound" data-focus="This demo shows the Optimize page" role="region" aria-label="Interactive Winhance demo: Optimize">
+                        <noscript><p class="stage-fallback">Turn on JavaScript to try this page of Winhance in your browser.</p></noscript>
+                    </div>
+                    <div class="readout" id="readout" aria-live="polite">
+                        <p class="readout-idle">Flip any switch in the window above to see what Winhance would write to Windows.</p>
+                    </div>
                 </div>
-                <p>Fine-tune your Windows audio settings for the best possible experience. Winhance provides quick access to hidden audio settings including startup sounds, ducking preferences, and accessibility audio options.</p>
-
-                <div class="callout callout-info">
-                    <div class="callout-title">Registry Details</div>
-                    <p>Each setting below includes expandable registry details for power users. Click "Registry Details" to see the exact registry keys and values that are modified.</p>
+                <div class="video">
+                    <iframe src="https://www.youtube-nocookie.com/embed/lrq3ph3xi50?start=2445" title="I Made an App that Debloats and Optimizes Windows 10/11 in 1min20s (BIG Winhance Update)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <p>The startup sound, what Windows does to other audio during calls, voice activation for apps, and the sounds accessibility shortcuts make.</p>
+                <div class="callout callout-note">
+                    <p class="callout-title">Technical Details</p>
+                    <p>Each setting below lists exactly what Winhance reads and writes: registry values, scheduled tasks, power settings and scripts, with the recommended value and the Windows default marked. It is the same table the app shows when you turn on <strong>Technical Details</strong> in the <strong>View</strong> menu.</p>
                 </div>
 
-                <!-- ==================== SYSTEM SOUNDS ==================== -->
                 <h2 id="system-sounds">System Sounds</h2>
-                <p>Control Windows system sounds and audio behavior.</p>
-
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Startup Sound During Boot</span>
-                        <span class="setting-id">sound-startup</span>
-                    </div>
-                    <p class="setting-desc">Play the Windows startup sound when your computer boots up.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation</code></td></tr>
-                            <tr><th>Value</th><td><code>DisableStartupSound</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (sound ON)</th><td>0</td></tr>
-                            <tr><th>Disabled (sound OFF)</th><td>1</td></tr>
-                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
-                        </table>
-                        <table class="registry-table" style="margin-top: 0.5rem;">
-                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows\CurrentVersion\EditionOverrides</code></td></tr>
-                            <tr><th>Value</th><td><code>UserSetting_DisableStartupSound</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled (sound ON)</th><td>0</td></tr>
-                            <tr><th>Disabled (sound OFF)</th><td>1</td></tr>
-                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
+                <p>The startup sound, how much Windows lowers other audio during calls and while Narrator speaks, voice activation for apps, and accessibility sounds.</p>
+                <div class="setting-card" id="sound-startup">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M17.65 1.20003C17.7712 1.36167 17.9351 1.65306 18.0932 2.07447C18.3482 2.75469 18.5 3.56403 18.5 4.50003C18.5 5.43603 18.3482 6.24537 18.0932 6.92559C17.9351 7.347 17.7712 7.63839 17.65 7.80003C17.4843 8.02094 17.1709 8.06571 16.95 7.90003C16.7536 7.75275 16.6964 7.48876 16.8025 7.27676L16.9182 7.09485C16.9838 6.98267 17.0688 6.80917 17.1568 6.57447C17.3705 6.00469 17.5 5.31403 17.5 4.50003C17.5 3.68603 17.3705 2.99537 17.1568 2.42559C17.0688 2.19089 16.9838 2.01739 16.9182 1.90521L16.85 1.80003C16.6843 1.57912 16.7291 1.26571 16.95 1.10003C17.1709 0.934344 17.4843 0.979115 17.65 1.20003ZM13.6913 1.03807C13.8782 1.11547 14 1.29778 14 1.50001V7.50001C14 7.70225 13.8782 7.88456 13.6913 7.96195C13.5045 8.03935 13.2894 7.99657 13.1464 7.85357L11.2929 6.00001H10.5C10.2239 6.00001 10 5.77616 10 5.50001V3.50001C10 3.22387 10.2239 3.00001 10.5 3.00001H11.2929L13.1464 1.14646C13.2894 1.00346 13.5045 0.960684 13.6913 1.03807ZM16.2243 2.96692C16.1224 2.661 16.0196 2.42114 15.9472 2.27642C15.8237 2.02943 15.5234 1.92932 15.2764 2.05282C15.0294 2.17631 14.9293 2.47665 15.0528 2.72364C15.1054 2.82892 15.1901 3.02655 15.2756 3.28314C15.4163 3.70506 15.5 4.12357 15.5 4.50003C15.5 4.87649 15.4163 5.295 15.2756 5.71692C15.2243 5.87087 15.1733 6.0036 15.1293 6.10789L15.0528 6.27642C14.9293 6.52341 15.0294 6.82375 15.2764 6.94724C15.5234 7.07074 15.8237 6.97063 15.9472 6.72364C16.0196 6.57892 16.1224 6.33905 16.2243 6.03314C16.3962 5.51756 16.5 4.99857 16.5 4.50003C16.5 4.00149 16.3962 3.4825 16.2243 2.96692ZM17 13V8.97943C17.3425 9.03702 17.6975 8.97398 18 8.79956V13C18 14.1046 17.1046 15 16 15H13V17H14.5C14.7761 17 15 17.2239 15 17.5C15 17.7761 14.7761 18 14.5 18H5.5C5.22386 18 5 17.7761 5 17.5C5 17.2239 5.22386 17 5.5 17H7V15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H10.8788L10.5 2.00007C9.84692 2.00007 9.29132 2.41744 9.08538 3H4C3.44772 3 3 3.44772 3 4V13C3 13.5523 3.44772 14 4 14H16C16.5523 14 17 13.5523 17 13ZM12 15H8V17H12V15Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Startup Sound During Boot</span>
+                <p class="setting-desc">Play the Windows startup sound when your computer boots up</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span></div>
+                <span class="setting-id">sound-startup</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(688.8px + 96 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(96px + 18 * var(--mx-char-w))"><col style="width: calc(397.4px + 30 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="2" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation">HKLM\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation</code></span></th><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\EditionOverrides">HKLM\Software\Microsoft\Windows\CurrentVersion\EditionOverrides</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">DisableStartupSound</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">UserSetting_DisableStartupSound</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"></td><td class="mx-value"><code>0 (or not set)</code></td><td class="mx-value"><code>0 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1</code></td><td class="mx-value"><code>1 (or not set)</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Sound Ducking Preference</span>
-                        <span class="setting-id">sound-communication-ducking</span>
-                    </div>
-                    <p class="setting-desc">Automatically lower volume of media and apps when Windows detects communication activity (calls, voice chat, etc.).</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Multimedia\Audio</code></td></tr>
-                            <tr><th>Value</th><td><code>UserDuckingPreference</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Options</th><td>
-                                0 = Mute all other sounds<br>
-                                1 = Reduce volume by 80%<br>
-                                2 = Reduce volume by 50%<br>
-                                3 = Do nothing
-                            </td></tr>
-                            <tr><th>Recommended</th><td>3 (Do nothing)</td></tr>
-                            <tr><th>Default</th><td>1 (Reduce by 80%)</td></tr>
-                        </table>
-                    </details>
+                <div class="setting-card" id="sound-communication-ducking">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M11.9961 3.00588C11.9961 2.13286 10.9558 1.67903 10.3159 2.27288L6.44369 5.86626C6.35122 5.95208 6.22973 5.99976 6.10358 5.99976H3.49609C2.66767 5.99976 1.99609 6.67134 1.99609 7.49976V12.4998C1.99609 13.3282 2.66767 13.9998 3.49609 13.9998H6.10358C6.22973 13.9998 6.35122 14.0474 6.44369 14.1333L10.3159 17.7266C10.9558 18.3205 11.9961 17.8667 11.9961 16.9936V3.00588ZM7.12392 6.59927L10.9961 3.00588V16.9936L7.12392 13.4003C6.84651 13.1428 6.48204 12.9998 6.10358 12.9998H3.49609C3.21995 12.9998 2.99609 12.7759 2.99609 12.4998V7.49976C2.99609 7.22362 3.21995 6.99976 3.49609 6.99976H6.10358C6.48204 6.99976 6.84651 6.8567 7.12392 6.59927ZM14.0804 12.933C13.8412 12.7952 13.7589 12.4894 13.8967 12.2502C14.6729 10.9026 14.7284 9.19135 13.8961 7.74967C13.758 7.51052 13.8399 7.20473 14.0791 7.06665C14.3182 6.92858 14.624 7.01052 14.7621 7.24967C15.7801 9.01294 15.7103 11.1052 14.7633 12.7493C14.6254 12.9886 14.3197 13.0708 14.0804 12.933Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Sound Ducking Preference</span>
+                <p class="setting-desc">Automatically lower volume of media and apps when Windows detects communication activity</p>
+                </div>
+                <div class="setting-pills">
+                <div class="setting-badges"><span class="mx-pill mx-pill-preference" title="Personal preference — Winhance may suggest a value, but there&#39;s no objectively correct answer. Choose whatever fits you."><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z" fill="currentColor"/></svg><span class="mx-pill-label">Preference</span></span></div>
+                <span class="setting-id">sound-communication-ducking</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 40 * var(--mx-char-w)); --mx-table-w: calc(172px + 83 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Multimedia\Audio">HKCU\Software\Microsoft\Multimedia\Audio</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">UserDuckingPreference</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>Mute all other sounds</code></th><td class="mx-role"></td><td class="mx-value"><code>0</code></td></tr><tr><th class="mx-option" scope="row"><code>Reduce the volume of other sounds by 80%</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Reduce the volume of other sounds by 50%</code></th><td class="mx-role"></td><td class="mx-value"><code>2</code></td></tr><tr><th class="mx-option" scope="row"><code>Do nothing</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>3</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Narrator Audio Ducking</span>
-                        <span class="setting-id">sound-narrator-audio-ducking</span>
-                    </div>
-                    <p class="setting-desc">Allow Narrator to automatically lower the volume of other applications when it speaks.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Software\Microsoft\Narrator\NoRoam</code></td></tr>
-                            <tr><th>Value</th><td><code>DuckAudio</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
+                <div class="setting-card" id="sound-narrator-audio-ducking">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M2.85258 2.14645C2.65731 1.95118 2.34073 1.95118 2.14547 2.14645C1.95021 2.34171 1.95021 2.65829 2.14547 2.85355L5.29191 5.99999H3.49609C2.66767 5.99999 1.99609 6.67157 1.99609 7.49999V12.5C1.99609 13.3284 2.66767 14 3.49609 14H6.10358C6.22973 14 6.35122 14.0477 6.44369 14.1335L10.3159 17.7269C10.9558 18.3207 11.9961 17.8669 11.9961 16.9939V12.7042L17.1455 17.8536C17.3407 18.0488 17.6573 18.0488 17.8526 17.8536C18.0478 17.6583 18.0478 17.3417 17.8526 17.1464L15.2899 14.5837C15.2899 14.5837 15.2899 14.5837 15.2899 14.5837L2.85258 2.14645ZM10.9961 11.7042V16.9939L7.12392 13.4005C6.84651 13.1431 6.48204 13 6.10358 13H3.49609C3.21995 13 2.99609 12.7761 2.99609 12.5V7.49999C2.99609 7.22385 3.21995 6.99999 3.49609 6.99999H6.10358C6.16328 6.99999 6.22263 6.99643 6.28134 6.98943L10.9961 11.7042ZM10.9961 3.00611V8.87572L11.9961 9.87572V3.00611C11.9961 2.13309 10.9558 1.67926 10.3159 2.27311L7.2441 5.12372L7.95169 5.83132L10.9961 3.00611ZM14.06 11.9396L14.8018 12.6814C15.712 11.0479 15.7661 8.98893 14.7621 7.2499C14.624 7.01075 14.3182 6.92881 14.0791 7.06688C13.8399 7.20496 13.758 7.51075 13.8961 7.7499C14.6656 9.08286 14.6762 10.6463 14.06 11.9396ZM15.8955 13.7751L16.6172 14.4968C18.6568 11.502 18.4384 7.43048 15.9617 4.66632C15.7775 4.46065 15.4614 4.44331 15.2557 4.62758C15.05 4.81185 15.0327 5.12796 15.217 5.33363C17.3398 7.70288 17.5659 11.1716 15.8955 13.7751Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Narrator Audio Ducking</span>
+                <p class="setting-desc">Allow Narrator to automatically lower the volume of other applications when it speaks</p>
+                </div>
+                <div class="setting-pills">
+                <span class="setting-id">sound-narrator-audio-ducking</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(255.2px + 37 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Software\Microsoft\Narrator\NoRoam">HKCU\Software\Microsoft\Narrator\NoRoam</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">DuckAudio</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Voice Activation for Apps</span>
-                        <span class="setting-id">sound-voice-activation</span>
-                    </div>
-                    <p class="setting-desc">Allow apps to listen and respond to voice commands like "Hey Cortana".</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows\CurrentVersion\SpeechOneCore\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>AgentActivationEnabled</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
+                <div class="setting-card" id="sound-voice-activation">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M17.132 1.05984C17.3751 0.928849 17.6783 1.01973 17.8093 1.26282C18.5693 2.6733 19.0004 4.28705 19.0004 6.00001C19.0004 7.71296 18.5693 9.32671 17.8093 10.7372C17.6783 10.9803 17.3751 11.0712 17.132 10.9402C16.8889 10.8092 16.798 10.5059 16.929 10.2628C17.6124 8.99451 18.0004 7.54332 18.0004 6.00001C18.0004 4.45669 17.6124 3.0055 16.929 1.73719C16.798 1.49409 16.8889 1.19083 17.132 1.05984ZM14.8072 3.03427C15.062 2.9278 15.3549 3.04803 15.4613 3.30282C15.8085 4.13358 16 5.04507 16 6.00001C16 6.95495 15.8085 7.86644 15.4613 8.6972C15.3549 8.95199 15.062 9.07222 14.8072 8.96575C14.5524 8.85927 14.4322 8.56641 14.5387 8.31162C14.8357 7.60083 15 6.82025 15 6.00001C15 5.17978 14.8357 4.39919 14.5387 3.6884C14.4322 3.43361 14.5524 3.14075 14.8072 3.03427ZM5 6.00001C5 3.79087 6.79086 2.00001 9 2.00001C11.2091 2.00001 13 3.79087 13 6.00001C13 8.20914 11.2091 10 9 10C6.79086 10 5 8.20914 5 6.00001ZM9 3.00001C7.34315 3.00001 6 4.34315 6 6.00001C6 7.65686 7.34315 9.00001 9 9.00001C10.6569 9.00001 12 7.65686 12 6.00001C12 4.34315 10.6569 3.00001 9 3.00001ZM2 13C2 11.8869 2.90315 11 4.00873 11L14 11C15.1045 11 16 11.8956 16 13C16 14.6912 15.1672 15.9663 13.865 16.7966C12.583 17.614 10.8547 18 9 18C7.14526 18 5.41697 17.614 4.13499 16.7966C2.83281 15.9663 2 14.6912 2 13ZM4.00873 12C3.44786 12 3 12.4467 3 13C3 14.3088 3.62226 15.2837 4.67262 15.9534C5.74318 16.636 7.26489 17 9 17C10.7351 17 12.2568 16.636 13.3274 15.9534C14.3777 15.2837 15 14.3088 15 13C15 12.4478 14.5522 12 14 12L4.00873 12Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Voice Activation for Apps</span>
+                <p class="setting-desc">Allow apps to listen and respond to voice commands like &#39;Hey Cortana&#39;</p>
+                </div>
+                <div class="setting-pills">
+                <span class="setting-id">sound-voice-activation</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(361.7px + 50 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\SpeechOneCore\Settings">HKLM\Software\Microsoft\Windows\CurrentVersion\SpeechOneCore\Settings</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">AgentActivationEnabled</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Last Used Voice Activation Setting</span>
-                        <span class="setting-id">sound-voice-activation-last-used</span>
-                    </div>
-                    <p class="setting-desc">Remember and apply the most recently used voice activation configuration.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKLM\Software\Microsoft\Windows\CurrentVersion\SpeechOneCore\Settings</code></td></tr>
-                            <tr><th>Value</th><td><code>AgentActivationLastUsed</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>0 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
+                <div class="setting-card" id="sound-voice-activation-last-used">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M18.4996 10.5C18.7758 10.5 18.9996 10.7239 18.9996 11C18.9996 13.5927 17.0263 15.7237 14.4996 15.9746V17.5C14.4996 17.7761 14.2758 18 13.9996 18C13.7237 17.9998 13.4996 17.776 13.4996 17.5V15.9746C10.9732 15.7235 8.99963 13.5925 8.99963 11C8.99963 10.724 9.22365 10.5002 9.49963 10.5C9.77577 10.5 9.99963 10.7239 9.99963 11C9.99963 13.209 11.7907 14.9998 13.9996 15C16.2088 15 17.9996 13.2091 17.9996 11C17.9996 10.724 18.2237 10.5002 18.4996 10.5ZM8.50158 2C9.97728 2.0001 11.3383 2.4926 12.4293 3.32129C12.0903 3.46636 11.7749 3.6564 11.4918 3.88477C10.631 3.32595 9.60428 3.00009 8.50158 3C5.46435 3.00045 3.00158 5.46277 3.00158 8.5C3.00158 9.41014 3.22293 10.2678 3.61389 11.0234C3.66974 11.1315 3.68434 11.256 3.6549 11.374L3.0006 13.9951L5.61779 13.3398C5.73608 13.3103 5.8621 13.3257 5.97033 13.3818C6.72821 13.7757 7.5885 13.9999 8.50158 14C8.60165 14 8.70165 13.9965 8.80041 13.9912C8.99276 14.3249 9.21569 14.6386 9.46642 14.9277C9.15175 14.9746 8.82928 15 8.50158 15C7.49246 14.9999 6.53818 14.7643 5.68615 14.3535L3.24377 14.9658C2.51238 15.1479 1.84796 14.4854 2.03088 13.7529L2.64123 11.3057C2.23355 10.4558 2.00158 9.50489 2.00158 8.5C2.00158 4.9104 4.9122 2.0005 8.50158 2ZM13.9996 4C15.6565 4 16.9996 5.34315 16.9996 7V11C16.9996 12.6569 15.6565 14 13.9996 14C12.3429 13.9998 10.9996 12.6567 10.9996 11V7C10.9996 5.34327 12.3429 4.0002 13.9996 4ZM13.9996 5C12.8952 5.0002 11.9996 5.89555 11.9996 7V11C11.9996 12.1044 12.8952 12.9998 13.9996 13C15.1042 13 15.9996 12.1046 15.9996 11V7C15.9996 5.89543 15.1042 5 13.9996 5Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Last Used Voice Activation Setting</span>
+                <p class="setting-desc">Remember and apply the most recently used voice activation configuration</p>
+                </div>
+                <div class="setting-pills">
+                <span class="setting-id">sound-voice-activation-last-used</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(354.2px + 51 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\SpeechOneCore\Settings">HKLM\Software\Microsoft\Windows\CurrentVersion\SpeechOneCore\Settings</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">AgentActivationLastUsed</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Accessibility Activation Sounds</span>
-                        <span class="setting-id">sound-accessibility-activation</span>
-                    </div>
-                    <p class="setting-desc">Play sounds when accessibility features like StickyKeys or FilterKeys are activated.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Control Panel\Accessibility</code></td></tr>
-                            <tr><th>Value</th><td><code>Sound on Activation</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
+                <div class="setting-card" id="sound-accessibility-activation">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M5 12.5C5 12.2239 5.22386 12 5.5 12H14.5C14.7761 12 15 12.2239 15 12.5C15 12.7761 14.7761 13 14.5 13H5.5C5.22386 13 5 12.7761 5 12.5ZM11.5024 8.00468C11.9179 8.00468 12.2547 7.66783 12.2547 7.25231C12.2547 6.83679 11.9179 6.49994 11.5024 6.49994C11.0868 6.49994 10.75 6.83679 10.75 7.25231C10.75 7.66783 11.0868 8.00468 11.5024 8.00468ZM15.2547 7.25231C15.2547 7.66783 14.9179 8.00468 14.5024 8.00468C14.0868 8.00468 13.75 7.66783 13.75 7.25231C13.75 6.83679 14.0868 6.49994 14.5024 6.49994C14.9179 6.49994 15.2547 6.83679 15.2547 7.25231ZM5.50237 8.00468C5.91789 8.00468 6.25474 7.66783 6.25474 7.25231C6.25474 6.83679 5.91789 6.49994 5.50237 6.49994C5.08685 6.49994 4.75 6.83679 4.75 7.25231C4.75 7.66783 5.08685 8.00468 5.50237 8.00468ZM7.74998 9.75231C7.74998 10.1678 7.41313 10.5047 6.99761 10.5047C6.58209 10.5047 6.24524 10.1678 6.24524 9.75231C6.24524 9.33679 6.58209 8.99994 6.99761 8.99994C7.41313 8.99994 7.74998 9.33679 7.74998 9.75231ZM10.0024 10.5047C10.4179 10.5047 10.7547 10.1678 10.7547 9.75231C10.7547 9.33679 10.4179 8.99994 10.0024 8.99994C9.58685 8.99994 9.25 9.33679 9.25 9.75231C9.25 10.1678 9.58685 10.5047 10.0024 10.5047ZM13.7595 9.75231C13.7595 10.1678 13.4227 10.5047 13.0071 10.5047C12.5916 10.5047 12.2548 10.1678 12.2548 9.75231C12.2548 9.33679 12.5916 8.99994 13.0071 8.99994C13.4227 8.99994 13.7595 9.33679 13.7595 9.75231ZM8.50237 8.00468C8.91789 8.00468 9.25474 7.66783 9.25474 7.25231C9.25474 6.83679 8.91789 6.49994 8.50237 6.49994C8.08685 6.49994 7.75 6.83679 7.75 7.25231C7.75 7.66783 8.08685 8.00468 8.50237 8.00468ZM2 5.5C2 4.67157 2.67157 4 3.5 4H16.5C17.3284 4 18 4.67157 18 5.5V13.5C18 14.3284 17.3284 15 16.5 15H3.5C2.67157 15 2 14.3284 2 13.5V5.5ZM3.5 5C3.22386 5 3 5.22386 3 5.5V13.5C3 13.7761 3.22386 14 3.5 14H16.5C16.7761 14 17 13.7761 17 13.5V5.5C17 5.22386 16.7761 5 16.5 5H3.5Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Accessibility Activation Sounds</span>
+                <p class="setting-desc">Play sounds when accessibility features like StickyKeys or FilterKeys are activated</p>
+                </div>
+                <div class="setting-pills">
+                <span class="setting-id">sound-accessibility-activation</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(132.6px + 47 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\Accessibility">HKCU\Control Panel\Accessibility</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">Sound on Activation</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 </div>
 
-                <div class="setting-card">
-                    <div class="setting-header">
-                        <span class="setting-name">Accessibility Warning Sounds</span>
-                        <span class="setting-id">sound-accessibility-warnings</span>
-                    </div>
-                    <p class="setting-desc">Play warning sounds when attempting to activate accessibility features or when accessibility-related events occur.</p>
-                    <details class="registry-details">
-                        <summary>Registry Details</summary>
-                        <table class="registry-table">
-                            <tr><th>Path</th><td><code>HKCU\Control Panel\Accessibility</code></td></tr>
-                            <tr><th>Value</th><td><code>Warning Sounds</code></td></tr>
-                            <tr><th>Type</th><td>DWORD</td></tr>
-                            <tr><th>Enabled</th><td>1</td></tr>
-                            <tr><th>Disabled</th><td>0</td></tr>
-                            <tr><th>Default</th><td>1 (Absence = Enabled)</td></tr>
-                        </table>
-                    </details>
+                <div class="setting-card" id="sound-accessibility-warnings">
+                <div class="setting-header">
+                <span class="setting-icon"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M17.65 1.20003C17.7712 1.36167 17.9351 1.65306 18.0932 2.07447C18.3482 2.75469 18.5 3.56403 18.5 4.50003C18.5 5.43603 18.3482 6.24537 18.0932 6.92559C17.9351 7.347 17.7712 7.63839 17.65 7.80003C17.4843 8.02094 17.1709 8.06571 16.95 7.90003C16.7536 7.75275 16.6964 7.48876 16.8025 7.27676L16.9182 7.09485C16.9838 6.98267 17.0688 6.80917 17.1568 6.57447C17.3705 6.00469 17.5 5.31403 17.5 4.50003C17.5 3.68603 17.3705 2.99537 17.1568 2.42559C17.0688 2.19089 16.9838 2.01739 16.9182 1.90521L16.85 1.80003C16.6843 1.57912 16.7291 1.26571 16.95 1.10003C17.1709 0.934344 17.4843 0.979115 17.65 1.20003ZM13.6913 1.03807C13.8782 1.11547 14 1.29778 14 1.50001V7.50001C14 7.70225 13.8782 7.88456 13.6913 7.96195C13.5045 8.03935 13.2894 7.99657 13.1464 7.85357L11.2929 6.00001H10.5C10.2239 6.00001 10 5.77616 10 5.50001V3.50001C10 3.22387 10.2239 3.00001 10.5 3.00001H11.2929L13.1464 1.14646C13.2894 1.00346 13.5045 0.960684 13.6913 1.03807ZM16.2243 2.96692C16.1224 2.661 16.0196 2.42114 15.9472 2.27642C15.8237 2.02943 15.5234 1.92932 15.2764 2.05282C15.0294 2.17631 14.9293 2.47665 15.0528 2.72364C15.1054 2.82892 15.1901 3.02655 15.2756 3.28314C15.4163 3.70506 15.5 4.12357 15.5 4.50003C15.5 4.87649 15.4163 5.295 15.2756 5.71692C15.2243 5.87087 15.1733 6.0036 15.1293 6.10789L15.0528 6.27642C14.9293 6.52341 15.0294 6.82375 15.2764 6.94724C15.5234 7.07074 15.8237 6.97063 15.9472 6.72364C16.0196 6.57892 16.1224 6.33905 16.2243 6.03314C16.3962 5.51756 16.5 4.99857 16.5 4.50003C16.5 4.00149 16.3962 3.4825 16.2243 2.96692ZM17 13V8.97943C17.3425 9.03702 17.6975 8.97398 18 8.79956V13C18 14.1046 17.1046 15 16 15H13V17H14.5C14.7761 17 15 17.2239 15 17.5C15 17.7761 14.7761 18 14.5 18H5.5C5.22386 18 5 17.7761 5 17.5C5 17.2239 5.22386 17 5.5 17H7V15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H10.8788L10.5 2.00007C9.84692 2.00007 9.29132 2.41744 9.08538 3H4C3.44772 3 3 3.44772 3 4V13C3 13.5523 3.44772 14 4 14H16C16.5523 14 17 13.5523 17 13ZM12 15H8V17H12V15Z" fill="currentColor"/></svg></span>
+                <div class="setting-header-text">
+                <span class="setting-name">Accessibility Warning Sounds</span>
+                <p class="setting-desc">Play warning sounds when attempting to activate accessibility features or when accessibility-related events occur</p>
                 </div>
-
-            </section>
+                <div class="setting-pills">
+                <span class="setting-id">sound-accessibility-warnings</span>
+                </div>
+                </div>
+                <div class="mx-box" style="--mx-option-w: calc(24px + 6 * var(--mx-char-w)); --mx-table-w: calc(170.1px + 42 * var(--mx-char-w))">
+                <div class="mx-scroll">
+                <table class="mx-grid">
+                <colgroup><col class="mx-col-option"><col class="mx-col-role" style="width: calc(58px + 11 * var(--mx-char-w))"><col></colgroup>
+                <thead>
+                <tr class="mx-row-mechanism"><th class="mx-setting" colspan="2" rowspan="2"><span class="mx-group-label">Options</span><span class="mx-group-desc">Selecting an option makes the changes shown to the right.</span></th><th class="mx-group" colspan="1" rowspan="1"><span class="mx-group-label">Registry</span><span class="mx-group-desc">Read to determine which option is active, and written when you apply one.</span></th></tr>
+                <tr class="mx-row-paths"><th class="mx-paths" colspan="1"><span class="mx-pathline"><span class="mx-caption">Path</span><code class="mx-path" title="HKEY_CURRENT_USER\Control Panel\Accessibility">HKCU\Control Panel\Accessibility</code></span></th></tr>
+                <tr class="mx-row-columns"><th class="mx-h-option" scope="col">Option</th><th class="mx-h-role" scope="col">Role</th><th class="mx-col mx-col-value" scope="col"><span class="mx-line"><span class="mx-caption">Value name</span><code class="mx-name">Warning Sounds</code></span><span class="mx-line"><span class="mx-caption">Value type</span><code class="mx-type">DWord</code></span></th></tr>
+                </thead>
+                <tbody>
+                <tr><th class="mx-option" scope="row"><code>On</code></th><td class="mx-role"><span class="mx-pill mx-pill-default" title="How Windows ships out of the box"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 17.0009C3.7203 17.0009 3.07955 16.406 3.00687 15.6454L3 15.5009V4.50092C3 3.72122 3.59489 3.08047 4.35554 3.00778L4.5 3.00092H9C9.7797 3.00092 10.4204 3.5958 10.4931 4.35646L10.5 4.50092V4.75534L12.6886 2.48609C13.2276 1.92691 14.0959 1.8766 14.6956 2.34798L14.8118 2.44922L17.5694 5.17386C18.1219 5.71976 18.1614 6.5886 17.68 7.18505L17.5767 7.30053L15.266 9.50034L15.5 9.50092C16.2797 9.50092 16.9204 10.0958 16.9931 10.8565L17 11.0009V15.5009C17 16.2806 16.4051 16.9214 15.6445 16.994L15.5 17.0009H4.5ZM9.5 10.5009H4V15.5009C4 15.7157 4.13542 15.8988 4.32553 15.9696L4.41012 15.9929L4.5 16.0009H9.5V10.5009ZM15.5 10.5009H10.5V16.0009H15.5C15.7455 16.0009 15.9496 15.824 15.9919 15.5908L16 15.5009V11.0009C16 10.7555 15.8231 10.5513 15.5899 10.509L15.5 10.5009ZM10.5 7.71034V9.50034H12.29L10.5 7.71034ZM9 4.00092H4.5C4.25454 4.00092 4.05039 4.17779 4.00806 4.41104L4 4.50092V9.50092H9.5V4.50092C9.5 4.28614 9.36458 4.10299 9.17447 4.0322L9.08988 4.00897L9 4.00092ZM14.1222 3.17357C13.9396 2.99744 13.6692 2.98247 13.4768 3.12096L13.4086 3.18007L10.7926 5.89421C10.6271 6.06592 10.6086 6.32593 10.7356 6.51736L10.799 6.59475L13.4147 9.21046C13.5826 9.37838 13.8409 9.40226 14.0345 9.28022L14.1131 9.21898L16.8708 6.59231C17.0433 6.4177 17.061 6.14817 16.9248 5.95411L16.8665 5.88521L14.1222 3.17357Z" fill="currentColor"/></svg><span class="mx-pill-label">Default</span></span></td><td class="mx-value"><code>1 (or not set)</code></td></tr><tr><th class="mx-option" scope="row"><code>Off</code></th><td class="mx-role"><span class="mx-pill mx-pill-recommended" title="What Winhance suggests for most people"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9.10433 2.89923C9.47114 2.15598 10.531 2.15599 10.8978 2.89923L12.8282 6.81073L17.1448 7.43797C17.9651 7.55715 18.2926 8.56513 17.699 9.14366L14.5755 12.1883L15.3129 16.4875C15.453 17.3044 14.5956 17.9274 13.8619 17.5417L10.0011 15.5119L6.14018 17.5417C5.40655 17.9274 4.54913 17.3044 4.68924 16.4875L5.4266 12.1883L2.30308 9.14366C1.70956 8.56512 2.03708 7.55715 2.8573 7.43797L7.17389 6.81073L9.10433 2.89923ZM10.0011 3.3418L8.07062 7.25329C7.92496 7.54844 7.6434 7.75301 7.31769 7.80034L3.00109 8.42757L6.12461 11.4722C6.3603 11.702 6.46784 12.033 6.41221 12.3574L5.67484 16.6565L9.53572 14.6267C9.82705 14.4736 10.1751 14.4736 10.4664 14.6267L14.3273 16.6565L13.5899 12.3574C13.5343 12.033 13.6418 11.702 13.8775 11.4722L17.001 8.42757L12.6844 7.80034C12.3587 7.75301 12.0772 7.54844 11.9315 7.25329L10.0011 3.3418Z" fill="currentColor"/></svg><span class="mx-pill-label">Recommended</span></span></td><td class="mx-value"><code>0</code></td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+                </section>
+            </article>
+            <nav class="pager" aria-label="More pages"><a class="pager-prev" href="../../features/optimizations/notifications.html"><span>Previous</span>Notifications</a><a class="pager-next" href="../../features/customize.html"><span>Next</span>Customize</a></nav>
         </main>
+
+        <aside class="docs-toc" aria-label="On this page">
+
+        </aside>
     </div>
 
-    <button class="sidebar-toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-    </button>
-
-    <script src="../../js/docs-theme.js"></script>
-    <script src="../../js/docs-navigation.js"></script>
-    <script src="../../js/docs-search.js"></script>
-    <script src="../../js/docs-config.js"></script>
-
-    <footer class="docs-footer">
-        <div class="docs-footer-container">
-            <div class="docs-footer-info">
-                &copy; 2026 Winhance.
+    <footer class="footer">
+        <div class="wrap footer-grid">
+            <div>
+                <a class="brand" href="../../../index.html">
+                    <img class="brand-mark" src="../../../images/winhance-rocket.png" alt="" width="24" height="24">
+                    <span>Winhance</span>
+                </a>
+                <p class="footer-version">These docs describe Winhance v26.11.27</p>
             </div>
-            <div class="docs-footer-meta">
-                <div class="docs-meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-                    <span class="docs-version">Docs v1.0.0</span>
-                </div>
-                <div class="docs-meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                    <span class="docs-last-updated">Last Updated: Jan 28, 2026</span>
-                </div>
-            </div>
+            <ul class="footer-links">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../index.html">Documentation</a></li>
+                <li><a href="https://github.com/memstechtips/Winhance/releases" target="_blank" rel="noopener">Releases</a></li>
+                <li><a href="https://github.com/memstechtips/Winhance" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://store.memstechtips.com/winhance/" target="_blank" rel="noopener">Support Winhance</a></li>
+            </ul>
+            <p class="footer-made">&copy; 2026 Winhance. Made by <a href="https://memstechtips.com/" target="_blank" rel="noopener">Memory</a>.</p>
         </div>
     </footer>
+
+    <script src="../../../demo/app.js"></script>
+    <script src="../../../demo/winhance-demo.js"></script>
+    <script src="../../../demo/readout.js"></script>
+    <script src="../../js/docs-search.js"></script>
+    <script src="../../js/docs.js"></script>
+    <script src="../../js/docs-metrics.js"></script>
 </body>
 
 </html>
